@@ -1,0 +1,23 @@
+\BOOKMARK [2][-]{subsection.0.1}{Basic Defintions}{}% 1
+\BOOKMARK [2][-]{subsection.0.2}{Introduction to modelling time series}{}% 2
+\BOOKMARK [2][-]{subsection.0.3}{Solution by Forward Iteration}{}% 3
+\BOOKMARK [2][-]{subsection.0.4}{Solution by Iteration without initial condition}{}% 4
+\BOOKMARK [2][-]{subsection.0.5}{Cobweb Method}{}% 5
+\BOOKMARK [2][-]{subsection.0.6}{Numerical Iteration}{}% 6
+\BOOKMARK [2][-]{subsection.0.7}{Simple Difference Equation}{}% 7
+\BOOKMARK [2][-]{subsection.0.8}{Difference Equation with Forcing Process}{}% 8
+\BOOKMARK [2][-]{subsection.0.9}{Lag Operator}{}% 9
+\BOOKMARK [2][-]{subsection.0.10}{Multiple Representations of Time Series}{}% 10
+\BOOKMARK [2][-]{subsection.0.11}{AR\(P\) with lag operators}{}% 11
+\BOOKMARK [2][-]{subsection.0.12}{AR\(2\) with Lag Operators}{}% 12
+\BOOKMARK [2][-]{subsection.0.13}{Characteristic Polynomials}{}% 13
+\BOOKMARK [2][-]{subsection.0.14}{Forward Looking}{}% 14
+\BOOKMARK [2][-]{subsection.0.15}{Prediction}{}% 15
+\BOOKMARK [2][-]{subsection.0.16}{Impulse-Response Functions}{}% 16
+\BOOKMARK [2][-]{subsection.0.17}{Power Spectrum}{}% 17
+\BOOKMARK [2][-]{subsection.0.18}{Spectral Representation}{}% 18
+\BOOKMARK [2][-]{subsection.0.19}{Autocorrelation and Autocovariance Functions}{}% 19
+\BOOKMARK [2][-]{subsection.0.20}{Filtering}{}% 20
+\BOOKMARK [1][-]{section.1}{Conditional Variance/Volatility Models}{}% 21
+\BOOKMARK [2][-]{subsection.1.1}{Motivation}{section.1}% 22
+\BOOKMARK [2][-]{subsection.1.2}{AR\(1\) Model}{section.1}% 23

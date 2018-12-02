@@ -1,0 +1,23 @@
+\contentsline {subsection}{\numberline {1.0.1}Basic Defintions}{1}{subsection.0.1}
+\contentsline {subsection}{\numberline {2.0.2}Introduction to modelling time series}{1}{subsection.0.2}
+\contentsline {subsection}{\numberline {2.0.3}Solution by Forward Iteration}{1}{subsection.0.3}
+\contentsline {subsection}{\numberline {2.0.4}Solution by Iteration without initial condition}{2}{subsection.0.4}
+\contentsline {subsection}{\numberline {2.0.5}Cobweb Method}{2}{subsection.0.5}
+\contentsline {subsection}{\numberline {2.0.6}Numerical Iteration}{2}{subsection.0.6}
+\contentsline {subsection}{\numberline {2.0.7}Simple Difference Equation}{2}{subsection.0.7}
+\contentsline {subsection}{\numberline {2.0.8}Difference Equation with Forcing Process}{3}{subsection.0.8}
+\contentsline {subsection}{\numberline {2.0.9}Lag Operator}{4}{subsection.0.9}
+\contentsline {subsection}{\numberline {2.0.10}Multiple Representations of Time Series}{5}{subsection.0.10}
+\contentsline {subsection}{\numberline {2.0.11}AR(P) with lag operators}{6}{subsection.0.11}
+\contentsline {subsection}{\numberline {2.0.12}AR(2) with Lag Operators}{6}{subsection.0.12}
+\contentsline {subsection}{\numberline {2.0.13}Characteristic Polynomials}{6}{subsection.0.13}
+\contentsline {subsection}{\numberline {3.0.14}Forward Looking}{1}{subsection.0.14}
+\contentsline {subsection}{\numberline {3.0.15}Prediction}{1}{subsection.0.15}
+\contentsline {subsection}{\numberline {3.0.16}Impulse-Response Functions}{2}{subsection.0.16}
+\contentsline {subsection}{\numberline {4.0.17}Power Spectrum}{1}{subsection.0.17}
+\contentsline {subsection}{\numberline {4.0.18}Spectral Representation}{1}{subsection.0.18}
+\contentsline {subsection}{\numberline {4.0.19}Autocorrelation and Autocovariance Functions}{3}{subsection.0.19}
+\contentsline {subsection}{\numberline {4.0.20}Filtering}{4}{subsection.0.20}
+\contentsline {section}{\numberline {13.1}Conditional Variance/Volatility Models}{1}{section.1}
+\contentsline {subsection}{\numberline {13.1.1}Motivation}{1}{subsection.1.1}
+\contentsline {subsection}{\numberline {13.1.2}AR(1) Model}{1}{subsection.1.2}

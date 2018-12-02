@@ -1,0 +1,110 @@
+\contentsline {section}{\numberline {1}Introduction}{1}
+\contentsline {subsection}{\numberline {1.1}Representative Problems}{1}
+\contentsline {subsubsection}{\numberline {1.1.1}Interval Scheduling}{1}
+\contentsline {subsubsection}{\numberline {1.1.2}Weighted Interval Scheduling}{1}
+\contentsline {subsubsection}{\numberline {1.1.3}Bipartite Matching}{1}
+\contentsline {subsubsection}{\numberline {1.1.4}Independent Set}{1}
+\contentsline {subsection}{\numberline {1.2}Time Complexity}{1}
+\contentsline {subsubsection}{\numberline {1.2.1}Asymptotic Order of growth}{2}
+\contentsline {subsubsection}{\numberline {1.2.2}Transitivity}{2}
+\contentsline {subsubsection}{\numberline {1.2.3}Additivity}{3}
+\contentsline {section}{\numberline {2}Matching}{4}
+\contentsline {subsection}{\numberline {2.1}Introduction}{4}
+\contentsline {subsection}{\numberline {2.2}Implementation}{5}
+\contentsline {section}{\numberline {3}Graphs}{7}
+\contentsline {subsection}{\numberline {3.1}Paths and Connectivity}{7}
+\contentsline {subsection}{\numberline {3.2}Graph Traversal}{7}
+\contentsline {subsection}{\numberline {3.3}Depth First Search}{9}
+\contentsline {subsection}{\numberline {3.4}Testing Bipartiteness}{9}
+\contentsline {subsection}{\numberline {3.5}Connectivity in Directed Graphs}{10}
+\contentsline {subsection}{\numberline {3.6}DAGs and Topological Ordering}{11}
+\contentsline {section}{\numberline {4}Greedy Algorithms}{13}
+\contentsline {subsection}{\numberline {4.1}Interval Scheduling}{13}
+\contentsline {subsubsection}{\numberline {4.1.1}Earliest Start Time}{13}
+\contentsline {subsubsection}{\numberline {4.1.2}Shortest Interval}{13}
+\contentsline {subsubsection}{\numberline {4.1.3}Fewest Conflicts}{13}
+\contentsline {subsubsection}{\numberline {4.1.4}Earliest Finishing Time}{13}
+\contentsline {subsection}{\numberline {4.2}Interval Partitioning}{14}
+\contentsline {subsection}{\numberline {4.3}Scheduling to minimise lateness}{15}
+\contentsline {subsubsection}{\numberline {4.3.1}Shortest Processing Time First}{15}
+\contentsline {subsubsection}{\numberline {4.3.2}Smallest Slack}{15}
+\contentsline {subsubsection}{\numberline {4.3.3}Earliest Deadline First}{15}
+\contentsline {subsection}{\numberline {4.4}Minimum Spanning Tree}{17}
+\contentsline {subsection}{\numberline {4.5}Prim's Algorithm}{18}
+\contentsline {subsection}{\numberline {4.6}Shortest Paths in Graphs}{18}
+\contentsline {subsection}{\numberline {4.7}Kruskal's algorithm}{19}
+\contentsline {subsubsection}{\numberline {4.7.1}Union-Find Data Structure}{19}
+\contentsline {subsection}{\numberline {4.8}Clustering}{19}
+\contentsline {subsubsection}{\numberline {4.8.1}Greedy Clustering Algorithm}{20}
+\contentsline {subsection}{\numberline {4.9}Euclidean Travelling Salesman Problem}{21}
+\contentsline {subsection}{\numberline {4.10}Approximation Algorithms}{21}
+\contentsline {subsection}{\numberline {4.11}Set-Cover}{22}
+\contentsline {section}{\numberline {5}Divide and Conquer}{24}
+\contentsline {subsection}{\numberline {5.1}Searching}{24}
+\contentsline {subsection}{\numberline {5.2}Sorting}{24}
+\contentsline {subsection}{\numberline {5.3}Counting Inversions}{25}
+\contentsline {subsection}{\numberline {5.4}Closest Pair of Points}{26}
+\contentsline {subsection}{\numberline {5.5}Master Theorem}{26}
+\contentsline {subsection}{\numberline {5.6}Integer Multiplication}{26}
+\contentsline {subsection}{\numberline {5.7}Median of Medians}{27}
+\contentsline {subsubsection}{\numberline {5.7.1}First attempt}{27}
+\contentsline {subsubsection}{\numberline {5.7.2}Median of 5-medians}{29}
+\contentsline {subsection}{\numberline {5.8}Matrix Multiplication}{30}
+\contentsline {section}{\numberline {6}Sweepline Technique/Computational Geometry}{31}
+\contentsline {subsection}{\numberline {6.1}Introduction}{31}
+\contentsline {subsection}{\numberline {6.2}Segment Intersecion}{31}
+\contentsline {subsubsection}{\numberline {6.2.1}Intersection Detection}{32}
+\contentsline {subsubsection}{\numberline {6.2.2}Intersection Reporting}{32}
+\contentsline {subsection}{\numberline {6.3}Convex Hull}{33}
+\contentsline {subsubsection}{\numberline {6.3.1}Algorithm 1}{33}
+\contentsline {subsubsection}{\numberline {6.3.2}Algorithm 2}{34}
+\contentsline {subsubsection}{\numberline {6.3.3}Algorithm 3 (Giftwrapping)}{34}
+\contentsline {subsubsection}{\numberline {6.3.4}Algorithm 4 (Jarvis March)}{34}
+\contentsline {subsubsection}{\numberline {6.3.5}Algorithm 5 (QuickHull)}{34}
+\contentsline {subsubsection}{\numberline {6.3.6}Algorithm 6 (Sweep line approach)}{35}
+\contentsline {subsection}{\numberline {6.4}Closest Pair of points}{36}
+\contentsline {subsection}{\numberline {6.5}Visibility}{36}
+\contentsline {subsection}{\numberline {6.6}Art Gallery Problem}{37}
+\contentsline {subsubsection}{\numberline {6.6.1}Summary}{39}
+\contentsline {subsection}{\numberline {6.7}Conclusion}{39}
+\contentsline {section}{\numberline {7}Dynamic Programming}{40}
+\contentsline {subsection}{\numberline {7.1}Weighted Interval Scheduling}{40}
+\contentsline {subsection}{\numberline {7.2}Maximum-sum contiguous subarray}{42}
+\contentsline {subsubsection}{\numberline {7.2.1}Divide and Conquer Approach}{42}
+\contentsline {subsection}{\numberline {7.3}Knapsack problem}{42}
+\contentsline {subsection}{\numberline {7.4}Longest increasing subsequence}{43}
+\contentsline {subsection}{\numberline {7.5}Sequence Alignment}{44}
+\contentsline {subsection}{\numberline {7.6}RNA Secondary Structure}{46}
+\contentsline {subsection}{\numberline {7.7}Shortest Paths}{47}
+\contentsline {subsection}{\numberline {7.8}Segmented Least Squares}{48}
+\contentsline {subsection}{\numberline {7.9}Exponential Time algorithms}{49}
+\contentsline {section}{\numberline {8}Network Flow}{50}
+\contentsline {subsection}{\numberline {8.1}Introduction and Definitions}{50}
+\contentsline {subsection}{\numberline {8.2}Max Flow algorithm}{53}
+\contentsline {subsubsection}{\numberline {8.2.1}Ford-Fulkerson Algorithm}{56}
+\contentsline {subsubsection}{\numberline {8.2.2}Analysis}{57}
+\contentsline {subsection}{\numberline {8.3}Edmonds-Karp Algorithm}{60}
+\contentsline {subsubsection}{\numberline {8.3.1}Edmonds-Karp 1}{60}
+\contentsline {subsubsection}{\numberline {8.3.2}Improved Ford Fulkerson}{60}
+\contentsline {subsubsection}{\numberline {8.3.3}Edmonds Karp 2}{61}
+\contentsline {subsubsection}{\numberline {8.3.4}Section Overview}{62}
+\contentsline {subsection}{\numberline {8.4}Flow Network Applications}{62}
+\contentsline {subsubsection}{\numberline {8.4.1}Bipartite Matching}{63}
+\contentsline {subsubsection}{\numberline {8.4.2}Perfect Matching}{64}
+\contentsline {subsubsection}{\numberline {8.4.3}Disjoint Paths}{64}
+\contentsline {subsubsection}{\numberline {8.4.4}Network Connectivity}{65}
+\contentsline {subsubsection}{\numberline {8.4.5}Circulation}{65}
+\contentsline {subsubsection}{\numberline {8.4.6}Circulation with supply/demand and lower bounds}{66}
+\contentsline {subsubsection}{\numberline {8.4.7}Survey Design}{66}
+\contentsline {subsubsection}{\numberline {8.4.8}Image Segmentation}{67}
+\contentsline {subsubsection}{\numberline {8.4.9}Baseball Elimination}{67}
+\contentsline {section}{\numberline {9}NP Hardness}{68}
+\contentsline {subsection}{\numberline {9.1}Polynomial time reduction}{68}
+\contentsline {subsection}{\numberline {9.2}Reduction by Simple Equivalence}{69}
+\contentsline {subsection}{\numberline {9.3}Reduction from special case to general case}{70}
+\contentsline {subsection}{\numberline {9.4}Reduction via Gadgets}{70}
+\contentsline {subsubsection}{\numberline {9.4.1}Clique}{71}
+\contentsline {subsection}{\numberline {9.5}NP}{72}
+\contentsline {subsection}{\numberline {9.6}PSPACE}{73}
+\contentsline {subsection}{\numberline {9.7}Quantified SAT Problems}{73}
+\contentsline {subsection}{\numberline {9.8}Planning Problems}{74}

@@ -1,0 +1,69 @@
+\documentclass[11pt, oneside]{article}
+
+\usepackage{geometry}
+\geometry{letterpaper}
+\usepackage[parfill]{parskip}    % Activate to begin paragraphs with an empty line rather than an indent
+\usepackage{graphicx} % Use pdf, png, jpg, or eps§ with pdflatex; use eps in DVI mode
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{ragged2e}
+\usepackage{tabu}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+\title{Econometric Analysis ECMT2160 Time Series Definitions}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2017}
+
+
+\begin{document}
+\pagenumbering{gobble}
+\maketitle
+\newpage
+\pagenumbering{arabic}
+\textbf{Strictly exogenous}: $E(\epsilon_t|\bm{x}_t) = 0 \forall t$
+
+\textbf{Weakly exogenous}: $E(\epsilon_t|\bm{x}_t, \bm{x}_{t-1},...) = 0$ for the period t and periods before it.
+
+\textbf{Contemporaneous exogeneity}: Special case of weakly exogenous where $E(\epsilon_t|\bm{x}) = 0$ for just the current time period.
+
+\textbf{White Noise}: $\epsilon \sim iid(0,\sigma^2)$
+
+\textbf{Serial Correlation/Autocorrelation}: $Cov(\epsilon_t,\epsilon_s) \neq 0 \quad for \quad t \neq s$
+
+\textbf{Unit roots}: We can think of them as a \textbf{stochastic trend} in time series. If we had a time series of:
+$$
+y_t = c + \alpha_1y_{t-1} + \epsilon_{t-1}
+$$
+the coefficient $\alpha_1$ is a root. We expect this process to always converge back to the value of c when $\alpha < 1$. If we set c = 0 and $\alpha$ = 0.5, if $y_{t-1}$ was 100, then today it's 50, tomororow 25, and so on until it gets to 0. Here, we can see that this series will converge back to c. However, if we had a root that is a \textbf{unit}, or in other words, when $\alpha = 1$, we see that the series will never converge back to c. From this, we can see that the time series will never recover back to its expected value and therefore the process is very susceptible to shocks and hard to predict. Unit roots are highly persistent/strongly dependent.
+
+\textbf{Weakly dependent/Not highly Persistent}: $Corr(x_t,x_{t+h}) \rightarrow 0 \text{for} h \rightarrow \infty$.
+
+\textbf{Highly persistent/strong dependent}: $Corr(x_t,x_{t+h}) \neq 0 \text{for} h \rightarrow \infty$. Opposite of the above.
+
+\textbf{Spruious regression/relationship/correlation}: A mathematical relationship in which two or more events or variables are not causally related to each other, yet it may be wrongly inferred that they are, due to either coincidence or the presence of a certain third, unseen factor. Good example of this is between independent \textbf{non-stationary} variables with \textbf{unit roots}.
+
+\textbf{Quasi-differenced}: When we difference a variable by its lag multipled by (1 - $\rho$). e.g. $y_t - \rho y_{t-1} = (1 - \rho)\tilde{y_t}$ where $\tilde{y_t} = y_t - y_{t-1}$. Notice if $\rho = 1$, then this is equivalent to first differencing e.g. $(1-1)\tilde{y_t} = \tilde{y_t} = y_t - y_{t-1}$.
+
+\textbf{Breusche-Godfreq q order autocorrelation test}: Tests for qth order autocorrelation for not strictly exogenous variables.
+
+\textbf{Feasible GLS/Cochrane Orcutt/Prais-Winsten method}: This is used if serial correlation is present in data. Inference not valid and so is $R^2$ since spurious regressions can occur from unit roots. First, OLS regression of $y_t$ on $x_t$. Difference $\tilde{y_t} = y_t - \hat{\rho} y_{t-1}$ and $\tilde{x_t} = x_t - \hat{\rho} x_{t-1}$ whereby $\hat{\rho}$ is from regressing residuals $\hat{\epsilon_t}$ on $\hat{\epsilon}_{t-1}$ and saving the coefficient. Cochrane Orcutt drops the first observations (since can't difference them) when running $\tilde{y_t}, \tilde{x_t}$ regression whilst Prais-Winsten sets the first observation as $y_1 = \beta_0 + \beta_1x_1 + \epsilon_1$. Standards from this should be higher compared to OLS since serial correlation is considered. Estimates should be roughly same if variables are I(0).
+
+\textbf{Finite Distributed Lag model} A model of order q is:
+$$
+y_t = \alpha_0 + \delta_0z_t + \delta_1z_{t-1} + ... + \delta_qz_{t-q} + \epsilon_t
+$$
+
+\textbf{Impact propensity}: From the above specification, this is the effect of $z_t$ on $y_t$ which is $\delta_0$.
+
+\textbf{Short run/instantaneous elasticity}: Effect of log$z_t$ on log$y_t$ which  will be $\delta_0$ for $log(y_t) = \alpha_0 + log(z_t) + \epsilon_t$.
+
+\textbf{Long run propensity}: Summation of $\sum\limits_{i=0}^{q}\delta_{t-i}$ which also includes impact propensity.
+
+\textbf{Long run elasticity}: Summation of $\sum\limits_{i=0}^{q}\delta_{t-i}$ if y and all z's are in log form.
+
+
+\end{document}

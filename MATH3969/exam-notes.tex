@@ -1,0 +1,3620 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref, enumerate,tikz}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\newcommand{\Inf}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \inf_{#1}\;$}}}
+\newcommand{\Sup}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \sup_{#1}\;$}}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf MATH3969: Measure Theory and Fourier Analysis
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+
+\newcommand\E{\mathbb{E}}
+\newcommand{\sa}{\sigma-algebra}
+
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+\title{MATH3969: Measure Theory and Fourier Analysis}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2018}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%\lecture{**CHAPTER-NUMBER**}{**TITLE**}
+\lecture{1}{Introduction.}
+\section{Sigma Algebras and Measures}
+\section{Introduction}
+\subsection{Basic Set and Function Definition}
+\begin{definition}
+(Domain). If we are given a function f:X $\rightarrow$ Y, then X is the $\textbf{domain}$ of f.
+\end{definition}
+
+\begin{definition}
+(Codomain). If we are given a function f:X $\rightarrow$ Y, then Y is the $\textbf{codomain}$ of f. It is the set in which the output of the function is constrained to fall into.
+\end{definition}
+
+\begin{definition}
+(Range/Image). The set of all actual output values.
+\end{definition}
+
+\begin{definition}
+(Preimage). The subset of the domain which gets mapped to the image.
+\end{definition}
+
+If A,B $\subseteq X$, then A = B if $A \subseteq B$ and $B \subseteq A$.
+
+Recall that in sets, you cannot simply do subtractions. Instead, you go $A / B$ as meaning "A minus B".
+
+\begin{definition}
+(De Morgan's Law). De Morgan's law are simply
+\begin{enumerate}
+  \item $(A \cup B)^c$ = $A^c \cap B^c$;
+  \item $(A \cap B)^c$ = $A^c \cup B^c$.
+\end{enumerate}
+\end{definition}
+
+Interesction of sets are $\textbf{associative}$, that is, $(A \cap B) \cap C$ = $A \cap (B \cap C)$.
+\subsection{Introduction to $\sigma$-algebra and Measures.}
+
+\begin{definition}
+($\sigma$-algebra). Let $\mathcal{A}$ be a collection of subsets of the set X. $\mathcal{A}$ is a $\sigma$-algebra if it has the 3 properties:
+\begin{enumerate}
+  \item $\emptyset \in \mathcal{A}$.
+  \item If $A \in \mathcal{A}$, then $A^c \in \mathcal{A}$.
+  \item If $A_k \in \mathcal{A}$ for all $k \in \mathbb{N}$, then $\bigcup_{k \in \mathbb{N}}A_k \in \mathcal{A}$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+If we replace property 3 with A, B $\in \mathcal{A}$, then $A \cup B \in \mathcal{A}$, then $\mathcal{A}$ is known as an $\textbf{algebra}$.
+\end{remark}
+
+\begin{definition}
+(Power Set). The class of all subsets of the set X is known as the $\textbf{power set}$ denoted by $\mathcal{P(X)}$.
+\end{definition}
+
+\begin{proposition}
+Let $\mathcal{A}$ be a $\sigma$-algebra of the set X. The following properties are true.
+\begin{enumerate}
+  \item $\emptyset, X \in \mathcal{A}$.
+  \item If $A_k \in \mathcal{A}$ for all $k \in \mathbb{N}$, then $\bigcap_{k \in \mathbb{N}}A_k \in \mathcal{A}$.
+  \item If A, B $\in \mathcal{A}$, then $A \cup B \in \mathcal{A}$ and $A \cap B \in \mathcal{A}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+To prove property 3, recall that the 3rd property of a $\sigma$-algebra is for finite countable unions. Hence, if we set A and B to union with a countable number of empty sets, this can then prove property 3.
+\end{remark}
+
+\begin{remark}
+De Morgan's Law of 
+\begin{enumerate}
+  \item $(A \cup B)^c$ = $A^c \cap B^c$.
+  \item $(A \cap B)^c$ = $A^c \cup B^c$.
+\end{enumerate}
+can help us prove property 2.
+\end{remark}
+
+\begin{definition}
+We define the distribution laws of set theory
+$$
+\bigcup(A_i)\cap B = \bigcup(A_i \cap B);
+$$
+$$
+\bigcap(A_i)\cup B = \bigcap(A_i \cup B).
+$$
+Additionally, we note that $A \cap B \subseteq A$ and hence
+$$
+A = A \cup (A \cap B).
+$$
+\end{definition}
+
+\begin{proposition}
+The countable intersection of $\sigma$-algebra is itself a $\sigma$-algebra.
+\end{proposition}
+
+
+\lecture{2}{Constructing $\sigma$-algebra.}
+\section{Constructing $\sigma$-algebras.}
+\subsection{Set Theory}
+
+\begin{definition}
+(Bounded Set). A set K is bounded if the set $K \subset Ball(x, r)$ for some $x \in \mathbb{R}^N$ and $r \in (0,\infty)$.
+\end{definition}
+
+\begin{definition}
+(Open Set). A set X is open if for all $x \in X$, the ball of x of radius $\epsilon$ for all $\epsilon > 0$ is in the set X.
+\end{definition}
+
+\begin{definition}
+(Closed Set). A closed set is the compliment to the open set.
+\end{definition}
+
+We note some interesting properties.
+\begin{proposition}
+Let $\{E_1,E_2,...\}$ be arbitrary collection of open sets and $\{F_1,F_2,...\}$ be arbitrary collection of closed sets. We have that
+\begin{enumerate}[(i)]
+  \item $\bigcup_{j=1}^{\infty}E_j$ is open,
+  \item $\bigcap_{j=1}^{\infty}E_j$ does not need to be open,
+  \item $\bigcup_{j=1}^{\infty}F_j$ does not need to be open,
+  \item $\bigcap_{j=1}^{\infty}F_j$ is closed.
+\end{enumerate}
+\end{proposition}
+
+We also note infinite intervals of the form
+\begin{enumerate}[(i)]
+  \item $(-\infty, \infty)$ is open and closed;
+  \item $(a, \infty)$ and $(-\infty,b)$ are open;
+  \item $[a, \infty)$ and $(-\infty,b]$ are closed.
+\end{enumerate}
+
+\begin{definition}
+(Compact Set). A set $K \subset \mathbb{R}^N$ is compact if every open cover of K has a finite subcover. 
+\end{definition}
+
+\begin{remark}
+To elaborate, if had a set K that can be covered by a union of open sets, there exists a finite subset of that open cover which stills covers the set K. However, it is difficult to check this hence we can use the Heine-Borel theorem.
+\end{remark}
+
+\begin{theorem}
+(Heine-Borel Theorem). A set $X \in \mathbb{R}^N$ is compact if and only if it is closed and bounded.
+\end{theorem}
+
+\subsection{Constructing $\sa$ from intersections}
+
+Let us define a set X and we define $\mathbb{C}$ to be a collection of subsets of X. We define $\mathbb{A(\mathbb{C})}$ to be the intersection of all $\sigma$-algebra of subsets of X that contains $\mathbb{C}$. $\mathbb{A(\mathbb{C})}$ is the smallest $\sigma$-algebra $\textit{generated}$ by $\mathbb{C}$. It can be characterised as the intersection of all $\sa$ containing $\mathbb{C}$.
+
+
+\begin{proposition}($\sa$ generated by a system of sets). Let $\mathcal{C}$ be a collection of subsets of X. We call $\mathcal{A}$($\mathcal{C}$) the $\sa$ generated by $\mathcal{C}$ whereby $\mathcal{A}$($\mathcal{C}$) is the intersection of $\sa$ that contains $\mathcal{C}$.
+\end{proposition}
+
+\begin{definition}
+(Borel $\sigma$-algebra). A $\sigma$-algebra generated by the class of $\textbf{open sets}$ in $\mathbb{R}^n$. We write $\mathcal{B} \coloneqq \mathcal{A}(\mathcal{C})$ where $\mathcal{C}$ as the collection of all open subsets of X. A set $A \in \mathcal{B}(R^N)$ is called a Borel set.
+\end{definition}
+
+We can't simply just take the collection of open sets to be the Borel $\sa$, as it does not contain the complement of these sets, the closed set in it. Hence we need to generate the Borel $\sa$.
+
+To generate a Borel $\sigma$-algebra, take the intersection of all $\sigma$-algebras containing open sets. Examples of Borel sets include the open sets, closed, and all countable unions and intersection of open/close sets. We can also generate $\mathcal{B}$ through half open intervals [a,b) with $a, b \in \mathbb{R}$ as we can express 
+$
+[a,b) = \cap_{n=1}^{\infty}(a-\frac{1}{n}, b)
+$
+which is a countable intersection of open sets, which we can then generate $\mathcal{B}$ from. Additionally, we can rewrite a semi-infinite set as $(-\infty,b) = \cup_{n=1}^{\infty}(-n,b)$ and an infinite set $\mathbb{R} = \cup_{n=1}^{\infty}(-n,n)$.
+
+\subsection{Construction of $\sa$ From Functions.}
+
+We can use $\textit{functions}$ to generate $\sa$ from another $\sa$. Let X and Y be sets with the function f: X $\rightarrow$ Y. 
+
+We have 2 scenarios here, we can generate $\sa$ of subsets of X from a $\sa$ of subsets of Y or vice versa.
+
+For A $\subseteq$ Y, we define the $\textit{inverse image (pre-image)}$ of A by:
+$$
+f^{-1}[A] = \{x \in X: f(x) \in A\} \subseteq X
+$$
+
+Note the [.] symbol, as the function may not necessarily be invertible (therefore you may have multiple things in the domain map to the same thing).
+
+\begin{proposition}
+(Constructing $\sa$ From functions). Suppose that X, Y are sets and f: X $\rightarrow$ Y is a function.
+
+(i) If $\mathcal{A}$ is a $\sa$ in Y, then:
+$$
+\mathcal{A}_0 = \{f^{-1}[A]: A \in \mathcal{A}\} \subseteq \mathbb{P}(X)
+$$
+is a $\sa$ in X.
+
+(ii) If $\mathcal{A}$ is a $\sa$ in X, then:
+$$
+\mathcal{A}_1 = \{A \subseteq Y: f^{-1}[A] \in \mathcal{A}\} \subseteq \mathbb{P}(Y)
+$$
+is a $\sa$ in Y.
+\end{proposition}
+
+To prove this, we note some properties of inverse images.
+
+\begin{enumerate}[(i)]
+    \item $(f^{-1}[A])^c = f^{-1}[A^c]$
+    \item If $A_i \subseteq Y$ for all i $\in$ I, where I is an index set, then we have that:
+    $$
+    \bigcup_{i\in I}f^{-1}[A_i] = f^{-1}[\bigcup_{i\in I}A_i];
+    $$
+    \item If $A_i \subseteq Y$ for all i $\in$ I, where I is an index set, then we have that:
+    $$
+    \bigcap_{i\in I}f^{-1}[A_i] = f^{-1}[\bigcap_{i\in I}A_i];
+    $$
+
+\end{enumerate}
+
+\subsection{Measures}
+
+\begin{definition}
+(Measure). Let $\mathcal{A}$ be a $\sa$ of subsets of X. A measure is a function $\mu$: $\mathcal{A} \rightarrow [0, \infty]$ such that:
+\begin{enumerate}[(i)]
+  \item $\mu(0) = 0$.
+  \item $\mu(\bigcup_{i \in \mathbb{N}} A_i) \leq \sum\mu(A_i)$ with equality if $A_i \cap A_j = \emptyset$ for i $\neq$ j. (Countable Additivity)
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+If A $\in \mathcal{A}$, we call the set A $\textbf{measurable}$ with respect to $\mu$. Notice that that property (ii) requires a countable union of sets.
+\end{remark}
+
+\begin{definition}
+(Measurable Function). A function is $\textbf{measurable}$ if it is a function between two $\textbf{measurable spaces}$ (X, $\mathcal{A}$) such that the preimage of any measurable set is measurable.
+\end{definition}
+
+\begin{remark}
+A $\textbf{probability measure}$ is a measure where P(X) = 1.
+\end{remark}
+
+\begin{definition}
+(Measurable Space). Given a nonempty set X and a $\sa$ $\mathcal{A}$ on X, then the tuple (X, $\mathcal{A}$) is called a $\textbf{measurable space}$.
+\end{definition}
+
+\begin{definition}
+(Measure Space). Given a nonempty set X, a $\sa$ $\mathcal{A}$ on X and a measure $\mu$ on the measurable space (X, $\mathcal{A}$) then the triple (X, $\mathcal{A}$, $\mu$) is called a $\textbf{measure space}$.
+\end{definition}
+
+To show something is a measure space, we first show that it contains a $\sa$ and a measure.
+
+
+We define some examples of measures.
+\begin{example}
+(Dirac Measure). Let X be a set and $\textbf{fix}$ $x \in X$. For $A \subseteq X$, we set
+$$
+\delta_x(A) 
+\begin{array}{cc}
+  \{ & 
+    \begin{array}{cc}
+      1 & x \in A \\
+      0 & x \not\in A \\
+    \end{array}
+\end{array}
+$$
+Here, we take every subset $A \subseteq X$ and see whether is x in that subset A. This is known as the Dirac Measure $\textbf{concentrated at x}$. $\delta_x: \mathbb{P}(X) \rightarrow [0, \infty)$ is a measure. The associated measure space is $(X, \mathbb{P}(X), \delta_x$).
+\end{example}
+
+Note to show countable additivity for this measure, note that if $A_j$ are disjoint, then only one of them can contain the element x.
+
+\begin{example}
+(Count Measure). Let X be a set and $\textbf{fix}$ $x \in X$. For $A \subseteq X$, we set
+$$
+\delta_x(A) 
+\begin{array}{cc}
+  \{ & 
+    \begin{array}{cc}
+      card(A) & \text{A has finite cardinality,} \\
+      \infty & \text{Othewise.} \\
+    \end{array}
+\end{array}
+$$
+card(A) is the cardinality of the set A. This is known as the counting measure.
+\end{example}
+
+\begin{remark}
+Note that a simple probability measure is simply the counting measure scaled by the cardinality of possible outcomes. Here, the set X is denoted by $\Omega$ as the $\textbf{sample space}$ whilst events are denoted as $A \subseteq \Omega$. The $\sa$ is the powerset $\mathbb{P}(\Omega)$.
+\end{remark}
+\subsection{Constructing Measure Spaces}
+
+We can use functions to construct measures on the $\textit{codomain}$ given that the $\textit{domain}$ is a measure space. The steps involved are first constructing a $\sa$ and then constructing a measure.
+
+\begin{proposition}
+Let (X, $\mathcal{A}$, $\mu$) be a measure space, Y a set, and f: X $\rightarrow$ Y a function. We define that:
+$$
+\mathcal{A}_1 = \{A \subseteq Y: f^{-1}[A] \in \mathcal{A}\}
+$$
+and
+$$
+\mu_f(A) = \mu(f^{-1}[A])
+$$
+for all A $\in$ $\mathcal{A}_1$. Then (Y, $\mathcal{A}_1$, $\mu_f$) is a measure space.
+\end{proposition}
+
+\begin{remark}
+So what we have done is that we first constructed a $\sa$ from another $\sa$ by using a function. From that, we then constructed a measure space by constructing a measure from another measure.
+\end{remark}
+
+\begin{remark}
+$\mu_f$ is called the $\textbf{distribution of f with respect to $\mu$}$.
+\end{remark}
+
+\begin{remark}
+This notion of distribution is also in probability theory. A random variable is a $\textbf{measurable}$ function between sample space $\Omega \rightarrow \mathbb{R}$.
+\end{remark}
+
+
+
+\subsection{$\sa$ with disjoint sets}
+Here, we want to set up $\sa$s with disjoint sets as the 3rd property does not require disjoint sets yet working with arbitrary sets and disjoint sets aren't the same thing. Hence, we need to add more properties for the $\sa$. The reason we want to do this is that when we look at $\textbf{Lebesgue measures}$, it is easier to work with disjoint sets. 
+
+We come up with new ways of constructing $\sa$.
+
+\begin{proposition}
+Suppose that $\mathcal{A}$ is a collection of subsets of X with the following properties.
+\begin{enumerate}
+    \item $\emptyset \in \mathcal{A}$.
+    \item If $A \in \mathcal{A}$, then $A^c \in \mathcal{A}$.
+    \item If $A_k \in \mathcal{A}$, $k \in \mathbb{N}$ are disjoint, then $\bigcup_{k \in \mathbb{N}}A_k \in \mathcal{A}$.
+    \item If A,B $\in \mathcal{A}$, then $A \cap B \in \mathcal{A}$.
+\end{enumerate}
+Then $\mathcal{A}$ is a $\sa$.
+\end{proposition}
+
+\begin{proposition}
+If $A_k \in \mathcal{A}$ for all $k \in \mathbb{N}$, then
+$$
+\bigcup_{j=0}^{\infty}(\bigcap_{k=j}^{\infty}A_k) \in \mathcal{A}.
+$$
+Furthermore, we note that if $\sum_{k=0}^{\infty}\mu^*(A_k) < \infty$, then $\sum_{k=j}^{\infty}\mu^*(A_k) \rightarrow 0$ as $j \rightarrow \infty$ or else we will not have had a finite series.
+\end{proposition}
+
+\lecture{3}{Elementary properties of Measures}
+\section{Properties of Measures.}
+\subsection{Properties of Meausres}
+
+\begin{proposition}
+Let (X, $\mathcal{A}$, $\mu$) be a $\textbf{measure space}$.
+\begin{enumerate}[(i)]
+  \item If A, B $\in \mathcal{A}$ and $A \cap B = \emptyset$, then $\mu(A+B) = \mu(A) + \mu(B)$;
+  \item (Monotonicty of measures) If A, B $\in \mathcal{A}$ and $A \subseteq B$, then $\mu(A) \leq \mu(B)$;
+  \item (Countable Sub-additivity) If A, $A_k$ $\in \mathcal{A}$, $k \in \mathbb{N}$, and A = $\bigcup_{k=0}^{\infty}A_k$, then
+  $$
+  \mu(A) \leq \sum_{k=0}^{\infty}\mu(A_k)
+  $$
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+The last property refers to the fact that this allows for overlaps of sets.
+\end{remark}
+
+\begin{proposition}
+(Monotone Continuity of Measures). Let (X, $\mathcal{A}$, $\mu$) be a measurable space.
+\begin{enumerate}[(i)]
+  \item (Continuity From Below). If $A_i \in \mathcal{A}, k \in \mathbb{N}$ and $A_0 \subseteq A_1 \subseteq A_2 \subseteq ... $, then:
+  $$
+  \Lim{k\rightarrow \infty}\mu(A_k) = \mu(\bigcup_{k=0}^{\infty}A_j)
+  $$ 
+  \item (Continuity From Above). If $A_i \in \mathcal{A}, k \in \mathbb{N}$ and $A_0 \supseteq A_1 \supseteq A_2 \supseteq ... $, $\textbf{and}$ $\mu(A_k) < \infty$ for some $k \in \mathbb{N}$ then:
+  $$
+  \Lim{k\rightarrow \infty}\mu(A_k) = \mu(\bigcap_{k=0}^{\infty}A_j)
+  $$ 
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+We note that for (ii), we now have an additional condition of a finite measure. If not, condition (ii) does not necessarily hold, as we can find cases where this causes things to break. Additionally, we can just also have $\mu(A_0) < \infty$ as an equivalent condition. Note that this is a case of $\textbf{nested sets}$.
+\end{remark}
+
+
+\subsection{Metric Spaces}
+
+We now define new objects called metric spaces.
+
+\begin{definition}
+(Topology). Let X be a set and $\tau$ a collection of subsets of X, satisfying
+\begin{enumerate}[(i)]
+  \item $\emptyset, X \in \tau$;
+  \item Any union of members of $\tau$ belongs to $\tau$;
+  \item The intersection of any finite number of members of $\tau$ still belongs to $\tau$.
+\end{enumerate}
+The elements of $\tau$ are called $\textbf{open sets}$ and the collection $\tau$ is called a $\textbf{topology}$ on X.
+\end{definition}
+
+\begin{remark}
+An ordered pair (X,$\tau$) is called a $\textbf{topological space}$.
+\end{remark}
+
+\begin{definition}
+(Metric). A metric d on a set X is a function
+$$
+d: X \times X \rightarrow [0, \infty),
+$$
+where [0, $\infty$) is the set of non-negative real numbers and for all x,y,z $\in$ X, the following conditions are satisfied:
+\begin{enumerate}
+  \item (Non-negativity) $d(x,y) \geq 0$;
+  \item (Identity of indiscernibles) d(x,y) = 0 $\leftrightarrow$ x = y;
+  \item (Symmetry) d(x,y) = d(y,x);
+  \item (Triangle inequality) d(x,z) $\leq$ d(x,y) + d(y,z)
+\end{enumerate}
+\end{definition}
+
+\begin{remark}
+Every metric space is a topological space. A metric space has a notion of distance, while a topological space only has a notion of closeness. If we have a notion of distance then we can say when things are close to each other. However, distance is not necessary to determine when things are close to each other.
+\end{remark}
+
+\begin{definition}
+(Metric Space). A metric space is an ordered pair (M, d) where M is a set and d is a metric on M.
+\end{definition}
+
+\begin{definition}
+(Cover). If the set X is a topological space, then a cover C of X is a collection of sets $G_{\alpha}$ of X whose union contains the set X as a the whole space X.
+\end{definition}
+
+\begin{remark}
+In this case, if we had a cover C, we say that C $\textit{covers}$ X.
+\end{remark}
+
+\begin{definition}
+(Open Cover). Let E be a set and X be a metric space. An $\textbf{open cover}$ of E in X, is a $\textbf{collection}$ of $\textbf{open sets}$ $\{G_{\alpha}\}$ whose union $\textbf{contains}$ E
+\end{definition}
+
+\begin{definition}
+(Subcover). A $\textbf{subcover}$ of $\{G_{\alpha}\}$ is a $\textbf{subcollection}$ $\{{G_\alpha}_{\gamma}\}$ that stills cover E.
+\end{definition}
+
+\begin{definition}
+(Compact Set). A subset S of a toplogical space X is $\textbf{compact}$ if for every open cover of S, there exists a finite subcover of S. That is, X is compact if for every collection C of open subsets of X such that
+$$
+X = \bigcup_{x \in C}x,
+$$
+there exists a finite subset F of C such that
+$$
+X = \bigcup_{x \in F}x.
+$$
+\end{definition}
+
+\subsection{The Construction of measures from outer measures}
+Now we are intersted in being to get N-dimensional measures for arbitrary subsets of $\mathbb{R}^N$, not just $\sa$. In particular, we can relax the condition of countable additivity and hence we can define a "outer measure" that is defined $\textbf{on all}$ subsets of X, not just a $\sa$ which could be smaller. We first define a function:
+$$
+\mu^*: \mathbb{P}(X) \rightarrow [0, \infty]
+$$
+
+We first define this function and then find a large enough $\sa$ such that $\mu^*$ becomes a measure, in order to "maximize" the number of sets in which we can assign a measure too.
+
+We define an $\textbf{open}$ rectangular box to be
+$$
+R = (a_1,b_1) \times (a_2,b_2) \times ... \times (a_n, b_n) \subseteq \mathbb{R}^N
+$$
+where $a_j \leq b_j$ for all j.
+
+We then define the volume of an open rectangular box by
+$$
+vol(R) = (b_1-a_1) \times (b_2-a_2) \times ... \times (b_n - a_n).
+$$
+
+\begin{definition}
+(Lebesgue Outer Measure). For every subset $A \subseteq \mathbb{R}^N$, we set
+$$
+m_N^*(A) \coloneqq inf\{\sum_{k=0}^{\infty}vol(R_k): R_k, k \in \mathbb{N}, \text{open rectanges with } A \subseteq \bigcup_{k=0}^{\infty}R_k\}.
+$$
+We call $m_N^*(A)$ the $\textbf{Lebesgue outer measure}$ of the set A. 
+\end{definition}
+
+\begin{remark}
+We look at the sum of the volume of rectangles, where when we union them, it covers the subset A. Here, the Lebesgue outer measure is simply the infimum of the sum of volume of rectangles. The Lebesgue outer measure is not actually a measure. It is the infimum of the volume of all possible coverings that contains A. It is not a measure as it does not satisfy the $\textbf{countable additivity}$ property.
+\end{remark}
+
+\begin{remark} It is actually possible to replace the open rectangles with closed rectanlges! It is equivalent.
+\end{remark}
+
+
+\begin{proposition}
+The Lebesgue outer measure $m_{n}^*: \mathcal{P}(\mathbb{R}^N) \rightarrow [0, \infty]$ has the following properties.
+\begin{enumerate}[(i)]
+  \item $m^*(\emptyset) = 0$;
+  \item (Countable Subadditivity). For every $\textbf{countable collection}$ A, $A_k \subseteq \mathbb{R}^N$, $k \in \mathbb{N}$ with $A \subseteq \bigcup_{k=0}^{\infty}A_k$
+  $$
+  m^*(A) \leq \sum_{k=0}^{\infty}m^*(A_k);
+  $$
+  \item $\{x\}$ is Lebesgue outer-measurable;
+  \item $m^*(\{x\} = 0$ for all $x \in \mathbb{R}^N$;
+  \item $m^*(\mathcal{C}) = 0$ for any countable collection c.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof} (Sketch).
+    \begin{enumerate}[(i)]
+    \item Take the trivial rectangles to show this.
+    \item Use the definition of the infimum over countably many open rectangles. Use the $\epsilon$ property of infimum to then prove the inequality. Note that we need to choose $\frac{\epsilon}{2^{k+1}}$ specifically to get things to work out nicely.
+    \end{enumerate}
+\end{proof}
+
+\begin{remark}
+The name "outer" refers to the fact that we are approximating the volume from the outside with countably many rectangles. Here, $m_N^*$ is defined for all elements of the powerset.
+\end{remark}
+
+Note that we say that $A_k = \cup_{j=0}^{\infty}R_{k,j}$. So then we have that $\cup_{k=0}^{\infty}A_k = \cup_{k=0}^{\infty}\cup_{j=0}^{\infty}R_{k,j}$.
+
+\lecture{4}{Outer Measures.}
+\section{Outer Measures.}
+\subsection{Exploring Outer Measures and their properties.}
+Currently, our goal is to be able to define measures for any arbitrary subset. We first looked at the famous Lebesgue outer measure in the previous section. Now we generalise to other outer measures. We eventually work our way to constructing $\sa$ such that if we restrict the outer measure to this $\sa$, we get a measure. Sets that belong to this $\sa$ are known as $\textbf{measurable}$.
+
+\begin{definition}
+(Outer Measure). A function $\mu^*$: $\mathcal{P}(X) \rightarrow [0, \infty]$  is called an $\textbf{outer measure}$ if it satisfies the properties
+    \begin{enumerate}[(i)]
+        \item $\mu^*(\emptyset) = 0$;
+        \item (Countable Subadditivity) For every countable collection A, $A_k \subseteq X$, $k \in \mathbb{N}$ with $A \subseteq \bigcup_{k=0}^{\infty}A_k$ we have that
+        $$
+        \mu^*(A) \leq \sum_{k=0}^{\infty}\mu^*(A_k).
+        $$
+    \end{enumerate}
+\end{definition}
+
+Note that the properties are similar to that of a measure except that the countable subaddivity is seen as a relaxed version of countable additivity.
+
+\begin{remark}
+(Properties of outer measures).
+\begin{enumerate}[(i)]
+    \item In the special case that $A = \bigcup_{k=0}^{\infty}A_k$, we have $$\mu^*(\bigcup_{k=0}^{\infty}A_k) \leq \sum_{k=0}^{\infty}\mu^*(A_k)$$ even if the sets $A_k$ are disjoint.
+    \item Outer measures does not need to satisfy countable additivity even if the sets $A_k$ are disjoint. Hence, it is a weaker condition.
+    \item If $A \subseteq B$, then $$\mu^*(A) \leq \mu^*(B).$$ Use the fact that $A \subseteq B \cup \emptyset \cup ... \cup \emptyset$ to prove this.
+    \item For $A, B \subseteq X$, we have that $$\mu^*(A+B) \leq \mu^*(A) + \mu^*(B).$$
+\end{enumerate}
+\end{remark}
+
+
+\begin{proposition}
+(Monotonicity). The Lebesgue outer measure has the property of monotonicity. That is, if $A \subseteq B$, then 
+$$
+m^*(A) \leq m^*(B). 
+$$
+\end{proposition}
+\begin{proof}
+We look at the set of rectangles that covers A and B. The set of rectangles that covers A is $\textbf{bigger}$ than the set of rectanlges covering B as A is smaller so more intervals can cover it. Hence, recall from analysis that if $A \subseteq B \implies inf A \leq inf B$. Resultantly, the infimum of the volume of rectangles covering B will be greater than or equal to the volume of rectangles covering A, this is the definition of the Lebesgue Outer measure. Hence,
+$$
+m^*(A) \leq m^*(B).
+$$
+\end{proof}
+
+\subsection{Constructing $\sa$ For Measures.}
+
+We now construct condition for measures. Just like in the Riemann integral, you want the upper and lower sums to coincide, here, we can approximate a set from the outside and from the inside. If the measures coincide, then we have the actual measure. However, an issue is that having a finite outer measure in this scenario will imply an inner measure of $\infty$ as we are taking the measure over the entire space. So what we will do is "restrict the domain" to $\mathcal{D}$, which contains our set of interest A. We then approximate A inside this new domain. Let A, S $\subseteq X$ and furthermore, $A \subseteq S$ and S has finite measure.
+
+
+We can now express the set S as a disjoint union with A. 
+$$
+S = (S \cap A)\; \dot{\cup} \;(S \cap A^c).
+$$
+
+From this, we can apply the measure function to get
+$$
+\mu^*(S) = \mu^*(S \cap A) + \mu^*(S \cap A^c).
+$$
+The inner measure of our set of interest A is the difference of $m^*(S) - \mu^*(S \cap A^c)$. The outer measure of our set of interest A is then just $\mu^*(S \cap A)$. The issue is that sometimes we may get weird stuff with the 2 terms on the right for a random set S. Hence, we look at every set $S \subseteq X$ where the above statement holds. This is useful as we now have an additive function. $\mu^*((S \dot{\cap} A))$ is known as the $\textbf{outer approximation}$ and $\mu^*(S)-\mu^*((S \dot{\cap} A^c))$ is known as the $\textbf{inner approximation}$ for S.
+
+
+With the above properties, we can now construct $\sa$ on which we can then also define a measure. First we define one more term.
+
+\begin{definition}
+($\mu^*$-measurable Set). Let $\mu^*: \mathbb{P}(X) \rightarrow [0,\infty]$ be an $\textbf{outer measure}$ on the set X. We call a set $A \subseteq X$ a $\mu^*$-measurable set if
+$$
+\mu^*(S) = \mu^*(S \cap A) + \mu^*(S \cap A^c),
+$$
+for all $S \subseteq X$. We denote the class of all measurable sets by $\mathcal{A}$.
+\end{definition}
+
+With this, we come to one of the most important theorems.
+
+\begin{definition}
+(Carathéodory). Let $\mu^*$: $\mathbb{P}(X) \rightarrow [0, \infty]$ be an outer measure and let the family of sets $\mathcal{A}$ be
+$$
+\mathcal{A} \coloneqq \{A \subseteq X: \mu^*(S) = \mu^*(S \cap A) + \mu^*(S \cap A^c). \; \text{for all } S \subseteq X\}.
+$$ 
+Then $\mathcal{A}$ is a $\sa$. Furthermore, $\mu \coloneqq \mu^*|_{\mathcal{A}}: \mathcal{A} \rightarrow [0,\infty]$ is a $\textbf{measure}$.
+\end{definition}
+
+
+Recall that a set is A is a $\mu^*$-measurable set if for all $S \subseteq X$, we have that $\mu^*(S) = \mu^*(S \cap A) + \mu^*(S \cap A^c)$. From that, we note as $S = (S \cap A) \cup (S \cap A^c)$ for all sets A,S $\subseteq X$. Recall if $A \subseteq B \implies \mu^*(A) \leq \mu^*(B)$. It follows that $\mu^*(S) \leq \mu^*(S \cap A) + \mu^*(S \cap A^c)$. Therefore, to show a set A is $\mu^*$-measurable then it just requires us to show that $\mu^*(S) \geq \mu^*(S \cap A) + \mu^*(S \cap A^c)$ for all $S \subseteq X$.
+
+Hence, we have just constructed a $\sa \; \mathcal{A}$ associated with $\mu^*$ or of $\mu^*$-measurable sets. We have just constructed a $\sa$ and a measure from an outer measure!
+
+
+
+\lecture{5}{$\mu^*$-measurable sets and their properties.}
+\section{$\mu^*$-measurable sets.}
+\subsection{$\mu^*$-measurable set properties.}
+We now look at the properties of $\mu^*$-measurable sets.
+
+\begin{proposition} 
+(Properties of $\mu^*$-measurable sets and outer measures). Let $\mu^*$ be an outer measure and $\mathcal{A}$ be the set of $\mu^*$-measurable sets. Then the following assertions are true.
+\begin{enumerate}[(i)]
+  \item If $\mu^*$(A) = 0, then $A \in \mathcal{A}$;
+  \item If $A \in \mathcal{A}$, then $A^c \in \mathcal{A}$.
+  \item If $A \in \mathcal{A}$, $\;B,S \subseteq X $ $\textbf{and}$ $A \cap B = \emptyset$, then
+  $$
+  \mu^*(S \cap (A \cup B)) = \mu^*(S \cap A) + \mu^*(S \cap B);
+  $$ 
+  \item If $A,B \in \mathcal{A}$, then $A \cup B \in \mathcal{A}$ $\textbf{and}$ $A \cap B \in \mathcal{A}$.
+\end{enumerate}
+\end{proposition}
+
+\begin{remark}
+Some comments on each of the above property in the proposition.
+\begin{enumerate}[(i)]
+  \item  A is $\textbf{measurable}$ if the outer-measure of A is 0;
+  \item If A is measurable, then its compliment is also measurable;
+  \item If $\textbf{only}$ A is measurable and A is disjoint from B, then additivity holds for the $\textbf{disjoint union}$.
+  \item If A and B are both measurable, then their union and interesection are measurable.
+\end{enumerate}
+\end{remark}
+
+Refer to page 18-19 of the course notes for the proof.
+
+With the above properties, we can show that $\textbf{Carathéodory}$'s theorem constructs a $\sa$ and a measure after restricting the outer measure to that $\sa$. We only need to show that the measure is actually a measure by showing the $\textbf{countable additivity property}$ and that the $\sa$ is closed under $\textbf{countable union}$. You can read the proof in page 19 and 20 of the course notes.
+
+\subsection{Lebesgue Measure}
+From this, we can now define the $\textbf{Lebesgue measure}$ which is the main result of the Carathéodory theorem.
+\begin{definition}
+(Lebesgue Measure). Let $m^*_N(A)$ be the $\textbf{Lebesgue outer measure}$ for all subsets $A \subset \mathbb{R}^N$. We call
+$$
+\mathcal{M}_N \coloneqq \{A \subseteq \mathbb{R}^N: m^*_N(S) = m^*_N(S \cap A) + m^*_N(S \cap A^c) \; \text{for all } S \subseteq R^N\}
+$$
+the $\textbf{Lebesgue}$ $\sa$ and $m_n \coloneqq m^*_n|_{\mathcal{M}_N}$ the N-dimensional $\textbf{Lebesgue measure}$. Sets in $\mathcal{M}_N$ are called $\textbf{Lebesgue measurable}$.
+\end{definition}
+
+
+\begin{remark}
+Alot of the properties we showed earlier also holds here. Examples inlcude 
+\begin{enumerate}[(i)]
+  \item A set with Lebesgue measure 0 is Lebesgue measurable.
+  \item A set is Lebesgue measurable iff it's complement is Lebesgue measurable.
+  \item The empty set and the real line is Lebesgue measurable.
+  \item If the set is Lebesgue measurable, any translations of it is Lebesgue measurable.
+  \item All Borel sets (open and closed sets) are Lebesgue measurable.
+  \item The union of a finite collection of Lebesgue measurable sets is Lebesgue measurable.
+  \item The union of a countable collection of Lebesgue measurable sets is Lebesgue measurable.
+  \item Singleton sets are Lebesgue measurable as every singleton set is a Borel set, whereby Borel sets are Lebesgue measurable.
+
+\end{enumerate}
+\end{remark}
+
+\begin{proposition}
+(Sets with outer measure 0 is measurable). A set $N \subset X$ with $\mu^*(N) = 0$ is measurable.
+\end{proposition}
+\begin{proof}
+$$
+\mu^*(S) \leq \mu^*(S \cap N) + \mu^*(S \cap N^c)
+$$
+is trivial. For the other inequality, note that
+$$
+\mu^*(S \cap N) \leq \mu^*(N) = 0.
+$$
+Hence, we have the other inequality of
+$$
+\mu^*(S) \geq \mu^*(S \cap N) + \mu^*(S \cap N^c).
+$$
+\end{proof}
+
+\lecture{6}{Properties of Lebesgue Measure.}
+\section{Properties.}
+\subsection{Regularity of the Lebesgue Measure.}
+
+
+\begin{theorem}
+All Borel sets, in particular all open and closed sets, are Lebesgue Measurable.
+\end{theorem}
+
+Recall that the Borel $\sa$ in $\mathbb{R}^N$ is the smallest $\sa$ containing all open sets.
+
+\begin{theorem}
+The Lebesgue Measure is a Borel Measure, that is, $\mathcal{B}_N \subseteq \mathcal{M}_N$.
+\end{theorem}
+
+We now look at the regularity properties of the Lebesgue measure. The reason we do so is that we can move away from using the infimum of volume of rectangle coverings to using open and closed sets to define our Lebesgue measure. This is much easier to work with.
+
+
+Regularity properties of measures refers to the possibility of approximating in measure one class of sets by another class of sets. So in the Lebesgue measure, for the outer regularity, we look at approximating arbitrary sets from the outside by open sets whilst for the inner regularity, we look at approximating Lebesgue Measurable sets by compact sets.
+
+A $\textbf{regular measure}$ on a topological space is a measure for which $\textbf{every}$ measurable set can be approximated from above by $\textbf{open}$ sets and from below by $\textbf{compact and measurable}$ sets. To recall the definition of a compact set, we say that a set S is a $\textbf{compact subset}$ of X if for every open cover of S, there exists a finite subcover of S. A cover $\mathbb{C}$ of X is a collection of sets of X, where X is a contained in the union of the collection of sets in the cover. A subcover is a subset of $\mathbb{C}$ that covers X. Finally, an open cover is when every set in the cover is an open set, or in other words, belongs to the topology on X.  
+
+\begin{proposition}
+(Translation invariance of the Lebesgue Measure). For every $t \in \mathbb{R}^N$ and every $A \subseteq \mathbb{R}^N$, we have that $m_N^*(t + A) = m_N^*(A)$. 
+\end{proposition}
+
+\begin{proof}
+The proof follows directly by the fact that the Lebesgue outer measure is simply the volume of the open rectangle whose union covers A and the fact that the volume of a rectangle is translation invariant for every triangle. In other words, the Lebesgue outer measure is the infimum of the sum of volume of rectangles. We note that $t + A \subseteq \bigcup_{k=1}^{\infty}(t + R_k)$ if and only if $A \subseteq \bigcup_{k=1}^{\infty}(R_k)$. There is a 1-1 correspondence of rectangles covering in both cases and hence, $vol(R_k) = vol(t + R_k)$ and therefore $m^*(A) = m^*(A + t)$.
+\end{proof}
+
+We next want to show that the Lebesgue measure is unique. We look at the $\textbf{regularity}$ of the Lebesgue measure to help us prove more properties.
+
+\begin{proposition}
+(Outer Regularity of Lebesgue Measure). Let $A \subseteq \mathbb{R}^N$ be an $\textbf{arbitrary set}$. The outer regularity is defined to be
+$$
+m_N^*(A) = inf\{m_N(U): A \subseteq U,\text{ U is open}\}.
+$$
+\end{proposition}
+
+\begin{proof}
+(Sketch). We assume $m_N^*(A) < \infty$. By monotonicy of outer measures, $m_N^*(A) < m_N^*(A)$ for all open sets U as $A \subseteq U$. We need to show that for every $\epsilon > 0$. there exists an open set U with $A \subseteq U$ such that $m_N^*(A) + \epsilon \geq m_N(U)$, as this is a definition of an infimum.
+\end{proof}
+
+\begin{proposition}
+(Inner Regularity of Lebesgue Measure). Let $A \subseteq \mathbb{R}^N$ be an $\textbf{Lebesgue Measurable set}$. The $\textbf{inner regularity }$ is defined to be
+$$
+m_N(A) = sup\{m_N(K): K \subseteq U, K \text{ is compact}\}.
+$$
+\end{proposition}
+
+\begin{remark}
+Recall that compact sets in $\mathbb{R}^N$ implies closed and bounded. Compact sets have the additional advantage that the measure is always finite even if that of A is not finite.
+\end{remark}
+
+Notice that we have $m_N$ in the outer regularity. This is because U is open and therefore contained in $\mathcal{M}_N$. Hence the Lebesgue outer measure and Lebesgue measure coincide.
+
+
+\begin{definition}(Regular Borel Measure). A Borel measure on a metric space X is called outer regular if for every Borel set $A \subseteq X$
+$$
+\mu(A) = inf\{\mu(U): A \subset U, \text{U is open}\}.
+$$
+The measure is called inner regular if
+$$
+\mu(A) = sup\{\mu(K): K \subset A, \text{K is compact}\}.
+$$
+\end{definition}
+
+Notice again we don't have an outer measure since the Borel outer measure coincide with the Borel measure on open and compact sets. We also have that every Lebesgue measurable set is between two Borel set of the same measure.
+
+\begin{remark}If a set A is Lebesgue measurable, there exists a Borel set $C \subseteq A$ and $m(A) = m(C)$.
+\end{remark}
+
+\subsection{Uniqueness of the Lebesgue Measure.}
+
+We now work our way towards proving uniqueness of the Lebesgue Measure, that is, any regular Borel measure that is translation invariant measure on unit cubes is THE Lebesgue Measure. 
+
+We use the fact that $\textit{every open set can be written as a countable union of disjoint cubes}$.
+
+\begin{definition}
+(Cube in $\mathbb{R}^N$). A cube in $\mathbb{R}^N$ is simply a set of the form
+$$
+Q = I \times I \times ... \times I = I^N.
+$$
+In particular, it is the cross product of N intervals.
+\end{definition}
+
+In terms of intuition, imagine we want to decompose the plane into disjoint cubes. We can do this by taking unit squares where the bottom and left corner of the squares are open and the top and right are closed. This will cover each boundary exactly $\textbf{once}$. In particular, we denote the set of collection of cubes as
+$$
+\mathbb{G}_n = \{\frac{k}{2^n} + (0, \frac{1}{2^n}] : k \in \mathbb{Z}^N\};
+$$
+where $(0, \frac{1}{2^n}]$ is the interval whilst $\frac{k}{2^n}$ is the translation of the interval. We the note the fact that every cube in $\mathbb{G}_n$ has the form
+$$
+Q_{n,k} = (\frac{k_1}{2^n},\frac{k_1+1}{2^n}] \times (\frac{k_2}{2^n},\frac{k_2+1}{2^n}] \times ... \times (\frac{k_N}{2^n},\frac{k_N+1}{2^n}]
+$$
+where every cube is simply the product of multiple unit cubes. These cubes $Q_{n,k}$ are called $\textbf{Dyadic cubes}$. Hence, each cube in one scale can be written as an union of cubes of a smaller scale. 
+
+It is clear that $\textit{every open set can be written as a countable union of disjoint cubes}$, that is
+$$
+\mathbb{R}^N = \dot{\bigcup}_{k \in \mathbb{Z}^N}Q_{n,k}.
+$$
+
+\begin{proposition}
+(Dyadic Decomposition). Let $U \subseteq \mathbb{R}^N$ be an open set. Then there exists countably many disjoint dyadic cubes $Q_j \in \bigcup_{n \in \mathbb{N}}\mathbb{G}_n $ such that $U = \bigcup_{j=0}^{\infty}Q_j$.
+\end{proposition}
+
+\begin{proof}
+(Sketch). We can prove this through induction by constructing cubes and at each value of n, we collect all cubes that are inside the set but have not been in any of the n-1 collections. Due to the fact that it is an open set, for each $x \in U$, there exists a ball $B(x,\epsilon)$ which is inside the set U and hence, we can fit a cube into that ball to contain x. Hence, each $x \in U$ is contained in a cube and therefore the union $\mathbb{C} = \dot{\bigcup}_{n \in \mathbb{N}}C_n = U$, which each cube being at most countable and hence the union is countable as well.
+\end{proof}
+
+Using dyadic decompositions, we can compute the measure of any open set of any translation invariant Borel measure in terms of the Lebesgue measure.
+
+\begin{lemma}
+Let $\mu$ be a translation invariant Borel measure on $\mathbb{R}^N$. If $Q_{n,k}$ is the dyadic cube and we define $\alpha \coloneqq \mu((0,1]^N) < \infty$ to be the measure on unit cube, then 
+$$
+\mu(Q_{n,k}) = \alpha m_N(Q_{n,k}) = \alpha 2^{-nN}
+$$
+for all $k \in \mathbb{Z}^N$ and all $n \in \mathbb{N}$. This is the measure of any dyadic cube.
+\end{lemma}
+
+\begin{remark}
+$\alpha$ is defined to be the measure of the unit cube, which is the first cube we try to fit the shape with.  Then, to find the measure of the dyadic cube, we divide the $\textbf{Lebesgue measure}$ of the unit cube by the number of dyadic cubes there are which is $2^{-nN}$.
+\end{remark}
+
+Recall that the dyadic cube is
+$$
+Q_{n,k} = (\frac{k_1}{2^n},\frac{k_1+1}{2^n}] \times (\frac{k_2}{2^n},\frac{k_2+1}{2^n}] \times ... \times (\frac{k_N}{2^n},\frac{k_N+1}{2^n}]
+$$
+
+\begin{proof}
+First, we showed that the cube at the origin has a measure. Then, all other unit cubes are translations of that cube and due to the fact of translation invariance, they all have the same measure. Hence, to know the total measure, we just need to know how many cubes are inside. The number of cubes in $(0,1]^n$ of side length $\frac{1}{2^n}$ is $2^n$ for each dimension. Therefore, for N dimensions, we have $(2^n)^N$ cubes in total.
+\end{proof}
+
+
+\lecture{7}{Lebesgue Measure and Linear Transformations}
+\section{Lebesgue Measure.}
+\subsection{Uniqueness of Lebesgue Measure.}
+Here, we seek to prove that there is an unique outer regular translation invariant Borel measure on $\mathbb{R}^N$ such that the unit cube has measure one.
+
+\begin{theorem}
+(Uniqueness Theorem for Lebesgue Measure). Let $\mu$ be an outer regular Borel measure on $\mathbb{R}^N$. If $\mu$ is translation invariant and $\alpha \coloneqq \mu((0,1]^N) < \infty$, then
+$$
+\mu(A) = \alpha m_N(A)
+$$
+for all Borel sets $A \subseteq \mathbb{R}^N$. In particular, there is an unique outer regular translation invariant Borel measure on $\mathbb{R}^N$ such that the unit cube has measure one.
+\end{theorem}
+
+This states that the Lebesgue measure is the unique (up to multiplication by a constant) translation invariant Borel measure.
+
+\subsection{Linear Transformation of Lebesgue Measure.}
+
+We want to show how the Lebesgue measure behaves under any linear transformations. Additionally, the Lebesgue measure is not only translation invariant but invariant to any rigid or orthogonal transformation.
+
+\begin{theorem}
+Let $T: \mathbb{R}^N \rightarrow \mathbb{R}^N$ be a linear transformation. Then
+$$
+m_N^*(T(A)) = |detT|m_N^*(A)
+$$
+for every (arbitrary) $A \subseteq \mathbb{R}^N$. Moreover, if A is Lebesgue measurable, then T(A) is Lebesgue measurable as well.
+\end{theorem}
+
+In otherwords, linear transformations maps measurable sets to measurable sets. 
+
+
+
+\subsection{The Lebesgue-Stieltjes Measure}
+
+We are interested in showing the connection between the class of right continuous increasing functions on $\mathbb{R}$ and the class of outer regular Borel measures on $\mathbb{R}$ that are finite on bounded sets. There is a 1-1 correspondence between such functions and measures. To show that every regular Borel measure has a right continuous increasing function, we look at the $\textbf{distribution function}$. The distribution function of $\mu$ is defined to be $F(t) \coloneqq \mu((-\infty,t])$, where $\mu$ is the finite Borel measure. It satisfies all the properties of distribution functions in probability theory.
+
+Now we want to see whether every right continuous increasing function on $\mathbb{R}$ is associated with a Borel measure on $\mathbb{R}$.
+\begin{theorem}(Lebesgue-Stieltjes Measure). These is 1-1 correspondence between right continuous increasing functions and regular Borel measures on $\mathbb{R}$.
+
+For every right continuous increasing function on $\mathbb{R}$, there exists a regular Borel measure such that $\mu((a,b]) = F(b) - F(a)$ for $a \leq b$.
+\end{theorem}
+
+The measure $\mu_F$ that is induced by the function F, is called the $\textbf{Lebesgue-Stieltjes measure}$. We define $v_F((a,b]) \coloneqq F(b) - F(a)$ on half open intervals. From that, we define the outer measure
+$$
+\mu_F^*(A) \coloneqq inf\{\sum_{k=0}^{\infty}v_F((a_k,b_k)): A \subseteq \bigcup_{k=0}^{\infty}(a_k,b_k)\}.
+$$
+Then we can construct a $\sa$ from Carathéodory theorem. Finally, we can then restrict our outer measure $\mu_F^*$ on this new $\sa$ to get the Lebesgue-Stieltjes measure $\mu_F$. We can show this is a outer regular Borel measure.
+
+\lecture{8}{Measurable Functions.}
+\section{Measurable Functions}
+\section{Measurable Functions}
+\subsection{Measurable Functions.}
+Here, we introduce the idea of describing properties of functions by classes of sets. In particular, we use open sets to describe the properties of continuous functions. A function is a $\textbf{continuous function}$ iff the preimage of every open set is an open set.
+
+\begin{definition}
+(Measurable Function). Let (X, $\mathcal{A}$, $\mu$) be a measure space and Y a metric space. We call a function f: $X \rightarrow Y$ a $\mu$-measurable function if $f^{-1}[U] \in \mathcal{A}$ for $\textbf{all}$ open sets $U \subseteq Y$.
+\end{definition}
+
+\begin{remark}
+Notice that we use open sets rather than measurable sets in the definition. The reason for doing so is that when we seek to prove things, open sets are a much smaller class and hence we have less cases to consider in the proof. 
+\end{remark}
+
+
+If X is a metric space and $\mu$ a Borel measure, then every continuous function $f: X \rightarrow Y$ is measurable. $\mathcal{A}$ is a Borel $\sa$ and hence contains every open set. Therefore, every open set, which contains the preimage of the function, is in the $\sa$ and hence it is a measurable function.
+
+Hence, if we had a Borel $\sa$ on the target space, then it follows that we only need to check every open set in Y is measurable, hence, any continuous function is automatically measurable. 
+
+
+\begin{proposition}
+Let (X, $\mathcal{A}, \mu$) be a measure space, Y a topological space and $f: X \rightarrow Y$ is measurable. Then $f^{-1}[A] \in \mathcal{A}$ for all Borel sets $A \subseteq Y$.
+\end{proposition}
+
+\begin{proof}
+The set $\{A \subseteq Y: f^{-1}[A] \in \mathcal{A}\}$ is a $\sa$ in Y. As f is a measurable function, the preimage of every open set in Y is in $\mathcal{A}$ and hence, the $\sa$ constructed on Y contains all open sets. This $\sa$ is a superset of the Borel $\sa$ and hence, all Borel sets are measurable as it belongs to the $\sa$ of Y, which contains all measurable open sets whose preimage belongs to $\mathcal{A}$. This is because the Borel $\sa$ $\mathcal{B}$ is the smallest $\sa$ containing all open sets.
+\end{proof}
+
+\begin{definition}
+(Indicator Function). Let X be a set and $A \subseteq X$ a subset. The function $1_A: X \rightarrow \mathbb{R}$ is given by
+
+\[ 1_A(x) = \begin{cases} 
+                1 & \; if \; x \in A \\
+                0 & \; if \; x \in X - A \\
+            \end{cases}
+         \]
+
+This function is called the $\textbf{indicator function}$ of A.
+\end{definition}
+
+\begin{proposition}
+Let (X, $\mathcal{A}, \mu$) be a measure space and $A \subseteq X$. Then $1_A$ is a measurable function iff A is a measurable set.
+\end{proposition}
+
+\begin{proof}
+Let $U \subseteq \mathbb{R}$ be open. Then from the definition of $1_A$
+
+\[1_A^{-1}(U) =  \begin{cases} 
+                \emptyset & \; if \; 0,1 \not\in U \\
+                A & \; if \; 1 \in U \; and \; 0 \not\in U \\
+                A^c & \; if \; 0 \in U \; and \; 1 \not\in U \\
+                X & \; if \; 0, 1 \in U.\\
+            \end{cases}
+         \]
+
+Hence $1_A$ is measurable iff A is measurable.
+\end{proof}
+
+When we check measurablility of a function, we want to test whether is $f^{-1}[A]$ measurable for as few sets as possible. To save time, when testing real valued functions, we can use countably many half lines to check measurablility. This is often taken for definition for measurablility in other books but for us, this means that we do not require functions to be real valued.
+
+\begin{theorem}
+(Measurability of Real Valued Functions). Let (X, $\mathcal{A}$, $\mu$) be a measure space and $f: X \rightarrow [-\infty, \infty]$ be a function. We define the Borel $\sa$ on $\mathbb{R}$ by $\mathcal{B}(\mathbb{R})$. Then the following assertions are equivalent:
+\begin{center}
+    \begin{enumerate}[(i)]
+        \item f is measurable, $f^{-1}(B) \in \mathcal{A}$ for all $B \in \mathcal{B}(\mathbb{R})$;
+        \item $f^{-1}[(\alpha, \infty]]$ is measurable for all $\alpha \in \mathbb{Q}$;
+        \item $f^{-1}[[\alpha, \infty]]$ is measurable for all $\alpha \in \mathbb{Q}$;
+        \item $f^{-1}[[-\infty, \alpha)]$ is measurable for all $\alpha \in \mathbb{Q}$;
+        \item $f^{-1}[[-\infty, \alpha]]$ is measurable for all $\alpha \in \mathbb{Q}$.
+    \end{enumerate}
+\end{center}
+We can also replace $\mathbb{Q}$ with $\mathbb{R}$.
+\end{theorem}
+
+\begin{proof}
+$(i) \Rightarrow (ii)-(v)$.
+
+All these half intervals are $\textbf{Borel sets}$ as closed sets, open sets, and half open sets (which can be expressed as countable union of open sets) are Borel sets. As stated earlier, all preimages of Borel sets $A \subseteq Y$ are in $\mathcal{A}$ for a measurable function f from the Borel $\sa$ induced on Y by the measurable function f.  
+
+Now we note that (ii) $\Rightarrow$ (iii),(iv), and (v).
+
+$(ii) \Rightarrow (iii)$.
+$$
+[\alpha, \infty] = \bigcap_{n=1}^{\infty}(\alpha - \frac{1}{n}, \infty),
+$$
+$$
+f^{-1}([\alpha, \infty])= \bigcap_{n=1}^{\infty}f^{-1}[(\alpha - \frac{1}{n}, \infty)],
+$$
+where by assumption (ii), this half open interval is measurable. 
+
+$(ii) \Rightarrow (iv)$.
+Use $f^{-1}[(\alpha,\infty])^c = f^{-1}[(\alpha,\infty]^c)$. This then means that $(iii) \Rightarrow (v)$.
+
+$(ii)-(v) \Rightarrow (i)$.
+Hence, if we assume (ii) is true, then (iii)-(v) are also true. First, we note that 
+$$
+f^{-1}[(a,b]] = f^{-1}[(a,\infty]] \cap f^{-1}[[-\infty,b]]
+$$
+and by (ii), (v), this is in $\mathcal{A}$.
+
+Now, we choose an open set $U \in \mathbb{R}$ which we can be expressed as disjoint union of dyadic intervals $(a_k,b_k]$. Hence,
+$$
+f^{-1}[U] = f^{-1}[\bigcup_{k \in \mathbb{N}}(a_k,b_k]]
+$$
+$$
+= \bigcup_{k \in \mathbb{N}}f^{-1}[(a_k,b_k]]
+$$
+where the preimage of each dyadic interval is in $\mathcal{A}$. Hence, the countable union of measurable sets are measurable through induction. 
+
+\end{proof}
+
+Furthermore, for $\mathbb{R}$ valued function, recall that Borel $\sa$ can be generated by intervals. Hence, an alternative proposition can be formulated as
+
+\begin{theorem}
+(Real Valued Functions). Let (X, $\mathcal{A}$, $\mu$) be a measure space and $f: X \rightarrow [-\infty, \infty]$ be a function. We define the Borel $\sa$ on $\mathbb{R}$ by $\mathcal{B}(\mathbb{R})$. Then the following assertions are equivalent:
+\begin{center}
+    \begin{enumerate}[(i)]
+        \item f is measurable, $f^{-1}(B) \in \mathcal{A}$ for all $B \in \mathcal{B}(\mathbb{R})$;
+        \item $\{x \in X: f(x) < b\} \in \mathcal{A}$ is measurable for all $\alpha \in \mathbb{Q}$;
+        \item $\{x \in X: f(x) \leq b\} \in \mathcal{A}$ is measurable for all $\alpha \in \mathbb{Q}$;
+        \item $\{x \in X: f(x) > b\} \in \mathcal{A}$ is measurable for all $\alpha \in \mathbb{Q}$;
+        \item $\{x \in X: f(x) \geq b\} \in \mathcal{A}$ is measurable for all $\alpha \in \mathbb{Q}$;        
+    \end{enumerate}
+\end{center}
+We can also replace $\mathbb{Q}$ with $\mathbb{R}$.
+\end{theorem}
+
+\begin{proof}
+(Sketch). Note that $\{x \in X: f(x) < b\} \in \mathcal{A} = f^{-1}((-\infty, b))$. We know that this interval is in the Borel $\sa$ of the target space and then we need to check if these intervals are in the $\mathcal{B}(\mathbb{R})$, which we know to be the case.
+\end{proof}
+
+
+\begin{proposition}
+Let $\mu: \mathcal{A} \rightarrow [0,\infty]$ be a measure on X. Suppose $f = (f_1, f_2,...,f_n) \rightarrow \mathbb{R}^N$, then $f^{-1}[A_1 \times A_2 \times ... \times A_N] = \cap_{k=1}^{N}f_k^{-1}[A_k]$.
+\end{proposition}
+\begin{proof}
+Any preimage x of the product of sets means that $f_k(x)$ is in each set $A_k$. Hence, that means x is in the interesction of component preimages.
+\end{proof}
+
+\begin{proposition}
+Let (X, $\mathcal{A}, \mu$) be a measure space and f = $(f_1,...,f_N): X \rightarrow \mathbb{K}^N$ a function. Then f is measurable iff every component function $f_k: X \rightarrow \mathbb{K}$ is measurable.
+\end{proposition}
+
+\begin{proof}
+$\Longrightarrow$
+Let every set $A_k$ be $\mathbb{R}$ except for one being an open set. Use the previous proposition to then show that $f_k$ is measurable.
+
+$\Longleftarrow$
+Express an open set U as a disjoint countable union of dyadic cubes. Use the previous proposition to arrive at $U_{j=1}^{\infty}f^{-1}[Q_j].$ We can then use the previous proposition to express the preimage of each dyadic cube as the finite intersection of pre-images of intervals for each component function.
+$$
+U_{j=1}^{\infty}f^{-1}[\cap_{k=1}^{n}f_k^{-1}[I_{j,k}]]
+$$
+The intersection of measurable functions is measurable, hence f is measurable.
+
+\end{proof}
+
+\begin{proposition}
+(Composition of a continuous and measurable function). Let (X, $\mathcal{A}, \mu$) be a measure space and Y,Z metric spaces. If $f: X \rightarrow Y$ is $\textbf{measurable}$ and $\phi: Y \rightarrow Z \textbf{ continuous }$, then $\phi \circ f: X \rightarrow Z$ is measurable.
+\end{proposition}
+
+\begin{proof}
+If U is an open set in Z, then $\phi^{-1}[U]$ is an open set in Y since $\phi$ is continuous. Then, as f is measurable, then $f^{-1}[\phi^{-1}[U]]$ will be in $\mathcal{A}$. Hence, the composition of $\phi \circ f$ is measurable.
+\end{proof}
+
+Compositions of measurable functions are not necessarily measurable, which means that the preimage of an open set is not necessarily an open set, but the composition of continuous functions are continuous.
+
+\begin{theorem}
+(Real Valued Function Operations). Let (X, $\mathcal{A}, \mu$) be a measure space and $f,g: X \rightarrow [\infty, \infty]$ measurable. Then the following functions are measurable as well
+\begin{enumerate}[(i)]
+    \item f+g is measurable;
+    \item fg is measurable;
+    \item $\frac{f}{g}$ is measurable;
+    \item $|f|$, max$\{f,g\}$ and min$\{f,g\}$ are measurable.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+We look at the composition of a continuous and a measurable function. First we map from $X \rightarrow \mathbb{R}^2$ and then map from $\mathbb{R}^2 \rightarrow \mathbb{R}$. The first mapping is measurable as the two component functions are measurable whilst the second mapping is continuous, hence the composition of functions is measurable. For the case of addition, we have 
+$$
+X \rightarrow (f(x), g(x)) \rightarrow f(x) + g(x)
+$$
+The first mapping, recall that a vector valued function is measurable iff each of its component is measurable, which is the case here. The second mapping is a continuous mapping. Hence, by the composition of a measurable and continuous mapping, we have a measurable composition. We repeat this argument for argument for multiplication division, and modulus too. For the max/min, we define
+$$
+max/min\{f,g\} = \frac{1}{2}(f+g \;\pm \; |f-g|).
+$$
+\end{proof}
+
+\lecture{9}{Sequences of Measurable Functions.}
+\section{Sequences of Measurable Functions.}
+\subsection{Convergence of sequences of functions.}
+
+We revisit concepts from analysis.
+
+\begin{definition}
+(Pointwise Convergence). The sequence of functions $\{f_n\}$ converges pointwise on X to a function f if for each $x \in X$ $\textbf{and}$ $\epsilon > 0$, there is a $N \in \mathbb{N}$ such that
+$$
+|f_n - f | < \epsilon
+$$
+Here, N depends on x $\textbf{and } \epsilon$, where we fix both of them. N changes if we change x.
+\end{definition}
+
+\begin{definition}
+(Uniform Convergence). The sequence of functions $\{f_n\}$ converges uniformly on X to a funciton f if for each $\epsilon > 0$, there is a $N \in \mathbb{N}$ such that
+$$
+|f_n - f | < \epsilon \;\; \text{for all }x \in X.
+$$
+Here, N depends only on $\epsilon$, where we now only fix $\epsilon$. Hence, we can plug in any x into our function and this statement holds. N does not change if we change x.
+\end{definition}
+
+Note that $\textbf{uniform convergence implies pointwise convergence}$ but the converse is not true.
+
+\subsection{Sequences of measurable functions}
+Pointwise limits of measurable functions are measurable, unlike the case for continuous functions. Measurability is a "weaker" condition than continuity.
+
+\begin{proposition}
+Let $(X, \mathcal{A}, \mu)$ be a measure space and $f_n: X \rightarrow [-\infty, \infty]$ be measurable for all $n \in \mathbb{N}$. For $x \in X$ define 2 new functions g(x) and h(x) where
+$$
+g(x) \coloneqq inf_{n \in \mathbb{N}}f_n(x) = inf\{f_0(x), f_1(x), f_2(x), ...\}
+$$
+$$
+h(x) \coloneqq sup_{n \in \mathbb{N}}f_n(x) = sup\{f_0(x), f_1(x), f_2(x), ...\}
+$$
+Then g and h are $\textbf{measurable}$.
+\end{proposition}
+
+\begin{proof}
+Recall that to show a function is measurable, first we fix $\alpha \in \mathbb{R}$ and check if $g(x) \geq \alpha$. As g(x) is the infimum (the smallest function), this implies that $f_n(x) \geq \alpha$ for all $n \in \mathbb{N}$. Hence, all the $f_n$ are measurable.
+
+To prove the converse statement, if $f_n(x) \geq \alpha$ for all $n \in \mathbb{N}$, then $g(x) \leq \alpha$ by definition of infimum. Therefore, 
+$$
+g^{-1}[[\alpha, \infty]] = \bigcap_{n \in \mathbb{N}}f_n^{-1}[[\alpha, \infty]]
+$$
+which is measurable for all $n \in \mathbb{N}$ as the intersection of $f_n$ is measurable. 
+
+We repeat the argument again as $h(x) = -inf_{n \in \mathbb{N}}(-f_n(x)) = sup_{n \in \mathbb{N}}(f_n(x))$. Hence, h is measurable too.
+\end{proof}
+
+Here, we constructed a new function which is the infimum or supremum of the sequence of measurable function. This function is itself measurable.
+
+\bigskip
+
+Recall that the limit inferior takes the infimum of an $\textbf{increasing}$ sequence whilst the limit superior takes the supremum of an $\textbf{decreasing}$ sequence. The limit only exists if the limit superior = limit inferior.
+
+However, as $u_n(x)$ is increasing and $v_n(x)$ is decreasing, we have 
+$$
+u(x) = \Lim{n\rightarrow \infty}inf f_n(x) = \Lim{n \rightarrow \infty}(inf_{k \geq n}f_n) = sup_{n \in \mathbb{N}}(u_n(x)).
+$$
+$$
+v(x) = \Lim{n\rightarrow \infty}sup f_n(x) = \Lim{n \rightarrow \infty}(sup_{k \geq n}f_n) = inf_{n \in \mathbb{N}}(v_n(x)).
+$$
+
+Hence, since we argued that the supremum/infimum of a sequence of measurable function is itself measurable, this shows that clearly measurablility is preserved under pointwise convergence when the limit superior = limit inferior = limit.
+\begin{theorem}
+Let $(X, \mathcal{A}, \mu$) be a measure space and let $f_n: X \rightarrow [-\infty, \infty]$ be measurable functions. Then the functions u and v are given by
+$$
+u(x) = \Lim{n\rightarrow \infty}inf f_n(x).
+$$
+$$
+v(x) = \Lim{n\rightarrow \infty}sup f_n(x).
+$$
+u and v are $\textbf{measurable functions}$. This includes $\Lim{n \rightarrow \infty}f_n(x)$ if it exists, that is, if $f_n \rightarrow f$ pointwise, then f is measurable..
+\end{theorem}
+
+\begin{proof}
+Recall that 
+$$
+u(x) = \Lim{n\rightarrow \infty}inf f_n(x) = sup_{n \in \mathbb{N}}(u_n(x)).
+$$
+$$
+v(x) = \Lim{n\rightarrow \infty}sup f_n(x) = inf_{n \in \mathbb{N}}(v_n(x)).
+$$
+Recall $u_n$ and $v_n$ are the infimum/supremum of the sequence of measurable functions. By the previous proposition, the $infimum/supremum$ of a sequence of measurable functions is measurable itself, hence each $u_n$ and $v_n$ in our sequence is measurable. Using the proposition again as u/v is the limit superior/limit inferior, then u and v are respectively measurable.
+
+Finally, if $f_n \rightarrow f$ pointwise, then we know that $u = v =f$, hence f is measurable.
+\end{proof}
+
+\lecture{10}{Simple Measurable Functions.}
+\section{Simple Measurable Functions.}
+\subsection{Simple Measurable Functions.}
+
+We look at functions that attain only finite many values.
+\begin{definition}
+(Simple Function). Let X,Y be sets and $f: X \rightarrow Y$ be finite. We call f a $\textbf{simple function}$ if its range is a finite set $\{a_0, a_1, ..., a_n\}$.
+\end{definition}
+
+A simple function that is real or complex valued can be written in the canonical representation of being a linear combination of indicator functions. 
+
+\begin{definition}
+(Canonical Representation of simple functions). Let $f: X \rightarrow \mathbb{K}$. f is simple if and only if there exists $\alpha_k \in \mathbb{K}$ and $\textbf{disjoint}$ subsets $A_k \subseteq X$, k=0,...,n such that
+$$
+f = \sum_{k=0}^n\alpha_k1_{A_k}
+$$
+where $1_{A_k}$ is the indicator function of $A_k$ and $\alpha_k$ is the range of the function. So each set $A_i$ uniquely maps to a value $\alpha_i$ and if the value $x \in X$ belongs to the set $A_i$, then it gets mapped to $\alpha_i$. 
+\end{definition}
+
+\begin{remark}
+We define the sets $A_k \coloneqq f^{-1}[\{a_k\}]$. Note that we generate disjoint sets $A_k$ as $f(A_j) = \alpha$ and $f(A_j) = \beta$ is impossible for a function if $\alpha \neq \beta$. Hence, $A_k$ are disjoint sets. 
+\end{remark}
+
+
+We note that a linear combination of simple functions is also a simple function.
+
+\begin{proposition}
+For a measure space $(X, \mathcal{A}, \mu)$ and metric space Y, the function $\phi$ is simple $\textbf{and}$ measurable if and only if $\phi$ has a canonical representation with the sets $A_k \in \mathcal{A}$ for all k = 0,...,n. 
+\end{proposition}
+
+
+By convention, we tend to set $A_0 \coloneqq f^{-1}[\{0\}]$ and hence write from the index 1
+$$
+\sum_{k=1}^n\alpha_k1_{A_k}.
+$$
+
+
+Even if $A_k$ are not disjoint, we can construct disjoint unions $A_k$ by intersecting them with nested disjoint sets $B_k$ (which are measurable if $A_k$ is measurable). 
+
+Construct the disjoint sets $B_k = A_k \cap (A_1 \cup ... \cup A_{k-1})^c$. Now, we can construct disjoint $A_k$'s by
+$$
+A_k = \bigcup_{j=0}^{n}A_k \cap B_j
+$$
+which is now a disjoint union. From this, we get the new indicator function 
+$$
+1_{A_k} = \sum_{j=0}^n1_{A_k \cap B_j}
+$$
+where it is a disjoint union of $A_k$ with all $B_j$.
+
+Hence, even if $A_k$ is not disjoint, we can still express simple functions in their canonical form as
+$$
+\sum_{k=0}^{n}\alpha_k1_{A_k} = \sum_{k=0}^n\sum_{j=0}^n\alpha_k1_{A_k \cap B_j}.
+$$
+for disjoint unions of $B_j$.
+
+
+\begin{proposition}
+Suppose that $f,g: X \rightarrow \mathbb{C}$ are simple measurable functions. Then the following functions are also simple measurable functions
+\begin{enumerate}[(i)]
+    \item f+g;
+    \item $\alpha f$ for all $\alpha \in \mathbb{K}$;
+    \item fg;
+    \item $\frac{f}{g}$ if $g(x) \neq 0$ for all x $\in$ X.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We can express the following 
+\begin{enumerate}[(i)]
+  \item f+g = $\sum_{k=0}^n\sum_{j=0}^m(\alpha_k + \beta_j)1_{A_k\cap B_j}$, 
+  \item fg = $\sum_{k=0}^n\sum_{j=0}^m(\alpha_k \beta_j)1_{A_k\cap B_j}$, 
+  \item $\frac{f}{g}$ = $\sum_{k=0}^n\sum_{j=0}^m(\frac{\alpha_k}{\beta_j})1_{A_k\cap B_j}$, 
+\end{enumerate}
+\end{proof}
+
+\subsection{Non-negative Measurable Functions approximation by simple functions.}
+
+This section shows that every measurable function can be approximated from below by simple measurable functions. Looking at the big picture here to build up to the Lebesgue integral, we have a function f, which we can approximate by a sequence of simple functions. We then define the Lebesgue integral on each of these simple functions and in doing so, this gives us the Lebesgue integral on the original function f.
+
+\begin{theorem}
+Let $(X, \mathcal{A}, \mu)$ be a measure space and $f: X \rightarrow [0, \infty]$ be a measurable function. Then there exists a sequence of simple measurable function $\phi: X \rightarrow [0, \infty)$ such that
+$$
+0 \leq \phi_n(x) \leq \phi_{n+1}(x) \leq f
+$$
+for all $n \in \mathbb{N}$ and all $x \in X$. Moreoever, $\phi_n(x) \rightarrow f(x)$ as $n \rightarrow \infty$ for all $x \in X$, that is, $\phi_n \rightarrow f$ pointwise.
+\end{theorem}
+
+\begin{remark}
+This theorem tells us that for any non-negative measurable function on a measure space, we can approximate it by a sequence of finite simple measurable functions that converges pointwise to the function f, i.e. $\Lim{n \rightarrow \infty}\phi_n(x) = f(x)$ for all $x \in X$.
+\end{remark}
+
+We can generalise from non-negative functions to functions mapping to $\mathbb{K}$.
+
+\begin{corollary}
+(Simple Approximation Lemma). Let $(X, \mathcal{A}, \mu)$ be a measure space and $f: X \rightarrow \mathbb{K}$ be measurable. Then there exists simple measurable functions $\phi_n: X \rightarrow \mathbb{K}$ such that
+$$
+0 \leq |\phi_1(x)| \leq |\phi_{2}(x)| \leq ... \leq |f(x)|
+$$
+for all $n \in \mathbb{N}$ and all $x \in  X$. Moreoever, $\phi_n(x) \rightarrow f(x)$ pointwise.
+\end{corollary}
+Note that we don't have monotone property for complex numbers, hence why we take the modulus.
+
+\begin{proof}
+We look at the first case of: $f: X \rightarrow \mathbb{R}$
+
+We split X into $X^+$ and $X^-$ where the former is the set of x that causes f(.) to be positive and the other negative. We can then use the fact that there exists a sequence of simple functions that converges pointwise to $f^+$ and $-f^-$ for any non-negative function. From that, we have
+$$
+f = |f^+ - f^-| = |f^+| + |-f^-| = |f^+| + |f^-|
+$$
+which now can either be 
+\[  \begin{cases} 
+                f^+ & \; if \; x \in X^+ \\
+                f^- & \; if \; x \in X^- \\
+            \end{cases}
+         \]
+where in each case, it converges to f as $n \rightarrow \infty$.
+
+Now we look at the case where: $f: X \rightarrow \mathbb{C}$
+
+We split it up into the real and complex components. In particular, we let f=u+iv, where $u,v: X \rightarrow \mathbb{R}$ and we can use the argument again that there exists sequences of simple measurable functions that approximates them. We get $\Phi_n(x) = \phi_n(x) + i\psi(x)$. Here, $\Phi_n(x)$ is a complex-valued simple function. Finally, $\Phi_n(x) \rightarrow f_n(x)$ for each fixed $x \in X$.
+\end{proof}
+
+
+\lecture{11}{Integration and properties}
+\section{Integration}
+\section{Integration and properties}
+\subsection{Integration}
+
+Recall that for a function $f: [a,b] \rightarrow [0, \infty)$, the Reimann integral is defined to be the limit of Riemann sums. We choose a partition $a = x_0 < x_1 < ... < x_n = b$ and intermediate points $x_i^* \in [x_{k-1}, x_{k}]$, The Riemann sums are defined to be
+$$
+\sum_{k=1}^nf(x_k^*)\Delta x_k
+$$
+where $\Delta x_k \coloneqq x_k - x_{k-1}$. These can be expressed as a simple function of the form
+$$
+\psi = \sum_{k=1}^nf(x_k^*)1_{(x_{k-1},x_k]}
+$$ 
+which takes the value $f(x_k^*)$ on the interval $(x_{k-1}, x_k]$.
+
+To construct the Lebesgue integral, we do the same except for 2 things. 
+
+1) We define the general simple function
+$$
+\psi = \sum_{k=1}^n\alpha_k1_{A_k}
+$$
+with $A_k$ being disjoint arbitrary measurable sets. We can think of $\alpha$ as being simply the height whilst the measure of the base A will be given by $\mu(A)$.
+
+2) We approximate the function from below and take the supremum, as every non-negative measurable function can be approximated from below. This is similar to taking the supremum of the lower Riemann sums.
+
+\subsection{Integration of non-negative simple functions.}
+\begin{definition}
+(Integral of simple measurable function). Let $(X, \mathcal{A}, \mu)$ be a measure space and $\psi = \sum_{k=0}^{\infty} \alpha_k1_{A_k}$ be a simple measurable function. We let
+$$
+\int_X\psi d\mu \coloneqq \sum_{k=0}^{\infty}\alpha_k\mu(A_k).
+$$
+If $\mu(A_k) = \infty$, we set $\alpha_k\mu(A_k) = \infty$ if $\alpha_k > 0$ or 0 if $\alpha_k=0$.
+\end{definition}
+
+\begin{proposition}
+Let $(X,\mathcal{A},\mu)$ be a measure space and $\phi, \psi$ be simple measurable functions. Then the following assertions are valid.
+
+\begin{enumerate}[(i)]
+    \item $\int_X \psi + \phi d\mu = \int_X \psi d\mu + \int_X \phi d\mu$;
+    \item $0 \leq \psi \leq \phi$, then $\int_X \psi d\mu + \int_X \phi d\mu$;
+    \item $\alpha \int_X \phi d\mu = \int_X \alpha \phi d\mu$ for all $\alpha \geq 0$ (since only non-negative functions means we can only use non-negative scalars);
+    \item If $N \in \mathcal{A}$ and $\mu(N) = 0$, then $\int_X \psi d\mu = \int_{X/N}\psi d\mu = \int_X 1_{X/N}\psi d\mu$. 
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+We only prove (iv) as others are relatively trivial. 
+
+We can express $\phi = 1_{X/N}\phi + 1_N\phi$. From (ii), we have
+$$
+\int_X\phi d\mu = \int_X 1_{X/N}\;\phi \;d\mu + \int_X 1_{N}\;\phi \;d\mu.
+$$
+We look at the last term.
+$\phi = \sum_{k=0}^{n}\alpha_k1_{A_k}$ and hence we can express $1_N\phi = \sum_{k=0}^n\alpha_k1_{N}1_{A_k} =\sum_{k=0}^n\alpha_k1_{N \cap A_k}$ as $A_k$ is disjoint and we can express it as a simple function with N by taking these disjoint intersections. Furthermore, from monotonicty of measures $\mu(A \cap N) \leq \mu(N) = 0$. From this, we get that the last term integrates to
+$$
+\int_X 1_{N}\;\phi \;d\mu = \sum_{k=0}^n\alpha_k\mu(N \cap A_k) = \sum_{k=0}^n\alpha_k(0) = 0.
+$$
+Hence, we have that 
+$$
+\int_X\phi d\mu = \int_X 1_{X/N}\;\phi \;d\mu.
+$$
+\end{proof}
+
+Now we look at the integration of $\textbf{non-negative}$ measurable functions.
+
+\begin{definition}
+(Abstract Lebesgue Integral). Let $(X, \mathcal{A}, \mu)$ be a measure space and $f: X \rightarrow [0, \infty]$ a measurable function. We then set 
+$$
+\int_Xfd_\mu = sup\{\int_X \phi d\mu: \phi \text{ is simple, measurable and 0 }\leq \phi \leq f\}.
+$$
+Here, $\phi$ is a finite non-negative function.
+\end{definition}
+
+With the Lebesgue integral, we are approximation it only from below with simple measurable functions. Note that from now on, when we talk about integrals $\int$, we are referring to the Abstract Lebesgue integral unless specified otherwise.
+
+We note the special property  that for non-negative measurable functions f,g where $0 \leq g \leq f$, we have that
+$$
+\int_X g d\mu \leq \int_X f d\mu 
+$$
+
+Integrals "do not see" sets of measure 0, which means modifying functions on sets of measure zero does not change the value of the integral. Hence, we want to look at functions that hold almost everywhere.
+
+\begin{definition}
+(Almost Everywhere). Let $(X, \mathcal{A}, \mu)$ be a measure space and (P) some property. We say that (P) holds $\textbf{almost everywhere}$ on X if there exists a measurable set N such that $\mu(N) = 0$ and (P) holds for all $x \in X - N$.
+\end{definition}
+
+This is also known as pointwise property. So a property holds almost everywhere if the property holds after we remove all sets of measure 0. This is actually where the idea of $\textbf{almost surely}$ from probability theory comes from!
+
+We introduce a tool to help us prove properties of non-negative functions given information regarding their integrals.
+\begin{lemma}
+(Markov's Inequality). Suppose that $f: X \rightarrow [0, \infty]$ is measurable. Then for every $\alpha > 0$, we have that
+$$
+\mu(f^{-1}[\alpha, \infty]) = \mu(\{x \in X: f(x) \geq \alpha \}) \leq \frac{1}{\alpha}\int_Xfd\mu.
+$$
+\end{lemma}
+
+\begin{proof}
+(Sketch). Construct the set of $x \in X: f(x) \geq \alpha$. This is measurable and we know the integral of w.r.t to this new set is less than integral with respect to the whole function.
+\end{proof}
+
+\begin{proposition}
+Suppose that $f: X \rightarrow [0, \infty]$ is measurable
+\begin{enumerate}[(i)]
+    \item If $\int_Xfd\mu < \infty$ then $f(x) < \infty$ almost everywhere, that is
+    $$
+    \mu(\{x \in X: f(x) = \infty\}) = 0.
+    $$
+    \item If $\int_Xfd\mu = 0$ then $f(x) = 0$ almost everywhere, that is
+    $$
+    \mu(\{x \in X: f(x) > 0\}) = 0.
+    $$
+\end{enumerate}
+\end{proposition}
+
+Hence, if the integral of a non-negative function is zero, we cannot conclude that the function f is zero. We only know that the measure on those sets where f is positive is simply zero. However, if X is a metric space, $\mu$ a Borel measure, and f is continuous, then we can conclude that f = 0.
+\subsection{Examples of integrals with respect to measures.}
+We now look at the integral of functions with respect to the $\textbf{Dirac measure}$. Recall that the Dirac measure is:
+
+Let X be a set and $\textbf{fix}$ $x \in X$. For $A \subseteq X$, we set
+$$
+\delta_x(A) 
+\begin{array}{cc}
+  \{ & 
+    \begin{array}{cc}
+      1 & x \in A \\
+      0 & x \not\in A \\
+    \end{array}
+\end{array}
+$$
+This is the Dirac measure on a set X concentrated on $x \in X$. 
+
+We define this on the power set $\mathcal{P}(X)$ so that every set and every function is measurable. We let $\phi$ be a non-negative simple function and find it's integral with respect to the Dirac measure.
+$$
+\int_X \phi d\delta_a = \sum_{k=0}^n\alpha_k\delta_a(A_k) = \sum_{k=0}^n\alpha_k1_{A_k}.
+$$
+Now recall that the sets $A_k$ are a disjoint union that covers X. Hence, x can only be in exactly one of these sets, denote this as set $A_m$.
+$$
+= \alpha_m = \phi(x).
+$$ 
+Hence, the integral with respect to the Dirac measure of a simple non-negative function is equivalent to evaluating the point x on the simple non-negative function.
+
+\bigskip
+We now look at the integral of non-negative functions,
+$$
+\int_X fd\delta_a
+$$
+which is the supremum of all Lebesgue integrals of simple non-negative functions with respect to $\delta_a$. We have that
+$$
+\int_X \phi d\delta_a = \phi(x) \leq f(x).
+$$ 
+Hence
+$$
+\int_X fd\delta_A \leq f(a).
+$$
+To get the other inequality, define $\phi(a) = f(a)$ when x = x otherwise it's 0. We have that $0 \leq \phi(x) \leq f(x)$ and by monotonicity
+$$
+\int_X fd\delta_a \geq \int_X\phi d\delta_a = f(x) 
+$$
+$$
+\Rightarrow f(x) \leq \int_X fd\delta_a. 
+$$
+Hence, we get that
+$$
+\int_X fd\delta_a = f(x).
+$$
+
+\lecture{12}{Monotone Convergence Theorem.}
+\section{Monotone Convergence Theorem.}
+\subsection{Monotone Convergence Theorem.}
+
+We now look at one of the most important theorems in this course. 
+\begin{theorem}
+(Monotone Convergence Theorem). Let $(X, \mathcal{A}, \mu)$ be a measure space. For every $n \in \mathbb{N}$, let
+$$
+f_n: X \rightarrow [0, \infty]
+$$
+be a measurable function and suppose that
+$$
+0 \leq f_n(x) \leq f_{n+1}(x)
+$$
+for $\textbf{almost every}$ x $\in$ X. Then there exists a measurable function $f: X \rightarrow [0, \infty]$ such that $f_n(x) \rightarrow f(x)$ as $n \rightarrow \infty$ for almost every $x \in X$ and more importantly
+$$
+\Lim{n \rightarrow \infty}\int_X f_n d\mu = \int_X f d\mu.
+$$
+\end{theorem}
+
+\begin{remark}
+This differs to the simple approximation theorem which states that for any non-negative measurable function f, there exists a sequence of monotone simple measurable functions $\phi_n$ that converges to f pointwise. The MCT refers to the property of the limit of the integral.
+\end{remark}
+
+So if we had a sequence of non-negative measurable functions, they converge to f(x) for almost every x and that the limit of the Lebesgue integral of the sequence of functions is equal to the Lebesgue integral of a function. This is one of the ways that the Lebesgue integral differs to the Riemann integral.
+
+
+\begin{theorem}
+(Fatou's Lemma). Let $(X, \mathcal{A}, \mu)$ be a measure space. For every $n \in \mathbb{N}$, let
+$$
+f_n: X \rightarrow [0, \infty]
+$$
+be measurable functions. Then
+$$
+\int_X\Lim{n \rightarrow \infty}inf f_n d\mu \leq \Lim{n \rightarrow \infty} inf \int_Xf_n d\mu
+$$
+\end{theorem}
+
+\begin{proof}
+We first define 
+$$
+u_n(x) \coloneqq inf_{k \geq n}f_k(x).
+$$
+We see that $u_n(x) \leq f_n(x)$ and $u_n$ is monotonically increasing. We define the limit inferior to be
+$$
+u(x) \coloneqq \Lim{n \rightarrow \infty}inf f_n(x) = \Lim{n \rightarrow \infty}u_n(x).
+$$
+for all $x \in X$. $u_n$ and u are measurable as infimum/limit inferiors of a sequence of measurable functions are measurable. As $u_n \leq f_n$, by monotonicty
+$$
+\int_X u_n d\mu \leq \int_X f_n d\mu.
+$$
+Using the monotone convergence theorem, we have that 
+$$
+\int_X \Lim{n \rightarrow \infty}inf f_n d\mu = \int_X u d\mu = \Lim{n \rightarrow \infty}\int_X u_n d\mu \leq \Lim{n \rightarrow \infty}inf \int_X f_n d\mu.
+$$
+\end{proof}
+
+We just interchanged the limit and the Lebesgue integral. Fatou's lemma is an extension of the MCT. Fatou's lemma looks at the limit inferior, which exists for every sequence whilst the limit may not necessarily exist.
+
+
+\begin{proposition}
+Suppose that $f, g: X \rightarrow [0, \infty]$ are measurable functions and $\alpha \geq 0$ is a constant. Then
+\begin{enumerate}[(i)]
+    \item $\int_Xf + g d\mu = \int_X f d\mu + \int_X g d\mu$;
+    \item $\alpha \int_Xf d\mu = \int_X\alpha f d\mu$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(Sketch). Break it up into simple measurable non-negative functions. Apply the properties there and use the MCT to get back to original measurable functions.  
+\end{proof}
+
+
+Recall that working with series and sequences are equivalent as series by definition are sequences of partiaul sums. We now apply the MCT to series with non-negative terms.
+\begin{theorem}
+(Monotone Convergent Theorem for Non-negative Series). For every $k \in \mathbb{K}^N$, let $g_k: X \rightarrow [0, \infty]$ be measurable. Then
+$$
+\sum_{k=0}^{\infty}\int_Xg_kdx = \int_X\sum_{k=0}^{\infty}g_kdx.
+$$
+\end{theorem}
+
+\begin{proof}
+(Sketch). Transform into series of partial sums, apply MCT, take limits, and interchange integral and limits.
+\end{proof}
+
+\lecture{13}{Integrable Functions.}
+\section{Integrable Functions.}
+\subsection{Integrable Functions.}
+Now we look at functions that are non necessarily non-negative. In particular, $f: X \rightarrow \mathbb{K}^N$.
+
+\begin{definition}
+(Integrable Function). Let $(X, \mathcal{A}, \mu)$ be a measure space and $f: X \rightarrow \mathbb{K}$ be measurable. We call f a $\mu-$integrable function if
+$$
+\int_X|f|d\mu < \infty.
+$$
+We let
+$$
+\mathcal{L}^1(X, \mathcal{A}, \mu; \mathbb{K}^N) = \{f: X \rightarrow \mathbb{K}| \text{ f is }\mu \text{-integrable}.\}
+$$
+$\mathcal{L}^1$ is known as the space of integrable functions.
+\end{definition}
+
+Recall that if f is measurable, then $|f|$ is also measurable.
+
+The space $\mathcal{L}^1$ is a vector space. Here, $f \in \mathcal{L}^1(X, \mathcal{A}, \mu; \mathbb{K}^N)$ iff $f^+$ and $f^-$ is integrable.
+
+\begin{definition}
+(Lebesuge Integral for real or complex valued functions).
+\begin{enumerate}[(i)]
+  \item For $f \in \mathcal{L}^1(X, \mathbb{R}$), we define
+  $$
+  \int_Xfd\mu = \int_Xf^+d\mu - \int_Xf^-d\mu.
+  $$
+  \item For $f \in \mathcal{L}^1(X, \mathbb{C}$), we define
+  $$
+  \int_Xfd\mu = \int_XRe \;fd\mu + i\int_XIm\;fd\mu.
+  $$
+  \item For any $\mu-$measurable set A and $f \in \mathcal{L}^1(X, \mathbb{K}$), we define
+  $$
+  \int_Afd\mu = \int_X1_A \;fd\mu.
+  $$
+\end{enumerate}
+\end{definition}
+
+Integration is a linear operation as seen in next theorem.
+\begin{theorem}
+Let $f, g \in \mathcal{L}^1(X, \mathcal{A}, \mu, \mathbb{K})$, then the following assertions are true.
+\begin{enumerate}[(i)]
+  \item For all $\alpha, \beta \in \mathbb{K}$
+  $$
+  \int_X\alpha f + \beta g d\mu = \alpha \int_X fd\mu + \beta \int_X gd\mu
+  $$
+  \item If $A,B \in \mathcal{A}$ are disjoint, then
+  $$
+  \int_{A \cup B}fd\mu = \int_Afd\mu + \int_Bfd\mu.
+  $$
+  \item The triange inequality holds
+  $$
+  |\int_X fd\mu| \leq \int_X|f|d\mu.
+  $$
+\end{enumerate}
+\end{theorem}
+
+Finally, we look at examples of measures and what their corresponding integrals are.
+
+\bigskip
+\textbf{The Lebesgue Measure}
+
+If $\mu = m_N$ is the Lebesgue measure and $A \subseteq \mathbb{R}^N$ is Lebesgue measurable, we define
+$$
+\int_Af(x)dx \coloneqq \int_Afdm_N.
+$$
+Note that any Riemann integrable function is also Lebesgue integrable but not vice versa. We can construct pathological examples involving indicator functions whereby the upper and lower Riemann sums differ whilst Lebesgue integration will work. A good one is f(x) = 1 if $x \in \mathbb{R} - \mathbb{Q} \cap [0,1]$ and 0 otherwise. The Lebesuge integral works since the function is just an indicator function but not for Riemann sums as the lower sum is zero whilst the other one is one.
+
+\bigskip
+\textbf{The Lebesgue Stieltjes Integral}
+
+Let $F: \mathbb{R} \rightarrow \mathbb{R}$ be a $\textbf{right continuous}$ increasing function. That is, $F(s) \leq F(t)$ for $s \leq t$ and
+$$
+\Lim{s \rightarrow t^+}F(s) = F(t)
+$$
+for all $t \in \mathbb{R}$. For $A \subseteq \mathbb{R}$, we define the $\textbf{Lebesgue-Stieltjes}$ measure induced by F as 
+$$
+\mu_F^*(A) \coloneqq inf\{\sum_{k=0}^{\infty}(F(b_k) - F(a_k)): A \subseteq \bigcup_{k=0}^{\infty}(a_k, b_k]\}.
+$$
+This $\mu_F$ is an outer measure on $\mathbb{R}$ that induces a regular Borel measure $\mu_F$ on $\mathbb{R}$. If F(X) = x, we get the Lebesgue measure. We define the $\textbf{Lebesgue-Stieltjes integral}$ as
+$$
+\int_{\mathbb{R}}fdF \coloneqq \int_{\mathbb{R}}fd\mu_F.
+$$
+
+\lecture{14}{Measures with a density.}
+\section{Measures with a density.}
+\subsection{Measures with a density.}
+
+We now seek to express a measure in terms of an integral of a measurable function with respect to another measure. The intuition is that if the sample space is $X = \mathbb{R}$, then $\mu$ is the Lebesgue measure, g(.) will be the normal density, and $v$ will be the normal distribution (normal probability measure).
+
+\begin{definition}
+(Density of a measure with respect to another measure).
+
+Let $(X, \mathcal{A}, \mu)$ be a measure space and $g: X \rightarrow [0, \infty]$ be a measurable function. For $A \in \mathcal{A}$, we define
+$$
+v(A) \coloneqq \int_Agd\mu = \int_X1_{A}gd\mu.
+$$
+Here, v is a measure. Hence, the measure of A by v is the Lebesgue integral of g over the set A. It is easy to check this. Hence, we call g the density of v measure with respect to the measure $\mu$.
+\end{definition}
+
+\begin{proof}
+1)
+$$v(\emptyset) = \int_{\emptyset}gd\mu = \int_X1_{\emptyset}gd\mu = 0.$$
+
+2)
+$$
+v(\cup_{n \in \mathbb{N}}A_k) = \int_{\cup_{n \in \mathbb{N}}A_k}gd\mu = \int_X1_{\cup_{n \in \mathbb{N}}A_k}gd\mu
+$$
+$$
+= \int_X\sum_{k=1}^{\infty}1_{A_k}gd\mu
+$$
+Since g is non-negative, the monotone convergence theorem applies so 
+$$
+= \sum_{k=1}^{\infty}\int_X1_{A_k}gd\mu = \sum_{k=1}^{\infty}\int_{1_{A_k}}gd\mu = \sum_{k=1}^{\infty}v(A_k).
+$$
+\end{proof}
+
+
+We can show that
+$$
+\int_X fdv = \int_Xfgd\mu,
+$$
+for all $f \in \mathcal{L}^1(X, \mathcal{A}, v, \mathbb{K})$. Here, we can integrate a function f with respect to measure v in terms of measure $\mu$. For a simple non-negative function $f = \sum_{k=1}^n\alpha_k1_{A_k}$, we have
+$$
+\int_Xfdx = \sum_{k=0}^{\infty}\alpha_kv(A_k) = \sum_{k=0}^{\infty}\alpha_k\int_X1_{A_k}gd\mu = \int_X\sum_{k=0}^{\infty}\alpha_k1_{A_k}gd\mu   = \int_Xfgd\mu.
+$$
+
+If f is non-negative, then there exists a sequence $\{f_n\}$ of simple functions with $0 \leq f_n \leq f_{n+1}$ and $f_n \rightarrow f$ pointwise. Using MCT, we get the same result.
+
+\subsection{Special Transformation Formula}
+We show a transformation formula for linear transformations. This is similar to the idea of integration by substitution. We first show a substitution for linear transformations only.
+
+\begin{theorem}
+(Special Transformation Formula). 
+
+Let $f \in \mathcal{L}^1(\mathbb{R}^N)$ and $T: \mathbb{R}^N \rightarrow \mathbb{R}^N$ be linear. Then, we have that
+$$
+\int_{imT}fdx = |det\; T|\int_{\mathbb{R}^N}f \circ T dx
+$$
+where imT is the image of T.
+\end{theorem}
+
+It is also possible to show the full transformation formula for functions g with continuous partial derivatives.
+$$
+\int_{im g}fdx = \int_{\mathbb{R}^N}f\circ g|det\; J_g|dx
+$$
+where $J_g$ is the Jacobian matrix of g.
+
+\lecture{15}{Limit Theorems}
+\section{Limit Theorems}
+\subsection{Limit Theorems}
+Recall that we are interested in that if we had a sequence of functions $\{f_n\}$ which converges pointwise to some limit function f, does 
+$$
+\int\Lim{n \rightarrow \infty}f_n = \Lim{n \rightarrow \infty}\int f_n,
+$$
+hold or in other words, does the limit and integral commute. We have already seen 2 limit theorems so far. The monotone convergence theorem required a monotone sequence of non-negative functions and if this is satisfies, then they do commute. Fatou's lemma was a case where we did not make any assumptions but instead, we can make a guess about the relationship of interchanging them. We can now construct a new limit theorem that requires that we just need $f_n$ to be dominated in order to interchange the limit and integral.
+
+We now construct a case for arbitrary sequences of non-negative functions by using the limit inferior.
+
+\begin{theorem}
+(Dominated Convergence Theorem). 
+
+Let $f_n:X \rightarrow \mathbb{K}$ be a measurable function and $f: X \rightarrow \mathbb{K}$ be such that $f_n(x) \rightarrow f(x)$ pointwise almost everywhere. Furthermore, assume that there exists a dominating function $g(x) \in \mathcal{L}^1(X)$ (so it is integrable, measurable, and independent of n) such that
+$$
+|f_n(x)| \leq g(x)
+$$
+for almost all $x \in X$. Then
+\begin{enumerate}[(i)]
+    \item $f_n, f \in \mathcal{L}^1(X, \mathbb{K})$ for all $n \in \mathbb{N}$;
+    \item $\int_X|f_n - f|d\mu \rightarrow 0$ as $n \rightarrow \infty$;
+    \item $\int_Xf_n d\mu \rightarrow \int_Xfd\mu$ as $n \rightarrow \infty$.
+\end{enumerate}
+\end{theorem}
+
+We now have an analogue to improper Riemann integrals for the Lebesgue integral.
+
+\begin{corollary}
+(Improper Lebesgue Integral).
+
+Let $f \in \mathcal{L}^1((a,b),\mathbb{K})$. Then
+$$
+\Lim{x \rightarrow b^-}\int_a^xf(t)dt = \int_a^bf(t)dt.
+$$
+\end{corollary}
+
+We now look at integral with parameters.
+
+\begin{theorem}(Continuity of parameter integrals).
+
+Let $(X, \mathcal{A}, \mu)$ be a measure space and Y a metric space (which is usually a subset of $\mathbb{R}$ or $\mathbb{C}$). Suppose that $f: X \times Y \rightarrow \mathbb{K}$ such that
+\begin{enumerate}[(i)]
+    \item $x \rightarrow f(x,y)$ is $\mu$-measurable for all $y \in Y$;
+    \item $y \rightarrow f(x,y)$ is continuous at $y_0$ for almost all $x \in X$;
+    \item there exists $g \in \mathcal{L}^1(X, \mathbb{R})$ such that
+    $$
+    |f(x,y)| \leq g(x)
+    $$
+    for almost all $x \in X$ and all $y \in Y$. For $y \in Y$ define
+    $$
+    F(y) \coloneqq \int_X f(x,y)d\mu(x).
+    $$
+    Then F is continuous at $y_0$.
+\end{enumerate}
+\end{theorem}
+
+For the first and third point, if the third point holds, then initially, instead of showing $x \rightarrow f(x,y)$ is integrable, we can weaken the condition to showing it is measurable. To show measurablility, find the inverse image for every value the function can take on and show that is measurable. Furthermore, note that for the dominating function g(x), this function has to be independent of y and integrable for all $y \in Y$.
+
+
+\begin{theorem}(Differentation of Parameter Integrals). Let $(X, \mathcal{A}, \mu)$ be a measure space and $J \subseteq \mathbb{R}$ an interval. Suppose that $f: X \times J \rightarrow \mathbb{K}$ be a function such that
+\begin{enumerate}
+  \item $x \rightarrow f(x,t)$ is $\mu$-integrable for all $t \in J$;
+  \item For almost all $x \in X$, $\frac{\partial f}{\partial t}(x,t)$ exists and is continuous on J;
+  \item There exists $g \in \mathcal{L}^1(X, \mathbb{R})$ such that $$|\frac{\partial f}{\partial t}(x,t)| \leq g(x)$$ for almost all $x \in X$ and all $t \in J$.
+\end{enumerate}
+  For $t \in J$, define 
+  $$
+  F(t) \coloneqq \int_X f(x,t) d\mu(x).
+  $$
+  Then, $F: J \rightarrow \mathbb{K}$ is differentiable and
+  $$
+  F'(t) \coloneqq \int_X\frac{\partial f}{\partial t}(x,t)d\mu(x)
+  $$
+  for all $t \in J$.
+\end{theorem}
+
+\begin{definition}(Fundamental Theorem of Calculus). 
+
+(i) If $f: [a,b] \rightarrow \mathbb{R}$ is continuous, then
+$$
+\frac{d}{dt}\int_A^tf(s)ds = f(t)
+$$
+for all $t \in [a,b]$.
+
+(ii) If $f: [a,b] \rightarrow \mathbb{R}$ is continuous and $f: [a,b] \rightarrow \mathbb{R}$ is continuously differentiable, then
+$$
+\int_a^bf'(s)ds = f(b) - f(a).
+$$
+\end{definition}
+
+Continuity and differentiability are $\textbf{local properties}$, that is, it is sufficient to check on some neighbourhood of every point. An example would be if you wanted to check continuity on $(0, \infty)$, it is sufficient to check on every closed interval $[a,b]$ where $0 < a < b < \infty$.
+
+\lecture{16}{The Lebesgue Spaces}
+\section{The Lebesgue Spaces}
+\section{The Lebesgue Spaces}
+\subsection{The Lebesgue Spaces}
+We now look at a class of function spaces that is quite important. 
+
+\begin{definition}($\mathcal{L}^p$-norm of f). We call
+$$
+||f||_p
+$$
+the $\mathcal{L}^p$-norm of f.
+\end{definition}
+
+\begin{definition}($\mathcal{L}^p$-spaces). Let $1 \leq p < \infty$ and $f: X \rightarrow \mathbb{K}$. We call
+$$
+||f||_p \;\;\coloneqq \big(\int_x|f|^pd\mu\big)^{1/p}
+$$ 
+the $L^p$-norm of f. We set
+$$
+\mathcal{L}^p(X,\mathcal{A},\mu,\mathbb{K}) : \{f: X \rightarrow \mathbb{K}: \text{ f is measurable and } ||f||_p < \infty\}.
+$$
+If no confusion about the measure, $\sa$ or codomain seems likely we write $\mathcal{L}^p(X,\mathbb{K})$ or $\mathcal{L}^p(X)$. The spaces are called the $\textbf{Lebesgue spaces}$.
+\end{definition}
+
+\begin{remark}The $\mathcal{L}^p$ space is a space of functions for which the p-th power of the absolute value is Lebesgue integrable almost everywhere.
+
+To think about what it means for $\big(\int_x|x|d\mu \big)^{1/p}$, you can first think of $\big(\sum_{k=0}^{\infty}|x_k|\big)^{1/p}$ and then generalise it. Now recall that Lebesgue integrals are fundamentally $\int fd\mu = \sum_{k=1}^n\alpha_k\mu(A_k)$ and hence this is why we can just take the norm of such a vector.
+\end{remark}
+
+This is similar to our definition of $\mathcal{L}^1$ earlier if we let p=1.
+
+The $\mathcal{L}^p-spaces$ are vector spaces. We can show that from the convexity of $t \rightarrow t^p$, we can see that $f + g \in \mathcal{L}^p(X)$.
+
+We now aim to show that it is actually a norm but first we require some useful inequalities.
+
+\begin{lemma}(Young's Inequality for Products). Let $p,q > 1$ such that
+$$
+\frac{1}{p} + \frac{1}{q} = 1.
+$$
+Then, 
+$$
+st \leq \frac{1}{p}s^p + \frac{1}{q}t^q
+$$
+for all $s,t \geq 0$.
+\end{lemma}
+
+\begin{proof}
+If s = 0 or t = 0, then the inequality is obvious.
+
+If $s,t > 0$, then by concavity of the logarithm function and since 1/p + 1/q = 1, we have that 
+$$
+log(st) = log(s) + log(t) = \frac{1}{p}log(s)^p + \frac{1}{q}log(t)^q \leq log\big(\frac{1}{p}s^p + \frac{1}{q}t^q\big)
+$$
+where the last inequality arises ue to the concave nature of the logarithm function.
+
+We then take exponentials on both sides to get
+$$
+st \leq \frac{1}{p}s^p + \frac{1}{q}t^q.
+$$
+\end{proof}
+
+\begin{remark}
+This inequality is just a mathematical inequality about the product of two nubers. This will then be used to help prove the more important Hölder's inequality, which is a fundamental inequality between integrals.
+\end{remark}
+
+\begin{theorem}(Hölder's Inequality). Let $p,q > 1$ such that $\frac{1}{p} + \frac{1}{q} = 1$. Then
+$$
+|\int_xfgd\mu|\; \leq \int_x|fg|d\mu \;\leq ||f||_p||g||_q
+$$ 
+for all $f \in \mathcal{L}^p(X)$ and $g \in \mathcal{L}^q(X)$. Recall we defined $||f||_p \;\coloneqq \big(\int_x|f|^pd\mu\big)^{1/p}$.
+\end{theorem}
+
+\begin{proof}If $||f||_p = 0$ or $||g||_q = 0$, then $|f| = 0$ or $|g| = 0$ almost everywhere as the integral is 0, so then f(x) = 0 or g(x) = 0 almost everywhere. Furthermore, fg = 0 almost everywhere.
+
+Hence, assume that $||f||_p, ||g||_q > 0$. By Young's inequality and by the definition of the norms
+$$
+\frac{1}{||f||_p||g||_q}\int_x|fg|d\mu = \int_x\frac{|f|}{||f||_p}\frac{|g|}{||g||_q}d\mu \leq \int_x\frac{1}{p}\frac{|f|^p}{||f||_p^p} + \frac{1}{q}\frac{|g|^q}{||g||_q^q}d\mu
+$$
+by Young's inequality. Then taking out the constant from integral and using the definition of $\mathcal{L}$-norm
+$$
+= \frac{1}{p||f||_p^p}\int_x|f|^pd\mu + \frac{1}{q||g||_q^q}\int_x|g|^qd\mu
+$$
+Here, $\int_x|f|^pd\mu = ||f||_p^p$, so then
+$$
+= \frac{||f||_p^p}{p||f||_p^p} + \frac{||g||_q^q}{q||g||_q^q}
+$$
+$$
+= \frac{1}{p} + \frac{1}{q} = 1.
+$$
+Hence, multiplying through,
+$$
+\int_x|fg|d\mu \leq ||f||_p||g||_q.
+$$
+\end{proof}
+
+\begin{remark} 
+Hölder's inequality will be used to establish the $\textbf{Minkowski inequality}$, which is the triangle inequality in the space $L^p$ and also to establish that $L^q$ is the $\textbf{dual space}$ of $L^p$ for $p \in [1,\infty)$.
+\end{remark}
+
+When p=q=2 holds, then we get the $\textbf{Cauch-Schwarz inequality}$.
+
+\begin{corollary}(Cauchy-Schwarz Inequality). For $f,g \in \mathcal{L}^2$, where p=q=2, then
+$$
+\int|fg|d\mu \leq ||f||_2||g||_2.
+$$
+\end{corollary}
+
+
+We can look at relationship between $\mathcal{L}^p$-spaces as we vary p. 
+
+\begin{proposition}Let $1 \leq p < q < \infty$. If $\mu(X) < \infty$, then $\mathcal{L}^q(X) \subseteq \mathcal{L}^p(X)$. More precisely, if $f \in \mathcal{L}^q(X)$, then
+$$
+||f||_p \;\leq\; \mu(X)^{\frac{1}{p} - \frac{1}{q}}||f||_q.
+$$
+Generally, $\mathcal{L}^p(X) \not \subseteq \mathcal{L}^q(X)$. Moreover, if $\mu(X) = \infty$, then neither sets are subsets to each other.
+\end{proposition}
+
+\begin{remark}
+What this means is that if we had $f \in \mathcal{L}^q(X)$, where $p < q$, then we can show, from Holder's inequality, that $f \in \mathcal{L}^p(X)$. Hence, $\mathcal{L}^q(X) \subseteq \mathcal{L}^p(X)$.
+
+For applications in probability theory, that means the vector space $L^2$ is a vector subspace of $L^1$, but only if $\mu(\Omega) < \infty$, which always happens by construction. 
+\end{remark}
+
+\lecture{17}{Further properties of Lebesgue Spaces}
+\section{Further properties of Lebesgue Spaces}
+\subsection{Further properties of Lebesgue Spaces}
+
+Now we derive the $\textbf{triangle inequality}$ for the $\mathcal{L}^p$-norm. 
+
+\begin{proposition}(Minkowski's Inequality). For $1 \leq p < \infty$, we have that
+$$
+||f+g||_p \leq ||f||_p + ||g||_p
+$$
+for all $f, g \in \mathcal{L}^p(X)$.
+\end{proposition}
+
+\begin{proof} We assume that $||f+g||_p > 0$ or else it is trivial.
+
+If p=1, then we have
+$$
+||f+g||_1 = \int_X|f+g|d\mu \leq \int_X|f| + |g| d\mu = \int_X|f|d\mu + \int_X|g|d\mu = ||f||_1 + ||g||_1
+$$
+as claimed. 
+
+Now assume that $p \in (1,\infty)$. Note that
+$$
+|f+g|^p = |f+g||f+g|^{p-1} \leq \big(|f| + |g|\big)\;|f+g|^{p-1} = |f|\;|f + g|^{p-1} + |g|\;|f+g|^{p-1}.
+$$
+
+In order to invoke Hölder's inequality, we set
+$$
+q = \frac{p}{p-1}
+$$
+so that 
+$$
+\frac{1}{p} + \frac{1}{q} = 1.
+$$
+
+From Hölder's inequality,
+$$
+\int_X|f||f+g|^{p-1}d\mu \leq ||f||_p\big(\int_x|f+g|^{(p-1)q}d\mu\big)^{1/q} = ||f||_p\big(\int_X|f+g|^pd\mu\big)^{(p-1)/p}
+$$
+$$
+= ||f|\;|_p||f + g||_p^{p-1}.
+$$
+
+By similar argument, we have
+$$\int_X|g||f+g|^{p-1}d\mu \leq ||g||_p\;||f+g||_p^{p-1}.$$
+
+Combining everything,
+$$
+||f+g||_p^p \leq ||f||_p\;||f + g||_p^{p-1} + ||g||_p\;||f + g||_p^{p-1}
+$$
+$$
+= \big(||f||_p + ||g||_p\big)\;||f + g||_p^{p-1}.
+$$
+Then, divide by $||f+g||^{p-1}$, we get
+$$
+||f+g||_p \leq ||f||_p + ||g||_p.
+$$
+
+\end{proof}
+
+We now show some properties of $L^p$-norm, to show that it is indeed a norm.
+
+\begin{theorem}(Properties of $L^p$-norm). Let $1 \leq p < \infty$. Then for f,g $\in \mathcal{L}^p(X)$ and $\alpha \in \mathbb{K}$, we have 
+\begin{enumerate}[(i)]
+  \item $||f||_p \geq 0$ with equality if and only if f = 0 almost everywhere;
+  \item $||\alpha f||_p = |\alpha|\; ||f||_p$;
+  \item $||f + g||_p \leq ||f||_p + ||g||_p$ (triangle or Minkowki's inequality).
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}(i) $||f||_p \geq 0$ is evident from definition. Clearly, $||f||_p = 0$ if f = 0 almost everywhere. 
+
+(ii) From definition of $\mathcal{L}^p-$norm
+$$
+||\alpha f||^p = \big(\int_X|\alpha f|^p\big)^{1/p} = \big(||\alpha|^p\int_X|f|^p\big)^{1/p} = |\alpha|\;||f||_p.
+$$
+
+(iii) From the earlier proof of the Minkowski inequality.
+\end{proof}
+
+However, due to the fact that the first property has the "almost everywhere" condition, this is not a proper norm. It is in fact, a $\textbf{pseudo-norm}$ as $||f||_p = 0$ does not imply that f is the zero function f = 0. Therefore, we can call $( \mathcal{L}^p, ||.||)$ a $\textbf{pseudo-normed vector space}$.
+
+The p-norm gives us a notion of distance between functions in the space $\mathcal{L}^p(X)$. This allows us to start considering ideas of convergence. We look at sequences of functions $f_n$ so that $||f_n - f||_p \rightarrow 0$.  We look at such sequences in $\mathcal{L}^p(X)$ where we use the metric $d(f,g) \; \coloneqq ||f - g||_p$. However, we will formulate to make this metric a proper metric later on. 
+
+\begin{theorem}(Properties of the pseudo metric). The pseudo metric has similar properties to a metric. Defined on a vector space V, the properties of the pseudo metric are
+\begin{enumerate}[(i)]
+    \item $d(x,y) \in [0, \infty)$ for $x,y \in V$;
+    \item $d(x,y) + d(y,z) \geq d(x,z)$ for $x,y,z \in V$;
+    \item $d(x,y) = d(y,x)$ for $x,y \in V$;
+    \item $x = y$ implies that $d(x,y) = 0$ for $x,y \in V$.
+\end{enumerate}
+
+To turn this pseudo metric into a proper metric, we need to strengthen condition (iv) into $x = y$ if and only if $d(x,y) = 0$ for $x,y \in V$.
+\end{theorem}
+
+Fortunately, a pseudo metric is sufficient for convergene. 
+\begin{definition}(Convergence Sequences in $\mathcal{L}^p$). Let $f_n, f \in \mathcal{L}^p(X)$. 
+
+We say that $f_n \rightarrow f$ in $\mathcal{L}^p(X)$ if $||f_n - f||_p \rightarrow 0$ as $n \rightarrow \infty$;
+\end{definition}
+
+\begin{definition}(Cauchy Sequences in $\mathcal{L}^p$). Let $f_n, f \in \mathcal{L}^p(X)$. 
+
+ We say that $\{f_n\}$ is a $\textbf{Cauchy sequence}$ in $\mathcal{L}^p(X)$ if for every $\epsilon > 0$, there exists $n_0$ such that
+  $$
+  ||f_n - f_m||_p < \epsilon
+  $$
+  for all $m > n > n_0$.
+\end{definition}
+
+\begin{proposition}Every convergent sequence in $\mathcal{L}^p(X)$ is a Cauchy sequence.
+\end{proposition}
+
+\begin{proof}As $||f_n - f||_p \rightarrow 0$, there exists a $n_0 \in \mathbb{N}$ such that $||f_n - f||_p < \frac{\epsilon}{2}$ for all $n \geq n_0$. Using triangle inequality
+$$
+||f_n - f_m ||_p = ||(f_n - f) - (f_m - f)||_p \leq ||f_n - f|| + ||f_m - f||_p < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+$$
+for all $m > n > \epsilon$. 
+\end{proof}
+
+We would now like to show that $\mathcal{L}^p$ is $\textbf{complete}$, that is, every Cauchy sequence converges. So we want to upgrade our earlier statement to "Every sequence converges if and only if it is a Cauchy sequence". 
+
+First, we require that a Cauchy sequence is bounded, which then means it has a convergent subsequence, and hence the Cauchy sequence converges.
+
+\begin{lemma}Suppose that $\{f_n\}$ is a Cauchy sequence in $\mathcal{L}^p(X)$. If $\{f_{n_k}\}$ is a convergent subsequence with $f_{n_k} \rightarrow f$ in $\mathcal{L}^p(X)$, then $f_n \rightarrow f$ in $\mathcal{L}^p(X)$.
+\end{lemma}
+
+\begin{proof}
+For a Cauchy sequence, there exists $n_0 \in \mathbb{N}$ such that
+$$
+||f_n - f_m||_p < \frac{\epsilon}{2}
+$$
+for $m > n > n_0$. Since $f_{n_k} \rightarrow f$, there exists $\ell \in \mathbb{N}$, where we then define the rank $m \coloneqq k_{\ell}$ such that 
+$$
+||f_m - f||_p < \frac{\epsilon}{2}.
+$$
+
+Hence, by the triangle inequality and using the rank m for which the subsequence converges
+$$
+||f_n - f||_p = ||(f_n - f_m) + (f_m - f) \leq ||f_n - f_m||_p + ||f_m - f||_p  < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+$$
+for $m > n > n_0$. As the argument works for any $\epsilon > 0$, we conclude that $||f_n - f||_p \;\rightarrow 0$ as claimed.
+\end{proof}
+
+\begin{remark} Recall that the sequence converges to the same thing that the subsequence converges to.
+\end{remark}
+
+
+Now we look at the convergence of a sequence such that a certain series converges.
+
+\begin{proposition}Let $\{g_k\}$ be a sequence in $\mathcal{L}^p(X)$ such that the series
+$$
+\sum_{k=1}^{\infty}||g_k||_p < \infty.
+$$
+Then there exists a function $f \in \mathcal{L}^p(X)$ such that $f = \sum_{k=0}^{\infty}g_k$ converges pointwise almost everywhere and in $\mathcal{L}^p(X)$.
+\end{proposition}
+
+
+With all this, we can now finally show that every Cauchy sequence in $\mathcal{L}^p(X)$ converges.
+
+\begin{theorem}(Completeness of $\mathcal{L}^p$). Let $\{f_n\}$ be a Cauchy sequence in $\mathcal{L}^p(X)$. Then there exists a function $f \in \mathcal{L}^p(X)$ such that $f_n \rightarrow f$ in $\mathcal{L}^p(X)$. Moreoever, $\{f_n\}$ has a subsequence that converges almost everywhere.
+\end{theorem}
+
+\begin{proof} Since $\{f_n\}$ is a Cauchy sequence, for every $k \in \mathbb{N}$, there exists $m_k \in \mathbb{N}$ such that
+$$
+||f_n - f_m|| < \frac{1}{2^k}
+$$
+for all $m > n > m_k$. 
+
+We set $n_0 \coloneqq m_0$ and $m_1 \coloneqq 1 + max\{1,n_0\}$. Inductively, we set $n_{k+1} \coloneqq 1 + max\{k,n_k\}$. Then, we have that $n_k$ is strictly increasing and
+$$
+||f_{n_k} - f_{n_{k-1}}||_p < \frac{1}{2^{k-1}} .
+$$
+Here, we have chosen a specific subsequence, as we will soon see has useful properties.
+
+Hence, this series 
+$$
+\sum_{k=1}^{\infty}||f_{n_k} - f_{n_{k-1}}||_p < \sum_{k=1}^{\infty}\frac{1}{2^{k-1}} = 2
+$$
+converges.
+
+We set $g_k \coloneqq f_{n_k} - f_{n_{k-1}}$. We note that using a telescoping sum, 
+$$
+f_{n_m} = f_{n_0} + \sum_{k=1}^m(f_{n_k} - f_{n_{k-1}}) = f_{n_0} + \sum_{k=1}^mg_k.
+$$
+
+By the earlier proposition, there exists $f \in \mathcal{L}^p(X)$ such that $f_{n_m} \rightarrow f$ in $\mathcal{L}^p(X)$ as $m \rightarrow \infty$. Therefore, $\{f_n\}$ has a convergent subsequence. 
+
+By the earllier lemma, as the subsequence converges to f in $\mathcal{L}^p(X)$, then that means $f_n \rightarrow f$ in $\mathcal{L}^p(X)$.
+\end{proof}
+
+\begin{remark}Note that $f_n$ does not converge to f pointwise almost everywhere. We can only state the $\{f_n\}$ has a subsequence that is pointwise convergent.
+\end{remark}
+Hence, we have the important property of $\mathcal{L}^p(X)$ that 
+
+\begin{proposition}A sequence in $\mathcal{L}^p(X)$ is convergent if and only if it is a Cauchy sequence.
+\end{proposition}
+
+\lecture{18}{The $L^p$ spaces}
+\section{The $L^p$ spaces}
+\subsection{The $L^p$ spaces}
+The issue is that the $\mathcal{L}^p$-norm is not a proper norm since $||f||_p = 0$ does $\textbf{not}$ imply that f = 0 is the zero function. We can only conclude that f = 0 almost everywhere.
+
+So what we do is that if 2 functions are equal almost everywhere, we consider them equal. 
+
+We define an $\textbf{equivalence relation}$ on $(X, \mathcal{A}, \mu)$. For two measurable functions $f,g: X \rightarrow \mathbb{K}$, we say that
+$$
+f \sim g \text{ if f = g almost everywhere.}
+$$
+In other words, we could also say $f \sim g$ if f - g = 0 almost everywhere. This is an equivalence relation as
+
+\begin{enumerate}[(i)]
+    \item (Reflexivity) $f \sim f$ as f = f everywhere;
+    \item (Symmetry) $f \sim g$ implies $g \sim f$;
+    \item (Transitivity) $f \sim g$ and $g \sim h$ implies that $f \sim h$.
+\end{enumerate}
+
+We define the $\textbf{equivalence class}$ of f by
+$$
+[f] = \{g: X \rightarrow \mathbb{K}: \text{g is measurable and } f \sim g \text{ almost everywhere}\}.
+$$
+
+We then introduce a family of vector spaces of these equivalence classes.
+\begin{definition}($L^p$-space). For $1 \leq p < \infty$, we define
+$$
+L^p(X, \mathcal{A}, \mu, \mathbb{K}) \coloneqq \{[f]: f \in \mathcal{L}^p(X, \mathcal{A}, \mu, \mathbb{K})\}.
+$$
+We set 
+$$
+||\;[f]\;||_p \;\coloneqq\; ||f||_p.
+$$
+Similarly, we set
+$$
+[f] + [g] \;\coloneqq\; [f + g] \;\; and \;\; \alpha[f] \coloneqq [\alpha f]
+$$
+for all $[f], [g] \in L^p(X)$ and $\alpha \in \mathbb{K}$.
+\end{definition}
+
+\begin{remark}
+Therefore, the $L^p(X)$ space is just the set of equivalence classes for $\int_X|f|^p < \infty$ functions!
+
+Furthermore, the norm of the equivalence class is just the p-norm of the function f itself.
+
+It can be shown that the norm, addition, and multiplication by scalars are independent of the choice of function from the equivalence class. So whatever function $f_1$ we pick, the equivalence class generated would be the same if we picked another function $f_2$ from the same equivalence class. In particular, $[f_1 + g_1] = [f_2 + g_2]$, $[\alpha f_1] = [\alpha f_2]$, and $||f_1||_p = ||f_2||_p$. 
+\end{remark}
+
+We define the null space as
+$$
+\mathcal{N}(X) = \{g: X \rightarrow \mathbb{K}: \text{g is measurable and g = 0 almost everywhere.}\}
+$$
+which is a vector subspace of $\mathcal{L}_p(X)$.
+
+We then define the quotient space 
+$$
+L_p(X) = \mathcal{L}_p(X)/\mathcal{N}(X).
+$$
+
+\begin{remark}In practice, we write $f \in L^p(X)$ and call it an $L^p$-function rather than [f]. Generally, we just choose a representative from $\mathcal{L}^p(X)$.
+\end{remark}
+
+
+Now, if we had $f = 0 \in L^p(X)$, f is the equivalence class of functions which are zero almost everywhere.$||.||_p$ is a proper norm now as we have redefined it on a vector space where function that are equal almost everywhere are just considered to be the same function. Hence, the first property of the norm is now properly satisfied.
+
+We can also talk about Cauchy squences in $L^p(X)$ now, where we call $([f_n])$ a Cauchy sequence in $L^p(X)$ if there exists $f_n \in \mathcal{L}^p(X)$ such that $\{f_n\}$ is a Cauchy sequence in $\mathcal{L}^p(X)$. We know that such a sequence converges in $\mathcal{L}^p(X)$. From that, the sequence $\{f_n\}$ converges in $L^p(X)$. Therefore, we get the following theorem.
+
+We finally have a $\textbf{complete norm}$, that is, a p-norm that satisfies all the properties of a norm.
+
+\begin{theorem}For $1 \leq p < \infty$, the space $L^p(X)$ is a complete normed space with respect to the norm $||.||_p$.
+\end{theorem}
+
+\begin{remark} (a) A a complete normed vector space is called a $\textbf{Banach space}$, which the $L^p(X)$ space is a good example of. The $\mathcal{L}^p$ space is a $\textbf{pseudo-Banach space}$.
+
+(b) If we have that p=2, then the $L^2$-norm is induced by the inner product of equivalence class. A complete inner product space is called a $\textbf{Hilbert space}$. 
+\end{remark}
+
+\begin{definition}(Hilbert Space). A Hilbert space H is a real or complex inner product space that is also a complete metric space with respect to the distance function induced by the inner product.
+\end{definition}
+
+$\mathcal{L}^p$ is a Hilbert space if and only if $p = 2$.
+
+
+\begin{remark}This section looks at the differences between a normed vector space and an inner product space. An inner product space is a subspace of the normed vector space. We have norms that do not come from inner products, but all inner products have norms. All inner products give rise to a norm as $<x,x> = ||x||^2$, but there are some norms that do not arise from inner products. A norm is induced by an inner product if and only if the parallelogram law holds, which in this case, only holds for $||.||_2$. In other words, inner product spaces satisfies the parallelogram law. Hence, the normed vector space $L^p(X)$ only has an inner product if p = 2. So the $L^2(X)$ space is an example of a Hilbert space.
+\end{remark}
+
+
+
+\lecture{19}{Density Theorems}
+\section{Density Theorems}
+\subsection{Density Theorems}
+
+So far, we've defined integrals by approximation of simple function and used the monotone convergence theorem to help us. There is an alternative approach by using $\textbf{density theorems}$. We can use the fact that an arbitrary function in $L^p(X)$ can be approximated by a functions from some smaller class of functions such as continuous or smooth functions. 
+
+We revisit some stuff from analysis that we will need frequently.
+\begin{definition}(Closure of a set). The closure of a set A, denoted by $\bar{A}$ is defined as the $\textbf{smallest closed set}$ in $\mathbb{K}^N$ that $\textbf{contains}$ A. More precisely,
+$$
+\bar{A} = \cap\{F \subseteq \mathbb{K}^N: A \subseteq F\}.
+$$
+\end{definition}
+
+Hence, if $\bar{A} = A \leftrightarrow A$ is closed.
+
+\begin{definition}(Density). Given a metric space $(X, \rho)$, we say that a subset A of X is dense in X if for each $\epsilon > 0$ and $x \in X$, we have that
+$$
+B(x, \epsilon) \;\cap \; A \neq \emptyset.
+$$
+More succinctly, the closure of A = X.
+\end{definition}
+
+For this definition of dense, it says that for each x, a ball of $\textbf{any size}$ around x will intersect with the set A.
+
+So now, we will prove properties on $\textbf{dense subsets}$ of $L^p$ and then show it is true for all of $L^p$. (Recall that the closure of dense is the whole space).
+
+\begin{definition}(Dense). For every $f \in L^p(X)$, there exists a sequence $\{\phi_n\}$ of simple functions in $L^p(X)$ such that $\phi_n \rightarrow f$ in $L^p(X)$.
+\end{definition}
+
+We now approximate by simple functions.
+
+\begin{proposition}(Density of simple functions). If $1 \leq p < \infty$, then the set of subspace of simple functions
+$$
+\{\phi \in L^p(X): \phi \text{ is simple}\} = span\{1_A: A \in \mathcal{A}, \;\mu(A) < \infty\}
+$$
+is dense in $L^p(X)$.
+\end{proposition}
+
+\begin{proof}  We take an arbitrary function $f \in L^p(X)$, by the simple approximation lemma, there exists simple measurable functions $\phi_n$ such that
+$$
+\phi_n \rightarrow f \;\; pointwise
+$$
+$$
+|\phi_n| \leq |\phi_{n+1}| \leq ...
+$$
+
+If we take $f \in L^p(X)$, it does not make sense to talk about pointwise properties but here we did. What we did is that we took a representative from $L^p(X)$ and then discuss pointwise convergence.
+
+In particular, this increasing property means that $|\phi_n| \leq |f|$ for all $n \in \mathbb{N}$. Hence we have, 
+$$
+|\phi_n - f|^p \rightarrow 0 \;\; pointwise
+$$
+$$
+|\phi_n - f|^p \leq \big(|\phi_n| + |f| \big)^p \leq 2^{p-1}(|f|^p + |\phi_n|^p) \leq 2^p|f|^p
+$$
+for all $n \in \mathbb{N}$.
+
+By the dominated convergence theorem
+$$
+||\phi_n - f||_p = \big(\int_X|\phi_n - f|^pd\mu\big)^{1/p} \rightarrow 0
+$$
+as $n \rightarrow \infty$.
+
+Also, $|\phi_n|^p \leq |f|^p$ so then $||\phi_n||_p \leq ||f||_p$, so $\phi_n \in L^p(X)$.
+\end{proof}
+
+What we mean here is that the equivalence class of a simple function is dense in $L^p(X)$. By dense, we mean that the closure is the whole space. So now matter which function f we pick, there is a simple function near it. In particular, by dense, we mean, for every $f \in L^p(X)$, there exists a sequence $(\phi_n)$ of simple functions in $L^p(X)$ so that $\phi_n \rightarrow f$ in $L^p(X)$,
+
+Hence, we can approximate every $f \in \mathcal{L}^p(X)$ arbitrarily closely by a sequence of simple functions in $L^p(X)$.
+
+\bigskip
+
+We now restrict ourselves to the case of $X = \mathbb{R}^N$ and $\mu = m_N$ to be the Lebesgue measure.
+
+\begin{definition}(Support). Let $f: \mathbb{R}^N \rightarrow \mathbb{K}$ be a function. We call the set
+$$
+supp(f) \; \coloneqq \; \overline{\{x \in \mathbb{R}^N: f(x) \neq 0\}}
+$$
+the support of f. If supp(f) is compact, we say that f has a compact support.
+\end{definition}
+
+\begin{remark} The support of f is the closure of the set where f is non-zero and hence it is always closed. If the set is also bounded, it is compact because in $\mathbb{R}^N$, being compact is equivalent to closed and bounded.
+\end{remark}
+
+We now extend on our earlier proposition of the density of simple functions to simple functions with a bounded support are dense.
+\begin{corollary} If $1 \leq p < \infty$, then 
+$$
+\{\phi \in L^p(\mathbb{R}^N): \phi \text{ is simple and has bounded support}\}
+$$
+is dense in $L^p(\mathbb{R}^N)$.
+\end{corollary}
+
+\begin{definition}(Span). For a vector space V and W as a subset of V, we define the span of U by
+$$
+span(U) \coloneqq \{\sum_{i=1}^n\lambda_iu_i: u_i \in U, \lambda_i \in \mathbb{K}\}.
+$$
+\end{definition}
+
+This is the set of all linear combinations of elements in W. We also recall that the measure for this is finite or else it would not be in $L^p$. Recall that linear combinations are always finite sums.
+
+We formulate above density results by saying that the span of indicator functions is a dense subset of $L^p(X)$. This is because simple functions are linear combinations of indicator functions.
+
+$$
+\{\phi \in L^p(X): \phi \text{ is simple}\} = span\{1_A: \text{A is measurable and } \mu(A) < \infty\}
+$$
+is dense in $L^p(X)$. If the measure is not finite, then it would not be in $L^p(X)$. 
+
+
+Looking at all the sets in $\mathcal{A}$ may be too big and inconvenient, so we restrict it. In the specific case of $L^p(\mathbb{R}^N)$, we have
+$$
+span\{1_A: A\subseteq \mathbb{R}^N \text{ is measurable and bounded}\}
+$$
+is dense in $L^p(\mathbb{R}^N)$. The Lebesgue measure is always defined on $\mathbb{R}^N$ unless specified otherwise. The proof is similar as before except we replace $\phi_n$ by $\phi_n1_{B(0,n)}$. So if we fix a point, as $\phi_n$ goes to f, then this also goes to f.
+
+The span of indicator functions on open sets is also dense in $L^p$. Using the definition of the Lebesgue measure involving coverings by rectangles, we can show that the span of indicator functions of rectangles are dense in $L^p(\mathbb{R}^N)$. Furthermore, we can replace rectangles by dyadic cubes. Once we have dydadic cubes, we can use the span of indicator functions of bounded open sets from dyadic decomposition or the outer regularity of the Lebesgue measure.
+
+\subsection{The space $L^{\infty}$}
+
+The issue with this space is that we need a norm that works with such a space.
+
+If $X = \{a_1,a_2,...,a_n\}$ is a finite set and $\mu$ is the counting measure, then for $1 \leq p < \infty$, we have for the p-norm
+$$
+||f||_p = \big(\int_X|f|^pd\mu\big)^{1/p} = \big(\sum_{k=1}^n|f(a_k)|^p\big)^{1/p}
+$$
+where we can just take the summation as it is the counting measure. We want to see the limit as $p \rightarrow \infty$.
+
+To do so, we look at the maximum. Let $m \coloneqq \max_{k=1,2,..,n}|f(a_k)|$. 
+$$
+m = (m^p)^{1/p} \leq \big(\sum_{k=1}^n|f(a_k)|^p\big)^{1/p} \leq (nm^p)^{1/p} = n^{1/p}m \rightarrow 1.m = m
+$$
+where from analysis, $n^{1/p}m \rightarrow 1$ as $p \rightarrow \infty$. The first inequality comes from the fact that the norm of the maximum will be less than the norm of the sum. The second inequality comes from the fact that the norm of the sum will be less than the norm of the maximum scaled by the number of elements n. Hence by squeeze law, $$\big(\sum_{k=1}^n|f(a_k)|^p\big)^{1/p} \rightarrow m = \max_{k=1,...,n}|f(a_k)|.$$ So by letting $p \rightarrow \infty$, we see that the p-norm is simply the maximum of the terms. 
+
+Hence,
+$$
+\Lim{p \rightarrow \infty}||f||_p = \max_{a \in X}|f(x)| = ||f||_{\infty}
+$$
+which is the supremum norm. The reason we have $\infty$ in subscript is that it is limit of the p-norm as $p \rightarrow \infty$.
+
+\begin{definition}(Supremum norm).
+We define the $\textbf{supremum norm}$ as
+$$
+||f||_{\infty} \; \coloneqq \sup_{x \in X}|f(x)|.
+$$
+\end{definition}
+
+
+In general, we expect that
+$$
+\Lim{p \rightarrow \infty}||f||_p = \sup_{x \in X}|f(x)| = ||f||_{\infty}.
+$$
+
+An issue is that $\sup_{x \in X}|f(x)|$ is sensitive to changes on sets of measure zero whilst $\Lim{p \rightarrow \infty}||f||_p$ is not. Modifying sets of measure 0 can make the supremum arbitrary large. Hence, we define a new notion of supremum which ignores sets of measure 0 and hence it is more robust.
+
+\bigskip
+
+Let $f: X \rightarrow \mathbb{R}$ be a real valued function defined on a set X.
+\begin{definition}(Upper Bound for functions). A real number a is called an upper bound for f if $f(x) \leq a$ for all $x \in X$. In other words, 
+$$
+f^{-1}(a, \infty) = \{x \in X: f(x) > a\}
+$$
+is empty. That is, there is no preimage x of f, such that $f(x) > a$.
+\end{definition}
+
+We now let $U_f$ be the set of upper bounds of f. Then, the supremum of the function f is defined by 
+$$
+sup\;f = inf\;U_f
+$$
+if the set of upper bounds $U_f$ is nonempty, and $sup = \infty$ otherwise.
+
+ Now working on a measure space with measurable function f, we say that a number a is called an $\textbf{essential upper bound}$ of f if the measurable set $f^{-1}(a, \infty)$ is a set of measurable zero. In other words $f(x) \leq a$ for almost all $x \in X$ (so f(x) can be greater than a if x if only it is in a set of measure 0). We now let
+$$
+U_f^{ess} = \{a \in \mathbb{R}: \mu(f^{-1}(a, \infty)) = 0\}
+$$
+Then, the $\textbf{essential supremum}$ of the function f is defined in a similar manner where we say
+$$
+ess-sup\;f = inf\;U_f^{ess}
+$$
+if the set of upper bounds $U_f^{ess}$ is nonempty, and $ess-sup = \infty$ otherwise. From this, we can now state it more concisely.
+
+
+\begin{definition}(Essential Supremum). Let $(X, \mathcal{A}, \mu)$ be a measure space and $f: X \rightarrow \mathbb{R}$ be measurable. We call the quantity
+$$
+ess-\sup_{x \in X}|f(x)| = inf\{\alpha \in \mathbb{R}: \mu\big(\{x \in X: f(x) > \alpha\}\big) = 0\}
+$$
+the $\textbf{essential supremum}$ of f over X with respect to the measure $\mu$. 
+
+\end{definition}
+
+\begin{definition}(Essential Supremum Norm). For $f: X \rightarrow \mathbb{K}$, we define the \text{essential supremum norm} by
+$$
+||f||_{\infty} \; \coloneqq \; ess-\sup_{x \in X}|f(x)|.
+$$
+\end{definition}
+
+Here, note that the p-norm where $p = \infty$ is simply taking the essential supremum over the modulus of the function.
+
+\begin{definition}(Space of essentially bounded functions). We let $$\mathcal{L}^{\infty}(X, \mathcal{A}, \mu, \mathbb{K}) \coloneqq \{f: X \rightarrow \mathbb{K}: \text{f is measurable and } ||f||_{\infty} < \infty\}$$ be the space of (essentially) bounded functions.
+\end{definition}
+
+As before, we then turn $||.||_{\infty}$ into a proper norm by
+$$
+L^{\infty}(X) = \frac{\mathcal{L}^{\infty}}{\mathcal{X}}
+$$
+as we consider functions that are equal a.e. to now be equal.
+
+Note that the essential supremum depends on the measure. Hence, we must always specify the measure we are working with. If we are working on $\mathbb{R}^N$, we can assume the Lebesgue measure.
+
+\begin{proposition}(Properties of the essential-supremum). Let $f: X \rightarrow \mathbb{R}$ be measurable. 
+
+Then, $m = ess-\sup_{x \in X}f(x)$ if and only if
+
+(i) $\mu\big(\{x \in X: f(x) > m\}\big) = 0$ and 
+
+(ii) $\mu\big(\{x \in X: f(x) > m - \epsilon\}\big) > 0$ for all $\epsilon > 0$.
+\end{proposition}
+
+\begin{proof}
+(ii) First, we let $A = \{x \in X: f(x) > m\} = \bigcup_{n \in \mathbb{N}}A_n$ where 
+$$
+A_n \coloneqq \{x \in X: f(x) > m + \frac{1}{n}\}.
+$$
+These are the set of preimages that are greater than the infimum and hence has a measure of 0. The countable union of sets with measure zero will have a measure zero $\bigcup_{n \in \mathbb{N}}A_n$ as $\mu(A) = 0$ if and only if $\mu(A_n) = 0$ for all $n \in \mathbb{N}$, which is the case here. From the definition of the essential-supremum, $m \geq ess-\sup_{x \in X}|f(x)|$ if and only if $\mu(A) = 0$.
+
+(ii) This is true by the definition of the infimum in the essential-supremum. (ii) is only satisfied if and only if $m \leq ess-sup_{x \in X}|f(x)|$.
+\end{proof}
+
+\begin{proposition}(Properties of the essential-supremum with regards to sets of measure 0). Let $f: X \rightarrow \mathbb{R}$ be measurable. 
+
+Then, set $m = ess-\sup_{x \in X}f(x)$ and let $N \in \mathcal{A}$ be a set with measure 0 and 
+$$
+\{x \in X: f(x) > m\} \subseteq N.
+$$
+
+Then
+
+(i) $ess-\sup_{x \in X}f(x) = \sup_{x \in X/N}f(x)$ (Pointwise supremum);
+
+(i) $ess-\sup_{x \in X}f(x) \leq \sup_{x \in X}f(x)$.
+\end{proposition}
+
+\begin{proposition}(Properties of the essential-supremum on functions). Let $f_1, f_2: X \rightarrow \mathbb{R}$ be measurable and bounded functions such that $f_1 = f_2$ almost everywhere. Then,  
+
+$$
+ess-\sup_{x \in X}f_1(x) = ess-\sup_{x \in X}f_2(x).
+$$
+\end{proposition}
+
+\begin{proof}(Sketch). We define $N \coloneqq N_1 \cup N_2 \cup \{f_1(x) \neq f_2(x)\}$.
+
+Then, it follows as $f_1(x) = f_2(x)$ for all $x \in X/N$ as $ess-\sup_{x \in X}f(x) = \sup_{x \in X/N}f(x)$.
+\end{proof}
+
+\begin{proposition}(Properties of the essential-supremum on Lebesgue Measure). Suppose $U \subseteq \mathbb{R}^N$ is open with $\mu$ as the Lebesgue measure. If $f: U \rightarrow \mathbb{R}$ is continuous, then
+$$
+ess-\sup_{x \in U}f(x) = \sup_{x \in U}f(x).
+$$
+\end{proposition}
+
+\begin{proposition}(Essential Supremum Norm). The essential supremum norm on $\mathcal{L}^{\infty}$ is a $\textbf{pseudo-norm}$ due to the relaxed property of $||f||_{\infty} \leq 0$ with equality if and only if $f(x) = 0$ for almost all $x \in X$.
+\end{proposition}
+
+\begin{remark}However, by removing sets of measure 0, then the essential-supremum norm is a proper norm.
+\end{remark}
+
+\begin{theorem}(Completeness of $\mathcal{L}^{\infty}$). Let $\{f_n\}$ be a Cauchy sequence in $\mathcal{L}^{\infty}(X)$. Then there exists $f \in \mathcal{L}^{\infty}(X)$ such that $f_n \rightarrow f$ in $\mathcal{L}^{\infty}(X)$. In other words, $||f_n - f||_{\infty} \rightarrow 0$ as $n \rightarrow \infty$. Moreover, there exists a set N of zero measure such that $f_n \rightarrow f$ uniformly on $X / N$.
+\end{theorem}
+
+Uniform convergence also implies pointwise convergence, as we now have uniform convergence once we remove sets of measure 0.
+
+\bigskip
+
+We now let [f] be the equivalence class of all functions equal to f almost everywhere. We define 
+$$
+L^{\infty}(X,\mathcal{A},\mu,\mathbb{K}) \coloneqq \{[f]: f\in \mathcal{L}^{\infty}(X, \mathcal{A}, \mu, \mathbb{K})\}
+$$
+
+
+\begin{theorem}The space $L^{\infty}(X)$ is a complete normed space with respect to the norm $||.||_{\infty}$ (essential-supremum norm).
+\end{theorem}
+
+
+\bigskip
+
+Just to introduce some further terminology.
+
+\begin{definition}(Sequence Space). A sequence space is a $\textbf{vector space}$ whose elements are infinite sequences of real or complex numbers. We denote the vectors as $\{x_n\}_{n \in \mathbb{N}}$ for $x_n \in \mathbb{K}$. Note that each element in the vector is a number in $\mathbb{K}$, but the entire vector itself is in $\mathbb{K}^N$.
+\end{definition}
+
+\begin{definition}(Function Space).
+A function space is a $\textbf{vector space}$ whose elements are a set of functions between two fixed sets. Often, the domain and/or codomain will have additional structure which is inherited by the function space.
+\end{definition}
+
+Hence, $\mathcal{L}^{\infty}$ is a sequence space, where its elements are bounded sequences. $\mathcal{L}^{\infty}$ is a $\textbf{Banach space}$.
+
+Furthermore, $L^{\infty}$ is a function space, where its elements are $\textit{essentially bounded measurable functions}$. 
+
+
+\lecture{20}{Fubini's and Tonelli's Theorem}
+\section{Tonelli's Theorem}
+\subsection{Tonelli's Theorem}
+We are now interested in looking at taking Lebesgue integrals over $\mathbb{R}^2$. First, we recall some things.
+
+\begin{definition}(Bounded Functions). A function is bounded on a set X if there exists $m \in \mathbb{R}$ such that
+$$
+|f(x)| \leq M
+$$
+for all $x \in X$.
+\end{definition}
+
+
+\begin{proposition}(Criterion for Lebesgue Integrability). Let f be a bounded function on a set of finite measure E. 
+\begin{center}
+  f is Lebesgue integrable on E if and only if f is measurable.
+\end{center}
+
+In particular, f is Lebesgue integrable if f is measurable and $\int|f(x)|d\mu(x) < \infty$.
+\end{proposition}
+
+\bigskip
+Now, to evaluate the integral of a function $f \in L^1(\mathbb{R}^2)$, we look at
+$$
+\int_{\mathbb{R}^2}f(x,y)dm_2.
+$$
+In particular, we evaluate the iterated integrals of 
+$$
+\int_{\mathbb{R}}\big(\int_{\mathbb{R}}f(x,y)dx\big)dy = \int_{\mathbb{R}}\big(\int_{\mathbb{R}}f(x,y)dy\big)dx.
+$$
+
+We need 2 conditions for the above statement to make sense. 
+
+\begin{enumerate}[(i)]
+  \item (Inner Integral) $x \rightarrow f(x,y)$ needs to be measurable for all $y \in \mathbb{R}$;
+  \item (Outer Integral) $y \rightarrow \int_{\mathbb{R}}f(x,y)dx$ needs to be measurable for all $y \in \mathbb{R}$.
+\end{enumerate}
+
+Recall that if we fix y, if the function if measurable, then it is integrable. Note that condition (ii) for outer integral is an integral with a parameter with respect to y.
+
+The issue is that condition (i) is not true for all $x \in \mathbb{R}$ and hence (ii) will not make sense. Fixing y does not mean that the function of is also measurable. Generally, $f: \mathbb{R}^2 \rightarrow \mathbb{R}$ is generally not measurable. However, it is measurable for almost all y! Furthermore, (ii) is not defined on all y but fortunately, integrals do not see sets of measure 0 and hence we can set the function f to 0 for these sets. In fact, this is equivalent to taking the integral of the original function.
+
+Recall from earlier in the course, we look at the MCT and DCT. We have 2 cases where if we had non-negative functions, we could use the MCT without any other assumptions on the functions as $\infty + \infty$ is defined. However, for general functions, we could have $\infty - \infty$ which is not defined. Hence, we need to restrict it to cases of integrable functions and then we could apply the DCT. 
+
+Likewise, we have 2 theorems for taking iterated integrals, one for non-negative functions, which does not require the functions to be integrable, and another theorem for general functions but we now require the functions to be integrable. 
+
+\begin{theorem}(Tonelli). Let $f: \mathbb{R}^n \times \mathbb{R}^m \rightarrow [0, \infty]$ be measurable as a function on $\mathbb{R}^{nxm}$. Then there exists sets $N \subseteq \mathbb{R}^n$ and $M \subseteq \mathbb{R}^m$ of measure zero such that
+\begin{enumerate}[(i)]
+  \item $y \rightarrow f(x,y)$ is measurable as a function on $\mathbb{R}^m$ for all $x \in \mathbb{R}^n/N$;
+  \item $x \rightarrow f(x,y)$ is measurable as a function on $\mathbb{R}^n$ for all $y \in \mathbb{R}^m/M$.
+\end{enumerate}
+
+If we modify f on the set $N \times M$ of measure zero by setting $f(x,y) \coloneqq 0$ for all $x \in N$ and all $y \in M$, then
+\begin{enumerate}[(i)]
+  \item $y \rightarrow \int_{\mathbb{R}^n}f(x,y)dx$ is measurable as a function on $\mathbb{R}^m$;
+  \item $x \rightarrow \int_{\mathbb{R}^m}f(x,y)dy$ is measurable as a function on $\mathbb{R}^n$.
+\end{enumerate}
+
+Finally,
+$$
+\int_{\mathbb{R}^{n x m}}f(x,y)d(x,y) = \int_{\mathbb{R}^m}\big(\int_{\mathbb{R}^{n}}f(x,y)dx\big)dy = \int_{\mathbb{R}^n}\big(\int_{\mathbb{R}^{m}}f(x,y)dy\big)dx.
+$$
+\end{theorem}
+
+In Tonelli's theorem, we do not assume f to be integrable. The identity asserts that either all three expressions are finite and equal OR they are all infinite and therefore also equal. 
+
+We now look at only finite cases and remove the restriction that $f(x,y)$ is non-negative. We have 3 different forms of integrability conditions where we substitue the assumption of non-negativity earlier with this. 
+
+\begin{theorem}(Fubini). Let $f: \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{K}$ be measurable as a function on $\mathbb{R}^{nxm}$. We then assume that $\textbf{one}$ of the integrals are finite
+
+$$
+\int_{\mathbb{R}^{n x m}}|f(x,y)|d(x,y) = \int_{\mathbb{R}^m}\big(\int_{\mathbb{R}^{n}}|f(x,y)|dx\big)dy = \int_{\mathbb{R}^n}\big(\int_{\mathbb{R}^{m}}|f(x,y)|dy\big)dx.
+$$
+
+Then there exists sets $N \subseteq \mathbb{R}^n$ and $M \subseteq \mathbb{R}^m$ of measure zero such that
+
+\begin{enumerate}[(i)]
+  \item $y \rightarrow f(x,y)$ is measurable as a function on $\mathbb{R}^m$ for all $x \in \mathbb{R}^n/N$;
+  \item $x \rightarrow f(x,y)$ is measurable as a function on $\mathbb{R}^n$ for all $y \in \mathbb{R}^m/M$.
+\end{enumerate}
+
+If we modify f on the set $N \times M$ of measure zero by setting $f(x,y) \coloneqq 0$ for all $x \in N$ and all $y \in M$, then
+\begin{enumerate}[(i)]
+  \item $y \rightarrow \int_{\mathbb{R}^n}f(x,y)dx$ is measurable as a function on $\mathbb{R}^m$;
+  \item $x \rightarrow \int_{\mathbb{R}^m}f(x,y)dy$ is measurable as a function on $\mathbb{R}^n$;
+\end{enumerate}
+
+Finally,
+$$
+\int_{\mathbb{R}^{n x m}}f(x,y)d(x,y) = \int_{\mathbb{R}^m}\big(\int_{\mathbb{R}^{n}}f(x,y)dx\big)dy = \int_{\mathbb{R}^n}\big(\int_{\mathbb{R}^{m}}f(x,y)dy\big)dx.
+$$
+\end{theorem}
+
+Taking $\int|f|$ is well defined as taking the modulus of a function gives us a non-negative function, where we can use Tonelli's theorem. Tonelli's theorem tells us the 3 integrability condition are the same. 
+
+Fubini and Tonelli's theorem applies to any product measure.
+
+\begin{remark}Note that in probability theory, Tonelli's theorem always holds as PDFs are always non-negative.
+\end{remark}
+
+
+\lecture{21}{Translation of a function}
+\section{Translation of a function}
+\section{Convolution and Approximations}
+\subsection{Translation of a function}
+
+Let $f: \mathbb{R}^N \rightarrow \mathbb{K}$ and fix a vector $t \in \mathbb{R}^N$ fixed.
+
+\begin{definition}(Translation Operator). We define the translation operator $\tau_t$
+$$
+\tau_tf(x) \coloneqq f(x - t).
+$$
+\end{definition}
+
+\begin{remark}The translation operator $\tau_t$ is both
+
+(1) Linear. $\tau_t(\lambda f + \mu g) = \lambda \tau_1 f + \mu \tau_1 g$.
+
+(2) Translation invariant of p-norm with respect to Lebesgue measure. $||\tau_1f||_p = ||f||_p$.
+\end{remark}
+
+\begin{theorem}(Continuity of translation on $L^p(\mathbb{R}^N)$). Let $1 \leq p < \infty$ and $f \in L^p(\mathbb{R}^N)$. Then
+$$
+\Lim{t \rightarrow 0}||\tau_tf - f||_p = 0.
+$$
+\end{theorem}
+
+\begin{proposition}(Measurability of translations). Let $f: \mathbb{R}^N \rightarrow \mathbb{K}$ be measurable. Then the following functions are measurable as functions on $\mathbb{R}^N \times \mathbb{R}^N$.
+
+\begin{enumerate}[(i)]
+  \item $F_1(x,y) \coloneqq f(x);$
+  \item $F_2(x,y) \coloneqq f(y-x).$
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}(Sketch).
+
+(i) $f^{-1}[U] X \mathbb{R}^N$ is measurable.
+
+(ii) Let $F_2 \coloneqq F_1 \circ T$, where $T(x,y) = (y-x,y)$. Then recall that Linear transformation under Lebesgue measure is measurable.
+\end{proof}
+
+From this, if we look at $(x,t) \rightarrow \tau_1f(x) = f(x-t)$ as a function of $(x,t) \in \mathbb{R}^N X \mathbb{R}^N$, then this translation operator is measurable.
+
+\lecture{22}{Convex functions and Jensen's Inequality}
+\section{Convex Functions and Jensen's Inequality}
+\subsection{Convex Functions}
+\begin{definition}(Convex Function). We call a function $\phi: (a,b) \rightarrow \mathbb{R}$ convex if
+$$
+\phi(\lambda s + (1 - \lambda)t) \leq \lambda \phi(s) + (1 - \lambda)\phi(t)
+$$
+for all $s,t \in (a,b)$ and all $\lambda \in (0,1).$
+\end{definition}
+
+We introduce some properties on convex functions.
+
+\begin{proposition}The function $\phi: (a,b) \rightarrow \mathbb{R}$ is convex if and only if 
+$$
+\frac{\phi(t) - \phi(s)}{t - s} \leq \frac{\phi(u) - \phi(t)}{u - t}
+$$
+whenever $a < s < t < u < b$.
+\end{proposition}
+
+\begin{proposition}(Subtangent). If $\phi: (a,b) \rightarrow \mathbb{R}$ is convex, then for every $t \in (a,b)$, there exists $m \in \mathbb{R}$ such that
+$$
+\phi(t) \leq \phi(t) + m(s-t) \leq \phi(s)
+$$
+for all $s \in (a,b)$.
+\end{proposition}
+
+\begin{remark}This property asserts that through every point of the graph of a convex function, there is a line below the graph known as the $\textbf{subtangent}$. For a $\textbf{smooth}$ convex function, the graph lies above the tangent at every point.
+\end{remark}
+
+\begin{proposition}Every convex function is continuous.
+\end{proposition}
+
+\begin{theorem}(Jensen's Inequality). Let $(X,\mathcal{A},\mu)$ be a probability space (that is, $\mu$ is a measure with $\mu(X) = 1$). If $\phi: (a,b) \rightarrow \mathbb{R}$ is convex and $f: X \rightarrow (a,b)$ measurable, then
+$$
+\phi\big(\int_Xfd\mu\big) \leq \int_X\phi \circ f d\mu.
+$$
+\end{theorem}
+
+\begin{proof} Since $\phi$ depends on [a,b], we have that $a < f < b$ and $\mu(X) = 1$. We have that
+$$
+a < \int_Xfd\mu < b.
+$$
+
+Now, applying the subtangent property of convex functions by letting $t \coloneqq \int_Xfd\mu$ and $s \coloneqq f(\tau)$. Recall that we have that
+$$
+\phi(t) \leq \phi(t) + m(s-t) \leq \phi(s)
+$$
+now become
+$$
+\phi\big(\int_Xfd\mu\big) + m\big(f(\tau) - \int_Xfd\mu\big) \leq \phi(f(\tau))
+$$
+for all $\tau \in (a,b)$. 
+
+$\phi$ is continuous as it is convex and if measurable, hence $\phi \circ f$ is measurable. We integrate this inequality and use the fact that $\mu(X) = 1$.
+
+$$
+\mu(X)\phi\big(\int_Xfd\mu\big) + m\big(\int_Xfd\mu - \mu(X)\int_Xfd\mu\big) \leq \phi \circ f d\mu
+$$
+$$
+\phi\big(\int_Xfd\mu\big) + m\big(0 - 0) \leq \phi \circ f d\mu
+$$
+$$
+\phi\big(\int_Xfd\mu\big) \leq \phi \circ f d\mu.
+$$
+\end{proof}
+
+\begin{remark}What Jensen's inequality says is that applying a convex function to the average gives a smaller result than averaging the convex function itself.
+\end{remark}
+
+We can apply Jensen's inequality for arbitrary measure spaces. However, we need to normalise our measure before we can apply Jensen's inequality.
+
+\begin{corollary}Let $(X, \mathcal{A}, \mu)$ be an arbitrary measure space. Let $1 \leq p < \infty$, $g \in L^1(X)$ and $f: X \rightarrow \mathbb{K}$ be measurable. Then,
+$$
+\big(\int_X|fg|d\mu\big)^p \leq ||g||_1^{p-1}\int_X|f|^p|g|d\mu.
+$$
+\end{corollary}
+
+\begin{proof} First, we normalise the measure so that for any $A \in \mathcal{A}$, we define 
+$$
+\textit{v}(A) \coloneqq \frac{1}{||g||_1}\int_A|g|d\mu.
+$$
+
+Now, we have the convex function of raising the power to p, $t \rightarrow t^p$, which from Jensen's inequality says that
+$$
+\big(\int_X|f|d \textit{v}\big)^p \leq \int_X|f|^pd\textit{v}.
+$$
+where $\phi = (f)^p$. Furthermore, note that we have defined the integral in terms of our newly construct measure $\textit{v}$.
+
+From this, we have that $(X, \mathcal{A}, \textit{v})$ is a probability space. Hence, going back to our proof for Jensen's inequality
+$$
+\mu(X)\phi\big(\int_Xfd\mu\big) + m\big(\int_Xfd\mu - \mu(X)\int_Xfd\mu\big) \leq \phi \circ f d\mu
+$$
+Applying what we have constructed
+$$
+\big(\frac{1}{||g||_1}\int_X|fg|d\mu\big)^p \leq \frac{1}{||g||_1} \int_X |f|^p|g| d\mu.
+$$
+$$
+= \frac{1}{||g||_1^p}\big(\int_X|fg|d\mu\big)^p \leq \frac{1}{||g||_1} \int_X |f|^p|g| d\mu.
+$$
+We have that
+$$
+\big(\int_X|fg|d\mu\big)^p \leq ||g||_1^{p-1}\int_X|f|^p|g|d\mu.
+$$
+\end{proof}
+
+\subsection{Convolution}
+Convolution is a kind of multiplication of two functions on $\mathbb{R}^N$. It is akin to a smoothing operator, which averages a function out. It takes an average around the point x.
+
+\begin{definition}(Convolution). Let $f,g: \mathbb{R}^N \rightarrow \mathbb{K}$ be measurable functions. For $x \in \mathbb{R}^N$, we define
+$$
+(f * g)(x) \coloneqq \int_{\mathbb{R}^N}f(x - y)g(y)dy
+$$
+whenever the integral exists. We call $f * g$ the convolution of f and g.
+\end{definition}
+
+
+\begin{proposition}
+The convolution operator is commutative, that is $$(f * g)(x) = (g * f)(x)$$.
+\end{proposition}
+\begin{proof}
+We use the translation invariance of integrals on $\mathbb{R}^N$ and substitution of z = x-y.
+
+$$
+(f * g)(x) = \int_{\mathbb{R}^N}f(x-y)g(y)dy = \int_{\mathbb{R}^N}-f(z)g(x-z)dz
+$$
+$$
+\int_{\mathbb{R}^N}-g(x-z)f(z)dz = \int_{\mathbb{R}^N}g(x-z)f(z)dz = g*f(x).
+$$
+\end{proof}
+
+\begin{theorem}(Young's Inequality). Let $1 \leq p \leq \infty$. If $f \in L^p(\mathbb{R}^N)$ and $g \in L^1(\mathbb{R}^N)$, then $$(f * g) \in L^p(\mathbb{R}^N)$$ and
+$$
+||f * g||_p \leq ||f||_p\;||g||_1.
+$$
+\end{theorem}
+
+\begin{theorem}Let $1 \leq p,q \leq \infty$ such that $1/p + 1/q = 1$. If $f \in L^p(\mathbb{R}^N)$ and $g \in L^q(\mathbb{R}^N)$, then 
+
+\begin{enumerate}
+\item $(f * g)$ in the space of bounded continuous function $BC(\mathbb{R}^N)$;
+
+\item $||f * g||_{\infty} \leq ||f||_p\;||g||_q.$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof} Use Hölder's inequality and substitution of z = x-y.
+\end{proof}
+
+Hence, the convolution of $f*g$ can be continuous even if f and g are not, hence, the convolution of two functions are usually smoother than the original functions.
+
+We can now define multiplication on $L^1(\mathbb{R}^N)$ as a convolution. However, there is no identity, that is, a function $g \in L^1(\mathbb{R}^N)$ such that $f*g = f$ for all $f \in L^1(\mathbb{R}^N)$. Remember that $L^1$ is a vector space, but what we just described is multiplication between vectors, which does not necessarily require an identity element. So in the next section, we introduce there is $\textbf{almost}$ such an identity.
+
+\lecture{23}{Approximate Identities}
+\section{Approximate Identities}
+\subsection{Approximate Identities}
+
+Approximate identities helps us approximates dirac delta functions. Let $\phi \rightarrow [0,\infty)$ be measurable such that
+$$
+\int_{\mathbb{R}^N}\phi dx = 1.
+$$
+We then form the sequence
+$$
+\phi_{\epsilon}(x) \coloneqq \frac{1}{\epsilon^N}\phi(\frac{x}{\epsilon}).
+$$
+Recall the translation formula that $\int_{im\;T}fdx = |det \;T|\int_{\mathbb{R}^N}f \circ Tdx$. We apply this to the linear map $x \rightarrow nx$, we get
+$$
+\int_{\mathbb{R}^N}\phi_{\epsilon}dx = 1
+$$
+for all $n \in \mathbb{N}$. Here, the matrix is $\frac{1}{\epsilon}I^N$, so the determinent is just the diagonal of the matrix and hence the $\frac{1}{\epsilon^N}$ when applying the linear transformation of Lebesgue integrals.
+
+We look at a quick intuition on why this is useful. Fix $x \in \mathbb{R}^N$ and consider $f(x-y)\phi_{\epsilon}(y)$. We have $f(x-y)\phi_{\epsilon}(y) \approx f(x)\phi_{\epsilon}(y)$ as $\phi_{\epsilon}$ concentrates near zero for a large n. Here, we have that
+$$
+(f * \phi_{\epsilon})(x) = \int_{\mathbb{R}^N}f(x-y)\phi_{\epsilon}(y)dy \approx \int_{\mathbb{R}^N}f(x)\phi_{\epsilon}(y)dy
+$$
+$$
+=f(x)\int_{\mathbb{R}^N}\phi_{\epsilon}(y)dy = f(x)(1) = 1.
+$$
+Hence, this motivates the following definition.
+
+\begin{definition}(Approximate Identity). Let $\phi: \mathbb{R}^N \rightarrow [0,\infty)$ be measurable with
+$$
+\int_{\mathbb{R}^N}\phi dx = 1
+$$
+and set $\phi_{\epsilon}(x) \coloneqq \frac{1}{\epsilon^N}\phi(\frac{x}{\epsilon})$ for all $x \in \mathbb{R}^N$ and all $n \in \mathbb{N}$. Then the family $\{\phi_{\epsilon}\}_{\epsilon > 0}$ is called an approximate identity.
+\end{definition}
+
+We now have something similar to the identity element, whereby taking the convolution between a function and the identity element gives us something similar to the function. This is useful in many cases such as the heat equation, where the convolution will get us back to the initial state of the system.
+
+\begin{theorem}(First Approximation Theorem). Let $\{\phi_n\}$ be an approximate identity and $1 \leq p < \infty$. Then for all $f \in L^p(\mathbb{R}^N)$, we have that 
+
+\begin{enumerate}
+\item $f * \phi \in L^p(\mathbb{R}^N)$;
+
+\item We have that the convolution $$
+f * \phi_{\epsilon} \rightarrow f
+$$
+in $L^p(\mathbb{R}^N$) as $n \rightarrow \infty$.
+\end{enumerate}
+\end{theorem}
+
+What's the significance of this? In the space $L^1(\mathbb{R})$, for functions f and g in this space, we have closure under the operation of convolution of functions $f*g \in L^1(\mathbb{R}^N)$. However, there is no identity function h, such that $f*h = f$ for all $f \in L^1(\mathbb{R}^N)$. However, $\phi_{\epsilon}$ approximates an identity such that $$f*\phi_{\epsilon} \rightarrow f$$ as $\epsilon \rightarrow 0$.
+
+Now we have a theorem on pointwise convergence.
+\begin{theorem}(Pointwise Convergence). Let $\{\phi_{\epsilon}\}$ be an approximate identity defined by $\phi_{-\epsilon} = \epsilon^N\phi(\epsilon x)$, and that one of the following conditions is satisfied:
+
+\begin{enumerate}[(i)]
+  \item $f \in L^{\infty}(\mathbb{R}^N)$ and f is continuous at $x_0$;
+  \item $f \in L^{1}(\mathbb{R}^N)$ and f is continuous at $x_0$, and there exists $\alpha > 0$ and $C > 0$ such that
+  $$
+  |\phi(x) \leq \frac{C}{1 + |x|^{N + \alpha}}
+  $$
+  for all $x \in \mathbb{R}^N$.
+
+  Under $\textbf{either}$ assumption,
+  $$
+  (f * \phi_{\epsilon})(x_0) \rightarrow f(x_0)
+  $$
+  as $n \rightarrow \infty$.
+\end{enumerate}
+\end{theorem}
+
+\lecture{24}{Approximate Theorems}
+\section{Approximate Theorems}
+\subsection{Approximate Theorems}
+
+We use approximate identities to help us show that $L^p$ functions can be approximated by smooth functions with $\textbf{compact support}$, which will be used alot.
+
+\begin{definition}(Test Function). Let $U \subseteq \mathbb{R}^N$ be open. We define
+$$
+C^{\infty}(U, \mathbb{K}) \coloneqq \{f: U \rightarrow \mathbb{K}: \text{ f has partial derivatives of all orders (smooth)}\}
+$$
+and we have the subspace of $C^{\infty}$ as 
+$$
+C_c^{\infty}(U, \mathbb{K}) \coloneqq \{f \in C^{\infty}(U, \mathbb{K}): supp(f) \subseteq U \text{ and supp(f) is compact.}\}
+$$
+The elements of $C_c^{\infty}(U, \mathbb{K})$ are called $\textbf{test functions}$.
+\end{definition}
+
+This subspace $C_c^{\infty}$ is a dense subset of $L^p$ for $p < \infty$. Hence, we have many such test functions. However, we do not have any test functions in $\mathbb{C}$.
+
+\begin{definition}(Locally Integrable). The integral of every bounded set is finite.
+\end{definition}
+
+
+Convolutions with test functions are smooth functions.
+\begin{proposition}Let $f: \mathbb{R}^N: \rightarrow \mathbb{K}$ be measurable so that $\int_B|f|dx < \infty$ for every bounded set $B \subseteq \mathbb{R}^N$, so the function is locally integrable. If $\phi \in C_c^{\infty}(\mathbb{R}^N)$, then $f * \phi \in C^{\infty}(\mathbb{R}^N)$ and
+$$
+\frac{\partial}{\partial x_i}(\phi * f) = \frac{\partial \phi}{\partial x_i} * f
+$$
+for $i = 1,2,...,N$. If f has compact support, then $f * \phi \in C_c^{\infty}(\mathbb{R}^N)$ and
+$$
+supp(f * \phi) \subseteq supp(f) + supp(\phi).
+$$
+\end{proposition}
+
+Hence, convolutions always preserves the properties of the $\textbf{better}$ function. Furthermore, convolution has a compact support.
+
+We now prove one of the most important density results.
+
+\begin{theorem}(Test Functions are dense in $L^p$). If $U \subseteq \mathbb{R}^N$ is open, then $C_c^{\infty}(U)$ is dense in $L^p(U)$ for all $1 \leq p < \infty$. 
+\end{theorem}
+
+Many functions $f \in L^p$ are not smooth. Hence, we first analyse dense subsets and then extend its properties to a wider set of functions.
+
+\lecture{25}{The Fourier Transform}
+\section{The Fourier Transform}
+\section{The Fourier Transform}
+\subsection{The Fourier Transform}
+
+A fourier transform is an $\textbf{integral transform}$. That is, it produces another integral from an integral.
+
+\begin{definition}(Fourier Transform). Let $f \in \mathcal{L}^1(\mathbb{R}^N, \mathbb{C}).$ We call the function $\hat{f}$ the Fourier transform which is given by 
+$$
+\hat{f}(t) = \int_{\mathbb{R}^N}f(x)e^{-2\pi i x\circ t}dx
+$$
+for all $t \in \mathbb{R}^N$. Here, $x \circ t$ is the dot product of $x, t \in \mathbb{R}^N$.
+\end{definition}
+
+The Fourier transform can be thought of as an integral with parameter, whereby t is the parameter. We can check whether the theorem of continuity of integral with parameter holds by looking at
+\begin{enumerate}[(i)]
+    \item $t \rightarrow f(x)e^{-2\pi ix.t}$ is measurable for all $t \in \mathbb{R^N};$
+    \item $x \rightarrow f(x)e^{-2\pi ix.t}$ is continuous for all $x \in \mathbb{R^N};$
+    \item $|f(x)e^{-2\pi i x.t}| = |f(x)|$ is independent of t and integrable for all $t \in \mathbb{R}^N$.
+\end{enumerate}
+From this, we have that $\hat{f}$ is continuous. Furthermore, from the definition of $\hat{f}$ and $f \in \mathcal{L}^1$, we have that 
+$$
+||\hat{f}||_{\infty} \leq ||f||_1 < \infty
+$$
+so $\hat{f}$ is bounded. 
+
+Hence, the $\textbf{Fourier transform is a bounded continuous function.}$
+
+
+We look at a function whose Fourier transform function is itself.
+\begin{proposition}(Fourier Transform of the Gaussian Function). Let $\phi(x) \coloneqq e^{-\pi|x|^2}$ for all $x \in \mathbb{R}^N$. Then, $\hat{\phi} = \phi$ and
+$$
+\int_{\mathbb{R}^N}\phi(x)dx = 1.
+$$
+\end{proposition}
+
+\lecture{26}{Properties of the Fourier transform}
+\section{Properties of the Fourier transform}
+\subsection{Properties of the Fourier transform}
+
+We know that the Fourier transform $\hat{f}$ of any $L^1$-function f is a bounded and continuous function. We want to show that this decays to 0, that is, $\hat{f}(t) \rightarrow 0$ as $|t| \rightarrow \infty$. 
+
+First, we can split $\hat{f}$ into its real and imaginary parts, that is,
+$$
+\hat{f}(t) = \int_{\mathbb{R}}f(x)cos(2\pi x t)dx - i\int_{\mathbb{R}}f(x)sin(2\pi x t)dx.
+$$
+
+\begin{proposition}
+$$\hat{f}(t) \rightarrow 0 \;\text{if and only if the real and imaginary parts converge to zero.}$$
+\end{proposition}
+
+Intuitively, this arises because when you take f, which is a bounded function and multiply it by an oscilatting function such as sin or cos, then you have an oscilatting function. In particular, it is the $e^{-2\pi ixt}$ which is oscillating as it just goes around the circle. The negative and positive area cancels and hence you have an area of 0 overall. These are known as $\textbf{osillatory integrals.}$ 
+
+\begin{definition}(Space of continuous functions vanishing at infinity). We set 
+$$
+C_0(\mathbb{R}^N, \mathbb{K}) \coloneqq \{f \in C(\mathbb{R}^N, \mathbb{K}): \Lim{|x| \rightarrow \infty}f(x) = 0\}
+$$
+which are continuous functions and go to 0 as $x \rightarrow \infty$.
+\end{definition}
+
+\begin{theorem}(Riemann-Lebesgue Lemma). If $f \in L^1(\mathbb{R}^N, C)$, then $\hat{f} \in C_0(\mathbb{R}^N,C)$ and $||\hat{f}||_{\infty} \leq ||f||_1$.
+\end{theorem}
+
+\begin{proof}
+We know that $\hat{f}$ is continuous as $||\hat{f}||_{\infty} \leq ||f||_1$. We only need to show $\hat{f}(t) \rightarrow 0$ as $|t| \rightarrow \infty$.
+\end{proof}
+
+\begin{proposition} Let $f,g \in L^1(\mathbb{R}^N).$ Then
+$$
+\int_{\mathbb{R}^N}\hat{f}gdx = \int_{\mathbb{R}^N}f\hat{g}dx.
+$$
+\end{proposition}
+
+\begin{proof}Use Fubini's theorem and the definition of the Fourier transform.
+\end{proof}
+
+\begin{theorem}(Convolution Theorem). If $f,g \in L^1(\mathbb{R}^N)$, recall that $f*g \in L^1(\mathbb{R}^N)$. Then, we have that
+$$
+\widehat{f*g} = \hat{f}\hat{g}.
+$$
+That is, the Fourier transform turns convolutions into pointwise products.
+\end{theorem}
+
+
+\lecture{27}{Further Properties of the Fourier transform}
+\section{Further Properties of the Fourier transform}
+\subsection{Further Properties of the Fourier transform}
+
+We are now interested in recovering f given its Fourier transform $\hat{f}$. There are some issues as $\hat{f}$ is not necessarily integrable. Hence, what we need to do is to introduce a fast decaying factor to make the integral converge, and ensure that factor converges to 1. 
+
+\begin{lemma}Let $\phi \in L^1(\mathbb{R}^N)$ and set $\phi_{\epsilon} \coloneqq \phi(\epsilon x)$ and $\psi_{\epsilon}(x) \coloneq \frac{1}{\epsilon^N}\hat{\psi}(\frac{-x}{\epsilon})$. Then, we have 
+$$
+\int_{\mathbb{R}^N}\hat{f}(t)\phi_{\epsilon}(t)e^{2\pi ix.t}dt = (f * \psi_{\epsilon})(x)
+$$
+for all $n \in \mathbb{N}$ and $x \in \mathbb{R}^N$.
+\end{lemma}
+
+Here, $\phi_{\epsilon} \rightarrow 1$ pointwise is the fast decaying term whilst $\psi_{\epsilon}$ is an approximate identity. One good candidate for $\phi(x) = e^{-\pi|x|^2}$ because it is symmetric, coincides with its own Fourier transform, and has an integral of 1. Furthermore, we can set $\phi_{\epsilon}(x) \coloneqq \frac{1}{\epsilon^N}\phi(\frac{x}{\epsilon})$.
+
+\begin{theorem}(Fourier Inversion Formula). Let $f \in L^1(\mathbb{R}^N, \mathbb{C})$, $\phi_{\epsilon} \coloneqq \frac{1}{\epsilon^N}\phi(\frac{x}{\epsilon})$, and $\phi(x) \coloneqq e^{-\pi|x|^2}$. Then, we have that
+$$
+\int_{\mathbb{R}^N}\hat{f}(\psi)\phi(\epsilon t)e^{2\pi ix.t}dt = (f*\phi_{\epsilon})
+$$
+for all $\epsilon > 0$ and for all $x \in \mathbb{R}^N$. Moreover, 
+$$
+\Lim{\epsilon \rightarrow 0^+}\int_{\mathbb{R}^N}\hat{f}(\psi)\phi(\epsilon t)e^{2\pi ix.t}dt = f
+$$
+pointwise limit.
+\end{theorem}
+
+If $\hat{f}$ is integrable, then we have an inversion formula that is better.
+\begin{corollary}
+Let $f \in L^1(\mathbb{R}^N)$. If $\hat{f} \in L^1(\mathbb{R}^N)$, then
+$$
+f(x) = \int_{\mathbb{R}^N}\hat{f}(t)e^{2\pi ix.t}dt
+$$
+for almost every $x \in \mathbb{R}^N$.
+\end{corollary}
+
+
+Fourier transforms uniquely determines f. 
+\begin{corollary}Suppose that $f, g \in L^1(\mathbb{R}^N$ are such that $\hat{f} = \hat{g}$. Then f = g almost everywhere.
+\end{corollary}
+
+\begin{remark}This holds as continuous functions are either equal everywhere or not equal almost everywhere, which we can then alter the sets.
+\end{remark}
+
+
+\lecture{28}{Fourier Transform in L2}
+\section{Fourier Transform in L2}
+\subsection{Fourier Transform in L2}
+
+We now want to define the Fourier transform on the $L^2(\mathbb{R}^N)$ space rather than just $L^1(\mathbb{R}^N)$. Recall that $L^2(\mathbb{R})$ is a Hilbert space and has an inner product. An issue we have is that we don't have $L^2(\mathbb{R}^N) \subseteq L^1(\mathbb{R}^N)$ or $L^1(\mathbb{R}^N) \subseteq L^2(\mathbb{R}^N)$ since $\mu(X) = \infty$. 
+
+So the trick on constructing a Fourier transform on $L^2(\mathbb{R}^N)$ is to define a map on a $\textbf{dense subset}$ and then extend it to the closure of that subset.
+
+We define the Fourier transform for $f \in L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N)$ by
+$$
+\int_{\mathbb{R}^N}f(x)e^{-2\pi ix.t}dx.
+$$
+The test functions $C_c^{\infty}(\mathbb{R}^N)$ (smooth functions with compact supports) are dense in $L^1(\mathbb{R}^N)$ and in $L^2(\mathbb{R}^N)$. Hence, $L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N)$ is dense in $L^2(\mathbb{R}^N)$. We will first show the Fourier transform is continuous on $L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N)$ with respect to the $L^2$-norm and then extend to all of $L^2(\mathbb{R}^N)$ so that it is a continuous function on $L^2(\mathbb{R}^N)$.
+
+\begin{theorem}(Plancherel). If $f \in L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N)$, then
+$$
+||\hat{f}||_2 = ||f||_2.
+$$
+This shows the continuity of the Fourier transform on $L^2(\mathbb{R}^N)$.
+\end{theorem}
+
+\begin{remark} The Fourier transform $\mathcal{F}: L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N) \rightarrow L^2(\mathbb{R}^N)$ is a continuous linear operator.  We can look at
+$$
+||\hat{f} - \hat{g}||_2 = ||\widehat{f - g} = ||f - g||_2
+$$
+for all $f, g \in L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N)$. We can use the $\delta$-$\epsilon$ argument by setting $\delta = \epsilon$ and this will show us uniform continuity. 
+\end{remark}
+
+\begin{theorem}(Fourier Transform on $L^2(\mathbb{R}^N)$). There exists a unique continuous linear map 
+$$
+\mathcal{F}: L^2(\mathbb{R}^N) \rightarrow L^2(\mathbb{R}^N)
+$$
+such that $\mathcal{F} f = \hat{f}$ for all $f \in L^1(\mathbb{R}^N) \cap L^2(\mathbb{R}^N)$. Moreover, $||\mathcal{F}f||_2 = ||f||_2$ for all $f \in L^2(\mathbb{R}^N)$. If $\phi(x) \coloneqq e^{-\pi |x|^2}$, then for every $f \in L^2(\mathbb{R}^N)$,
+$$
+\Lim{n \rightarrow \infty}\int_{\mathbb{R}^N}f(x)\phi(x/n)e^{-2\pi ix.t}dx = \hat{f}
+$$
+and 
+$$
+\Lim{n \rightarrow \infty}\int_{\mathbb{R}^N}\hat{f}(t)\phi(t/n)e^{2\pi ix.t}dt = f
+$$
+in $L^2(\mathbb{R}^N, \mathbb{C})$.
+\end{theorem}
+
+\begin{theorem} The Fourier transform $\mathcal{F}: L^2(\mathbb{R}^N) \rightarrow L^2(\mathbb{R}^N)$ is an isometric isomorphism. Moreover, 
+$$
+(\mathcal{F}^{-1}f)(x) = (\mathcal{F}f)(-x) = \overline{(\mathcal{F}\bar{f})}(x)
+$$
+almost everywhere, where the bars denote complex conjugate. Furthermore, from Plancherel, we have
+$$
+||\hat{f}||_2 = ||f||_2.
+$$
+\end{theorem}
+
+
+\lecture{29}{Hilbert Spaces}
+\section{Hilbert Spaces}
+\section{Absolute Continuity and the Radon-Nikodym Theorem}
+\subsection{Hilbert Spaces}
+
+We need some Hilbert space theory as we require the projection theorem in order to help us derive further theorems.
+
+\begin{definition}(Hilbert Space). A Hilbert space is a $\textbf{complete}$ inner product space. 
+\end{definition}
+
+\begin{remark} Recall that an inner product induces a norm where $||u|| \coloneqq \sqrt{<u,u>}$. Furthermore, a space is complete if every Cauchy sequence with respect to the norm converges.
+\end{remark}
+
+A good example of an infinite dimensional Hilbert space is the $L^2(X)$ space. Recall that every $L^P(X)$ space is complete. This completeness property is what distinguishes Hilbert spaces from the usual inner product space.
+
+The Hilbert spaces satisfies an useful identity.
+
+\begin{lemma}(Parallelogram identity). Let H be an inner product space. Then 
+$$
+||u+v||^2 ||u-v||^2  = 2||u||^2 + 2||v||^2
+$$
+for all $u,v \in H$.
+\end{lemma}
+
+
+\begin{theorem}(Projection Theorem). Let H be a Hilbert space and $M \subseteq H$ a closed subspace, so any sequence in M has its limit in M. Then, for every $u \in H$, there exists a unique $m_0 \in M$ such that
+$$
+||u - m_0|| = \min_{m \in M}||u - m||.
+$$
+Moreover, $m_0$ satisfies this equation if and only if
+$$
+<u - m_0, m> = 0
+$$
+for all $m \in M$. In other words, $m_0$ is orthogonal to every point in M.
+\end{theorem}
+
+The intuition behind this is that if we take a plane and a point in the space outside of the plane, there exists exactly 1 point on the plane that is closest to the outside point. 
+
+\begin{definition}(Bounded linear functional). Let H be a Hilbert space over $\mathbb{K}$. A function $\phi: H \rightarrow \mathbb{K}$ is bounded linear functional on H if 
+\begin{enumerate}
+  \item $\phi$ is linear;
+  \item There exists a constant $C > 0$ such that 
+  $$
+  |\phi(f)| \leq C||f||
+  $$
+  for all $f \in H$.
+\end{enumerate}
+\end{definition}
+
+\begin{remark} Bounded linear functionals are linear maps and maps bounded sets of H onto bounded sets in $\mathbb{K}$. Furthermore, every bounded linear functional on H is continuous.
+\end{remark}
+
+The following theorem tells us that every linear functional on H can be represented by means of the inner product of H with an unique element.
+
+\begin{theorem}(Riesz representation theorem). Let $\phi$ be arbitrary bounded linear functional on H. Then there exists a unique $g \in H$, so that $\phi(f) = <f,g>$ for all $f \in H$.
+\end{theorem}
+
+
+\lecture{30}{Radon-Nikodym Theorem}
+\section{Radon-Nikodym Theorem}
+\subsection{Absolute Continuity}
+We now want to define conditions for measures to exists with respect to a density. First, recall that if $(X,\mathcal{A},\mu)$ is a measure space and $g: X \rightarrow [0,\infty)$ be a measurable function. Recall we can define a measure with respect to another measure by
+$$
+\nu(A) \coloneqq \int_Agd\mu = \int_X1_Agd\mu
+$$
+for all $A \in \mathcal{A}$. We call g the $\textbf{density}$ of $\nu$ with respect to $\mu$. 
+
+It is not possible to take 2 arbitrary measures and find a density. A good example is the Dirac measure concentrated at some $a \in X$ and the Lebesgue measure. Hence, we introduce a sufficient and necessary condition for the existence of such a density.
+
+\begin{definition}(Absolute Continuity). Let $\mu$ and $\nu$ be measures defined on the same $\sa$ of subsets of X. We call $\nu$ $\textbf{absolutely continuous}$ with respect to $\mu$ if $\nu(A) = 0$ for every $A \in \mathcal{A}$ where $\mu(A) = 0$. We denote this as
+$$
+\nu << \mu.
+$$
+\end{definition}
+
+\begin{remark} Absolute continuity can also be defined in terms of a $\delta - \epsilon$ argument. For every $\epsilon > 0$, there exists $\delta_{\epsilon} > 0$ such that
+$$
+\sum_{k=0}^{\infty}|F(b_k) - F(a_k)| < \epsilon
+$$
+for every collection of disjoint intervals $(a_k,b_k)$ such that $\sum_{k=0}^{\infty}(b_k - a_k) < \delta$. 
+\end{remark}
+\begin{remark} Absolute continuity is a stronger condition than uniform continuity.
+\end{remark}
+
+\begin{definition}(Distribution Function). The distribution function $F(t): \mathbb{R} \rightarrow \mathbb{R}$ is defined as 
+$$
+F(t) \coloneqq \mu((-\infty, t])
+$$
+where F(t) is right continuous and strictly increasing.
+\end{definition}
+
+A measure is absolutely continuous if it has no jumps in the distribution function, which leads to the distribution function being continuous.
+
+\begin{remark} The Borel measure is absolutely continuous with respect to the Lebesgue measure if and only if the distribution function $F(t) \coloneqq \mu((-\infty, t])$ is absolutely continuous.
+\end{remark}
+
+\subsection{Radon-Nikodym Theorem}
+
+We now look at a special case of a density existing for a pair of arbitrary measures.
+
+\begin{lemma} Suppose $\mu$ and $\nu$ are finite measures. We define the new measure $\lambda \coloneqq \mu + \nu$. Then there exists a non-negative function $h \in L^2(X, \lambda)$ such that
+$$
+\int_Xfd\nu = \int_Xfhd\lambda
+$$
+for all $f \in L^2(X,\lambda)$.
+\end{lemma}
+
+\begin{theorem}(Radon-Nikodym Theorem). Suppose that $\mu(X) < \infty$ and $\nu(X) < \infty$ defined on the same $\sa$ $\mathcal{A}$. If $\nu << \mu$, then $\nu$ has a density $g: X \rightarrow [0,\infty)$ with respect to $\mu$. Furthermore, the density is essentially unique, that is, any two density functions are equal $\mu$-almost everywhere.
+\end{theorem}
+
+\begin{corollary} The Radon-Nikodym is also known as a differentiation theorem and can be expressed as
+$$
+\int_Ad\nu = \int_A\frac{d\nu}{d\mu}d\mu
+$$
+where $\frac{d\nu}{d\mu}$ is the density function of the distribution function and $d\mu$ is the Lebesgue measure. This generalises the Fundamental Theorem of Calculus.
+\end{corollary}
+
+\begin{definition}($\sigma$-finite measure). A measure is called $\sigma$-finite if there exists subsets $X_n \in \mathcal{A}$ such that $\mu(X_n) < \infty$ for all $n \in \mathbb{N}$ and $X = \bigcup_{n \in \mathbb{N}}X_n$.
+\end{definition}
+
+\begin{remark} In the Radon-Nikodym theorem, we assumed that $\mu$ and $\nu$ are finite measures. This condition can be relaxed to $\mu$ and $\nu$ being $\sigma$-finite instead.
+\end{remark}
+
+\begin{proposition} If h is a smooth function, then by the substitution formula
+$$
+\int_{\mathbb{R}}f(h)dh = \int_{\mathbb{R}}f(x)h'(x)dx
+$$
+so that h' is the density of the measure dh with respect to the Lebesgue measure.
+\end{proposition}
+
+\begin{proposition}(Radon-Nikodym Derivative). Let $\mu << \nu$ and we can write
+$$
+\int_Xfd\nu = \int_Xf\frac{d\nu}{d\mu}d\mu.
+$$
+If we let 
+$$
+\frac{d\nu}{d\mu} \coloneqq g,
+$$
+where g is the density function from the Radon-Nikodym theorem. Here, g is known as the $\textbf{Radon-Nikodym derivative}$ of $\nu$ with respect to $\mu$, which exists when $\mu << \nu$.
+\end{proposition}
+
+
+\lecture{31}{Introduction to Probability Theory}
+\section{Probability Theory}
+\section{Probability Theory}
+\subsection{Introduction to Probability Theory}
+
+We compare the different terminologies in measure theory and probability theory.
+
+The sample space $\Omega$ is usually a finite set with the probability measure being the normalised counting measure where 
+$$
+P[A] = \frac{\text{Number of favourable outcomes}}{\text{Number of possible outcomes}} = \frac{\#A}{\#\Omega}
+$$
+where \#A denotes the cardinality of A.
+
+\begin{definition}(Random Variable). Let $(\sigma, \mathcal{A}, P)$ be a probability space. A measurable function
+$$
+X: \Omega \rightarrow \mathbb{R}
+$$
+is called a random variable.
+\end{definition}
+
+\begin{remark} Recall that a measurable function is a function between two $\textbf{measurable spaces}$ such that the preimage of any measurable set is measurable.
+\end{remark}
+
+\subsection{Definitions}
+\begin{center}
+\bgroup
+\def\arraystretch{1.5}%  1 is the default, change whatever you need.
+\begin{tabular}{ |c|c| } 
+ \hline
+ Measure Theory & Probability Theory\\ 
+ \hline
+ $(X, \mathcal{A}, \mu)$ is a measure space & $(\Omega, \mathcal{A}, P)$ is a probability space\\ 
+ \hline
+ $\mathcal{A}$ is a $\sigma$-algebra & $\mathcal{A}$ is a $\sigma$-field\\ 
+ \hline
+ $A \in \mathcal{A}$ is called a measurable set & $A \in \mathcal{A}$ is called an event \\
+ \hline
+ f is a measurable function & X is a random variable\\
+ \hline
+ $\int_Xfd\mu$ is an integral & $\mathbb{E}[X]$ is an expectation\\
+ \hline
+ $f \in L^p(X,\mathcal{A},\mu)$ & X has finite absolute p-th moment\\
+ \hline
+\end{tabular}
+\egroup
+\end{center}
+
+nothing random about a random variable. However, the thing that is random about it is the choice of the sample point $\omega$. 
+
+We are interested in $X(\omega)$. In particular, we are interested in the sets
+\begin{enumerate}
+    \item $[X = \alpha] \coloneqq \{\omega \in \Omega: X(\omega) = \alpha\}$;
+    \item $[X < \alpha] \coloneqq \{\omega \in \Omega: X(\omega) < \alpha\}$;
+    \item $[X > \alpha] \coloneqq \{\omega \in \Omega: X(\omega) > \alpha\}$;
+    \item $[X \in A] \coloneqq \{\omega \in \Omega: X(\omega) \in A\}$. 
+\end{enumerate}
+
+Recall that if we can show that $f^{-1}[[\alpha, \infty]]$ is measurable for all $\alpha \in \mathbb{Q}$, then this shows that $X: \Omega \rightarrow \mathbb{R}$ is measurable.
+
+\begin{definition}(Expectation of random variable). Let $(\Omega, \mathcal{A}, P)$ be a probability space and $X: \Omega \rightarrow \mathbb{R}$ be a random variable. We say that $X$ has finite expectation if $X \in L^1(\Omega, \mathcal{A}, P; \mathbb{R})$ and call
+$$
+E[X] \coloneqq \int_{\Omega}Xdp
+$$
+the expectation of X.
+\end{definition}
+
+\begin{definition}(Variance of random variable). Let $(\Omega, \mathcal{A}, P)$ be a probability space and $X: \Omega \rightarrow \mathbb{R}$ be a random variable. We say that $X$ has finite expectation if $X \in L^2(\Omega, \mathcal{A}, P; \mathbb{R})$ and call
+$$
+Var(X) \coloneqq E[(X - E[X])^2] \coloneqq ||X - E[X]||_2^2
+$$
+the variance of X and $\sigma(X) \coloneqq \sqrt{\text{Var(X)}}$ the standard deviation of X.
+\end{definition}
+
+\begin{remark} If $X \in L^p(\Omega,\mathcal{A},P;\mathbb{R})$, we say that X has (absolute) finite p-th moment.
+\end{remark}
+
+\begin{remark} Recall that when we write dP, it is the Lebesgue integral with respect to the probability measure.
+\end{remark}
+
+\begin{remark} Anything with a finite variance has a finite moment since $P(\Omega) = 1 < \infty$. In particular, $L^p(\Omega,P) \subseteq L^1(\Omega,P)$ for all $p \geq 1$. 
+\end{remark}
+
+\begin{remark} If $X \in L^2(\Omega, P)$, then
+$$
+Var(X) = E[X^2] - E[X]^2
+$$
+where we require a finite first moment.
+\end{remark}
+
+\lecture{32}{Further Probability Theory}
+\section{Further Probability Theory}
+\subsection{Distribution of a random variable}
+
+Now the issue we have is that when computing expectation or variance, we are integrating over $\Omega$. However, what we want to do instead is to integrate over $\mathbb{R}$ and we can do this through the $\textbf{distribution of X}$. In particular, we tend to hide the random variable and only use its distribution. 
+
+Recall that a function is Borel measurable if we had that any preimage of a Borel set is a Borel set. This then implies that the function is Lebesgue measurable. Furthermore, a measurable function has the preimage of every Borel set in the $\sigma$-algebra. In particular, we say that for every Borel set $B \subseteq \mathbb{R}$,
+
+$$
+P_X[B] \coloneqq P[X \in B] = P\big[\{\omega \in \Omega: X(\omega) \in B\}\big].
+$$
+
+From this, we know that $P_X$ is a Borel measure on $\mathbb{R}$ as it is defined on a Borel $\sa$. Then, if $P_X$ is absolutely continuous with respect to the Lebesgue measure (dM), we have that from the Radon-Nikodym theorem, $P_X$ has a density g which is a measurable non-negative function such that
+$$
+P_X[B] = \int_Bg(x)dm = \int_Bg(x)dx
+$$
+for every Borel set $B \subseteq \mathbb{R}$. The last equality comes from that fact that anything Lebesgue integrable is also Riemann integrable.
+
+We go on to state these things more concisely.
+\begin{definition}(Distribution of a random variable). Let $X: \Omega \rightarrow \mathbb{R}$ be a random variable on the probability space $(\Omega, \mathcal{A}, P)$. The Borel measure $P_X$ on $\mathbb{R}$ given by
+$$
+P_X[B] \coloneqq P[X \in B] = \mu[\{\omega \in \Omega: X(\omega) \in B\}]
+$$
+for all Borel sets $B \subseteq \mathbb{R}$ is called the distribution of X.
+\end{definition} 
+
+What have we done is started of with a probability space $(X, \mathcal{A}, P)$ as the domain with $\mathbb{R}$ as the codomain from the measurable random variable X. Then, we were able to generate the $\mathcal{B}$ $\sa$ on $\mathbb{R}$ from our random variable X. Finally, we constructed a Borel measure $P_X$, which is our original probability measure P restricted on the constructed Borel $\sa$ $\mathcal{B}$.
+
+If $P_X$ gives a measure one to a countable set of reals, then X is a discrete random variable. If $P_X$ gives a measure 0 to every singleton and countable set, then X is a continuous random variable.
+
+\begin{definition}(Distribution Function). Let $X: \Omega \rightarrow \mathbb{R}$ be a random variable on the probability space $(\Omega, \mathcal{A}, P)$. The function
+$$
+F_X(t) \coloneqq P_X[(-\infty,t]] = P(X \leq t) = P(\{\omega \in \Omega: X(\omega) \leq t\}).
+$$
+is called the distribution function of X.
+\end{definition}
+
+\begin{remark} The distribution function is increasing and right continuous. Furthermore, $F_X(t) = 0$ as $t \rightarrow -\infty$ and $F_X(t) = 1$ as $t \rightarrow \infty$.
+\end{remark}
+
+Any $F_X$ satisfying these properties are the distribution function of another random variable.
+
+We tend to describle random variables in terms of their distribution function. 
+
+\begin{definition}(Distribution Density). Let $X: \Omega \rightarrow \mathbb{R}$ be a random variable on the probability space $(\Omega, \mathcal{A}, P)$. If $P_X$ is absolutely continuous with respect to the Lebesgue measure and g is the Radon-Nikodym derivative, that is measurable and non-negative, then g is called the distribution density of X. 
+
+$$
+P_X[B] = \int_Bg(x)dx = \int_{\mathbb{R}}1_Bg(x)dx.
+$$
+
+\end{definition}
+
+\begin{remark}
+Note that P is never absolutely continuous with $P_X$ since they are defined on different $\sa$. The Lebesgue measure is defined on the Lebesgue $\sa$, which contains the Borel $\sa$ $\mathcal{B}$ in which $P_X$ is defined on.
+\end{remark}
+
+
+Usually for random variables, we only know its distribution but not the random variable in many cases. Hence, we want to be able to express expectation and variance in terms of the random variable's distribution.
+
+\begin{remark} There is a injection between distributions and distribution functions. However, note that many different random variables can have the same distribution and distribution function. 
+\end{remark}
+
+A key thing to note is that not all distributions have a density. In particular, if a distribution function is clearly not absolutely continuous with respect ot the Lebesgue measure, then it has no density function.
+
+\begin{example} We say that a random variable has a normal distribution if it has the Gaussian function as its density.
+\end{example}
+
+We want to be able to substitute integrals with respect to $\Omega$ and P with integrals with respect to $\mathbb{R}$ and $P_X$. We define some things to help us.
+
+\begin{lemma} Let $X: \Omega \rightarrow \mathbb{R}$ be a random variable and $f: \mathbb{R} \rightarrow \mathbb{R}$ Borel measurable. Then $f \circ X: \Omega \rightarrow \mathbb{R}$ is measurable and therefore a random variable.
+\end{lemma}
+
+\begin{proof} Let $U \subseteq \mathbb{R}$ be open. As f is Borel measurable $f^{-1}[U]$ is a Borel set. As X is measurable, this implies that 
+$$
+(f \circ X)^{-1}[U] = X^{-1}[f^{-1}[U]]
+$$
+is measurable for every open set $U \subseteq \mathbb{R}$. Hence, $f \circ X$ is measurable.
+\end{proof}
+
+From this, we can prove the substitution formula for where we express integrals with respect to P over $\Omega$ in terms of integrals over $\mathbb{R}$ in terms of $P_X$.
+
+We have 2 formulations of the theorem requiring different conditions, one where we don't require integrability and one where we require integrability but not non-negativity.
+
+
+\begin{theorem} Let $(\Omega, \mathcal{A}, P)$ be a probability space and $X: \Omega \rightarrow \mathbb{R}$ a random variable. Suppose that $f: \mathbb{R} \rightarrow \mathbb{R}$ is Borel measurable.
+\begin{enumerate}[(i)]
+    \item If f is non-negative, then $$\int_{\Omega}f \circ X dp = \int_{\mathbb{R}}fdP_X$$;
+    \item We have $f \circ X \in L^1(\Omega,P)$ if and only if $f \in L^1(\mathbb{R},P_X)$. In that case, $$\int_{\Omega}f \circ X dp = \int_{\mathbb{R}}fdP_X$$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark} Hence, we now have integrals of f with respect to the distribution. 
+\end{remark}
+
+From this, we can now express expectation and variance in terms of the distribution function.
+
+\begin{corollary} Let $X$ be a random variable with distribution $P_X$. Then
+$$
+E[X] = \int_{\mathbb{R}}xdP_x
+$$
+and
+$$
+Var(X) = \int_{\mathbb{R}}x^2dP_X - E[X]^2.
+$$
+If $P_X$ has a distribution density g, then the above can be written as
+$$
+E[X] = \int_{\mathbb{R}}xg(x)dx
+$$
+and 
+$$
+Var(X) = \int_{\mathbb{R}}x^2g(x)dx - E[X]^2.
+$$
+\end{corollary}
+
+\begin{proof} We define the identity function $id: \mathbb{R} \rightarrow \mathbb{R}$ and let $f = id$.
+
+$$
+\int_{\Omega}Xdp = \int_{\Omega}id \circ X dp = \int_{\mathbb{R}}id(x)dP_X = \int_{\mathbb{R}}xdP_X.
+$$
+\end{proof}
+
+Hence, we only need to know the distribution of X and not X itself in order to compute expectation and variance.
+
+\lecture{33}{Conditional Expectation}
+\section{Conditional Expectation}
+\subsection{Conditional Expectation}
+
+Let $(\Omega, \mathcal{A}, P)$ be a probability  space and X a random variable with finite expectation. That is, $X \in L^1(\Omega,P)$. For $A \in \mathcal{A}$, we define
+$$
+E[X|A] \coloneqq \frac{1}{P[A]}\int_AXdp.
+$$
+
+Let $A,B \in \mathcal{A}$ be disjoint sets such that $A \cup B = \Omega$. Then we have that 
+$$
+E[X|A] \coloneqq \frac{1}{P[A]}\int_AXdp.
+$$
+$$
+E[X|B] \coloneqq \frac{1}{P[B]}\int_BXdp.
+$$
+
+
+We then have that 
+$$
+E[X] = E[X|A]P[A] + E[X|B]P[B] = \int_{\Omega}E[X|A]1_A + E[X|B]1_B dP.
+$$
+We define 
+$$
+X_0 \coloneqq E[X|A]1_A + E[X|B]1_B dP.
+$$
+
+
+\begin{definition}(Conditional Expectation). Let $(\Omega, \mathcal{A}, P)$ be a probability space and $X: \Omega \rightarrow \mathbb{R}$ a random variable with finite expectation, that is, $X \in L^1(\Omega, \mathcal{A},P)$. Moreover, let $\mathcal{A}_0 \subseteq \mathcal{A}$ be a $\sigma$-field. The random variable $X_0$ is called conditional expectation of X given $\mathcal{A}_0$ if
+\begin{enumerate}
+    \item $X_0$ is measurable with respect to the $\sigma$-field $\mathcal{A}_0$;
+    \item $\int_AX_0dP = \int_AXdP$ for all $A \in \mathcal{A}_0$.
+\end{enumerate}
+If that is the case, we write
+$$
+E[X|\mathcal{A}_0] \coloneqq X_0.
+$$
+\end{definition}
+
+\begin{theorem}(Conditional Expectation). For every random variable $X \in L^1(\Omega, \mathcal{A},P)$ and every $\sigma$-field $\mathcal{A}_0 \subseteq \mathcal{A}$, the conditional expectation $E[X|\mathcal{A}_0]$ exists and is unique. 
+\end{theorem}
+
+\begin{theorem}(Properties of Conditional Expectation). The conditional expectation has the following properties.
+
+\begin{enumerate}
+    \item The map $X \rightarrow E[X|\mathcal{A}_0]$ $L^1(\Omega, \mathcal{A}, P) \rightarrow L^1(\Omega, \mathcal{A}_0,P)$ is linear;
+    \item $||E[X|\mathcal{A}_0]||_1 \leq ||X||_1$;
+    \item If $X \in L^{\infty}(\Omega, \mathcal{A}, P)$ , then $|E[X|\mathcal{A}_0]| \leq ||X||_{\infty}$;
+    \item If $X \geq 0$, then $E[X|\mathcal{A}_0] \geq 0$;
+    \item If $X \leq Y$, then $E[X|\mathcal{A}_0] \leq E[Y|\mathcal{A}_0]$
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary} If $X$ is $\mathcal{A}_0$-measurable, then 
+$$
+E[X|\mathcal{A}_0] = X
+$$
+almost everywhere.
+\end{corollary}
+
+\begin{corollary} If $\mathcal{A}_0 = \{\emptyset, \Omega\}$ is the smallest possible $\sigma$-field, then 
+$$
+E[X|\mathcal{A}_0] = E[X].
+$$
+\end{corollary}
+
+Generally we work with random variables in $L^2(\Omega, \mathcal{A}, P)$. Recall that $L^2(\Omega, \mathcal{A}, P)$ is a Hilbert space and for $\mathcal{A}_0 \subseteq \mathcal{A}$, we have that every $\mathcal{A}_0$-measurable function is $\mathcal{A}$-measurable. Then,
+$$
+L^2(\Omega, \mathcal{A}_0, P) \subseteq L^2(\Omega, \mathcal{A}, P)
+$$
+is a closed subspace.
+
+
+Conditional expectation is then just the orthogonal projection into the closed subspace.
+
+\begin{proposition} If $X \in L^2(\Omega, \mathcal{A}, P)$, then $E[X|\mathcal{A}_0]$ is the orthogonal projection of X onto the closed subspace $L^2(\Omega, \mathcal{A}_0, P)$ of $L^2(\Omega, \mathcal{A}, P)$.
+\end{proposition}
+
+\begin{proof} Let $X_0$ be the orthogonal projection of X onto $L^2(\mathcal{A}_0)$. Furthermore, $1_A \in L^2(\mathcal{A}_0)$. Then,
+$$0 = <X - X_0, 1_A>_{L^2} = \int_{\Omega}(X - X_0)1_adP = \int_{A}XdP - \int_{A}X_0dP$$. Since $X_0$ is $\mathcal{A}_0$ measurable and 
+$$
+\int_{A}XdP = \int_AX_0dP
+$$
+for all $A \subseteq \mathcal{A}_0$. By definition, $X_0$ is the conditional expectation $E[X|\mathcal{A}_0]$.
+\end{proof}
+
+\begin{proposition} Let $X \in L^1(\Omega, \mathcal{A}, P)$ and $\mathcal{A}_0 \subseteq \mathcal{A}$ as $\sigma$-field. Then the following statements are equivalent. 
+
+\begin{enumerate}
+    \item $X_0 = E[X|\mathcal{A}_0]$;
+    \item If $X_0$ is $\mathcal{A}_0$ and $E[X_0Y] = E[XY]$ for all $Y \in L^{\infty}(\Omega, \mathcal{A}_0, P)$.
+\end{enumerate}
+
+Moreover,
+$$
+E[XY|\mathcal{A}_0] = YE[X|\mathcal{A}_0]
+$$
+for all $Y \in L^{\infty}(\Omega, \mathcal{A}_0, P)$.
+\end{proposition}
+
+\begin{corollary} Let $X,Y \in L^1(\Omega, \mathcal{A}, P)$ be two random variables. We define the $\sa$
+$$
+\mathcal{A}_y \coloneqq \{Y^{-1}[B]: B \subseteq \mathbb{R} \; \text{a Borel set}\}
+$$
+to be a $\sigma$-field in $\Omega$ and $\mathcal{A}_y \subseteq \mathcal{A}$. We then define the conditional expectation of a random variable on another random variable as
+$$
+E[X|Y] \coloneqq E[X|\mathcal{A}_y].
+$$
+
+Furthermore, from the definition of conditional expectation, we define the law of total expectation as
+$$
+E[E[X|Y]] = E[X].
+$$
+\end{corollary}
+
+\end{document}}}

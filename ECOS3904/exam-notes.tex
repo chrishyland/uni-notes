@@ -1,0 +1,925 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools, hyperref,enumerate}
+\usepackage{newpxmath} % Palatino font
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf ECOS3904: Applied Macroeconometrics
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+
+\newcommand\E{\mathbb{E}}
+
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+
+\title{ECOS3904: Applied Macroeconometrics}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2018}
+
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%\lecture{**CHAPTER-NUMBER**}{**TITLE**}
+\lecture{1}{Introduction to Time Series}
+\section{Time Series}
+\subsection{Basic Defintions}
+\begin{definition} (Random Variable) A random variable is a function X = X($\omega$): $\Omega \rightarrow$ $\mathbb{R}$ where $\Omega$ is the sample space and $\mathbb{R}$ is the real line. 
+\end{definition}
+
+\begin{definition}
+(Stochastic Process) For a given probability space ($\Omega$, $\mathbb{F}$, $\mathbb{A}$) and a measurable space (S, $\Sigma$), a stochatic process is a collection of S-valued random variables, which can be written as:
+$$
+\{X(t): t \in T\}
+$$
+\end{definition}
+
+\begin{remark}
+To elaborate, a $\textit{stochastic process}$ is a collection of random variables $X_1, X_2, X_3,...$ defined on a common $\textbf{probability space}$ ($\Omega$, $\mathbb{F}$, $\mathbb{A}$) where $\Omega$ is a sample space, $\mathbb{F}$ is a $\sigma$-algebra, and $\mathbb{F}$ is a probability measure. The random variables, indexed by an $\textbf{index set T}$ all takes values in the same mathematical space S, which is $\textbf{measurable}$ with respect to some $\sigma$-algebra $\Sigma$. 
+\end{remark}
+
+\begin{remark}
+The random variable can take on values from either a $\textbf{discrete}$ or a $\textbf{continuous}$ $\textbf{state}$ space.
+\end{remark}
+
+\begin{remark}
+A sequence is an enumerated collection, which does not require unique items in the collection.
+\end{remark}
+
+\begin{definition}
+(Time Series) A stochastic process indexed by time is known as a $\textit{time series}$ denoted by $\{X_t\}$ where t=1,2,3,... For each t, we have the random variable $X_t = X_t(\omega)$ where $\omega \in \Omega$. 
+\end{definition}
+
+\begin{remark}
+If T consists of integers, then the process is a $\textbf{Discrete Time Stochastic Process}$. If T consists of the real numbers, then the process is a $\textbf{Continuous Time Stochastic Process}$.
+\end{remark}
+
+\begin{definition}
+(Realization/Sample Path) When a certain outcome $\omega_0 \in \Omega$ is realised, the random variable $X_t$ will take on a real value $x_t = X_t(\omega_0)$ for each t. A $\textbf{realization/sample path}$ of a time series ${X_t}$ is a sequence of real numbers ${x_t}$.
+\end{definition}
+
+The issue with time series problems is that we only observe the realisation of the underlying process once. Hence, this makes it difficult to do inference, hypothesis testing, prediction, and more.
+
+\begin{definition}
+(Strictly Stationarity) Let $\{X_t\}$ be a $\textbf{stochastic process}$ and let $F_x(x_{t_1 + \tau} + ... + x_{t_k + \tau})$ be the CDF of the $\textbf{unconditional joint distribution}$ of $\{X_t\}$ at times $t_1 + \tau ,..., t_k + \tau$. $\{X_t\}$ is $\textbf{strictly/strongly}$ stationary if for all k, $\tau$, and $t_1,...,t_k$:
+$$
+F_x(x_{t_1 + \tau} + ... + x_{t_k + \tau}) = F_x(x_{t_1} + ... + x_{t_k})
+$$
+\end{definition}
+
+\begin{remark}
+Since $\tau$ does not affect the CDF $F_X(.)$, this means that the CDF $F_X$ is not a function of time. In other words, the random variables all have the same probability distribution.
+\end{remark}
+
+A strictly stationary processes parameter such as mean and variance remain the same across t. 
+
+Furthermore, applying a $\textbf{measurable function}$ f on the stationary process, still gives us a strictly stationary process. A measurable function is a function between two $\textbf{measurable spaces}$ such that the preimage of any measurable set is also measurable. 
+
+\begin{definition}
+(Measure-Preserving Transformation) A transformation T where $\mu(T^{-1}(A))  = \mu(A)$.
+\end{definition}
+
+\begin{definition}
+(Ergodicity) Let (X, $\mathbb{A}$, $\mu$) be a probability space and T: $X \rightarrow X$ be a $\textbf{measure-preserving transformation}$. We say that T is $\textbf{ergodic}$ with respect to $\mu$ if the following condition hold:
+$$
+  E \in \mathbb{A} \text{ with } T^{-1}(E) = E \text{ with either } \mu(E) = 0 \text{or } \mu(E) = 1. 
+$$
+\end{definition}
+
+To elaborate, ergodicity refers to the fact that any set that is unchanged by a transformation must be either everything in the set or nothing in the set. We require this so that eventually, every point in the space is realised. Ergodicity implies that our dynamical system can't be further decomposed.
+
+\begin{definition}
+(Serial Dependence/Autocorrelation) Random variables in a time series have $\textbf{serial dependence}$ if the value at some time t in the series is statistically dependent on the value at another time.
+\end{definition}
+
+\begin{definition}
+(Serial Correlation) A time series has $\textbf{serial correlation}$ if the condition holds that some pair of values are correlated.
+\end{definition}
+
+\begin{definition}
+(I.I.D Sequence) A sequence of independent and identically distributed (i.i.d.) random variables is a $\textbf{strictly stationary process}$ which exhibits $\textbf{no serial dependence}$. 
+\end{definition}
+
+\begin{definition}
+(Constant Series) A time series is a constant series if $X_t = X_1$ for all t=1,2,... A constant series is strictly stationary process which exhibits $\textbf{perfect}$ serial dependence.
+\end{definition}
+
+\begin{definition}
+(Weakly/Covariance Stationary) A time series $\{X_t\}$ is $\textbf{weakly/covariance stationary}$ if:
+\begin{enumerate}
+  \item $E(X_t), E(X_{t}^{2}) < \infty$ for all t.
+  \item $E(X_t)$ does not depend on t.
+  \item Cov($X_t$,$X_s$) = Cov($X_{t+k}$,$X_{s+k}$) for any t,s, and k.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+(Weakly Dependent) A $\textbf{weakly dependent}$ time series is one where:
+$$
+Corr(x_t,x_{t+h}) \rightarrow 0 \quad h \rightarrow \infty
+$$
+\end{definition}
+
+A weakly dependent time series in one where the process is asymptotically uncorrelated. An important example of a weakly stationary process is a white noise process.
+
+\begin{definition}
+(White Noise) A time series $\{\epsilon_t\}$ is a white noise process if it satisfies:
+\begin{enumerate}
+  \item $E(\epsilon_t) = 0$.
+  \item $Var(\epsilon_t) = \sigma^2$.
+  \item $Cov(\epsilon_t, \epsilon_s) = 0$.
+\end{enumerate}
+\end{definition}
+
+When modellign a serially correlated stationary time series. we can break it up into 2 additive components:
+$$
+X_t = g(X_{t-1}, X_{t-2}, ...) + \epsilon_t
+$$
+
+where $g(X_{t-1}, X_{t-2}, ...)$ is $\textbf{predictable}$ whilst $\epsilon_t$ is a white noise process. The white noise process is unpredictable based on past history of the series.
+
+When modelling, we tend to make the assumption that the function g(.) is $\textbf{linear}$. An example of this is:
+$$
+X_t = \alpha_0 + \alpha_1 X_{t-1} + \epsilon_t 
+$$
+
+\begin{definition}
+(Integrated Process) An $\textbf{integrated process}$ can be made stationary by taking differences over time. 
+\end{definition}
+
+\begin{definition}
+(Stochastic Trend) A $\textbf{stochastic trend}$ is an integrated process that is $\textbf{highly persistent}$.
+\end{definition}
+
+\begin{definition}
+(Random Walk) A random walk is a process where:
+$$
+Y_t = Y_{t-1} + \epsilon_t
+$$
+where $\epsilon_t$ is a white noise process.
+\end{definition}
+
+Note that the first difference of a random walk is a white noise process.
+
+
+
+\lecture{2}{Difference Equations}
+\section{Difference Equations}
+\subsection{Introduction to modelling time series}
+
+Time seires econometrics is concerned with estimation of difference equations containing stochastic components. With time series, we want to see if the data contains any important economic information. 
+
+\begin{definition}
+(Finite-difference Equations). An equation of the form
+$$
+\pi_{t+1} = f(\pi_{t})
+$$
+which relate values at \textbf{discrete times} is called a \textbf{finite-difference Equations}.
+\end{definition}
+
+\begin{remark}
+$\pi_t$ is known as the $\textbf{state}$ of the system at time t. The function f is known as the $\textbf{dynamics}$ of the system and how it captures the state changes in time. We seek to figure out this function f.
+\end{remark}
+
+In particular, a solution to the finite difference equation is a sequence of states that satisfies the finite difference equation.
+
+\subsection{Solution by Forward Iteration}
+Given a known value at a time point, we iterate from that period and obtain subsequent time path of the entire y sequence. Let us denote this value as $y_0$. Hence, we can have 
+$$
+y_1 = a_0 + a_1y_0 + \epsilon_1.
+$$
+Likewise for $y_2$, we have that
+$$
+y_2 = a_0 + a_1y_1 + \epsilon_t
+$$
+$$
+= a_0 + a_1(a_0 + a_1y_0 + \epsilon_1) + \epsilon_2
+$$
+$$
+= a_0(1 + a_1) + a_1^2y_0 + a_1\epsilon_1 + \epsilon_2.
+$$
+
+Resultantly, we have that for all $t > 0$
+$$
+y_t = a_0\sum_{i=0}^{t-1}a_i^i + a_1^ty_0 + \sum_{i=0}^{t-1}a_i^i\epsilon_{t-i}.
+$$
+
+The $\textbf{forcing process}$ here is $x_t = \sum_{i=0}^{t-1}a_i^i\epsilon_{t-i}$ term. Note that $y_0$ is not the very beginning of the series but the first point that is known.
+
+To verify solutions, we can use substitution whereby we sub in the solution at t for the t+1 equation and see if it holds. Furthermore, if you notice, if $a_i < 1$, we will observe $\textbf{exponential decay}$, if $a_i > 1$, we will observe $\textbf{exponential growth}$, and if $a_i = 1$, we then just have a steady state. Furthermore, if $-1 < a_i < 0$, we have alternating decay, for $a_i < -1$ we have alternating growth and for $a_i = -1$, we have a periodic cycle.
+
+\subsection{Solution by Iteration without initial condition}
+Suppose we no longer have the initial condition $y_0$, we wouldn't be able to employ the technique from the solution by forward iteration method. Now we no longer have a point to terminate the process of iteration once we reached it, instead, we keep on iterating backwards past that point. Hence, from 
+$$
+y_t = a_0\sum_{i=0}^{t-1}a_i^i + a_1^ty_0 + \sum_{i=0}^{t-1}a_i^i\epsilon_{t-i}.
+$$
+substitute in $y_0 = \alpha_0 + \alpha_1y_{t-1} + \epsilon_0$ so that 
+$$
+y_t = a_0\sum_{i=0}^{t-1}a_1^i + a_1^t(\alpha_0 + \alpha_1y_{t-1} + \epsilon_0) + \sum_{i=0}^{t-1}a_i^i\epsilon_{t-i}
+$$
+$$
+= a_0\sum_{i=0}^{t-1}a_1^i + \sum_{i=0}^{t}a_i^i\epsilon_{t-i} + a_1^{t+1}y_{-1}.
+$$
+We then iterate backwards another m periods, so we arrive at
+$$
+y_t = a_0\sum_{i=0}^{t+m}a_1^i + \sum_{i=0}^{t+m}a_i^i\epsilon_{t-i} + a_1^{t+m+1}y_{-m-1}.
+$$
+
+\subsection{Cobweb Method}
+Here, we have issues with solving difference equations for nonlinear difference equations. Hence, we use the iteration methods of either the Cobweb method or the numerical iteration method. To run the Cobweb method, we draw a 45 degree line on a graph and the function we are interested in looking at it. We then pick an initial point $y_0$ and draw a line vertically until we hit the function of interest, then we draw a horizontal line until it hits the 45 degree line. Then, we draw another vertical line until we hit the function of interest and we keep iterating this process. This allows us to see the behaviour of this nonlinear system.
+
+\subsection{Numerical Iteration}
+Here, we simply look at each point and take the difference between this and the last point of interest. We stop iterating until we reach a point of convergence for our algorithm to terminate.
+
+\subsection{Simple Difference Equation}
+Recall that a $\textbf{first order homogenous difference equation}$ is simply
+$$
+y_t = \alpha y_{t-1}.
+$$
+Recall the homogenous here refers to the fact that there is no drift in the system. In particular, the the solution is
+$$
+y_t = \alpha^ky_0.
+$$
+
+\bigskip
+Now we look at $\textbf{non-homogenous difference equations}$. In particular, we now have a drift as seen in 
+$$
+y_t = \alpha y_{t-1} + b
+$$
+for a non-zero b. Through iteration, we arrive at
+$$
+y_t = \alpha^ty_0 + b\sum_{i=1}^t\alpha^{i-1}.
+$$
+
+We have different cases for this in terms of behaviour.
+
+\textbf{Case One}:
+
+$\alpha = 1$ leads to a steady behaviour with $y_t = y_0 + bt$ where $y_t$ grows linearly with growth rate b;
+
+\textbf{Case Two}:
+
+We then have that 
+$$
+y_t = \alpha^ty_0 + \frac{b(1 - \alpha^t)}{1 - \alpha}
+$$
+\bigskip
+$$
+= (y_0 - \frac{b}{1 - \alpha})\alpha^t + \frac{b}{1 - \alpha}.
+$$
+
+Hence, if $\alpha > 1$, we have an explosion for $y_t$ whilst if $\alpha < 1$, we have a convergence to $\frac{b}{1 - \alpha}$.
+
+For $\alpha = -1$, we have a periodic cycle as a result so that
+$$
+y_t = (y_0 - \frac{b}{1 - \alpha})(-1)^t + \frac{b}{1 - \alpha}.
+$$
+
+\subsection{Difference Equation with Forcing Process}
+If we now had a deterministic/random process $w_t$ rather than b, this changes things up.
+
+$$
+y_t = \alpha y_{t-1} + w_t.
+$$
+Here, w are shocks that causes changes in the value y. We can look at this through multiple ways.
+
+\begin{definition}(Dynamic Multipler).
+
+Given the solution g, the effect of $w_{t-i}$ on $y_t$ can be written as
+$$
+\frac{\partial y_t}{\partial w_{t-i}} = \frac{\partial g(t,w_1,...,w_t,y_0)}{\partial w_{t-i}}
+$$
+and thisi s known as the i-th period dynamic multiplier.
+\end{definition}
+
+\begin{definition}(Impulse Response Function).
+
+This is defined to be
+$$
+\frac{\partial y_t}{\partial w_{t-i}}
+$$
+which keeps track of time path of all dyanamic multipliers 
+$$
+\frac{\partial y_t}{\partial w_{t}},\frac{\partial y_t}{\partial w_{t-1}},...,\frac{\partial y_t}{\partial w_{t-i}},...
+$$
+This looks at the effect of the input process $w_t$ on the output process $y_t$.
+\end{definition}
+
+\subsection{Lag Operator}
+\begin{definition}(Lag Operator).
+
+The lag operator is a transformation that turns one time series into another by shifting everything back by one period. 
+
+$$
+Lx_t = x_{t-1}.
+$$
+
+For multiple periods we define the $\textbf{lag polynomial}$ as
+$$
+(a_0L^0 + a_1L^1 + ... + a_pL^p)x_t = a_0x_t + a_1x_{t-1} + ... + a_px_{t-p}.
+$$
+
+We can express this as 
+$$
+\alpha(L) = (a_0L^0 + a_1L^1 + a_2L^2 + ... + a_pL^p).
+$$
+
+\end{definition}
+
+We note some properties of the lag operator.
+
+\begin{enumerate}[(i)]
+    \item Commutative a(L)b(L) = b(L)a(L);
+    \item We can raise it to positive powers $a(L)^2 = a(L)a(L)$;
+    \item We can factorise them and invert each term;
+    \item The lag operator applied to constant is just the constant;
+    \item We can multiply lag opeator terms through.
+\end{enumerate}
+
+Properties of lag operators
+\begin{enumerate}
+\item Linearity;
+\item Associative.
+\end{enumerate}
+
+
+\begin{definition}
+(Basic Models).
+
+We have models of the following form:
+\begin{enumerate}
+    \item AR(P): $a(L)x_t = \epsilon_t$
+    \item MA(Q): $x_t = b(L)\epsilon_t$
+    \item ARMA(P,Q): $a(L)x_t = b(L)\epsilon_t$
+\end{enumerate}
+\end{definition}
+
+We can define the $L^{-1}$ to be the inverse of the lag operator. Furthermore, $L^0$ is known as the $\textbf{identity operator}$.
+
+\bigskip
+\textbf{Example: With Non-Homoegenous Equation with 1st difference}:
+Suppose we had 
+$$
+(1 - \alpha L)y_t = b
+$$
+where $\alpha < 1$. We can take the inverse and recall lag on constant is just the constant
+$$
+= \big(\sum_{i=0}^{\infty}\alpha^i L^i\big)b 
+$$
+$$
+= \big(\sum_{i=0}^{\infty}\alpha^i\big)b 
+$$
+$$
+= \frac{1}{1 - \alpha}b.
+$$
+
+\bigskip
+\textbf{Example: With Difference Equation with Forcing Process}:
+Replace b with $w_t$. We now have that
+$$
+(1 - \alpha L)y_t = w_t
+$$
+where $w_t$ needs to be stochastically bounded. Again, we have that
+$$
+= \sum_{i=0}^{\infty}\alpha^iw_{t-i}.
+$$
+
+\subsection{Multiple Representations of Time Series}
+We can express our models in different forms depending on how we want to work with them. Expressing them in the form of the summation of independent random variables can be quite useful in cases of finding variance and autocovariance of terms. In particular, we we can turn AR(1) series into a MA($\infty$).
+
+\bigskip
+\textbf{AR(1) to MA($\infty$) by recursive substitution}
+
+Start with AR(1) = $x_t = ax_{t-1} + \epsilon$. By recursive substitution, you should we can arrive at
+$$
+x_t = a^kx_{t-k} + a^{k-1}\epsilon_{t-k+1} + ... + a^{2}\epsilon_{t-2} + a\epsilon_{t-1} + \epsilon_t.
+$$
+
+Hence, we can express an AR(1) model as an ARMA(k,k-1) model. Furthermore, if we had $|a| < 1$, which then implies that $\Lim{k \rightarrow \infty}a^kx_{t-k} = 0$, we then have that 
+$$
+x_t = \sum_{j=0}^{\infty}a^j\epsilon_{t-j}.
+$$
+
+\bigskip
+\textbf{AR(1) to MA($\infty$) with lag operators}
+Another idea is to use Lag opeators. If we had
+$$
+(1 - aL)x_t = \epsilon_t
+$$
+we can then invert this by going
+$$
+x_t = (1 - aL)^{-1}\epsilon_t
+$$
+provided that $|a|<1$. To interpret this inverse, recall the geometric series
+$$
+(1 - z)^{-1} = 1 + z + z^2 + .... 
+$$
+for $|z|<1$. Hence, using the same idea, we have that
+$$
+x_t = (1 + aL + a^2L^2 + ...)\epsilon_t = \sum_{j=0}^{\infty}a^j\epsilon_{t-j}.
+$$
+
+\subsection{AR(P) with lag operators}
+Suppose we had the AR(P) model of
+$$
+y_t = a_0y_{t-1} + a_1y_{t-2} + ... + \epsilon_t,
+$$
+where each $\epsilon \sim$ white noise process. We can express this as
+$$
+a(L)y_t = \epsilon_t,
+$$
+where $a(L)$ is the L-th order lag polynomial
+$$
+a(L) = 1 - a_0L - a_1L^2 - ... - a_pL^p.
+$$
+
+If we wanted to factorise a(L), we know that (from the Fundamental theorem of algebra),
+$$
+a(L) = (1 - \lambda_1L)(1 - \lambda_2L)...(1 - \lambda_pL)
+$$
+where $\lambda_j$ are called the $\textbf{characteristic roots}$ and they are the inverse of roots of $a(z) = 0$.
+
+For a stationary process of $y_t$, we require that these characteristic roots $\lambda$ all lie within the unit circle $|\lambda_j|<1$ for j=1,...,p. Meanwhile, all polynomial roots must lie $\textbf{within}$ the unit circle.
+
+To then get a $MA(\infty)$ representation, we take the inverse where each inverse is
+$$
+(1 - \lambda_iL)^{-1} = \sum_{k=1}^{\infty}\lambda_i^kL^k.
+$$
+
+\subsection{AR(2) with Lag Operators}
+If $\lambda_i < 1$ for all i = 1,...,p, then the process is stable. In particular, we will have
+$$
+y_t = \alpha(L)^{-1}\epsilon_t
+$$
+$$
+= \big(\sum_{j=0}^{\infty}\lambda_1^jL^j\big)\big(\sum_{j=0}^{\infty}\lambda_2^jL^j\big)\epsilon_t
+$$
+$$
+= \sum_{i=0}^{\infty}c_i\epsilon_t 
+$$
+where we have that
+$$
+c_i = \sum_{k=0}^{i}\lambda_1^k\lambda_2^{i-k}.
+$$
+
+\subsection{Characteristic Polynomials}
+The characteristic equation is defined as 
+$$
+\lambda^2 - \alpha_1 \lambda - \alpha_2 = 0
+$$
+whereby the $\lambda_1$, $\lambda_2$ roots to this equation is known as the $\textbf{characteristic roots}$.
+
+\bigskip
+Some important things to recall regarding roots
+
+$b^2 + 4a > 0 \rightarrow $ roots are real numbers;
+$b^2 + 4a < 0 \rightarrow $ roots are complex numbers and conjugate pairs;
+$b^2 + 4a = 0 \rightarrow $ roots all same values.
+
+\lecture{3}{Forward Looking Models}
+
+\section{Forward Looking Models}
+\subsection{Forward Looking}
+
+What if we had an issue where we had that $\alpha > 1$? We can now instead express things in a different manner to assist us. Now we look at the $\textbf{lead operator}$, which we define as $L_*$. In particular, note that
+$$
+\alpha^* = \alpha^{-1}
+$$
+and we have that
+$$
+L^* = L^{-1}.
+$$
+Hence, $L_*y_t = y_{t+1}$. Hence, we now have that
+$$
+(1 - \alpha L)^{-1} = (1 - (\alpha^* L^*)^{-1})^{-1}
+$$ 
+$$
+= -\alpha^*L^*(1 - \alpha^*L^*)^{-1}
+$$
+$$
+= -\alpha^*L^*\sum_{k=0}^{\infty}(\alpha^*L^*)^{k}
+$$
+$$
+= -\sum_{k=1}^{\infty}(\alpha^*L^*)^k.
+$$
+
+Hence, applying it to
+$$
+y_t = (1 - \alpha L)^{-1}
+$$
+we have that
+$$
+y_t = -\sum_{k=1}^{\infty}\alpha^{-k}w_{t+k}.
+$$
+This is a forward looking representation of the model. This is a different scenario to the backward looking representation whereby if $\alpha > 1$ the system is stable but if $\alpha < 1$, then the system explores. The issue with this is that you don't actually have future values when modelling this.
+
+
+\subsection{Prediction}
+We want to see $E_t(x_{t+j})) = E(x_{t+j}|x_t,x_{t-1},...,\epsilon_t,\epsilon_{t-1},...)$.
+
+\bigskip
+\textbf{AR(1)}
+For AR(1), $x_{t+1} = \phi x_t + \epsilon_{t+1}$, we have $E(x_{t+1}) = \phi x_t$ for one period ahead. For 2 period ahead, we have $\phi^2 x_t$. We can keep iterating for this.
+
+We note that for the unconditional mean and variance, we have that
+$$
+\Lim{k \rightarrow \infty}E_t(x_{t+k}) = 0 = E(x_t).
+$$ 
+
+$$
+\Lim{k \rightarrow \infty}Var(x_{t+k}) = \frac{1}{1 - \phi^2}\sigma_{\epsilon}^2 = var(x_t).
+$$
+In particular, we note that the limits of conditional momnets is the unconditional moment.
+
+\subsection{Impulse-Response Functions}
+The impulse response function is the path that x follows as a result of a shock $\epsilon_t$. In particular, $\epsilon_{t} = 1$ whilst all other points is 0.
+
+We note that the $MA(\infty)$ representation is the same thing as the impulse-response function. Furthermore, calculating an $MA(\infty)$ representation is equivalent to simulating the impulse-response function. 
+
+\lecture{4}{Power Spectrum}
+
+\section{Power Spectrum}
+\subsection{Power Spectrum}
+
+
+\begin{definition}(Strongly/Strictly Stationary). 
+
+The joint PDF of $x_t$ is independent of t for all s.
+\end{definition}
+
+\begin{definition}(Weakly/Covariance Stationary).
+
+A process $x_t$ is weakly/covariance Stationary if its first 2 moments are finite and the covariance $E(x_t,x_{t-j}$ depends only on j, not t.
+\end{definition}
+
+Note that strongly stationary does $\textbf{not}$ imply weakly stationary, due to the 2nd moment being finite is not always satsfied.
+
+
+\begin{theorem}(Wold Decomposition Theorem).
+
+Any mean zero covariance stationary process $\{x_t\}$ can be represented in the form
+$$
+x_t = \sum_{j=0}^{\infty}\theta_j\epsilon_{t-j} + \eta_t.
+$$
+
+\end{theorem}
+
+\subsection{Spectral Representation}
+We can also represent time series in its $\textit{spectral density}$ form. Succinctly put, this is the fourier transform of the autocorrelation/autocovariance function.
+
+We can represent complex numbers in numerous ways
+
+\begin{enumerate}[(i)]
+  \item A + Bi;
+  \item $C\big(cos \theta + isin\theta\big)$;
+  \item $Ce^{i\theta}$.
+\end{enumerate}
+
+Here, $C = (A^2 + B^2)^{\frac{1}{2}}$ is the amplitude/magnitude and $\theta = tan^{-1}\frac{B}{A}$ is known as the angle/phase.
+
+\bigskip
+
+For waves, if we had
+$$
+y_t = cos(\omega t)
+$$
+where $\omega$ is the frequency and tells you how large the oscillation is. Increasing $\omega$ increases the oscillation dramatically. The period is defined as $\frac{2\pi}{\omega}$. 
+
+We can now construct a stochastic series of the form
+$$
+y_t = \mathbb{A}cos(\omega t) + \mathbb{B}sin(\omega t).
+$$
+The random variables $\mathbb{A}$ and $\mathbb{B}$ have zero mean, are mutually uncorrelated, and have a common finite variance.
+
+From this, we can also break y up into multiple components to have
+$$
+y_t = \sum_{j=1}^n\big[\mathbb{A}_jcos(\omega_jt) + \mathbb{B}_jsin(\omega_jt)\big]
+$$
+
+The set of random variables $\{\mathbb{A}_j, \mathbb{B}_j\}_{j=1}^n$. We can express this in complex exponential form as
+$$
+y_t = ce^{i\omega t} + \bar{c}e^{-i\omega t}.
+$$
+
+In particular, we have that
+
+$$
+E(y_t) = 0;
+$$
+$$
+Var(y_t) = \sum_{j=1}^n\sigma_j^2;
+$$
+$$
+Cov(y_t, y_{t-k}) = \sum_{j=1}^n\sigma_j^2cos(\omega_jk).
+$$
+
+Here, we see that the variant contribution from different components to the variance and autocovariance. Hence, different $\omega_j$ represents the different components of a time series. We use the variance to see how large the random variable is, and in this case, it is called the $\textbf{power/energy}$ of that component. 
+
+\bigskip
+Now we take a final step of now have a continuous sort of distribution.
+$$
+y_t = \int_0^{\pi}cos(\omega t)d\mathbb{A}(\omega) + \int_0^{\pi}sin(\omega t)d\mathbb{B}(\omega)
+$$
+where $d(\mathbb{A}(\omega)$ and $d(\mathbb{B}(\omega)$ are random variables indexed by frequency $\omega$. We can express this in complex exponential form.
+
+$$
+y_t = \int_{- \pi}^{\pi}e^{i\omega t}dZ(\omega)
+$$
+where we define $dZ(\omega) = \frac{1}{2}[dA(\omega) - idB(\omega)]$ for $\omega \geq 0$ and $dZ(\omega) = \bar{dZ(-\omega)}$ for $\omega < 0$. This is known as the $\textbf{spectral representation}$ of a weakly stationary process whilst $dZ(\omega)$ is the $\textbf{random spectral measure}$ on $[-\pi, \pi]$.
+
+\begin{definition}(Spectral Measure).
+
+We can take 
+$$
+Var[dZ(\omega)] = dF(\omega)
+$$
+for $w \in [-\pi, \pi]$.
+\end{definition}
+This can be interpreted as the $\textbf{variance/power/energy}$ of the cyclical component of y corresponding to frequency $\omega$.
+
+\begin{definition}(Density).
+
+Given a $dF(\omega)$, we can define a nonnegative function $S(\omega)$ such that
+$$
+dF(\omega) = S(\omega)\frac{d\omega}{2\pi}
+$$
+for $\omega \in [-\pi, \pi]$. Here $S(\omega)$ is known as the $\textbf{density}$.
+\end{definition}
+
+
+\subsection{Autocorrelation and Autocovariance Functions}
+\begin{definition}(Autocovariance).
+
+The autocovariance of a series $x_t$ is defined as
+$$\gamma_j = cov(x_t, x_{t-j}) = \mathbb{E}\big(x - E(x_t)\big)\big(x_{t-j} - E(x_{t-j})\big)$$
+
+\end{definition}
+
+For models where we do not have a mean, then we have $E(x_t) = 0$. In that case, we have that $\gamma_j = E(x_tx_{t-j})$. Furthermore, note that $\gamma_0 = Var(x_t)$.
+
+\begin{definition}(Autocorrelation).
+
+We can normalise the autocvariance by dividing it by $\gamma(0)$. Hence, we have that
+$$
+\rho_j = \frac{\gamma_j}{\gamma_0} = \frac{\gamma_j}{Var(x_t)}.
+$$
+If given a spectral density $S(\omega)$, we can derive the autocovariance function as
+$$
+\gamma(k) = \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{i\omega k}S(\omega)d\omega.
+$$
+If we set k=0, we get
+$$
+\gamma(0) = Var(y_t) = \frac{1}{2\pi}\int_{-\pi}^{\pi}S(\omega)d\omega.
+$$
+\end{definition}
+
+The uses of autocovariance and autocovariance of a time series helps us to model the joint distribution of a time series $\{x_t\}$. Hence, from this we can see the persistence of a time series. Furthermore, the MA representation makes thing easy to compute variances as all covariance terms $(E(\epsilon_t, \epsilon_{t-k})) = 0$.
+
+
+\begin{definition}(Fourier Transform).
+
+For any series of numbers $\{x_t\}$, the fourier transform is defined to be
+$$
+x(\omega) = \sum_{t=-\infty}^{\infty}e^{-i\omega t}x_t.
+$$
+This takes a series as a function of t and turns it into a complex valued function of $\omega$.
+\end{definition}
+
+\begin{definition}(Inverse Fourier Transform).
+
+For any complex valued function that is a function of $\omega$, we can turn it into a function of t by
+$$
+x_t = \frac{1}{2\pi}\int_{-\pi}^{\pi}e^{+i\omega t}x(\omega)d\omega.
+$$
+\end{definition}
+
+As $e^{i\omega t} = cos t\theta + isin t\theta$, that means the inverse fourier transform expresses any $x_t$ as a linear combination of sines and cosines functions.
+
+Now, we let $x_t = \gamma_j$ or in other words, we sub in the autocovariance of the series into the Fourier transform. 
+\begin{definition}(Spectral Density).
+
+The spectral density $S(\omega)$ is the Fourier transform of the autocovariance function
+$$
+S(\omega) = \sum_{j=-\infty}^{\infty}e^{-i\omega j}\gamma_j.
+$$
+
+As $\gamma_j$ is symmetric, we have that
+$$
+S(\omega) = \gamma_0 + 2\sum_{j=1}^{\infty}\gamma_jcos(j\omega).
+$$
+\end{definition}
+
+Additionally, from $S(\omega)$, we can recover the autocovariance $\gamma_j$ by the inverse Fourier transform of
+$$
+\gamma_j = \frac{1}{2\pi}\int_{\pi}^{\pi}e^{+i\omega j}S(\omega)d\omega.
+$$
+
+From this, we can divide everything of the Fourier transform to get the $\textbf{autocorrelation}$ function and recall that $\rho_j = \gamma_j/\gamma_0$. Hence, we have that
+
+$$
+f(\omega) = \frac{S(\omega)}{\gamma_0} = \sum_{j=-\infty}^{\infty}e^{-i\omega j}\rho_j.
+$$
+
+
+
+\textbf{Spectral Representation of White Noise}
+
+The power spectral density of $\epsilon_t$ is
+$$
+S_{\epsilon}(\omega) = \sigma^2
+$$
+for all $\omega \in [-\pi,\pi]$.
+
+\subsection{Filtering}
+Linear filters are $\textbf{infinite-order lag polynomials}$.
+
+\begin{definition}(Filtering).
+Applying a moving average to a series $x_t$. 
+
+$$
+y_t = \sum_{j=-\infty}^{\infty}b_jx_{t-j} = b(L)x_t.
+$$
+Hence, $y_t$ is a filtered version of $x_t$.
+\end{definition}
+
+\lecture{13}{Conditional Variance/Volatility Models}
+\section{Conditional Variance/Volatility Models}
+\section{Conditional Variance/Volatility Models}
+\subsection{Motivation}
+
+When we looked at ARMA models, these rely only on the conditional mean. However, in volatile data, it makes more sense to also consider the conditional variance of the data. This will give us a "better" information set and help us do inference and forecasting more accurately. 
+
+In particular, when conducting forecasts, using only the conditional mean gives us point forecasts whilst conditional variances gives us interval forecasts. In particular,
+$$
+\text{Conditional Mean}: E(X_{T+1}|I_t)
+$$
+
+$$
+\text{Conditional Variance}: Var(X_{T+1}|I_t)
+$$
+
+\subsection{AR(1) Model}
+
+Looking at the stationary AR(1) model
+$$
+y_t = c + \alpha y_{t-1} + \epsilon_t
+$$
+where $\epsilon_t \sim iid \; WN(0, \sigma^2)$.
+
+$\textbf{Unconditional mean:} \; \frac{c}{1 - \alpha}$ for all t.
+
+$\textbf{Conditional mean:} \; E[y_t|I_{t-1}] = c + \alpha y_{t-1}$.
+
+Notice now that conditional mean changes over time as it incorporate updated information. 
+
+We want to move from a point forecast (1st moment of conditional distribution) into an interval forecast, whereby we need to know the conditional variance of $y_{t+1}$ given $I_t$.
+$$
+Var(y_{t+1}) \coloneqq E_t[y_{t+1} - E_t(y_{t+1})]^2.
+$$
+
+Hence, for simple AR(1) model, the variance is
+$$
+Var(y_{t+1}) \coloneqq E_t[y_{t+1} - (c + \alpha y_{t})]^2 = E_t(\epsilon_{t+1}^2) = \sigma^2
+$$
+
+where $\sigma^2$ is the variance of the error term. So, there is an issue here with the AR (and ARMA) model that the conditional variance of $y_t$ is $\textbf{time-invariant}$ just like the unconditional variance. Hence, we call them $\textbf{unconditionally and conditionally homoskedastic}$.
+
+
+\end{document}}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
