@@ -1,0 +1,75 @@
+\BOOKMARK [1][-]{section.1}{Examples of control and game problems}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Introduction}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Examples of control and game problems}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Further examples of control and game problems}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Math Revision}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Linear Algebra Review}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Analysis Review}{section.2}% 7
+\BOOKMARK [1][-]{section.3}{Convex Sets}{}% 8
+\BOOKMARK [2][-]{subsection.3.1}{Hyperplanes}{section.3}% 9
+\BOOKMARK [2][-]{subsection.3.2}{Projection Theorem}{section.3}% 10
+\BOOKMARK [2][-]{subsection.3.3}{Separation Theorem}{section.3}% 11
+\BOOKMARK [1][-]{section.4}{Convex Functions}{}% 12
+\BOOKMARK [2][-]{subsection.4.1}{Convex Functions}{section.4}% 13
+\BOOKMARK [2][-]{subsection.4.2}{Jensen's Inequality}{section.4}% 14
+\BOOKMARK [2][-]{subsection.4.3}{Legendre-Fenchel Transform}{section.4}% 15
+\BOOKMARK [1][-]{section.5}{Static Optimisation}{}% 16
+\BOOKMARK [2][-]{subsection.5.1}{Infima and suprema and differentiable functions}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.2}{Minimisation problem}{section.5}% 18
+\BOOKMARK [2][-]{subsection.5.3}{Necessary Conditions for Optimality}{section.5}% 19
+\BOOKMARK [2][-]{subsection.5.4}{Sufficient Conditions for Optimality}{section.5}% 20
+\BOOKMARK [2][-]{subsection.5.5}{Optimisation over constraints}{section.5}% 21
+\BOOKMARK [1][-]{section.6}{Duality}{}% 22
+\BOOKMARK [2][-]{subsection.6.1}{Primary Problem Optimisation}{section.6}% 23
+\BOOKMARK [1][-]{section.7}{Review of ODEs}{}% 24
+\BOOKMARK [2][-]{subsection.7.1}{Absolutely Continuous Functions}{section.7}% 25
+\BOOKMARK [2][-]{subsection.7.2}{Existence and uniqueness of solutions}{section.7}% 26
+\BOOKMARK [2][-]{subsection.7.3}{Linear Equations}{section.7}% 27
+\BOOKMARK [2][-]{subsection.7.4}{Time-inhomogenous linear system}{section.7}% 28
+\BOOKMARK [2][-]{subsection.7.5}{Linear Time Invariant System}{section.7}% 29
+\BOOKMARK [1][-]{section.8}{Controllability of Linear Systems}{}% 30
+\BOOKMARK [2][-]{subsection.8.1}{Controllability of Linear Systems}{section.8}% 31
+\BOOKMARK [2][-]{subsection.8.2}{Observability of Linear Systems}{section.8}% 32
+\BOOKMARK [1][-]{section.9}{Kalman Rank Condition}{}% 33
+\BOOKMARK [2][-]{subsection.9.1}{Kalman Rank Condition}{section.9}% 34
+\BOOKMARK [1][-]{section.10}{Controllability of nonlinear systems}{}% 35
+\BOOKMARK [2][-]{subsection.10.1}{Controllability of nonlinear systems}{section.10}% 36
+\BOOKMARK [2][-]{subsection.10.2}{Lie Algebraic Conditions}{section.10}% 37
+\BOOKMARK [1][-]{section.11}{Review of ODEs: Dependence of Initial Conditions}{}% 38
+\BOOKMARK [2][-]{subsection.11.1}{Flow Property}{section.11}% 39
+\BOOKMARK [2][-]{subsection.11.2}{Dependence on initial conditions}{section.11}% 40
+\BOOKMARK [1][-]{section.12}{Necessary Conditions of Optimality}{}% 41
+\BOOKMARK [2][-]{subsection.12.1}{The control problem without constraints}{section.12}% 42
+\BOOKMARK [2][-]{subsection.12.2}{Maximum principle}{section.12}% 43
+\BOOKMARK [2][-]{subsection.12.3}{Maximum principle for unconstrained problems}{section.12}% 44
+\BOOKMARK [1][-]{section.13}{Linear Quadratic Regulator}{}% 45
+\BOOKMARK [2][-]{subsection.13.1}{Linear Quadratic Regulator}{section.13}% 46
+\BOOKMARK [1][-]{section.14}{Time Optimal Control}{}% 47
+\BOOKMARK [2][-]{subsection.14.1}{Time Optimal Control}{section.14}% 48
+\BOOKMARK [2][-]{subsection.14.2}{General Result of PMP}{section.14}% 49
+\BOOKMARK [1][-]{section.15}{Dynamic Programming Principle}{}% 50
+\BOOKMARK [2][-]{subsection.15.1}{Dynamic Programming Principle}{section.15}% 51
+\BOOKMARK [2][-]{subsection.15.2}{HJB Equations}{section.15}% 52
+\BOOKMARK [1][-]{section.16}{Discounted Cost Control Problem}{}% 53
+\BOOKMARK [2][-]{subsection.16.1}{Problem Formulation}{section.16}% 54
+\BOOKMARK [2][-]{subsection.16.2}{Dynamic Programming Principle}{section.16}% 55
+\BOOKMARK [2][-]{subsection.16.3}{HJB Equation in Discounted Cost Control Problem}{section.16}% 56
+\BOOKMARK [1][-]{section.17}{Probability Theory}{}% 57
+\BOOKMARK [2][-]{subsection.17.1}{Introduction to Probability Theory}{section.17}% 58
+\BOOKMARK [2][-]{subsection.17.2}{Conditional Expectation}{section.17}% 59
+\BOOKMARK [2][-]{subsection.17.3}{Introduction to Martingales}{section.17}% 60
+\BOOKMARK [2][-]{subsection.17.4}{Properties of Martingales}{section.17}% 61
+\BOOKMARK [2][-]{subsection.17.5}{Markov Chains}{section.17}% 62
+\BOOKMARK [1][-]{section.18}{Stochastic Control Theory}{}% 63
+\BOOKMARK [2][-]{subsection.18.1}{Introduction to Stochastic Control}{section.18}% 64
+\BOOKMARK [1][-]{section.19}{Bellman Theorem for finite horizon}{}% 65
+\BOOKMARK [2][-]{subsection.19.1}{Bellman Theorem for finite horizon}{section.19}% 66
+\BOOKMARK [2][-]{subsection.19.2}{Dynamic Programming Principle}{section.19}% 67
+\BOOKMARK [2][-]{subsection.19.3}{Time-Homogenous Markov Chain}{section.19}% 68
+\BOOKMARK [1][-]{section.20}{Bellman theorem for infinite horizon}{}% 69
+\BOOKMARK [2][-]{subsection.20.1}{Bellman theorem for infinite horizon}{section.20}% 70
+\BOOKMARK [1][-]{section.21}{Stochastic Linear Quadratic Regulator}{}% 71
+\BOOKMARK [2][-]{subsection.21.1}{Stochastic Linear Quadratic Regulator}{section.21}% 72
+\BOOKMARK [1][-]{section.22}{Optimal Stopping}{}% 73
+\BOOKMARK [2][-]{subsection.22.1}{Finite Horizon Problem}{section.22}% 74
+\BOOKMARK [2][-]{subsection.22.2}{Infinite Horizon Problem}{section.22}% 75

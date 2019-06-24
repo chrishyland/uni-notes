@@ -1,0 +1,2754 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref, enumerate,tikz,mathtools}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\newcommand{\Inf}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \inf_{#1}\;$}}}
+\newcommand{\Sup}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \sup_{#1}\;$}}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf MATH3971: Convex Analysis and Optimal Control
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[theorem]{Definition}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+\newcommand\E{\mathbb{E}}
+\newcommand{\sa}{\sigma-algebra}
+
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+\title{MATH3971: Convex Analysis and Optimal Control}
+\author{Charles Christopher Hyland}
+\date{Semester 1 2019}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%\lecture{**CHAPTER-NUMBER**}{**TITLE**}
+
+\lecture{1}{Examples of control and game problems}
+\section{Examples of control and game problems}
+\section{Examples of control and game problems}
+\subsection{Introduction}
+
+Control theory is the field that deals with the control of continuosly operating dynamical systems. The objective is to develop a control model for controlling such systems using a control action in an optimal manner to ensure we do not delay or overshoot the solution whilst ensuring control stability.
+
+Here, we have a system of ordinary differential equations depending on some parameters $u \in U \subseteq \mathbb{R}^m$, $x \in \mathbb{R}^n$, and the function $f: \mathbb{R}^n \times U \rightarrow \mathbb{R}^n$ such that
+$$
+\dot{x}(t) = f(x(t), u(t)).
+$$
+
+$\dot{x}$ describes how the system evolves over time whilst $\dot{x}(t)$ looks at how the system evolves at time t. 
+
+Generally, control problem separate variables into two classes: the state (phase) variables and the control variables.
+
+\begin{definition}(Control). A control is a bounded measurable function $$u(.): [a,b] \rightarrow U.$$
+\end{definition}
+
+\begin{definition}(Trajectory). A trajectory of a control u is a map $\gamma(.): [a,b] \rightarrow M$ where $\gamma$ is $\textbf{Lipschitz continuous}$ on every chart such that the differential equation $\dot{x} = f(x, u)$ is satisfied.
+\end{definition}
+
+\begin{remark}Corresponding to each control, the trajectory X(.) is also known as the response of the system.
+\end{remark}
+
+For each initial point $x_0$, there many trajectories depending on the choice of the control parameters u. There are 2 types of control:
+\begin{enumerate}
+\item $\textbf{Open loop}$. Choose u as a function of time t. The control is independent of the state variable.
+\item $\textbf{Closed loop}$. Choose u as a function of state variable x.
+\end{enumerate}
+
+\begin{definition}(Piecewise Continuous Function). A real valued function $u(t), t_0 \leq t \leq t_1$ is said to be piecewise continuous, denoted $u \in \hat{C}[t_0,t_1]$ if there is a finite partition $t_0 = \theta_0 < \theta_1 < ... < \theta_{N+1} = t_1$ such that the function u is continuous on the interval $[\theta_k, \theta_{k+1}$ for each k = 0,1,...,n.
+\end{definition}
+
+\begin{definition}(Admissible control). A piecewise continuous control u(.), defined on some time interval $t_0 \leq t \leq t_1$, with a range in the control region U
+$$
+u(t) \in U
+$$
+for all $t \in [t_0, t_1]$.
+\end{definition}
+
+\begin{corollary}Every admissible control is bounded.
+\end{corollary}
+
+We want to evaluate the performance of the system quantitatively.
+
+\begin{definition}(Cost functional). A cost functional is a function of the state and control variables.
+\end{definition}
+
+We will revise all this in more detail later on.
+
+\subsection{Examples of control and game problems}
+
+\begin{definition}(Goddard problem). The Goddard problem is to optimize the altitude of a rocket, ascending vertically, and taking into account atmospheric drag and the gravitational field.
+\end{definition}
+
+\begin{definition}(Mayer problem). Optimising a cost functional which depends only on the terminal state.
+$$
+J_T(\hat{U}) = \sup_{u \in \mathcal{U}_t}h^u(T).
+$$
+\end{definition}
+
+\begin{definition}(Bolza problem). Optimising a cost functional which depends on the lagrangian and the terminal state.
+\end{definition}
+
+\begin{definition}(Minimal energy problem). Optimising to find a solution u which is a solution to the differential equation and uses the least energy, defined as
+$$
+||u||^2 = ||u||_T^2 = \int_0^T|u(t)|^2dt.
+$$
+\end{definition}
+
+\begin{definition}(Minimal time problem). We look for the control that will take us from the initial state to the terminal state in the minimal time. We require that the control is in $L^2$ to prevent arbitrarily large controls. We define the $\textbf{exit time}$ 
+$$
+T^u = inf\{t \geq 0: \text{we reach final state}\}
+$$
+and set $T^u = \infty$ if we cannot reach the final state. The cost functional to minimise is
+$$
+J(u) = \int_0^{T^u}1dt.
+$$
+\end{definition}
+
+\lecture{2}{Further examples of control and game problems}
+\section{Examples of control and game problems}
+\subsection{Further examples of control and game problems}
+
+\begin{definition}(Optimal Stopping Problem). Optimal stopping problem is concerned with the problem of choosing a time to take a particular action, in order to maximise an expected reward. An example would be the house selling problem.
+\end{definition}
+
+\begin{definition}(Optimal control with incomplete information). The states $X_t$ evolve randomly and hence we attempt to minimise the cost functional as a result of this.
+\end{definition}
+
+\lecture{3}{Math Revision}
+\section{Math Revision}
+\section{Math Revision}
+\subsection{Linear Algebra Review}
+
+\begin{remark}A d-dimensional vector x will always be a column vector. Sometimes, we write $x = (x_i)$.
+\end{remark}
+
+\begin{definition}(Dot product). For two vectors $x, y \in \mathbb{R}^d$, we write the dot product as
+$$
+\langle x, y \rangle = \sum_{i=1}^dx_iy_i.
+$$
+\end{definition}
+
+\begin{lemma}We have the following properties of the dot product.
+\begin{enumerate}
+\item $\langle x, y \rangle = \langle y, x \rangle$,
+\item $\langle ax + by, z \rangle$ = $a\langle x, z \rangle$ + b$\langle y,z \rangle$.
+\end{enumerate}
+\end{lemma}
+
+\begin{lemma}We say that the vectors $a_1,...,a_k \in \mathbb{R}^d$ is linearly independent if for some real numbers $\alpha_1,...,\alpha_k$ we have that for
+$$
+\alpha_1a_1 + \alpha_2a_2 + ... + \alpha_ka_k
+$$
+then $\alpha_1 = ... = \alpha_k = 0$.
+\end{lemma}
+
+\begin{definition}(Euclidean norm). The length or Euclidean norm of a vector x is given by
+$$
+|x| = \sqrt{\langle x, x \rangle} = \sqrt{\sum_{i=1}^dx_i^2}.
+$$
+\end{definition}
+
+\begin{theorem}(Cauchy-Schwartz inequality). Let $x, y \in \mathbb{R}^d$. Then
+$$
+|\langle x, y \rangle| \leq |x| \circ |y|.
+$$
+Moreover, equality holds if and only if x and y are linearly independent.
+\end{theorem}
+
+\begin{lemma}Consider a matrix A with n rows and m columns. Then for every $x \in \mathbb{R}^m$, we have $Ax \in \mathbb{R}^n$ and we can identify A with a linear mapping $A: \mathbb{R}^m \rightarrow \mathbb{R}^n$. 
+\end{lemma}
+
+\begin{definition}We define the set of all linear mappings from $\mathbb{R}^m \rightarrow \mathbb{R}^n$ as $\mathcal{L}(\mathbb{R}^m, \mathbb{R}^n)$.
+\end{definition}
+
+\begin{definition}(Hilbert-Schmidt Matrix Norm). We define the norm of a matrix as
+$$
+||A|| = \big(\sum_{i=1}^m\sum_{j=1}^na_{ij}^2 \big)^{1/2}.
+$$
+\end{definition}
+
+\begin{definition}(Orthogonal). Let $(V, \langle , \rangle)$ be a Hilbert space. Two vectors u and v are said to be orthogonal if $$\langle x, y \rangle = 0.$$
+\end{definition}
+
+\begin{definition}(Adjoint). Let $(U,\langle , \rangle_U)$ and $(V, \langle . \rangle_V)$ be Hilbert spaces with their respective inner products and let $A: U \rightarrow V$. Let A be continuous and linear. Then the adjoint of A is the continuous linear operator $$A^*: V \rightarrow U$$ such that  $$\langle v, Au \rangle_V = \langle A^*v, u\rangle_U $$ for $u \in U$ and $v \in V$.
+\end{definition}
+
+We can extend on the ideas of adjoints by looking at self-adjoint maps.
+
+\begin{definition}(Self-adjoint/Hermitian map). Let $(H, \langle , \rangle)$ and let A be linear continuous function such that $A: H \rightarrow H$ and from the previous part, its adjoint is defined to be $A^*: H \rightarrow H$. A is self-adjoint if $A = A^*$ or equivalently 
+$$
+\langle x, Ay \rangle = \langle Ax, y \rangle.
+$$
+\end{definition}
+
+\begin{definition}(Hermitian matrices). Let $\mathcal{A}$ be a self-adjoint mapping and let A be a matrix such that $\mathcal{A} \sim A$. The map $\mathcal{A}$ is self-adjoint if and only if the matrix A is Hermitian i.e. 
+$$
+A = A^*.
+$$
+In other words, the matrix is equal to its complex conjugate transpose $(a_{ij} = \bar{a_{ji}}$.
+\end{definition}
+
+\begin{remark}In $\mathbb{R}^n$, a matrix is Hermitian if it is equal to its transpose.
+\end{remark}
+
+\begin{definition}(Unitary matrix). A square matrix U is unitary if and only if 
+$$
+UU^* = U^*U = I.
+$$
+\end{definition}
+
+\begin{definition}(Nonnegative definite). A matrix A is nonnegative definite if 
+$$
+\langle Ax, x \rangle \geq 0
+$$
+for all $x \in \mathbb{R}^n$. We say a matrix is positive definite if 
+$$
+\langle Ax, x \rangle > 0
+$$
+for all $x \in \mathbb{R}^n$.
+\end{definition}
+
+
+
+\subsection{Analysis Review}
+
+\begin{definition}(Open ball). An open ball with center at $x_0$ with radius r is defined to be
+$$
+B_r(x_0) = \{x \in \mathbb{R}^d: |x - x_0| < r \}.
+$$
+\end{definition}
+
+\begin{remark} We define a closed ball as 
+$$
+\bar{B_r(x_0)} = \{x \in \mathbb{R}^d: |x - x_0| \leq r \}.
+$$
+\end{remark}
+
+\begin{definition}(Cone). A set $C \subset \mathbb{R}^d$ is a cone with vertex at 0 if for $x \in C$, then $ax \in C$ for all $a > 0$.
+\end{definition}
+
+\begin{remark} For any arbitrary $x_0 \in \mathbb{R}^d$, the set $x_0 + C$ is called the cone with vertex at $x_0$.
+\end{remark}
+
+\begin{definition}(Closed set). A set $A \subset \mathbb{R}^d$ is closed if it contains all its limiting points i.e. for a sequence $\{x_n\}_{n \geq 1} \in A$, such that $x_n \rightarrow x$, then $x \in A$.
+\end{definition}
+
+\begin{definition}(Bounded). A set $A \subset \mathbb{R}^d$ is bounded if it is contained in a certain centered ball of sufficiently large radius r.
+\end{definition}
+
+\begin{definition}(Compact). A set $A \subset \mathbb{R}^d$ is compact if it is closed and bounded.
+\end{definition}
+
+\begin{definition}(Heine-Borel). Let A be compact and let $(x_n) \subset A$. Then there exists a subsequence $(x_{n_{k}}$ and a point $x \in A$ such that
+$$
+\lim_{k \rightarrow \infty}x_{n_{k}} = x.
+$$
+\end{definition}
+
+\lecture{4}{Hyperplanes}
+\section{Convex Sets}
+\section{Convex Sets}
+\subsection{Hyperplanes}
+
+\begin{definition}(Affine set). A set $C \subseteq \mathbb{R}^n$ is affine if for any $x_1, x_2 \in C$ and $\theta \in \mathbb{R}$, we have 
+$$\theta x_1 + (1 - \theta)x_2 \in C.$$ i.e. The line passing through any two points in C lies in C.
+\end{definition}
+
+\begin{remark}We can generalise this to an $\textbf{affine combination}$ with $\theta_1x_1 + \theta_2x_2 + ... + \theta_nx_n$ and $\theta_1 + ... + \theta_n = 1$.
+\end{remark}
+
+\begin{definition}(Convex set). A set C is convex if for any $x_1, x_2 \in C$ and any $\theta$ with $0 \leq \theta \leq 1$, we have $$\theta x_1 + (1 - \theta)x_2 \in C.$$ i.e. The line segment between any two points in C lies in C.
+\end{definition}
+
+\begin{lemma}Every affine set is a convex set.
+\end{lemma}
+
+
+\begin{definition}(Hyperplane). Let $h \in \mathbb{R}^d$ and $\alpha \in \mathbb{R}$ be fixed. Let 
+$$
+A(h ,\alpha) = \{x \in \mathbb{R}^d: <x, h> = \alpha\}.
+$$
+Then the set A is affine and also called a $\textbf{hyperplane}$.
+\end{definition}
+
+\begin{remark}If we let $\alpha = 0$ and construct the hyperplane $A(h,0)$, this is a vector space of dimension (d - 1) consisting of all vectors x perpendicular to h. 
+\end{remark}
+
+\begin{remark}You can think of the hyperplane as the set of vectors that are orthogonal to the vector h. The $\alpha$ constant determines how far away the hyperplane is from the origin.
+\end{remark}
+
+\begin{lemma}A hyperplane is a convex set.
+\end{lemma}
+
+
+\begin{lemma} A hyperplane cuts the space into two open convex half-spaces
+$$
+A_{<} = \{x \in \mathbb{R}^d: \langle x, h\rangle \;< \alpha\}.
+$$
+$$
+A_{>} = \{x \in \mathbb{R}^d: \langle x, h\rangle \;> \alpha\}.
+$$
+\end{lemma}
+
+
+\begin{lemma}A hyperplane H contains a set C in one of its halfspaces when 
+$$
+<x, h> = \alpha
+$$
+for all $x \in C$.
+\end{lemma}
+
+
+\begin{lemma}Any ball $B(x_0,r)$ is convex.
+\end{lemma}
+
+\begin{lemma}Let $\{C_j\}_{j \in J}$ be a family of convex sets $ C_j \subseteq \mathbb{R}^n$, then
+$$
+C = \bigcap_{j \in J}C_j
+$$
+is convex. 
+\end{lemma}
+
+\lecture{5}{Projection and separation theorems}
+\section{Convex Sets}
+
+\subsection{Projection Theorem}
+
+\begin{definition}(Distance). Let $x_0 \in \mathbb{R}^n$ and $A \subset \mathbb{R}^n$. The distance from $x_0$ to A is defined as
+$$
+dist(x_0, A) = \inf \{||x_0 - a||: a \in A\}.
+$$
+\end{definition}
+
+\begin{remark}The point $z \in A$ such that $||x_0 - z||$ is the infimum is referred to as the $\textbf{projection}$ of $x_0$ onto A. 
+\end{remark}
+
+\begin{remark}Note that being a closed set is a sufficient condition for a set to be $\textbf{proximal}$ in a finite-dimensional space. In order to upgrade the set to be a Chebychev set, we require the set to also be conve.
+\end{remark}
+
+\begin{theorem}(Projection Theorem). Let $C \in \mathbb{R}^d$ be closed and convex set. Let $x \not\in C$. Then there exists a $\textbf{unique}$ point $P_C(x) \in C$ such that
+$$
+|x - P_C(x)| = \inf_{c \in C}|x = c|.
+$$
+$P_C(x)$ is called the $\textbf{projection}$ of x onto c.\\
+\end{theorem}
+
+
+\begin{theorem}(Properties of projections). Let C be closed and convex. From the projection theorem, for every $x \in \mathbb{R}^n$, there exists a unique projection $P_C(x)$ onto the set C. We have the following properties that 
+\begin{enumerate}
+\item $P_c(P_c(x)) = P_c(x)$,
+\item $\langle x - P_c(x), c - P_c(x) \leq 0$ for all $c \in C$,
+\item (Non-expansive) $|P(x) - P(y)| \leq |x - y|$,
+\item The distance function $x \rightarrow d(x,c)$ is a convex function.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}As $\mathbb{R}^d$ with the usual inner product is a Hilbert space, then a closed and convex set is a Chebychev set and hence the reason the above theorem holds.
+\end{remark}
+
+\subsection{Separation Theorem}
+
+\begin{definition}(Boundary of a set). Let $C \subseteq \mathbb{R}^n$. A point $x \in C$ is said to be a $\textbf{boundary point}$ of C if $x \in \overline{C}$ \textbackslash $int(C)$. The set of all boundary points of C is called the $\textbf{boundary}$ of C and denoted by $\partial C = \overline{C}$\textbackslash int(C).
+\end{definition}
+
+\begin{definition}(Supporting Hyperplane). Let $C \subseteq \mathbb{R}^n$ and $x_0$ is a point in the boundary of C i.e. $x_0 \in \partial C$. If there exists a $h \in \mathbb{R}^n$ such that $h \neq 0$ and satisfies
+$$
+\langle h,x \rangle \leq \langle h, x_0 \rangle
+$$
+for all $x \in C$, then the hyperplane $\{x \in \mathbb{R}^n: \langle h,x \rangle = \langle h, x_0 \rangle\}$ is called a $\textbf{supporting hyperplane}$ to C at the point $x_0$.
+\end{definition}
+
+\begin{theorem}(Supporing Hyperplane Theorem). Let $C \subset \mathbb{R}^d$ be nonempty and convex and let $x \not \in int(C)$. Then there exists $h \in \mathbb{R}^d$ such that $h \neq 0$ and the hyperlane defined by $\langle h, x \rangle = \alpha$ for $\alpha \in \mathbb{R}$ contains a closed half space that entirely contains S where $\langle h, c \rangle \leq \alpha  $ for all $c \in C$. In other words,
+$$
+\langle h, c \rangle \leq \alpha = \langle h, x \rangle
+$$
+for all $c \in C$. Moreover, if x is not in the closure of C, then
+$$
+h = \frac{x - P(x)}{|x - P(x)|}.
+$$
+\end{theorem}
+
+\begin{theorem}(Separating Hyperplane Theorem). Let $C_1, C_2$ be two disjoint, closed, and convex subsets of $\mathbb{R}^d$. Then, there exists $h \in \mathbb{R}^d$ such that $h \neq 0$ and 
+$$
+\langle h,c \rangle \leq \langle h,x \rangle
+$$
+for all $h \in C_1$ and all $x \in C_2$.
+\end{theorem}
+
+
+
+\lecture{6}{Convex Functions}
+\section{Convex Functions}
+\section{Convex Functions}
+\subsection{Convex Functions}
+
+\begin{definition}(Convex function). Let the $C \subset \mathbb{R}^d$ be convex. A function $f: C \rightarrow \mathbb{R} \cup \{\infty\}$ is said to be convex if for any $x, y \in C$ and any $\lambda \in [0,1]$, 
+$$
+f(\lambda x + (1 - \lambda)y) \leq \lambda f(x) + (1 - \lambda)f(y).
+$$
+We say that a function is strictly convex if we have a strict equality.
+\end{definition}
+
+\begin{definition}(Concave function). A function f is concave if -f is convex.
+\end{definition}
+
+\begin{definition}(Graph). The graph of a function f is the set of all ordered pairs $(x,f(x))$ such that x is in the domain of the function f.
+\end{definition}
+
+\begin{definition}(Epigraph). Let f be a convex function $f: C \rightarrow \mathbb{R}$. We define the epigraph of f as 
+$$
+epi(f) = \{(x,r): x \in C, r \in \mathbb{R}, r \geq f(x)\}.
+$$
+Hence, it is the set of all points lying on or above the graph of a function.
+\end{definition}
+
+\begin{proposition} Let $C \subset \mathbb{R}^d$ be convex. Then $f: C \rightarrow \mathbb{R}$ is convex if and only if $epi(f) \subset \mathbb{R}^{d+1}$ is convex.
+\end{proposition}
+
+\begin{definition}(Supporting hyperplane). Let $C \subset \mathbb{R}^d$ be a convex set and f is convex function. The hyperplane defined by $y = f(x_0) + \langle h, x-x_0 \rangle$ for $x \in C$ is the supporting hyperplane at $x_0$.
+\end{definition}
+
+\begin{proposition}Let $C \subset \mathbb{R}^d$ be convex. Then the following conditions are equivalent.
+\begin{enumerate}
+\item $f: C \rightarrow \mathbb{R}^d \cup \{\infty\}$ is convex.
+\item For every $x, y \in C$, we have $f(\frac{x+y}{2}) \leq \frac{f(x) + f(y)}{2}$.
+\item For any $n \geq 1$, the epigraph $\{(x,r): x \in C, r \geq f(x)\} \subset \mathbb{R}^d \times \mathbb{R}$ is convex.
+\item For every point $x_0 \in C$, such that $f(x_0) < \infty$, there exists $h \in \mathbb{R}^d$ such that 
+$$
+f(x) \geq f(x_0) + \langle h, x-x_0\rangle
+$$
+for $x \in C$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}Assume $f,g,\{f_i\}_{i \in I}: \mathbb{R}^d \rightarrow \mathbb{R} \cup \{\infty\}$ are convex. Then the following hold.
+\begin{enumerate}
+    \item The function f + g is convex.
+    \item If $a > 0$, then af is convex.
+    \item If $A: \mathbb{R}^d \rightarrow \mathbb{R}^m$ is linear, then the mapping $h(x) = f(Ax)$ is convex.
+    \item If $\phi: \mathbb{R} \rightarrow \mathbb{R}$ is convex and increasing, then the mapping $v(x) = \phi(f(x))$ is convex.
+    \item The function $u(x) = \sup_{i \in I}f_i(x)$ is convex.
+    \item Assume that $v(x) = \lim_{i \rightarrow \infty}f_i(x)$ exists for every $x \in \mathbb{R}^d$ and $v(x) > -\infty$ for every x. Then v is convex.
+\end{enumerate}
+\end{proposition}
+
+
+\begin{lemma}(First order conditions). Suppose f is differentiable (i.e. its gradient exists at each point in $\textbf{dom}$ f). Then f is convex if and only if $\textbf{dom}$ f is convex and 
+$$
+f(y) \geq f(x) + \nabla f(x)^T(y-x)
+$$
+holds for all x, y $\in \textbf{dom}$ f. If strict inequality holds, then we say that f is $\textbf{strictly convex}$.
+\end{lemma}
+
+\begin{remark}The above inequality states that the first-order Taylor approximation of f near x is a $\textit{global underestimator}$ pf the function. We can derive global information about the function using local information.
+\end{remark}
+
+\begin{theorem}(Second order conditions). If f is twice differentiable at every point $x \in C$, where $C \subset \mathbb{R}^d$ is convex, then f is convex if and only if $D^2f \geq 0$.
+\end{theorem}
+\begin{theorem}(Alexandrov Theorem). If U is an open subset of $\mathbb{R}^n$ and $f: U \rightarrow \mathbb{R}^m$ is a convex function, then f has a second derivative almost everywhere.
+\end{theorem}
+
+\subsection{Jensen's Inequality}
+\begin{theorem} Let C be a convex set. Define $f: C \rightarrow \mathbb{R} \cup \{\infty\}$ and let f be convex. Take the subset $U \subset \mathbb{R}^m$  and consider $\phi: U \rightarrow C$. Let $\phi$ and U be measurable. Then
+\begin{enumerate}
+\item $$\frac{1}{Vol(U)}\int_U \phi(x)dx \in C$$
+\item $$f\big(\frac{1}{Vol(U)}\int_U\phi(x)dx\big) \leq \frac{1}{Vol(U)}\int_Uf(\phi(x))dx \quad$$ 
+\end{enumerate}
+\end{theorem}
+
+\begin{theorem}(Jensen's Inequality for random variables). Let X be a random variable taking values in C, that is, $P(X \in C) = 1$ and such that $X \in L^1(X)$. Then, $\mathbb{E}(X) \in C$ and 
+$$
+f(\mathbb{E}(X)) \leq \mathbb{E}f(X).
+$$
+\end{theorem}
+
+\begin{theorem}If a function f is convex, every local optimizer is a global optimizer.
+\end{theorem}
+
+\subsection{Legendre-Fenchel Transform}
+
+\begin{definition}(Legendre-Fenchel Transform). Let C be a convex set. Let $f: \mathbb{R}^d \rightarrow \mathbb{R} \cup \{\infty\}$ be a convex function. Then the Legendre-Fenchel transform/convex conjugate is defined as
+$$
+f^*(y) \coloneqq \sup_{x \in C}\big(\langle x, y \rangle - f(x)\big)
+$$
+for all $y \in \mathbb{R}^d$.
+\end{definition}
+
+The Legendre-Fenchel transformation transforms an optimization problem into its corresponding dual problem which may be easier to solve.
+
+\begin{lemma}If f is convex, then $f^*$ is convex.
+\end{lemma}
+
+\begin{theorem}(Fenchel-Young Inequality). For any function f and its convex conjugate $f^*$, we have that
+$$
+\langle x, y \rangle \leq f(x) + f^*(y)
+$$
+for all $x, y \in \mathbb{R}^d$.
+\end{theorem}
+\begin{proof} The proof is trivial from the definition of the convex conjugate
+$$
+f^*(y) \coloneqq \sup_{x \in C}\big(\langle x, y \rangle - f(x)\big).
+$$
+\end{proof}
+
+
+\lecture{7}{Static Optimisation}
+\section{Static Optimisation}
+\section{Static Optimisation}
+\subsection{Infima and suprema and differentiable functions}
+We look at optimization problems at a fixed points in time.
+
+
+\begin{lemma}Let $f: U \rightarrow \mathbb{R}$ and $g: U \rightarrow \mathbb{R}$ be two functions. Then
+$$
+\sup_{u \in U}(f(u) + g(u)) \leq \sup_{u \in U}f(u) + \sup_{u \in U}g(u).
+$$
+\\ If a,b are real numbers with $a \geq 0$, then 
+$$
+\sup_{u \in U}(af(u) + b) = a\sup_{u \in U}f(u) + b.
+$$
+\end{lemma}
+
+\begin{lemma}Let $A \subset \mathbb{R}$. Then $m = inf\{a: a \in A\}$ if and only if for every $\epsilon > 0$, there exists $a_{\epsilon} \in A$ such that $a_{\epsilon} < a + \epsilon$.
+\end{lemma}
+
+
+\subsection{Minimisation problem}
+Our goal is to formulate and solve the minimisation problem of finding a point $\hat{x}$ that minimises our function of interest f. We also want to characterise the minimiser and check for uniqueness.
+
+\begin{theorem}(Extreme Value Theorem). Assume $U \subset \mathbb{R}^d$ is compact and $f: U \rightarrow \mathbb{R}$ is continuous. Then there exists $\hat{x} \in U$ such that
+$$
+f(\hat{x}) = \inf_{x \in U}f(x).
+$$
+\end{theorem}
+
+\begin{definition}Let $C \subset \mathbb{R}^d$. We define the function
+$$
+I_C(x) = 
+\begin{cases}
+0 \quad if \quad x \in C \\
++\infty \quad if \quad x \in C.
+\end{cases}
+$$
+\end{definition}
+
+\begin{theorem}Assume $U \subset \mathbb{R}^d$ is closed and $f: U \rightarrow \mathbb{R}$ is continuous. Assume that $$\Lim{|x| \rightarrow \infty}\big[f(x) + I_c(x)\big] = \infty.$$ Then there exists $\hat{x} \in U$ such that
+$$
+f(\hat{x}) = \inf_{x \in U}f(x).
+$$
+\end{theorem}
+
+\begin{theorem}Let $C \subset \mathbb{R}^n$ and convex. Let $f: C \rightarrow \mathbb{R} \cup \{\infty\}$ be a nontrivial convex function. Then, the set
+$$
+\mathcal{M} = \{\hat{x}: f(\hat{x}) = \inf_{x \in C}f(x)\}.
+$$
+is a convex set. Moreover, if f is $\textbf{strictly convex}$, then f has at most one minimiser.
+\end{theorem}
+
+
+\lecture{8}{Necessary and Sufficient Conditions for Optimality}
+\section{Static Optimisation}
+\subsection{Necessary Conditions for Optimality}
+
+\begin{definition}(Cone/Nonnegative homogenous). A set $C \subset \mathbb{R}^d$ is a cone with vertex at 0 if for a vector $h \in C$, then we have that 
+$$
+\alpha.h \in C
+$$
+for every $ \alpha > 0$.
+\end{definition}
+
+\begin{remark}If C is a cone, then $x + C$, for $x \in \mathbb{R}^d$, is a cone with vertex at x. So we have a set C and for every $x \in C$, we have that $\alpha x $ is in the cone.
+\end{remark}
+
+
+\begin{definition}(Tangent Cone). Let $C \subset \mathbb{R}^d$ and $x \in C$. The vector $h \in \mathbb{R}^d$ is tangent to the set $C$ at the point x if there exists a sequence of vectors $\{h_n\} \in \mathbb{R}^d$ and sequence of non-negative scalar $\{\lambda_n\} \in \mathbb{R}_+$ such that
+\begin{enumerate}
+\item $h_n \rightarrow h$;
+\item $\lambda_n \rightarrow 0$;
+\item $x + \lambda_nh_n \in C$.
+\end{enumerate}
+The set of vectors tangent to C at x is called the $\textbf{cone tangent to C at x}$ and denoted by $T(x,C)$.
+\end{definition}
+
+\begin{lemma}The tangent cone $T(x,c)$ is closed, convex, and is a cone with vertex at x.
+\end{lemma}
+
+\begin{claim}If $y \in TC(x, C)$, then $\langle Db(x), y \rangle \leq 0$.
+\end{claim}
+
+\begin{theorem}(Necessary conditions of optimiality by Euler). Let $f: \mathbb{R}^d \rightarrow \mathbb{R} \cup \{\infty\}$. Let $\hat{x} \in C \subset \mathbb{R}^d$ be a minimizer where
+$
+f(\hat{x}) = \inf_{x \in C}f(x).
+$
+Assume that $Df(\hat{x})$ exists. Then, a necessary condition for optimality is
+$$
+\langle Df(\hat{x}), y \rangle \geq 0
+$$
+for every $y \in T(\hat{x}, C)$.
+\end{theorem}
+
+\begin{corollary}Assume that $U \subset \mathbb{R}^d$ is open and $\hat{x}$ is a minimiser of the function $f: U \rightarrow \mathbb{R}^d$. If f is differentiable at $\hat{x}$ then 
+$$
+Df(\hat{x}) = 0.
+$$
+\end{corollary}
+
+\subsection{Sufficient Conditions for Optimality}
+
+\begin{definition}(Local minimizer). Let $C \subset \mathbb{R}^d$ and let $f: C \rightarrow \mathbb{R}$. Then, $\hat{x}$ is a local minimizer if
+$$
+f(\hat{x}) = min\{f(x): x \in C \cap B_d(\hat{x}, r)\}
+$$
+for $r > 0$.
+\end{definition}
+
+\begin{definition}(Regular). We say that a point $x \in C$ is regular if f is twice differentiable at x.
+\end{definition}
+
+\begin{definition}(Hessian). Let $x \in C$ be a regular point. We can define the Hessian as
+$$
+D^2f(x) = \big(\frac{\partial^2f}{\partial x_i \partial x_j} \big).
+$$
+\end{definition}
+
+\begin{theorem}Assume that $\hat{x}$ is a regular point of $f: C \rightarrow \mathbb{R}$. Assume that
+$$
+\begin{cases}
+\langle Df(\hat{x}), h \rangle \geq 0 \quad \text{ for all } y \in T(\hat{x},C) \\
+\langle D^2f(\hat{x})h, h \rangle > 0 \quad \text{ for all } y \in T(\hat{x}, C)
+\end{cases}
+$$
+where $h \neq 0$. Then, $\hat{x}$ is a local minimum of f.
+\end{theorem}
+
+\begin{lemma}Assume that $C \subset \mathbb{R}^d$ is compact and $g: C \rightarrow \mathbb{R}$ is continuous and moreover, $g(x) > 0$ for $x \in C$. Then, $\inf_{x \in C}g(x) > 0$.
+\end{lemma}
+
+Recall $\textbf{Alexandrov theorem}$ that if a real-valued function is a convex function, then the second derivative exists and the Hessian is non-negative.
+
+\begin{corollary}Let $C \subset \mathbb{R}^d$ be a convex set and let $f: C \rightarrow \mathbb{R}$ be a convex function. Then, for every point $\hat{x} \in C$ such that f is differentiable at $\hat{x}$ and satisfies the Euler condition
+$$
+\langle Df(\hat{x}), y \rangle \geq 0
+$$
+for $y \in T(\hat{x}, C)$, then $\hat{x}$ is a global minimizer of f.
+\end{corollary}
+
+\lecture{9}{Optimisation over constraints}
+\section{Static Optimisation}
+\subsection{Optimisation over constraints}
+We now define the set C subjected to inequality constraints
+$$
+C = \{x \in \mathbb{R}^d: b_j(x) \leq 0, j=1,...,n\}.
+$$
+
+\begin{definition}
+We are interested for when we are in the boundary of the set, so we introduce
+$$
+J(x) = \{j \leq n: b_j(x) = 0\}.
+$$
+\end{definition}
+
+\begin{definition}We define a smaller subset of locally concave constraints as
+$$
+y^{conc}(x) = \{j \in J(x): b_j \text{ is a concave function in a small ball around x}\}.
+$$
+\end{definition}
+
+\begin{proposition}Let all functions $b_j$ be continuous at x and differentiable at x for $j \in J(x)$, so it is differentiable at points on the boundary. Assume there exists $y \in \mathbb{R}^d$ such that
+$$
+\langle Db_j(x), y \rangle \leq 0 \quad \text{ for all } j \in J^{conc}(x)
+$$
+and
+$$
+\langle Db_j(x), y \rangle < 0
+$$
+for all $j \in J(x)$ \textbackslash $J^{conc}(x)$. \\Then, we have
+$$
+T(x, C) = \{y \in \mathbb{R}^d: \langle Db_j(x), y \rangle \leq 0 \text{ for all } j \in J(x).\}
+$$
+\end{proposition}
+
+\begin{definition}(Qualified). Let $x \in C$. We say that x is $\textbf{qualified}$ if $Db_i$ exists for every $i = 1,...,n$ and 
+$$
+T(x,C) = \bigcap_{j \in J(x)}\{y \in \mathbb{R}^d: \langle Db_j(x), y \rangle \leq 0\}.
+$$
+\end{definition}
+
+\begin{proposition}Assume that $C = \{x \in \mathbb{R}^d: g_1(x) = ... = g_n(x) = 0\}$ and the family of vectors $\{Dg_i(x_0): i=1,2,...,n\}$ is linearly independent at the point $x_0 \in C$. THen $x_0$ is qualified.
+\end{proposition}
+
+\begin{definition}(Lagrangian). We define the Lagrangian $L: \mathbb{R}^d \times \mathbb{R}^n \rightarrow \mathbb{R}$ by the formula 
+$$
+L(x, \lambda) = f(x) + \sum_{i=1}^n\lambda_ib_i(x)
+$$
+where $\lambda = \{\lambda_i\}$. Each $\lambda_i$ is called a Lagrange multiplier.
+\end{definition}
+
+\begin{theorem}(Karoush-Kuhn-Tucker conditions). Let $\hat{x}$ be a minimiser of the function $f:C \rightarrow \mathbb{R}$ where C is defined by $C = \cap_{i=1}^n\{x \in \mathbb{R}^d: b_i(x) \leq 0\}$. Assume that $\hat{x} \in C$ is qualified and f is differentiable at $\hat{x}$. Then, there exists $\hat{\lambda}_1 \geq 0, ..., \hat{\lambda}_n \geq 0$ such that 
+$$
+DL(\hat{x}, \hat{\lambda}) = 0, \quad \text{ and } \quad \sum_{i=1}^n\hat{\lambda}_ib_i(\hat{x}) = 0.
+$$
+\end{theorem}
+
+\begin{corollary}Assume that f and all $g_i$ are convex and differentiable. If $(\hat{x}, \hat{\lambda})$ satisfies the KKT conditions, then $\hat{x}$ is the minimiser of f. Moreover, if f is strictly convex, then the minimiser $\hat{x}$ is unique.
+\end{corollary}
+
+\begin{corollary}Assume that 
+$$
+C = \{x \in \mathbb{R}^d: g_1(x) = ... = g_n(x) = 0\}
+$$
+and $f: U \rightarrow \mathbb{R}$ where $U \supset C$ is open. Assume that $\hat{x} \in C$ is a minimiser of f and f is differentiable at $\hat{x}$. If $\hat{x}$ is qualified, then there exists $\hat{\lambda} \in \mathbb{R}^n$ such that
+$$
+DL(\hat{x}, \hat{\lambda}) = 0.
+$$
+\end{corollary}
+
+\lecture{10}{Duality and optimisation}
+\section{Duality}
+\section{Duality}
+\subsection{Primary Problem Optimisation}
+
+\begin{definition}(Primary Problem). We define the primary problem 
+$$(P) = 
+\begin{cases}
+\text{Minimise } f: \mathbb{R}^d \rightarrow \mathbb{R} \\\\
+\text{Subject to }\\ g_i(x) \leq 0, \text{ for } i=1,...,n,\\ h_j(x) = 0, \text{ for } j=1,...,m.
+\end{cases} 
+$$
+\end{definition}
+
+For $\lambda = \{\lambda_i\}$ and $\mu = \{\mu_j\}$, we define the Lagrangian as
+$$
+L(y, \lambda, \mu) = f(x) + \sum_{i=1}^n\lambda_ig_i(x) + \sum_{j=1}^m\mu_jh_j(x)
+$$
+and define the dual function as
+$$
+F(\lambda, \mu) = \inf_{x \in \mathbb{R}^d}L(x, \lambda \mu).
+$$
+
+\begin{definition}(Dual Problem). We define the dual problem
+$$
+(D) = 
+\begin{cases}
+\text{Maximise } F: \mathbb{R}^{n+m} \rightarrow \mathbb{R} \\
+\text{Subject to } \lambda_i \geq 0, i = 1,...,n.
+\end{cases}
+$$
+\end{definition}
+
+
+\begin{lemma}Assume that for every $(\lambda, \mu)$ with $\lambda \geq 0$, there exists a minimiser $\hat{x} = (\hat{\lambda}, \mu)$ of F, that is,
+$$
+F(\lambda, \mu) = L(\hat{x}, \lambda, \mu).
+$$
+Then, we have that 
+$$
+\begin{cases}
+\frac{\partial F}{\partial \lambda_i}(\lambda, \mu) = g_i(\hat{x}(\hat{x}(\lambda, \mu))) \\\\
+\frac{\partial F}{\partial \mu_j}(\lambda, \mu) = h_j(\hat{x}(\lambda, \mu)).
+\end{cases}
+$$
+\end{lemma}
+
+\begin{definition}(Duality gap). The quantity
+$$
+inf\{f(x): g_i(x) \leq 0, h_j(x) = 0\} - sup\{F(\lambda, \mu): \lambda_i \geq 0, \mu_j \in \mathbb{R}\}
+$$
+is known as the $\textbf{duality gap}$.
+\end{definition}
+
+\begin{proposition}If there exists $\hat{\lambda}, \hat{\mu}, \text{ and } \hat{x}$ such that
+$$
+\begin{cases}
+\hat{\lambda} \geq 0 \\
+g_i(\hat{x}) \leq 0 \\
+h_j(\hat{x}) = 0
+\end{cases}
+$$
+then $\hat{x}$ is optimal for (P) and $(\hat{\lambda}, \hat{\mu})$ is optimal for (D).
+\end{proposition}
+
+
+\begin{theorem}Assume that f and $g_i$ are convex and differentiable and $h_j$ are affine. Additionally, assume that for every $\lambda \geq 0$ and $\mu$, there exists $\hat{x}(\lambda, \mu)$ so that $F(\lambda, \mu) = L(\hat{x}(\lambda, \mu), \lambda, \mu)$. Then, the Primary Problem (P) has a solution if and only if the Dual Problem (D) has a solution, and the duality gap is zero.
+\end{theorem}
+
+\lecture{11}{Review of ODEs}
+\section{Review of ODEs}
+\section{Review of ODEs}
+\subsection{Absolutely Continuous Functions}
+
+We have the ordinary differential equation in $\mathbb{R}^d$
+$$
+\begin{cases}
+\dot{X}(t) = F(t, X(t))\\
+X(s) = x \in \mathbb{R}^d
+\end{cases}
+$$
+
+where $t \in (s, T]$.
+
+\begin{definition}(Initial Value Problem). An IVP is an ODE with an initial value. We want to find a function whose derivative matches our system and starts off at the same initial value.
+\end{definition}
+
+\begin{definition}(Absolutely continuous). A function F is absolutely continuous on (a,b) $\subset \mathbb{R}$ if there exists a function $f:[a,b] \rightarrow \mathbb{R}$ and constant $c \in \mathbb{R}$ such that 
+$$
+F(t) = c + \int_a^tf(s)ds
+$$
+for all $t \in (a,b)$ where $\int_a^b|f(s)|ds < \infty$.
+\end{definition}
+
+\begin{remark}Absolute continuity is a strengthening of uniform continuity that provides a necessary and sufficient condition for the fundamental theorem of calculus to hold.
+\end{remark}
+
+\begin{definition}(Space of absolutely continuous functions). For $(a,b) \subset \mathbb{R}$, we define the space of absolutely continuous functions as $AC(a,b)$.
+\end{definition}
+
+\begin{definition}(Almost Everywhere). Let $(X, \mathcal{A}, \mu)$ be a measure space. A property P is said to hold almost everywhere if for a set $N \in \mathcal{A}$ such that $\mu(N) = 0$, we have that X \textbackslash N has the property P.
+\end{definition}
+
+\begin{theorem}(Lebesgue's Theorem). Assume that $f: [0,T] \rightarrow \mathbb{R}$ is integrable. Then the following holds
+\begin{enumerate}
+\item The function $F(t) = c + \int_0^tf(s)ds$ is continuous since for almost every $t \in [0,T]$
+$$
+\Lim{h \rightarrow 0}\int_{t-h}^{t+h}|f(t) - f(s)|ds = 0.
+$$
+
+\item For almost every $t \in [a,b]$, the derivative $F'(t)$ exists and $F'(t) = f(t)$. Moreover, if f is continuous, then F is differentiable for every t.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}(Locally absolutely continuous). A function $F: \mathbb{R} \rightarrow \mathbb{R}$ is in AC(a,b) on any finite interval [a,b], then F is lcoally absolutely continuous.
+\end{definition}
+
+\begin{lemma}For a vector of functions $F \in \mathbb{R}^d$, we have that $F \in AC(a,b)$ if and only if $F_i \in AC(a,b)$ for all $i=1,...,d.$
+\end{lemma}
+
+\begin{definition}(Lipschitz Continuous). A function $F: \mathbb{R}^d \rightarrow \mathbb{R}^m$ is Lipschitz continuous if
+$$
+|F(x) - F(y)|_{\mathbb{R}^m} \leq \mathcal{L}|x - y|_{\mathbb{R}^d}
+$$
+for all $x, y \in \mathbb{R}^d$ and $\mathcal{L} \in \mathbb{R}$. 
+
+The smallest $\mathcal{L}$ is called the $\textbf{Lipschitz constant}$ of F.
+\end{definition}
+
+\begin{definition}(Locally Lipschitz). A function $F: \mathbb{R}^d \rightarrow \mathbb{R}^m$ is locally Lipschitz if there exists a sequence of real constant $L_n$ such that
+$$
+|F(x) - F(y)| \leq L_n|x - y|
+$$
+if $|x| \leq n$ and $|y| \leq n$.
+\end{definition}
+
+\begin{theorem}(Rademacher's Theorem). Let $F: \mathbb{R}^d \rightarrow \mathbb{R}^m$ and $|F(x) - F(y)| \leq \mathcal{L}|x-y|$. Let F be locally Lipschitz. Then F has a derivative $DF(x)$ for almost every $x \in \mathbb{R}^d$.
+
+Moreover, if $DF(x)$ exists, then it is uniformly bounded by the Lipschitz constant $|DF(x)| \leq \mathcal{L}$.
+\end{theorem}
+
+\begin{remark}Note that $DF(x)$ has d functions with m coordinates.
+\end{remark}
+
+\subsection{Existence and uniqueness of solutions}
+
+We assume $F: [0,T] \times \mathbb{R}^d \rightarrow \mathbb{R}^d$ is a measurable function.
+
+
+\begin{definition}(Slope fields). The slope of a solution at (x,y) is f(x,y). We draw the x-y plane and then for a particular point $(x_0,y_0)$, we draw a tiny line with a gradient of $\frac{dx}{dy}(x_0,y_0)$. This gives us an idea of what the solution looks like without knowing the explicit formula.
+\end{definition}
+
+\begin{definition}We define the notation for an ODE as
+$$
+\frac{dx(t)}{dt} = F(t, x(t))
+$$
+with $x(0) = x \in \mathbb{R}^d$. 
+
+\end{definition}
+
+\begin{definition}(Existence of solution). We say that an absolutely continuous function $X: [s,T] \rightarrow \mathbb{R}^d$ is a solution to the equation if 
+\begin{enumerate}
+\item $\int_s^T|F(r,X(R))|dr < \infty$ 
+\item $X(t) = x + \int_s^tF(r,X(r))dr$ for $t \in [s,T]$.
+\end{enumerate}
+\end{definition}
+
+\begin{theorem}(Uniqueness of solution). Assume that there exists $\mathcal{L} > 0$ such that for all $s \leq t \leq T$ and all $x,y \in \mathbb{R}^d$ such that
+$$
+|F(t,x) - F(t,y)| \leq \mathcal{L}|x-y|.
+$$
+Then there exists a $\textbf{unique}$ solution to (ODE). Then for every $s \in [0,T)$ and every $x \in \mathbb{R}$, there exists a unique solution X to equation to the ODE.
+\end{theorem}
+\subsection{Linear Equations}
+
+Define the linear differential equation
+$$ \begin{cases}\dot{X}(t)=AX(t) + b(t) \\ 
+X(s) = x \in \mathbb{R}^d \end{cases}$$ for $t \in (s,T]$. We have that $A: \mathbb{R}^d \rightarrow \mathbb{R}^d$ as it looks at the evolution from one state to another, hence A must be a square matrix. 
+
+\begin{proposition}
+Let $b \in L^1$. Then for every $x \in \mathbb{R}^d$, the unique solution of the aforementioned differential equation is given by
+$$
+X(t;s,x) = e^{(t-s)A}x + \int_s^te^{(t-r)A}b(r)dr
+$$
+
+for $t \in [S,\infty)$.
+\end{proposition}
+
+\subsection{Time-inhomogenous linear system}
+For a $\textbf{general}$ linear equation
+$$\begin{cases} \dot{X}(t)=A(t)X(t) + b(t) \\ 
+X(s) = x \in \mathbb{R}^d \end{cases}$$ for $t \in (s,T]$.
+where $A, b \in L^1$. 
+\newline
+The function $F(t,x) = A(t)x + b(t)$ satisfies the conditions for an existence and uniqueness of a solution.
+
+
+\begin{theorem}Assume that b and A is integrable. Then there exists exactly one function $$G: [0,T] \rightarrow \mathcal{L}(\mathbb{R}^d)$$ such that each $G_{ij}$ is absolutely continuous and $$\begin{cases}\dot{G}(t) = A(t)G(t) \\ G(0) = I \in \mathcal{L}(\mathbb{R}^d) \end{cases}$$ for almost all $t \in [0,T]$. Moreover, G(t) is invertible for any $t \in [0,T]$.
+\end{theorem}
+
+\begin{definition}(The Green function). The unique solution of a time-inhomogenous linear system is 
+$$
+X(t;s,x) = G(t)G^{-1}(s)x + \int_s^tG(t)G^{-1}(r)b(r)dr \quad t \in [s,T]
+$$
+where G is known as the Green function.
+\end{definition}
+
+
+\subsection{Linear Time Invariant System}
+
+\begin{definition}(Linear Time Invariant System). A linear time invariant system is a system 
+$$
+\dot{X}(t) = AX(t) + Bu(t)
+$$
+where A and B are static.
+\end{definition}
+
+
+In terms of control theory, the solution to $\dot{X} = AX(t) + Bu(t)$ will be 
+$$
+X(t;s,x) = e^{(t-s)A}x + \int_s^te^{(t-r)A}Bu(\tau)d\tau
+$$
+where the first time refers to the natural response of the system evolving from the initial state x whilst the second terms is known as the forced response and that looks at how all known controls $u(\tau)$ for $\tau \in [0, t]$ affect our state over time.
+
+\lecture{12}{Controllability of Linear Systems}
+\section{Controllability of Linear Systems}
+\section{Controllability of Linear Systems}
+\subsection{Controllability of Linear Systems}
+We have the system
+$$
+\begin{cases}
+\dot{X}(t) = AX(t) + Bu(t) \\
+X(0) = x \in \mathbb{R}^d
+\end{cases}
+$$
+
+where $t \in (0, T]$, $B: \mathbb{R}^m \rightarrow \mathbb{R}^d$ be a linear mapping, and $u \in L^2(0,T;\mathbb{R}^m)$. Here, we have a state X and we want to see how does the state evolve over time based off the current state X and the control u. 
+
+Recall that the unique solution to the equation is
+$$
+X^u(t, x) = e^{TA}x + \int_0^te^{(t-s)A}Bu(s)ds
+$$
+and the set of admissible controls is 
+$$
+\mathcal{U}_t(a,b) = \{u \in L^2(0, T; \mathbb{R}^m): X^u(0) = a, X^u(T) = b\}.
+$$
+
+
+
+We define the cost functional as 
+$$
+J_T(u) = \int_0^T|u(t)|^2dt
+$$
+for $u \in \mathcal{U}_T(a,b)$ and the value function is defined to be 
+$$
+V(T) = \inf_{u \in \mathcal{U}_T(a,b)}J_T(u).
+$$
+
+We have 2 aims:
+\begin{enumerate}
+\item When is $\mathcal{U}_T(a,b) \neq \emptyset$;
+\item Identify the optimal control $\hat{u} \in \mathcal{U}_T(a,b).$
+\end{enumerate}
+
+\begin{definition}(Reachable). A state b is reachable from the state a time T if $\mathcal{U}_t(a, b)$ is not empty.
+\end{definition}
+\begin{definition}(Controllable system). Let $\mathcal{R}_T$(a) be the set of all points reachable from state a at time T. We say that a system is controllable if $\mathcal{R}_T(a) = \mathbb{R}^d$ for every $a \in \mathbb{R}^d$ and every $T > 0$. In other words, any state can be reached in time T.
+\end{definition}
+
+\begin{definition}(Controllability Gramian). We define the Controllability Gramian as 
+$$
+Q_T = \int_0^Te^{tA}BB^*e^{tA^{*}}dt.
+$$
+More precisely, it is the formula $Q_T: \mathbb{R}^d \rightarrow \mathbb{R}^d$ where 
+$$
+Q_Tx = \int_0^T(e^{tA}BB^*e^{tA^{*}x})dt
+$$
+for $x \in \mathbb{R}^d$.
+\end{definition}
+
+\begin{lemma}Let $f: [0,T] \rightarrow \mathbb{R}^d$ be a function such that 
+$$
+\int_0^T|f(t)|dt < \infty
+$$
+and let $h \in \mathbb{R}^d$ be a fixed vector. Then 
+$$
+\int_0^T\langle f(t), h\rangle dt = \langle \int_0^Tf(t)dt, h \rangle.
+$$
+\end{lemma}
+
+\begin{proposition}(Properties of controllability matrix). Let us define the controllability matrix as 
+$$
+Q_T = \int_0^Te^{tA}BB^*e^{tA^{*}}dt.
+$$
+Then, 
+\begin{enumerate}
+\item $Q_T \geq 0$;
+\item $Q_T^* = Q_T$.
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem}Assume that for a certain $T > 0$ we have $det(Q_t) > 0$ and for given $a, b \in \mathbb{R}^d$, we define 
+$$
+\hat{u}(s) = -B^*e^{(T-s)A^{*}}Q_T^{-1}(e^{TA}a - b)
+$$
+for $s \in [0,T]$. Then $\hat{u} \in \mathcal{U}_T(a,b)$ is optimal, that is 
+$$
+V(T) = J_T(\hat{u}) < \infty.
+$$
+
+In particular, $\mathcal{R}_T(a) = \mathbb{R}^d$ for every $a \in \mathbb{R}^d$. Moreover, 
+$$
+V(T) = \langle Q_T^{-1}(e^{TA}a - b), e^{TA}a - b\rangle.
+$$
+\end{theorem}
+
+
+\subsection{Observability of Linear Systems}
+We look at the systems
+$$
+\begin{cases}
+\dot{X}(t) = AX(t) + Bu(t)\\
+Y(t) = CX(t) + Du(t).
+\end{cases}
+$$
+
+Here, we cannot fully observe the state X and instead observe Y, which is a function of the state X. This is common in numerous real life examples where there are too many variables in the state X to observe and we can only observe them through mediums such as sensors. 
+
+\begin{definition}(Observability). A system is observable if there exists a finite time $t > 0$ such that if we know the controls u(t) and observations y(t) for all $t \in [0, T]$, then we can figure out what the initial state X(0) = x was.
+\end{definition}
+
+\begin{remark}If we know what X(0) = x is, then we can know the value of the states $X(t)$ for all $t \in [0,T]$ through the formula $X(t) = e^{At}X(0) + \int_0^te^{(t-\tau)A}Bu(\tau)d\tau$.
+\end{remark}
+
+
+\begin{lemma}Let $f:[0,T] \rightarrow \mathbb{R}^d$ be a function such that $f \in L^1$ and let $h \in \mathbb{R}^d$ be a fixed vector. Then we can interchange the integral with inner product
+$$
+\int_0^T\langle f(t), h \rangle dt = \langle \int_0^Tf(t)dt, h \rangle.
+$$
+\end{lemma}
+
+\begin{theorem}Assume that for a certain $T > 0$, we have that $det(Q_t) > 0$ and for given $a, b \in \mathbb{R}^d$, we define 
+$$
+\hat{u}(s) = -B^*e^{(T-s)A^{*}}Q_T^{-1}(e^{TA}a - b)
+$$
+for $s \in [0,T]$.
+\end{theorem}
+
+Hence, applying the optimal control $\hat{u}(s)$, we have that $X^{\hat{u}}(T, a) = b$.
+
+\lecture{13}{Kalman Rank Condition}
+\section{Kalman Rank Condition}
+\section{Kalman Rank Condition}
+\subsection{Kalman Rank Condition}
+We want to now eventually impose more constraints on the system such as nonlinearity or that the magnitude of the control u cannot be too big.
+
+\begin{lemma}Fix $h,k \in \mathbb{R}^d$ and $T > 0$. Assume that 
+$$
+\langle e^{tA}h, k \rangle = 0
+$$
+for all $t \leq T$. Then we have that 
+$$
+\langle e^{tA}h, k \rangle = 0
+$$
+for all $t > 0$.
+\end{lemma}
+
+We work with the system
+$$
+\begin{cases}
+\dot{X}(t) = AX(t) + Bu(t) \\
+X(0) = x \in \mathbb{R}^d
+\end{cases}
+$$
+for $t \in (0,T]$ and where $B: \mathbb{R}^m \rightarrow \mathbb{R}^d$ and $u \in L^2$.
+
+\begin{definition}We define the linear opeator $\mathcal{L}_T: \mathcal{U}_T \rightarrow \mathbb{R}^d$ to be 
+$$
+\mathcal{L}_Tu = \int_0^Te^{(T-s)A}Bu(s)ds.
+$$
+We can now express the solution to the equation $X^u(t,x)$ as
+$$
+X^u(t, x) = e^{TAx} + \mathcal{L}_Tu.
+$$
+\end{definition}
+
+\begin{lemma}Assume that for every $b \in \mathbb{R}^d$, we can find $T > 0$ such that $\mathcal{U}_T(0,b) \neq \emptyset$. Then det$(Q_T) \neq 0$ for every $T > 0$.
+\end{lemma}
+
+\begin{corollary}The following conditions are equivalent.
+\begin{enumerate}
+\item The system $\dot{X} = AX(t) + Bu(t)$ and $X(0) = x \in \mathbb{R}^d$ is controllable,
+\item $det(Q_T) \neq 0$,
+\item For every $b \in \mathbb{R}^d$, there exists $T>0$ such that $\mathcal{U}_T(0,b) \neq \emptyset$.
+\end{enumerate}
+\end{corollary}
+
+\begin{definition}(Kalman Rank Matrix). We define the Kalman rank matrix as 
+$$
+C(A,B) = [B, AB, ..., A^{d-1}B].
+$$
+\end{definition}
+\begin{theorem}The system is controllable if and only if 
+$
+\text{rank C(A,B)} = d.
+$
+\end{theorem}
+
+\begin{proof}(Intuition sketch). If we want to able to steer a system to any direction we want, there must be an interaction between the matrices A and B. Recall that the solution to the system is 
+$$
+X(t) = e^{tA}x + \int_{0}^{T}e^{(T-s)A}Bu(s)ds
+$$
+where we require that $X(0) = x$ and $X(T) = b$. By equation the above equation to b, rearranging, expressing terms in matrix exponential, we arrive at
+$$
+\sum_{n=0}^{\infty}A^nBU_n = Y
+$$
+where $U_n$ is a sequence of vectors and $Y = b - e^{TA}x$. So the issue of controllability is that can we a sequence of vectors $\{U_n\}_{n \geq 1}$ such that the equation above holds for any vectors Y. \\ Using Cayley-Hamiltonian theorem, we can take the characteristic equation of the equation above where each matrix $A^d, A^{d-1},...$ can respectively be expressed as a linear combination/polynomials of $A^{d-1},A^{d-2},...,I$. In particular, for a square nonzero determinant matrix A, the Cayley-Hamiltonian states that 
+$$
+p(A) = A^n + a_{n-1}A^{n-1} + ... + a_1A + (-1)^ndet(A)I_n = 0.
+$$
+
+Hence using this on our earlier expression, we arrive at 
+$$
+\sum_{n=0}^{d-1}a_nA^nBU_n = Y \in \mathbb{R}^d.
+$$
+Now we consider the matrix $[B,AB,A^2B,...,A^{d-1}B]$ which must be non-degenerate in order to solve the above.
+\end{proof}
+
+\lecture{14}{Controllability of nonlinear systems}
+\section{Controllability of nonlinear systems}
+\section{Controllability of nonlinear systems}
+\subsection{Controllability of nonlinear systems}
+We work with the system
+$$
+\begin{cases}
+\dot{X}(t) = F(X(t),u(t)), \quad t>0 \\
+X(0) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+We assume the controls take values in a fixed subset $U \subset \mathbb{R}^m$ so that $F: \mathbb{R}^d \times U \rightarrow \mathbb{R}^d$.
+
+\begin{definition}(Local Controllability).
+We say that the nonlinear system is locally controllable at $x_0$ and at time T if for any $\epsilon > 0$, there exists $\delta \in (0, \epsilon)$ such that for any $a, b \in B(x_0, \delta)$, there exists a control u defined on $[0, t] \subset [0, T]$ for which 
+$$
+X^u(t;a) = b
+$$
+$$
+X^u(s;a) \in B(x_0, \epsilon)
+$$
+for all $s \in [0,t]$.
+\end{definition}
+\begin{remark}This states that we can find a local area for which we can go from state A to state B if we don't go too far away.
+\end{remark}
+
+\begin{definition}(Linearize Fixed Point). Given a nonlinear system $\dot{X}(t) = F(X(t), u(t))$ and $X(0) = x \in \mathbb{R}^d$, we fix $(x_0, u_0) \in \mathbb{R}^d \times \mathbb{R}^m$ where the control $u_0$ is now a constant. We define the linear mappings:
+$$
+\begin{cases}
+A_0 = D_xF(x_0, u_0)\\
+B_0 = D_uF(x_0, u_0).
+\end{cases}
+$$
+Then, the linearized version of the nonlinear system at the fixed point $x_0$ is
+$$
+\begin{cases}
+\frac{dZ}{dt}(t) = A_0Z(t) + B_0u(t) \quad t > 0\\
+Z(0) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+\end{definition}
+
+\begin{theorem}Let $F(x_0,u_0) = 0$ and let F be continuously differentiable in a certain neighbourhood of $(x_0,u_0)$. If the linearized system $\dot{Z}(t) = A_0Z(t) + B_0u(t)$ and $Z(0) = x \in \mathbb{R}^d$ is controllable, then the nonlinear system $\dot{X}(t) = F(X(t),u(t))$ and
+$X(0) = x \in \mathbb{R}^d$ is locally controllable at $x_0$ for arbitrary time $T > 0$.
+\end{theorem}
+
+\begin{remark}We can compute the rank of the Kalman matrix of this linearised system in order to determine whether it is controllable or not.
+\end{remark}
+
+
+\begin{theorem}(Local controllability of linear system). Define the linear system $\dot{X}(t) = AX(t) + Bu(t)$ and $X(0) = x \in \mathbb{R}^d$. We say that the linear system is locally controllable at $x_0 \in \mathbb{R}^d$ if and only 
+\begin{enumerate}
+\item If it is controllable,
+\item There exists a constant control $u_0 \in \mathbb{R}^m$ such that $Ax_0 + Bu_0 = 0$.
+\end{enumerate}
+\end{theorem}
+
+\begin{remark}Local controllability implies controllability. That is, we can now control ensure that the system is evolving around a certain region and not straying too far from the target state.
+\end{remark}
+
+We are interested in the idea that for small time intervals, we can consider our controls as constant. From that, we can approximate our optimal control by a sequence of constant controls.
+
+\begin{definition}(Piecewise constant controls). We define $\mathcal{U}_p$ where $u \in \mathcal{U}_p$ if 
+\begin{enumerate}
+\item $0 = t_0 < t_1 < ... < t_n = T$,
+\item $u_n = \{u_0, u_1, ..., u_{n-1}\}$
+\end{enumerate}
+where $u(t) = u_k$ for $t_k \leq t < t_{k+1}$ for $k = 0,1,2,...,n-1.$ We call $\mathcal{U}_p$ piecewise constant controls.
+\end{definition}
+
+What we are interested now is that if we select control $u_0$ and then control $u_1$, will we reach the same state if we selected control $u_1$ followed by $u_0$? We explore this in the next section.
+
+\subsection{Lie Algebraic Conditions}
+The aim of this section is to examine whether does selecting controls in a different manner effect the final state of our trajectory? As an intuitive example, we define 2 systems based off 2 different controls $u_1, u_2$ by 
+
+\begin{enumerate}
+\item $\frac{dX}{dt} = F(x) = F(x,u_1)$
+\item $\frac{dY}{dt} = G(x) = F(x,u_2)$
+\end{enumerate}
+
+We will use one control up to a certain time period and then switch over to the other control. Skipping the maths, we can take 2nd order Taylor approximations of the state $X(t)$ and $Y(t)$ around a small time interval t. Then, we can arrive at $Y(t,X(t))$ and $X(t,Y(t))$ where the first equation refers to the evolution of the system if we started off with the system $\frac{dX}{dt}$ whilst $X(t,Y(t))$ refers to the evolution of the system if we started off with $\frac{dY}{dt}$ instead. We are now interested in seeing whether is the final state the same if we use $u_1$ and then $u_2$ versus using $u_2$ and then $u_1$. Taking the difference, we arrive at the Poisson bracket to be explored later.
+$$
+Y \circ X - X \circ Y = t^2[DG(x)F(x) - DF(x)G(x)].
+$$
+We will now explore for when does the Poisson bracket equal to 0 or equivalently, when are we indifferent to starting off with different controls.
+\\
+
+\begin{definition}(Vector field). Given an open subset $O \subseteq \mathbb{R}^d$, a vector field is represented by a vector-valued function V where 
+$$
+V: O \rightarrow \mathbb{R}^d
+$$
+in standard Cartesian coordinates $(x_1,...,x_n)$.
+\end{definition}
+
+\begin{remark}Intuitively, a vector field is a function F that assigns to each point (x,y), a vector. A point is different to a vector as the latter has algebraic properties. For example, a vector tells you about the distance from the origin to a point.
+\end{remark}
+
+\begin{definition}(Smooth vector field). If each component of a vector field V is k times continuously differentiable, then V is a $C^k$ vector field. We denote each coordinate mapping $f_i: O \rightarrow \mathbb{R}$. Hence, we express
+$$
+Df(x) = {[\frac{\partial f_i}{\partial x_j}(x)]}
+$$
+for $x \in O$.
+\end{definition}
+
+\begin{definition}(Lie bracket). Let $f,g$ be two $C^k$-vector fields defined on $O \subset \mathbb{R}^d$. The Lie bracket is an operator between vector fields defined as
+$$
+{[f,g]}(x) = Df(x)g(x) - Dg(x)f(x)
+$$
+for $x \in O$.
+\newline
+Explictly, if $f = \{f_i\}_{i=1}^{d}$ and $g = \{g_i\}_{i=1}^{d}$, then 
+$$
+{[f,g]_i}(x) = \sum_{j=1}^d\big(\frac{\partial f_i}{x_j}(x)g_j(x) -  \frac{\partial g_i}{x_j}(x)f_j(x)\big).
+$$
+\end{definition}
+
+\begin{remark}{[f, g]} is another vector field on $O \subset \mathbb{R}^d$ of class $C^{k-1}$.
+\end{remark}
+
+\begin{lemma}The following properties hold for Lie brackets.
+\begin{enumerate}
+\item {[f, f]} = 0;
+\item {[f, g]} = -{[g, f]}.
+\end{enumerate}
+\end{lemma}
+
+We go back to the nonlinear system
+$$
+\begin{cases}
+\frac{dX}{dt}(t) = F(X(t), u(t)), \quad t>0 \\
+X(0) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+
+\begin{definition} We define a family of vector fields associated to the nonlinear system above.
+$$\mathcal{L}_0 = \{F(., u): \text{u is constant and } u \in \mathbb{R}^m\}$$
+$$\mathcal{L}_j = \mathcal{L}_{j-1} \cup \{ [f, g]: f \in \mathcal{L}_0 \text{ and } g \in \mathcal{L}_{j-1} \text{ OR } f \in \mathcal{L}_{j-1} \text{ and } g \in \mathcal{L}_{0}\}.
+$$
+\newline
+For every $x \in \mathbb{R}^d$, we define 
+$$
+\mathcal{L}_j(x) = \{f(x): f \in \mathcal{L}_j\}.
+$$
+\end{definition}
+We are interested in the number of linearly independent vectors in the set $\mathcal{L}_j(x)$ which means with our controls, we can reach any state.
+
+\begin{theorem}(Reachability criterion). Assume that for every control $u \in \mathcal{U}$, the vector field $F(.,u)$ is $C^k$ for $k \geq 2$. Assume that there exists a state $x \in \mathbb{R}^d$ and $j \leq k$ such that dim$\mathcal{L}_j(x) = d$ where we have d linearly independent vectors in $\mathcal{L}_j$. Let $O_x$ be the open neighbourhood of our point x. Then for every $y \in O_x$, there exists a piecewise constant control $u_0$ given by 
+$$
+\frac{dx}{dt} = F(x,u_0)
+$$
+where $X(0) = x$ and $X(T) = y$. That is, there exists a small neighbourhood around our starting point for which local controllability is achieved using piecewise constant controls between our fixed point x and arbitrary state y.
+\\
+Denote the set of all points y that is reachable by x in the neighbourhood $O_x$ as $\mathcal{R}_{elem}(O_x)$. Then, the interior of $\mathcal{R}_{elem}(O_x)$ is nonempty.
+\end{theorem}
+
+\begin{definition}(Symmetric). A system is symmetric if for every $u \in U$, there exists $v \in U$ such that 
+$$
+F(x,u) = -F(x,v)
+$$
+for all $x \in \mathbb{R}^d$.
+\end{definition}
+
+\begin{theorem}Assume that the nonlinear system is symmetric and satisfies the assumptions of the reachability criterion, then the nonlinear system is locally controllable at x.
+\end{theorem}
+
+
+\lecture{15}{Review of ODEs: Dependence of Initial Conditions}
+\section{Review of ODEs: Dependence of Initial Conditions}
+\section{Review of ODEs: Dependence of Initial Conditions}
+\subsection{Flow Property}
+
+We look at the nonlinear system
+$$
+\begin{cases}
+\frac{dX}{dt}(t) = F(X(t), u(t)), \quad t \in (s, T] \\
+X(s) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+
+A solution starting at time $s_1$ to state $x_1$ will be different to a solution starting at time $s_2$ to state $x_2$. We need better notation.
+
+\begin{definition}(Solution depending on initial conditions). The solution $X: [s,T] \rightarrow \mathbb{R}^d$ starting at time s from the point $X(s) = x$ will be denoted as $X(.,s,x)$ and its value at time $t \in [s,T]$ will be $X(t;s,x)$. Hence, the solution to the system is now 
+$$
+X(t;s,x) = x + \int_{s}^tF(r, X(r;s,x))dr \quad t \in [s,T].
+$$
+\end{definition}
+
+\begin{lemma}Let $0 \leq s \leq t \leq u \leq T$. Then for every $x \in \mathbb{R}^d$, we have that
+$$
+X(u;s,x) = X(u;t,X(t;s,x)).
+$$
+\end{lemma}
+
+\subsection{Dependence on initial conditions}
+
+\begin{lemma}(Gronwall lemma). Let $g: [s,T] \rightarrow [0, \infty)$ be a measurable function, such that 
+\begin{enumerate}
+\item $g \in L^1$
+\item $g(t) \leq a + \int_s^t\phi(r)g(r)dr$, \quad $t \in [s,T]$
+\end{enumerate}
+where $\phi$ is nonnegative measurable function and $a \geq 0$ is constant. Then,
+$$
+g(t) \leq \text{a exp}(\int_s^t\phi(r))dr, \quad t \in [s, T].
+$$
+\end{lemma}
+
+\begin{proposition}There exists a constant $C = C(T)$ such that for every $x \in \mathbb{R}^d$, $s \in [0,T)$ and $t \in [s, T]$, we have that 
+$$
+|X(t; s, x)| \leq C(1 + |x|).
+$$
+\end{proposition}
+
+\begin{proposition}(a)There exists a constant $C_T > 0$ such that for any two solution $X(.;s,x)$ and $X(.;s,y)$ of the nonlinear IVP starting from points x and y respectively, we have 
+$$
+|X(t;s,y) - X(t;s,x)| \leq C_T|x-y|
+$$
+for all $t \in [s,T]$.
+\newline
+(b) Moreover, there exists a constant $C_T(|x|)$ such that for every $x \in \mathbb{R}^d$ and $0 \leq s \leq u < T$ and $t \in [u, T]$, we have 
+$$
+|X(t; u, x) - X(t; s, x)| \leq C_T(x)(u - s).
+$$
+\end{proposition}
+
+For every $x \in \mathbb{R}^d$, we consider the linear equation 
+$$
+\begin{cases}
+\frac{d\psi^x}{dt}(t) = DF(t,X(t))\psi^x(t) \quad t\in (s,T) \\
+\psi^x(s) = h. 
+\end{cases}
+$$
+
+\begin{lemma}Assume that for every $t \in (0,T]$, the function $x \rightarrow F(t,x)$ has continuous derivative $DF(t,x)$. Then the following holds 
+\begin{enumerate}
+\item For every $s \in [0,T)$ and $x, h \in \mathbb{R}^d$, there exists a unique solution $\psi^x(.,s,h)$ of the aforementioned system.
+\item For every $x \in \mathbb{R}^d$ and $0 \leq s < t \leq T$, the mapping $h \rightarrow \psi^x(.,s,h)$ is linear and 
+$$
+|\psi^x(t;s,h)| \leq |h|e^{L(t-s)}.
+$$
+\end{enumerate}
+\end{lemma}
+
+\begin{theorem}Assume that for every $t \in (0, T]$, the function $x \rightarrow F(t,x)$ has continuous derivative DF(t,x) and the function $(t,x) \rightarrow DF(t,x)$ is bounded. Then for every $t \in [s,T]$, the mapping for $x \in \mathbb{R}^d$
+$$
+x \rightarrow X(t;s,x) \in \mathbb{R}^d
+$$
+is continuously differentiable and $D_xX(t;s,x)h = \psi^x(t;s,h)$.
+\end{theorem}
+
+\lecture{16}{Necessary Conditions of Optimality}
+\section{Necessary Conditions of Optimality}
+\section{Necessary Conditions of Optimality}
+\subsection{The control problem without constraints}
+
+We look at a nonlinear control problem 
+$$
+\begin{cases}
+\dot{X}(t) = F(X(t), u(t)) \\
+X(s) = x \in \mathbb{R}^d
+\end{cases}
+$$
+where $t \in (s, T]$.
+\newline
+The solution at time t will be denoted by $X^u(t;s,x)$. We assume that for every $s \in [0,T)$ and $x \in \mathbb{R}^d$, the set of admissible controls is given by a set $\mathcal{U}$ of functions $u: [0,T] \rightarrow U \subset \mathbb{R}^m$. Furthermore, $F: \mathbb{R}^d \times \mathbb{R}^m \rightarrow \mathbb{R}^d$ is continuous with continuous derivatives $D_xF$ and $D_u$. Moreover, 
+$$
+\sup_{x, u}|D_xF(x,u)| + \sup_{x, u}|D_uF(x,u)| < \infty.
+$$
+
+We define a family of cost functionals, 
+$$
+J_T(s,x,u) = \int_s^Tc(X^u(r;s,x), u(r))dr + g(X^u(T;s,x)).
+$$
+
+The value function is therefore
+$$
+V(s,x) = \inf_{u \in \mathcal{U}}J_T(s,x,u), \quad s \in [0, T], \quad x \in \mathbb{R}^d.
+$$
+
+We want to determine the optimal control $\hat{u}:[0,T] \rightarrow U$ and optimal state $\hat{X}$ such that 
+$$
+V(s,x) = J_T(s, x, \hat{u}_s)
+$$
+where $\hat{u}_s$ stands for the control $\hat{u}$ restricted to the time interval [s,T], where 
+$$
+\frac{d\hat{X}}{dt}(t) = F(\hat{X}(t), \hat{u}(t))
+$$
+where $\hat{X}(t) = X^{\hat{u}}(t;0,x)$.
+\newline
+The optimal solution where $\tilde{X}^u(.;s,\tilde{x})$ with the cost functional
+$$
+\tilde{J}_T(s,x,u) = \tilde{g}(\tilde{X}^u(T;s,\tilde{x})).
+$$
+
+
+\lecture{17}{Maximum principle}
+\section{Necessary Conditions of Optimality}
+\subsection{Maximum principle}
+
+\subsection{Maximum principle for unconstrained problems}
+We aim to find, for every $s \in [0,T]$ and $x \in \mathbb{R}^d$, an optimal control $\hat{u} \in \mathcal{U}$ such that
+$$
+V_T(s,x) = J_T(s,x,\hat{u}), \quad s \in [0,T], \quad x \in \mathbb{R}^d.
+$$
+\newline
+In particular, $V_T(0,x) = J_T(0,x,\hat{u})$, that is the control $\hat{u}$ optimal on the time interval [0,T] and the optimal process $\hat{X}$ is given by the equation
+$$
+\begin{cases}
+\frac{d\hat{X}}{dt}(t) = F(\hat{X}(t), \hat{u}(t)), \quad t \in (0,T)\\\\
+\hat{X}(0) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+
+\begin{definition}(Hamiltonian). We define the Hamiltonian to be 
+$$
+H(x, p, u) = \langle p, F(x, u)\rangle + c(x, u)
+$$
+for $x, p \in \mathbb{R}^d$ and $u \in U$.
+\end{definition}
+
+\begin{theorem}Assume that F satisfies the conditions given above and additionally the functions $D_xc, D_uc$ and Dg exists and are continuous. Let $\hat{u} \in \mathcal{U}$ be a bounded optimal control. Let $p:[0,T] \rightarrow \mathbb{R}^d$ be a solution to the adjoint equation
+$$
+\begin{cases}
+\frac{dp}{dt} = -[D_xF(\hat{X}(t), \hat{u}(t))]^*p(t) - D_xc(\hat{X}(t), \hat{u}(t)) \quad t \in [0,T) \\\\
+p(T) = Dg(\hat{X}(T)).
+\end{cases}
+$$
+Then for almost every $t \in [0,T]$
+$$
+\langle p(t), F(\hat{X}(t), \hat{u}(t)) \rangle + c(\hat{X}(t), \hat{u}(t)) = \min_{v \in U}[\langle p(t), F(\hat{X}(t), y) \rangle  + c(\hat{X}(t), v)].
+$$
+\end{theorem}
+
+\begin{remark}p is a vector of costate variables with the same dimensions as the state variables x.
+\end{remark}
+
+\begin{theorem}(Pontriagin Maximum Principle). Let $H(\hat{X},\hat{p},\hat{u}) = \max_{v \in U}H(\hat{X},\hat{p},v)$. If we have the optimal $\textbf{pair}$ $(\hat{X},\hat{u})$, then, the necessary conditions for the optimal system is 
+$$
+\begin{cases}
+\frac{d\hat{X}}{dt} = D_pH(\hat{X},\hat{p},\hat{u})\\
+\frac{d\hat{p}}{dt} = -D_xH(\hat{X},\hat{p},\hat{u})\\
+D_uH(\hat{X},\hat{p},\hat{u}) = 0\\
+\hat{p}(T) = Dg(\hat{X}(T))\\
+\hat{X}(0) = x.\\
+\end{cases}
+$$
+\end{theorem}
+
+\begin{proof}(Sketch). We can use needle variation to construct a trajectory using a suboptimal control as a function of how much we diverge by and see how the payoff differs to the optimal state. Taking the limit of the difference parameter, we see that the solutions will coincide.
+\end{proof}
+\lecture{18}{Linear Quadratic Regulator}
+\section{Linear Quadratic Regulator}
+\section{Linear Quadratic Regulator}
+\subsection{Linear Quadratic Regulator}
+
+We consider linear controlled system
+$$
+\begin{cases}
+\frac{dX}{dt} = AX + Bu, \quad \text{if } t \in (0,T]\\
+X(0) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+
+We assume that $u \in \mathcal{U} = L^2(0,T;\mathbb{R}^m)$ and $B: \mathbb{R}^m \rightarrow \mathbb{R}^d$ is a linear mapping. We want to minimize the cost functional for every $x \in \mathbb{R}^d$, 
+$$
+J_T(x,u) = \int_0^T[\langle QX^u(t;x), X^u(t;x) \rangle] + \langle Ru(t), u(t) \rangle]dt + \langle GX^u(T;x), X^u(T;x) \rangle
+$$
+over all admissible controls $u \in \mathcal{U}$. The system is linear whilst the cost functional is quadratic and we want to regulate the system to 0. More precisely, for every $x \in \mathbb{R}^d$, we want to find $\hat{u} = \hat{u}(x) \in \mathcal{U}$ such that
+$$
+V_T(x) = \min_{u \in \mathcal{U}}J(T(x,u) = J_T(x, \hat{u}),
+$$
+where $Q: \mathbb{R}^d \rightarrow \mathbb{R}^d$, $R: \mathbb{R}^m \rightarrow \mathbb{R}^m$, and $G: \mathbb{R}^d \rightarrow \mathbb{R}^d$ are linear.
+
+\begin{theorem}(Pontriagin Maximum Principle for LQR). The Hamiltonian of the LRQ problem is 
+$$
+H(x,p,u) = \langle p, Ax + Bu \rangle + \langle Qx, x \rangle + \langle Ru, u \rangle.
+$$
+The solution $\hat{u}$ is 
+$$
+\hat{u} = -\frac{1}{2}R^{-1}B^*p.
+$$
+\end{theorem}
+
+\begin{remark}First, we solve to find $\hat{U}$ by taking the derivative of the Hamiltonian with respect to u and setting it equal to 0. Solve for $\hat{u}$ and then plug this back into the equation to the find P and $\hat{X}$.
+\end{remark}
+
+\begin{theorem}Let P be the unique solution to the matrix Riccati equation. Then the optimal control for the linear-quadratic control problem is given in the feedback form 
+$$
+\hat{u}(t) = -R^{-1}B^*P(T-t)\hat{X}(t)
+$$
+and the optimal state follows the ODE 
+$$
+\begin{cases}
+\frac{d\hat{X}}{dt} = (A - BR^{-1}B^*P(T-t))\hat{X}(t) \\
+\hat{X}(0) = x.
+\end{cases}$$
+The optimal cost is given by 
+$$
+V_T(s,x) = \langle P(T-s)x, x \rangle.
+$$
+
+\end{theorem}
+
+\lecture{19}{Time Optimal Control}
+\section{Time Optimal Control}
+\section{Time Optimal Control}
+\subsection{Time Optimal Control}
+We apply the LQR problem to time optimal control problems where we want to reach a state in the shortest time possible. We look at the controlled linear system
+$$
+\begin{cases}
+\frac{dX}{dt} = AX + Bu, \quad if \quad t \in (0,T)\\
+X(0) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+
+Assume admissble controls take values in a convex and compact set $U \subset \mathbb{R}^m$. Let $y \in \mathbb{R}^d$ be a fixed state and define 
+$$
+T(x,y,u) = inf\{t \geq 0: X^u(t;0,x) = y\}.
+$$
+
+We define the optimal time as $\hat{T} = \inf_{u \in \mathcal{U}}\{t \geq 0: X^u(t;0,x) = y\}.$ and we want to find the optimal control $\hat{u}$ that achieves this. In particular, we are now interested in finding the optimal $\textbf{pair}$ of $(\hat{u}, \hat{T})$, rather than the actual state trajectory.
+
+\begin{theorem}(Pontriagin Maximum Principle for time optimal control). Let $x,y \in \mathbb{R}^d$ be fixed. Assume there exists a control $u \in \mathcal{T}$ such that $T(x,y,u) < \infty$, which implies that the optimal control $\hat{u}$ exists. Then, assume that $(\hat{u},\hat{T})$ is an optimal pair. Then, there exists $0 < \lambda \in \mathbb{R}^d$ such that 
+$$
+\langle B^*p(t), \hat{u}(t)\rangle = \max_{u \in U}\langle B^*p(t), u\rangle
+$$
+for all t and where p solves the equation
+$$
+\begin{cases}
+\frac{dp}{dt}(t) = -A^*p(t) \\
+p(\hat{T}) = \lambda \\
+\hat{T} = T(x,y,\hat{u}).
+\end{cases}
+$$
+\end{theorem}
+
+\subsection{General Result of PMP}
+We now look at a generalised formulation of the Pontriagin Maximum Principle. We are interested in finding the triple $(\hat{X}, \hat{u}, \hat{T})$ as we now wish to maximise a cost functional (hence why we require $\hat{X}$) but we don't have a terminal time specified. We also imposed an arbitrary number of constraints in our problem formulation. \\
+
+Let the system be 
+$$
+\begin{cases}
+\frac{dX}{dt} = F(t,X(t),u(t))\\
+X(0) = x
+\end{cases}
+$$
+where $u \in U \subset \mathbb{R}^m$. We have that the terminal state $X^u(T;x)$ and terminal time T must satisfy the constraints $g_i(T,X^u(T;x))=0$ for i=1,...,k and $\hat{u}:[0,\hat{T}] \rightarrow U$. \\We have the cost functional 
+$$
+J(x,u) = g_0(T,X^u(T;x))
+$$
+where for a different terminal time, we have an associated terminal state. So the optimal solution is the pair $(\hat{T},\hat{u})$ where $\hat{u}: [0,\hat{T}] \rightarrow U$.
+
+\begin{theorem}(Generalised Pontriagin Maximum Principle). Let $(\hat{X},\hat{u},\hat{T})$ be optimal. Assume that the function $F:[0,\infty) \times \mathbb{R}^d \times U \rightarrow \mathbb{R}^d$ is continuous and continuously differentiable in (t,x) for any $u \in U$. Let $\hat{u}:[0,\hat{T}] \rightarrow U$ be a bounded optimal control and let $\hat{X}$ be the corresponding optimal trajectory. Assume that the constraint gradient vectors $Dg_i(\hat{T},\hat{X}(\hat{T}))$ are linearly independent for i=1,...,k. \\Then, there exists a nontrivial absolutely continuous function $p:[0,\hat{T}] \rightarrow \mathbb{R}^d$ such that 
+$$
+\frac{dp}{dt}(t) = -\langle p(t),D_xF(t,\hat{X}(t),\hat{u}(t))\rangle
+$$
+$$
+\langle p(t),F(t,\hat{X},\hat{u}(t))\rangle = \sup_{y \in U}\langle p(t), D_xF(t,\hat{X}(t),y) \rangle 
+$$
+
+$$
+p(\hat{T}) = \sum_{i=1}^{k}\lambda_i D_xg_i(\hat{T},\hat{X}(\hat{T})) \neq 0
+$$
+$$
+\frac{d}{dt}\big(\langle p(t),F(t,\hat{X}(t),\hat{u}(t))\rangle \big) = \langle p(t),D_tF(t,\hat{X}(t),\hat{u}(t))\rangle
+$$
+for $t \in [0,\hat{T}]$ and $\lambda_0,...,\lambda_k \geq 0$.
+\end{theorem}
+
+\lecture{20}{Dynamic Programming Principle}
+\section{Dynamic Programming Principle}
+\section{Dynamic Programming Principle}
+\subsection{Dynamic Programming Principle}
+We look at the nonlinear control problem 
+$$
+\begin{cases}
+\frac{dX}{dt}(t) = F(t,X(t),u(t)) \quad t \in (s,T)\\
+X(s) = x \in \mathbb{R}^d.
+\end{cases}
+$$
+
+We define $\mathcal{U}_s$ to be the set of admissible controls u from [s,T] where $s \in [0,T]$.\\
+
+The family of control sets $\{\mathcal{U}_s: s \in [0,T]\}$ satisfy the following conditions.
+
+\begin{definition}(Concatenation property). Let $u \in \mathcal{U}_s$ and $v \in \mathcal{U}_t$ where $s < t$. Then the control 
+$$
+w^{u,v}(r) = \begin{cases}
+u(r) \quad \text{ if } r \in [s,t]\\
+v(r) \quad \text{ if } r \in (t,T]\\
+\end{cases}
+$$
+is an element of $\mathcal{U}_s$.
+\end{definition}
+
+\begin{definition}(Restriction property). Let $u \in \mathcal{U}_s$. For $t \in (s,T]$, we define the control $u^'$ as a restriction of u to the interval [t,T]. Then $u^t \in \mathcal{U}_t$.
+\end{definition}
+
+We define the optimal trajectory as 
+$$
+J_T(s,x,u) = \int_s^Tc(r,X^u(r;s,x),u(r))dr + g(T,X^u(T;s,x)) \quad u \in \mathcal{U}_s.
+$$
+
+We define the value function as
+$$
+V_T(s,x) = \inf_{u \in \mathcal{U}_s}J_T(s,x,u) \quad V_T(T,x) = g(x)
+$$
+and require that 
+$$
+V_T(s,x) > -\infty \quad s \in [0,T]
+$$
+for all $x \in \mathbb{R}^d$.
+
+\begin{theorem}(Dynamic Programming Principle). Assume that the functions $g: \mathbb{R}^d \rightarrow \mathbb{R}$ and $c: [0,T] \times \mathbb{R}^d \times U \rightarrow U$ are continuous and bounded from below. Let $0 \leq s < t \leq T$. Then,
+$$
+V_T(s,x) = \inf_{u \in \mathcal{U}_s} \bigg( \int_{s}^{t}c(r, X^u(r;s,x), u(r))dr + V_T(t,X^u(t;s,x)) \bigg).
+$$
+\end{theorem}
+
+\begin{corollary}Let $u \in \mathcal{U}_s$ and let $X^u(.;s,x)$ be the corresponding solution. Define a function 
+$$
+M_{T}^u(t;s,x) = \int_s^tc(r, X^u(r;s,x), u(r))dr + V_T(t,X^u(t;s,x)), \quad t \in [s,T].
+$$
+Then M is nondecreasing. Moreover, if $u = \hat{u}$ is optimal on [s,T], then the function $M^{\hat{u}}$ is constant on [s,T].
+\end{corollary}
+
+\lecture{21}{HJB Equations}
+\section{Dynamic Programming Principle}
+\subsection{HJB Equations}
+
+We look at the control problem 
+$$
+\begin{cases}
+\frac{dX}{dt} = F(t,X^u(t),u)\\
+X(s) = x.
+\end{cases}
+$$
+We define the cost functional as 
+$$
+J(s,x,u) = \int_s^Tc(r,X^u(r,s,x))dr + g(T,X^u(T;s,x)).
+$$
+We also introduce constraints where we now minimise J(s,x,u) over the set of controls such that
+$$
+(T, X^u(T;s,x)) \in \mathcal{F} \subset (0,\infty) \times \mathbb{R}^d
+$$
+where $\mathcal{F}$ is the target set of both the constraint on the terminal time and final state of the system at time T. \\
+We define the value function as 
+$$
+V(s,x) = \inf_{u \in \mathcal{U}}J(s,x,u).
+$$
+
+\begin{definition}(Hamiltonian). We define the Hamiltonian as
+$$
+H(t,x,p) = \sup_{v \in U}\bigg(-\langle p,F(t,x,v)\rangle - c(t,x,v) \bigg) \quad (t,x,p) \in [0,T] \times \mathbb{R}^d \times \mathbb{R}^d.
+$$
+\end{definition}
+
+\begin{theorem}Assume that the value function $V: [0,T] \times \mathbb{R}^d \rightarrow \mathbb{R}$ has continuous derivatives $\frac{\partial V}{\partial s}(s,x)$ and $D_xV(s,x)$ on a certain set $\mathcal{A} \subset [0,\infty) \times \mathbb{R}^d$ such that $\mathcal{A}$ does not intersect the target set $\mathcal{F}$. \\ Then, the HJB equations are  
+$$
+\begin{cases}
+-\frac{\partial V}{\partial s}(s,x) + H(s,x,D_xV(s,x)) = 0, \quad (s,x) \in (0,T) \times \mathbb{R}^d \\\\
+V(T,x) = g(T,x) \quad x \in \mathbb{R}^d.
+\end{cases}
+$$
+Here, the first equation is our adjoint equation whilst the second is our terminal time constraint.
+\end{theorem}
+\begin{remark}We do not need differentiability after reaching the target set.
+\end{remark}
+
+\begin{remark}More explicity, the HJB equation is of the form
+$$
+\frac{\partial V}{\partial S}(s,x) + \sup_{v \in U}\bigg(\langle D_xV(s,x), F(s,x,v)\rangle + c(s,x,v) \bigg) = 0.
+$$
+\end{remark}
+
+Notice the Hamiltonian was negative so that the HJB equation would be positive.\\\\
+
+The steps to use the HJB equations are:
+\begin{enumerate}
+\item Maximise v over H(x,p,v) through calculus techniques to derive a formula for $\hat{u}$
+\item Compute $D_xV(s,x)$ 
+\item Plug $\hat{u}$ into your Hamiltonian and solve the PDE $\frac{\partial V}{\partial S}(s,x) = H(s,x,D_xV(s,x))$ to figure out the value function $V(s,x)$
+\item Solve for your lagrange multipliers via $P = D_xV(s,x)$
+\item Get the final form of your optimal control $\hat{u}$ and optimal trajectories $\hat{X}$.
+\end{enumerate}
+
+\lecture{22}{Discounted Cost Control Problem}
+\section{Discounted Cost Control Problem}
+\section{Discounted Cost Control Problem}
+\subsection{Problem Formulation}
+We look at the controlled system
+$$
+\frac{dX}{dt} = F(X,u) \quad X(0) = x \in \mathcal{O}
+$$
+where $\mathcal{O} \subset \mathbb{R}^d$ is an open set.
+
+\subsection{Dynamic Programming Principle}
+\begin{theorem}For every $x \in \overline{\mathcal{O}}$ and $t > 0$, putting for simplicity $\tau = T^u(x)$, we have 
+$$
+V(x) = \inf_{u \in \mathcal{U}(x)}\Bigg(\int_0^{t \land \tau}e^{-\beta s}c(X^u(s,x),u(s))ds + e^{-\beta s}V(X^u(\tau;x))I_{[0,\tau]}(t) + e^{-\beta \tau}g(X^u(\tau,x))I_{\tau,\infty}(t) \Bigg).
+$$
+\end{theorem}
+
+
+\lecture{23}{Discounted Cost Control Problem}
+\section{Discounted Cost Control Problem}
+\subsection{HJB Equation in Discounted Cost Control Problem}
+
+We define the Hamiltonian where we do not include the discounted cost.
+$$
+H(x,p) = \sup_{u \in \mathcal{U}}( - \langle F(x,v), p\rangle - c(x,v)).
+$$
+
+\begin{theorem}(Verification Theorem). Let W be a continuously differentiable solution to the equation 
+$$\begin{cases}
+\beta W + H(x,-D_xW(x)) = 0, \quad x \in \mathcal{O} \quad \text{(Stationary HJB Equation)}\\
+W(x) \leq g(x) \quad x \in \partial \mathcal{O}.
+\end{cases}
+$$
+Then, for every $x \in \mathcal{O}$ and every admissible control u such that $T^u(x) = \infty$, we have that 
+$$
+\lim_{t \rightarrow \infty}(e^{-\beta t}W(X^u(t,x))) = 0
+$$
+then $W(x) \leq V(x)$ for all $x \in \overline{\mathcal{O}}$.\\
+Moreover, assume that there exists $u^* \in \mathcal{U}(x)$ and the corresponding $X^*(.) = X^{u^{*}}(.,x)$ such that
+$$
+c(X^*(t),u^*(t)) + \langle F(X^*(t), u^*(t)), D_xW(X^*(t)) \rangle = -H(X^*(t), -D_xW(X^*(t)))
+$$
+for almost every $t \in [0,T^*)$ and if $T^* < \infty$, then $W(X^*(T^*)) = g(X^*(T^*))$. Then W=V and $T^*$ is optimal for the initial condition x. 
+\end{theorem}
+
+\lecture{24}{Probability Theory}
+\section{Probability Theory}
+\section{Probability Theory}
+\subsection{Introduction to Probability Theory}
+
+\begin{definition}(Distribution Function/ CDF). Let $X$ be a random variable and x a realised value of the random variable. We define the distribution $F(x) = P(X \leq x)$ where $x \in (-\infty, \infty)$. Furthermore,
+$$
+\begin{cases}
+\text{Continuous: }F(x) = \int_{-\infty}^xf(y)dy\\
+\text{Discrete: } F(x) = \sum_{x_{k} \leq x}P(X=x_k) \text{ for a sequence of points } x_1,x_2,... \text{ such that } \sum_{k=1}^{\infty}P(X=x_k)=1.
+\end{cases}
+$$
+\end{definition}
+
+\begin{proposition}(Independence). Let $X_1,...X_n$ be independent random variables. We have that
+$$
+P(X_1\leq x_1, ..., X_n \leq x_n) = \prod_{i=1}^n P(X_i \leq x_i).
+$$
+If $X_i$ has the same distribution for $1 \leq i \leq n$, then we call the sequence an independent and identically distributed sequence.
+\end{proposition}
+
+\begin{definition}(Expectation). Let $X \in \ell_1$. Then the expectation is defined as 
+$$
+E(X) \begin{cases}
+\text{Continuous: } \int_{-\infty}^{\infty}xf(x)dx \\
+\text{Discrete: } \sum_kx_kP(X=x_k).
+\end{cases}
+$$
+\end{definition}
+
+\lecture{25}{Conditional Expectation}
+\section{Probability Theory}
+\subsection{Conditional Expectation}
+
+We have 3 types of conditional expectation. 
+\begin{enumerate}
+\item Condition on event
+\item Condition on random variable
+\item Condition on sigma algebra.
+\end{enumerate}
+
+\begin{theorem}(Conditional expectation with respect to event). Let X be a discrete random variable and A be an event. Then,
+$$
+E(X|A) = \sum_{x}x P(X=x|A)
+$$
+where the sum is over the support of X. \\If X is a continuous random variable with PDE f, then 
+$$
+E(X|A) = \int_{-\infty}^{\infty}xf(x|A)dx
+$$
+where $f(x\|A)$ is just a formulation of Bayes rule
+$$
+f(x|A) = \frac{P(A|X=x)f(x)}{P(A)}.
+$$
+\end{theorem}
+
+\begin{theorem}(Conditional expectation with respect to a random variable). Let X and Y be on the same probability space. Define $g(x) = E(Y|X=x) = \sum_{y}P(Y=y|X=x)$. Then the conditional expectation of Y given X, denoted by $E(Y|X)$ is defined to be the random variable $g(X)$.
+\end{theorem}
+
+\begin{remark}Since $E(Y|X)$ is a funcion of X, this means that $E(Y|X)$ is a random variable. Hence it makes sense to compute quantities such as $E(E(Y|X))$ and $Var(E(Y|X))$.
+\end{remark}
+
+\begin{definition}(Conditional expectation with respect to sigma algebra). Let $\mathcal{F} \subset \mathcal{A}$ be sigma-algebras and X a random variable on $(\Omega, \mathcal{A}, P)$. Assume that $E(X^2) < \infty$. Then, there exists a $\mathcal{F}$-measurable random variable Y such that 
+$$
+E[(X-Y)^2] = \inf_{z \in \mathcal{F}}E(X-Z)^2
+$$
+over all $\mathcal{F}$-measurable random variables. We denote the minimizing Y by $E(X|\mathcal{F})$.
+\end{definition}
+
+\begin{theorem}Let $X, Y$ be random variables and $X \in L^1$. Then there exists a unique random variable $E(X|Y)$ such that 
+$$
+E(h(Y)E(X|Y)) = E(h(Y)X)
+$$
+for every bounded and measurable function h. Let $h(x) = 1_B(x)$ and hence 
+$$
+E(1_B(Y)(X)) = E[1_BE(Y|X)].
+$$
+\end{theorem}
+
+
+\begin{proposition}(Linearity of expectation). If we have a sequence of random variables $\{X_1,...,X_n\}$, then 
+$$
+E(X_1 + X_2 + ... + X_n) = E(X_1) + E(X_2) + ... + E(X_n).
+$$
+\end{proposition}
+
+\begin{theorem}(Law of total expectation). Let X and Y be random variables on the same probability space.
+$$
+E(X) = E(E(X|Y)).
+$$
+Furthermore, if $\{Y_i\}_{i \in I}$ is a countable partition of the sample space, then 
+$$
+E(X) = \sum_{i \in I}E(X|Y_i)P(Y_i).
+$$
+\end{theorem}
+
+\begin{lemma}If X and Y are independent, then 
+$$
+E(X|Y) = E(X).
+$$
+\end{lemma}
+
+\begin{theorem}(Tower property). If the sigma algebra $\mathcal{G} \subset \mathcal{F}$, then 
+$$
+E(E(X|\mathcal{F})|\mathcal{G}) = E(X|\mathcal{G}).
+$$
+\end{theorem}
+
+\begin{theorem}If Z is adapted to sigma algebra $\mathcal{F}$, then 
+$$
+E(XZ|\mathcal{F}) = ZE(X|\mathcal{F}).
+$$
+\end{theorem}
+
+\begin{theorem}(Jensen's Inequality). Let F be a convex function. Let X and Y be random variables. Then 
+$$
+F(E(X|Y)) \leq E(F(X)|Y).
+$$
+\end{theorem}
+
+
+\lecture{26}{Martingale Theory}
+\section{Probability Theory}
+\subsection{Introduction to Martingales}
+\begin{definition}(Stochastic Process). A family of random variables $\{X_t: t \in T\}$.
+\end{definition}
+
+\begin{definition}(Measurable Function). Let $(X, \mathcal{A})$ and $(Y, \Sigma)$ be measurable spaces. A function $f: X \rightarrow Y$ is measurable if the preimage of E under f is in $\mathcal{A}$ for every $E \in \Sigma$; i.e.
+$$
+f^{-1}[E] \coloneqq \{x \in X: f(x) \in E\} \in \mathcal{A}
+$$
+for all $E \in \Sigma$.
+\end{definition}
+
+\begin{definition}(Filtration). Let $(\Omega, \mathcal{A}, P)$ be a probability space and let I be an index set with a total order. For every $i \in I$, let $\mathcal{F}_i$ be a sub-$\sigma$-algebra of $\mathcal{A}$. Then 
+$$
+\{\mathcal{F}_i\}_{i \in I}
+$$
+is called a filtration.
+\end{definition}
+
+\begin{remark}Intuitively, this says that an adapted process is one that cannot "see into the future. We will contrast this later with a predictable process.
+\end{remark}
+
+\begin{definition}(Filtered probability space). We call $(\Omega, \mathcal{A}, \{\mathcal{F}_n\}_{n \geq 1}, P)$ a filtered probability space.
+\end{definition}
+
+\begin{definition}(Adapted process). Let 
+\begin{enumerate}
+\item $(\Omega, \mathcal{A}, P)$ be a probability space;
+\item Let I be an index set with a total order;
+\item Let $\{\mathcal{F}_i\}_{i \in I}$ be a filtration of the $\sigma$-algebra $\mathcal{A}$;
+\item Let $(S, \Sigma)$ be a measurable space (state space);
+\item Let $X: I \times \Omega \rightarrow S$ be a stochastic process.
+\end{enumerate}
+
+The process X is said to be adapted to the filtration $\{\mathcal{F}_i\}_{i \in I}$ if the random variable $X_i: \Omega \rightarrow S$ is a $(\mathcal{F}_i, \Sigma)$-measurable function for each $i \in I$.
+\end{definition}
+
+\begin{definition}(Martingales). Let $\{M_n\}_{n \geq 1}$ be a discrete-time stochastic process. We say that $\{M_n\}_{n \geq 1}$ is a Martingale with respect to the filtration $\{\mathcal{F}_n\}_{n \geq 1}$ if
+\begin{enumerate}
+\item $\{M_n\}$ is $\textbf{adapted}$ to $\{\mathcal{F}_n\}$;
+\item $E(|M_n|) < \infty$ for all n;
+\item $E(M_n|\mathcal{F}_n) = M_n$ for all n.
+\end{enumerate}
+\end{definition}
+
+\begin{definition}(Submartingales and Supermartingales). A submartingale/supermartingale satisfies the same conditions except for the 3rd condition where instead
+\begin{enumerate}
+\item (Supermartingales) $E(M_n|\mathcal{F}_n) \leq M_n$ for all n.
+\item (Submartingale) $E(M_n|\mathcal{F}_n) \geq M_n$ for all n.
+\end{enumerate}
+\end{definition}
+
+\subsection{Properties of Martingales}
+
+\begin{theorem} If $\{M_n\}$ and $\{N_n\}$ are two martingales with respect to the filtration $\{\mathcal{F}_n\}$, then for all $a, b \in \mathbb{R}$, we have that 
+$$
+\{aM_n + bN_n\}
+$$
+is a martingale with respect to $\{\mathcal{F}_n\}$.
+\end{theorem}
+
+\begin{theorem} If $\{M_n\}$ is a martingale, then $E(M_n) = E(M_0)$.
+\end{theorem}
+
+\begin{remark} We have that for a supermartingale (submartingale) that $E(M_n) \leq E(M_0)$ ($E(M_n) \geq E(M_0)$).
+\end{remark}
+
+\begin{theorem}(Law of Iterated Expectations). Let X be a random variable such that $X \in L^1(X)$ and Y be a random variable defined on the same probability space. Then
+$$
+E(X) = E(E(X|Y)).
+$$
+\end{theorem}
+
+\begin{theorem}Let $\{M_n\}$ be a martingale with respect to $\{\mathcal{F}_n\}$. Then $$
+E(M_{n+k}|\mathcal{F}_n) = M_n
+$$
+for all $n, k \in \mathbb{N}$.
+\end{theorem}
+
+\begin{remark}Note that this is a generalisation of condition three for a stochastic process to be a martingale.
+\end{remark}
+
+\begin{theorem} Let $\{M_n\}$ be a $\textbf{martingale}$. Let $f$ be an increasing convex function such that $E(|f(M_n)|) < \infty$. Then $\{f(M_n)\}_n$ is a submartingale.
+\end{theorem}
+
+\begin{theorem} Let $\{M_n\}$ be a $\textbf{submartingale}$. Let $f$ be an increasing convex function such that $E(|f(M_n)|) < \infty$. Then $\{f(M_n)\}_n$ is a submartingale.
+\end{theorem}
+
+\begin{definition}(Predictable Process). Given a filtered probability space $(\Omega, \mathcal{A}, \{\mathcal{F}_n\}_{n \geq 1}, P)$, we say that the stochastic process $\{X_n\}_{n \geq 1}$ is predictable if $X_n \in \mathcal{F}_{n -1}$ for n=1,2,...
+\end{definition}
+
+\begin{remark}If we know what $\mathcal{F}_{n-1}$, we can predict $X_n$.
+\end{remark}
+
+\begin{theorem}(Martingale transform). Let $\{S_n\}$ be a martingale such that $E(S_n^2) < \infty$. Let $\{H_n\}$ be a predictable process such that $E(H_n^2) < \infty$. Then the martingale transform of Y of S by H is 
+\begin{enumerate}
+\item $Y_0 = 0$
+\item $Y_n \coloneqq \sum_{i=1}^nH_i(S_i - S_{i-1})$ for n=1,2,...
+\end{enumerate}
+Then $\{Y_n\}$ is a martingale.
+\end{theorem}
+
+\begin{theorem}(Orthogonality of martingale increments). Let $\{M_n\}$ be a martingale. Then for $0 \leq i \leq j \leq k \leq n$, we have that
+$$
+E[(M_n - M_k)M_j] = 0
+$$
+which implies that 
+$$
+E[(M_n - M_k)(M_j - M_i)] = 0.
+$$
+\end{theorem}
+\begin{remark} In other words, as long as we don't have time interval overlaps, then the time intervals are orthogonal increments.
+\end{remark}
+
+
+\lecture{27}{Markov Chains}
+\section{Probability Theory}
+\subsection{Markov Chains}
+
+\begin{definition}(Markov property). Let $\{X_n\}$ be a stochastic process and $\mathcal{F}_n = \gamma(X_0,...,X_n)$ be a filtration. Then $\{X_n\}$ is said to have the Markov property if 
+$$
+E[f(X_{n+k})|\mathcal{F}_n] = E(f(X_{n+k})|X_n)
+$$
+for f that is bounded and measurable. Equivalently, we have that 
+$$
+P(X_{n+1}\in A|X_n=i,X_{n-1}=i_{n-1},...,X_0 = i_0) = P(X_{n+1} \in A|X_n=i).
+$$
+\end{definition}
+
+\begin{definition}(Time homogenous). Suppose the stochastic process $\{X_n\}$ takes values in the finite state space S. Then $\{X_n\}$ is time homogenous if for any state $i_0,i_1,...,i_{n-1}$ for $i, j \in S$, we have that 
+$$
+P(X_{n+1} =j| X_n=i, X_{n+1}=i-1, ..., X_0=i_0) = P(i.j).
+$$
+\end{definition}
+
+\begin{definition}(Transition matrix). The matrix $P = (P(i,j))_{i, j \in S}$ is called the transition matrix of the Markov chain where $P(i.j) = P(X_{n+1}=j|X_n=i)$. 
+\end{definition}
+
+
+\begin{theorem}Suppose X is a Markov chain. Then for all $n_1 < n_2 < ... < n_k < n$ and for all $i_1,i_2,...,i_k$, we have that 
+$$
+P(X_m=j|X_{m_{k}}=i_k,...,X_{n_{1}}=i_i) = P(X_m=j|X_{n_{k}}=i_k)
+$$
+whereby the multistep only depends on the last step. 
+\end{theorem}
+
+\begin{theorem}Let $\{X_n\}$ be a M.C. with state space S and transition matrix $P = (P(i.j))_{i,j \in S}$. Then, for all $m,n \in \mathbb{N}$, we have that 
+$$
+P^{(m+n)} = P^{(m)}P^{(n)}.
+$$
+\end{theorem}
+
+\begin{definition}We denote $P_{yy}$ as the probability for the chain to return to state y. That is, there exists a moment in time where we return to state y.
+\end{definition}
+
+\begin{definition}(Transient state). A state $y \in S$ is said to be transient if $P_{yy} < 1$.
+\end{definition}
+
+\begin{definition}(Recurrent state). A state $y \in S$ is said to be Recurrent if $P_{yy} = 1$.
+\end{definition}
+
+\begin{remark}So a transient state captures the idea that the process have some probability that it never returns to that state whilst a recurrent state guarantees the process will return to the state.
+\end{remark}
+
+\begin{theorem}If $Y \in S$ is a transient state, then starting from any state, we will visit y $\textbf{finitely}$ many times with probability of 1.\\ If $Y \in S$ is a recurrent state, then starting from any state, we will visit y $\textbf{infinitely}$ many times with probability of 1.
+\end{theorem}
+
+
+\begin{definition}A state $X \in S$ communicates with another state $Y \in S$ if for $X \rightarrow Y$ if $P_{XY} > 0$ i.e. it is possible to transition from state X to Y.
+\end{definition}
+\begin{theorem}If $X \rightarrow Y$ and $Y \rightarrow Z$, then $X \rightarrow Z$.
+\end{theorem}
+
+\begin{theorem}If X is recurrent and $X \rightarrow Y$, then $P_{YX} = 1$.
+\end{theorem}
+
+\begin{definition}A nonempty set $A \subset S$ is said to be closed if it is impossible to exit, i.e. for all $i \in A$ and $j \not \in A$, we have that 
+$$
+P(i,j) = 0.
+$$
+\end{definition}
+
+\begin{definition}(Irreducible). A closed set $B \subset S$ is said to be irreducible if for all $i,j \in B$, we have that state i communicates with state j $i \rightarrow j$. So B has no proper closed set.
+\end{definition}
+
+\begin{lemma}Every state S is a closed set.
+\end{lemma}
+
+\begin{theorem}If $C \subset S$ is finite and irreducible, then all states in C are recurrent.
+\end{theorem}
+
+\begin{theorem}Assume state space S is finite. Then we can do a disjoint decomposition of S 
+$$
+S = T \dot \cup R_1 \dot \cup R_2 \dot \cup ... \dot \cup R_k
+$$
+where T is a set of transient state and $R_i$ are irreducible sets for $i = 1,...,k$.
+\end{theorem}
+
+
+\begin{theorem}(Stationary distribution). Let $\{X_n\}_{n \geq 1}$ be a Markov Chain with transition matrix P. Supose $X_0$ is a random variable with distribution $\pi = \{\pi_i\}_{i \in S}$. In other words, $\pi$ is a row vector whose entries are probabilities summing up to 1. The distribution of $X_0$ is $\pi.P$.\\ A distribution $\pi$ is said to be stationary if $$\pi.P = \pi.$$
+\end{theorem}
+
+\begin{theorem}(Existence and uniqueness of stationary distributions). Let $\{X_n\}$ be a Markov chain. Let S be a state space that is finite and irreducible. Then there exists a unique stationary distirbution $\pi$. Furthermore, $\pi_i > 0$ for all $i \in S$.
+\end{theorem}
+
+\begin{theorem}(Ergodicity). Suppose the state space S is irreducible and $\pi$ is a stationary distribution. Let $f:S \rightarrow \mathbb{R}$. Then 
+$$
+\frac{1}{n}\sum_{k=1}^{n}f(x_k) \rightarrow \sum_{x \in S}f(x)\pi_x.
+$$
+\end{theorem}
+
+\lecture{28}{Stochastic Control Theory}
+\section{Stochastic Control Theory}
+\section{Stochastic Control Theory}
+\subsection{Introduction to Stochastic Control}
+
+Recall 2 important properties of conditional expectation.
+$$
+E(X) = E(E(X|\mathcal{F}_n)).
+$$
+Also let $X = g(X_1,...,X_n)$ and let Y be independent of $X_1,...,X_n$. Then 
+$$
+E[F(X,Y)|X_1,...,X_n] = H(X)
+$$
+where we can now denote $H(x) = EF(x,Y)$.
+\newline
+We work with Markov chains from now on so we will be working in $\textbf{discrete time}$.
+
+\begin{definition}(Markov chain). Let $\mathcal{F}_1 \subset \mathcal{F}_2 \subset ...$ be events observable at t=1,2,... Then $(X_t)$ is a Markov chain with the transition operators $P_t$ if 
+\begin{enumerate}
+\item $X_t$ is observable at time t ($X_t$ is $\mathcal{F}_t$-adapted)
+\item If $E(\phi(X_{t+1}|\mathcal{F}_t) = (P_t\psi)(X_t)$. i.e. We only need to know the value $X_t$ rather than the whole past.
+\end{enumerate}
+\end{definition}
+
+
+We now look at the setup. Let $\epsilon_1,\epsilon_2,...$ be independent noise. Denote the $\textbf{nonlinear Markov chain}$ as 
+$$
+X_{t+1} = F(t,X_t,\epsilon_{t+1}).
+$$
+We define the $\textbf{transition operator}$ as 
+$$
+P_t\psi(x) = E(F(t,x,\epsilon_{t+1}))
+$$
+which tells us about transitioning from state t to state t+1. So then note that 
+$$
+E(\psi(X_{t+1})|\mathcal{F}_t) = E(\psi(F(t,X_t,\epsilon_{t+1})|\mathcal{F}_t)) = (P_t\psi)(X_t).
+$$
+
+So we have a finite time horizon T. We consider nonlinear Markov chain 
+$$
+X_{t+1} = F(t,X_t,u_t,\epsilon_{t+1})
+$$
+where $\epsilon_t$ is independent for t=0,...,T-1. We have that the control is a function of time and previous realised states
+$$
+u_t = u(t,x_0,x_1,...,x_t).
+$$
+Furthermore, $u_t \in U(x) \subset \mathbb{R}^m$ as the admissible control now depends on where we are now where $x=(x_0,x_1,...,x_t)$. Setting the initial state $X_0 = x$.\\
+
+We define the payoff functional 
+$$
+J(x,u) = E[\sum_{t=0}^{T-1}q(t,X(t),u(t)) + r(T,X(T))]
+$$
+which is now the expected value of the running cost and terminal cost. We are looking for the optimal control $\hat{u}$ such that 
+$$
+V_T(x) = \sup_{u}J_T(x,u) = J_T(x,\hat{u}).
+$$
+
+
+\lecture{30}{Bellman Theorem for finite horizon}
+\section{Bellman Theorem for finite horizon}
+\section{Bellman Theorem for finite horizon}
+\subsection{Bellman Theorem for finite horizon}
+We now look at Dynamic programming for the stochastic discrete case.\\
+
+
+
+\begin{definition}(Controlled transition operator). We define the transition operator which now depends on the control in order to determine the Markov chain.
+$$
+P^uh(x) = E(h(F_t(x,u,\epsilon))).
+$$
+
+where $u \in U(x)$ is a fixed vector.
+\end{definition}
+
+\begin{definition}(Controlled Markov Chain). We define the nonlinear Markov chain which now depends on the control u.
+
+$$
+X_{t+1} = F_t(X_t,u_t,\epsilon_{t+1}).
+$$
+
+\end{definition}
+
+So now, combining both the controlled transition operator and controlled Markov chain, we arrive at
+
+$$
+P^uh(x) = E[h(X_{t+1}^{u})|X_t=x, u(t)=u].
+$$
+To interpret this, at time t, we are at state x and used control u. What does the probability distribution look like for the next step?
+
+\begin{lemma}Combining the controlled transition operator and controlled Markov chain, we have that $$E[P^uh(X_{t}^{u}) = E(h(X^u(t+1))).$$ 
+\end{lemma}
+
+We summarise what we have done so far. We have the system $X(t+1) = F(t,X(t),u(t),\epsilon_{t+1})$ where $\epsilon_t$ are independent random variables. We assume that $u(t)$ is a random variable that is determined by X i.e. $u(t) = u(t,X(0),X(1),...,X(t)).$ \\The transition operator depends on the control now, which is $P_{t}^{u}\phi(x) = E(\phi[F(t,x,u,\epsilon_{t+1})) = E[\phi_{t}^{u}(X^u(t+1))|X_t=x,u(t)=u].$ We can re-express this as $$E[\phi(X^u(t+1))|\mathcal{F}_t] = E(P_{t}^{u}\phi)(X^u(t)).$$ So we take function $\phi$ and compute $P_t^u\phi(x)$ and then plug in the state $X^u(t)$ and then take conditional expectation.\\
+
+\begin{theorem}(Bellman Theorem). Define the payoff functional as 
+$$
+J_T(x,u) = E[\sum_{t=0}^{T-1}q(t,X_t,u_t) + r(T,X^u(T))].
+$$
+Define the endpoint constraint $V_T(x) = r(T,x)$. Here, at time T, we don't have any options except to take the terminal cost. Then, we proceed by induction backwards
+$$
+V_t(x) = \sup_{u \in U(x)}[q(t,x,u) + P^uV_{t+1}(x)].
+$$
+That is, at every point in time t, we find the supremum control to maximimise the Bellman equation of what we can get at time t (q(t,x,u)) and the average maximal payoff we cann receive from t+1 (denoted by $P^uV_{t+1}(x)$).\\
+
+Then for any control u, we have the upper bound inequality
+$$
+J_T(x,u) \leq V_0(x).
+$$\\
+
+Moreover, if there exists optimal maximizers $\hat{u}(0),\hat{u}(1),...,\hat{u}(T-1)$ such that 
+$$
+\begin{cases}
+\hat{u}(t,x) \in U(x) \text{ where each control is admissible } \\
+V(t,x) = q(t,x,\hat{u}(t,x)) + P^{\hat{u}(t,x)}V_{t+1}(x).
+\end{cases}
+$$
+Then, the $\hat{u}(t)$ is the optimal control, i.e. 
+$$
+J(x,\hat{u}) = \sup_{u \in U}J_T(x,u) = V_0(x).
+$$
+Hence, the optimal control is only dependent on the current state
+$$
+\hat{u}(t,x_0,x_1,...,x_t) = \hat{v}(t,x_t).
+$$
+\end{theorem}
+
+\begin{remark}The final section of the Bellman theorem is similar to the Pontriagin Maximum Principle, whereby if we find the maximisers, we can derive the optimal value function.
+\end{remark}
+
+\lecture{31}{Dynamic Programming Principle in stochastic setting}
+\section{Bellman Theorem for finite horizon}
+\subsection{Dynamic Programming Principle}
+
+
+Let $0 < t < T$. Then we define
+$$
+V(0,x) = \sup_{u}J_T(x,u) = \sup_uE(\sum_{s=0}^{t-1}q(s,X^u,u(s)) + V(t,X^u(t))).
+$$
+For a fixed control u, we define 
+$$
+M_{t}^{u} = \sum_{s=0}^{t-1}q(s,X^u(s),u(s) + V(t,X^u(t))).
+$$
+
+\begin{theorem}For any control u, the process $M^u$ is a supermartingale. That is,
+$$
+E(M_{t+1}^u|\mathcal{F}_t) \leq M_t^u.
+$$
+If $\hat{u}$ is the optimal control, then the process $M^{\hat{u}}$ is a martingale.
+$$
+E(M_{t+1}^{\hat{u}}|\mathcal{F}_t) = M_{t}^{\hat{u}}.
+$$
+\end{theorem}
+
+\begin{remark}Recall in the deterministic DPP setup, we had that $M_t$ was constant under the optimal control. This theorem defines something similar but for a stochastic sequence.
+\begin{enumerate}
+\item If the control is arbitrary, then the sequence $\{M_{t}^{u}\}$ is a super martingale, i.e. stochastically decreasing sequence.
+\item If the control is the optimal control, then the sequence $\{M_{t}^{u}\}$ is a martingale, i.e. stochastically constant sequence.
+\end{enumerate}
+\end{remark}
+
+\lecture{31}{Time-Homogenous Markov Chain}
+\section{Bellman Theorem for finite horizon}
+\subsection{Time-Homogenous Markov Chain}
+We now consider a system that does not depend on time. We have the set up
+$$
+F = F(x,u,\epsilon)
+$$
+where $\epsilon_t$ is i.i.d. We have that the running cost q does not depend on time. Our cost functional is now 
+$$
+J_T(x,u) = E\bigg(\sum_{t=0}^{T-1}\gamma^tq(X^u(t),u(t)) + \gamma^Tr(X^u(T)) \bigg).
+$$
+
+We define a new operator acting on bounded function $A\phi(x) = \sup_{u \in U(x)}(q(x,u) + \gamma P^u\phi(x)).$ The solution to this control problem is expressed in terms  of this nonlinear operator we defined. We define iterates of A as 
+$$
+\begin{cases}
+A^{t+1}(\phi)(x) = A(A^{t-1}\phi)(x) \quad t \geq 0\\
+A^0(\phi) = \phi. 
+\end{cases}
+$$
+
+\begin{theorem}
+We have 
+$$
+V(t,x) = \gamma^Tq(x,\hat{u}(t,x)) + P^{\hat{u}}V(t+1,x) =\gamma^tA^{T-t}r(x)  \quad t=0,...,T.
+$$
+Moreover, if $\hat{u}(t) \in U(x)$ and 
+$$
+A^{T-t}r(x) = q(x,\hat{u}(t,x)) + \gamma P^{\hat{t,x}}A^{T-t-1}r(x)
+$$
+then the sequence $\hat{u}(t,x) = \hat{v}(t,X^{\hat{v}}(t))$ is optimal.
+\end{theorem}
+
+\lecture{33}{Bellman theorem for infinite horizon}
+\section{Bellman theorem for infinite horizon}
+\section{Bellman theorem for infinite horizon}
+\subsection{Bellman theorem for infinite horizon}
+Interestingly, infinite horizons has easier solutions. We define the state as 
+$$
+X(t+1) = F(X(t),u(t)).
+$$
+We define the payoff functional as 
+$$
+J_{\infty}(x,u) = E(\sum_{t=0}^{\infty}\gamma^tq(X(t),u(t))).
+$$
+Controls are random through the state process $u(t) = u(t,X(0),X(1),...,X(t))$. The solution to this control problem will be express as the nonlinear operator
+$$
+A\phi(x) = \sup_{u \in U(x)}[q(x,u) + \gamma P^u\phi(x)].
+$$
+
+The optimal payoff is $V_{\infty}(x) = \sup_{u \in \mathcal{U}(x)}J_{\infty}(x,u)$.
+
+
+\begin{lemma} The operator A is monotone if $\phi_1(x) \leq \phi_2(x)$ for all $x \in \mathbb{R}^d$, then 
+$$
+A(\phi_1)(x) \leq A(\phi_2)(x)
+$$
+for all $x \in \mathbb{R}^d$.
+\end{lemma}
+
+\begin{theorem}(Blackwell Conditions). The Blackwell condition gives us sufficient conditions to identify a contraction mapping. The operator is required to be monotonic and discounts constant terms. If this holds, the operator is a contraction.
+\end{theorem}
+
+\begin{definition}We define the value of the operator A on the zero function (i.e. $\phi = 0$) for the value x.
+$$
+A(0)(x) = \sup_{u \in U(x)}[q(x,u)].
+$$
+From this, $q(x,u) \geq 0$ and hence using monotonicity, we can compute the iterate
+$$
+A^{s}(0) = A^{A^{s-1}(0)}(x).
+$$
+\end{definition}
+
+\begin{lemma}For the iterates of A, we have that 
+$$
+A^s(0)(x) \leq A^t(0)(x)
+$$
+for $s \leq t$.
+\end{lemma}
+
+If we have an increasing sequence, then we must have a limit.
+
+\begin{theorem}The limit exists for 
+$$
+V_{\infty}(x) = \lim_{t \rightarrow \infty}A^t(0)(x) \leq \infty
+$$
+\end{theorem}
+
+\begin{theorem}(Optimal Solution for infinite time horizon). For every x and every $u(x) \in \mathcal{U}(x)$, we have that 
+$$
+V_{\infty}(x) = AV_{\infty}(x)
+$$
+where $V_{\infty}(x)$ is a fixed point for the operator A. Additionally,
+$$
+J_{\infty}(x,u) \leq V_{\infty}(x).
+$$
+
+If we take supremum over all possible controls, we get $V_{\infty}(x)$. However, it may not be the case that taking the supremum over $J_{\infty}(x,u)$ will give us equality.\\\\
+
+If for every x, there exists a function $u_{\infty} \in \mathcal{U}(x)$ such that
+$$
+V_{\infty}(x) = AV_{\infty}(x) = q(x,u_{\infty}(x)) + \gamma P^{u_{\infty}(x)}V_{\infty}(x)
+$$
+then $\hat{u}(t) = u_{\infty}(X^{u_{\infty}}(t))$ is the optimal control provided that 
+$$
+\Lim{T \rightarrow \infty}[\gamma^TV_{\infty}(X^{u_{\infty}}(T))] = 0.
+$$
+This is a similar condition for control of deterministic ODEs.
+\end{theorem}
+
+
+\lecture{34}{Stochastic Linear Quadratic Regulator}
+\section{Stochastic Linear Quadratic Regulator}
+\section{Stochastic Linear Quadratic Regulator}
+\subsection{Stochastic Linear Quadratic Regulator}
+
+We recall some facts from linear algebra.
+
+\begin{lemma}Let $\tilde{A}, \tilde{B}$ be square dxd matrices. Assume that $(I + \tilde{A}\tilde{B})$ is invertible. Then $(I + \tilde{B}\tilde{A})$ is also invertible.
+\newline
+Furthermore, $(I + \tilde{B}\tilde{A})^{-1} = I - \tilde{B}(I + \tilde{A}\tilde{B})^{-1}\tilde{A}$.
+\end{lemma}
+\begin{lemma}Let A and B be nonnegative and symmetric matrices. Then
+\newline
+1) $(I+AB)$ is invertible.
+\newline
+2) $B(I + AB)^{-1} \geq 0$  and $B(I + AB)^{-1}$ is symmetric.
+\end{lemma}
+
+We define some notation for later on.
+\begin{definition}
+Let 
+\begin{enumerate}
+\item $\tilde{B} = K$ for any square matrix.
+\item $\tilde{A} = AR^{-1}A^*$.
+\item $\mathcal{A}(K) = Q + A^*K(I + BR^{-1}B^*K)^{-1}A$.
+\item $B(K) = -(R + B^*KB)^{-1}B^*KA$ for a nonnegative symmetric K.
+\end{enumerate}
+
+We assume that K and Q are nonnegative and symmetric matrices. Furthermore, $\mathcal{A}(K)$ is a nonnegative and symmetric matrix that takes in symmetric nonnegative matrices.
+\end{definition}
+
+We set up the system for LQR. Recall that for the continuous time LQR proble, the solution required the Ricatti differential equation of higher dimension which has no analytical solution. Hence we work with the discrete time LQR as the Ricatti equation now has a recursive solution.
+\begin{definition}(Discrete time Stochastic LQR). We define state of the system to be
+$$
+\begin{cases}
+X(t+1) = AX(t) + Bu(t) + C\epsilon_{t+1}\\
+X(t) \in \mathbb{R}^d, u(t) \in \mathbb{R}^m, \epsilon_t \in \mathbb{R}^k.
+\end{cases}
+$$
+\newline
+We define the cost functional to be 
+$$
+J(x,u) = E[\sum_{t=0}^{T-1}\langle QX(t),X(t)\rangle + \langle Ru(t), u(t) \rangle] + \langle K_0X(T), X(T) \rangle.
+$$
+We assume that $\epsilon_t$ is an independent random vector with zero mean and identity covariance matrix. 
+\end{definition}
+
+\begin{remark}
+\begin{enumerate}
+\item The first two terms in the cost functional is the running cost and the third term is the terminal cost.
+\item The name Linear Quadratic Regulator gets its name from the fact that the state is Linear, the cost functional is Quadratic, and we seek to regularise (minimise) the cost functional.
+\end{enumerate}
+\end{remark}
+
+\begin{theorem}Let 
+$$
+V(0,x) = \inf_{u}J(x,u) = \inf_{u}E[\sum_{t=0}^{T-1}\langle QX(t), X(t)\rangle + \langle Ru(t), u(t) \rangle + \langle K_0X(T), X(T)\rangle].
+$$
+\newline 
+We can find an explicit formula for the optimal cost, the optimal control, and optimal state.
+\newline
+\begin{enumerate}
+\item $V(0,x) = \langle K_Tx,x \rangle + \sum_{t=0}^{T-1}\text{Trace}(c^*K_tc)$.
+\item $\hat{u}(t) = B(K_{T-t-1})X(t)$.
+\item $\hat{X}(t+1) = A\hat{X}(t) + B(K_{T-t-1}\hat{X}(t) + C\epsilon_{t+1}$.
+\end{enumerate}
+where $K_t = \mathcal{A}^t(K_0)$ is the iteration policy. 
+\end{theorem}
+\begin{remark} We note a few things.
+\begin{enumerate}
+\item We pay a price for uncertainty in $V(0,x)$.
+\item We control the system without using $\epsilon_t$. Hence, controlling the LQR problem in the deterministic and stochastic setting is identical.
+\item The optimal control only depends on the current state of the system, so we do not need to look back.
+\end{enumerate}
+\end{remark}
+
+\begin{lemma}Let R be a nonnegative symmetric matrix and $a \in \mathbb{R}^d$. We then have that 
+$$
+\langle Ru,u \rangle + \langle a,u \rangle \geq -\frac{1}{4}\langle R^{-1}a, a \rangle.
+$$
+$$
+\hat{u} = \frac{1}{2}R^{-1}a.
+$$
+\end{lemma}
+
+\begin{lemma}Let $\epsilon \in \mathbb{R}^n$ be a random vector. Assume that $E(\epsilon) = 0$ and $S = E(\epsilon \epsilon^*) = (E(\epsilon_i \epsilon_j))$.\newline
+Let K be any nxn matrix. Then 
+$$
+E(\langle K\epsilon, \epsilon \rangle) = \text{Trace}(KS).
+$$
+\end{lemma}
+
+\lecture{35}{Optimal Stopping: Finite Horizon}
+\section{Optimal Stopping}
+\section{Optimal Stopping}
+\subsection{Finite Horizon Problem}
+
+In this section, we have our states evolving over time as a Markov chain which does not depend on our control. In fact, the control in this setup is deciding when to stop the state process.\\ 
+We denote P for the transition operator and $\mathbb{P}$ for probability.\\
+
+Let us denote the finite terminal time as T and only look at time $t \leq T$.
+Let $\{X\}$ be a Markov chain where each state $X(t) \in E \subset \mathbb{R}^d$. We denote $\tau$ as the stopping time, which is a random variable. We then define $\{\tau = t\} \in \sigma(X_0,...,X_t)$ on when we decided to stop at time t based on the previous states. 
+$$
+\begin{cases}
+X(t+1) = F(X(t), \epsilon_{t+1}) \quad \text{ state process}\\
+P\phi(x) = \mathbb{E}[\phi(F(x,\epsilon_0))] \quad \text{ time homogenous transition operator }\\
+S_T \quad \text{ set of all stopping times where } \tau \text{ denotes stopping time and } P(\tau \leq T) = 1\\
+J(x,\tau) = E[\sum_{t=0}^{\tau-1}\gamma^tq(X(t)) + \gamma^{\tau}r(X(\tau))] \quad \text{ payoff functional}
+\end{cases}
+$$
+where $r, q \geq 0$ are nonnegative functions. Intuitively, r is the payoff you get from stopping at time $\tau$ and $q$ is the running reward. Our aim is to look for the optimal $\tau \in S_T$ to maximise the payoff functional.\\
+
+
+2 points to note, 
+\begin{enumerate}
+\item If $\tau > t$, it means that we decided not to stop and we take q(X(t));
+\item If $\tau = t$, it means we have decided to stop and take $r(X(\tau))$.
+\end{enumerate}
+
+We define the value function as 
+$$
+V(x) = \sup_{\tau \in S_T}J(x,\tau) = J(x,\hat{\tau})
+$$
+where $\tau$ is the time that maximises the payoff functional. 
+
+\begin{definition}(Nonlinear operator). We define the nonlinear operator as
+$$
+Q_{max}(\phi)(x) = max[q(x) + \gamma P\phi(x), r(x)].
+$$
+\end{definition}
+
+\begin{remark}If the problem was a minimisation problem, we would instead have 
+$$
+Q_{min}(\phi)(x) = min[q(x) + \gamma P\phi(x), r(x)].
+$$
+\end{remark}
+
+We come to the main theorem of optimal stopping, note that we distinguish between the cases of whether the objective function J is a payoff function or cost function.
+\begin{theorem}
+(a) If J is a payoff function, then the stopping time 
+$$
+\hat{\tau} = inf\{t \leq T: Q_{max}^{T-t}(r)(X(t)) \leq r(X(t))\}
+$$
+$$
+= inf\{t \leq T: q(X(t)) + \gamma PQ^{T-t-1}(r)(X(t)) \leq r(X(t))\}
+$$
+is the optimal stopping time. \\\\
+(b) If J is a cost function, then the stopping time 
+$$
+\hat{\tau} = inf\{t \leq T: Q_{max}^{T-t}(r)(X(t)) \geq r(X(t))\}
+$$
+$$
+= inf\{t \leq T: q(X(t)) + \gamma PQ^{T-t-1}(r)(X(t)) \geq r(X(t))\}
+$$
+is the optimal stopping time. \\\\
+(c) In both scenarios, the optimal solution for the finite horizon problem is 
+$$
+J(X(0),\hat{\tau}) = E[Q^T(r)(X(0))].
+$$
+\end{theorem}
+\begin{remark}(Intuition). We look at the intuition for the case that J is a payoff functional. At t = 0, then we can immediately stop and take the reward r(x). Alternatively, we can decide to continue until t=1, then the horizon will be T-1, and the payoff will be $Q^T(r)(x)$. We keep going until our expected future payoff $Q^T(x)$ is less than the reward we can get immediately $r(x)$. When this is the case, we should decide to stop.\\ Hence, the optimal time to stop is when the expected payoff in the future is less than the immediate payoff we can receive.
+\end{remark}
+
+\begin{proof}(Sketch). We talk about the key points behind this theorem. We will turn the optimal stopping problem into a controlled markov chain control problem which we are familiar with and use the Bellman theorem to solve it.\\
+We define control $u \in \{0,1\}$ where 0 means we continue and 1 means we stop. We want our Markov chain to terminate once we go pass the finite horizon time T so we introduce the cemetary state $\delta$ such that if our MC enters this state, it terminates the process. Hence the state space is $E = \mathbb{R}^d \cup \{\delta\}$. We now have a controlled MC $\tilde{X}(t) \in E$ for all t.\\ So, denoting q(x,0) as the payoff for not stopping and q(x,1) for stopping, we have the set up 
+$$
+\begin{cases}
+\tilde{q}(x,0) = q(x) \quad \text{ reward we get for not stopping}\\
+\tilde{q}(x,1) = r(x) \quad \text{ terminal payoff since we stopped}\\
+\tilde{r}(x) = r(x) \\
+\tilde{\phi}:E \rightarrow \mathbb{R}.
+\end{cases}
+$$
+
+Hence, we have 
+$$
+\begin{cases}
+\tilde{X}^{u}(t) \quad \text{ the controlled Markov chain}\\
+\tilde{J}(\tilde{x},u) = \mathbb{E}[\sum_{t=0}^{T-1}\tilde{q}(\tilde{X}(t,u(t)))\gamma^t + \gamma^T\tilde{r}(\tilde{X}(T))] \quad \text{ payoff functional incorporating both running payoff and terminal payoff.}
+\end{cases}
+$$
+
+We can apply the Bellman theorem to this in the classical stochastic control problem setting.
+\end{proof}
+
+\begin{lemma}(Prophet Inequality). Let $X_0,...,X_T$ be a sequence of random variables where we are trying to decide the optimal time to stop in finite horizon T. Then, 
+$$
+\sup_{\tau \in S_T}E(X_{\tau}) \geq \frac{1}{2}\mathbb{E}(max\{X_0,...,X_{T}\}).
+$$
+\end{lemma}
+
+\lecture{36}{Optimal Stopping: Infinite Horizon}
+\section{Optimal Stopping}
+\subsection{Infinite Horizon Problem}
+We look at the setup for when we only have a terminal state payoff and no running payoff. We have the setup of 
+$$
+\begin{cases}
+X(t+1) = F(X(t), \epsilon_{t+1}) \\
+\epsilon_t \quad \text{ is i.i.d}\\
+\mathbb{P}(\tau \leq \infty) = 1 \\
+S_{\infty} \quad \text{ is the family of all stopping times where } (0 \leq \tau \leq \infty)\\
+J(x,\tau) = \mathbb{E}[\gamma^{\tau}r(X(\tau))I_{\tau < \infty}] \quad \text{ is the payoff functional for when stopping occurs}\\
+V(x) = \sup_{\tau \in S_{\infty}}J(x,\tau) \quad \text{ is the value function}
+\end{cases}
+$$
+
+where $\gamma$ is a nonnegative scalar and $r$ is a nonnegative function. Furthermore, $\hat{\tau}$ may not exist as we never stop.
+
+The aim is to find both the value function V(x) and optimal stopping time $\hat{\tau}$ such that $V(x) = J(x,\hat{\tau})$. An issue is that $\hat{\tau}$ may not exist and hence we need to impose a condition (transversality condition).\\
+
+\begin{definition}(Operators). We define the transition operator as 
+$$
+P\phi(x) = \mathbb{E}[\phi(X(t+1))|X(t)=x] = \mathbb{E}[\phi(F(x,\epsilon_0))].
+$$\\
+We then introduce the nonlinear operator 
+$$
+Q_{max}(\phi)(x) = max[q(x) + \gamma P\phi(x), r(x)].
+$$
+where at any time t, we can either stop and take r(x) or continue and expect to receive $\gamma P\phi(x)$. Futhermore, note that this is the same for all points in time due to time homogeneity.
+\end{definition}
+We note that for the iterate of Q() 
+$$
+\begin{cases}
+V_t(x) = Q^t(r)(x)\\
+V_0(x) = r(x)
+\end{cases}
+$$
+Furthermore, by the monotonicity of Q, we have that 
+$$
+V_t(x) \leq V_{t+1}(x) \quad \text{ for all x } \in E \quad \text{ and t = 0,1,2,...}
+$$
+which implies that 
+$$
+V_{\infty}(x) = \lim_{t \rightarrow \infty}V_{t} \leq \infty.
+$$
+\newpage
+\begin{theorem}(1) The function $V_{\infty}$ is the unique non-negative minimal solution to the equation 
+$$
+Q(v)(x) = v(x)
+$$
+for all $x \in E$.\\
+(2) Let $\tau$ be a stopping time such that 
+$$
+\tau = inf\{t \geq 0: V_{\infty}(X(t)) = r(X(t))\}.
+$$
+If we assume that 
+$$
+\lim_{T \rightarrow \infty}[\gamma^T\mathbb{E}[V_{\infty}(X(T)I_{\hat{t} > T})] = 0,
+$$
+then $\hat{\tau}$ is optimal and 
+$$
+V_{\infty}(x) = J(x,\hat{\tau}) = \sup_{\tau \in S_{\infty}}J(x,\tau).
+$$
+\end{theorem}
+The intuition is that $V_{\infty}$ is the optimal cost, so if at time $\tilde{t}$ we are at the state X($\tilde{t}$), then if the payoff at time $\tilde{t}$ for $V_{\infty}(X(\tilde{t}))$ is the same as if we decide to stop at time $\tilde{t}$ and take $r(X(\tilde{t}))$, then we have found the optimal stopping time and should stop. Notice that we are looking for the fixed point of the functional Q, which is the function v(x).
+
+So if we know the distribution of the random variables $\epsilon_0,\epsilon_1,...$ we can compute $P\phi(x)$ and then compute $Q(\phi)$ to then solve the equation $V(x) = Q(v)(x)$.
+
+\begin{remark}Issue with this theorem is that we need to compute $V_{\infty}(x)$ which is difficult. We formulate the optimal stopping rule in a different manner.
+\end{remark}
+\begin{theorem} Let $r \geq 0$ be a nonnegative and bounded function. We define the hitting set
+$$
+C = \{x \in E; Pr(x) \leq r(x)\}
+$$
+and 
+$$
+\mathbb{P}((X(t+1) \in C|X(t)=x) = 1
+$$
+for $x \in C$. \\We define the hitting time as 
+$$
+\tau_C = inf\{t \geq 0: X(t) \in C\}.
+$$
+Then, we have that the hitting time is the optimal time
+$$
+\tau_C = \hat{\tau}.
+$$
+\end{theorem}
+
+\begin{remark}So we have a state X(t) evolving over time and at the first moment that our state ever enters the hitting set C, that is the optimal time to stop.
+\end{remark}
+
+
+\end{document}}}

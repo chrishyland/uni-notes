@@ -1,0 +1,74 @@
+\contentsline {section}{\numberline {1.1}Introduction to spaces}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1.1}Different types of spaces}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Vector Spaces}{1}{subsection.1.2}% 
+\contentsline {section}{\numberline {2.2}Inner Product Spaces}{1}{section.2}% 
+\contentsline {subsection}{\numberline {2.2.1}Inner Product Spaces}{1}{subsection.2.1}% 
+\contentsline {section}{\numberline {3.3}Normed Vector Spaces}{1}{section.3}% 
+\contentsline {subsection}{\numberline {3.3.1}Normed Vector Spaces}{1}{subsection.3.1}% 
+\contentsline {section}{\numberline {4.4}Metric Spaces}{1}{section.4}% 
+\contentsline {subsection}{\numberline {4.4.1}Metrics}{1}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {5.4.2}More Properties of Metrics}{1}{subsection.4.2}% 
+\contentsline {section}{\numberline {5.5}Topology of a Metric Space}{2}{section.5}% 
+\contentsline {subsection}{\numberline {5.5.1}Definitions}{2}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {6.5.2}Topology of Metric Spaces}{1}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {6.5.3}Topologically Equivalent Metrics}{1}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {7.5.4}Examples of topological spaces}{1}{subsection.5.4}% 
+\contentsline {subsection}{\numberline {7.5.5}Topological Spaces}{1}{subsection.5.5}% 
+\contentsline {subsection}{\numberline {7.5.6}Metrization of topological spaces}{2}{subsection.5.6}% 
+\contentsline {subsection}{\numberline {7.5.7}Comparing Topologies}{2}{subsection.5.7}% 
+\contentsline {subsection}{\numberline {7.5.8}Relative Topology}{3}{subsection.5.8}% 
+\contentsline {subsection}{\numberline {8.5.9}Convergent Sequences}{1}{subsection.5.9}% 
+\contentsline {subsection}{\numberline {8.5.10}Equivalent Formulations of a Topology}{1}{subsection.5.10}% 
+\contentsline {subsection}{\numberline {9.5.11}Closure of a set and Limit Points}{1}{subsection.5.11}% 
+\contentsline {subsection}{\numberline {10.5.12}Cauchy Sequence and Completeness of Metric Spaces}{1}{subsection.5.12}% 
+\contentsline {subsection}{\numberline {10.5.13}Examples of Complete Metric Spaces}{2}{subsection.5.13}% 
+\contentsline {subsection}{\numberline {10.5.14}Examples of Incomplete Metric Spaces}{3}{subsection.5.14}% 
+\contentsline {subsection}{\numberline {11.5.15}Cantor's Intersection Theorem}{1}{subsection.5.15}% 
+\contentsline {subsection}{\numberline {12.5.16}Baire Category Theorem}{1}{subsection.5.16}% 
+\contentsline {section}{\numberline {13.6}Continuous Functions}{1}{section.6}% 
+\contentsline {subsection}{\numberline {13.6.1}Continuous Functions}{1}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {13.6.2}Homeomorphisms}{2}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {13.6.3}Topological Properties}{2}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {14.6.4}Initial Topology}{1}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {14.6.5}Finite Product of topological spaces}{1}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {14.6.6}Finite product of metric spaces}{2}{subsection.6.6}% 
+\contentsline {subsection}{\numberline {15.6.7}Sequential continuity}{1}{subsection.6.7}% 
+\contentsline {subsection}{\numberline {15.6.8}Sequential Continuity}{1}{subsection.6.8}% 
+\contentsline {section}{\numberline {16.7}Uniform Continuity}{1}{section.7}% 
+\contentsline {subsection}{\numberline {16.7.1}Uniform Continuity}{1}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {17.7.2}Completion of metric space}{1}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {18.7.3}Completion of metric space continued}{1}{subsection.7.3}% 
+\contentsline {section}{\numberline {19.8}Base of a topology}{1}{section.8}% 
+\contentsline {subsection}{\numberline {19.8.1}Base of a topology}{1}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {20.8.2}Second-countable spaces, separability, and Lindel\IeC {\"o}f}{1}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {21.8.3}Second countable, separable, and Lindel\IeC {\"o}f metric spaces.}{1}{subsection.8.3}% 
+\contentsline {subsection}{\numberline {21.8.4}Examples of separable spaces}{1}{subsection.8.4}% 
+\contentsline {subsection}{\numberline {21.8.5}Totally Bounded Metric Spaces}{2}{subsection.8.5}% 
+\contentsline {section}{\numberline {22.9}Compactness}{1}{section.9}% 
+\contentsline {subsection}{\numberline {22.9.1}Compactness}{1}{subsection.9.1}% 
+\contentsline {subsection}{\numberline {23.9.2}Compactness in Topological Spaces}{1}{subsection.9.2}% 
+\contentsline {subsection}{\numberline {23.9.3}Separation Axioms}{2}{subsection.9.3}% 
+\contentsline {subsection}{\numberline {23.9.4}Characterisation of regular/normal spaces}{2}{subsection.9.4}% 
+\contentsline {subsection}{\numberline {23.9.5}Important examples of $T_4$ spaces}{4}{subsection.9.5}% 
+\contentsline {subsection}{\numberline {23.9.6}Baire Category Theorem Revisited}{4}{subsection.9.6}% 
+\contentsline {subsection}{\numberline {24.9.7}Urysohn's Lemma}{1}{subsection.9.7}% 
+\contentsline {subsection}{\numberline {25.9.8}Revision from analysis on sequences of functions}{1}{subsection.9.8}% 
+\contentsline {subsection}{\numberline {25.9.9}Tietze-Urysohn Extension Theorem}{2}{subsection.9.9}% 
+\contentsline {section}{\numberline {26.10}Connected Spaces}{1}{section.10}% 
+\contentsline {subsection}{\numberline {26.10.1}Connected Spaces}{1}{subsection.10.1}% 
+\contentsline {subsection}{\numberline {27.10.2}Applications of Connected Spaces}{1}{subsection.10.2}% 
+\contentsline {subsection}{\numberline {28.10.3}Path Connectdness}{1}{subsection.10.3}% 
+\contentsline {section}{\numberline {29.11}Contraction Mapping Theorem}{1}{section.11}% 
+\contentsline {subsection}{\numberline {29.11.1}Contraction Mapping Theorem}{1}{subsection.11.1}% 
+\contentsline {subsection}{\numberline {29.11.2}Applications of the Contraction Mapping Theorem}{1}{subsection.11.2}% 
+\contentsline {section}{\numberline {30.12}Hilbert Spaces}{1}{section.12}% 
+\contentsline {subsection}{\numberline {30.12.1}Normed Vector Space}{1}{subsection.12.1}% 
+\contentsline {subsection}{\numberline {31.12.2}Projections}{1}{subsection.12.2}% 
+\contentsline {subsection}{\numberline {32.12.3}Orthogonal Complements}{1}{subsection.12.3}% 
+\contentsline {subsection}{\numberline {33.12.4}Hilbert Spaces}{1}{subsection.12.4}% 
+\contentsline {subsection}{\numberline {34.12.5}Orthonormal Sequences}{1}{subsection.12.5}% 
+\contentsline {subsection}{\numberline {35.12.6}Orthonormal Basis}{1}{subsection.12.6}% 
+\contentsline {section}{\numberline {36.13}Banach Spaces}{1}{section.13}% 
+\contentsline {subsection}{\numberline {36.13.1}Linear Operators}{1}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {36.13.2}Principle of Uniform Boundedness}{1}{subsection.13.2}% 
+\contentsline {subsection}{\numberline {37.13.3}Compactness of sets in separable Hilbert spaces}{1}{subsection.13.3}% 
