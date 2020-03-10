@@ -13,7 +13,6 @@
 %
 
 \usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref,enumerate}
-% For pseudocode.
 \usepackage[ruled,vlined]{algorithm2e}
 \DontPrintSemicolon
 \newcommand{\To}{\mbox{\upshape\bfseries to}}
@@ -221,7 +220,7 @@ $integral \gets Average(v_i)$
 
 \Return{integral}\;
 \caption{{\sc Monte Carlo Integration}}
-\label{algo:duplicate}
+
 \end{algorithm}
 
 In terms of theoretical justifications for this, recall that the $\textbf{weak law of large numbers}$ (Khinchin's Law) states that the sample average $\textbf{converges in probability}$ towards the expected value for a sequence of random variables that are i.i.d and whose first moment exists. Convergence in probability is that the probability of an unusual outcome becomes smaller and smaller as the sequence progresses, or in other words
@@ -1505,6 +1504,7 @@ Going up to a local linear estimator, where $\hat{g}\left(x\right)=\hat{a}$ and 
 
 It turns out that the local linear estimator has the same variance as the local constant one. The bias is different, though; compared to the previous expression, the first term inside the curly brackets disappears, so that $f$ can be cancelled from the denominator. Things like bandwidth selection and the extension to $q>1$ are exactly the same as in the local constant case. Marginal effects are even easier here: $\hat{b}$ estimates $\beta$.
 
+
 \subsection{Semiparametric Regressions}
 \subsubsection{Introduction}
 Semiparametric methods are used when a model is partially parametrically, partially nonparametrically specified. The most common case is the partially linear model (Robinson, 1988), where we seek to estimate $\beta$ in $Y_i=X'_i\beta+g\left(Z_i\right)+\varepsilon_i$. Here, the $g(Z_i)$ is the nonpametric term we don't know about. So the way we can estimate this model is to first subtract $E[Y_i|Z_i]$ from both sides to arrive at
@@ -1646,12 +1646,13 @@ To update beliefs
 \begin{definition}(Gamma Distribution). This is a 2 parameter familty which generalises the exponential distribution. We have a shape
 \end{definition}
 
-\lecture{10}{Gibbs Sampling}
-\section{Gibbs Sampling}
-\subsection{Gibbs Sampling}
-
-
+\end{document}
 }
+% \lecture{10}{Gibbs Sampling}
+% \section{Gibbs Sampling}
+% \subsection{Gibbs Sampling}
+
+
 
 
 

@@ -1,0 +1,80 @@
+\contentsline {section}{\numberline {1.1}Probability Theory}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1.1}Probability Theory Introduction}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {2.1.2}Discrete Random Variables}{1}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {2.1.3}Continuous Random Variables}{2}{subsection.1.3}% 
+\contentsline {section}{\numberline {3.2}Moment Generating Functions}{1}{section.2}% 
+\contentsline {subsection}{\numberline {3.2.1}Moment Generating Functions Introduction}{1}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Convergence Concepts}{1}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {5.2.3}Further Limit Laws}{1}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {6.2.4}Asymptotics}{1}{subsection.2.4}% 
+\contentsline {section}{\numberline {7.3}Multivariate Distributions}{1}{section.3}% 
+\contentsline {subsection}{\numberline {7.3.1}Joint, Marginal, and Conditional Distributions}{1}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {7.3.2}Multivariate Distribution}{3}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {8.3.3}Sampling Distributions}{1}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {9.3.4}Order Statistics}{1}{subsection.3.4}% 
+\contentsline {section}{\numberline {10.4}Transformation of random variables}{1}{section.4}% 
+\contentsline {subsection}{\numberline {10.4.1}Transformation of random variables}{1}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {11.4.2}Univariate Transformation of random variables}{1}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {12.4.3}Multivariate Transformation of random variables}{1}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {13.4.4}Multivariate Jacobian}{1}{subsection.4.4}% 
+\contentsline {section}{\numberline {14.5}Exponential Families}{1}{section.5}% 
+\contentsline {subsection}{\numberline {14.5.1}Information Theory (Background)}{1}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {14.5.2}Sufficient Statistics}{3}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {15.5.3}Exponential Families}{1}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {16.5.4}Canonical Paramter Exponential Families}{1}{subsection.5.4}% 
+\contentsline {subsection}{\numberline {16.5.5}Two Parameter Exponential Families}{2}{subsection.5.5}% 
+\contentsline {subsection}{\numberline {16.5.6}Uniform and Exponential Spacing}{2}{subsection.5.6}% 
+\contentsline {section}{\numberline {17.6}Minimum Variance Unbiased Estimation}{1}{section.6}% 
+\contentsline {subsection}{\numberline {17.6.1}The Likelihood Principle}{1}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {17.6.2}Maximum Likelihood Estimators}{1}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {17.6.3}Mean Squared Error}{3}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {18.6.4}Differentiation and Integration}{1}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {19.6.5}Cramer Rao Lower Bound}{1}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {20.6.6}Asymptotically Minimum Variance Unbiased Estimators}{1}{subsection.6.6}% 
+\contentsline {subsection}{\numberline {20.6.7}MLE is AMVU}{3}{subsection.6.7}% 
+\contentsline {subsection}{\numberline {21.6.8}Further properties of score function}{1}{subsection.6.8}% 
+\contentsline {subsection}{\numberline {21.6.9}Completeness}{2}{subsection.6.9}% 
+\contentsline {section}{\numberline {22.7}Hypothesis Testing}{1}{section.7}% 
+\contentsline {subsection}{\numberline {22.7.1}Hypothesis Testing}{1}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {23.7.2}Simple vs Simple Hypothesis}{1}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {24.7.3}Simple vs Composite Hypothesis: One-sided UMP Tests}{1}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {24.7.4}Simple vs Composite Hypothesis: Two-sided UMPU Tests}{3}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {25.7.5}Simple vs Composite: General Methods}{1}{subsection.7.5}% 
+\contentsline {subsection}{\numberline {26.7.6}Composite vs Composite: 1-Parameter Families}{1}{subsection.7.6}% 
+\contentsline {subsection}{\numberline {26.7.7}Composite vs Composite: Multi-Parameter Families}{2}{subsection.7.7}% 
+\contentsline {subsection}{\numberline {27.7.8}GLRT Examples}{1}{subsection.7.8}% 
+\contentsline {subsection}{\numberline {27.7.9}Simulation based p-values}{1}{subsection.7.9}% 
+\contentsline {section}{\numberline {28.8}Statistical Decision Theory}{1}{section.8}% 
+\contentsline {subsection}{\numberline {28.8.1}Simple Prediction Problems}{1}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {29.8.2}Discrete Selection Problem}{1}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {29.8.3}Special case of Discrete Selection}{1}{subsection.8.3}% 
+\contentsline {subsection}{\numberline {30.8.4}Statistical Decision Theory}{1}{subsection.8.4}% 
+\contentsline {subsection}{\numberline {30.8.5}Finding Bayes Decision Rules}{2}{subsection.8.5}% 
+\contentsline {subsection}{\numberline {31.8.6}Bayesian Interpretation}{1}{subsection.8.6}% 
+\contentsline {subsection}{\numberline {32.8.7}Bayesian vs Frequentist}{1}{subsection.8.7}% 
+\contentsline {subsection}{\numberline {32.8.8}Minimax Procedures}{2}{subsection.8.8}% 
+\contentsline {subsection}{\numberline {33.8.9}Decision Theory Recap}{1}{subsection.8.9}% 
+\contentsline {subsection}{\numberline {34.8.10}Non-regular Bayes estimation}{1}{subsection.8.10}% 
+\contentsline {section}{\numberline {35.9}Asymptotically Minimax Procedures}{1}{section.9}% 
+\contentsline {subsection}{\numberline {35.9.1}Asymptotically Minimax Estimator}{1}{subsection.9.1}% 
+\contentsline {subsection}{\numberline {36.9.2}Hodges' estimator and Superefficiency}{1}{subsection.9.2}% 
+\contentsline {subsection}{\numberline {37.9.3}Interchanging limit and maximum}{1}{subsection.9.3}% 
+\contentsline {subsection}{\numberline {37.9.4}Poisson Interval Estimation}{1}{subsection.9.4}% 
+\contentsline {subsection}{\numberline {38.9.5}Asymptotic Minimax Lower Bound}{1}{subsection.9.5}% 
+\contentsline {subsection}{\numberline {39.9.6}Proof of Asymptotic Minimax Lower Bound theorem}{1}{subsection.9.6}% 
+\contentsline {section}{\numberline {40.10}Examples of Asymptotically Minimax Procedures}{1}{section.10}% 
+\contentsline {subsection}{\numberline {40.10.1}Introduction to interval estimation}{1}{subsection.10.1}% 
+\contentsline {subsection}{\numberline {40.10.2}Examples with non-coverage loss: Poisson Interval Estimation Revisited}{1}{subsection.10.2}% 
+\contentsline {subsection}{\numberline {41.10.3}Examples with non-coverage loss: Interval Estimation of a normal mean parameter}{1}{subsection.10.3}% 
+\contentsline {subsection}{\numberline {42.10.4}Examples with non-coverage loss: Interval Estimation of a uniform scale parameter}{1}{subsection.10.4}% 
+\contentsline {subsection}{\numberline {43.10.5}Examples with squared error loss: Estimating binomial proportion with known sample size}{1}{subsection.10.5}% 
+\contentsline {subsection}{\numberline {43.10.6}Showing convergence of interval coverage}{3}{subsection.10.6}% 
+\contentsline {subsection}{\numberline {44.10.7}Examples with squared error loss: Estimating normal variance with known mean}{1}{subsection.10.7}% 
+\contentsline {subsection}{\numberline {45.10.8}Examples with absolute error loss: Estimating normal mean with known variance}{1}{subsection.10.8}% 
+\contentsline {subsection}{\numberline {46.10.9}Examples with absolute error loss: Estimating uniform scale}{1}{subsection.10.9}% 
+\contentsline {subsection}{\numberline {47.10.10}L2 convergence of estimators}{1}{subsection.10.10}% 
+\contentsline {subsection}{\numberline {48.10.11}Convergence of Bayes procedure and sample mean for normal}{1}{subsection.10.11}% 
+\contentsline {subsection}{\numberline {49.10.12}Overview of Asymptotically Minimax Procedures}{1}{subsection.10.12}% 
+\contentsline {section}{\numberline {50.11}Bayesian Statistics}{1}{section.11}% 
+\contentsline {subsection}{\numberline {50.11.1}Notes}{1}{subsection.11.1}% 
+\contentsline {subsection}{\numberline {50.11.2}Exponential families and conjugate priors}{2}{subsection.11.2}% 

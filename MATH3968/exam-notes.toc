@@ -1,0 +1,54 @@
+\contentsline {section}{\numberline {0.1}Vector Calculus Revision}{1}{section.1}% 
+\contentsline {subsection}{\numberline {0.1.1}Vector Basics}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {0.1.2}Vector-Valued Functions and Motion in Space}{3}{subsection.1.2}% 
+\contentsline {section}{\numberline {1.2}Curves}{1}{section.2}% 
+\contentsline {subsection}{\numberline {1.2.1}Parameterised Curves}{1}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {2.2.2}Curvature}{1}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {3.2.3}Frenet Equations and Fundamental Theorem}{1}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Rotation Index}{1}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {4.2.5}Theorem of Turning Tangents for Regular Curves}{2}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {5.2.6}Basic Topology}{1}{subsection.2.6}% 
+\contentsline {section}{\numberline {6.3}Regular Surfaces}{1}{section.3}% 
+\contentsline {subsection}{\numberline {6.3.1}Regular Surfaces}{1}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {7.3.2}Change of Parameters}{1}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {8.3.3}The Tangent Plane}{1}{subsection.3.3}% 
+\contentsline {subsection}{\numberline {9.3.4}Bilinear and Quadratic Forms}{1}{subsection.3.4}% 
+\contentsline {subsection}{\numberline {9.3.5}Riemannian Metrics and First Fundamental Form}{3}{subsection.3.5}% 
+\contentsline {subsection}{\numberline {10.3.6}Length of curves on surfaces}{1}{subsection.3.6}% 
+\contentsline {subsection}{\numberline {10.3.7}Area on surfaces}{2}{subsection.3.7}% 
+\contentsline {subsection}{\numberline {11.3.8}Orientation of Surfaces}{1}{subsection.3.8}% 
+\contentsline {section}{\numberline {12.4}The Gauss Map}{1}{section.4}% 
+\contentsline {subsection}{\numberline {12.4.1}Gauss Map}{1}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {13.4.2}The Second Fundamental Form}{1}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {14.4.3}Linear Algebra Review}{1}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {14.4.4}Principal Directions}{1}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {15.4.5}Gauss Curvature}{1}{subsection.4.5}% 
+\contentsline {subsection}{\numberline {16.4.6}Relationship between Gauss map and fundamental forms}{1}{subsection.4.6}% 
+\contentsline {subsection}{\numberline {16.4.7}Surfaces of Revolution}{1}{subsection.4.7}% 
+\contentsline {subsection}{\numberline {17.4.8}Minimal Surfaces}{1}{subsection.4.8}% 
+\contentsline {subsection}{\numberline {18.4.9}Minimal Surfaces of Revolution}{1}{subsection.4.9}% 
+\contentsline {subsection}{\numberline {18.4.10}Isothermal}{1}{subsection.4.10}% 
+\contentsline {section}{\numberline {19.5}Intrinsic Geometry of Surfaces}{1}{section.5}% 
+\contentsline {subsection}{\numberline {19.5.1}Isometries}{1}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {19.5.2}Conformalities}{2}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {20.5.3}Gauss' Theorema Egregium and Equations of Compatibility}{1}{subsection.5.3}% 
+\contentsline {section}{\numberline {21.6}Geodesics}{1}{section.6}% 
+\contentsline {subsection}{\numberline {21.6.1}Parallel Transport}{1}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {22.6.2}Geodesics}{1}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {23.6.3}Geodesics Curvature}{1}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {23.6.4}Exponential Map}{5}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {24.6.5}Geodesics are locally length-minimising}{1}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {25.6.6}Geodesics Curvature}{1}{subsection.6.6}% 
+\contentsline {section}{\numberline {26.7}Gauss-Bonnet Theorem}{1}{section.7}% 
+\contentsline {subsection}{\numberline {26.7.1}Local Gauss-Bonnet Theorem}{1}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {27.7.2}Gauss-Bonnet Theorem}{1}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {28.7.3}Gauss-Bonnet Theorem}{1}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {28.7.4}Morse's Theorem}{1}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {28.7.5}Morse's Theorem}{1}{subsection.7.5}% 
+\contentsline {section}{\numberline {29.8}Abstract Surfaces}{1}{section.8}% 
+\contentsline {subsection}{\numberline {29.8.1}Abstract Surfaces}{1}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {30.8.2}Curves and Differentiation in Abstract Surfaces}{1}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {30.8.3}Tangent vectors}{2}{subsection.8.3}% 
+\contentsline {subsection}{\numberline {31.8.4}Orientation}{1}{subsection.8.4}% 
+\contentsline {subsection}{\numberline {32.8.5}Tangent Bundle and Riemannian Metrics}{1}{subsection.8.5}% 
+\contentsline {subsection}{\numberline {33.8.6}The Hyperbolic Plane}{1}{subsection.8.6}% 

@@ -1,0 +1,1856 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref, graphicx}
+\usepackage[ruled,vlined]{algorithm2e}
+\graphicspath{ {./Images/} }
+\usepackage{tcolorbox}
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf COMP3530: Discrete Optimisation
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+  []% init options
+  {theorem_exam}% name
+  {Theorem}% title
+  {%
+    colback=orange!5,
+    colframe=orange!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix
+
+
+\newtcbtheorem
+  []% init options
+  {definition_exam}% name
+  {Definition}% title
+  {%
+    colback=blue!5,
+    colframe=blue!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+
+\newtcbtheorem
+  []% init options
+  {proposition_exam}% name
+  {Proposition}% title
+  {%
+    colback=red!5,
+    colframe=red!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\newcommand{\Inf}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \inf_{#1}\;$}}}
+\newcommand{\Sup}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \sup_{#1}\;$}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+
+\newcommand\E{\mathbb{E}}
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+\title{COMP3530: Discrete Optimisation}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2019}
+
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%\lecture{**CHAPTER-NUMBER**}{**TITLE**}
+\lecture{0}{Graph Theory}
+\section{Graph Theory}
+\section{Graph Theory}
+\subsection{Graph Theory}
+\begin{definition}(Walk). A walk is a sequence of alternating vertices and edges $v_0,e_1,v_1,e_2,...,e_k,v_k.$
+\end{definition}
+
+\begin{definition}(Closed walk). A closed walk is a walk where the starting vertex is the same as the ending vertex, that is, $v_0 = v_k.$
+\end{definition}
+
+\begin{definition}(Trail). A trail is a walk with no repeated edges.
+\end{definition}
+
+\begin{definition}(Path). A path is an open trail with no repeated vertices.
+\end{definition}
+
+\begin{lemma}All paths are open walks.
+\end{lemma}
+
+\begin{definition}(Cycle). A cycle is a closed trail where there are no other repeated vertices except for the start and ending vertex.
+\end{definition}
+
+\begin{definition}(Circuit). A circuit a closed trail. That is, a circuit has no repeated edges but may have repeated vertices.
+\end{definition}
+
+\begin{definition}(Hamiltonian cycle). A graph contains a Hamiltonian cycle if the graph has a cycle that passes through each node exactly once.
+\end{definition}
+
+\begin{definition}(Vertex cutset). For a connected graph $G = (V,E)$, a vertex cutset if a subset $W \subseteq V$ the removal of W disconnects the graph G.
+\end{definition}
+
+\begin{definition}(Edge cutset). For a connected graph $G = (V,E)$, an edge cutset M is a subset $M \subseteq M$ where the removal of M disconnects the graph G.
+\end{definition}
+
+\lecture{1}{Introduction to Linear Programming and Polyhedra Theory}
+\section{Polyhedra Theory}
+\section{Polyhedra Theory}
+\subsection{Introduction to Linear Programming}
+
+
+We are interested in minimizing a linear cost function subject to linear equality and inequality constraints. 
+
+\begin{definition_exam}{General Linear Programming Problem}{}A general programming problem is given a cost vector $\textbf{c} = (c_1,...,c_n)$, we seek to minimise a linear cost function \textbf{c}\textbf{x} $ = \sum_{i=1}^{n}c_ix_i$ over $\textbf{x} \in \mathbb{R}^n$ subject to linear constraints, which can be of any form. The variables $x_1,...,x_n$ are called decision variables.
+\end{definition_exam}
+
+Let $M_1,M_2,M_3$ be finite index sets and for every i in any one of these sets, we are given a vector $a_i \in \mathbb{R}^n$ and a scalar $b_i$ to model the i-th constraint. Let $N_1, N_2, N_3$ be subsets of $\{1,...,n\}$ to indicate which decision variables $x_j$ are constrainted to be nonnegative, nonpositive, or free.
+
+\begin{definition_exam}{Formulation of Linear Program}{}Let $x \in \mathbb{R}^n$ be our decision variables and $c \in \mathbb{R}^n$ our cost vector. The linear program is of the form 
+$$
+\min_{\tilde{x}} c^Tx
+$$
+$$
+\text{subject to }
+\begin{cases}
+a_i^Tx \geq b_i \quad i \in M_1\\
+a_i^Tx \leq b_i \quad i \in M_2\\
+a_i^Tx = b_i \quad i \in M_3\\\\
+x_j \geq 0 \quad j \in N_1\\
+x_j \leq 0 \quad j \in N_2\\
+x_j \text{ free} \quad j \in N_3\\
+\end{cases}
+$$
+\end{definition_exam}
+
+
+\begin{definition_exam}{Feasible Solution}{} The vector \textbf{x} satisfying all the linear constraints is known as a feasible solution. The set of all feasible solutions is known as the \textbf{feasible region}.
+\end{definition_exam}
+
+\begin{definition}(Optimal Solution). A feasible solution $\textbf{x}^*$ that satisfies the property $\textbf{c}\textbf{x}^* \leq \textbf{c}\textbf{x}$ for all feasible solutions x is known as the \textbf{optimal feasible solution}. The value $\textbf{c}\textbf{x}^*$ is known as the optimal cost.
+\end{definition}
+
+\begin{definition}(Unbounded problem). We say that a linear program is an unbounded problem if for every $K \in \mathbb{R}$, there exists a feasible solution $\textbf{x}$ such that 
+$$
+\textbf{c}\textbf{x} < K.
+$$
+\end{definition}
+
+The current LP formulation we have is tedious. We can reformulate it. An equality constraint $a_i^Tx = b_i$ is equivalent to the two constraints $a_i^Tx \leq b_i$ and $a_i^Tx \geq b_i$. Furthermore, we can rewrite $a_i^Tx \leq b_i$ as $(-a_i)^Tx \geq -b_i.$ Finally, $x_i \leq 0$ or $x_i \geq 0$ are constraints of the form $a_i^Tx \geq b_i$ where $a_i$ is the unit vector and $b_i = 0.$
+
+\begin{theorem_exam}{General form of Linear Program}{}Any general linear program can be written in the form 
+$$
+\min_{\textbf{x}}\quad \textbf{c}\textbf{x}
+$$
+$$
+\text{subject to } \quad A\textbf{x} \geq \textbf{b}
+$$
+where $A \in \mathbb{R}^{m \times n}$, $x \in \mathbb{R}^n$, and $b \in \mathbb{R}^m$.
+\end{theorem_exam}
+
+\begin{remark}We will see later that this is the definition of a polyhedron.
+\end{remark}
+
+\begin{definition_exam}{Standard Form Linear Program}{} We say that a linear programming problem is in standard form if we minimise \textbf{c}\textbf{x} subject to 
+
+$$
+\min_{\textbf{x}} \quad \textbf{c}\textbf{x}
+$$
+$$
+\text{subject to }
+\begin{cases}
+A\textbf{x} = \textbf{b}\\
+\textbf{x} \geq \textbf{0}.
+\end{cases}
+$$
+
+where $A \in \mathbb{R}^{m \times n}, x \in \mathbb{R}^n, b \in \mathbb{R}^m$. 
+\end{definition_exam}
+
+
+\begin{lemma}Any real number $K \in \mathbb{R}$ can be expressed as the difference of two nonnegative numbers $a - b$.
+\end{lemma}
+
+Any general linear program can be transformed into standard form.
+
+\begin{theorem_exam}{Conversion of LP into Standard LP}{}Any generalised linear program can be reduced into a standard form linear program by 
+\begin{enumerate}
+    \item Eliminating any unbounded decision variable by expressing it as  the difference of two new decision variables. That is $x_j = x_j^+ - x_j^-$ where $x_j^+, x_j^- \geq 0.$;
+    \item Eliminate inequality constraints through the addition of slack variables or the subtraction of surplus variables. That is, given an inequality constraint 
+    $$
+    \sum_{j=1}^{n}a_{ij}x_j \leq b_i
+    $$
+    we can add the slack variable $s_i$ so that 
+    $$
+    \begin{cases}
+    \sum_{j=1}^{n}a_{ij}x_j + s_i = b_i\\
+    s_i \geq 0.
+    \end{cases}
+    $$
+    Likewise, if we had the constraint 
+    $$
+    \sum_{j=1}^{n}a_{ij}x_j \geq b_i
+    $$
+    we can add the surplus variable $s_i$ to get 
+    $$
+    \begin{cases}
+    \sum_{j=1}^{n}a_{ij}x_j  - s_i = b_i\\
+    s_i \geq 0.
+    \end{cases}
+    $$
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{theorem}A cost is an optimal cost to a general linear program if and only if it is an optimal cost to a standard linear  program.
+\end{theorem}
+
+\begin{remark}Given an optimal feasible solution \textbf{x}, we can construct an equivalent optimal feasible solution \textbf{y} for the other form of the linear program.
+\end{remark}
+
+\subsection{Polyhedra Theory}
+\begin{definition}(Polyhedra). A polyhedron $\mathcal{P}$ is a set $\{x \in \mathbb{R}^n: Ax \geq b\}$ defined by a matrix $A \in \mathbb{R}^{m \times n}$ and a vector $b \in \mathbb{R}^m$. A polyhedron $P \subseteq \mathbb{R}^n$ is bounded if $P \subseteq [-C,C]^n$ for some $C > 0$, and unbounded otherwise.
+\end{definition}
+
+\begin{lemma}The feasible set of any linear programming problem is a polyhedron.
+\end{lemma}
+\begin{definition_exam}{Polyhedron in standard form}{} A polyhedron in the form 
+$$
+\{\textbf{x}\in \mathbb{R}^n: A\textbf{x} = \textbf{b}, \textbf{x} \geq 0\}
+$$
+is known as a polyhedron in standard form.
+\end{definition_exam}
+
+\begin{definition}(Convex Hull). The convex hull of a set of vectors $a_1,a_2,...,a_k \in \mathbb{R}^n$ is the set of all convex combinations of these vectors:
+$$
+CH(\{a_1,...,a_k\}) = \{\sum_{i=1}^l\langle \lambda_i, a_i \rangle: \sum_{i=1}^k\lambda_i=1 \quad \text{and} \quad \lambda_i \geq 0\}.
+$$
+\end{definition}
+
+\begin{lemma}The convex hull is the smallest convex set containing the set of vectors in the convex hull.
+\end{lemma}
+
+\begin{definition_exam}{Hyperplane}{} A hyperplane is a set $\{x \in \mathbb{R}^n: \langle a, x\rangle = d\}$ for some vector $a \in \mathbb{R}^n$ and scalar $d \in \mathbb{R}$. A \textbf{half space} is the set $\{x \in \mathbb{R}^n: \langle a, x\rangle \geq d\}$.
+\end{definition_exam}
+
+\begin{remark}A polyhedron $\mathcal{P}$ (feasible solutions) is the intersection of half-spaces (constraints).
+\end{remark}
+
+\begin{theorem}(Separating hyperplane theorem). Let $C \subseteq \mathbb{R}^n$ be a non-empty, closed, and convex set. Let $y \in \mathbb{R}^n - C$. Then, there always exists a hyperplane to separate y and C. That is, there exists $a \in \mathbb{R}^n$ and $\alpha \in \mathbb{R}$ such that 
+$$
+a^Tx \leq \alpha \leq a^Ty
+$$
+for all $x \in C.$
+\end{theorem}
+
+\begin{theorem}Every polyhedron is a convex set.
+\end{theorem}
+
+\begin{definition_exam}{Extreme point}{} A vector $x \in \mathcal{P}$ is an extreme point of $\mathcal{P}$ if there does not exist vectors $y, z \in \mathcal{P}$\textbackslash $\{x\}$ such that $x \in \{\theta y + (1-\theta)z: \theta \in [0,1], \theta > 0\}$. In otherwords, x cannot be written as a convex combination of another set of vectors in $\mathcal{P}$.
+\end{definition_exam}
+
+\begin{definition_exam}{Vertex}{} A vector $x \in \mathcal{P}$ is a vertex of $\mathcal{P}$ if there exists a vector $c \in \mathcal{P}$ such that 
+$$
+\langle c, x \rangle < \langle c, y \rangle
+$$
+for all vectors $y \in \mathcal{P}$\textbackslash $\{x\}$.
+\end{definition_exam}
+
+\begin{remark}A vertex x is a point where you can construct a hyperplane $\langle c, x \rangle$ such that every point in the polyhedron is on one side of the hyperplane. Furthermore, this hyperplane only touches the polyhedron at the point x.
+\end{remark}
+
+\begin{definition}(Active Constraint). If a vector $\textbf{x}^*$ satisfies $\langle a_i, \textbf{x}^* \rangle = b_i$ for some constraint i, we say that the constraint i is \textbf{active} or \textbf{binding} at $\textbf{x}^*$.
+\end{definition}
+
+
+\begin{theorem_exam}{Characterisation of active constraints}{}Let $\textbf{x}^* \in \mathbb{R}^n$. Let $I = \{i: \langle a_i, \textbf{x}^*\rangle = b_i\}$ be the set of indices of constraints are active at $\textbf{x}^*$. Then the following are equivalent 
+\begin{enumerate}
+    \item There exists n vectors in the set $\{a_i: i \in I\}$ which are linearly independent; 
+    \item The span of the vectors $\textbf{a}_i$ for $i \in I$ is all of $\mathbb{R}^n$;
+    \item The system of equations $\langle a_i, \textbf{x} \rangle = b_i$ for $i \in I$ has an unique solution.
+\end{enumerate}
+\end{theorem_exam}
+
+
+
+\begin{definition_exam}{Basic Feasible Solution}{}Consider a polyhedron P defined by linear equality and inequality constraints and let $\textbf{x}^* \in \mathbb{R}^n$.\\ The vector $\textbf{x}^*$ is a \textbf{basic solution} if 
+\begin{enumerate}
+    \item All equality constraints are active;
+    \item Out of the constraints that are active at $\textbf{x}^*$, there are n of them that are linearly independent.
+\end{enumerate}If $\textbf{x}^*$ is a basic solution that satisfies all of the constraints, we say that it is a \textbf{basic feasible solution.}
+\end{definition_exam}
+
+
+\begin{remark}If the number m of constraints used to define a polyhedron is less than the number of decision variables, the number of active constraints at any given point is less than n and hence there are no basic or basic feasible solutions.
+\end{remark}
+
+\begin{theorem_exam}{Characterisation of basic feasible solutions}{}Let $\mathcal{P}$ be a non-empty polyhedron and $x \in \mathcal{P}$. The following statements about x are equivalent:
+\begin{enumerate}
+    \item x is a vertex;
+    \item x is an extreme point;
+    \item x is a basic feasible solution.
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{theorem}Let $\mathcal{P} \subseteq \mathbb{R}^n$ be a bounded non-empty polyhedron. Then 
+$$
+\mathcal{P} = CH(\{x \in \mathbb{R}^n: x \text{ is an extreme point of } \mathcal{P}\}).
+$$
+\end{theorem}
+
+\begin{definition}(Polyhedra in standard form). A polyhedron in standard form is the set 
+$$
+\mathcal{P} = \{x \in \mathbb{R}^n: Ax = b \quad \text{and} \quad x \geq 0\}
+$$
+where $b \in \mathbb{R}^m$ and the matrix $A \in \mathbb{R}^{m \times n}$ is full rank.
+\end{definition}
+
+\begin{lemma}Any linear program can be turned into an equivalent linear program in standard form.
+\end{lemma}
+
+\begin{theorem}Consider the constraints $A\textbf{x} = \textbf{b}$ and $\textbf{x} \geq \textbf{0}$ where $A \in \mathbb{R}^{m \times n}$. Assume that A has linearly independent rows. A vector $x \in \mathbb{R}^n$ is a basic solution if and only if we have $A\textbf{x} = \textbf{b}$ and there exists indices $B_1,...,B_m$ such that 
+\begin{enumerate}
+\item The \textbf{columns} $A_{B_{(1)}}, ..., A_{B_{(m)}}$ are linearly independent;
+\item If $i \neq B_1,...,B_m$, then $x_i = 0.$
+\end{enumerate} 
+\end{theorem}
+
+\begin{definition}(Adjacent Basic Solutions). Two distinct basic solutions are adjacent if there are n - 1 linearly independent constraints that are active at both of them. Furthermore, two bases are adjacent if they share all but one basic column.
+\end{definition}
+
+According to our definition, at a basic solution, we must have n linearly independent active constraints. 
+
+\begin{definition_exam}{Degenerate solution}{} A basic solution $x \in \mathbb{R}^n$ is said to be degenerate if more than n of the constraints are active at \textbf{x}. Alternatively, a basic feasible solution \textbf{x} is degenerate if more than n - m of the components of \textbf{x} are 0.
+\end{definition_exam}
+
+Hence, a degenerate basic solution is one where we have the number of active constraints to be greater than necessary.
+
+
+\lecture{2}{Simplex}
+\section{Simplex}
+\section{Simplex}
+\subsection{Optimality Conditions}
+
+If a linear program in standard form has an optimal solution, then there exists a basic feasible solution that is optimal. The simplex method is based on this fact and searches for optimal solution by moving from one basic feasible solution to another, along the edges of the feasible set in a cost reducing direction. We assume we have the standard form 
+$$
+\min_{\textbf{x}} \quad \textbf{c}\textbf{x}
+$$
+$$
+\text{subject to }
+\begin{cases}
+A\textbf{x} = \textbf{b} \\
+\textbf{x} \geq 0
+\end{cases}
+$$
+We let P be the corresponding feasible set.\newline
+The following theorem states why our idea of locally looking for an optimal solution is a good idea.
+\begin{theorem_exam}{Global Optimiality for Linear Programming}{}For a linear programming problem, local optimality imlpies global optimality as we are minimising a convex function over a convex set.
+\end{theorem_exam}
+
+Suppose we are at a point $\textbf{x} \in P$ and we are contemplating moving away from \textbf{x}. The following tells us where we should move.
+\begin{definition_exam}{Feasible Direction}{} Let x be an element of the polyhedron P. A vector $d \in \mathbb{R}^n$ is said to be a feasible direction at x if there exists a positive scalar $\lambda$ such that $x + \lambda d \in P$.
+\end{definition_exam}
+
+
+
+\begin{definition_exam}{Basis}{} Let the LP be $\langle C^T, x \rangle$ subject to $Ax = b$ and $x \geq 0$ where $x \in \mathbb{R}^n$ and $A \in \mathbb{R}^m \times \mathbb{R}^n$. Let B be a subset of m indices from $\{1,...,n\}$. Denote $A_B \in \mathbb{R}^m \times \mathbb{R}^m$ as the A matrix indexed by B. If $A_B$ is nonsingular, the columns indexed by B are a \textbf{basis} of the \textbf{column space} of A. We call B a basis of the LP.
+\end{definition_exam}
+
+\begin{remark}The matrix A has at most ${n \choose m}$ bases.
+\end{remark}
+
+\begin{definition_exam}{Basic Solution}{} The vector $x \in \mathbb{R}^n$ is a basic solution if the vectors $\{a_i: x_i \neq 0\}$ are linearly independent or $A_B$ is nonsingular.
+\end{definition_exam}
+
+\begin{definition}(Basic Feasible Solution with Basis B). Given a basis B, it is a basic feasible solution if for all $j \not \in B: x_j = 0$ or $x \geq 0$.
+\end{definition}
+
+
+
+We make some assumptions first on the simplex algorithm we are about to develop.
+\begin{enumerate}
+\item We are provided with an initial feasible basis.
+\item Every feasible basis B is non-degenerate $x_B = A_B^{-1}b > 0$.
+\item The feasible region is bounded, that is, there exists a C such that $\{x \in \mathbb{R}^n: Ax = b, x \geq 0\} \subseteq [0,C]^n,$
+\end{enumerate}
+
+\begin{definition_exam}{Reduced cost}{} Let \textbf{x} be a basic solution, let \textbf{B} be an associated basis matrix, and let $\textbf{c}_B$ be the vector of costs of the basic variables. For each feasible direction j, we define the \textbf{reduced cost} $\overline{c}_j$ of the variable $x_j$ according to the formula $$\overline{c}_j = c_j - \textbf{c}_B\textbf{B}^{-1}\textbf{A}_j.$$
+\end{definition_exam}
+
+\begin{remark}The first term $c_j$ is the cost per unit increase of the variable $x_j$ (the candidate feasible direction) whilst the second term is the cost of the compensating change in the basic variables necessitated by the constraint $\textbf{A}\textbf{x} = \textbf{b}.$
+\end{remark}
+
+\begin{theorem_exam}{Optimality Conditions}{}Consider a basic feasible solution \textbf{x} associated with a basis matrix \textbf{B}, and let $\overline{\textbf{c}}$ be the corresponding vector of reduced costs. 
+\begin{enumerate}
+    \item If $\overline{\textbf{c}} > 0$ then \textbf{x} is optimal.
+    \item If \textbf{x} is optimal and nondegenerate, then $\overline{\textbf{c}} \geq 0.$
+\end{enumerate}
+\end{theorem_exam}
+
+Hence, for a given basic solution, we have two conditons for it to be optimal. First is that it satisfies the original LP constraints and second, the reduced cost is positive.
+
+\begin{theorem_exam}{Conditions for Optimal base}{} A basis matrix \textbf{B} is said to be optimal if 
+\begin{enumerate}
+    \item $A_B^{-1}\textbf{b} \geq 0$
+    \item $\overline{c} = \textbf{c} - \textbf{c}_B\textbf{B}^{-1}\textbf{A} \geq \textbf{0}.$
+\end{enumerate}
+\end{theorem_exam}
+\begin{theorem}When moving along feasible direction, we want to move to $\textbf{x} + \theta^*\textbf{d}$. The formula for the scalar is 
+$$
+\theta^* - \min_{i=1,2,...,m: d_{B(i)} < 0}-\frac{x_i}{d_i}.
+$$
+\end{theorem}
+
+\subsection{Simplex}
+
+\begin{theorem}Suppose we remove index i from the basis and added in index $\ell$. The new matrix $\overline{B}$ is a basis matrix and $A_{\overline{B}}$ is linearly independent. Furthermore, the vector $\textbf{y} = \textbf{x} + \theta^*\textbf{d}$ is a basic feasible solution associated with the basis matrix $\overline{B}$.
+\end{theorem}
+
+\lecture{3}{Linear Programming Applications}
+\section{Linear Programming Applications}
+\section{Linear Programming Applications}
+\subsection{Linear Programming Applications}
+
+\begin{definition}(Production Planning). We have demand project $d_1,...,d_n$. We need to decide how much to produce each time period whilst minimising storage cost. Let $x_i$ be the number of units produced at period i and $s_i$ be the number of units needed to carry from period i to i+1. Hence,
+$$
+\textbf{minimise } \sum_is_i
+$$
+$$
+\textbf{subject to } s_i = s_{i-1} + x_i - d_i \quad i=2,...,n
+$$
+$$
+s_i \geq 0 \quad i=1,...,n
+$$
+$$
+x_i \geq m \quad i=1,...,n
+$$
+$$
+x_i \leq M \quad i=1,...,n.
+$$
+\end{definition}
+
+\begin{definition}(Line Fitting). We want to fit a line $y = ax+b$ through a set of points $(x_1,y_1),...,(x_n,y_n)$ by adjusting a and b. The cost function is the absolute errors $\sum_{i}|y_i - ax_i - b|$.
+$$
+\textbf{minimise }\sum_{i}e_i
+$$
+$$
+\textbf{subject to } e_i \geq y_i - ax_i - b \quad i=1,...,k
+$$
+$$
+e_i \geq -(y_i - ax_i - b) \quad i=1,...,k
+$$
+$$
+\textbf{a,b are free}.
+$$
+\end{definition}
+
+\begin{definition}(Flow Problems). Given a directed graph G = (V,E) with edge capacities $c: E \rightarrow \mathbb{R}^+$. A circulation is an edge function $f: E \rightarrow \mathbb{R}^+$ that obeys flow conversation at every vertex whilst obeying edge capacity constraints. The maximum flow problem is to find a circulation maximising the flow along an edge (t,s) called the sourrce and the sink. Let $f_{u,v}$ be the flow values for each $(u,v) \in E$. Hence,
+$$
+\textbf{minimise }f_{t,s}
+$$
+$$
+\textbf{subject to } \sum_{(u,v) \in \delta^{in}(u)} = \sum_{(u,v) \in \delta^{out}(u)}  \quad u \in V
+$$
+$$
+f_{u,v} \leq c_{u,v} \quad (u,v) \in E
+$$
+$$
+f_{u,v} \geq 0 \quad (u,v) \in E.
+$$
+\end{definition}
+
+\begin{definition}(Vertex Cover). We are given an undirected graph G=(V,E) and need to select smallest subset $C \subseteq V$ such that every edge has at least one endpoint in C. Let $x_u \in \{0,1\}$ be an indicator variable where $x_u = 1$ if $u \in C$ and 0 otherwise. Hence, 
+$$
+\textbf{minimise }\sum_{u \in V} x_u
+$$
+$$
+\textbf{subject to } x_u + x_v \geq 1 \quad (u,v) \in E
+$$
+$$
+x_u \in \{0,1\} \quad u \in V.
+$$
+\end{definition}
+
+\begin{definition}(Edge cover). An edge cover of a graph G is a subset of edges of E which contains all nodes of G.
+\end{definition}
+
+\begin{remark}Edge cover is using edges to cover graph whereas vertex cover is using verticies to cover graph.  
+\end{remark}
+
+\lecture{4}{Duality Theory}
+\section{Duality Theory}
+\section{Duality Theory}
+\subsection{Motivation}
+
+Let's start off with a LP minimisation in standard form 
+$$
+\min_{x} \quad c.x
+$$
+$$
+\text{subject to }\begin{cases}
+Ax = b\\
+x \geq 0.
+\end{cases}
+$$
+What we can do is take the first constraint and lift it into the objective function and hence create a Lagrangian in the process.
+$$
+\min_{x} \quad c.x + \lambda(b - Ax)
+$$
+$$
+\text{subject to }
+x \geq 0
+$$
+Now, let us denote $x^*$ as the optimal value to the original LP and $t(\lambda)$ as the optimal value to our Lagrangian formulation of the problem.
+
+\begin{lemma}The optimal to the original problem is an upper bound for the objective value of our Lagrangian 
+$$
+t(\lambda) \leq cx^*,
+$$
+\end{lemma}
+\begin{proof}
+$$
+t(\lambda) = \min_{x \geq 0} \; c.x + \lambda(b - Ax) \leq cx^* + \lambda(b - Ax^*)
+$$
+$$
+= cx^*
+$$
+where the last equality follows as $Ax^* = b.$
+\end{proof}
+
+Hence, we see that different values for the Lagrangian multiplier (which can be thought of as the price for violating the constraint) gives us a different value to $t(\lambda).$ As $t(\lambda)$ is lower bounded by the optimal cost of our original problem, we therefore want to maximise $t(\lambda)$ to get the tightest lower bound to our original problem. Hence, we want to solve the problem
+$$
+\max_{\lambda}t(\lambda)
+$$
+$$
+\text{subject to no constraint}
+$$
+This is known as the \textbf{dual}. Now, we note that 
+$$
+t(\lambda) = \min_{x \geq 0} \; c.x + \lambda(b - Ax) = \lambda b + \min_{x \geq 0}\bigg(c - \lambda A \bigg)x.
+$$
+Now looking at the last term, we have that 
+$$
+\min_{x \geq 0}\bigg(c - \lambda A \bigg)x = 
+\begin{cases}
+0 \quad \text{if } c - \lambda A \geq 0\\
+-\infty \quad \text{otherwise.}
+\end{cases}
+$$
+
+Hence, as we are trying to maximise the dual, we do not want to consider values of $\lambda$ where $c \leq \lambda A$ or else we get $-\infty$ in our objective value. Hence, we can therefore conclude our dual linear program is 
+$$
+\max_{\lambda} \lambda b
+$$
+$$
+\text{subject to } \lambda A \leq c.
+$$
+
+If we select the price $\lambda$ properly, the optimal solution to the constrained problem is also the optimal solution to the unconstrained problem. Hence, we need to figure out the prices such that the absence/presence of constraints does not affect the optimal solution. We can find out what the prices are by solving the linear program which is the dual of the original problem.
+
+\subsection{Duality Theory}
+
+Given a standard primal problem to minimise a program, the aim of the dual is to find the tighest lower bound for the primal program. 
+
+\begin{definition}(Primal/Dual Program). Let $A \in \mathbb{R}^{m \times n}$. The primal program is 
+$$
+min \quad \sum_{j=1}^nc_jx_j
+$$
+$$
+s.t. (y_i) a_i^Tx \geq b_i \quad \forall i \in M_1
+$$
+$$
+(y_i) a_i^Tx \leq b_i \quad \forall i \in M_2
+$$
+$$
+(y_i) a_i^Tx = b_i \quad \forall i \in M_3
+$$
+$$
+x_j \geq 0 \quad \forall i \in N_1
+$$
+$$
+x_j \leq 0 \quad \forall i \in N_2
+$$
+$$
+x_j \quad \text{free} \quad \forall i \in N_3
+$$
+\\We define the dual as 
+$$
+max \quad \sum_{i=1}^mb_iy_i
+$$
+$$
+s.t. (x_j) y^TA_j \geq c_j \quad \forall j \in N_1
+$$
+$$
+(x_j) y^TA_j \leq c_j \quad \forall j \in N_2
+$$
+$$
+(x_j) y^TA_j = c_j \quad \forall j \in N_3
+$$
+$$
+y_i \geq 0 \quad \forall i \in M_1
+$$
+$$
+y_i \leq 0 \quad \forall i \in M_2
+$$
+$$
+y_i \quad \text{free} \quad \forall i \in M_3
+$$
+\end{definition}
+
+\begin{theorem_exam}{Weak Duality}{} Let x and y be feasible solutions to the primal (P) and the dual (D). Then, 
+$$
+\sum_{j=1}^nc_jx_j \geq \sum_{i=1}^mb_iy_i.
+$$
+\end{theorem_exam}
+
+From weak duality, we get a strong test for whether does a region have feasible solutions.
+
+\begin{proposition_exam}{Weak Duality Corollary}{}
+\begin{enumerate}
+\item If the primal (P) is unbounded ($-\infty$), then the dual (D) is infeasible.
+\item If the dual (D) is unbounded ($\infty$), then the primal (P) is infeasible.
+\end{enumerate}
+\end{proposition_exam}
+We now state something 'obvious'.
+\begin{lemma}The dual of the dual is the primal.
+\end{lemma}
+We now see that when we maximise the dual and get a bounded objective value, then we are done as it will equal the minimisation of the primal. We state this more formally.
+
+\begin{theorem_exam}{Strong Duality}{} If the primal (P) is feasible and has bounded objective, then so does the dual (D) and they have the \textbf{same optimal value}.
+\end{theorem_exam}
+
+\begin{proof}(Sketch). Use the fact that the dual is bounded from above by the primal. Then, show by Farkas lemma that the optimal value to the dual is greater than the optimal value of the primal. Hence this shows that the optimal value to the dual is \textbf{equal} to the primal.
+\end{proof}
+
+\begin{theorem}(Complementary Slackness). Let x and y be a pair of optimal solutions to the primal (P) and the dual (D). Then 
+\begin{enumerate}
+    \item $x_j = 0$ or $y^TA_j = C_j$ for all j;
+    \item $y_i = 0$ or $a_i^Tx = b_i$ for all j. 
+\end{enumerate}
+\end{theorem}
+
+\subsection{Farkas Lemma}
+We are interested in understanding when is a linear program is feasible. That is, when is the set of constraints non-empty. First, we recall Gaussian elimination. Suppose we had a system to solve $Ax = b$. The question is does there exists $x \in \mathbb{R}^n$ such that $Ax = b?$ Either this is the case or else, we can multiply the system by a vector $y \in \mathbb{R}^m$ such that $y^TAx = 0$ BUT $y^Tb \neq 0$. As a result, this system cannot be solve because $y^TAx = 0 \neq y^Tb.$ This vector $y$ is called a \textbf{certificate of infeasibility.}
+
+\begin{theorem}(Gauss). Let $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^m$. Then exactly one of the following holds.
+\begin{enumerate}
+\item There exists $x \in \mathbb{R}^n$ such that $Ax = b$.
+\item There exists $y \in \mathbb{R}^m$ such that $y^TA = 0$ but $y^Tb \neq 0.$
+\end{enumerate}
+\end{theorem}
+
+Taking this idea, we want to apply it to our standard form linear programs where $Ax = b$ and $x \geq 0.$ This is what Farkas lemma does and is used for certifying infeasibility.
+\begin{theorem_exam}{Farka's Lemma}{} Let $A \in \mathbb{R}^{m \times n}$ and $b \in \mathbb{R}^m$. Then exactly one of these holds 
+\begin{enumerate}
+\item There exists $x \in \mathbb{R}^n: Ax = b$ and $x \geq 0$
+\item There exists $y \in \mathbb{R}^m: A^Ty \geq 0$ and $\langle b, y \rangle < 0.$
+\end{enumerate}
+\end{theorem_exam}
+
+
+\lecture{5}{Linear Programming Applications II}
+\section{Linear Programming Applications II}
+\section{Linear Programming Applications II}
+\subsection{Playing Zero-Sum Games}
+
+We look at two-player games.
+\begin{definition}(Zero-Sum Games). We have a tuple $(S_1,S_2,P)$ where 
+\begin{enumerate}
+\item $S_1 = \{a_1,a_2,...,a_n\}$ are strategies for player I;
+\item $S_2 = \{b_1,b_2,...,b_m\}$ are strategies for player II;
+\item $P \in \mathbb{R}^{n \times m}$ is a pay-off matrix.
+\end{enumerate}
+
+If player I picks $a_i$ and player II picks $b_j$, we say that player I gets pay-off $P_{i,j}$ and player II gets pay-off $-P_{i,j}$.
+\end{definition}
+
+
+\begin{definition}(Outcomes). An outcomes $(a_i,b_j)$ is an equilibrium 
+\begin{enumerate}
+\item $P_{ij} \geq P_{kj}$  for all $k = 1,...,n$;
+\item $-P_{ij} \geq -P_{ik}$ = $P_{ij} \leq P_{ik}$ for all $k = 1,...,m.$
+\end{enumerate}
+\end{definition}
+
+\begin{definition}(Mixed Stategy). A mixed strategy for player I is the probability mass function: $x_1,...,x_n \geq 0$ and $\sum x_i = 1$. Likewise, a mixed strategy for player II is the probability mass function $y_1,...,y_m \geq 0$ and $\sum y_j = 1$. We define the expected pay-offs as 
+$$
+\text{Expected payoff for player I} = \sum_{i}\sum_jx_iy_jP_{ij} = -\text{Expected payoff for player II}.
+$$
+
+We say that $(x,y)$ is a mixed equilibrium if 
+$$
+\sum_i\sum_jx_iy_jP_{ij} \geq \sum_i\sum_j\hat{x}_iy_jP_{ij}
+$$
+for all $\hat{x}$ where $\hat{x}_1,\hat{x}_2,...,\hat{x}_n \geq 0$ and $\sum \hat{x}_i=1$ and 
+$$
+\sum_i\sum_jx_iy_jP_{ij} \geq \sum_i\sum_jx_i\hat{y}_jP_{ij}
+$$
+for all $\hat{y}$ where $\hat{y}_1,\hat{y}_2,...,\hat{y}_n \geq 0$ and $\sum \hat{y}_i=1$.
+\end{definition}
+
+\begin{theorem}Every two-player zero-sum game has a mixed equilibrium.
+\end{theorem}
+
+\begin{claim}Let $(x^*,z^*)$ and $y^*,z^*)$ be an optimal primal-dual par. Then, $(x^*,y^*)$ form a mixed equilibrium.
+\end{claim}
+
+\subsection{Bipartite Matching}
+\begin{definition}(Matching). A matching M is a subset of edges such that no two edges are incident on the same vertex 
+$$
+deg_M(u) \leq 1 \quad \forall u \in V.
+$$
+\end{definition}
+
+\begin{definition_exam}{Bipartite matching}{} Let $G = (V,E)$ be a bipartite graph and $w: E \rightarrow \mathbb{R}.$ The maximum weight bipartite matching problem is 
+$$
+max \; \sum_{e \in E}w_ex_e
+$$
+$$
+s.t. 
+\begin{cases}
+\sum_{e \in \delta(u)}x_e \leq 1 \quad \forall u \in V\\
+x_e \in \{0,1\} \quad \forall e \in E.
+\end{cases}
+$$
+\end{definition_exam}
+
+We can relax this program.
+
+
+\begin{definition}(Bipartite matching relaxation). The integer relaxation of the maximum weight bipartite matching problem is 
+$$
+max \; \sum_{e \in E}w_ex_e
+$$
+$$
+s.t. 
+\begin{cases}
+\sum_{e \in \delta(u)}x_e \leq 1 \quad \forall u \in V\\
+x_e \geq 0 \quad \forall e \in E.
+\end{cases}
+$$
+\end{definition}
+
+\begin{lemma}The solution to the linear relaxation is an upper bound to the original bipartite matching problem.
+\end{lemma}
+\begin{proof} We are removing constraints and hence should be able to obtain a larger maximum.
+\end{proof}
+
+We now move onto a remarkable theorem.
+
+\begin{theorem_exam}{Integrality of bipartite matching}{}Every basic feasible solution to the linear relaxation of bipartite matching is \textbf{integral.} Furthermore, the value of the linear relaxation of bipartite matching is \textbf{equal} to the value of the integer bipartite matching.
+\end{theorem_exam}
+\subsection{König's Theorem}
+We now study maximum \textbf{unweighted} bipartite matching.
+$$
+max \; \sum_{e \in E}x_e
+$$
+$$
+s.t. 
+\begin{cases}
+\sum_{e \in \delta(u)}x_e \leq 1 \quad \forall u \in V\\
+x_e \geq 0 \quad \forall e \in E.
+\end{cases}
+$$
+
+We now take the dual 
+$$
+min \; \sum_{v \in V}p_v
+$$
+$$
+s.t. 
+\begin{cases}
+p_u + p_v \geq 1 \quad \forall (u,v) \in E\\
+p_u \geq 0 \quad \forall u \in V.
+\end{cases}
+$$
+We now state a theorem about the \textbf{dual}.
+\begin{theorem}Every basic feasible solution of the dual to maximum unweighted bipartite matching is \textbf{integral.}
+\end{theorem}
+
+We study something similar to the dual.
+\begin{definition_exam}{Vertex Cover}{}Let G=(V,E) be a graph and $w: E \rightarrow \mathbb{R}.$ The vertex cover is a subset of vertices is such that every edge in the graph has at least one vertex in the cover.
+$$
+min\; \sum_{v \in V}w_vx_v
+$$
+$$
+s.t. 
+\begin{cases}
+x_u + x_v \geq 1 \quad \forall (u,v) \in E\\
+x_v \in \{0,1\} \quad \forall v \in V.
+\end{cases}
+$$
+\end{definition_exam}
+
+\begin{theorem_exam}{Koenig's Theorem}{} In every bipartite graph, the cardinality of the largest matching equals the cardinality of the smallest vertex cover. This is equal to $|V|.$
+\end{theorem_exam}
+
+
+
+
+
+\lecture{6}{Integral Polyhedra}
+\section{Integral Polyhedra}
+\section{Integral Polyhedra}
+\subsection{Totally Unimodular Matrices}
+
+We are now interested in what constraints do we need on the constraint matrix such that every basic feasible solution is integral. That is, given a integer program that we perform linear relaxation on, what constraints do we need on the constraint matrix A and vector b such that we still always get an integral solution.
+\begin{definition}(Integral Polyhedra). We say that a polyhedron P is integral if all of its extreme points are integral. In other words, the integer program 
+$$
+min \quad \langle c,x \rangle
+$$
+$$
+\text{such that } Ax = b
+$$
+$$
+x \in \mathbb{Z}_{+}^{n}
+$$
+is equivalent to 
+$$
+min \quad \langle c,x \rangle
+$$
+$$
+\text{such that } Ax = b
+$$
+$$
+x \geq 0.
+$$
+\end{definition}
+
+\begin{remark}Hence, we are interested for when can we perform linear relaxation on the integer program and still get an integer solution.
+\end{remark}
+
+If we had a bounded objective function then there exists a basic feasible solution x that is optimal. We denote the basis of this by B. Then we are interested for when $x_B = A_B^{-1}b$ is integral. Clearly, $x_B$ is integral if $A_B^{-1}$ is integral.
+
+\begin{definition_exam}{Unimodular}{} We say that a full-row rank matrix $A \in \mathbb{Z}^{m \times n}$ is unimodular if for all basis B of A, then $det(A_B) \in \{1,-1\}.$
+\end{definition_exam}
+
+\begin{corollary}Unimodularity of a matrix is a sufficient condition for the integrality of $A_B^{-1}.$
+\end{corollary}
+
+\begin{definition}(Cramer's Rule). Let M be an invertible matrix. Then, Cramer's rule states that 
+$$
+M^{-1} = \frac{Adj(M)}{det(M)}.
+$$
+\end{definition}
+
+
+\begin{lemma}If M is integral, then Adj(M) is integral.
+\end{lemma}
+
+
+\begin{theorem_exam}{Integrality of Standard Linear Programs}{}A full row-rank matrix $A \in \mathbb{R}^{m \times n}$ is unimodular if and only if all extreme points of the polyhedron $P = \{x \in \mathbb{R}^n: Ax = b, x \geq 0\}$ are integral for all $b \in \mathbb{Z}^m.$
+\end{theorem_exam}
+
+The above theorem only holds for linear programs in standard form. However, we can generalise the above theorem for LPs not in standard form by imposing additional conditions on the constraint matrix.
+
+\begin{definition_exam}{Totally unimodular}{} We say a matrix $A \in \mathbb{Z}^{m \times n}$ is totally unimodular if for every square submatrix $A'$ of A, we have that 
+$$
+det(A') \in \{-1, 0, 1\}.
+$$
+\end{definition_exam}
+
+Hence, we can now generalise the theorem on integrality of linear programs.
+
+\begin{theorem_exam}{Integrality of Linear Programs}{}A matrix A is totally unimodular if and only if the polyhedron's extreme points 
+$$
+P = \{x \in \mathbb{R}^n: Ax \leq b, x \geq 0\}
+$$
+is integral for all $b \in \mathbb{Z}^m$.
+\end{theorem_exam}
+
+\subsection{Properties of Totally Unimodular Matrices}
+We now analyse furhter properties of totally unimodular matrices.
+
+\begin{theorem}Let A be a totally unimodular matrix. The following properties hold 
+\begin{enumerate}
+\item Entries of A $\in \{-1, 0, 1\}$;
+\item $A^T$ is a totally unimodular matrix;
+\item The matrix $\begin{bmatrix}A & I \end{bmatrix}^T$ is a totally unimodular matrix;
+\item The matrix $\begin{bmatrix}A & -A \end{bmatrix}^T$ is a totally unimodular matrix.
+\end{enumerate}
+\end{theorem}
+
+\begin{corollary}If A is totally unimodular matrix, the extreme points of the polyhedron 
+$$
+P = \{x \in \mathbb{R}^n: Ax \leq b, Ax \geq d, x \leq ub, x \geq lb\}
+$$
+is integral as well where ub and lb are integral upper and lower bounds for the vector x.
+\end{corollary}
+
+\begin{remark}If we have a polyhedron P that is defined by a totally unimodular matrix and define a restriction of x by $Q = [lb_1,ub_1] \times ... \times [lb_n,ub_n]$ where each endpoint is integral, then $P \cap Q$ is also integral.
+\end{remark}
+
+\begin{corollary}Let the constraint matrix A be totally unimodular. Let c and b be integral. Then both the primal program $\min \{\langle c, x \rangle: Ax \geq b, x \geq 0\}$ and the dual program $\max \{\langle b, y \rangle: A^Ty \leq c, y \geq 0\}$ are integral.
+\end{corollary}
+
+\subsection{Alternative Characterisation of Totally Unimodular Matrices}
+We look at alternative characterisations of totally unimodular matrices to make our lives easier.
+\begin{definition_exam}{Equitable Bi-Colouring}{} A columm bi-colouring of a matrix M is a partition of its columns into red and blue columns. We call the bi-colouring \textbf{equitable} if for every row 
+$$
+|\text{sum of blue entries} - \text{sum of red entries}| \leq 1.
+$$
+\end{definition_exam}
+
+We now have a new way to characterise totally unimodular matrices and hence linear relaxations which has integral solutions.
+
+\begin{theorem_exam}{Equitable bi-colouring characterisation of integrality}{}A matrix $A \in \mathbb{Z}^{m \times n}$ is totally unimodular if and only if every column submatrix of A admits an equitable column bi-colouring.
+\end{theorem_exam}
+
+We can now show that certain matrices are totally unimodular.
+
+\begin{theorem_exam}{Bipartite matching is totally unimodular}{}The constraint matrix of a bipartite matching problem is totally unimodular. That is, the polyhedron 
+$$
+P = \{x \in \mathbb{R}^{|E|}: \sum_{e \in \delta(u)}x_e \leq 1, x_e \geq 0\} = \{x \in \mathbb{R}^{|E|}: Ax \leq 1, x \geq 0\}
+$$
+is totally unimodular.
+\end{theorem_exam}
+
+\begin{theorem_exam}{Circulation problem is totally unimodular}{}The constraint matrix associated with the circulation problem polyhedron 
+$$
+P = \{f \in \mathbb{R}_{+}^{|E|}: \sum_{e \in \delta^{in}(u)}f_e=\sum_{e \in \delta^{out}(u)}f_e \quad \forall u \in V\}
+$$
+is totally unimodular.
+\end{theorem_exam}
+
+\subsection{Subset Selection Problems}
+We now look at the broad problem of subset selection problems.
+
+\begin{definition}(Feasible Subsets). Let U be a universal set of elements and $I \subseteq 2^U$ be 
+$$
+I = \{S \subseteq U: \text{vectors in S are linearly independent}\}.
+$$
+I is referred to as a collection of feasible subsets.
+\end{definition}
+
+\begin{definition_exam}{Subset System}{} Let $(U, I)$ be the pair where U is the universal set and $I \subseteq 2^U$ is a collection of feasible sets of U. The pair is a subset system if $I \neq \emptyset$ and for any $S \subset T \subseteq U$, it holds that $T \in I$ implies that $S \in I.$
+\end{definition_exam}
+
+\begin{definition}(Subset Selection Problem). Given a cost function $c:U \rightarrow \mathbb{R}$, define the canonical optimisation problem for $(U,I)$. Find a subset $A \subseteq U$ such that $A \in I$ that maximizes $c(A) = \sum_{x \in A}c(x).$
+\end{definition}
+
+\begin{definition_exam}{Rank function}{} The rank function of $(U,I)$ is $r: 2^u \rightarrow \mathbb{Z}_{+}$ where 
+$$
+r(S) = \max_{A \subseteq S, A \in I}|A|.
+$$
+\end{definition_exam}
+
+\begin{remark}The rank function looks for the largest feasible subset of a given set S.
+\end{remark}
+
+We can now express the integer formulation for the canonical optimisation.
+$$
+\max_{x} \sum_{j \in U}c_jx_j
+$$
+$$
+s.t. \quad \sum_{j \in S}x_j \leq r(S) \quad S \subseteq U
+$$
+$$
+x_j \in \{0,1\} \quad \forall j \in U.
+$$
+\begin{definition_exam}{Matroid Exchange Axiom}{} A system $(U,I)$ satisfies the matroid exchange axiom if for all subsets $S, T \in I$, if $|S| < |T|$, then there exists an element $j \in T $\textbackslash S such that $S \cup \{j\} \in I.$
+\end{definition_exam}
+
+\begin{definition}(Matroid). The subset system $(U,I)$ is called a matroid if it satisfies the matroid exchange axiom.
+\end{definition}
+
+\begin{theorem}For every subset $S \subset U$, all maximal independent sets in S have equal size.
+\end{theorem}
+
+
+\begin{theorem_exam}{Integrality of matroid}{}Let $(U,I)$ be a matroid, then the following polyhedron is integral 
+$$
+\{x \in \mathbb{R}_{+}^{|u|}: x(S) \leq r(S) \quad \forall S \subseteq U\}.
+$$
+\end{theorem_exam}
+
+\begin{theorem}(LP) is integral for acyclic subgraphs. (LP) is integral if $(U,I)$ has the matroid property.
+\end{theorem}
+
+\begin{definition_exam}{Independence Oracle}{} An independence oracle is an algorithm which, when given a set $S \subseteq U$, tells us whether $S \in I.$
+\end{definition_exam}
+
+\begin{remark}The independence oracle is easy to implement for forests in graphs (check S for cycles) and for linearly independence sets of vectors (use Gaussian elimination).
+\end{remark}
+
+\begin{theorem_exam}{Optimality of Greedy algorithm under matroid system}{}Suppose that $M = (U,I)$ is a subset system and that we have an oracle to determine whether a given set is dependent. Define the Greedy algorithm to iteratively adds the cheapest element of U that maintains independence. Then, the Greedy algorithm produces a maximally independent set S of minimal cost for every nonnegative cost function on U if and only if M is a matroid.
+\end{theorem_exam}
+
+\begin{theorem}Let F be the independent set returns by the greedy algorithm. Then, $w(F) \geq w(F')$ for all $F' \in I.$
+\end{theorem}
+
+
+
+\lecture{7}{Integer Programming}
+\section{Integer Programming}
+\section{Integer Programming}
+\subsection{Introduction to Integer Programs}
+Integer-valued variables can represent quantities that cannot be subdivided, model yes-no decisions, combinatorial constraints, and much more. An integer linear program is an optimisation problem that has the form of a linear program with the additional restriction that the values of all variables must be integers. 
+
+\begin{definition_exam}{Integer Linear Program}{} An integer linear program has the form 
+$$
+\text{minimize } \langle c,x \rangle
+$$
+$$
+\text{subject to } Ax \geq b
+$$
+$$
+x \in \mathbb{Z}_{+}^{n}.
+$$
+\end{definition_exam}
+
+\begin{remark}The \textbf{linear relaxtion} of an integer linear program is when we let $x \in \mathbb{R}_{+}^n.$ That is, we remove the restriction that our variables must be integers.
+\end{remark}
+
+\begin{theorem_exam}{Integer program as a subset of linear relaxation}{}Let us define the feasible region of the integer program as 
+$$
+IPF = \{x \in \mathbb{Z}_{+}^{n}: Ax \geq b\}.
+$$
+Let us also define the feasible region of the linear relaxation as 
+$$
+LPF = \{x \in \mathbb{R}_{+}^{n}: Ax \geq b\}.
+$$
+Then clearly 
+$$
+IPF \subseteq LPF.
+$$
+\end{theorem_exam}
+
+\begin{corollary}As $IPF \subseteq LPF$, then it follows that the value of the integer program is less than or equal to the value of its relaxation.
+\end{corollary}
+
+It is worth noting that you can't simply run a linear program and then round to the nearest integer to solve an integer linear program. There are many instances in which the optimal solution to the integer linear program is completely different to the integer rounding of the optimal solutions of a linear program.\\
+
+The trick to modelling integer programs is to decompose your problem into yes-no decisions, which are represented by $\{0,1\}$ variables or into quantities, which are represented by non-integer variables.
+
+\subsection{Branch and Bound Framework}
+
+\begin{proposition}Every feasible solution to the Integer Program is also a feasible solution for the Linear Program relaxtion.
+\end{proposition}
+
+\begin{proof} The LP relaxtion only \textbf{removes} restrictions and hence every solution to the Integer Program should be a solution to the Linear Program relaxtion.
+\end{proof}
+
+\begin{corollary}The optimal solution to the Linear Program relaxation cannot be worse than the optimal solution to the Integer Program.
+\end{corollary}
+
+If the optimal solution to the Linear Program relaxation happens to satisfy the integer domain restrictions to the Integer Program, then that \textbf{is} the optimal Integer Program solution. Otherwise, the optimal objective value for the Linear Program relaxtion gives a \textbf{bound} for the optimal objective value of the Integer Program.\\
+\begin{proposition}For a maximisation (minimisation) Integer Program, the optimal objective value of the Linear Program relaxation gives an upper (lower) bound.
+\end{proposition}
+
+\begin{definition_exam}{Branch and BoundFramework}{} Let S be our polyhedron $S = S_1 \cup S_2 \cup ... \cup S_k.$ The branch and bound framework is to optimise over each subset $S_i$ separately by computing $z_i = \min\{\langle c,x \rangle: x \in S_i\}$ and take the minimum of the minimums of 
+$$
+z = \min_{i}z_i.
+$$
+\end{definition_exam}
+
+
+We now need to bound the branch of our problem. That is, for each $z_i$, we let $\underline{z}_i$ be the lower bound and $\overline{z}_i$ be the upper bound. Hence, for each decomposition $S = S_1 \cup ... \cup S_k$, we are interested in computing the bounds 
+$$
+\underline{z}_i \leq \min \{\langle c,x \rangle: x \in S_i\} \leq \overline{z}_i.
+$$
+
+In particular, we use linear relaxation to derive the lower bound. Meanwhile, we use heuristics to derive the upper bound.
+If for a particular $S_i$, the problem is infeasible ($S_i = \emptyset$), then we set $\underline{z}_i = \infty.$ If we can't find an upper bound, then we set $\overline{z}_i = \infty.$\\
+We can now define $\underline{z} = \min_{i}\underline{z}_i$ and $\overline{z} = \min_{i}\overline{z}_i$. Hence, we get 
+$$
+\underline{z} \leq z \leq \overline{z}.
+$$
+
+\begin{theorem_exam}{Rules for pruning subproblem}{}We have three rules for pruning the subproblems in the decomposition.
+\begin{enumerate}
+\item Prune by optimality. If we know that $\underline{z}_i = \overline{z}_i$, then we know $z_i.$
+\item Prune by infeasibility. If $S_i = \emptyset$, then $(\underline{z}_i = \infty)$ as we shouldn't prune it.
+\item Prune by bound. If $\underline{z}_i \geq \overline{z}$, that is, if we have already found a solution with cost less than $z_i$, then there is no point in further decomposing $S_i.$
+\end{enumerate}
+\end{theorem_exam}
+
+\subsection{Branch and Bound with Linear Programming}
+The branch and bound framwork works well when we apply linear programming as we can compute the lower bounds quite easily. However, we need to resort to heuristics for computing the upper bounds. We have 4 things we need to specify.
+
+\begin{enumerate}
+\item Decide do we want to decompose subproblems in a depth-first or breadth-first fashion. The latter requires more memory but allows for more pruning and tighter upper and lower bounds.
+\item We need to figure out how do we actually want to decompose S into subproblems.
+\item If we solve the linear relaxation, it may be the case that adding constraints back may cause a violation of our problems. However, deciding to optimise the dual means that we only gain new variables as we add more constraints back into the primal.
+\end{enumerate}
+
+\subsection{Strengthening Linear Relaxations}
+To ensure our linear-programming-based branch and bound scheme works well, we need to make sure we have a \textbf{strong linear relaxation}.
+
+\begin{definition_exam}{Tighter Linear Relaxtion}{} Let S be a discrete set of feasible solutions. Let Q and P be polyhedra, that is, different formulations of S. Suppose $Q \subset P.$ Then, we say that Q is a \textbf{tighter linear relaxtion of S}. We then write $S = Q \cap \mathbb{Z}^n.$
+\end{definition_exam}
+
+We want to work with \textbf{tighter linear relaxation} for our subproblems as that will give us better lowerbounds. However, the tradeoff is that it means we may impose more constraints and hence solving the relaxation is harder.
+
+\begin{proposition_exam}{Test for tighter linear relaxtion}{}Suppose we had two polyhedrons P and Q. To show that Q is a tighter linear relaxation than P, we need to find a point x such that $x \in P$ and $x \not \in Q.$
+\end{proposition_exam}
+
+\lecture{8}{Large Scale Optimisation}
+\section{Large Scale Optimisation}
+\section{Large Scale Optimisation}
+\subsection{TSP}
+First, recall a useful definition.
+\begin{definition}(Hamiltonian cycle). A Hamiltonian cycle is a cycle in an undirected graph that passes through each node exactly once.
+\end{definition}
+
+\begin{definition_exam}{Travelling Salesman Problem}{} Given an undirected complete weighted graph, the TSP is the problem of finding a minimum cost Hamiltonian cycle.
+\end{definition_exam}
+
+\begin{proposition_exam}{Showing a problem is hard}{} To show problem X is hard, take a known NP-hard problem Y and show a polynomial time algorithm that converts problem Y into X.
+\end{proposition_exam}
+If we can take a known hard problem and reduce it to our problem in polynomial time and solve our problem, this means that it is easy to solve the known hard problem which is a contradiction.
+\subsection{Large Number of Constraints}
+
+The TSP is an example of a problem with a large number of constraints.
+
+\begin{definition}(Travelling-Salesman Problem). We define the TSP as 
+$$
+\text{min }\sum_{e \in E}w_ex_e
+$$
+$$
+\text{subject to }\sum_{e \in \delta(u)}x_e = 2 \quad \forall u \in v
+$$
+$$
+\sum_{e \in \delta(s)}x_e \geq 2 \quad \forall \emptyset \subset s \subset v
+$$
+
+$$
+x_e \geq 0 \quad \forall e \in E
+$$
+where $\phi$ is a subset of constraint vertices.
+\end{definition}
+
+\begin{definition}(TSP Polyhedron and Relaxtion). We define the TSP polyhedron P to be 
+$$
+P = \{x \in \mathbb{R}^{|E|}: x(\delta(u)) = 2 \quad \forall u \in V, x(\delta(s)) \geq 2 \quad \forall \phi \subset s \subset v\}.
+$$
+We define the relaxtion of the TSP polyhedron Q to be 
+$$
+P = \{x \in \mathbb{R}^{|E|}: x(\delta(u)) = 2 \quad \forall u \in V\}.
+$$
+\end{definition}
+
+We can optimise over Q instead in hopes of getting an optimal solution in P.
+
+\begin{definition_exam}{Separation Oracle}{} A separation oracle for P takes as input a solution x and either says $x \in P$ or $x \not \in P$ and produces a violated constraint.
+\end{definition_exam}
+
+
+\subsection{Large Number of Variables}
+The edge colouring problem is an example of a problem with a large number of variables. To solve problems with large number of variables, we can take the dual of the problem in order to turn the large number of variables into a large number of constraints and utilise the same approach as the last section.
+
+First, we recall some things.
+
+\begin{definition_exam}{Matching}{} A \textbf{matching} M on a graph G is a subset of E which does not contain any edges with a node in common. A \textbf{maximum matching} is a matching on the graph G with the highest possible cardinality. A \textbf{perfect matching} consists of edges which cover all the nodes of a graph.
+\end{definition_exam}
+
+\begin{lemma}A perfect matching has cardinality $\frac{|V|}{2}$.
+\end{lemma}
+
+\begin{definition}(Edge Colouring). Given $G=(V,E)$, we want to partition E into matching $M_1,M_2,...,M_k$ where the objective is to minimise the number of matchings used (k). A basis is defined by $|E|$ matching $B = \{M_{b_{1}},M_{b_{2}},...,M_{b_{|E|}}\}$. Hence, we have 
+$$
+\text{min } \sum x_M
+$$
+$$
+\text{subject to } \sum_{M_{i} \in M}x_M = 1 \quad \forall e \in E
+$$
+$$
+x_M \geq 0 \quad \forall \text{matching M.}
+$$
+\end{definition}
+
+\subsection{Ellipsoid Algorithm}
+The ellipsoid algorithm is an iterative method for solving feasible lienar optimisation problems whereby it finds an optimal solution within a finite number of steps. It does this by the fact that the ellipsoid serves as a test of feasibility of a solution.
+\begin{definition}(Unit ball). The n-dimensional unit ball is defined as 
+$$
+B^n = \{x \in \mathbb{R}^n: x^Tx \leq 1\}.
+$$
+\end{definition}
+
+\begin{definition_exam}{Affine Transformation}{} Let $f: \mathbb{R}^n \rightarrow \mathbb{R}^n$ where 
+$$
+f(x) = Mx + s
+$$
+where $M \in \mathbb{R}^{n \times n}$ matrix, $s \in \mathbb{R}^n$, and $x \in \mathbb{R}^n.$
+\end{definition_exam}
+
+\begin{definition_exam}{Ellipsoid}{} An n-dimensional ellipsoid E is the image of the n-dimensional unit ball under an affine transformation $f(x) = Mx + s$; that is 
+$$
+E = \{Mx + s: x \in B^n\}.
+$$
+\end{definition_exam}
+
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{$\mathcal{P}$ is a polyhedra, $\epsilon$ size, and radius R}
+\KwOut{Point in $\mathcal{P}$ or $\emptyset$}
+E = $B^n(R)$\;
+\text{point s} = 0\;
+
+\While{$s \not \in \mathcal{P}$}{
+  \uIf{ iteration count $> n(2n + 2)ln\frac{R}{\epsilon}$} {
+        \Return{$\mathcal{P}$ is empty}\;
+  }
+  \Else {
+      $\langle a, x \rangle \leq b$ $\gets$ constraint of $\mathcal{P}$ that s violates \;
+      $H \gets \{x: \langle a, x\rangle \leq \langle a, s \rangle\}$\;
+      E $\gets$ ellipsoid E` from assumption 3 w.r.t. E and H\;
+      s $\gets$ center of new ellipsoid E
+  }  
+}
+\Return{s}\;
+\caption{{\sc Ellipsoid Algorithm}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{lemma}We make the following assumptions for the ellipsoid algorithm.
+\begin{enumerate}
+\item We can fit the polyhedron P inside a ball of \textbf{radius R};
+\item Either $P = \emptyset$ or it contains a ball of radius $\epsilon$;
+\item Given an ellipsoid E centered at s and a half-space $H = \{x \in \mathbb{R}^n: \langle a, x\rangle \geq \langle a, s\rangle\}$, then we can find another ellipsoid E' where $E' \supset E \cap H$ and 
+$$
+vol(E') < \frac{vol(E)}{e^{\frac{1}{2n+2}}}.
+$$
+\end{enumerate}
+\end{lemma}
+
+
+
+\begin{theorem}The ellipsoid algorithm either returns a point inside the polyhedron P or correctly identifies that $P = \emptyset.$
+\end{theorem}
+
+\begin{theorem_exam}{Convergence of ellipsoid algorithm}{}After k = $n(2n + 2)ln \frac{R}{\epsilon}$ iterations, we must have $P = \emptyset.$
+\end{theorem_exam}
+
+\subsection{Edge Colouring}
+
+\begin{definition_exam}{Vizing's Theorem}{}Every graph can be coloured by at most $\Delta G + 1$ colours.
+\end{definition_exam}
+
+\lecture{9}{Lagrangian Relaxation}
+\section{Lagrangian Relaxation}
+\section{Lagrangian Relaxation}
+\subsection{An introduction to Lagrangian Relaxation}
+The main premise behind lagrangian relaxation involves relaxing certain constraints and moving them into the objective value. Here, we penalise the objective value if a constraint is not being met.\\
+
+Suppose we had a minimisation problem involving an integer program. We now want to run a branch and bound algorithm for our integer program. To get a good lower bound, we can use the notion of lagrangians.\\
+
+Let z be the value of the following \textbf{integer program}
+$$
+\min \langle c,x \rangle
+$$
+$$
+\text{subject to } 
+\begin{cases}
+Ax \geq b\\
+Dx \geq d\\
+x \in \mathbb{Z}^n.
+\end{cases}
+$$
+Now suppose we apply lagrangian relaxation to the first set of constraints. We obtain the new \textbf{integer program}.
+$$
+\min \langle c,x \rangle + \lambda(b - Ax)
+$$
+$$
+\text{subject to } 
+\begin{cases}
+Dx \geq d\\
+x \in \mathbb{Z}^n.
+\end{cases}
+$$
+where $A \in \mathbb{R}^{m \times n}$ and therefore $\lambda \in \mathbb{R}_{+}^{m}.$ We let $t(\lambda)$ be the value of this program for a given choice of $\lambda.$ Now, let us denote the polyhedron 
+$$
+\ell = \bigg\{x \in \mathbb{Z}^n: Dx \geq d \bigg\}.
+$$
+We can now express $t(\lambda)$ as 
+$$
+t(\lambda) = \min_{x \in \ell}\bigg[c \cdot x + \lambda\cdot(b - Ax) \bigg].
+$$
+\begin{theorem_exam}{Lagrangian as a lower bound}{}Let z be the optimal cost of the integer program. Additionally, for a fixed $\lambda,$ we denote $t(\lambda)$ as the optimal cost of the lagrangian of the IP for a given $\lambda$. Then, we have that for any $\lambda \geq 0$
+$$
+t(\lambda) \leq z.
+$$
+\end{theorem_exam}
+
+\begin{theorem_exam}{Polynomial evaluation}{}For any $\lambda \geq 0$, we can evaluate $t(\lambda)$ in polynomial time.
+\end{theorem_exam}
+
+\begin{theorem_exam}{}{}The lagrangian function $t: \mathbb{R}_{+} \rightarrow \mathbb{R}$ is piece-wise linear, continuous, and concave.
+\end{theorem_exam}
+
+\begin{theorem}The value $t = \max_{\lambda \in \mathbb{R}_{+}^{n}}t(\lambda)$ is given by the following program.
+$$
+min \langle c,x \rangle
+$$
+$$
+\text{subject to }
+\begin{cases}
+Ax \geq b \\
+x \in CH(\ell)
+\end{cases}
+$$
+where CH($\ell$) is the \textbf{convex hull} of the polyhedron $\ell$.
+\end{theorem}
+
+\begin{corollary}If the polyhedron $\ell$ is integral, then t is the value of the original linear relaxation.
+\end{corollary}
+
+\subsection{Unconstrainted Optimisation}
+
+We are interested in maximising the concave function $f: \mathbb{R} \rightarrow \mathbb{R}.$
+\begin{definition}(Steepest ascent). The steepest ascent algorithm is described as follows. Start with an arbitrary solution $x^{(0)}.$ We then repeat the solution according to the following rule 
+$$
+x^{(k+1)} = x^{(k)} + \alpha^{(k)}f'(x^{(k)})
+$$
+where $\alpha^{(k)} \geq 0$ is a parameter that determines the update step size. 
+\end{definition}
+
+\begin{theorem_exam}{Guarantee of convergence}{}Let $f: \mathbb{R} \rightarrow \mathbb{R}$ be a continuous, differentiable, and concave function. The following criteria guarantees the convergence of $x^{(k)}$ to a maximizer of f as k tends to infinity.
+$$
+\begin{cases}
+\lim_{k \rightarrow \infty}\alpha^{(k)} = 0 \quad \text{and } \lim_{k \rightarrow \infty}\sum_{i=1}^{k}\alpha^{(i)} = \infty \\
+\alpha^{(k)} = \rho\beta^{(k)} \quad \text{for large }\rho \text{ and } \beta \approx 1.
+\end{cases}
+$$
+\end{theorem_exam}
+
+We can now generalise the steepest ascent algorithm.
+\begin{theorem_exam}{Generalised steepest ascent}{}Let $f: \mathbb{R}^n \rightarrow \mathbb{R}$ be a continuous, differentiable, and concave function we wish to maximise. Let $x^{(0)}$ be an arbitrary solution. Then, the steepest ascent update rule is 
+$$
+x^{(k+1)} = x^{(k)} + \alpha^{(k)}\nabla f(x^{(k)})
+$$
+where $\alpha^{(k)} \geq 0$ is a parameter that determines the update step size and $\nabla f(x) = \bigg(\frac{\partial f(x)}{\partial x_1},...,\frac{\partial f(x)}{\partial x_n} \bigg)$ is the gradient of f at x.
+\end{theorem_exam}
+
+\begin{definition}(Sub-gradient). A vector $s \in \mathbb{R}^n$ is a sub-gradient of f at x if 
+$$
+f(y) \leq f(x) + \langle s, x-y\rangle
+$$
+for all $y \in \mathbb{R}^n.$
+\end{definition}
+
+\begin{lemma}If $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is not differentiable, we can still update the solution in the direction of a sub-gradient to guarantee convergence.
+\end{lemma}
+
+\lecture{10}{Maximum Submodular Coverage}
+\section{Maximum Submodular Coverage}
+\section{Maximum Submodular Coverage}
+\subsection{Maximum Coverage}
+
+\begin{definition_exam}{p-approximation algorithm}{} For a maximisation problem, a p-approximation is an algorithm that runs in polynomial time and returns a solution whose cost is at least p times the cost of an optimal solution, where $p \leq 1.$
+\end{definition_exam}
+
+\begin{definition_exam}{Maximum Coverage Problem}{}Let U be a ground set. Let $\mathcal{S} = \{S_1,...,S_n\}$ be a collection of subsets of U. We want to pick k subsets, denoted by C, whose union has maximum cardinality 
+$$
+\max |\bigcup_{T \in C}T|
+$$
+$$
+s.t. \quad C \subseteq \mathcal{S}
+$$
+$$
+|C| = k.
+$$
+\end{definition_exam}
+
+\begin{remark}This problem is known to be NP-hard.
+\end{remark}
+
+We now specify the Greedy-algorithm for this problem.
+
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{k, U, $\mathcal{S}$}
+\KwOut{A collection of sets $C \subseteq \mathcal{S}$}
+C $\gets \emptyset$\;
+
+
+\While{$|C| < k$}{
+  $S \in \mathcal{S} \gets$ subset maximising $|S$\textbackslash$\cup_{T \in C}T|$\;
+  $C \gets C \cup S$\;
+}
+\Return{C}\;
+\caption{{\sc GREEDY Algorithm for Maximum Coverage}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{theorem_exam}{Approximation of GREEDY algorithm}{}The GREEDY algorithm is a $(1 - \frac{1}{e})$-approximation for the maximum coverage problem.
+\end{theorem_exam}
+
+
+\subsection{Maximum Submodular Coverage}
+\begin{definition_exam}{Monotone function}{} A function $f: 2^U \rightarrow \mathbb{R}$ is monotone non-decreasing if 
+$$
+f(A) \leq f(B)
+$$
+for all $A \subseteq B \subseteq U.$
+\end{definition_exam}
+
+\begin{definition_exam}{Submodular function}{}A function $f: 2^U \rightarrow \mathbb{R}$ is submodular if 
+$$
+f(A \cup \{x\}) - f(A) \geq f(B \cup \{x\}) - f(B)
+$$
+for all $A \subseteq B \subseteq U$ and $x \in U$\textbackslash B.
+\end{definition_exam}
+
+\begin{definition_exam}{Normalized function}{}A function $f:2^U \rightarrow \mathbb{R}$ is normalized if 
+$$
+f(\emptyset) = 0.
+$$
+\end{definition_exam}
+
+\begin{definition_exam}{Maximum submodular coverage}{}
+We define a subset function $f: 2^U \rightarrow \mathbb{R}$ which is defined on the power set of a ground set U. We assume that f is a monotone non-decreasing, submodular, and normalized function. We are interested in finding a subset C of cardinality k maximising f.
+$$
+\max f(C)
+$$
+$$
+s.t. \quad C \subseteq U
+$$
+$$
+|C| \leq k.
+$$
+\end{definition_exam}
+
+We now define the greedy algorithm to solving this problem.
+
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{k, U, $\mathcal{S}$}
+\KwOut{A collection of sets $C \subseteq \mathcal{S}$}
+C $\gets \emptyset$\;
+
+
+\While{$|C| < k$}{
+  $x \in \mathcal{S} \gets$ element maximising $f(C \cup x) - f(C)$\;
+  $C \gets C \cup x$\;
+}
+\Return{C}\;
+\caption{{\sc GREEDY Algorithm for Submodular Coverage}}
+\label{algo:duplicate}
+\end{algorithm}
+
+
+\begin{theorem_exam}{Approximation of GREEDY-Submodular algorithm}{}The GREEDY-Submodular algorithm is a $(1 - \frac{1}{e})$-approximation for the maximum coverage problem provided we can find an element x efficiently.
+\end{theorem_exam}
+
+
+
+\lecture{11}{Minimum Weight Submodular Cover}
+\section{Minimum Weight Submodular Cover}
+\section{Minimum Weight Submodular Cover}
+
+\subsection{Minimum Set Cover}
+
+We first define the ILP of set cover.
+\begin{definition_exam}{Minimum Set Cover}{}Let U be our ground set and $S_1,...,S_n$ be our sets. Furthermore, we assign the weight $w_i$ to every set $S_i.$ We let the variable $x_i$ be 1 if we select set $S_i$ and $x_i = 0$ otherwise.
+$$
+min \sum_{i=1}^nw_ix_i
+$$
+$$
+s.t. 
+\begin{cases}
+\sum_{i: v \in S_i}x_i \geq 1 \quad \forall v \in U\\
+x_i \leq 1 \quad \forall i \in \{1,...,n\}\\
+x_i \in \mathbb{N} \quad \forall i \in \{1,...,n\}.
+\end{cases}
+$$
+The linear program relaxation is when we set the last case to be $x_i \geq 0 \quad i \in \{1,...,n\}$.
+\end{definition_exam}
+
+\begin{definition_exam}{Minimum Set Cover}{}Let U be a ground set and $\mathcal{S} = \{S_1,...,S_m\}$ be a collection of subsets. Define $w: \mathcal{S} \rightarrow \mathbb{R}_{+}$ to be a weight function. The goal is to pick a minimum collection of subsets $C \subseteq \mathcal{S}$ whose union equals U 
+$$
+\min_{C} \quad W(C)
+$$
+$$
+s.t. \bigcup_{T \in C}T = U.
+$$
+\end{definition_exam}
+
+First, we analyse the case where $W(S_i) = 1$ for all $S_i \in S.$ Hence, we seek to maximise the cardinality of the collection C.
+
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{k, U, $\mathcal{S}$}
+\KwOut{A collection of sets $C \subseteq \mathcal{S}$}
+C $\gets \emptyset$\;
+
+\While{$|C| < |U|$}{
+  $S \in \mathcal{S} \gets$ subset maximising $|S$\textbackslash$\cup_{T \in C}T|$\;
+  $C \gets C \cup S$\;
+}
+\Return{C}\;
+\caption{{\sc GREEDY Algorithm for Cardinality}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{lemma}Let $X_i$ be the set of elements covered by GREEDY-CARDINALITY after i iterations. Then 
+$$
+|X_i| \geq |U|.\bigg(1 - \bigg(1 - \frac{1}{OPT} \bigg)^i \bigg).
+$$
+\end{lemma}
+
+\begin{theorem}The GREEDY-CARDINALITY algorithm is a $ln |U|$-approximation algorithm for the set cover problem.
+\end{theorem}
+
+\subsection{Minimum Weight Set Cover}
+We now extend upon the algorithm of the last version by now taking the set weights into account when building the solution. We now look at the cost pay per newly covered element.
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{w, U, $\mathcal{S}$}
+\KwOut{A collection of sets $C \subseteq \mathcal{S}$}
+C $\gets \emptyset$\;
+
+\While{$|C| < |U|$}{
+  $S \in \mathcal{S} \gets$ subset maximising $\frac{w(S)}{|S - \cup_{T \in C}T|}$\;
+  $C \gets C \cup S$\;
+}
+\Return{C}\;
+\caption{{\sc WEIGHTED GREEDY Algorithm}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{theorem_exam}{Weighted Greedy Algorithm Approximation}{}The WEIGHTED-GREEDY algorithm is a $H_{\Delta}$-approximation algorithm for the weighted set cover problem, where $\Delta = \max_{S \in \mathcal{S}}|S|.$
+\end{theorem_exam}
+
+Recall that $H_n$ is the nth harmonic number.
+
+\subsection{Minimum Weight Submodular Cover}
+First, we let U be a ground set. We define the function $f: 2^U \rightarrow \mathbb{R}$ and weight $w: U \rightarrow \mathbb{R}_{+}$. The goal is to pick $C \subseteq U$ such that $f(C) = f(U)$ and minimising $w(C) = \sum_{j \in C}w(j).$
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{w, U, $\mathcal{S}$}
+\KwOut{A collection of sets $C \subseteq \mathcal{S}$}
+C $\gets \emptyset$\;
+
+\While{$f(C) < f(U)$}{
+  $j \in U$ be an element minimising $\frac{w_j}{f(C + j) - f(C)}$\;
+  $C \gets C \cup j$\;
+}
+\Return{C}\;
+\caption{{\sc GREEDY SUBMODULAR Algorithm}}
+\label{algo:duplicate}
+\end{algorithm}
+
+We now analyse the performance of this algorithm, which \textbf{depends on the function f.}
+
+\begin{theorem_exam}{Integer submodular approximation}{} GREEDY-SUBMODULAR algorithm is a $H_{\Delta}-$approximation where 
+$$
+\Delta = \max_{j \in U}\bigg(f(\{j\}) - f(\emptyset) \bigg)
+$$
+when f is 
+\begin{enumerate}
+\item integer-valued;
+\item submodular;
+\item monotone non-decreasing.
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{theorem_exam}{Non-integer valued submodular approximation}{} GREEDY-SUBMODULAR is a $(1 + ln \Delta)$-approximation where 
+$$
+\Delta = \max_{j \in U}\frac{p_j}{\min S: p_j(S) > 0}
+$$
+and $p_j(S) = f(S+j) - f(S).$
+\end{theorem_exam}
+
+\subsection{Minimum Spanning Tree}
+Let $G = (V,E)$ be a connected graph with edge weights $w: E \rightarrow \mathbb{R}_{+}.$ We denote C(H) the collection of connected components of some graph H. For any subset of edges $S \subseteq E$, we define 
+$$
+f(S) = \sum_{A \in C(V,S)}\bigg(|A| - 1 \bigg).
+$$
+
+Note that $f(E) = n - 1$. Furthermore, for any subset $S \subseteq E$ such that $f(S) = n - 1$, this spans the vertex set.\\
+
+\begin{lemma}The function f defined above is submodular and monotone non decreasing.
+\end{lemma}
+
+The GREEDY-SUBMOULDAR algorithm is actually a generalisation of Kruskals' algorithm!
+
+\begin{theorem_exam}{GREEDY-SUBMODULAR for MST}{}The GREEDY-SUBMODULAR algorithm is a 1-approximation for the minimum weight spanning subgraph problem.
+\end{theorem_exam}
+
+
+\lecture{12}{Linear Programming Rounding}
+\section{Linear Programming Rounding}
+\section{Linear Programming Rounding}
+\subsection{Graph Partitioning Problems}
+We look at 3 problems.
+\begin{definition}(ST-cut problem). Given $s,t \in V$, we want to find $F \subseteq E$ such that s and t lies in distinct components of G\textbackslash F.
+\end{definition}
+\begin{definition}(Multiway-cut). Suppose we are given k terminals $t_1,...,t_k.$ We want $t_1,...,t_k$ to be in distinct components of G\textbackslash F.
+\end{definition}
+\begin{remark}The multiway-cut is a generalisation of the ST-cut where k = 1.
+\end{remark}
+
+\begin{definition}(Multiway). Suppose we are given terminal pairs $(s_1,t_1),...,(s_k,t_k)$. We want a partition $\pi$ such that $(s_i,t_i)$ are in distinct components for each i.
+\end{definition}
+
+\begin{remark}The multiway problem is a generalisation of the multiway cut problem if we let the pairs be every possible pair of combinations
+\end{remark}
+
+\subsection{LP relaxation for ST-cut}
+We now describe the setup for the LP relaxation of the ST-cut. We define the variables to be $x_e \forall e \in E$. We wish to minimise $\sum_{e}c_ex_e$ such that 
+$$
+\sum_{e \in P}x_e \geq 1 \quad \forall P \in P_{(s,t)}
+$$
+$$
+x_e \in \{0, 1\}
+$$
+where $P_{(s,t)}$ denotes the set of all ST-paths. This constraint says that for all ST paths, we need to remove at least one edge from the path in order to separate s and t.
+
+\begin{theorem_exam}{Separation oracle for ST-cut}{} The inequality 
+$$
+\sum_{e \in P}x_e \geq 1
+$$
+holds if and only if the shortest ST-path satisfies this.
+\end{theorem_exam}
+
+\begin{remark}As a result, we only need to look at the shortest path between ST to see whether if this constraint is satisfied.
+\end{remark}
+
+From this observation, we can recast the original problem.
+
+\begin{theorem_exam}{ST-cut metric formulation}{} We denote the variables as $d_{u,v}$ for all $u, v \in V$ where $d_{u,v}$ is the distance of the shortest path under $x_e$ from u to v. Hence, our objective function is 
+$$
+\min \sum_{e}c_ed_e
+$$
+$$
+s.t. d_{u,v} \in [0,1]
+$$
+$$
+d_{s,t} \geq 1
+$$
+$$
+d_{u,v} \leq d_{u,w} + d_{w,v} \quad \forall u,v,w \in V.
+$$
+\end{theorem_exam}
+
+This new linear program formulation embeds the vertices into a metric space.
+\begin{lemma}The optimal value of the original linear program is the same as the optimal value of the modified metric linear program.
+\end{lemma}
+
+\begin{definition}(Cut metric). The variable $d_{u,v}$ is known as the \textbf{cut metric}. This satisfies the properties of a metric.
+\end{definition}
+
+\begin{lemma}Vertices being in the same component is a equivalence relation.
+\end{lemma}
+
+\subsection{Randomised Rounding for Metric Linear Programming}
+We now specify our randomised algorithm.
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{Graph G=(V,E) and cut metric $d_{u,v}$}
+\KwOut{A ST-cut $F \subseteq E$ of the graph}
+r $\gets$ radius from uniform (0,1) distribution\;
+F $\gets$ edges cut by balls $B(s,r)$ where s is the source\;
+
+\Return{F}\;
+\caption{{\sc Randomised Rounding for ST-cut LP}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{lemma}Let F be the cut from the randomised rounding algorithm. Then 
+$$
+\mathbb{E}\bigg\{c(F) \bigg\} \leq \sum_{e}c_ed_e
+$$
+where $\mathbb{E}$ is the expectation operator.
+\end{lemma}
+
+\begin{corollary}The ST-cut metric formulation is integral.
+\end{corollary}
+
+\subsection{Linear Programming for minimum multiway cut}
+We now define the linear program for the multiway cut.
+\begin{theorem_exam}{Multiway cut LP formulation}{}We define the LP formulation for the minimum multiway cut to be 
+$$
+\min \sum_{e}c_ed_e
+$$
+$$
+s.t. d_{t_{i}, t_{j}} \geq 1 \quad \forall 1 \leq i < j \leq k
+$$
+$$
+d_{u,v} \leq d_{u,w} + d_{w,v} \quad \forall u,v,w \in V
+$$
+$$
+d_{u,v} \in [0,1].
+$$
+\end{theorem_exam}
+
+We now define the randomised algorithm for the multiway cut.
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{Graph G=(V,E) and cut metric $d_{u,v}$}
+\KwOut{A multiway-cut $F \subseteq E$ of the graph}
+r $\gets$ radius from uniform $[0,\frac{1}{2})$ distribution\;
+$F_i$ $\gets$ edges cut by balls $B(t_i,r)$ where $t_i$ is the source\;
+F $\gets$ $F_1 \cup ... \cup F_k.$
+
+\Return{F}\;
+\caption{{\sc Randomised Rounding for multiway cut LP}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{lemma}Choosing $r \in [0,\frac{1}{2}]$ ensures that each ball is disjoint.
+\end{lemma}
+
+\begin{lemma}Let F be the cut from the randomised rounding multiway cut algorithm. Then 
+$$
+\mathbb{E}\bigg\{c(F) \bigg\} \leq 2\sum_{e}c_ed_e
+$$
+where $\mathbb{E}$ is the expectation operator.
+\end{lemma}
+
+The randomisation algorithm is a 2-approximation algorithm.
+
+\subsection{Linear Programming for minimum multi-cut}
+We now define the linear program for the minimum multi-cut.
+\begin{theorem_exam}{Multi-cut LP formulation}{}We define the LP formulation for the minimum multi cut to be 
+$$
+\min \sum_{e}c_ed_e
+$$
+$$
+s.t. d_{s_{i}, s_{i}} \geq 1 \quad \forall i
+$$
+$$
+d_{u,v} \leq d_{u,w} + d_{w,v} \quad \forall u,v,w \in V
+$$
+$$
+d_{u,v} \in [0,1].
+$$
+\end{theorem_exam}
+
+One issue now is that we cannot guarantee the balls we pick our algorithm will be disjoint.
+
+We now define the randomised algorithm for the multi cut.
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{Graph G=(V,E) and cut metric $d_{u,v}$}
+\KwOut{A multi-cut $F \subseteq E$ of the graph}
+r $\gets$ radius from uniform $[0,\frac{1}{2})$ distribution\;
+[K] $\gets$ random permutation\;
+$F_i$ $\gets$ edges cut by balls $B(s_i,r) \cap V$ where $s_i$ is the source\;
+F $\gets$ $F_1 \cup ... \cup F_k.$
+
+\Return{F}\;
+\caption{{\sc Randomised Rounding for multi cut LP}}
+\label{algo:duplicate}
+\end{algorithm}
+
+
+\begin{lemma}Let F be the cut from the randomised rounding multi cut algorithm. Then 
+$$
+\mathbb{E}\bigg\{c(F) \bigg\} \leq \mathcal{O}(log k)\sum_{e}c_ed_e
+$$
+where $\mathbb{E}$ is the expectation operator.
+\end{lemma}
+
+The randomisation algorithm is a log k approximation algorithm.
+\end{document}
+}
+}
+

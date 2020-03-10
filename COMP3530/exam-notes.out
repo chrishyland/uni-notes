@@ -1,0 +1,51 @@
+\BOOKMARK [1][-]{section.1}{Graph Theory}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Graph Theory}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Polyhedra Theory}{}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Introduction to Linear Programming}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Polyhedra Theory}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Simplex}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Optimality Conditions}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Simplex}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Linear Programming Applications}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Linear Programming Applications}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Duality Theory}{}% 11
+\BOOKMARK [2][-]{subsection.5.1}{Motivation}{section.5}% 12
+\BOOKMARK [2][-]{subsection.5.2}{Duality Theory}{section.5}% 13
+\BOOKMARK [2][-]{subsection.5.3}{Farkas Lemma}{section.5}% 14
+\BOOKMARK [1][-]{section.6}{Linear Programming Applications II}{}% 15
+\BOOKMARK [2][-]{subsection.6.1}{Playing Zero-Sum Games}{section.6}% 16
+\BOOKMARK [2][-]{subsection.6.2}{Bipartite Matching}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.3}{K\366nig's Theorem}{section.6}% 18
+\BOOKMARK [1][-]{section.7}{Integral Polyhedra}{}% 19
+\BOOKMARK [2][-]{subsection.7.1}{Totally Unimodular Matrices}{section.7}% 20
+\BOOKMARK [2][-]{subsection.7.2}{Properties of Totally Unimodular Matrices}{section.7}% 21
+\BOOKMARK [2][-]{subsection.7.3}{Alternative Characterisation of Totally Unimodular Matrices}{section.7}% 22
+\BOOKMARK [2][-]{subsection.7.4}{Subset Selection Problems}{section.7}% 23
+\BOOKMARK [1][-]{section.8}{Integer Programming}{}% 24
+\BOOKMARK [2][-]{subsection.8.1}{Introduction to Integer Programs}{section.8}% 25
+\BOOKMARK [2][-]{subsection.8.2}{Branch and Bound Framework}{section.8}% 26
+\BOOKMARK [2][-]{subsection.8.3}{Branch and Bound with Linear Programming}{section.8}% 27
+\BOOKMARK [2][-]{subsection.8.4}{Strengthening Linear Relaxations}{section.8}% 28
+\BOOKMARK [1][-]{section.9}{Large Scale Optimisation}{}% 29
+\BOOKMARK [2][-]{subsection.9.1}{TSP}{section.9}% 30
+\BOOKMARK [2][-]{subsection.9.2}{Large Number of Constraints}{section.9}% 31
+\BOOKMARK [2][-]{subsection.9.3}{Large Number of Variables}{section.9}% 32
+\BOOKMARK [2][-]{subsection.9.4}{Ellipsoid Algorithm}{section.9}% 33
+\BOOKMARK [2][-]{subsection.9.5}{Edge Colouring}{section.9}% 34
+\BOOKMARK [1][-]{section.10}{Lagrangian Relaxation}{}% 35
+\BOOKMARK [2][-]{subsection.10.1}{An introduction to Lagrangian Relaxation}{section.10}% 36
+\BOOKMARK [2][-]{subsection.10.2}{Unconstrainted Optimisation}{section.10}% 37
+\BOOKMARK [1][-]{section.11}{Maximum Submodular Coverage}{}% 38
+\BOOKMARK [2][-]{subsection.11.1}{Maximum Coverage}{section.11}% 39
+\BOOKMARK [2][-]{subsection.11.2}{Maximum Submodular Coverage}{section.11}% 40
+\BOOKMARK [1][-]{section.12}{Minimum Weight Submodular Cover}{}% 41
+\BOOKMARK [2][-]{subsection.12.1}{Minimum Set Cover}{section.12}% 42
+\BOOKMARK [2][-]{subsection.12.2}{Minimum Weight Set Cover}{section.12}% 43
+\BOOKMARK [2][-]{subsection.12.3}{Minimum Weight Submodular Cover}{section.12}% 44
+\BOOKMARK [2][-]{subsection.12.4}{Minimum Spanning Tree}{section.12}% 45
+\BOOKMARK [1][-]{section.13}{Linear Programming Rounding}{}% 46
+\BOOKMARK [2][-]{subsection.13.1}{Graph Partitioning Problems}{section.13}% 47
+\BOOKMARK [2][-]{subsection.13.2}{LP relaxation for ST-cut}{section.13}% 48
+\BOOKMARK [2][-]{subsection.13.3}{Randomised Rounding for Metric Linear Programming}{section.13}% 49
+\BOOKMARK [2][-]{subsection.13.4}{Linear Programming for minimum multiway cut}{section.13}% 50
+\BOOKMARK [2][-]{subsection.13.5}{Linear Programming for minimum multi-cut}{section.13}% 51

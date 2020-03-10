@@ -1,0 +1,3773 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref, graphicx}
+\graphicspath{ {./Images/} }
+
+\usepackage{tcolorbox}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf MATH3978: Differential Geometry
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+  []% init options
+  {theorem_exam}% name
+  {Theorem}% title
+  {%
+    colback=orange!5,
+    colframe=orange!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix
+
+
+\newtcbtheorem
+  []% init options
+  {definition_exam}% name
+  {Definition}% title
+  {%
+    colback=blue!5,
+    colframe=blue!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+
+\newtcbtheorem
+  []% init options
+  {proposition_exam}% name
+  {Proposition}% title
+  {%
+    colback=red!5,
+    colframe=red!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\newcommand{\Inf}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \inf_{#1}\;$}}}
+\newcommand{\Sup}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \sup_{#1}\;$}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+
+\newcommand\E{\mathbb{E}}
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+\title{MATH3978: Differential Geometry}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2019}
+
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%\lecture{**CHAPTER-NUMBER**}{**TITLE**}
+\lecture{0}{Vector Calculus in R3 Revision}
+\section{Vector Calculus Revision}
+\section{Vector Calculus Revision}
+\subsection{Vector Basics}
+
+In this section (unlike the rest of the notes), we will use the notation $\langle x,y \rangle$ to denote the vector with initial point at the origin and terminal point at (x,y). This is known as the \textbf{component form} of the vector.
+
+\begin{definition}(Norm). The norm or length of a vector is given by 
+$$
+||\langle x,y \rangle || = \sqrt{x^2 + y^2}.
+$$
+\end{definition}
+
+\begin{definition}(Unit vector). The unit vector in the direction of \textbf{v} is given by 
+$$
+u = \frac{1}{||\textbf{v}||}\textbf{v}.
+$$
+\end{definition}
+
+\begin{definition}(Distance). Let $(x_1,y_1,z_1)$ and $(x_2,y_2,z_2)$ be two points in $\mathbb{R}^3.$ Then, the distance between the two points is given by 
+$$
+D = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2 }.
+$$
+\end{definition}
+
+\begin{definition}(Function of several variables). A function of several variables is a function $f: \mathbb{R}^n \rightarrow \mathbb{R}.$
+\end{definition}
+
+
+\begin{definition}(Two-dimensional limits). Let $f(x,y)$ be a function defined near the point P. Then the limit of the function f at P, denoted by L, is defined to be 
+$$
+\lim_{\textbf{x} \rightarrow P}f(x,y) = L
+$$
+if for every $\epsilon > 0$, there exists an $\delta$ such that $|f(x,y) - L| < \epsilon$ for all points in $Ball(P, \delta).$
+\end{definition}
+
+\begin{definition}(Continuity). A function of several variables is continuous at a point P if the limit exists at P and the function defined at P is equal to this limit.
+\end{definition}
+
+We can define a particle position to be 
+$$
+\overline{r}(t) = f(t)\hat{i} + g(t)\hat{j} + h(t)\hat{k}
+$$
+where f,g,h are component functions of the vector. 
+
+\begin{definition}(Derivative of vector functions). Define the vector function 
+$$
+\overline{r}(t) = f(t)\hat{i} + g(t)\hat{j} + h(t)\hat{k}.
+$$
+We say that $\overline{r}$ is differentiable at t if f,g,h have derivatives at t. The derivative is the vector function 
+$$
+\overline{r}'(t) = \frac{dr}{dt} = \frac{df}{dt}\hat{i} + \frac{dg}{dt}\hat{j} + \frac{dh}{dt}\hat{k}.
+$$
+\end{definition}
+
+\begin{definition}Let r be the position vector of a particle moving along a smooth curve in space. Then 
+$$
+v(t) = \frac{dr}{dt}
+$$
+is the particle's velocity vector, tangent to the curve. Furthermore, the direction of v is the direction of motion, the magnitude of v is the particle's speed, and the derivative $a = \frac{dv}{dt}$ is the particle's acceleration vector.
+\end{definition}
+
+\begin{definition}(Equation of the plane). Let $\Sigma$ be a plane. Then a vector n is normal to the plane if it is orthogonal to every vector that lies on the plane. Suppose (a,b,c) and (x,y,z) are points on the plane. Then 
+$$
+n.\langle x-a,y-b,z-c \rangle = 0
+$$
+is the equation of the plane.
+\end{definition}
+
+\begin{lemma}The angle between two planes is given by the angle between the normal vectors of the plane.
+\end{lemma}
+
+\begin{definition_exam}{Tangent plane}{} Let F(x,y,z) define a surface that is differentiable at a point $(x_0,y_0,z_0).$ Then the tangent plane to F(x,y,z) at $(x_0,y_0,z_0)$ is the plane with the normal vector 
+$$
+\nabla F(x_0,y_0,z_0)
+$$
+that passes through the point $(x_0,y_0,z_0).$ In particular, the equation of the tangent plane is 
+$$
+\nabla F(x_0,y_0,z_0) . \langle x-x_0,y-y_0,z-z_0 \rangle = 0.
+$$
+\end{definition_exam}
+
+
+\begin{definition}(Normal line). Let F(x,y,z) define a surface that is differentiable at a point $(x_0,y_0,z_0)$. Then the normal line to F(x,y,z) at $(x_0,y_0,z_0)$ is the line with the normal vector 
+$$
+\nabla F(x_0,y_0,z_0)
+$$
+that passes through the point $(x_0,y_0,z_0).$ In particular, the equation of the normal line is 
+$$
+\begin{cases}
+x(t) = x_0 + F_x(x_0,y_0,z_0)t\\
+y(t) = y_0 + F_y(x_0,y_0,z_0)t\\
+z(t) = z_0 + F_z(x_0,y_0,z_0)t
+\end{cases}
+$$
+\end{definition}
+
+
+\begin{definition_exam}{Partial derivatives}{} Let $f(x,y)$ be a function of two variables. Then, we define the partial derivatives as 
+$$
+f_x = \frac{\partial f}{\partial x} = \lim_{h \rightarrow 0}\frac{f(x+h,y) - f(x,y)}{h}
+$$
+$$
+f_y = \frac{\partial f}{\partial y} = \lim_{h \rightarrow 0}\frac{f(x,y+h) - f(x,y)}{h}
+$$
+\end{definition_exam}
+
+\begin{theorem}Let $f(x,y)$ be a function with continuous second order derivatives. Then 
+$$
+f_{xy} = f_{yx}.
+$$
+\end{theorem}
+
+\begin{definition_exam}{Directional Derivatives}{} Let $f(x,y)$ be a differentiable function. Let \textbf{u} be a unit vector pointing in any direction. Then, the directional derivative of f in the direction of \textbf{u} is 
+$$
+D_uf(x,y) = \lim_{t \rightarrow 0}\frac{f(x + tu_1, y + tu_2) - f(x,y)}{t}.
+$$
+\end{definition_exam}
+
+\begin{remark}If we let \textbf{u} = $\hat{\textbf{i}}$, then the directional derivative is the partial derivative $f_x.$ Defining directional derivatives is coordinate free whereas for partial derivatives, we need to define the bases for the domain and range of the function. 
+\end{remark}
+
+\begin{definition_exam}{Gradient}{} The gradient of a scalar-valued differentiable function $f: \mathbb{R}^n \rightarrow \mathbb{R}$ is the vector field or vector-valued function $\nabla f: \mathbb{R}^n \rightarrow \mathbb{R}^n$ whose components are the partial derivatives of f at p 
+$$
+\nabla f(p) = \begin{bmatrix}
+\frac{\partial f}{\partial x_1}(p) \\
+...\\
+\frac{\partial f}{\partial x_n}(p) 
+\end{bmatrix}.
+$$
+\end{definition_exam}
+
+Now recall that the gradient is the vector 
+$$
+\nabla = \langle f_x, f_y \rangle.
+$$
+Then ,for any unit vector u, 
+$$
+D_uf(x,y) = (\nabla f).u.
+$$
+
+\begin{theorem}(Relationship between gradient and directional derivative). 
+\begin{enumerate}
+\item If $\nabla f(x,y) = 0$, then for all u, $D_uf(x,y) = 0.$
+\item The direction of $\nabla f(x,y)$ is the direction with maximal directional derivative
+\item The direction of $-\nabla f(x,y)$ is the direction with minimal directional derivative.
+\end{enumerate}
+\end{theorem}
+
+\subsection{Vector-Valued Functions and Motion in Space}
+\begin{definition}(Vector Valued Function). A vector valued function is a function where the domain is a subset of $\mathbb{R}$ and the range is a subset of $\mathbb{R}^n.$
+\end{definition}
+
+\begin{definition}(Limit of vector valued function). The limit of a vector valued function is found by taking the limit of each of its component.
+$$
+\lim_{t \rightarrow t_0}\textbf{r}(t) = (\lim_{t \rightarrow t_0}x(t))\hat{i} + (\lim_{t \rightarrow t_0}y(t))\hat{j} + (\lim_{t \rightarrow t_0}z(t))\hat{k}
+$$
+\end{definition}
+
+\begin{definition}(Continuous function). A vector valued function is continuous at $t_0$ if it is defined at $t_0$ and 
+$$
+\lim_{t \rightarrow t_0}r(t) = r(t_0).
+$$
+\end{definition}
+
+We now describe how to compute the length of a curve in $R^3$. First, we recall the arc-length of a curve in $\mathbb{R}^2.$
+
+\begin{definition}(Arc-length in the plane). Let $r(t) = (x(t),y(t))$ be a curve in the plane for $t \in [a,b]$. The arc-length is given by 
+$$
+L = \int_{a}^{b}\sqrt{\frac{dx}{dt}^2 + \frac{dy}{dt}^2}dt.
+$$
+\end{definition}
+
+Hence, for $\mathbb{R}^3$, we have that the arc length is just an extension
+$$
+L = \int_{a}^{b}\sqrt{\frac{dx}{dt}^2 + \frac{dy}{dt}^2 + \frac{dz}{dt}^2}dt
+$$
+where the term inside the square root is just the \textbf{magnitude of the velocity vector} r' = $\frac{dr}{dt}.$ 
+\begin{definition}(Arc-length in R3 space). Let $r(t) = (x(t),y(t),z(t))$ be a curve in $\mathbb{R}^3$ for $t \in [a,b]$. The arc-length is given by 
+$$
+L = \int_{a}^{b}\sqrt{|r'|}dt.
+$$
+\end{definition}
+\lecture{1}{Parameterised Curves}
+\section{Curves}
+\section{Curves}
+\subsection{Parameterised Curves}
+\begin{definition_exam}{Parameterised smooth curve}{} A parameterised smooth curve in $\mathbb{R}^n$ is a smooth map $\alpha: I \rightarrow \mathbb{R}^n$ from an open interval $I=(a,b)$ into $\mathbb{R}^n$.
+\end{definition_exam}
+\begin{remark}Two parameterised curves with the same trace $\alpha(I)$ but different parameterisation are not considered to be the same.
+\end{remark}
+
+There are two forms we can represent curves. We can represent it as a vector function 
+$$
+\alpha(t) = (x(t),y(t),z(t)).
+$$
+Alternatively, we can represent a curve with parameteric equations 
+$$
+\begin{cases}
+x = x(t)\\
+y = y(t)\\
+z = z(t)\\
+\end{cases}.
+$$
+
+\begin{definition_exam}{Reparameterised Curve}{} Let $\alpha:I \rightarrow \mathbb{R}^n$, $\beta: I' \rightarrow \mathbb{R}^n$ be parameterised smooth curves. $\beta$ is a reparameterisation of $\alpha$ if there is a smooth function $\phi: I' \rightarrow I$ with smooth inverse so that $$\beta = \alpha \circ \phi.$$
+\end{definition_exam}
+
+\begin{remark}A reparameterisation \textbf{does not} change the graph of a curve. It simply changes the speed of moving along the curve.
+\end{remark}
+
+The idea of having curves with different parameterisations (and parametric equations) represents the idea of different particles travelling the same path but may be doing so from different starting point or at different speeds.
+
+\begin{definition}(Velocity vector). $\alpha'(t)$ is called the velocity vector of $\alpha$ at t. That is, the vector tangent to $\alpha$ at t 
+$$
+\alpha'(t) = (x'(t),y'(t),z'(t)).
+$$
+\end{definition}
+
+\begin{definition}(Tangent Line). If $\alpha'(t) \neq 0$, then there is a unique line in $\mathbb{R}^n$ that contains the point $\alpha(t)$ and is parallel to $\alpha'(t)$; we call this the tangent line of $\alpha$ at t. That is, the tangent line is the set 
+$$
+\{\alpha(t) + \lambda \alpha'(t)| \lambda \in \mathbb{R}\}.
+$$
+\end{definition}
+
+The length of the tangent vector is known as the \textbf{speed}
+$$
+|\frac{d\alpha}{dt}|.
+$$
+
+\begin{definition_exam}{Arc length}{} The arc-length of parameterised smooth curve $\alpha: (a,b) \rightarrow \mathbb{R}^n$ after time $t \in (a,b)$ is
+$$
+s(t) = \int_a^b|\alpha'(u)|du = \int_{a}^b\sqrt{(x'(t))^2 + (y'(t))^2 + (z'(t))^2}dt.
+$$
+s(b) is called the arc-length of $\alpha$.
+\end{definition_exam}
+
+By the fundamental theorem of calculus, we have 
+$$
+s'(t) = |\alpha'(t)|.
+$$
+
+\begin{definition}(Regular). A parameterised smooth curve $\alpha: I \rightarrow \mathbb{R}^n$ is regular if $\alpha'(t) \neq 0$ for all $t \in I.$
+\end{definition}
+
+Regularity rules out pathalogical cases such as ensuring no jumps or sharp turns in our graph.
+
+\begin{lemma}A parameterisation by arc-length means that one is travelling at unit speed, i.e. $$|\alpha'(s)| = 1.$$
+\end{lemma}
+
+If the particle travels at the constant rate of one unit per second, then we say that the curve is parameterized by arc length.\\
+
+We are now interested in figuring out when does the inverse of a function exists and when it is differentiable.\\
+
+First, we suppose we had a differentiable function, which has a differentiable inverse. Then, we can give a formula that tells us what is the differential of the inverse function.
+
+\begin{theorem_exam}{Inverse Differential}{}Let $A \subseteq \mathbb{R}^n$ be an open set and let $c \in A.$ We define the function $f: A \rightarrow \mathbb{R}$ where f is differentiable at c. Suppose there exists open sets $U, V \subseteq \mathbb{R}^n$ such that $c \in U \subseteq A$ and $f(U) = V.$ Now, assume an inverse function exists $g: V \rightarrow \mathbb{R}^n$ which satisfies 
+\begin{enumerate}
+\item g is differentiable at f(c).
+\item $f \circ g = id_V$ and $g \circ f = id_U.$
+\end{enumerate}
+Then,
+$$
+D_{f(c)}g = \bigg(D_cf \bigg)^{-1}.
+$$
+\end{theorem_exam}
+
+The previous theorem held alot of assumptions which we now seek to relax. However, we note that the differential of the inverse is given in terms of the inverse of the differential. Hence, it makes intuitive sense on why we will require that we will require that the determinant of the Jacobian of f must be nonzero so that the inverse of the differential will exist. This gives us the inverse function theorem.
+
+\begin{theorem_exam}{Inverse function theorem}{} Let $W \subset \mathbb{R}^n$ be an open set and let $f: W \rightarrow \mathbb{R}^n$ be a smooth map. Suppose that at the point $a \in W$, the Jacobian $df(a)$ of f at a is invertible. Then, there are open neighbourhoods U of A and V of $b = f(a)$ such that $f|_U: U \rightarrow V$ is invertible with smooth inverse $f^{-1}.$
+\end{theorem_exam}
+
+\begin{remark}The inverse function theorem gives us a sufficient condition for a function to be invertible, and for that invertible function to be differentiable, in a neighbourhood of a point.
+\end{remark}
+
+As a result of the inverse function theorem, we get the following theorem.
+
+\begin{theorem_exam}{Regularity of curves for reparameterisation by arc length}{}Every regular curve can be reparameterised by arc length.
+\end{theorem_exam}
+
+One final conclusion of the inverse function theorem is that we also get a diffeomorphism by restricting f to U.
+\begin{proposition_exam}{}{}Let the map $f: U \rightarrow V$ be satisfy the conditions for the inverse function theorem. Then, $f|_U$ is a diffeomorphism onto its image.
+\end{proposition_exam}
+
+\lecture{2}{Curvature}
+\section{Curves}
+\subsection{Curvature}
+Let $\alpha: (a,b) \rightarrow \mathbb{R}^n$ be a regular smooth curve, parameterised by arc-length s. The derivative of the velocity vector is the acceleration vector 
+$$
+\alpha''(t) = (x''(t),y''(t),z''(t)).
+$$
+The acceleration vector has the same direction as the force needed to keep the particle on the curve.
+
+\begin{definition}(Unit length tangent vector). Let $\alpha$ be parameterised by arc-length. We define $t(s) = \alpha'(s)$ to be the unit length tangent (velocity) vector.
+\end{definition}
+
+\begin{definition_exam}{Curvature and Unit Normal Vector}{} We define 
+$$
+\alpha''(s) \coloneqq k(s)n(s)
+$$
+where $k(s) = |\alpha''(s)|$ and $n(s) = \frac{\alpha''(s)}{|\alpha''(s)|}$.  k(s) is called the curvature of $\alpha$ at s. n(s) is known as the unit normal vector.
+\end{definition_exam}
+
+\begin{remark}The curvature measures the size of the rate of change of the velocity vector. Hence, the length of the acceleration vector is the curvature.
+\end{remark}
+
+The curvature of a regular curve at a point is the magnitude of the acceleration needed to traverse it at unit speed.\newline
+
+Note that when computing the unit normal and curvature, we either required $\alpha$ with arc-length parameterisation. But what if we can't? The following says what we can do.
+\begin{proposition_exam}{Computing acceleration without arc-length}{} Let $\alpha(u)$ be a curve not parameterised by arc-length and let $\alpha'$ be the velocity vector and t be the unit velocity vector. We want $\frac{dt}{ds}$ to get acceleration. First, use 
+$$
+\frac{ds}{du} = |\alpha'(u)|.
+$$
+Then 
+$$
+\frac{dt}{ds} = \frac{dt}{du}\frac{du}{ds}
+$$
+where $\frac{du}{ds} = k(u)$ and $\frac{dt}{du} = n(u)$ where n is our normal vector.
+\end{proposition_exam}
+
+\begin{proposition_exam}{Acceleration is orthogonal to velocity vector}{}
+When a curve is parameterised by arc-length, we always have that the acceleration vector is orthogonal to the velocity vector. That is $\langle t, n \rangle = 0.$
+\end{proposition_exam}
+
+\begin{lemma}For a circle in the plane, the curvature can also be computed by $\frac{1}{\text{radius of circle}}$.
+\end{lemma}
+
+\begin{theorem}(Curvature in non-unit-speed parametrizations). Let $\alpha$ not be parameterised by arc length. Then, the curvature can be computed by 
+$$
+k = \frac{|\alpha' \times \alpha''|}{|\alpha'|^{3}}.
+$$
+\end{theorem}
+
+\begin{theorem_exam}{Differentiating inner product and norms}{}Let v and w be vectors.
+$$
+\frac{d}{dt}\langle v(t), w(t) \rangle = \langle v'(t), w(t) \rangle + \langle v(t), w'(t) \rangle.
+$$
+Additionally, 
+$$
+\frac{d}{dt}|v(t)| = \frac{d}{dt}\sqrt{v(t).v(t)} = \frac{\langle v'(t), v(t) \rangle}{|v(t)|}.
+$$
+\end{theorem_exam}
+
+
+\begin{definition_exam}{Osculating Plane}{} If $n(s) \neq 0$, then the plane spanned by unit tangent vector $t(s)$ and unit normal vector $n(s)$ is called the osculating plane of $\alpha$ at s.
+\end{definition_exam}
+
+\begin{remark}Geometrically, we can think of finding the curvature of a plane curve by considering the family of circles tangent to it at s and having the curvature k(s) be the curvature of the unique circle that fits $\alpha$ to second order at s. The (unique) circle that satisfies this is known as the \textbf{osculating circle}.
+\end{remark}
+
+\begin{lemma}
+Let $\alpha$ be a regular planar curve. Then, $\alpha$ lies in the osculating plane.
+\end{lemma}
+
+We select the unit normal $n_0(s)$ to point in the direction such that the basis $(t, n_0)$ of $\mathbb{R}^2$ has the same orientation as the standard basis $(e_1,e_2)$. That is, the change of basis matrix M 
+$$
+\begin{bmatrix}
+t\\
+n_0
+\end{bmatrix}
+= M 
+\begin{bmatrix}
+e_1\\
+e_2
+\end{bmatrix}
+$$
+has a positive determinant. The unit normal $n_0(s)$ agrees with $n(s)$ except possibly by a change in sign.
+
+\begin{lemma}The matrix $M \in SO(n)$ whereby it is a special orthogonal matrix. That is, it is a $n \times n$ square matrix that is an orthogonal matrix and has a determinant of 1.
+\end{lemma}
+
+\begin{remark}The family of matrices that rotates a vector by an angle $\theta$ is 
+$$
+SO(2) = \bigg\{ \begin{bmatrix}cos \theta && -sin \theta \\sin \theta && cos \theta \end{bmatrix}: \theta \in \mathbb{R} \bigg\}
+$$
+which are $2 \times 2$ special orthogonal matrices.
+\end{remark}
+
+For curves in $\mathbb{R}^2$, we can give curvature a sign. Before, we chose our unit normal $n_0(s)$ to point in the direction of $\alpha''(s)$. Now, we make it such that our unit normal $n_0$ will ensure that the basis of $\mathbb{R}^2$ ($t, n_0$) will have the same orientation as the standard basis $(e_1,e_2).$ Hence, the change of basis matrix M will have positive determinant 
+$$
+\begin{bmatrix}
+t\\
+n_0
+\end{bmatrix}
+= M
+\begin{bmatrix}
+e_1\\
+e_2
+\end{bmatrix}.
+$$
+
+\begin{definition_exam}{Signed Curvature}{} The signed curvature $k_0(s)$ is given by 
+$$
+\alpha''(s) \coloneqq k_0(s)n_0(s)
+$$
+where $k_0$ is the signed curvature. \\
+\end{definition_exam}
+
+\lecture{3}{Frenet Equations and Fundamental Theorem}
+\section{Curves}
+\subsection{Frenet Equations and Fundamental Theorem}
+We assume that our curves are at most in $\mathbb{R}^3$. We are now interested in fully describing space curves. Hence, we need 3 basis vectors.
+
+\begin{definition_exam}{Binormal Vector}{} We define the binormal vector b(s) as 
+$$
+b(s) = t(s) \times n(s).
+$$
+\end{definition_exam}
+
+\begin{remark}The binormal vector tells us the direction in which the curve departs from being a planar curve.
+\end{remark}
+
+\begin{lemma}The binormal vector is of unit length.
+\end{lemma}
+
+\begin{proof} Obvious because t and n are of unit length.
+\end{proof}
+
+
+\begin{lemma}The derivative $b' = \frac{db}{dt}$ is orthogonal to b. Furthermore, b' is a scalar multiple of the normal vector n.
+\end{lemma}
+
+\begin{definition}(Normal plane). The plane spanned by $\{n, b\}$ is called the normal plane.
+\end{definition}
+
+\begin{definition_exam}{Frenet Frame}{} The basis $\{t(s), n(s), b(s)\}$ is called the Frenet frame of $\alpha$.
+\end{definition_exam}
+
+\begin{remark}The Frenet frame is an \textbf{orthonormal basis} which changes as we move along the curve.
+\end{remark}
+
+We are now interested in computing the \textbf{torsion} $\tau.$ First, recall that $b = t \times n.$ Then, 
+$$
+b' = t'\times n + t \times n'.
+$$
+Subtituting in $t' = kn$ and since $n \times n = 0$, we get 
+$$
+b' = t \times n'.
+$$
+\begin{remark}b' is orthogonal to t and n'.
+\end{remark}
+
+Now, note that n is also orthogonal to t and n'. 
+\begin{lemma}The derivative of the binormal vector b' and the normal vector n are co-linear.
+\end{lemma}
+
+The proportionality constant of the relationship between b' and n is the \textbf{torsion}.
+
+\begin{definition_exam}{Torsion}{}We have that $$b'(s) = \langle \tau(s), n(s) \rangle$$ for some function $\tau$, which we call the $\textbf{torsion}$ of $\alpha$ at s. 
+\end{definition_exam}
+
+\begin{remark}The binormal vector indicates the direction in which the curve departs from being a planar curve. The torsion $\tau$ measures the extent at which the curve departs from being a plane curve. That is, how much does the \textbf{curve depart from the osculating plane}.
+\end{remark}
+
+If $\tau > 0$, then the curve twists \textbf{towards} the side that the binormal vector b points to.
+\begin{lemma}Let $\alpha$ be a planar curve. That is, the curve lies in the osculating plane. Then, the torsion $\tau = 0.$
+\end{lemma}
+
+\begin{lemma}Let $\tau = 0$ and $k \neq 0$. Then $b = const$ and the curve $\alpha$ lies in the plane normal to b as
+$$
+\langle \alpha', b \rangle = 0
+$$
+\end{lemma}
+
+\begin{remark}It is important that $k \neq 0$ or else we can still get nonplanar curves.
+\end{remark}
+The frenet frame $\{t,n,b\}$ with the curvature k and torsion $\tau$ provides a complete list of geometrical properties of the curve.
+
+\begin{definition_exam}{Frenet Equations}{} The Frenet equations are a system of first order differential equations given by 
+$$
+\begin{bmatrix} t' \\ n' \\ b' \end{bmatrix} = \begin{bmatrix}&&k&&\\-k&& &&-\tau \\ && \tau && \\ \end{bmatrix} \begin{bmatrix}t\\n\\b \end{bmatrix}
+$$
+where $k$ and $\tau$ are functions.
+\end{definition_exam}
+
+The fundamental theorem of differential geometry of curves states that a curve is \textbf{completely determined by its curvature and torsion alone.} As the Frenet equations are a system of differential equations, then, the theory of first order differential equations guarantees that the system has a unique solution for any value of initial conditions and any values of k and $\tau.$
+
+\begin{definition}(Translation). A translation by a vector w in $\mathbb{R}^3$ is a map $A: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ such that 
+$$
+A(v) = v + w
+$$
+for $v \in \mathbb{R}^3.$
+\end{definition}
+
+\begin{definition}(Orthogonal transformation). An orthogonal transformation is a map $T: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ such that 
+$$
+T(u)\cdot T(v) = u \cdot v
+$$
+for all $u,v \in \mathbb{R}^3.$
+\end{definition}
+
+\begin{definition}(Rigid motion). A rigid motion in $\mathbb{R}^3$ is a map $M: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ that is the composition of an orthogonal transformation and a translation with a positive determinant. That is, 
+$$
+M(v) = T(v) + c
+$$
+where $T: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ is an orthogonal transformation and $c \in \mathbb{R}^3.$
+\end{definition}
+
+\begin{proposition}The norm of a vector and the angle $\theta \in (0,\pi)$ between vectors are invariant under orthogonal transformations.
+\end{proposition}
+
+\begin{lemma}Arc-length, curvature, and torsion of a parameterised curve are invariant under rigid motions.
+\end{lemma}
+
+\begin{theorem_exam}{Fundamental Existence and Uniqueness Theorem for Curves}{} 1. If the curvature $k: I \rightarrow \mathbb{R}^+$ and torsion $\tau:I \rightarrow \mathbb{R}$ are smooth functions, then there exists a regular parameterised curve $\alpha:I \rightarrow \mathbb{R}^3$ with curvature $k$ and torsion $\tau$. \\
+2. The curve $\alpha$ is unique up to rigid motion; if $\tilde{\alpha}$ is another regular parameterised curve with the same curvature and torsion, then they differ by a rigid motion of $\mathbb{R}^3$, $$\tilde{\alpha} = \rho \alpha + c$$ for some special orthogonal transformation $\rho: \mathbb{R}^3 \rightarrow \mathbb{R}^3$ and constant vector c.
+\end{theorem_exam}
+
+
+
+\begin{lemma}A curve with constant curvature and zero torsion is a circle or part of it. A curve with constant curvature and constant torsion is a helix or part of it.
+\end{lemma}
+
+\begin{theorem}Let $\alpha$ be a regular curve. The following conditions are equivalent.
+\begin{enumerate}
+\item $\alpha$ is a planar curve.
+\item The torsion $\tau$ is identically zero and curvature is nowhere zero.
+\item The binormal vector b is constant.
+\end{enumerate}
+\end{theorem}
+
+\lecture{4}{Rotation index and theorem of turning tangents}
+\section{Curves}
+\subsection{Rotation Index}
+
+\begin{definition}(Curvature). Given a curve $\alpha(s)$, we can measure the change in curvature around a point as 
+$$
+ds = rd\theta
+$$
+$$
+d\theta = \frac{1}{r}ds = kds
+$$
+where r is the radius of the circle that fits the curve by a second degree approximation and $d\theta$ as the change in angle of the circle.
+\end{definition}
+
+\begin{definition}(Total curvature). The total curvature of the curve $\alpha$ is 
+$$
+k_{tot} = \int_a^bk_0(s)ds = \theta(b) - \theta(a).
+$$
+\end{definition}
+
+\begin{remark}When discussing curvature, we can think of mapping the normal to the curves to the unit circle and seeing the rotation it makes within the circle as the curvature.
+\end{remark}
+
+\begin{definition}(Closed curve). A curve $\alpha: [a,b] \rightarrow \mathbb{R}^2$ is closed if $\alpha(a) = \alpha(b).$
+\end{definition}
+
+\begin{definition}(Regular closed curve). A closed curve $\alpha: [a,b] \rightarrow \mathbb{R}^2$ is regular if 
+\begin{enumerate}
+    \item The curve is smooth;
+    \item $\alpha'(t) \neq 0$ for all t
+    \item $\alpha^{(n)}(a) = \alpha^{(n)}(b)$ for all $n \in \mathbb{Z}^+.$
+\end{enumerate}
+\end{definition}
+
+\begin{definition_exam}{Rotation Index}{} For a regular closed curve $\alpha$, let us define 
+$$
+\int_a^bk_0(s)ds = \theta(b) - \theta(a) = 2\pi n
+$$
+for some $n \in \mathbb{Z}$ since \textbf{t}(b) = \textbf{t}(a). n is called the \textbf{rotation index} of $\alpha: [a,b] \rightarrow \mathbb{R}^2.$
+\end{definition_exam}
+
+The rotation index tells us how many times we go around the curve.
+
+\begin{definition}(Turn-angle). We call a $\frac{\pi}{2}$ turn on the $\mathbb{R}^2$ plane as a turn angle $\tau = \frac{1}{4}$. One full rotation around the plane is a turn angle $\tau = 1.$
+\end{definition}
+
+
+\begin{definition_exam}{Winding number}{} The winding number $w_p(\alpha)$ of $\alpha$ with respect to $p \not \in \alpha(0,b)$ is defined by 
+$$
+w_p(\alpha) = \frac{1}{2\pi}(\phi(b) - \phi(a))
+$$
+where $\phi(s)$ is a continuous choice of angle for the vector $\alpha(s)$ - $p$.
+\end{definition_exam}
+
+\begin{remark}The point p is arbitrary and hence the winding number $w_p(\alpha)$ can vary depending on the point p.
+\end{remark}
+
+\begin{remark}Note that the rotation index/turning number of a curve looks at the number of rotations around the starting tangent vector whilst the winding number looks at the number of turns around the point of interest p.
+\end{remark}
+
+We will now show that the winding number $w_p(\alpha)$ is preserved under continuous deformations.
+\begin{definition_exam}{Homotopic Curves}{} Let $\alpha, \beta: [0, \ell] \rightarrow \mathbb{R}^n$ be continuous with $\alpha(0) = \beta(0) = p$ and $\alpha(\ell) = \beta(\ell) = q$. We say that $\alpha$ and $\beta$ are \textbf{homotopic} if there is a continuous map $H: [0, \ell] \times [0,1] \rightarrow \mathbb{R}^n$ such that 
+\begin{enumerate}
+    \item $H(s,0) = \alpha(s)$ and $H(s,1) = \beta(s)$ for all $s \in [0, \ell]$;
+    \item $H(0,t) = p$ and $H(\ell, t) = q$ for all $t \in [0,1].$
+\end{enumerate}
+We call H a \textbf{homotopy} from $\alpha \rightarrow \beta$.
+\end{definition_exam}
+
+\begin{proposition_exam}{Rotation index of curves}{}The rotation index of $\alpha: [a,b] \rightarrow \mathbb{R}^2$ is the winding number of unit tangent vector \textbf{t}$: [a,b] \rightarrow \mathbb{R}^2$ with respect to the base point \textbf{p} = (0,0). 
+\end{proposition_exam}
+
+\begin{definition}(Regular homotopy). A homotopy is regular if continuous deformations of the tangent vector \textbf{t} does not cross (0,0).
+\end{definition}
+
+\begin{proposition_exam}{Winding number invariance}{}The winding number $w_p(\alpha)$ is preserved under homotopies.
+\end{proposition_exam}
+
+\subsection{Theorem of Turning Tangents for Regular Curves}
+
+\begin{definition}(Simple closed curve). A simple closed curve is a closed curve $\alpha$ with no self-intersections.
+\end{definition}
+
+
+\begin{definition}(Piecewise-regular). If $\alpha$ is regular except at finitely many points, it is said to be piecewise-regular.
+\end{definition}
+
+
+We can now state that any simple closed loop on a surface turns $2\pi$ radians.
+\begin{theorem_exam}{Theorem of Turning Tangent for Regular Curves}{} Let $\alpha: [0, \ell] \rightarrow \mathbb{R}^2$ be a regular simple closed curve, oriented anticlockwise. Then the rotation index of $\alpha$ is 1.
+\end{theorem_exam}
+
+
+
+\begin{theorem_exam}{Classification of curves via winding numbers}{} 2 regular curves have the same rotation index if and only  if they are regularly homotopic.
+\end{theorem_exam}
+
+
+\lecture{5}{Basic Topology}
+\section{Curves}
+\subsection{Basic Topology}
+\begin{definition}(Open ball). The open ball $B_r(p_) \subseteq \mathbb{R}^n$ centered at $p = (p_1,...,p_n)$ of radius r is 
+$$
+B_r(p) = \{x \in \mathbb{R}^n: |x - p| < r\}.
+$$
+\end{definition}
+
+\begin{definition}(Open set). A set $U \subset \mathbb{R}^n$ is open if for each $p \in U$, there is an $r > 0$ such that 
+$$
+B_r(p) \subset U.
+$$
+\end{definition}
+
+\begin{definition}(Open Neighbourhood). An open set containing $p \in \mathbb{R}^n$ is said to be an open neighbourhood of p.
+\end{definition}
+
+\begin{proposition}Open sets in $\mathbb{R}^n$ have the following properties:
+\begin{enumerate}
+    \item $\emptyset$ and $\mathbb{R}^n$ are open sets;
+    \item The union of arbitrary collection of open sets is open;
+    \item The intersection of finitely many open sets is open.
+\end{enumerate}
+\end{proposition}
+
+
+\begin{definition}(Closed set). A set $U \subset \mathbb{R}^n$ is closed if its complement $U^c = \mathbb{R}^n$ \textbackslash U is open.
+\end{definition}
+
+\begin{proposition}Closed sets in $\mathbb{R}^n$ have the following properties:
+\begin{enumerate}
+    \item $\emptyset$ and $\mathbb{R}^n$ are closed sets;
+    \item The union of finitely collection of closed sets is closed;
+    \item The intersection of arbitrary many closed sets is closed.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}A set $U \subset \mathbb{R}^n$ is closed if and only if every convergent sequence $\{x_k\}$ with $x_k \in U$ has its limit in U.
+\end{proposition}
+
+
+\begin{definition}(Relatively open). Let $X \subset \mathbb{R}^n$. A subset $U \subset X$ is relatively open in X if for each $p \in U$, there exists $r > 0$ such that $$B_r(p) \cap X \subset U.$$
+\end{definition}
+
+\begin{proposition}$U \subset X \subset \mathbb{R}^n$ is relatively open in X if and only if it is the intersection of X with an open set in $\mathbb{R}^n.$
+\end{proposition}
+
+\begin{definition}A function $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ is continuous at $p \in \mathbb{R}^n$ if for each $\epsilon > 0$, there exists $\delta > 0$ such that 
+$$
+f(B_{\delta}(p)) \subset B_{\epsilon}(f(p)).
+$$
+\end{definition}
+
+\begin{definition}Let $ U \subset \mathbb{R}^n$ be open. A function $f: U \rightarrow \mathbb{R}^m$ is continuous if it is continuous at every point in U.
+\end{definition}
+
+\begin{definition}Let $ U \subset \mathbb{R}^n$ be an arbitrary set. A function $f: U \rightarrow \mathbb{R}^m$ is continuous if it is the restriction of a continuous function on an open set containing A.
+\end{definition}
+
+\begin{proposition}Let $U \subset \mathbb{R}^n$ be open. A function $f: U \rightarrow \mathbb{R}^m$ is continuous if and only if whenever $V \subset \mathbb{R}^m$ is open, $f^{-1}(V)$ is also open.
+\end{proposition}
+
+\begin{proposition}Let $U \subset \mathbb{R}^n$ be an open set. A function $f: U \rightarrow \mathbb{R}^m$ is continuous if and only if all the component functions $f_i: \mathbb{R}^n \rightarrow \mathbb{R}$ where $f = (f_1,...,f_m)$ are continuous.
+\end{proposition}
+
+\begin{definition}(Disconnected). A set $U \subset \mathbb{R}^n$ is disconnected if it may be written as the union of two disjoint nonempy relatively open sets. It is connected if it is not disconnected.
+\end{definition}
+
+\begin{theorem}(Heine-Borel Theorem). Let $[a,b]$ be a closed interval and $I_{\gamma}$ be a collection of open intervals so that $$[a,b] \subset \bigcup_{\gamma}I_{\gamma}.$$ Then there is a finite subcollection $I_{\gamma 1}, ..., I_{\gamma n}$ so that 
+$$
+[a,b] \subset I_{\gamma 1} \cup ... \cup I_{\gamma n}.
+$$
+\end{theorem}
+
+\begin{theorem_exam}{General Heine-Borel}{} Let $K \subset \mathbb{R}^n$ be a closed and bounded set. Let $\{U_{\alpha}\}$ be a collection of open sets that cover K,
+$$
+K \subseteq \bigcup_{\alpha}U_{\alpha}
+$$
+then there is a finite subcollection that also covers K (i.e. K is compact)
+$$
+K \subseteq U_1 \cup U_2 \cup ... \cup U_n.
+$$
+\end{theorem_exam}
+
+
+\begin{definition}(Smooth). Let $U \subset \mathbb{R}^n$ be open. A function $f: U \rightarrow \mathbb{R}^m$ is smooth if all of its component functions have continuous partial derivatives of all orders.
+\end{definition}
+
+\begin{definition}(Derivative). Let $f: \mathbb{R} \rightarrow \mathbb{R}$. The function f is differentiable at a point c if there exists $f'(c) \in \mathbb{R}$ such that 
+$$
+\lim_{h \rightarrow 0}\frac{f(c+h) - f(c) - f'(c)h}{h} = 0.
+$$
+In other words, we can write a \textbf{linear approximation} $f(c+h) \approx f(c) + f'(c)h.$
+\end{definition}
+
+\begin{definition_exam}{Differential}{} Let $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ and let $c \in \mathbb{R}^n.$ The function f is differentiable at c if and only if there exists a unique linear transformation $D_cf: \mathbb{R}^n \rightarrow \mathbb{R}^m$ such that 
+$$
+\lim_{h \rightarrow 0}\frac{|f(c+h) - f(c) - (D_cf)(h)|}{|h|} = 0.
+$$
+$D_cf$ is known as the differential of f at c.\\ If f is defined only on some open set $U \subset \mathbb{R}^n$ containing c, a similar definition can be made.
+\end{definition_exam}
+
+\begin{remark}We can think of the point c as the origin of the basis of the unit vector $e_1,...,e_n.$
+\end{remark}
+
+\begin{definition_exam}{Jacobian Matrix}{} The Jacobian matrix associated to $D_cf$ is the matrix 
+$$[D_cf] = 
+\begin{bmatrix}
+\langle e_1, (D_cf)(e_1) \rangle  & ... & \langle e_1, (D_cf)(e_n) \rangle\\
+\langle e_2, (D_cf)(e_1) \rangle  & ... & \langle e_2, (D_cf)(e_n) \rangle\\
+\vdots & \vdots & \vdots \\
+\langle e_m, (D_cf)(e_1) \rangle  & ... & \langle e_m, (D_cf)(e_n) \rangle\\
+\end{bmatrix}.
+$$
+\end{definition_exam}
+
+\begin{theorem_exam}{Chain Rule}{} Let $A \subset \mathbb{R}^p$, $B \subset \mathbb{R}^n$. Let $c \in A$. Let $f: A \rightarrow B$ and $g: B \rightarrow \mathbb{R}^m$ with f differentiable at c and g differentiable at f(c). Then $g \circ f$ is differentiable at c and 
+$$
+D_c(g \circ f) = D_{f(c)}g \circ D_cf.
+$$
+\end{theorem_exam}
+
+
+\begin{definition}(Revised Differential). Let $U \subset \mathbb{R}^n$ be open and $f: U \rightarrow \mathbb{R}^m$ be a smooth function. The differential of f at $p \in U$ is a linear map 
+$$
+df_p: \mathbb{R}^n \rightarrow \mathbb{R}^m
+$$
+defined as follows: take $w \in \mathbb{R}^n$, and let $\alpha: (-\epsilon, \epsilon) \rightarrow U$ be a smooth curve so that $\alpha(0) = p$ and $\alpha'(0) = w$. Then 
+$$
+df_p(w) = (f \circ \alpha)'(0).
+$$
+\end{definition}
+
+\begin{proposition}$df_p$ is a well-defined linear map, and with respect to the standard bases is given by the matrix 
+$$
+df_p \coloneqq 
+\begin{bmatrix}
+\frac{\partial f^1}{\partial x_1}(p) & ... & \frac{\partial f^1}{\partial x_n}(p)\\
+... & ... & ...\\
+\frac{\partial f^m}{\partial x_1}(p) & ... & \frac{\partial f^m}{\partial x_n}(p)\\
+\end{bmatrix}.
+$$
+\end{proposition}
+
+\begin{proposition}(Revised Chain Rule). If $f: \mathbb{R}^n \rightarrow \mathbb{R}^m$ and $g: \mathbb{R}^m \rightarrow \mathbb{R}^k$ are smooth mappings, then so is $g \circ f$, and for $p \in \mathbb{R}^n$
+$$
+d(g \circ f)_p = dg_{f(p)}df_p.
+$$
+\end{proposition}
+
+\begin{theorem}Let $f: U \subset \mathbb{R}^n \rightarrow \mathbb{R}$ be a differentiable function defined on a connected open subset $U \subset \mathbb{R}^n$. Assume that $df_p: \mathbb{R}^n \rightarrow \mathbb{R}$ is zero at every point $p \in U$. Then f is constant on U.
+\end{theorem}
+
+\begin{theorem_exam}{Implicit Function Theorem}{} Let $F: W \subset \mathbb{R}^{m} \times \mathbb{R}^n \rightarrow \mathbb{R}^n$. Suppose F is a smooth map and that for $(a, b) \in W$, 
+$$
+\begin{bmatrix}
+\frac{\partial F^1}{\partial y_1}(a,b) & ... & \frac{\partial F^1}{\partial y_n}(a,b)\\
+\\
+\vdots & \vdots & \vdots\\\\
+\frac{\partial F^n}{\partial y_1}(a,b) & ... & \frac{\partial F^n}{\partial y_n}(a,b)\\
+\end{bmatrix}
+$$
+is invertible. We define $c = F(a,b)$. Then there are open neighbourhoods $U \subset \mathbb{R}^m$ of a and $V \subset \mathbb{R}^n$ of b and a smooth map $g: U \rightarrow V$ so that for $(x,y) \in U \times V$, we have 
+$$
+F(x,y) = c \leftrightarrow y = g(x).
+$$
+\end{theorem_exam}
+
+\begin{remark}
+Hence, we have a neighbourhood in which we can write the vector \textbf{y} as a function of the vector \textbf{x} or vice versa. Furthermore, this map $g: (x_1,...,x_m) \rightarrow (y_1,...,y_n)$ is smooth.
+\end{remark}
+
+\begin{theorem}(Linear Implicit Function Theorem). Given \textbf{n} linear equations with \textbf{m + n variables}, if the rank of the coefficient matrix is n, then we have m free variables and we can solve uniquely for the remaining n pivot variables in terms of the m free variables.
+\end{theorem}
+
+Hence, if $F: \mathbb{R}^{n + m} \rightarrow \mathbb{R}^n$ and it has rank n, then we can solve uniquely for $y_1,...,y_n$ in terms of $x_1,...,x_m.$
+
+We revise a few things from linear algebra before moving onto defining regular surfaces.
+
+\begin{proposition}Let $A: \mathbb{R}^m \rightarrow \mathbb{R}^n$ be a linear map. Denote the matrix of A as [A] with respect to the standard bases. Then, the following properties are the same value as the rank of [A]:
+\begin{enumerate}
+    \item Number of linearly independent columns of [A];
+    \item Number of linearly independent rows of [A];
+    \item Dimension of the image of A;
+    \item The column space of [A].
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition_exam}{Surjectivity of linear maps}{}A linear map $A: \mathbb{R}^{n+m} \rightarrow \mathbb{R}^n$ is surjective if and only if [A] has rank n.
+\end{proposition_exam}
+
+\begin{theorem}(Rank-Nullity Theorem). Suppose 
+$$
+A: \mathbb{R}^m \rightarrow \mathbb{R}^n
+$$
+is linear, then 
+$$
+\text{dim image(A) + dim ker(A) = m}
+$$
+or 
+$$
+\text{rank + nullity = number of columns.}
+$$
+\end{theorem}
+
+\begin{proposition_exam}{Injectivity of linear maps}{}A linear map $A: \mathbb{R}^n \rightarrow \mathbb{R}^{n+m}$ is injective if and only if [A] has rank n, where [A] is the matrix of A with respect to the standard bases.
+\end{proposition_exam}
+
+Hence, checking the rank of $d\phi_q$ will tell us whether is it injective. We now revisit the definition of a surface from vector calculus.\newline
+\lecture{6}{Regular Surfaces}
+\section{Regular Surfaces}
+\section{Regular Surfaces}
+\subsection{Regular Surfaces}
+
+
+\begin{definition}(Parameterised surface). A parameterised surface in $\mathbb{R}^3$ is a smooth mapping 
+$$
+\phi: U \rightarrow \mathbb{R}^3
+$$
+where U is an open set in $\mathbb{R}^2$. $\phi$ is regular if 
+$$
+d\phi_p: \mathbb{R}^2 \rightarrow \mathbb{R}^3
+$$
+is injective for all $p \in U$, i.e. $\{\frac{\partial \phi}{\partial u}, \frac{\partial \phi}{\partial v}\}$ are linearly independent where in terms of coordinates, $\phi$ takes the form 
+$$
+\phi(u, v) = (\phi_1(u,v), \phi_2(u, v), \phi_3(u,v)).
+$$
+\end{definition}
+
+\begin{proposition_exam}{Existence of tangent planes}{}The regularity of $\phi$ ($\{\frac{\partial \phi}{\partial u}, \frac{\partial \phi}{\partial v}\}$ are linearly independent) guarantees the existence of a tangent plane at each point $p.$
+\end{proposition_exam}
+
+The definition of a parameterised surface is not good enough for what we will need. For example, the sphere cannot be covered by one single regular $\phi.$ Hence, we will need a collection of coordinate charts covering the surface.
+
+\begin{definition}(Homeomorphism). Let $U \subset \mathbb{R}^n$ be an open set. We say that $\phi: U \rightarrow \mathbb{R}^m$ is a homeomorphism onto its image if it is continuous and has continuous inverse.
+\end{definition}
+
+\begin{definition_exam}{Regular surface}{} A subset $\Sigma \subset \mathbb{R}^3$ is a regular surface if for each $p \in \Sigma$, there exists a neighbourhood V of p in $\mathbb{R}^3$ and a map 
+$$
+\phi: U \rightarrow V \cap \Sigma
+$$
+from an open set $U \subset \mathbb{R}^2$ onto $V \cap \Sigma$ such that 
+\begin{enumerate}
+\item $\phi$ is smooth;
+\item $\phi$ is a homeomorphism;
+\item for each $q \in U$, $d\phi_q: \mathbb{R}^2 \rightarrow \mathbb{R}^3$ is one to one (Regularity condition).
+\end{enumerate}
+$\phi$ is called a \textbf{local parameterisation/local coordinate/coordinate chart} near p, and $V \cap \Sigma$ is called a \textbf{coordinate neighbourhood} of p.
+\end{definition_exam}
+
+\begin{remark}We don't require the inverse to be differentiable as we currently have a topological structure on the surface. Furthermore, the second property enables to ensure that there are no self-intersections in regular surfaces.
+\end{remark}
+
+
+To elaborate on the third point, suppose we are looking at a point $q \in U \subset \mathbb{R}^2.$ Let $\phi(u,v) \rightarrow (x,y,z).$ Then, we define the matrix of the linear map of $d\phi_q$ as 
+$$
+d\phi_q = 
+\begin{bmatrix}
+\frac{\partial x}{\partial u} & \frac{\partial x}{\partial v}\\
+\frac{\partial y}{\partial u} & \frac{\partial y}{\partial v}\\
+\frac{\partial z}{\partial u} & \frac{\partial z}{\partial v}\\
+\end{bmatrix}
+$$
+
+Hence, we then check that either $d\phi_q$ has linearly independent columns or that 
+$$
+\frac{\partial \phi}{\partial u} \wedge \frac{\partial \phi}{\partial v} \neq 0.
+$$
+
+Checking to see if $\Sigma$ is a regular surface can take a while using the above definition. The following is a way to verify regular surfaces in a faster manner.
+
+\begin{proposition_exam}{Graphs are Regular Surfaces}{} Let $U \subset \mathbb{R}^2$ be an open set and $f: U \rightarrow \mathbb{R}$ be a smooth function. Then the graph of f
+$$
+\{(x,y,f(x,y)): (x,y) \in U\}
+$$
+is a regular surface.
+\end{proposition_exam}
+
+\begin{definition_exam}{Regular/Critical Points and Regular/Critical Values}{} Let $F: U \subset \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n$ be a smooth map on the open set U. The point $p \in U$ is a \textbf{regular point} (critical point) of F if
+$$
+dF_p: \mathbb{R}^n \times \mathbb{R}^m \rightarrow \mathbb{R}^n
+$$
+is \textbf{surjective} (not surjective). The image $F(p)$ of a critical point is called a critical value of F. A point in $F(U) \subset \mathbb{R}^n$ which is not the image of any critical point is called a \textbf{regular value} of F.
+\end{definition_exam}
+
+\begin{remark}Recall in single-variable calculus, a critical point is a point where the derivative is 0. The above definition of critical point is a generalisation of this idea.
+\end{remark}
+
+
+\begin{lemma}The preimage of a regular value is locally a graph.
+\end{lemma}
+
+
+\begin{definition}(Level-set). Let $f: \mathbb{R}^n \rightarrow \mathbb{R}.$ Then, the level set of a constant $c \in \mathbb{R}$ is 
+$$
+L = \{(x,y,z): f(x,y,z) = c\}.
+$$
+\end{definition}
+
+We now note that at a point on our surface, the level set (pre-image) of the point is also locally a regular surface by the inverse function theorem with the fact that graphs are regular surfaces.
+
+\begin{proposition_exam}{Level Sets are Regular Surfaces}{} If $f: U \subset \mathbb{R}^3 \rightarrow \mathbb{R}$ is a smooth function and $a \in f(U)$ is a regular value of f, then $f^{-1}(a)$ is a regular surface in $\mathbb{R}^3.$
+\end{proposition_exam}
+
+We can apply this to the sphere where $x^2+y^2+z^2 = 1$, in other words, if the function is $F(x,y,z) = x^2+y^2+z^2$, then the sphere is the level set of 1. Every point is a regular value except for (0,0,0). Hence, the sphere is a regular surface.\\ 
+\begin{remark}Regular surfaces may not necessarily be connected.
+\end{remark}
+
+\begin{lemma}If $f: \Sigma \subset \mathbb{R}^3 \rightarrow \mathbb{R}$ is a nonzero continuous function defined on a connected surface $\Sigma$, then f does not change sign on $\Sigma.$
+\end{lemma}
+
+We now contrast the differences between regular and parameterised surfaces. For a parameterised surface, we have a single coordinate chart and allow for self intersections. Regular surfaces have multiple coordinate charts and does not allow for self intersections.
+
+
+
+\lecture{7}{Change of Parameters}
+\section{Regular Surfaces}
+\subsection{Change of Parameters}
+Regular surfaces are nice because we have local coordinates at every point. We can will see that any regular surface is locally the graph of a differentiable function via the inverse function theorem.
+\begin{definition}(Open Neighbourhood). An open neighbourhood V of p in $\Sigma$ is the intersection $\tilde{V} \cap \Sigma$ of $\Sigma$ with a neighbourhood $\tilde{V}$ of p in $\mathbb{R}^3.$
+\end{definition}
+
+\begin{definition}(Diffeomorphism). A map $f: U \rightarrow V$ between open sets is a diffeomorphism if it is smooth and has smooth inverse.
+\end{definition}
+
+\begin{proposition_exam}{Local parameterisation as Graph}{} Let $\Sigma \subset \mathbb{R}^3$ be a regular surface and $p \in \Sigma.$ Then there is an open neighbourhood V of p in $\Sigma$ so that V is the graph of a smooth function which has one of the following three forms:
+$$
+z = f(x,y) \quad y = g(x,z) \quad x = h(y,z).
+$$
+\end{proposition_exam}
+
+Now we can define what it means for a real-valued function defined on the surface to be differentiable.
+\begin{definition_exam}{Smooth Surface Function}{} Let $\Sigma$ be a surface. Let $f: V \subset \Sigma \rightarrow \mathbb{R}$ be a function defined in an open subset V of a regular surface $\Sigma$. Then, f is smooth at $p \in V$ if for some parameterization $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma$, the composition 
+$$
+U \xrightarrow{\phi} V \xrightarrow{f} \mathbb{R}
+$$
+is smooth at $\phi^{-1}(p)$.
+\end{definition_exam}
+
+\begin{remark}We will soon show that this is independent of the choice of parameterization, hence, this holds for any parameterization.
+\end{remark}
+
+
+\begin{definition}(Local Diffeomorphism). A map $f: U \subset \Sigma_1 \rightarrow V \subset \Sigma_2$ is a local diffeomorphism at $p \in U$ if there exists a neighbourhood $p \in V \subset U$ such that f is a diffeomorphism of V onto its image in $\Sigma_2.$
+\end{definition}
+
+\begin{remark}We can use the inverse function theorem to check whether a function between regular surfaces is a local diffeomorphism at a point p.
+\end{remark}
+
+Unlike curves, there is no canonical parameterisation of regular surfaces. Hence, it is important throughout the course that the definitions we make do not depend on the choice of parameterisation.
+
+\begin{proposition_exam}{Change of parameters}{} Let $\Sigma \subset \mathbb{R}^3$ be a regular surface, and suppose $p \in \Sigma$ is in the image of two local parameterisations, $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma$ and $\psi: V \subset \mathbb{R}^2 \rightarrow \Sigma$. Write $W = \phi(U) \cap \psi(V),$ Then 
+$$
+\psi^{-1}\circ\phi: \phi^{-1}(W) \rightarrow \psi^{-1}(W)
+$$
+is a diffeomorphism.
+\end{proposition_exam}
+
+Hence, we can now start defining things on surfaces, with the change of parameters proposition ensuring that it does not depend on the parameterisation.
+
+\begin{definition_exam}{Smooth Functions Between Surfaces}{}A map $f: \Sigma_1 \rightarrow \Sigma_2$ is smooth at $p \in \Sigma_1$ if for local coordinates $\phi_1: U_1 \subset \mathbb{R}^2 \rightarrow \Sigma_1$ near p and $\phi_2: U_2 \subset \mathbb{R}^2 \rightarrow \Sigma_2$ near $f(p)$ with $f(\phi_1(U_1)) \subset \phi_2(U_2)$, 
+$$
+\phi_2^{-1}\circ f \circ \phi_1
+$$
+is smooth at $\phi_1^{-1}(p).$
+\end{definition_exam}
+
+Hence, both these functions defined are independent of local coordinate systems.
+
+\lecture{8}{The Tangent Plane}
+\section{Regular Surfaces}
+\subsection{The Tangent Plane}
+
+We want the notion of a tangent vector for a surface without having to rely on the ambient space $\mathbb{R}^3.$ 
+\begin{definition_exam}{Tangent Vector}{} Let $\Sigma \subset \mathbb{R}^3$ be a regular surface and take $p \in \Sigma.$ A tangent vector to $\Sigma$ at p is the velocity vector $\alpha'(0)$ of some smooth parameterised curve $\alpha: (-\epsilon, \epsilon) \rightarrow \Sigma$ with $\alpha(0) = p.$
+\end{definition_exam}
+Notice that we still use the notion of the curve being in $\mathbb{R}^3$. We will remove the need for this later on in the course.
+\begin{definition_exam}{Tangent Plane}{} The set of all tangent vectors to $\Sigma$ at p is called the tangent plane to $\Sigma$ at p, and is denoted by $T_p\Sigma.$
+\end{definition_exam}
+We can send the entire $\mathbb{R}^2$ plane up to the surface by using the differential of the coordinate chart. This is what gives us the tangent plane. Due to the regularity conditions of the coordinate chart, this means it is injective and hence maps 2 dimensions to 2 dimensions.\\
+Recall that we define the differential of coordinate chart at a vector v in $\mathbb{R}^2$ by 
+$$
+d\phi_{(u^1,u^2)}(v) = (\phi \circ \alpha)'(0).
+$$
+
+\begin{proposition_exam}{Tangent Plane is a 2D Vector Space}{} Let $\Sigma$ be a regular surface and take $p \in \Sigma.$ The tangent plane $T_p\Sigma$ is a 2-dimensional linear subspace of $\mathbb{R}^3$, and is equal to $d\phi_{u^{1}, u^{2}}(\mathbb{R}^2) \subset \mathbb{R}^3$, for any local parameterisation $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma$ with $\phi(u^{1}, u^{2}) = p.$
+\end{proposition_exam}
+
+
+\begin{lemma}The differential $d\phi_{u^{1},u^{2}}$ does not depend on the parameterization $\phi$ and hence you can denote the tangent plane as $T_p\Sigma.$
+\end{lemma}
+
+We now define the basis of the tangent plane and that any tangent vector is a linear combination of the tangent basis.
+
+\begin{definition_exam}{Basis of tangent plane}{} Given a local parameterisation $\phi: U \rightarrow \Sigma$ with $\phi(u^1, u^2) = p$, write $e_1, e_2$ for the standard basis of $\mathbb{R}^2.$ Then 
+$$
+\phi_{u^{1}}(u^1, u^2) = \frac{\partial \phi}{\partial u^1}(u^1, u^2) = d\phi_{u^{1}, u^{2}}(e_1)
+$$
+$$
+\phi_{u^{2}}(u^1, u^2) = \frac{\partial \phi}{\partial u^2}(u^1, u^2) = d\phi_{u^{1}, u^{2}}(e_2)
+$$
+is called the \textbf{basis of the tangent plane} $T_p\Sigma$ associated to $\phi$. If $X \in T_p\Sigma$ is given by 
+$$
+X = a\phi_{u^{1}}(u^1, u^2) + b\phi_{u^{2}}(u^1,u^2)
+$$
+we call $(a,b)$ the \textbf{coordinates} of X with respect to $\phi$.
+\end{definition_exam}
+
+What we essentially are doing is sending the standard basis in $\mathbb{R}^2$ $\{e_1,e_2\}$ into the basis of $T_p\Sigma$ $\{\phi_{u^{1}}(u^1,u^2),\phi_{u^{2}}(u^1,u^2)\}.$
+
+\begin{proposition_exam}{Coordinates of tangent vectors}{}Let $X \in T_p\Sigma$ and let (a,b) be the coordinates of X with respect to $\phi$, where $\phi(u_0^1,u_0^2) = p.$ Then, we have that 
+$$
+(a,b) = \bigg(u^{1'}(0), u^{2'}(0)\bigg)
+$$
+where $u^{1'}(0) = \frac{du^1}{dt}$ and $u^{2'}(0) = \frac{du^2}{dt}$.
+\end{proposition_exam}
+
+
+We can now extend this notion to what we mean by the differential of a map between surfaces.
+\begin{definition_exam}{Differential of a smooth map between surfaces}{} Let $f: \Sigma \rightarrow \tilde{\Sigma}$ be a smooth map with $f(p) = \tilde{p}$. The differential $df_p$ of f at p is a linear map 
+$$
+df_p: T_p\Sigma \rightarrow T_{\tilde{p}}\tilde{\Sigma}
+$$
+to define $df_p(X)$, take a smooth curve $\alpha: (-\epsilon, \epsilon) \rightarrow \Sigma$ with $\alpha(0) = p$ and $\alpha'(0) = X$ and set 
+$$
+df_p(X) = (f \circ \alpha)'(0).
+$$
+\end{definition_exam}
+
+We can represent this function with a matrix in terms of the basis of the first surface.
+
+\begin{proposition}Let $f: \Sigma \rightarrow \tilde{\Sigma}$ be a smooth map and take $p \in \Sigma$. 
+\begin{enumerate}
+    \item The differential $df_p$ defined above is a well defined linear map.
+    \item Let $\phi$, $\tilde{\phi}$ be local parameterisations of $\Sigma$, $\tilde{\Sigma}$ about p, f(p). Writing $\phi^{-1} = (u^1, u^2)$, $\tilde{\phi}^{-1} = (\tilde{u}^1, \tilde{u}^2)$ and $\tilde{\phi}^{-1} \circ f = (f^1, f^2)$, the matrix of $df_p$ with respect to the bases $(\phi)_{u^{1}}$ and $(\tilde{\phi})_{\tilde{u}^{1}}$ is 
+    $$
+    \begin{bmatrix}
+    \frac{\partial f^1}{\partial u^1}(q) & \frac{\partial f^1}{\partial u^2}(q)\\
+    \frac{\partial f^2}{\partial u^1}(q) & \frac{\partial f^2}{\partial u^2}(q)
+    \end{bmatrix}
+    $$
+    where $q = \phi^{-1}(p).$
+\end{enumerate}
+\end{proposition}
+
+
+
+\lecture{9}{Riemannian Metrics and First Fundamental Form}
+\section{Regular Surfaces}
+\subsection{Bilinear and Quadratic Forms}
+
+We now want to be able to incorporate the notion of inner products onto our surface. However, recall that inner products are only defined on vector spaces, not surfaces. Hence, we will now be able to use the tangent spaces, which we have shown to be vector spaces, as the vector space in which to define the inner product on. This will come to be known as the Riemannian metric.
+
+
+\begin{definition_exam}{Bilinear Form}{} A bilinear form B on the vector space V is a map $B: V \times V \rightarrow \mathbb{R}$ which is linear in each component, i.e. 
+\begin{enumerate}
+    \item $B(a_1v^1 + a_2v^2, w) = a_1B(v^1,w) + a_2B(v^2,w)$ for $a_1, a_2 \in \mathbb{R}$ and $v^1, v^2, w \in V$ 
+    \item $B(v, a_1w_1 + a_2w_2) = a_1B(v,w_1) + a_2B(v,w_2)$ for $a_1, a_2 \in \mathbb{R}$ and $v, w_1, w_2 \in V.$
+\end{enumerate}
+\end{definition_exam}
+
+\begin{definition}(Symmetric). The bilinear form B is symmetric if $B(v,w) = B(w,v)$ for all $v,w \in V$.
+\end{definition}
+
+\begin{definition}(Positive Definite). A bilinear form B on V is positive definite if $B(v,v) \geq 0$ for all $v \in V$, with equality if and only if $v = 0.$
+\end{definition}
+
+\begin{definition_exam}{Inner product}{} An inner product on a vector space V is a positive definite symmetric bilinear form.
+\end{definition_exam}
+
+We will now introduce the notion of a quadratic form, which will be used to define very important concepts.
+
+\begin{definition_exam}{Quadratic form}{} A quadratic form on a vector space V is a map $Q: V \rightarrow \mathbb{R}$ such that 
+\begin{enumerate}
+    \item $Q(av) = a^2Q(v)$ for all $a \in \mathbb{R}$ and $v \in V$ and 
+    \item The map $B: V \times V \rightarrow \mathbb{R}$ is defined by $B(v,w) = \frac{1}{2}(Q(v+w) - Q(v) - Q(w))$ is a symmetric bilinear form.
+\end{enumerate}
+\end{definition_exam}
+
+The second condition tells us given a quadratic form, how we can construct a bilinear form. We motivate this with the following example. Let $V = \mathbb{R}.$ Then, define the bilinear form as $Q(v) = v^2$. Then, to get the bilinear form $B(v,w) = v\cdot w$, we use the expression $Q(v+w) - Q(v) - Q(w).$
+
+\begin{lemma}A symmetric bilinear form B on the vector space V defines a quadratic form Q via 
+$$
+Q(v) = B(v,v).
+$$
+\end{lemma}
+Hence, we are able to construct a bilinear form from a quadratic form and vice versa.
+
+\begin{definition}(Homogenous polynomial). A homogenous polynomial is a polynomial whose nonzero terms have the same degree.
+\end{definition}
+
+\begin{remark}Hence, the quadratic form on an n-dimensional real vector space V is given by a homogenous polynomial of degree 2 satisfying an additional symmetry condition.
+\end{remark}
+
+\begin{proposition_exam}{Matrix of bilinear form}{}Let V be an n-dimensional vector space with basis $e_1,...,e_n$ and write $v \in V$ as $v = \sum_{i=1}^{n}v^ie_i.$ A bilinear form B is represented with respect to this basis by a matrix A where 
+$$
+B(v,w) = [v^1,...,v^n]\begin{bmatrix} A
+\end{bmatrix}[w^1,...,w^n]^T 
+$$
+where A is a $n \times n$ matrix.
+\end{proposition_exam}
+
+\begin{remark}The matrix A of the standard inner product with the standard basis is the identity matrix.
+\end{remark}
+
+\begin{corollary}The associated quadratic form Q with the bilinear form B is represented by the \textbf{same matrix A} via 
+$$
+Q(v) = B(v,v) = [v^1,...,v^n]\begin{bmatrix} A
+\end{bmatrix}[v^1,...,v^n]^T.
+$$
+\end{corollary}
+
+However, recall that in order to get an inner product, we require that the bilinear form B to also be symmetric. Not every matrix A will ensure that the bilinear form is symmetric. The following states when we can get a symmetric bilinear product.
+\begin{proposition}The bilinear form B is symmetric if and only if the matrix A is symmetric.
+\end{proposition}
+
+\begin{proposition_exam}{The quadratic form is a homogenous polynomial}{}The quadratic form Q is given by a homogenous polynomial 
+$$
+Q(v) = \sum_{i,j}^{n}a_{ij}v^iv^j
+$$
+of degree 2 in the coefficients.
+\end{proposition_exam}
+
+\begin{corollary}The bilinear form B is given by the polynomial 
+$$
+B(v,w) = \sum_{i,j}^{n}a_{ij}v^iw^j.
+$$
+\end{corollary}
+
+Hence, we have symmetry when 
+$$
+B(v,w) = \sum_{i,j}^{n}a_{ij}v^iw^j = \sum_{i,j}^{n}a_{ij}w^iv^j = B(w,v).
+$$
+
+\subsection{Riemannian Metrics and First Fundamental Form}
+We now have the tools in place to define an inner product for each tangent space of our surface.
+\begin{definition}Let $\Sigma$ be a regular surface and $\phi: U \rightarrow \mathbb{R}^3$ be a local parameterisation near $p \in \Sigma$ where $\phi: (u^1,u^2) \rightarrow \phi(u^1,u^2).$ We define the standard basis as 
+$$
+E_1(p) = \frac{\partial \phi}{\partial u^1}(\phi^{-1}(p))
+$$
+$$
+E_2(p) = \frac{\partial \phi}{\partial u^2}(\phi^{-1}(p)).
+$$
+\end{definition}
+
+Hence, if we have that $E_1(p) \wedge E_2(p) \neq \textbf{0}$, then this means that it is a 2-dimensional plane and hence the basis of the tangent plane $T_p\Sigma.$\newline
+We can express the inner product by writing out what the inner product inherited from $\mathbb{R}^3$ does to the basis vectors as we can express any other tangent vector as a linear combination of our basis vectors. 
+
+\begin{definition_exam}{Riemannian Metric}{} Let $\Sigma \subset \mathbb{R}^3$ be a regular surface. Then, for any $p \in \Sigma$, the tangent plane $T_p\Sigma \subset \mathbb{R}^3$ inherits the natural inner product of $\mathbb{R}^3$. This smoothly varying inner product $\langle .,. \rangle_p$ is called the \textbf{Riemannian metric.}
+\end{definition_exam}
+
+\begin{remark}The Riemannian metric is a smoothly varying inner product $\langle .,. \rangle_p$. By that, we mean that $g_{ij}(p) = \langle E_i(p), E_j(p)\rangle$ are smooth functions in every coordinate neighbourhood $U \subset \Sigma.$ Note that $g_{ij}(p)$ are functions of $p \in T_p\Sigma$!
+\end{remark}
+
+\begin{proposition_exam}{Matrix of the Riemannian Metric}{}Let $E_1, E_2$ be the basis for the tangent space at the point $p \in \Sigma.$ Then, the 2 x 2 matrix 
+$$
+\begin{bmatrix}
+g_{11} & g_{12}\\
+g_{21} & g_{22}\\
+\end{bmatrix}
+$$
+is the \textbf{symmetric} matrix for the Riemannian metric with the basis $E_1, E_2.$\\
+Furthermore, for the tangent vectors $X = X^1E_1 + X^2E_2$ and $Y = Y^1E_1 + Y^2E_2$ , defines the smoothly varying inner product on the tangent spaces of $\Sigma$ by 
+$$
+g(X,Y) = \langle X,Y \rangle = (X^1, X^2)\begin{bmatrix} g_{11} & g_{12} \\ g_{21} & g_{22}
+\end{bmatrix}(Y^1, Y^2)^T = \sum_{ij}g_{ij}X_iY_j.
+$$
+\end{proposition_exam}
+
+Now, taking our bilinear form, we can now construct the associated quadratic form on the tangent plane. Furthermore, we also know what the matrix of our quadratic form since it will be the same matrix as for the bilinear form.
+
+\begin{definition_exam}{First fundamental form}{} The quadratic form $I_p: T_p\Sigma \rightarrow \mathbb{R}$ is defined by 
+$$
+I_p(w) = \langle w, w \rangle_p = |w|^2 \geq 0
+$$
+is called the first fundamental form of the regular surface $S \subset \mathbb{R}^3$ at $p \in S.$\newline The functions $g_{11}, g_{12} = g_{21}, g_{22}: \Sigma \rightarrow \mathbb{R}$ are called the \textbf{coefficients} of the first fundamental form
+$$
+g(X,X) = \langle X,Y \rangle = (X^1, X^2)\begin{bmatrix} g_{11} & g_{12} \\ g_{21} & g_{22}
+\end{bmatrix}(X^1, X^2)^T = \sum_{ij}g_{ij}X_iX_j.
+$$
+\end{definition_exam}
+
+\begin{remark}The first fundamental form tells us how the surface S inherits the inner product of $\mathbb{R}^3$. It tells us how to make measurements on the surface without referring to the ambient space $\mathbb{R}^3.$ We can talk about the geometry of the surface just by looking at $I_p.$
+\end{remark}
+
+\begin{remark}Note that the first fundamental form depends on the point p we are looking at due to $\langle .,. \rangle_p.$
+\end{remark}
+
+\begin{proposition}The Riemannian metric (smoothly varying inner product or positive definite symmetric bilinear form) and first fundamental form (smoothly varying quadratic form) are equivalent.
+\end{proposition}
+
+The Riemannian metric and first fundamental form gives us a notion of length and angles in every \textbf{tangent plane}, not on the actual surface.\\
+Let us summarise what we have done. We have first constructed the Riemannian metric, which is a symmetric positive-definite bilinear form as it is an inner product. We also constructed the matrix $$
+\begin{bmatrix}
+g_{11} & g_{12}\\
+g_{21} & g_{22}\\
+\end{bmatrix}
+$$ 
+Then, recall that quadratic forms are bilinear forms where we force both arguments to be the same vector. Likewise, taking our Riemannian metric, we force both inputs to be the same vector and we get the first fundamental form from this, which is a quadratic form. Recall that the matrix for the quadratic form is the same as the matrix for the bilinear form. So the matrix that we constructed our Riemannian metric is the same matrix for our first fundamental form.
+
+
+
+\lecture{10}{Area and Orientation}
+\section{Regular Surfaces}
+\subsection{Length of curves on surfaces}
+We now give an alternative derivation of the first fundamental form. We recall the following definition of the basis of the tangent plane at point $p \in \Sigma.$
+$$
+E_1(p) = \frac{\partial \phi}{\partial u^1}(\phi^{-1}(p)), \quad
+E_2(p) = \frac{\partial \phi}{\partial u^2}(\phi^{-1}(p))
+$$
+
+Recall from regular curves, we can define the length of a curve.
+\begin{definition}(Length of a curve). The length of a curve $\alpha$ is given by 
+$$
+s(t) = \int_{a}^{b}|\alpha'(t)|dt = \int_{a}^{b}\sqrt{\langle \alpha'(t), \alpha'(t)\rangle}dt.
+$$
+\end{definition}
+
+We can now express the length of a curve using the first fundamental form and hence have an intrinsic notion of arc length. In more detail, the velocity vector of every curve can be represented by $E_1, E_2.$ Furthermore, as the arc length of curves are found by integrating the length of the velocity vector, this means that we can now compute arc length using $E_1, E_2.$\\
+
+Let us consider the arc length of the curve $\alpha(t) = \phi(u^1(t),u^2(t)).$ The velocity vector $\alpha'(t)$ is given by the chain rule 
+$$
+\frac{\partial \phi}{\partial u^1}\frac{du^1}{dt} + \frac{\partial \phi}{\partial u^2}\frac{du^2}{dt}.
+$$
+From this, we can express this as 
+$$
+\alpha'(t) = E_1\frac{du^1}{dt} + E_2\frac{du^2}{dt} = E_1u^{1'} + E_2u^{2'}.
+$$
+
+\begin{theorem_exam}{Velocity vector in terms of basis}{}The velocity vector $\alpha'$ is a linear combination of the basis vectors $E_1$ and $E_2$ with coefficients $u^{1'}$ and $u^{2'}$.
+\end{theorem_exam}
+
+Recall that the length of the curve is given by $L = \int_a^b|\alpha'(t)|dt$ and the square of length is given by the dot product $\alpha'(t).\alpha'(t)$ which is 
+$$
+|\alpha'(t)|^2 = (u^{1'})^2E_1E_1 + 2u^{1'}u^{2'}E_1E_2 + (u^{2'})E_2E_2.
+$$
+
+\begin{definition_exam}{Coefficients of the first fundamental form}{}We define the dot product coefficients 
+$$
+\begin{cases}
+g_{11} = \langle E_1,E_1\rangle\\
+g_{12} = \langle E_1,E_2\rangle\\
+g_{21} = \langle E_2,E_1\rangle\\
+g_{22} = \langle E_2,E_2\rangle\\
+\end{cases}
+$$
+These are the \textbf{coefficients of the first fundamental form}.
+\end{definition_exam}
+
+\begin{proposition_exam}{Intrinsic length of curve}{}The length of the curve $\alpha$ on the surface $\Sigma$ is then given by 
+$$
+L = \int_a^b \bigg(g_{11}du^{1^2} + 2g_{12}du^{1}du^{2} + g_{22}du^{2^2}  \bigg)^{1/2}.
+$$
+\end{proposition_exam}
+
+\begin{remark}The expression $g_{11}du^{1^2} + 2g_{12}du^{1}du^{2} + g_{22}du^{2^2}$ is called the \textbf{first fundamental form}.
+\end{remark}
+
+\begin{definition_exam}{Angle between two curves}{} The angle between two curves is defined to be the angle between their tangent (velocity) vectors. In particular, if two tangent vectors $v_1, v_2$ lie on the \textbf{same tangent plane} to the surface $\Sigma$ at a point, we can express the angle as 
+$$
+cos \theta = \frac{\langle E_1, E_2 \rangle}{\sqrt{\langle E_1, E_1 \rangle}\sqrt{\langle E_2, E_2 \rangle}}
+$$
+where $E_1, E_2$ are the basis vectors for the tangent plane $T_p\Sigma.$
+\end{definition_exam}
+\begin{remark}As tangent vectors can be expressed by the coefficients $g_{ij}$, then the angle between two tangent vectors can be expressed in terms of the coefficients $g_{ij}.$
+\end{remark}
+
+
+\begin{remark}If two surfaces intersect at a point p, then the angle between the surfaces is the angle between the normal vectors.
+\end{remark}
+\subsection{Area on surfaces}
+
+\begin{definition_exam}{Normal Vector to the tangent plane}{} Let $p \in \Sigma$ be a point and let $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma$ be a local parameterization of $\Sigma$ at p. Let $E_1, E_2$ be the basis of the tangent space $T_p\Sigma$, corresponding to the canonical orientation of $\mathbb{R}^2$, as inherited by $U \subset \mathbb{R}^2$. Then we define the normal vector at $T_p\Sigma$ to be 
+$$
+n(p) = \frac{E_1 \times E_2}{|E_1 \times E_2|}.
+$$
+\end{definition_exam}
+
+\begin{remark}Make sure you do not confuse the normal vector n to the tangent plane to the normal vector N of a curve on a surface. These may be in different directions.
+\end{remark}
+
+The first fundamental form, in addition to computing length and angles on a surface, also allows us to compute surface area of a surface. We can compute the surface area by approximating the surface with approximately parallelogram shaped pieces on the surface.
+
+\begin{definition}(Domain). A domain of $\Sigma$ is an open and connected subset whose boundary is the image of a circle under a regular smooth homeomorphism.
+\end{definition}
+
+\begin{definition}(Region). A region of $\Sigma$ is the union of a domain with its boundary.
+\end{definition}
+
+
+\begin{definition}(Bounded). A subset of $\mathbb{R}^n$ is bounded if it is contained in some open ball in $\mathbb{R}^n$.
+\end{definition}
+
+\begin{lemma}The length of the cross product $|E_1 \times E_2|$ determines the area of a parallelogram determined by $E_1, E_2.$ Hence, the area of a 'rectangular region' is given by 
+$$
+d\Sigma = |E_1 \times E_2|du^1du^2.
+$$
+\end{lemma}
+
+\begin{definition_exam}{Surface Area of a Surface using first fundamental form}{} If a bounded region $R$ of $\Sigma$ is contained in a single coordinate neighbourhood $\phi(U)$, then we define the area of R to be 
+$$
+\int \int_{\phi^{-1}(R)}|E_1 \times E_2|du^1du^2.
+$$
+\end{definition_exam}
+
+Our definition of area does not depend upon the choice of local parameterisation. That is, for two local parameterisation $\phi$ and $\psi$, the area of the region is the same using either parameterisation.
+
+\begin{proposition}(Area of region of graphs). Let R be a bounded region R on the surface $z = f(x,y)$, which is a graph. Then, the area can be computed by 
+$$
+A = \int \int_{\phi^{-1}(R)}\sqrt{f_x^2 + f_y^2 + 1}dxdy
+$$
+where $\phi(x,y) = (x,y,f(x,y)).$
+\end{proposition}
+
+\lecture{11}{Orientation of Surfaces}
+\section{Regular Surfaces}
+\subsection{Orientation of Surfaces}
+
+
+\begin{definition_exam}{Orientation}{} Two ordered bases $(X_1, X_2)$ and $(Y_1, Y_2)$ determine the same orientation if and only if the change of basis matrix has positive determinent. That is, for 
+$$(Y_1, Y_2) = (X_1, X_2)A$$
+we have that A has a positive determinant.
+\end{definition_exam}
+
+\begin{lemma}The set of ordered basis with the same orientation is an equivalence class. That is, we only have two equivalence classes where either the change of basis matrix between the two ordered basis have positive or negative determinant.
+\end{lemma}
+
+
+\begin{definition}(Orientation). An orientation of a n-dimensional vector space V is a choice of one of the two possible equivalence classes of ordered basis for V under the equivalence relation $\sim$ of the change of basis matrix having positive determinant.
+\end{definition}
+
+\begin{lemma}(Orientation for tangent plane). Let $\phi: U \rightarrow \Sigma$ where $(u^1, u^2) \rightarrow \phi(u^1, u^2)$ is a local parameterisation of the regular surface $\Sigma$ near p, then the ordered basis $(E_1, E_2) = (\frac{\partial \phi}{\partial u^1}, \frac{\partial \phi}{\partial u^2})$ determines an orientation on $T_p\Sigma.$
+\end{lemma}
+
+However, an issue is that this is an orientation for the tangent plane, not the surface. We would like to extend this definition to orientation of surfaces.
+
+\begin{definition_exam}{Orientable Surface}{} A regular surface $\Sigma$ is orientable if it has an atlas (i.e. may be covered with coordinate neighbourhoods) so that whenever $p \in \Sigma$ lies in the image of two local parameterisations $\phi$ and $\psi$, the \textbf{change of basis matrix} at p has \textbf{positive determinant}. If this is possible, then the choice of such an atlas is called an orientation of $\Sigma$, and we say that $\Sigma$ is oriented.
+\end{definition_exam}
+
+We can think of an orientation of a regular surface $\Sigma$ as one where every tangent plane varies smoothly.
+
+\begin{remark}A surface which cannot be oriented is called non-orientable.
+\end{remark}
+
+\begin{proposition}For a 2-dimensional plane in $\mathbb{R}^3$, an orientation is equivalent to a choice of a unit normal vector. Given an orientation $[(X_1,X_2)]$, we define 
+$$
+N \coloneqq \frac{X_1 \times X_2}{|X_1 \times X_2|}.
+$$
+Two ordered bases determine the same orientation if and only if they define the same N.
+\end{proposition}
+
+\begin{theorem_exam}{Orientable regular surface and the Gauss map}{}A regular surface $\Sigma \subset \mathbb{R}^3$ is orientable if and only if there is a smooth map $N: \Sigma \rightarrow \mathbb{R}^3$ which assigns to each $p \in \Sigma$ a unit vector normal to $\Sigma$ at p.
+\end{theorem_exam}
+
+The issue with this characterisation of orientability is that it doesn't generalise for abstract surfaces.
+
+\begin{lemma}The Möbius strip is not orientable.
+\end{lemma}
+
+
+\lecture{12}{Gauss Map}
+\section{The Gauss Map}
+\section{The Gauss Map}
+\subsection{Gauss Map}
+We are now interested in defining the curvature of an oriented surface $\Sigma$ by examining its unit normal vector \textbf{N}. If the vector \textbf{N} varies rapidly near a point, then the surface is highly curved whereas \textbf{N} will vary slowly at a point on the surface that is only slightly curved. If the surface is a plane, then \textbf{N} will be a constant with zero curvature. The Gauss map will record the values of \textbf{N} for each point $p \in \Sigma$ and taking the differential of the Gauss map (also known as the \textbf{Weingarten map}) will show the rate at which the unit normal \textbf{N} varies across the surface $\Sigma.$
+
+
+\begin{definition_exam}{Normal Unit Vector}{} Let $p \in \Sigma$ be a point and let $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma$ be a local parameterization of $\Sigma$ at p. Let $E_1, E_2$ be the basis of the tangent space $T_p\Sigma$, corresponding to the canonical orientation of $\mathbb{R}^2$, as inherited by $U \subset \mathbb{R}^2$. Then we define the normal vector at $p$ to be 
+$$
+N(p) = \pm \frac{E_1 \times E_2}{|E_1 \times E_2|}.
+$$
+\end{definition_exam}
+
+\begin{definition_exam}{Gauss Map}{} Let $\Sigma$ be an orientable regular surface, with orientation N. The map 
+$$
+N: \Sigma \rightarrow \mathbb{S}^2 = \{(x,y,z) \in \mathbb{R}^3\} \subset \mathbb{R}^3
+$$
+is called the \textbf{Gauss map} of $\Sigma$. In particular, N is the map that assigns a normal unit vector to each point.
+\end{definition_exam}
+
+\begin{remark}Note that the Gauss map maps a point from the surface to a point \textbf{on the surface of the sphere}.
+\end{remark}
+
+\begin{definition}(Differentiable Field of Normal Unit Vectors). If $V \subset \Sigma$ is an open set and $N: V \subset \Sigma \rightarrow S^2 \subset \mathbb{R}^3$ is a differentiable map, then we say that N is a differentiable field of normal unit vectors.
+\end{definition}
+
+\begin{corollary}Not every surface admits a differentiable field of unit vectors defined on the whole surface such as the Mobius strip.
+\end{corollary}
+
+
+\begin{definition}(Differential of the Gauss Map). Let $N$ be the Gauss map of the orientable regular surface $\Sigma$. We define the differential 
+$$
+dN_p: T_p\Sigma \rightarrow T_{N(p)}\mathbb{S}^2.
+$$
+As these planes are parallel, we write this as 
+$$
+dN_p: T_p\Sigma \rightarrow T_p\Sigma.
+$$
+\end{definition}
+
+This is good as the differential of the Gauss map maps between the same vector space, the tangent plane $T_p\Sigma.$ It makes our analysis alot easier.
+
+\begin{lemma}($dN_p$ is self-adjoint). As defined, $dN_p: T_p\Sigma \rightarrow T_p\Sigma$ is self-adjoint 
+$$
+\langle dN_p(v), w \rangle = \langle v, dN_p(w)\rangle
+$$
+for all $v,w \in T_p\Sigma.$
+\end{lemma}
+
+\begin{corollary}As $dN_p$ is self-adjoint, this is equivalent to saying that the matrix of $dN_p$ with respect to an orthonormal basis is symmetric.
+\end{corollary}
+
+\begin{definition_exam}{Shape Operator}{} We call $-dN_p$ the \textbf{shape operator} of a regular oriented surface $\Sigma$ at p.
+\end{definition_exam}
+
+\begin{remark}In some texts, the differential of the Gauss map is known as the \textbf{Weingarten Map} $\mathcal{W}_{p,\Sigma} = -dN_p\Sigma.$
+\end{remark}
+
+The shape operator with the first fundamental form/Riemannian metric determines the shape of the surface.
+
+\begin{lemma}On an oriented plane, the Gauss map is constant and hence the shape operator is the zero map for each point $p \in \Sigma.$ Hence it has no curvature.
+\end{lemma}
+
+We recall some linear algebra.
+\begin{definition}(Eigenvalue). Let $M \in Mat_{(n,n)}(F)$ where F is a field. A scalar $\alpha \in F$ is an \textbf{eigenvalue} for M if there exists a non-zero vector $v \in F^n$ such that 
+$$
+Mv = \alpha v.
+$$
+If $Mv = \alpha v$, then v is a $\alpha-$eigenvector for M.\newline
+Similarly, if $\theta: V \rightarrow V$ is a linear transformation, then $\alpha \in F$ is an eigenvalue for $\theta$ if $\theta(v) = \alpha v$ for some non-zero vector v, in which case v is a $\alpha-$eigenvector for $\theta.$
+\end{definition}
+
+\begin{remark}Eigenvectors are not unique. If v is an eigenvector, then any non-zero multiple of v is also an eigenvector. However, the \textbf{space} of $\alpha-$eigenvectors is unique.
+\end{remark}
+
+\begin{definition}(Eigenspace). Let $M \in Mat_{(n,n)}(F)$ where F is a field. Let $\alpha \in F$ be an eigenvalue. Then, the $\alpha-$eigenspace is 
+$$
+V_{\alpha} = \{v \in F^n: Mv = \alpha v\}
+$$
+where $V = F^n.$
+\end{definition}
+
+\begin{lemma}Let $V = F^n$ and $M \in Mat_{(n,n)}$ and $\alpha \in F.$ Then $V_{\alpha}$ is a F-vector subspace of V.
+\end{lemma}
+
+\begin{proposition}Suppose that $M \in Mat_{(n,n)}(F)$ has distinct eigenvalues $\alpha_1,...,\alpha_m$ and let $v_1,...,v_m$ be eigenvectors with $Mv_i = \alpha_iv_i$ for $1 \leq i \leq m.$ Then $\{v_1,...,v_m\}$ are linearly independent.
+\end{proposition}
+\begin{corollary}Let $M \in Mat_{(n,n)}(F).$ Then M has \textbf{at most} n \textbf{distinct} eigenvalues.
+\end{corollary}
+
+\begin{theorem}Let $M \in Mat_{(n,n)}(F)$ and set $V = F^n.$ Then M is diagonalisable if and only if V has a basis of eigenvectors for M. In this case, 
+$$
+V = V_{\alpha_{1}} \oplus ... \oplus V_{\alpha_{m}}
+$$
+for some $\alpha_1,...,\alpha_m \in F.$
+\end{theorem}
+
+We now apply this to our shape operator. Given a regular oriented surface $\Sigma$, for each $p \in \Sigma$, we have the linear map $dN_p: T_p\Sigma \rightarrow T_p\Sigma.$ We want to express this in terms of the basis $\phi_{u^{1}}, \phi_{u^{1}}.$ Hence, we have 
+$$
+\begin{cases}
+dN_p(\phi_{u^1}) = N_{u^1} = a_{11}\phi_{u^1} + a_{12}\phi_{u^2}\\
+dN_p(\phi_{u^2}) = N_{u^2} = a_{21}\phi_{u^1} + a_{22}\phi_{u^2}
+\end{cases}
+$$
+
+\begin{proposition_exam}{Computing shape operator}{}
+To compute the shape operator $-dN_p$ at the point p with local chart $\phi$, we have 
+$$
+\begin{cases}
+-dN_p(\phi_{u^{1}}) = -N_{u^1}(p) \\
+-dN_p(\phi_{u^{2}}) = -N_{u^2}(p).
+\end{cases}
+$$
+Here, we compute the unit normal and take derivatives with respect to $u^1, u^2$ respectively.
+\end{proposition_exam}
+
+
+Hence, we the shape operator
+$$
+dN_p(\alpha'(0)) = (u^1)'(0)N_{u^1} + (u^2)'(0)N_{u^2}
+$$
+
+\begin{proposition}Recall that the differential of the Gauss map is a self-adjoint linear transformation. Then, if $\phi)u_1,u_2)$ is a local parameterisation of an oriented surface with Gauss map N, then 
+$$
+dN_p(\phi_{u_1}) \times dN_p(\phi_{u_2}) = det(dN_p)\phi_{u_1} \times \phi_{u_2}.
+$$
+\end{proposition}
+
+\begin{proposition}Let $(u_1,u_2)$ and $(v_1,v_2)$ be two different parameterisations of surface S. Let $g_{ij}(u_1,u_2)$ and $\hat{g}_{ij}(u_1,u_2)$ be the first fundamental forms in the two cases. Then, they are related by 
+$$
+\hat{g}_{kl} = \sum_{i,j}g_{ij}\frac{\partial u_i}{\partial v_k}\frac{\partial u_j}{\partial v_l}.
+$$
+\end{proposition}
+
+\lecture{13}{The Second Fundamental Form}
+\section{The Gauss Map}
+\subsection{The Second Fundamental Form}
+
+\begin{definition_exam}{Coefficients of second fundamental form}{} We define the cofficients of the second fundamental form to be 
+$$
+h_{ij} = \langle -dN(E_i),E_j \rangle = -\langle N_{u^i}, E_j\rangle.
+$$
+Hence, to actually compute them, we have two choices 
+$$
+h_{ij} = 
+\begin{cases}
+\langle N, \phi_{u_iu_j}\rangle\\
+- \langle N_{u_i}, \phi_{u_j}\rangle.
+\end{cases}
+$$
+\end{definition_exam}
+
+\begin{lemma}The matrix 
+$$
+\begin{bmatrix}
+h_{11} & h_{12}\\
+h_{21} & h_{22}\\
+\end{bmatrix}
+$$
+is symmetric.
+\end{lemma}
+
+With respect to the orthonormal basis $E_1, E_2$, the \textbf{bilinear form}
+$$
+B_p(X,Y) = -\langle dN_p(X), Y \rangle
+$$
+is given by the matrix 
+$$
+\begin{bmatrix}
+h_{11} & h_{12}\\
+h_{21} & h_{22}\\
+\end{bmatrix}
+$$
+which is symmetric. \newline Now, we actually write out the bilinear form. Let
+the tangent vectors $X = X_1E_1 + X_2E_2$ and $Y = Y_1E_1 + Y_2E_2$. Then 
+$$
+B_p(X,Y) = (X_1, X_2)\begin{bmatrix}
+h_{11} & h_{12}\\
+h_{21} & h_{22}\\
+\end{bmatrix}
+(Y_1, Y_2)^T
+$$
+$$
+= \sum_{ij}h_{ij}X_iY_j.
+$$
+
+The second fundamental form will be the quadratic form of this bilinear form.
+\begin{definition_exam}{Second Fundamental Form}{} Let $\Sigma$ be a oriented surface and $p \in \Sigma$. Furthermore, let $X = X_1E_1 + X_2E_2 \in T_p\Sigma$. The \textbf{quadratic form} $II_P: T_p\Sigma \rightarrow \mathbb{R}$ which we define as 
+$$
+II_p(X) = B_p(X,X) = \langle -dN_p(X), X \rangle = (X_1, X_2)\begin{bmatrix}
+h_{11} & h_{12}\\
+h_{21} & h_{22}\\
+\end{bmatrix}
+(Y_1, Y_2)^T = \sum_{ij}h_{ij}X_iY_j
+$$
+is called the \textbf{second fundamental form} of the oriented surface $\Sigma$ at the point p.
+\end{definition_exam}
+
+\begin{remark}$B_p(X,Y)$ is symmetric.
+\end{remark}
+
+Let $\Sigma$ be a regular surface with orientation N and let $\alpha: (a,b) \rightarrow \Sigma$ be a regular curve with $\alpha(0) = p \in \Sigma.$ We note that the normal to the curve n, is orthogonal to the normal to the surface N if the curve lies within the tangent space. Furthermore, note that the normal to the curve n may not necessarily lie on the surface. 
+
+\begin{definition_exam}{Normal curvature of a curve}{} Let $\Sigma$ be a regular surface with orientation N. Let $\alpha: (a,b) \rightarrow \Sigma$ be a regular curve where $\alpha(0) = p \in \Sigma$. Let $\{t,n,b\}$ be the Frenet frame. Let k be the curvature of $\alpha$ at p. The \textbf{normal curvature} of $\alpha$ is 
+$$
+k_n(\alpha) = \langle kn, N \rangle = kcos\theta
+$$
+where $\theta$ is the angle between N and n.
+\end{definition_exam}
+
+\begin{remark}Geometrically, $k_n$ is the projection of $kn$ (curvature of curve) onto N with a positive sign if $\theta < \frac{\pi}{2}$ and a negative sign if $\theta > \frac{\pi}{2}$. That is, $k_n$ is the length of the projection of the vector $kn = \alpha'$ over the normal to the surface at p, with sign given by orientation.
+\end{remark}
+
+\begin{remark}Changing the orientation N changes the sign of the normal curvature. Meanwhile, changing the direction of $\alpha$ does not change n and hence does not change the normal curvature.
+\end{remark}
+
+What the normal curvature does is that it measures how the curve is embedded into the surface.
+
+\begin{proposition_exam}{Meusnier}{} Let $\Sigma$ be a regular orientable surface with orientation N. Let $p \in \Sigma$ and $X \in T_p\Sigma$ where $|X| = 1.$ Then, all curves in $\Sigma$ that have velocity vector X at p have normal curvature $$k_n(p) = II_p(X)$$ at p.
+\end{proposition_exam}
+
+\begin{remark}In other words, the normal curvature of a curve $\alpha$ at p depends only on the \textbf{tangent line} $\alpha'(0)$ at the curve. Hence, \textbf{the second fundamental form is the normal curvature}. Hence, all curves with same tangent vector has the same normal curvature and second fundamental form.
+\end{remark}
+
+We now extend the definition of Meusnier.
+
+\begin{theorem}Take $p \in \Sigma$ and $X \in T_p\Sigma$ with $|X| = 1.$ Let Q be the plane spanned by X and N. Suppose the intersection of $\Sigma$ with Q is the trace of a regular curve $\alpha.$ Let R be any of the planes through the point p, which contains the tangent vector X, and whose intersection with the surface is the trace of a regular curve $\beta.$\\
+Let $k^{\alpha}(p)$, $k^{\beta}(p)$ denote the curvatures of the curves $\alpha, \beta$ and $k_n^{\alpha}(p)$, $k_n^{\beta}(p)$ be the normal curvatures.\\
+Then
+$$
+k^{\alpha}(p) = k^{\beta}(p)cos\theta
+$$
+where $\theta$ is the angle between the planes R and Q. Furthermore 
+$$
+k_n^{\beta}(p) = II_p(X) = k_n^{\alpha}(p) = \pm k^{\alpha}(p).
+$$
+\end{theorem}
+
+\begin{definition_exam}{Normal Section}{} We call the intersection of $\Sigma$ with the plane Q, which is the plane spanned by tangent vector X and normal to surface N, the \textbf{normal section} of $\Sigma$ in the direction X; near p this defines a regular curve.
+\end{definition_exam}
+
+\begin{lemma}The normal curvature of the normal section at p is equal to its curvature at p up to a sign\end{lemma}
+
+\lecture{14}{Principal Directions}
+\section{The Gauss Map}
+\subsection{Linear Algebra Review}
+\begin{definition}(Self-Adjoint). Let V be a n-dimensional real vector space with inner product $\langle .,. \rangle$ and $A: V \rightarrow V$ a linear operator. We say that A is self-adjoint if for all $v,w \in V$, we have 
+$$
+\langle Av, w \rangle = \langle v, Aw\rangle.
+$$
+\end{definition}
+
+\begin{definition}(Algebraic Multiplicity). The algebraic multiplicity $m_a(\lambda)$ is the degree of the root of the characteristic polynomial.
+\end{definition}
+
+\begin{definition}(Geometric Multiplicity). The geometric multiplicity $m_g(\lambda)$ is the dimension of the eigenspace $E_{\lambda}$ for the eigenvalue $\lambda.$
+\end{definition}
+
+\begin{theorem}If $\lambda$ is an eigenvalue of A, then 
+$$
+1 \leq m_g(\lambda) \leq m_a(\lambda).
+$$
+\end{theorem}
+
+\begin{theorem}(Test for diagonalisable matrix). Let A be a matrix in $\mathbb{R}^{n \times n}$. Then the matrix A is diagonalisable if and only if 
+$$
+\sum m_g(\lambda) = n.
+$$
+\end{theorem}
+
+\begin{theorem}(Diagonalising a matrix). Suppose the matrix A is diagonalisable. Let V be the matrix of eigenvectors and let $\wedge$ be the matrix of eigenvalues. The matrix $\wedge$ is a diagonal matrix. Hence, we can diagonalise A by 
+$$
+V^{-1}AV = \wedge.
+$$
+\end{theorem}
+
+\begin{corollary}Matrices that are diagonalisable have a basis of eigenvectors. 
+\end{corollary}
+
+\begin{theorem_exam}{Spectral Theorem}{} Let V be a n-dimensional real vector space with inner product $\langle .,.\rangle$ and $A: V \rightarrow V$ be a \textbf{self-adjoint} linear operator. Then there exists an orthonormal basis of V consisting of eigenvectors of A.
+\end{theorem_exam}
+
+\begin{corollary}(Spectral Theorem). A real symmetric n x n matrix can be diagonalised by an orthonormal basis of eigenvectors.
+\end{corollary}
+
+\subsection{Principal Directions}
+We have seen that the second fundamental can be thought of as the normal curvature. We observe that if the normal curvature takes on different values in different directions, then the minimum and maximum directions are unique. Furthermore, the angle between the minimum and maximum directions are always $\frac{\pi}{2}.$\\
+We will now use the spectral theorem to find an orthonormal basis $\{e_1,e_2\}$ of eigenvectors for the shape operator.
+\begin{theorem_exam}{Orthonormal basis of tangent space}{}Let $dN_p$ be the differential of the Gauss map. As $dN_p$ is self-adjoint, then there exists an orthonormal basis $\{e_1,e_2\}$ of $T_p\Sigma$ such that 
+$$
+\begin{cases}
+dN_p(e_1) = -k_1e_1\\
+dN_p(e_2) = -k_2e_2.
+\end{cases}
+$$
+\end{theorem_exam}
+
+\begin{definition_exam}{Principal Curvatures/Directions}{} We call $k_1(p), k_2(p)$ the principal curvatures, and $e_1,e_2$ the principal directions of $\Sigma$ at p.
+\end{definition_exam}
+
+\begin{corollary}The principal curvatures are the eigenvalues of the shape operator whilst the principal directions are the eigenvectors of the shape operators.
+\end{corollary}
+
+\begin{remark}We can now express any normal curvature in terms of the principal ones.
+\end{remark}
+
+
+\begin{theorem_exam}{Euler}{} If the normal curvatures $II_p(X)$, $X \in T_p\Sigma$, $|X| = 1$ are not all equal, then there is an orthonormal basis $e_1, e_2$ of $T_p\Sigma$ such that 
+\begin{enumerate}
+\item $II_p(e_1) = k_1 = $maximum value;
+\item $II_p(e_2) = k_2 = $minimum value;
+\item $II_p(cos\theta e_1 + sin\theta e_2) = k_1cos^2\theta + k_2sin^2\theta.$
+\end{enumerate}
+\end{theorem_exam}
+
+We elaborate on the last point above. The knowledge of the principal curvatures at p allows us to compute easily the normal curvature along a given direction of $T_p\Sigma$ as $e_1, e_2$ form an orthonormal basis of $T_p\Sigma.$ Hence, we can express every unit tangent vector $v \in T_p\Sigma$ by 
+$$
+v = e_1cos\theta + e_2sin\theta
+$$
+where $\theta$ is the angle from $e_1$ to v in the orientation of $T_p\Sigma.$
+\begin{theorem_exam}{Euler Formula}{}Let $v \in T_p\Sigma$ and $|v| = 1.$ Let $e_1, e_2$ be the orthonormal basis of $T_p\Sigma.$ Then, the normal curvature $k_n$ along v is given by 
+$$
+k_n = II_p(v) = II_p(e_1cos\theta + e_2sin\theta) = k_1cos^2\theta + k_2sin^2\theta.
+$$
+\end{theorem_exam}
+
+
+\begin{definition_exam}{Asymptotic Direction}{} An asymptotic direction of $\Sigma$ at p is a direction of $T_p\Sigma$ for which the \textbf{normal curvature is 0}. An \textbf{asymptotic curve} is a regular connected curve $\alpha: (a,b) \rightarrow \Sigma$ such that for every point on the regular curve, the tangent line to that point is an asymptotic direction.
+\end{definition_exam}
+
+\begin{corollary}An asymptotic curve does not contain any elliptic points.
+\end{corollary}
+
+We have shown that each tangent place $T_p\Sigma$ has an orthonormal basis $e_1,e_2$ and hence the matrix of $-dN_p: T_p\Sigma \rightarrow T_p\Sigma$ with respect to the basis is 
+$$
+\begin{bmatrix}k_1 & 0 \\ 0 & k_2 \end{bmatrix}
+$$
+with $k_1 \geq k_2.$\\
+
+\begin{definition_exam}{Gauss and Mean curvature}{} The \textbf{Gauss curvature} of the oriented regular surface $\Sigma$ at p is 
+$$
+K(p) = det(-dN_p) = k_1(p)k_2(p)
+$$
+The \textbf{Mean Curvature} of $\Sigma$ at p is
+$$
+H(p) = \frac{1}{2}tr(-dN_p) = \frac{k_1 + k_2}{2}.
+$$
+\end{definition_exam}
+
+\begin{remark}The Gauss curvature is an intrinsic notion of curvature unlike the mean curvature.
+\end{remark}
+
+\begin{definition_exam}{Umbilical Point}{} A point $p \in \Sigma$ at which $k_1(p) = k_2(p)$ is called an umbilical point.
+\end{definition_exam}
+\begin{remark}At umbilical points, all the principal curvatures are equal.
+\end{remark}
+
+\begin{proposition_exam}{Classification of a surface with only umbilical points}{}If $\Sigma$ is a \textbf{connected} surface and every point in it is umbilical, then $\Sigma$ is contained either in a sphere or a plane.
+\end{proposition_exam}
+
+\begin{remark}The property of connectedness allows us to go from local to global properties.
+\end{remark}
+
+Hence, we summarise the actual equations needed for first and second fundamental forms.
+\begin{theorem_exam}{First and second fundamental form coefficients}{}Let $\phi:U \rightarrow \mathbb{R}^3$ be a local parameterisation near $p \in \Sigma$. We have that the first fundamental form is given by 
+$$
+g_{ij}(p) = \langle \phi_{u^{i}}(p), \phi_{u^{j}}(p) \rangle.
+$$
+The second fundamental form is given by 
+$$
+h_{ij}(p) = \langle -dN(\phi_{u^{i}}(p)), \phi_{u^{j}}(p) \rangle = -\langle N_{u^{i}}, \phi_{u^{j}} \rangle.
+$$
+\end{theorem_exam}
+
+\begin{lemma}The sum of the normal curvatures for any pair of orthogonal directions at a given point $p \in \Sigma$ is $2H = k_1 + k_2.$
+\end{lemma}
+
+\lecture{15}{Gauss Curvature}
+\section{The Gauss Map}
+\subsection{Gauss Curvature}
+
+\begin{definition}(Gauss curvature). Let $\Sigma$ be a regular surface. Let $p \in \Sigma$ such that the Gauss curvature $K(p) \neq 0$. Then, define open balls $V_n$ with radius $\frac{1}{n}$ where $\Sigma \supset V_1 \supset V_2 \supset ... \supset V_n$ and $p \in V_n$ for all n and each $V_n$ is a bounded region. We also require that the Gauss curvature has the same sign for all points in $V_1$. Then, we have that 
+$$
+K(p) = \lim_{n \rightarrow \infty}\frac{area(N(V_n))}{area(V_n)}.
+$$
+where area is defined by the Euclidean metric.
+\end{definition}
+
+\begin{corollary}The Gauss curvature is invariant under local isometries.   
+\end{corollary}
+
+\begin{definition_exam}{Elliptic/Hyperbolic/Planar/Parabolic}{} A point $p \in \Sigma$ is called 
+\begin{enumerate}
+\item \textbf{Elliptic} if $K(p) = det(-dN_p) > 0$, meaning $k_1$ and $k_2$ have the same sign,
+\item \textbf{Hyperbolic} if $K(p) = det(-dN_p) < 0$;
+\item \textbf{Parabolic} if $K(p) = det(-N_p) = 0$ but $-dN_p \neq \textbf{0}$ where $\textbf{0}$ is the zero matrix;
+\item \textbf{Planar} if $-dN_p = \textbf{0}$.
+\end{enumerate}
+\end{definition_exam}
+\begin{remark}An elliptic point is a point where every curve passing through it has a positive curvature.
+\end{remark}
+
+\begin{remark}An umbilical point of $\Sigma$ is the case of when $dN_p$ is a constant times the identity.
+\end{remark}
+
+\begin{theorem}Every compact surface has an elliptic point.
+\end{theorem}
+
+\begin{proposition}Let $p \in \Sigma$ with $\Sigma$ a regular surface.
+\begin{enumerate}
+\item If $p \in \Sigma$ is elliptic, then all the points in some neighbourhood of $\Sigma$ are on one side of the tangent plane $T_p\Sigma$.
+\item If $p \in \Sigma$ is hyperbolic, then for any neighbourhood of p, there is a point on both sides of $T_p\Sigma.$
+\end{enumerate}
+\end{proposition}
+
+\lecture{16}{Relationship between Gauss map and fundamental forms}
+\section{The Gauss Map}
+\subsection{Relationship between Gauss map and fundamental forms}
+We have seen that the shape operator is very important. However, it may be tedious to compute. Hence, we are now interested in expressing it in terms of the first and fundamental form. With the entries of the matrix of the shape operator, this will give us important quantities such as the Gauss and mean curvature.
+
+\begin{theorem_exam}{Shape operator in terms of 1st and 2nd fundamental form}{}
+Let [I] and [II] be the matrix of coefficients of the first and second fundamental forms. Then, the matrix of coefficients of the shape operator is  
+$$
+[-dN_p]^T = [II][I]^{-1}
+$$
+\end{theorem_exam}
+
+\begin{proposition_exam}{Gauss and Mean Curvature}{}The Gauss curvature is computed by 
+$$
+K = k_1k_2 = det(-dN)= \frac{h_{11}h_{22} - h_{12}^2}{g_{11}g_{22} - g_{12}^{2}}.
+$$
+The mean curvature is computed by 
+$$
+H = \frac{1}{2}(k_1 + k_2) = \frac{1}{2}tr(-dN) = \frac{h_{11}g_{22} - 2h_{12}g_{12} + h_{22}g_{11}}{2(g_{11}g_{22} - g_{12}^2)}.
+$$
+\end{proposition_exam}
+
+\begin{definition_exam}{Line of curvature}{} Let $\alpha: (a,b) \rightarrow \Sigma$ be a curve. We say that $\alpha$ is a line of curvature if $\alpha'(t)$ is an eigenvector of $-dN_{\alpha(t)}$ for all $t \in (a,b).$ That is, for all $p \in \alpha$, the tangent line of $\alpha$ is a principal direction at p.
+\end{definition_exam}
+
+\begin{remark}This means that for the curve $\alpha$, the velocity vector $\alpha'(t)$ is always pointing in either the direction of greatest or least curvature.
+\end{remark}
+\subsection{Surfaces of Revolution}
+\begin{definition}(Surface of revolution). A surface of revolution is a surface in Euclidean space created by rotating a curve (the generatrix) around an axis of rotation. In particular, let $\Sigma \subset \mathbb{R}^3$ be obtained by rotating the regular plane curve in the xz plane 
+$$
+x = f(v) \quad z = g(v)
+$$
+about the z-axis. Assuming the curve does not intersect the z-axis, we get 
+$$
+\phi(u,v) = (f(v)cosu,f(v)sinu,g(v))
+$$
+as local coordinates where u is the angle in the original shape and v is the angle of rotation around the z-axis.
+\end{definition}
+
+\begin{proposition}The mean and gauss curvature of a surface of revolution parameterised by arc-length is 
+$$
+K = \frac{b'(a'b'' - a''b')}{a}
+$$
+$$
+H = \frac{a'b'' - a''b'}{2} + \frac{b'}{2a}.
+$$
+\end{proposition}
+
+\begin{lemma}Consider the catenoid, the surface $x^2 + y^2 = cosh^2z.$ We can cover the catenoid with local coordinate charts using the map 
+$$
+\phi(\theta,t) = (c coshtcos\theta, c coshtsin\theta, ct)
+$$
+with the parameter values $\theta \in (0,2\pi)$ and $t \in (-\infty,\infty).$
+\end{lemma}
+
+\begin{proposition}(Oline Rodrigues). Let $\alpha$ be a regular curve. Then $\alpha$ is a line of curvature if and only if 
+$$
+dN_p(\alpha'(t)) = N'(t) = \lambda(t)\alpha'(t)
+$$
+where $\alpha(t)$ is the arc length parameterization, $\lambda(t) \in \mathbb{R}$ and $N(t) = N \circ \alpha(t).$ In this case, $-\lambda(t)$ is the principal curvature along $\alpha'(t).$
+\end{proposition}
+
+
+
+\lecture{17}{Minimal Surfaces}
+\section{The Gauss Map}
+\subsection{Minimal Surfaces}
+A minimal surface is a surface that locally minimizes its area.
+\begin{definition_exam}{Minimal Surfaces}{} We say that a regular orientable surface $\Sigma$ is minimal if its mean curvature is identically zero, 
+$$
+H = 0.
+$$
+\end{definition_exam}
+
+Minimal surfaces are important as they are a solution to minimisation problems.
+
+\begin{theorem_exam}{Minimal surfaces are surface minimisers}{}A regular surface $\Sigma$ is minimal if and only if for every $p \in \Sigma$, there is a neighbourhood $U$ of p in $\Sigma$ such that $U \subset \mathbb{R}^3$ is the surface with the least area having $\partial U$ as boundary.
+\end{theorem_exam}
+
+\begin{theorem}There are no compact minimal surfaces in $\mathbb{R}^3.$
+\end{theorem}
+
+We say that a surface is a critical point for area as a function of the deformation of the surface. We describe what we mean by the deformation of the surface.
+
+\begin{definition_exam}{Normal Variations}{} Let D be a bounded region $D \subset U$. We define a regular surface given by a single coordinate patch $\phi: U \rightarrow \mathbb{R}^3.$ A \textbf{variation} of $\phi$ on D is a smooth map 
+$$
+\phi: D \times (-\epsilon, \epsilon) \rightarrow \mathbb{R}^3
+$$
+with $\phi(u^1,u^2,0) = \phi(u^1,u^2)$. We define \textbf{normal variations} as 
+$$
+\phi(u^1,u^2,t) = \phi(u^1,u^2) + tf(u^1,u^2)N(u^1,u^2)
+$$
+with f zero on the boundary. f is an arbitrary smooth function. We set 
+$$
+\phi^t(u^1,u^2) = \phi(u^1,u^2,t),
+$$
+and write A(t) for the area of $\phi^t(D).$
+\end{definition_exam}
+
+\begin{corollary}You can imagine normal variations as us deforming the surface in the direction of the normal vector and at t = 0, we get back the original surface.
+\end{corollary}
+
+Hence, we have a critical point when for any function f, looking at the area, we differentiate it with respect to t and set it equal to 0.
+
+\lecture{18}{Minimal Surfaces of Revolution and Isothermal charts}
+\section{The Gauss Map}
+\subsection{Minimal Surfaces of Revolution}
+
+Recall that to check if a surface is minimal, we compute the mean curvature and check if it is 0. We define A(t) as the area of $\phi^t(D).$
+
+
+\begin{proposition_exam}{Minimal surfaces are critical}{}The regular parameterised surface $\phi: U \rightarrow \mathbb{R}^3$ is minimal if and only if for all bounded regions $D \subset U$ and all normal variations $\phi$ on D, 
+$$
+A'(0) = 0.
+$$
+\end{proposition_exam}
+
+\begin{remark}We deform the normal variation and where t = 0, we differentiate the area with respect to t and set it equal to .
+\end{remark}
+  
+\begin{proposition}There is exactly one minimal surface that is a surface of revolution, namely the Catenoid 
+$$
+\phi(u^1,u^2) = (a cosh u^2cosh u^1, a cosh u^2 sin u^1, au^2)
+$$
+for $0 < u^1 < 2\pi$ where $-\infty < u^2 < \infty.$
+\end{proposition}
+
+
+\subsection{Isothermal}
+We are now interested in developing a new coordinate system.
+\begin{definition_exam}{Isothermal}{}A coordinate chart $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma \subset \mathbb{R}^3$ of the surface $\Sigma$ is called isothermal if the vectors $E_1 = \phi_{u^{1}}, E_2 = \phi_{u^{2}}$ are orthogonal and have the same length 
+$$
+g_{11} = g_{22} \quad g_{12} = 0.
+$$
+\end{definition_exam}
+
+\begin{theorem}One can always cover a regular surface with isothermal coordinate charts.
+\end{theorem}
+
+\begin{definition}(Laplacian). Let $\phi: U \rightarrow \mathbb{R}^3$ be a regular parameterised surface and also \textbf{isothermal}. The Laplacian operator is defined by 
+$$
+\Delta \phi \coloneqq \phi_{u^1u^1} + \phi_{u^2u^2} = 2g_{11}HN.
+$$
+\end{definition}
+
+The vector HN is known as the \textbf{mean curvature vector} as it is in the direction of the normal with the mean curvature as a multiple. 
+
+
+\begin{theorem_exam}{Minimal surfaces have harmonic isothermal coordinates}{}If $\phi:U \rightarrow \mathbb{R}^3$ is a regular parameterised surface, and $\phi$ is also isothermal.
+Thus, such an $\phi$ is minimal if and only if 
+$$
+\Delta \phi \coloneqq \phi_{u^{1},u^{1}} + \phi_{u^{2},u^{2}} = (0,0,0).
+$$
+Functions satisfying $\Delta\phi = (0,0,0)$ are said to be harmonic.
+\end{theorem_exam}
+\begin{proposition_exam}{Test for minimal surfaces}{}A way to check if a surface is minimal is to first check that whether if its coordinate chart $\phi$ is isothermal ($\langle E_1, E_2 \rangle = 0$ and $g_{11} = g_{22}, g_{12} = 0$), and if so, we then check if the Laplacian $\Delta \phi = (0,0,0).$ That is, given isothermal coordinates, a surface is minimial if the coordinates are also harmonic.
+\end{proposition_exam}
+
+Minimal surfaces are strongly connected to complex analysis since the real and imaginary parts of analytic functions are harmonic.
+
+\begin{definition}(Harmonic conjugate). When two smooth functions $f,g: U \subset \mathbb{R}^2 \rightarrow \mathbb{R}$ satisfy the Cauchy-Riemann equations, then they are harmonic. Furthermore, they are known as harmonic conjugate.
+\end{definition}
+
+\begin{definition}(Conjugate minimal surfaces). Let \textbf{x} and \textbf{y} be isothermal parameterisations of minimal surfaces such that their component functions are pairwise harmonic conjugate. Then \textbf{x} and \textbf{y} are called \textbf{conjugate minimal surfaces}.
+\end{definition}
+
+\begin{lemma}Let \textbf{x} and \textbf{y} be conjugate minimal surfaces. Then the surface 
+$$
+\tilde{z} = (cos\;t)\textbf{x} + (sin\;t)\textbf{y}
+$$
+is a minimal surface.
+\end{lemma}
+
+\begin{lemma}All surfaces of the one-parameter family 
+$$
+\tilde{z} = (cos\;t)\textbf{x} + (sin\;t)\textbf{y}
+$$
+where \textbf{x} and \textbf{y} are conjugate minimal surfaces have the same first fundamental form. Furthermore, the first fundamental form of this family is independent of t.
+\end{lemma}
+
+\lecture{19}{Isometries and Conformalities}
+\section{Intrinsic Geometry of Surfaces}
+\section{Intrinsic Geometry of Surfaces}
+\subsection{Isometries}
+
+In this section, we are interested in formalising what it means for two surfaces to have the "same" first fundamental form.
+
+
+First, recall that if $\Sigma_1, \Sigma_2$ are regular surfaces and $\phi: \Sigma_1 \rightarrow \Sigma_2$. $\phi$ is said to be a diffeomorphism if $\phi$ is differentiable and $\phi^{-1}: \Sigma_2 \rightarrow \Sigma_1$ is also differentiable.
+
+\begin{definition}(Isometry in metric spaces). Let X and Y be metric spaces with metrics $d_X, d_Y$. A map $f: X \rightarrow Y$ is called an isometry if for any $a,b \in X$, one has 
+$$
+d_X(a,b) = d_Y(f(a), f(b)).
+$$
+\end{definition}
+
+\begin{definition_exam}{Isometry}{} A diffeomorphism $\phi: \Sigma_1 \rightarrow \Sigma_2$
+is an isometry if it preserves the inner product, i.e. if for all $p \in \Sigma_1$ and $X,Y \in T_p\Sigma_1$,
+$$
+\langle X, Y \rangle_p = \langle d\phi_p(X), d\phi_p(Y)\rangle_{\phi(p)}.
+$$
+We say that the surfaces $\Sigma_1$ and $\Sigma_2$ are \textbf{isometric}.
+\end{definition_exam}
+
+Hence, a diffeomorphism $\phi$ is an isometry if the differential $d\phi$ preserves the inner product.
+
+
+\begin{theorem_exam}{Isometric surfaces have the same first fundamental forms}{} Let $\Sigma_1, \Sigma_2$ be regular surfaces. Let $\phi: \Sigma_1 \rightarrow \Sigma_2$ be a diffeomorphism. Then, $\phi$ preserves the first fundamental form $I_p$ between the surfaces if and only if $\phi$ is an isometry.
+\end{theorem_exam}
+
+
+\begin{definition}(Local Isometry). A map $\phi: U \rightarrow \Sigma_2$ of a neighbourhood U of $p \in \Sigma_1$ is a local isometry if there exists a neighbourhood $V$ of $\phi(p) \in \Sigma_2$ such that $\phi: U \rightarrow V$ is an isometry. 
+\end{definition}
+
+\begin{definition_exam}{Locally Isometric Surfaces}{} If there exists a local isometry into $\Sigma_2$ at every point $p \in \Sigma_1$, then the surface $\Sigma_1$ is said to be locally isometric to $\Sigma_2.$ We say that $\Sigma_1, \Sigma_2$ are locally isometric if $\Sigma_1$ is locally isometric to $\Sigma_2$ and $\Sigma_2$ is locally isometric to $\Sigma_1.$
+\end{definition_exam}
+
+\begin{corollary}If $\phi: \Sigma_1 \rightarrow \Sigma_2$ is a diffeomorphism and a local isometry for every $p \in \Sigma_1$, then $\phi$ is an isometry (globally).
+\end{corollary}
+
+\begin{remark}Two surfaces can be locally isometric but not globally isometric.
+\end{remark}
+
+\begin{lemma}The cylinder and the plane are locally isometric.
+\end{lemma}
+
+\begin{definition}(Path metric). The path metric of a surface is the shortest distance between two points along curves in that surface.
+\end{definition}
+
+\begin{lemma}Local isometries can shrink but not increase distances in the path metric.
+\end{lemma}
+
+We now describe local isometries in terms of local coordinates. First, define the curve $\alpha(t) = \phi(u(t), v(t))$ for $t \in (-\epsilon, \epsilon)$. Recall that from the first fundamental form, we have that the coefficients are
+$$
+\begin{cases}
+g_{11} = \langle \phi_u, \phi_u\rangle_p\\
+g_{12} = \langle \phi_u, \phi_v \rangle_p\\
+g_{22} = \langle \phi_v, \phi_v \rangle_p\\
+\end{cases}
+$$
+
+\begin{proposition_exam}{Test for locally isometric surfaces}{} Suppose $\phi_1: U \rightarrow \Sigma_1$ and $\phi_2: U \rightarrow \Sigma_2$ are coordinate charts on $\Sigma_1$ and $\Sigma_2$ so that $\phi_2 \circ \phi_{1}^{-1}$ is a local isometry if and only if they have the same first fundamental forms. That is, $g_{11}^{\Sigma_1} = g_{11}^{\Sigma_2}, g_{12}^{\Sigma_1} = g_{12}^{\Sigma_2}, g_{22}^{\Sigma_1} = g_{22}^{\Sigma_2}$ where $g_{11}^{\Sigma_1},g_{12}^{\Sigma_1},g_{22}^{\Sigma_1}$ corresponds to surface $\Sigma_1$ and $g_{11}^{\Sigma_2},g_{12}^{\Sigma_2},g_{22}^{\Sigma_2}$correspond to surface $\Sigma_2.$
+\end{proposition_exam}
+
+
+\begin{remark}If we are given two surfaces, we can check whether are they locally isometric by checking to see if they have the same coefficients of the first fundamental form. Furthermore, if they do not have the same coefficients of the first fundamental form, then they are not locally isometric.
+\end{remark}
+
+\begin{proposition}The cylinder and the plane are locally isometric. However, they are not isometric as they are not homeomorphic.
+\end{proposition}
+
+\begin{proposition}If $f: S_1 \rightarrow S_2$ is an isometry between regular surfaces, then the inverse map $f^{-1}$ is also an isometry.
+\end{proposition}
+
+\subsection{Conformalities}
+Diffeomorphic surfaces are equivalent from the point of view of differentiability and isometric surfaces are equivalent from the metric viewpoint. We are now looking at the equivalence with analytic functions of complex variables. We do this through introducing \textbf{conformal equivalence}. Conformal maps don't preserve the inner product but instead, they scale it.
+
+\begin{definition}(Derivative). Given a complex-valued f of a single complex variable, the derivative of f at a point $z_0$ in its domain is defined by the limit 
+$$
+f'(z) = \lim_{z \rightarrow z_0}\frac{f(z) - f(z_0)}{z - z_0}
+$$
+where $z, z_0 \in \mathbb{C}.$ If the limit exists, we say that f is \textbf{complex-differentiable} at the point $z_0.$
+\end{definition}
+
+\begin{definition}(Holomorphic Function). If the function f is complex differentiable at every point $z_0$ in an open set U, then we say that f is \textbf{holomorphic on U}.
+\end{definition}
+
+We look at the relationship between real and complex differentiability as expressed through the Cauchy-Riemann equations.
+
+\begin{theorem}(Cauchy-Riemann Equations). If a complex function $f(x+iy) = u(x,y) + iv(x,y)$ is holomorphic, then u and v have first partial derivatives with respect to x and y and satisfy the Cauchy-Riemann equations 
+$$
+\begin{cases}
+\frac{\partial u}{\partial x} = \frac{\partial v}{\partial y} \\
+\\
+\frac{\partial u}{\partial y} = -\frac{\partial v}{\partial x}
+\end{cases}
+$$
+\end{theorem}
+
+A conformal map is a function that preserves orientation and angles locally.
+\begin{definition_exam}{Conformal Map}{} If U is an open subset of the complex plane $\mathbb{C}$, then a function $f: U \rightarrow \mathbb{C}$ is conformal if and only if it is holomorphic and its derivative is everywhere non-zero on U.
+\end{definition_exam}
+
+We now extend this to conformal equivalence of regular surfaces.
+
+\begin{definition_exam}{Conformal maps on regular surfaces}{} Let $\Sigma_1, \Sigma_2$ be regular surfaces and $\phi: \Sigma_1 \rightarrow \Sigma_2$ be a diffeomorphism. We say that $\phi$ is a \textbf{conformal map} if for all $p \in \Sigma_1$ and all $v_1, v_2 \in T_p(\Sigma_1)$, we have that 
+$$
+\langle d\phi_p(v_1), d\phi_p(v_2) \rangle = f^2(p).\langle v_1, v_2 \rangle_p
+$$
+where $f^2(p)$ is a nowhere-zero differentiable function on $\Sigma_1.$ The surfaces $\Sigma_1, \Sigma_2$ are said to be conformal.
+\end{definition_exam}
+
+\begin{remark}Here, we have $f^2$ to indicate we have a non-negative scaling factor. 
+\end{remark}
+
+\begin{definition}(Local Conformal Map). A map $\phi: U \rightarrow \Sigma_2$ of a neighbourhood U of $p \in \Sigma_1$ into $\Sigma_2$ is a local conformal map if there exists a neighbourhood V of $\phi(p)$ such that $\phi: U \rightarrow V$ is a conformal map. If for each $p \in \Sigma_1$, there exists a local conformal map at p, the surface $\Sigma_1$ is said to be \textbf{locally conformal} to $\Sigma_2.$
+\end{definition}
+
+\begin{remark}The geometric meaning is that angles are preserved by conformal maps.
+\end{remark}
+We can now state a similar test to the test for locally isometric surfaces.
+\begin{proposition_exam}{Test for locally conformal surfaces}{}Let $\phi_1: U \rightarrow \Sigma_1$ and $\phi_2: U \rightarrow \Sigma_2$ on $\Sigma_1, \Sigma_2$ such that 
+$$
+\begin{cases}
+g_{11}^{1} = f^2 g_{11}^{2}\\
+g_{12}^{1} = f^2 g_{12}^{2}\\
+g_{22}^{1} = f^2 g_{22}^{2}\\
+\end{cases}
+$$
+where $f^2$ is a nowhere-zero differentiable function in U and where $g_{11}^1,g_{12}^1,g_{22}^1$ are the coefficients of the first fundamental form on $\Sigma_1$ and $g_{11}^{2},g_{12}^{2},g_{22}^{2}$ are the coefficients of the first fundamental form on $\Sigma_2$ if and only if the map $\phi = \phi_2 \circ \phi_1^{-1}: \phi_1(U) \rightarrow \Sigma_2$ is a local conformal map.
+\end{proposition_exam}
+
+\begin{lemma}Local conformality is a transitive property.
+\end{lemma}
+
+\begin{theorem}Any two regular surfaces are locally conformal.
+\end{theorem}
+
+\lecture{20}{Gauss' Theorema Egregium and Equations of Compatibility}
+\section{Intrinsic Geometry of Surfaces}
+\subsection{Gauss' Theorema Egregium and Equations of Compatibility}
+
+We are now interested in assigning to each point of a surface a trihedron and study the derivative of its vector.
+
+\begin{definition_exam}{Trihedron for surfaces}{} Let $\Sigma \subset \mathbb{R}^3$ be a regular, orientable, and oriented surface. Let $\phi: U \subset \mathbb{R}^2 \rightarrow \Sigma$ be a coordinate chart. To each point of $\phi(U)$, we assign the trihedron
+$$
+\begin{cases}
+\phi_u\\
+\phi_v\\
+N = \frac{\phi_u \wedge \phi_v}{|\phi_u \wedge \phi_v|}
+\end{cases}
+$$
+\end{definition_exam}
+
+We now study this trihedron and its derivatives. That is, for $\phi_u, \phi_v$, we can look at their derivatives with respect to u and v. In particular, $\phi_{uv}$ can be represented in terms of their tangent and normal component, which themselves are a linear combination of the basis of the tangent plane and normal vector. The Christoffel symbols will represent the coefficients of the tangent vecot $E_1, E_2$ and $L_{ij}$ will represent the coefficient of the normal vector n.
+
+
+\begin{definition_exam}{Christoffel Symbols}{} Let $\Sigma \subset \mathbb{R}^3$ be a regular oriented surface. Let $\phi: U \rightarrow \Sigma$ be a coordinate chart. Looking at the derivatives of $\phi_u, \phi_v, N$, we get 
+
+$$
+\begin{cases}
+\phi_{uu} = \Gamma_{11}^{1}\phi_u + \Gamma_{11}^{2}\phi_v + h_{11}\textbf{N} \\
+\phi_{uv} = \Gamma_{12}^{1}\phi_u + \Gamma_{12}^{2}\phi_v + h_{12}\textbf{N} \\
+\phi_{vu} = \Gamma_{21}^{1}\phi_u + \Gamma_{21}^{2}\phi_v + h_{21}\textbf{N} \\
+\phi_{vv} = \Gamma_{22}^{1}\phi_u + \Gamma_{22}^{2}\phi_v + h_{22}\textbf{N} \\
+N_{u} = a_{11}\phi_u + a_{21}\phi_v \\
+N_{v} = a_{12}\phi_u + a_{22}\phi_v
+\end{cases}
+$$
+
+where $\textbf{N}$ is the normal vector. We call the coefficients $\Gamma_{ij}^{k}$ the Christoffel symbols. Since $\phi_{uv} = \phi_{vu}$ then $\Gamma_{ij}^{i} = \Gamma_{ji}^{i}$. Furthermore, $h_{ij}$ are the coefficients of the \textbf{second fundamental form}. Finally, $[a_{ij}]^T = [h_{ij}][g_{ij}]^{-1}.$
+\end{definition_exam}
+
+The Gauss formula in Einstein notation is therefore given by 
+$$
+\phi_{ij} = \Gamma_{ij}^{k}\phi_{k} + L_{ij}\textbf{N}.
+$$
+
+While the first fundamental form determines the intrinsic geometry of the surface, the second fundamental form reflects the way how the surface embeds in the surrounding space and how it curves relative to that space. Thus, the second fundamental form reflects the extrinsic geometry of the surface. This is evident as the normal vector \textbf{N} is involved as the normal vector sticks out of the surface. In contrast, we shall see that the Christoffel symbols can be computed using the first fundamental form only, which shows that they are completely intrinsic.
+
+\begin{proposition_exam}{System of Christoffel Symbols}{}We can obtain the Christoffel symbols through the coefficients of the first fundamental form. Let $E = g_{11}, F = g_{12}, G = g_{22}$. Taking the inner product of the first 4 relationships above with $\phi_u, \phi_v$, we get the following 3 pair of equations  
+
+$$
+\begin{cases}
+\Gamma_{11}^{1}E + \Gamma_{11}^{2}F = \langle \phi_{uu}, \phi_u \rangle = \frac{1}{2}E_u \\
+\Gamma_{11}^{1}F + \Gamma_{11}^{2}G = \langle \phi_{uu}, \phi_v \rangle = F_u - \frac{1}{2}E_v
+\end{cases}
+$$
+
+$$
+\begin{cases}
+\Gamma_{12}^{1}E + \Gamma_{12}^{2}F = \langle \phi_{uv}, \phi_u \rangle = \frac{1}{2}E_v \\
+\Gamma_{12}^{1}F + \Gamma_{11}^{2}G = \langle \phi_{uv}, \phi_v \rangle = \frac{1}{2}G_u
+\end{cases}
+$$
+
+$$
+\begin{cases}
+\Gamma_{22}^{1}E + \Gamma_{22}^{2}F = \langle \phi_{vv}, \phi_u \rangle = F_v - \frac{1}{2}G_u \\
+\Gamma_{22}^{1}F + \Gamma_{22}^{2}G = \langle \phi_{vv}, \phi_v \rangle = \frac{1}{2}G_v
+\end{cases}
+$$
+
+where for each pair, the determinant of the system $EG - F^2 \neq 0.$
+\end{proposition_exam}
+
+\begin{theorem_exam}{Compact Expression of Christoffel Symbols}{}A concise expression of the system of Christoffel symbols is given by 
+$$
+\frac{\partial}{\partial u^k}g_{ij} = \sum_m\bigg(\Gamma_{ik}^mg_{mj} + \Gamma_{jk}^mg_{mi} \bigg).
+$$
+\end{theorem_exam}
+
+Consider the \textbf{Kronecker delta symbol}. The identity matrix I is a matrix with ij-th entry 1 if i = j and 0 otherwise. We denote these entries by $\delta_{j}^{i}.$ Hence 
+$$
+\delta_{j}^{i} = 
+\begin{cases}
+1 \quad i = j\\
+0 \quad i \neq j.
+\end{cases}
+$$
+Let $[g_{ij}]$ be the matrix whose entries are the coefficients of \textbf{the first fundamental form}. Let $g^{ij}$ denote the entries of the inverse matrix of $[g_{ij}].$ Hence, we have that 
+$$
+g_{ik}g^{kj} = \delta_{i}^{j}.
+$$
+
+\begin{lemma}The coefficients $g^{ij}$ of the inverse matrix of the first fundamental form $[g_{ij}]$ are given by the formulas 
+$$
+\begin{cases}
+g^{11} = \frac{g_{22}}{g}\\
+g^{12} = -\frac{g_{12}}{g}\\
+g^{22} = \frac{g_{11}}{g}
+\end{cases}
+$$
+where g is the determinant of the matrix $[g_{ij}].$
+\end{lemma}
+
+\begin{proposition_exam}{Compact formula for system of Christoffel symbols}{}A formula for the Christoffel symbols in terms of the first fundamental form is
+$$
+\Gamma_{ik}^{l} = \frac{1}{2}\sum_{j}g^{jl}\bigg(\frac{\partial}{\partial u_k}g_{ij} + \frac{\partial}{\partial u_i}g_{jk} - \frac{\partial}{\partial u_j}g_{ki} \bigg)
+$$
+where $g_{ij}$ are the coefficients of the first fundamental form and $g^{jl}$ is the inverse of the first fundamental form.
+\end{proposition_exam}
+
+\begin{remark}The Christoffel symbols can be computed in terms of the first fundamental form and its derivative. Hence, it is an intrinsic property.
+\end{remark}
+
+\begin{remark}The above system can be thought of as the analog of Frenet-Serret formulas for surfaces.
+\end{remark}
+
+\begin{theorem}(Clairaut's theorem). Partial derivatives commute where 
+$$
+(f_{ij})_i = (f_{ii})_j.
+$$
+\end{theorem}
+
+\begin{definition_exam}{Gauss Equation}{} The Gaussian curvature K can be computed by 
+$$
+(\Gamma_{12}^{2})_u - (\Gamma_{11}^{2})_v + \Gamma_{12}^1\Gamma_{11}^2 + \Gamma_{12}^2\Gamma_{12}^2 - \Gamma_{11}^{2}\Gamma_{22}^{2} - \Gamma_{11}^{1}\Gamma_{12}^{2} = -EK.
+$$
+\end{definition_exam}
+
+\begin{theorem_exam}{Gauss' Theorema Egregium}{} The Gaussian curvature K of the surface depends only on the first fundamental form, and hence is invariant by local isometries.
+\end{theorem_exam}
+
+\begin{proof}(Sketch). The idea to proving this is to express the Gauss curvature, which was developed from the second fundamental form, in terms of the first fundamental form's coefficients. Then, we know that isometries preserve the first fundamental form.
+\end{proof}
+
+This means that as long as the first fundamental form stays the same, we can move around the surface without changing K. Hence, we will be able to define K for abstract surfaces that are not sitting inside $\mathbb{R}^3.$
+
+\begin{remark}If you have two surfaces with an isometry between them, the Gauss curvature are the same on both sides.
+\end{remark}
+
+
+\begin{definition}(Mainardi-Codazzi Equations). We define the Mainardi-Codazzi equations as 
+$$
+\begin{cases}
+e_v - f_u = e\Gamma_{12}^{1} + f(\Gamma_{12}^{2} - \Gamma_{11}^{1}) - g\Gamma_{11}^{2} \\
+f_v - g_u = e\Gamma_{22}^{1} + f(\Gamma_{22}^{2} - \Gamma_{12}^{1}) - g\Gamma_{12}^{2}
+\end{cases}
+$$
+\end{definition}
+
+\begin{definition_exam}{Gauss and Codazzi-Mainardi Equations}{} The Gauss-Codazzi-Mainardi equations are therefore 
+$$
+\begin{cases}
+(\Gamma_{12}^{2})_u - (\Gamma_{11}^{2})_v + \Gamma_{12}^1\Gamma_{11}^2 + \Gamma_{12}^2\Gamma_{12}^2 - \Gamma_{11}^{2}\Gamma_{22}^{2} - \Gamma_{11}^{1}\Gamma_{12}^{2} = -EK\\
+e_v - f_u = e\Gamma_{12}^{1} + f(\Gamma_{12}^{2} - \Gamma_{11}^{1}) - g\Gamma_{11}^{2} \\
+f_v - g_u = e\Gamma_{22}^{1} + f(\Gamma_{22}^{2} - \Gamma_{12}^{1}) - g\Gamma_{12}^{2}
+\end{cases}
+$$
+More concisely, they can be expressed as 
+$$
+\begin{cases}
+(\phi_{uu})_{v} - (\phi_{uv})_{u} = 0,\\
+(\phi_{vv})_{u} - (\phi_{vu})_{v} = 0,\\
+N_{uv} - N_{vu} = 0.
+\end{cases}
+$$
+\end{definition_exam}
+
+We now state the theorem that the first and second fundamental form determines a surface.
+
+\begin{theorem}(Bonnet). Let $E,F,G,e,f,g$ be differentiable functions defined in an open set $V \subset \mathbb{R}^2$ with $E > 0$ and $G > 0.$ Assume that the given funtions satisfy the Gauss and Mainardi-Codazzi equations and that $EG - F^2 > 0.$ Then, for every $q \in V$, there exists a neighbourhood $U \subset V$ of q and a diffeomorphism $\phi: U \rightarrow \phi(U) \subset \mathbb{R}^3$ such that the regular surface $\phi(U) \subset \mathbb{R}^3$ has respectively E,F,G and e,f,g as coefficients of the first and second fundamental forms.\newline Furthermore, if U is connected and if $\tilde{\phi}: U \rightarrow \tilde{\phi}(U) \subset \mathbb{R}^3$
+is another diffeomorphism satisfying the same conditions, then there exist a translation T and a proper linear orthogonal transformation $\rho$ in $\mathbb{R}^3$ such that 
+$$
+\tilde{\phi} = T \circ \rho \circ \phi.
+$$
+\end{theorem}
+
+\begin{theorem_exam}{Fundamental Theorem of Surfaces}{}A surface is uniquely determined by the coefficients of the first and second fundamental form, provided the first and second fundamental form satisfy the Gauss and Mainardi-Codazzi equations.
+\end{theorem_exam}
+
+\begin{remark}In other words, knowledge of the first and second fundamental forms determines a surface locally. There are no other relations we can derive.
+\end{remark}
+
+\lecture{21}{Parallel Transport}
+\section{Geodesics}
+\section{Geodesics}
+\subsection{Parallel Transport}
+
+In this section, we are interested in how do we differentiate in surfaces. We recall some facts of vector fields in $\mathbb{R}^2.$
+
+\begin{definition_exam}{Vector Field}{} A vector field in an open set $U \subset \mathbb{R}^2$ is a map which assigns to each $q \in U$, a vector $w(q) \in \mathbb{R}^2$. The vector field w is said to be differentiable if writing $q = (x,y)$ and $w(q) = (a(x,y), b(x,y))$, the functions a and b are differentiable functions in U.
+\end{definition_exam}
+
+\begin{lemma}The vector field w determines a system of differential equations 
+$$
+\begin{cases}
+\frac{dx}{dt} = a(x,y)\\
+\frac{dy}{dt} = b(x,y)
+\end{cases}
+$$
+and that a trajectory w is a solution ot the differential equation. That is, w is a differentiable parameterized curve.
+\end{lemma}
+\begin{theorem}Let w be a vector field in an open set $U \subset \mathbb{R}^2.$ Given $p \in U$, there exists a trajectory $\alpha:I \rightarrow U$ of w (i.e. $\alpha'(t) = w(\alpha(t)), t \in I$)  with $\alpha(0) = p.$ This trajectory is unique as for any other trajectory $\beta: J \rightarrow U$ with $\beta(0) = p$, we have that $\beta = \alpha$ in $I \cap J.$ 
+\end{theorem}
+
+We can now move these ideas into the concept of a regular surface.
+
+\begin{definition_exam}{Tangent Vector Field}{} A tangent vector field in an open set $U \subset \Sigma$ of a regular surface $\Sigma$ is a map w 
+$$
+w: p \in U \rightarrow w(p) \in T_p\Sigma.
+$$
+The vector field w is \textbf{differentiable} at p if for some parameterisation $\phi(u,v)$ in p, the component functions a and b of 
+$$
+w = a(u,v)\phi_u + b(u,v)\phi_v
+$$
+in the basis $\{\phi_u, \phi_v\}$ are smooth functions at p. w is \textbf{differentiable} in U if it is differentiable for every $p \in U.$
+\end{definition_exam}
+
+
+\begin{lemma}The velocity vector field $\alpha'(t)$ for all $t \in I$ is an \textbf{example} of a tangent vector field.
+\end{lemma}
+
+\begin{lemma}$E_1, E_2$ are smooth vector fields.
+\end{lemma}
+
+We would like to differentiate a smooth vector field w near p in the direction of $w \in T_p\Sigma$. However, we want to know the derivative along the surface and hence we need to project the derivative onto the tangent plane. The covariant derivative is the rate of change of tangent vector fields that takes into account the changing basis vectors.
+
+\begin{definition_exam}{Covariant Derivative}{} Let w be a smooth vector field in a neighbourhood U of the point p in $\Sigma$. Take $v \in T_p\Sigma$ and consider the smooth curve 
+$$
+\alpha: (-\epsilon, \epsilon) \rightarrow U
+$$
+with $\alpha(0) = p$, $\alpha'(0) = v.$ Let $w(t)$ for $t \in (-\epsilon, \epsilon)$ be the restriction of the vector field w to the curve $\alpha.$
+Define $\nabla_vw$ to be the projection of $\frac{dw}{dt}(0) = (w \circ \alpha)^{'}(0)$ to $T_p\Sigma$, and call it the \textbf{covariant derivative} at p of the vector field w in the direction of v.
+\end{definition_exam}
+
+
+\begin{remark}The covariant derivative is an instrinsic concept and hence does not depend on the choice of the curve $\alpha.$
+\end{remark}
+
+\begin{lemma}(Covariant Derivative is intrinsic). The covariant derivative can be expressed through the first fundamental form. First, define the vector field $w(t) = a(t)\phi_u + b(t)\phi_v.$ Then, projecting $\frac{dw}{dt}$ onto the tangent plane we arrive at
+$$
+\nabla_vw = (a' + \Gamma_{11}^{1}au' + \Gamma_{12}^{1}av' + \Gamma_{12}^{1}bu'+ \Gamma_{22}^{1}bv')\phi_u + (b' + \Gamma_{11}^{2}au' + \Gamma_{12}^{2}av' + \Gamma_{12}^{2}bu' + \Gamma_{22}^{2}bv')\phi_v. 
+$$
+\end{lemma}
+
+\begin{remark}We see from above that the covariant derivative does not depend on the curve $\alpha$ but instead on $(u',v').$
+\end{remark}
+
+\begin{remark}There are many different notations for covariant derivative 
+$$
+\nabla_vw = D_vw = \frac{Dw}{dt}.
+$$
+\end{remark}
+
+Recall that the acceleration of an object contains a tangential and a normal component. The covariant derivative is the \textbf{tangential component} of the acceleration on the curve. Hence, the covariant derivative is the acceleration from the point of the view of the surface as it is on the tangent plane.
+
+\begin{definition_exam}{Parallel Vector Field}{} A vector field w along a curve $\alpha: I \rightarrow \Sigma$ is called parallel if 
+$$
+\nabla_{\alpha'(t)}w = 0
+$$
+for all $t \in I.$
+\end{definition_exam}
+
+\begin{remark}In Euclidean space, this can be thought of as that the vector produced by the vector field always point in the same direction for all points on the curve $\alpha.$ That is, we have a constant field along the curve. Hence, $\nabla_{v}w$ is parallel to the normal vector of the tangent plane $T_p \Sigma.$
+\end{remark}
+
+We can also interpret a vector along a curve being parallel as having the projection of its covariant derivative being 0 for all points along the curve. Note that we actually have an ODE set up!.
+
+\begin{proposition_exam}{Covariant Constant Vector Fields}{}Let w and v be two separate parallel vector fields along $\alpha: I \rightarrow \Sigma.$ Then $\langle w(t), v(t) \rangle$ is constant. In particular, $|w(t)|$ and $|v(t)|$ are constant, and the angle between v(t) and w(t) is constant.
+\end{proposition_exam}
+The following proposition states that there is a unique way of moving a vector along a curve such that it satisfies the equation for a covariant derivative.
+\begin{proposition_exam}{Existence and Uniqueness of parallel vector fields}{} Let $\alpha: I \rightarrow \Sigma$ be a parameterized curve in $\Sigma$. Given $w_0 \in T_{\alpha(t_0)}\Sigma$, $t_0 \in I$, then there is an unique parallel vector field $w(t)$ along $\alpha(t)$ with $w(t_0) = w_0.$
+\end{proposition_exam}
+
+\begin{proof}(Sketch). This is an immediate consequence of the existence and uniquness of differential equations.
+\end{proof}
+
+\begin{definition_exam}{Parallel Transport}{} Let $\alpha: I \rightarrow \Sigma$ be a parameterized curve and $w_0 \in T_{\alpha(t_0)}\Sigma, t_0 \in I.$ Let w be the parallel vector field along $\alpha,$ with $w(t_0) = w_0.$ The vector $w(t_1), t_1 \in I$ is called the parallel transport of $w_0$ along the curve $\alpha$ at the point $t_1.$
+\end{definition_exam}
+
+\begin{remark}Parallel transports refer to us taking a vector $w_0$ and then moving it along the curve to another point $w_1$.
+\end{remark}
+
+\begin{lemma}If the curve $\alpha$ is a regular curve, then the parallel transport does not depend on the parameterization of the curve $\alpha.$
+\end{lemma}
+
+\begin{proposition}Fix two points $p, q \in \Sigma$ and a parameterized curve $\alpha: I \rightarrow \Sigma$ with $\alpha(0) = p, \alpha(1) = q.$ Denote by $P_{\alpha}: T_p\Sigma \rightarrow T_q\Sigma$ the map that assigns to each $v \in T_p\Sigma$ its parallel transport along $\alpha$ at q. The map $P_{\alpha}$ is an isometry.
+\end{proposition}
+
+We now list what are the steps to computing the parallel transport.
+\begin{enumerate}
+\item First compute the first fundamental form $g_{ij}$
+\item Compute Christoffel symbols $\Gamma_{ik}^{1}$
+\item Compute the covariant derivative of the vector field $a^iE_i$ along the vector $b^jE_j$ where $\nabla_vw = \sum_{j}b^j\nabla_{E_{j}}w = \sum_{ij}\bigg[\frac{\partial u^i}{\partial u^j}E_i + \sum_{k}a^i\Gamma_{ij}^{k}E_k \bigg]$ and then solve for $a^k$ such that $b^1 = 1.$
+\end{enumerate}
+
+\lecture{22}{Geodesics}
+\section{Geodesics}
+\subsection{Geodesics}
+
+Geodesics are an important case of parallelism. We first define a local definition of geodesics.
+
+\begin{definition_exam}{Parameterised Geodesic}{} A nonconstant parameterised curve $\alpha: I \rightarrow \Sigma$ is a parameterised geodesic if the field of its tangent (velocity) vectors $\alpha'(t)$ is parallel along the curve $\alpha$ for all $t \in I$; that is,
+$$
+\nabla_{\alpha'(t)}\alpha'(t) = 0 \quad
+$$
+for all $t \in I.$
+\end{definition_exam}
+
+\begin{remark}A geodesic can be thought of as having 0 acceleration with respect to the surface. Hence, if the acceleration is normal to the surface, the projection of the acceleration vector onto the surface, which by definition is the covariant derivative, will then be 0.
+\end{remark}
+
+\begin{lemma}A smooth curve is a geodesic if and only if its acceleration vector is normal to the surface.
+\end{lemma}
+
+We have that $|\alpha'(t)| = c \neq 0.$ We can define the arc length $s = ct$ as a parameter and hence the parameter t of a parameterized geodesic $\alpha$ is proportional to the arc length.
+
+
+We can now extend the definition of geodesics to subsets of the surface $\Sigma$ that are regular curves.
+
+\begin{definition_exam}{Geodesic}{} A regular parameterised curve $\alpha: (a,b) \rightarrow \Sigma$ is a geodesic if the re-parameterisation of $\alpha$ by arc-length is a parameterised geodesic.
+\end{definition_exam}
+
+
+\begin{remark}Only parameterisations proportional to arc-length will satisfy the geodesic equation.
+\end{remark}
+
+\begin{lemma}
+A parameterised geodesic has tangent vectors of constant length. Hence, it is parameterised proportionally to arc-length.
+\end{lemma}
+
+\begin{lemma}In the plane, the geodesics are exactly the straight lines.
+\end{lemma}
+
+\begin{lemma}Geodesics are sent to geodesics under isometries.
+\end{lemma}
+
+Geodesics are curves whose curvature with respect to the surface is zero. That is, the length of the tangential component of $\alpha''(s)$ is zero. Alternatively, geodesics are the trajectories of particles which move on $\Sigma$, subject to no forces other than the requirement to remain on $\Sigma$.
+
+
+\begin{theorem_exam}{Differential equations for geodesics}{}We have that geodesics satisfy the following system
+$$
+\begin{cases}
+u'' + \Gamma_{11}^{1}(u')^2 + 2\Gamma_{12}^{1}u'v' + \Gamma_{22}^{1}(v')^2 = 0\\
+\\
+v'' + \Gamma_{11}^{2}(u')^2 + 2\Gamma_{12}^{2}u'v' + \Gamma_{22}^{2}(v')^2 = 0\\
+\end{cases}
+$$
+First solve for first fundamental forms, then Christoffel symbols, and then plug it back into the geodesic equation.
+\end{theorem_exam}
+\lecture{23}{Geodesics Curvature and the Exponential Map}
+\section{Geodesics}
+\subsection{Geodesics Curvature}
+We now work towards defining the notion of geodesic curvature on a regular surface. First, recall how we defined curvature of curves in $\mathbb{R}^2$ and $\mathbb{R}^3.$\\
+
+Let $\alpha:I \rightarrow \mathbb{R}^2$ be a smooth curve parameterized by arc length. We will first give an orientation to the plane and hence sign to the curvature. Let $T(s) = \alpha'(s)$ be the unit tangent vector to the curve at $\alpha(s).$ Let $N(s)$ be the unit normal vector at $T(s)$ such that the ordered basis $\{T(s),N(s)\}$ agrees with the chosen orientation of $\mathbb{R}^2.$ We then define the curvature $k(s) = \langle \alpha''(s), N(s) \rangle$. Here, positive curvature indicates the curve is bending to the left as you go ahead whilst a negative curvature indicates bending to the right.\\
+
+Let $\alpha$ $\alpha:I \rightarrow \mathbb{R}^3$ be a smooth curve parameterized by arc length. The curvature of $\alpha$ at s is the real number $k(s) = |\alpha''(s)|.$ That is, it is the magnitude of the acceleration vector. We can't give a sign to the curvature of a curve in $\mathbb{R}^3.$\\
+
+We can define orientation for an oriented regular surface $\Sigma \subset \mathbb{R}^3$.  We define $T(s) = \alpha'(s)$ to be the unit tangent vector to the curve at $\alpha(s).$ We let $M(s)$ be the unit vector at $\alpha(s)$ which is tangent to the surface $\Sigma$ but orthogonal to $T(s).$ We then let $N(s)$ be the unit surface normal vector. Hence, $\{T(s), M(s), N(\alpha(s))\}$ gives us an ordered basis on the surface $\Sigma$ which agrees with the orientation of $\mathbb{R}^3.$
+\newline
+Let us define the curve $\gamma(t) = \phi(u^1(t),u^2(t)).$ The chain rule gives us 
+$$
+\gamma'(t) = (u^1)'\phi_{u^{1}} + (u^2)'\phi_{u^{2}}.
+$$
+Taking the derivative again and using Einstein notation, we get 
+$$
+\gamma'' = (u^i)^{''}\phi_{u^i} + (u^i)^{'}(u^j)^'\phi_{u^iu^j}.
+$$
+Subtituting the Gauss formula in $\phi_{u^iu^j} = \Gamma_{ij}^k\phi_{u^k} + L_{ij}N$, we get 
+$$
+\gamma^{''} = \bigg( (u^k)^{''} + \Gamma_{ij}^{k}(u^i)^i(u^j)' \bigg)\phi_{u^k} + (u^i)'(u^j)'L_{ij}N.
+$$
+
+\begin{definition_exam}{Tangential and Normal component of Acceleration vector}{} The term 
+$$
+\bigg( (u^k)^{''} + \Gamma_{ij}^{k}(u^i)^i(u^j)' \bigg)\phi_{u^k}
+$$
+is the \textbf{tangential component} of $\gamma''.$ The term 
+$$
+(u^i)'(u^j)'L_{ij}N
+$$
+is the \textbf{normal component} of $\gamma''.$
+\end{definition_exam}
+
+\begin{remark}We will see later that the length of the tangential component is the \textbf{geodesic curvature} and the length of the normal component is the \textbf{normal curvature}.
+\end{remark}
+
+We are now interested in determining how to compute the normal and geodesic curvature. First, for the \textbf{normal curvature}, recall the formula 
+$$
+\gamma^{''} = \gamma_{tan}^{''} + \gamma_{nor}^{''}
+$$
+where $\gamma_{tan}^{''}, \gamma_{nor}^{''}$ are the tangential and normal components of $\gamma^{''}$ respectively. We note that taking the dot product of $\gamma^{''}$ with N, $\langle \gamma_{tan}^{''},N\rangle = 0$ as the tangential component is in the tangent plane. Hence, 
+$$
+k_n = \gamma^{''}\cdot \gamma_{nor}^{''} = \big((u^i)^'(u^j)^'L_{ij} \big)N \cdot N = (u^i)^'(u^j)^'L_{ij}.
+$$
+
+\begin{definition_exam}{Normal Curvature}{}The normal curvature can be computed by the formula 
+$$
+k_n = (u^i)^'(u^j)^'L_{ij}.
+$$
+\end{definition_exam}
+
+We are now interested in computing the geodesic curvature $k_g.$ To do this, we note that if the curve $\gamma$ is parameterised by arc-length, then $\gamma'$ and $\gamma''$ are orthogonal. As $\gamma_{tan}^{''}$ lies in the tangent plane, then clearly it is orthogonal to the normal vector N. Furthermore, it can be shown that 
+$$
+\langle \gamma_{tan}^{''}, \gamma'\rangle = 0.
+$$
+Therefore, $\gamma_{tan}^{''}$ is colinear with $N \times \gamma'$. Hence, the \textbf{geodesic curvature} $k_g$ is the proportionality constant of 
+$$
+\gamma_{tan}^{''} = k_g\bigg(N \times \gamma' \bigg).
+$$
+So back to our framework, recall that instead of using $\gamma'$, we consider tangent vector fields w.
+\newline 
+\begin{lemma}Let w be a unit vector field. Then $\langle w, w'\rangle = 0.$
+\end{lemma}
+\begin{proof}As w is a unit vector field 
+$$
+0 = \frac{d}{dt}\langle w(t),w(t)\rangle 
+$$
+$$
+= 2\langle w'(t),w(t)\rangle.
+$$
+Hence, they are orthogonal.
+\end{proof}
+\begin{definition_exam}{Algebraic value of the covariant derivative}{} Let w be a smooth field of unit vectors along a curve $\alpha: I \rightarrow \Sigma$ where $\Sigma$ is an oriented surface, hence we have the existence of the Gauss map $\textbf{N}$. Then $dw(\alpha'(t))$ is perpendicular to the unit vector field w, so $\nabla_{\alpha'(t)}w$ is \textbf{perpendicular} to both w and \textbf{N}. \\We may define the \textbf{algebraic value} of the covariant derivative $[\nabla_{\alpha'(t)}w]$ by 
+$$
+\nabla_{\alpha'(t)}w = [\nabla_{\alpha'(t)}w]\mathbf{N} \times w(t).
+$$
+Up to sign, $[\nabla_{\alpha'(t)}w]$ is just the absolute value of $\nabla_{\alpha'(t)}w$ but it can be negative. 
+\end{definition_exam}
+
+\begin{remark}We have that $\langle w'(t), w(t) \rangle = 0$ and $\langle w', \textbf{N}\rangle = 0$ as $w' \in T_p\Sigma.$ Hence, w' \textbf{must} be a multiple of the cross product of the normal \textbf{N} and unit vector field w. The scalar multiple is known as the algebraic value. As the \textbf{N} is a unit vector and w are unit vectors, then the algebraic value is just the length, up to a sign depending on the orientation of where \textbf{N} and w are pointing.
+\end{remark}
+
+\begin{proposition_exam}{Computing algebraic value of covariant derivative}{}We can compute the algebraic value of the covariant derivative by 
+$$
+[\nabla_{\alpha'(t)}w] = \langle w'(t), \mathbf{N}(t) \times w(t)\rangle.
+$$
+\end{proposition_exam}
+
+We now consider the case where the field of unit vectors w are \textbf{velocity vectors} to the curve $\alpha.$
+
+\begin{definition_exam}{Geodesic curvature}{} Let $\alpha: I \rightarrow \Sigma$ be a regular curve parameterised by arc length. The algebraic value of $\nabla_{\alpha'(s)}\alpha'(s)$ is called the \textbf{geodesic curvature} of $\alpha$ and denoted by $k_g.$
+\end{definition_exam}
+
+\begin{remark}The covariant derivative is up to sign, the tangential projection of $\alpha''(s)$. Hence, the geodesic curvature is up to sign, the length of the tangential component of $\alpha''(s).$
+\end{remark}
+
+\begin{theorem_exam}{Pythagoras Theorem of Curvatures}{}By Pythagoras' theorem, for a curve that is parameterised by arc-length $\alpha$ in an oriented surface $\Sigma$, we have that 
+$$
+k^2 = k_{n}^{2} + k_{g}^{2}
+$$
+where k is the \textbf{curvature}, $k_n$ is the \textbf{normal curvature}, and $k_g$ is the \textbf{geodesic curvature}. 
+\end{theorem_exam}
+
+\begin{remark}We can decompose the curvature vector as the length of the normal projection of $\alpha''$ and the length of the tangential projection of $\alpha''.$
+\end{remark}
+
+\begin{remark}The normal curvature can be thought of as the external curvature of the surface whereas the geodesic curvature is the internal curvature of the surface. The normal curvature looks at how the surface itself is curved relative to the ambient space.
+\end{remark}
+
+
+\begin{theorem_exam}{}{}The curve $\alpha$ is a geodesic if and only if its geodesic curvature $k_g = 0$ as the covariant derivative is 0.
+\end{theorem_exam}
+
+\begin{definition_exam}{Geodesic Equation}{}Define the curve $\gamma(t) = \phi(u^{1}(t), u^{2}(t))$ in $\Sigma$. Then, the 2nd order ODE system for the geodesic is 
+$$
+(u^k)^{''} + \sum_{i, j}(u^j)'(u^i)'\Gamma_{ij}^{k} = 0 \quad k=1,2.
+$$
+\end{definition_exam}
+
+
+\begin{theorem_exam}{Characteristics of geodesics}{}The following conditions are equivalent.
+\begin{enumerate}
+\item $\gamma$ is a geodesic.
+\item The tangent component of $\gamma^{''}$ is zero at every point of $\gamma.$
+\item The acceleration vector $\gamma^{''}$ is equal to the normal component of $\gamma^{''}$ at every point of $\gamma.$
+\item $(u^k)^{''} + \sum_{i, j}(u^j)'(u^i)'\Gamma_{ij}^{k} = 0$ for k=1,2.
+\item $k = \pm k_n$ at every point of $\gamma.$
+\item The normal to the surface is colinear with the normal to the curve.
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{proposition}(Existence and uniquness of local geodesics). Given $p \in \Sigma$ and direction $v \in T_p\Sigma$, for $\epsilon > 0$ sufficiently small, there is an unique parameterised geodesic 
+$$
+\gamma: (-\epsilon, \epsilon) \rightarrow \Sigma
+$$
+satisfying 
+$$
+\begin{cases}
+\gamma(0) = p\\
+\gamma'(0) = v.
+\end{cases}
+$$
+\end{proposition}
+
+
+\begin{theorem}(ODEs). Given n ODEs in n variables 
+$$
+\begin{cases}
+ \frac{dy_1}{dt} = f_1(t,y_1,...,y_n)\\
+...\\
+\frac{dy_n}{dt} = f_n(t,y_1,...,y_n)
+\end{cases}
+$$
+whenever $t \in I$ and initial conditions 
+$$
+\begin{cases}
+y_1(t_0) = a_1\\
+...\\
+y_n(t_0) = a_n
+\end{cases}
+$$
+for $t_0 \in I$, then there is an open neighbourhood $I_0 \subset I$ of $t_0$ on which these equations have an unique smooth solution $y=(y_1,...,y_n)$. If the equations are all linear, then we have a global solution $I_0 = I.$
+\end{theorem}
+
+\begin{remark}Letting $v^i = (u^i)^{'}$, we can turn our geodesic system into a system of 4 first order equations and apply the ODE theorem.
+\end{remark}
+
+\begin{theorem}Let $\Sigma$ be a surface and let v be a vector in a tangent plane of $\Sigma$. The curve traced out from the intersection of the plane that contains v and is orthogonal to the surface with the surface is known as a \textbf{normal section}. Every normal section is a geodesic.
+\end{theorem}
+
+\begin{corollary}A great circle on a sphere is a normal section and hence a geodesic.
+\end{corollary}
+
+\subsection{Exponential Map}
+We now want to introduce special coordinate systems through the introduction of the exponential map.
+
+Recall the setup that given a point $p \in \Sigma$ and $v \in T_p\Sigma,$ there exists a unique parameterized geodesic $\gamma: (-\epsilon, \epsilon) \rightarrow \Sigma$ with $\gamma(0) = p$ and $\gamma'(0) = v.$ We stress the important of the velocity vector v on the geodesic by writing $\gamma(t,v) = \gamma(t).$
+
+\begin{theorem_exam}{Rescaling Geodesics}{} If the geodesic $\gamma(t,v)$ is defined for $t \in (-\epsilon, \epsilon)$, then the geodesic $\gamma(t, \lambda v)$ for $\lambda \in \mathbb{R}, \lambda \neq 0$ is defined for $t \in (-\frac{\epsilon}{\lambda}, \frac{\epsilon}{\lambda}),$ and 
+$$
+\gamma(t, \lambda v) = \gamma(\lambda t, v).
+$$
+\end{theorem_exam}
+
+\begin{remark}As the speed of the geodesic is constant, then we can go over its trace within whatever prescribed time we like by adjusting our speed appropriately. 
+\end{remark}
+
+\begin{definition_exam}{Exponential Map}{} Let $v \in T_p\Sigma$ where $v \neq 0$. Then, suppose that $\gamma(|v|, \frac{v}{|v|}) = \gamma(1,v)$ is defined. Then, we define the exponential map to be 
+$$
+\begin{cases}
+exp_p(v) = \gamma(1,v)\\
+exp_p(0) = p.
+\end{cases}
+$$
+That is, the exponential map is a map from $T_p\Sigma$ to $\Sigma.$
+\end{definition_exam}
+
+\begin{remark}Pick a point $p \in \Sigma$ and a unit tangent vector v to p. The exponential map looks at the point $p_0 \in \Sigma$ whereby we move in the direction of the \textbf{geodesic} passing through p in the direction of v after 1 unit of time.
+\end{remark}
+
+The map $exp_p$ is \textbf{always defined and differentiable} in some neighbourhood of the origin of $T_p\Sigma.$
+
+\begin{proposition}For each $p \in \Sigma$, there is a $\tilde{\epsilon} > 0$ such that $exp_p$ is defined and smooth in the interior of the disk of radius $\tilde{\epsilon}$, where $B_{\tilde{\epsilon}}(p) \subseteq T_p\Sigma.$
+\end{proposition}
+Hence, we now have a way in which to translate coordinates from the \textbf{tangent plane} to the surface.\newline
+An important result from the above proposition is the following.
+\begin{proposition_exam}{Exponential Map is a Local Diffeomorphism}{}The exponential map $exp_p$ is a diffeomorphism from a neighbourhood U of $0 \in T_p\Sigma$ to $exp_p(U) \subset \Sigma.$
+\end{proposition_exam}
+\begin{remark}The differential of $exp_p$ at 0 is the identity matrix.
+\end{remark}
+
+
+\begin{definition}(Normal neighbourhood). Let $exp_p: T_p\Sigma \supset U \rightarrow V \subset \Sigma $ be the exponential map at p. If we define $V = exp_p(U)$, that is the image of the subset of $T_p\Sigma$ in which the exponential map is a diffeomorphism, then V is called the \textbf{normal neighbourhood} of p.
+\end{definition}
+
+We can now achieve our goal. With the tangent plane, we can put coordinates onto it, and then the exponential map will map the coordinates onto our surface. From this, we can use the exponential map to introduce 2 coordinates on normal neighbourhoods of our surface $\Sigma$.
+
+\begin{definition}(Normal coordinates). The normal coordinates on a normal neighbourhood V corresponds to the usual system of \textbf{Cartesian coordinates} in $T_p\Sigma.$ If we let pick a point $w \in U \subset \Sigma$, we can express it as $w = u^1E_1 + u^2E_2$. Then, the normal coordinates is defined by 
+$$
+\phi(u^1,u^2) = exp_p(u^1E_1 + u^2E_2).
+$$
+The coefficients of the first fundamental form of such a system is given by 
+$$
+\begin{cases}
+g_{11} = 1\\ 
+g_{12} = 0\\
+g_{22} = 1.
+\end{cases}
+$$
+\end{definition}
+We look at the more useful coordinate system for our surface.
+\begin{definition_exam}{Geodesic polar coordinates}{} The geodesic polar coordinates $(r,\theta)$ on a normal neighbourhood V corresponds to polar coordinates in the tangent plane $T_p\Sigma.$ Choose in $T_p\Sigma$ for $p \in \Sigma$, a system of polar coordinates where p is the polar radius and $\theta \in (0,2\pi)$ is the polar angle. The geodesic polar coordinate is then given by 
+$$
+\phi(r,\theta) = exp_p(re^{i\theta}).
+$$
+\end{definition_exam}
+
+\begin{remark}The images of $exp_p: U \rightarrow V$ of circles in U centered in 0 are called \textbf{geodesic circles} (where r = constant). The images of lines through 0 are called \textbf{radial geodesic} (where $\theta$ = constant). The radial geodesics can be thought of as going out along a geodesic.
+\end{remark}
+
+
+We shall now determine the coefficients of the first fundamental form in a system of geodesic polar coordinates. First, we define $\mathbb{R}^+ \cup \{0\}$ the ray in $\mathbb{R}^2$ corresponding to $\theta = 0$, and L its image in $\Sigma$ under $exp_p.$
+
+\begin{proposition_exam}{Coefficients of first fundamental form of geodesic polar coordinates}{}Let $\phi: U$ \textbackslash $(\mathbb{R}^+ \cup \{0\}) \rightarrow V$\textbackslash L be defined by 
+$$
+\phi(r,\theta) = exp_p(re^{i\theta}).
+$$
+We write $u^1 = r, u^2 = \theta.$ Then 
+$$
+\begin{cases}
+g_{11} = 1\\
+g_{12} = 0.
+\end{cases}
+$$
+Furthermore,
+$$
+\lim_{r \rightarrow 0}g_{22} = 0 \quad \lim_{r \rightarrow 0}(g_{22})_r = 1.
+$$
+\end{proposition_exam}
+
+\lecture{24}{Geodesics are locally length-minimising}
+\section{Geodesics}
+\subsection{Geodesics are locally length-minimising}
+
+We can use the notions of geodesic polar coordinates in the results stated in this section.
+\begin{theorem_exam}{Minding's Theorem}{} Any two regular surfaces with the same \textbf{constant} Gauss curvature are locally isometric.
+\end{theorem_exam}
+
+\begin{corollary}Any two regular surfaces with the same constant Gauss curvature has the same first fundamental form.
+\end{corollary}
+This is an extremely interesting result as the Gauss curvature is a scalar whereas the first fundamental form is a matrix.
+
+\begin{proposition_exam}{Geodesics are Locally Length Minimising}{}Take $p \in \Sigma.$ There is a neighbourhood $W \subset \Sigma$ of p such that for any parameterised geodesic $\gamma: I \rightarrow W$ with $\gamma(0) = p$ and $\gamma(t_1) = q$, $\gamma$ is the shortest curve in $\Sigma$ from p to q. Furthermore, it is unique in the sense that if $\alpha$ is another such curve of the same length, then their traces agree.
+\end{proposition_exam}
+
+\begin{remark}Note that regarding local uniqueness of geodesics, this only says the traces agree. There could exist another map with the same trace as our geodesic but may be moving at different speed.
+\end{remark}
+
+\begin{proposition_exam}{Sufficient Condition for Geodesic}{}Let $\alpha:I \rightarrow \Sigma$ be a regular parameterised curve, parameterised proportionally to arc-length. Suppose that the length of $\alpha$ between any two points $t_1$ and $t_2$ is less than or equal to the length of all of the other regular parameterised curves from $\alpha(t_1)$ to $\alpha(t_2).$ Then $\alpha$ is a geodesic.
+\end{proposition_exam}
+
+\begin{remark}The converse \textbf{does not hold}. A geodesic may not be the shortest curve between two points.
+\end{remark}
+
+\begin{lemma}The geodesic curvature is intrinsic.
+\end{lemma}
+
+\begin{proposition_exam}{Geodesics on sphere}{}Let $\phi$ denote the longitude and $\theta$ the lattitude of the sphere. Lines of constant longitude $\phi$ are geodesics. The equator is the only line of constant lattitude that is a geodesic.
+\end{proposition_exam}
+
+\begin{remark}The lines of constant longitude are the great circles, which are geodesics.
+\end{remark}
+
+We can also view geodesics from the perspective of variational methods.
+\begin{definition}(Geodesic). A family of smooth curves on surface $\Sigma$ is a smooth map 
+$$
+\Gamma: (-\epsilon, \epsilon) \times [a, b] \rightarrow \Sigma.
+$$
+Here, fixing $s \in (-\epsilon, \epsilon)$, we write $\Gamma(s,t) = \gamma_s(t)$ as a function of t.\\
+A smooth curve is a geodesic if for every family of smooth curves such that $\gamma_0 = \gamma$ and $\gamma_s(a) = \gamma(a), \gamma_s(b) = \gamma(b)$ for all $s \in (-\epsilon, \epsilon)$, we have that 
+$$
+\frac{d}{ds}|_{s = 0}L_{a}^{b}(\gamma_s) = 0
+$$
+where $L_{a}^{b}$ is the length of the curve with endpoints a,b. That is, a geodesic is a critical point.
+\end{definition}
+
+\begin{remark}This is similar to minimal surfaces where we look at normal variations where we push the surface through the normal vector. Here, the family of curves \textbf{must lie} on the surface.
+\end{remark}
+
+
+\lecture{25}{Geodesics Curvature}
+\section{Geodesics}
+\subsection{Geodesics Curvature}
+
+We now want to obtain an expression for the algebraic value of the covariant derivative. We will do this by looking at the rate of change of the angle between two orthogonal vector fields.\newline Let v and w be two smooth \textbf{unit} vector fields along the parameterised curve $\alpha: I \rightarrow \Sigma$. We then define $\tilde{v} = N \times v.$ 
+
+\begin{lemma}As v and $\tilde{v}$ are both in the tangent plane, then they form an orthonormal basis for $T_p\Sigma$. Then, we can express the vector field w as a linear combination 
+$$
+w(t) = a(t)v(t) + b(t)\tilde{v}(t)
+$$
+where a,b are smooth and satisfy $a^2 + b^2 = 1.$
+\end{lemma}
+
+\begin{lemma}The vector field w can be thought of as a unit circle with $v, \tilde{v}$ as the axis where $\psi$ will be the angle between $v, \tilde{v}$.
+\end{lemma}
+
+\begin{proposition_exam}{Differential equation of angle}{} Let a and b be differentiable functions in I with $a^2 + b^2 = 1$ and $\psi_0$ be such that $a(t_0) = cos(\psi_0)$ and $b(t_0) = sin(\psi_0).$ Then, the differentiable function 
+$$
+\psi = \psi_0 + \int_{t_{0}}^{t}(ab' - ba')dt
+$$
+is such that $\psi(t) = a(t), sin(\psi(t)) = b(t)$ for all $t \in I$ and $\psi(t_0) = \psi_0.$
+\end{proposition_exam}
+
+\begin{proof} We can think of the angle $\psi$ as a differential equation from a starting angle $\psi_0$ and how it changes from time $t_0$ to t.
+$$
+\psi = \psi_0 + \int_{t_{0}}^{t}\psi'dt
+$$
+$$
+= \psi_0 + \int_{t_{0}}^{t}\psi'(cos^2\psi + sin^2\psi)dt
+$$
+$$
+= \psi_0 + \int_{t_{0}}^{t}(cos\psi(\psi' cos\psi) + sin\psi(\psi'sin\psi))
+$$
+$$
+= \psi_0 + \int_{t_{0}}^{t}(ab' - ba')dt.
+$$
+\end{proof}
+
+\begin{remark}We call $\psi$ a \textbf{smooth choice of angle from v to w}.
+\end{remark}
+
+We now can write the relationship between the covariant derivative of two unit vector fields along a curve to the variation of the angle that they form.
+
+\begin{lemma}This function $\psi(t)$ satisfies 
+$$
+\begin{cases}
+a(t) = cos \psi(t)\\
+b(t) = sin \psi(t).
+\end{cases}
+$$
+\end{lemma}
+
+\begin{proposition_exam}{Covariant derivative in terms of angle}{}Let v and w be two differentiable vector fields along the curve $\alpha:I \rightarrow \Sigma$, with $|w(t)| = |v(t)| = 1$ for all $t \in I.$ Then 
+$$
+[\nabla_{\alpha'(t)}w] - [\nabla_{\alpha'(t)}v] = \frac{d\psi}{dt}
+$$
+where $\psi$ is a smooth choice of angle from v to w.
+\end{proposition_exam}
+
+Let $\alpha: I \rightarrow \Sigma$ be parameterised by arc-length s. Let the unit tangent vector field $w = \alpha'(s)$ and choose v to be the unit length parallel vector field (parallel transport). Then, we have showed that 
+$$
+[\nabla_{\alpha'(t)}w] = [\nabla_{\alpha'(t)}v] + \frac{d\psi}{dt}
+$$
+as v is a parallel transport, its covariant derivative is zero 
+$$
+[\nabla_{\alpha'(t)}w] = \frac{d\psi}{dt}.
+$$
+Then, as w is the tangent vector field, recall that 
+$$
+[\nabla_{\alpha'(t)}w] = k_g.
+$$
+Hence, this implies that 
+$$
+k_g(s) = \frac{d\psi}{dt}.
+$$
+
+\begin{proposition_exam}{Geodesic curvature in terms of covariant derivative}{}The geodesic curvature is the rate of change of the angle that the tangent to the curve makes with a parallel direction along the curve. That is, let $w = \alpha'(s)$ and v be a unit length parallel vector field. We have that
+$$
+k_g(s) = [\nabla_{\alpha'(t)}w] = \frac{d\phi}{ds}.
+$$
+\end{proposition_exam}
+
+\begin{theorem_exam}{Geodesic curvature of a curve}{}The geodesic curvature of a curve is the rate of change of the angle of its velocity vector with a parallel vector field (parallel transport) along the curve.
+\end{theorem_exam}
+
+We now derive the expression for the algebraic value of the covariant derivative.
+
+\begin{proposition_exam}{Formula for geodesic curvature with orthogonal parameterisation}{}Let $x(u,v)$ be an \textbf{orthogonal parameterization} (that is, $F = g_{12} = 0$) of a neighbourhood of an oriented surface $\Sigma$, and $w(t)$ be a differentiable field of unit vectors along the curve $x(u(t), v(t)).$ Then 
+$$
+[\nabla_{\alpha'(t)}w] = \frac{1}{2\sqrt{g_{11}g_{22}}}\bigg((g_{22})_{u_{1}}\frac{du_2}{dt} - (g_{11})_{u_{2}}\frac{du_1}{dt} \bigg) + \frac{d\psi}{dt}
+$$
+where $\psi$ is a smooth choice of angle from $E_1$ to w(t) in the given orientation.
+\end{proposition_exam}
+
+We use the above proposition to state the following.
+\begin{proposition_exam}{Uniquness and existence of parallel transport}{} Given $w_0 \in T_{\alpha(t_0)}\Sigma$ for $t_0 \in T$, there is a \textbf{unique parallel vector field} $w(t)$ along $\alpha(t)$ with $w(t_0) = w_0.$
+\end{proposition_exam}
+
+\lecture{26}{Local Gauss-Bonnet Theorem}
+\section{Gauss-Bonnet Theorem}
+\section{Gauss-Bonnet Theorem}
+\subsection{Local Gauss-Bonnet Theorem}
+We will be deriving the local version of the Gauss-Bonnet theorem. We can extend this to be a global theorem by patching together the local statements.
+\begin{definition}(Vertices of curve). Let $\alpha: [0,I] \rightarrow \Sigma$ be a continuous map into the regular surface $\Sigma.$ We say that $\alpha$ is \textbf{simple, closed, piecewise regular, parameterised curve} if 
+\begin{enumerate}
+\item $\alpha(0) = \alpha(I)$
+\item If $t_1, t_2 \in [0,I)$ then for $t_1 \neq t_2$, then $\alpha(t_1) \neq \alpha(t_2)$
+\item For some 
+$$
+0 = t_0 < t_1 < ... < t_k < t_{k+1} = I,
+$$
+then $\alpha$ is smooth and regular in each $[t_i, t_{i+1}]$ for $i = 0, ..., k.$
+\end{enumerate}
+We call the points $\alpha(t_i)$ the \textbf{vertices} of $\alpha.$ The traces $\alpha([t_i, t_{i+1}])$ are called \textbf{regular arcs} of $\alpha.$
+\end{definition}
+
+\begin{remark}Intuitively, this means that $\alpha$ is a closed curve (condition 1) without self intersections (condition 2), which fails to have a well-defined tangent line only at a finite number of points (condition 3).
+\end{remark}
+
+\begin{theorem_exam}{Jordan Separation Theorem}{}Let C be a simple closed curve in $S^2.$ Then, $S^2 - C$ is not connected.
+\end{theorem_exam}
+
+\begin{theorem_exam}{Jordan Curve Theorem}{}Let C be a simple closed curve in $S^2.$ Then, $S^2-C$ has two and only components $W_1, W_2$ of which C is the common boundary.
+\end{theorem_exam}
+\begin{definition}(External Angle). Assume that $\Sigma$ is oriented. We define $|\gamma_i| \in (0, \pi]$ to be the smallest choice of angle between 
+$$
+\begin{cases}
+\lim_{t \rightarrow t_{i}^{-}}\alpha'(t)\\
+\lim_{t \rightarrow t_{i}^{+}}\alpha'(t)\\
+\end{cases}
+$$
+If $|\gamma_i| \neq \pi$, then define $\gamma_i$ to have the same sign as the determinant of the matrix 
+$$
+(\lim_{t \rightarrow t_{i}^{-}},\lim_{t \rightarrow t_{i}^{+}}, N).
+$$
+If $|\gamma| = \pi$, use the sign of the determinant of 
+$$
+(\alpha'(t_i - \epsilon), \alpha'(t_i + \epsilon), N).
+$$
+for $\epsilon > 0$. We call $\gamma_i$ the \textbf{External angle} of $\alpha(t_i)$.
+\end{definition}
+
+\begin{remark}You can think of the external angle as the angle between the tangent vectors for a given vertex as we approach it from both sides.
+\end{remark}
+
+
+\begin{theorem_exam}{Theorem of Turning Tangents}{} Let $\Sigma$ be an oriented surface and $\phi: U \rightarrow \Sigma$ a coordinate chart. Let $\tilde{\alpha}: [0,I] \rightarrow U$ be a simple, closed, parameterised curve, regular in each $[t_i, t_{i+1}]$, where $0 = t_0 < t_1 < ... < t_{k+1} = I,$ and let $\alpha = \phi \circ \tilde{\alpha}.$\\
+Choose a smooth angle function $\theta_i$ on each $[t_i, t_{i+1}]$ which measures the angle from $E_1$ to $\alpha'.$ Denote by $\gamma_i$, the external angle at $t_i.$ Then 
+$$
+\sum_{i=0}^{k}(\theta_i(t_{i+1}) - \theta_i(t_i)) + \sum_{i=0}^{k}\gamma_i = \pm 2\pi.
+$$
+\end{theorem_exam}
+\begin{remark}This theorem states that for a simple closed regular curve, the sum of the change in angle between the velocity vector $\alpha'$ and $E_1$ as we move along the curve with the jump in angle at vertices is equal to $\pm 2\pi$ depending on the orientation of N.
+\end{remark}
+
+\begin{definition}(Closed and Connected). A region $R \subset \Sigma$ is a closed set if it contains its boundary. A region $R \subset \Sigma$ is connected if it only consists of one piece.
+\end{definition}
+
+\begin{definition}(Simple). A region is simple if $R$ \textbackslash $\partial R$ is homeomorphic to an open disk and $\partial R$ is the trace of a simple, closed, piecewise regular, parameterised curve, where $\partial R$ denotes the boundary of R.
+\end{definition}
+
+\begin{definition}(Compatability). Let $\phi:U \rightarrow \Sigma$ be a coordinate chart on the oriented surface $\Sigma.$ We say that it is compatible with the orientation if 
+$$
+N = \frac{E_1 \times E_2}{|E_1 \times E_2|}.
+$$
+\end{definition}
+
+Recall that the area of the infinitesimal parallelogram with sides $du^1E_1$ and $du^2E_2$ is given by 
+$$
+d\sigma = |E_1du^1 + E_2du^2| = \sqrt{det \; g}.
+$$
+Hence, for a smooth function f on $\Sigma$ and R a bounded region in $\phi(U)$, we have 
+$$
+\int \int_Rfd\sigma \coloneqq \int\int_{\phi^{-1}(R)}f(u_1,u_2)\sqrt{det \; g}du_1du_2.
+$$
+
+
+\begin{theorem}(Green's Theorem). Let R be a simple, positively oriented region in the plane. Then 
+$$
+\int_{\partial R}(pdu^1 + qdu^2) = \int \int_{R}\bigg(\frac{\partial q}{\partial u_1} - \frac{\partial p}{\partial u_2} \bigg)du^1du^2.
+$$
+\end{theorem}
+
+We now state the Local Gauss-Bonnet theorem.
+\begin{theorem_exam}{Local Gauss-Bonnet Theorem}{} Let $\Sigma$ be an oriented surface $U \subset \mathbb{R}^2$ be homeomorphic to an open disk and $\phi: U \rightarrow \Sigma$ be a coordinate chart compatible with the orientation such that $g_{12} = F = 0.$\\Let $R \subset \phi(U)$ be a simple region and $\alpha$ a positively oriented piecewise regular curve whose trace equals $\partial R.$\\ Let $\alpha$ be parameterised by arc-length, with vertices at $s_0, ..., s_k.$ Then 
+$$
+\sum_{i=0}^{k}\int_{s_i}^{s_{i+1}}k_g(s)ds + \int \int_{R}Kd\sigma + \sum_{i=0}^{k}\gamma_i = 2\pi.
+$$
+\end{theorem_exam}
+
+\begin{proof}(Sketch). Use the formula geodesic curvature with orthonormal coordinates. Then, use Green's theorem to get a double integral. Then, apply Gauss' equation. Finally, conclude with the theorem of turning tangents.
+\end{proof}
+
+
+\begin{theorem}(Gauss-Bonnet in Geodesic triangles). Let T be a \textbf{geodesic triangle}, that is,a triangle whose sides are the arcs of geodesics. Let $\phi_i$ for i = 1,2,3 be the interior angle of T. Then, the Gauss-Bonnet theorem asserts that the excess over $\pi$ of the sum of the interior angles $\phi_i$ is equal to the integral of the Gaussian curvature K over T; that is 
+$$
+\sum_{i=1}^{3}\phi_i - \pi = \int \int_T K d\sigma.
+$$
+\end{theorem}
+
+\begin{remark}If K = 0, we have that the sum of the interior angles $\phi_i$ gives us $\pi.$
+\end{remark}
+
+\begin{proposition_exam}{Interpretation of Double Integral of Gauss curvature}{}Let $p \in \Sigma$ and $\phi$ be a coordinate chart about p, compatible with the orientation and so that $g_{12} = 0.$ Let $R \subset \phi(U)$ be a simple region with piecewise regular boundary and $\alpha: [0,l] \rightarrow \Sigma$ an arc-length parameterisation of the boundary $\partial R.$ Take a unit vector $w_0 \in T_{\alpha(0)}\Sigma$ and let w be the vector field along $\alpha$ generated by \textbf{parallel transport} of $w_0.$ Then 
+$$
+\int \int_RKd\sigma = \Delta \theta = \theta(l) - \theta(0).
+$$
+\end{proposition_exam}
+
+Hence, the double integral of the Gauss curvature of the region can be interpreted as the angle of the tangent vector rotation as it is parallel transported around the region R.\newline 
+
+\begin{corollary}The Gauss curvature of a single point cna be thought of as the limit of the change of angle divided by the area 
+$$
+K(p) = \lim_{R \rightarrow p}\frac{\Delta \theta}{A(R)}.
+$$
+\end{corollary}
+
+\begin{corollary}For an orientable compact surface $\Sigma$, we have 
+$$
+\int \int_{\Sigma}Kd\sigma
+$$
+depends only upon the topology of the surface $\Sigma.$
+\end{corollary}
+\begin{remark}Integrating the Gauss curvature only depends on its topology.
+\end{remark}
+
+
+
+\begin{theorem}Let $\gamma$ be a smooth closed simple curve on a patch of a surface $\Sigma$ enclosing a region R. Then 
+$$
+\int_{\gamma}k_gds = 2\pi - \int\int_{R}Kd\sigma
+$$
+where dA is the measure induced by the first fundamental form onto the surface.
+\end{theorem}
+
+\lecture{27}{Gauss-Bonnet Theorem}
+\section{Gauss-Bonnet Theorem}
+\subsection{Gauss-Bonnet Theorem}
+
+We now want to extend the local Gauss-Bonnet theorem into a global theorem. For this, we will use the notion of a triangulation to divide up the surface. Then, we will apply the local Gauss-Bonnet on each triangle to get a global theorem.
+
+\begin{definition}(Triangle). A triangle is a simple region which has exactly three vertices and is such that each of its external angles $\gamma_i \neq 0.$
+\end{definition}
+
+\begin{definition}(Regular). A region $R \subset \Sigma$ is said to be regular if it is bounded and its boundary consists of finitely many closed piecewise regular curves which do not intersect.
+\end{definition}
+
+\begin{definition}(Triangulation). A triangulation of a regular region R is a finite collection of closed triangles $T_i$ whose union is R, and such that if $T_i \cap T_j \neq \emptyset$, then either
+\begin{enumerate}
+\item $T_i \cap T_j$ is a common vertex of the two triangles 
+\item $T_i \cap T_j$ is a common edge of the two triangles.
+\end{enumerate}
+\end{definition}
+
+\begin{proposition_exam}{Triangulation of regions}{}Every regular region of a regular surface can be triangulated. Given coordinate charts $\phi_i$ covering $\Sigma$, there is a triangulation with sufficiently small triangles so that each triangle is contained in a single coordinate neighbourhood.
+\end{proposition_exam}
+
+A surface is \textbf{orientable} if all of the triangles in a given triangulation have compatible orientations.
+
+\begin{definition_exam}{Euler Characteristic of the Triangulation}{} Given a triangulation F. We write 
+\begin{enumerate}
+\item V = number of vertices 
+\item E = number of edges 
+\item F = number of faces.
+\end{enumerate}
+
+We define 
+$$
+\chi(T) = V - E + F
+$$
+to be the \textbf{Euler Characteristic of the triangulation}.
+\end{definition_exam}
+
+\begin{proposition_exam}{Number of edges and faces}{}Let G be a connected graph with V vertices. Then
+$$
+|E| = \frac{n(n-1)}{2}
+$$
+$$
+|F| = 2|E|.
+$$
+\end{proposition_exam}
+
+\begin{theorem}Let R be a regular region of $\Sigma.$ The Euler characteristics of any two triangulations of R are the same.
+\end{theorem}
+
+\begin{lemma}The Euler characteristic of R works for any subdivision of R into polygons.
+\end{lemma}
+
+\begin{lemma}If the regular surface $\Sigma$ is a compact and connected surface, then we can speak of the Euler characteristic of the surface $\Sigma.$
+\end{lemma}
+
+\begin{theorem_exam}{Euler characteristic is the same for homeomorphic surfaces}{}The surfaces $\Sigma_1, \Sigma_2$ are homeomorphic, if and only if  
+$$
+\chi(\Sigma_1) = \chi(\Sigma_2).
+$$
+\end{theorem_exam}
+
+\begin{lemma}The euler characteristic of the triangulation of the unit sphere $S^2$ is 
+$$
+\chi(S^2) = 2.
+$$
+\end{lemma}
+
+\begin{theorem_exam}{Classification of Surfaces}{}Every compact connected orientable surface is homeomorphic to exactly one of 
+\begin{enumerate}
+\item Sphere 
+\item Torus (sphere with one handle)
+\item Two-holed torus (sphere with two handles)
+\item Three-holed torus (sphere with three handles).
+\end{enumerate}
+Furthermore, we have that 
+$$
+\chi(\Sigma) = 2 - 2g
+$$
+where g is the number of handles, called the genus of $\Sigma.$
+\end{theorem_exam}
+
+If R is a regular region of the oriented surface $\Sigma$ and f is a smooth function on R, then let $T_i$ for $i = 1,...,k$ be a triangulation of R such that each triangle is contained in a \textbf{single coordinate chart} $\phi_i(U_i).$ Recall that the integral of f over R is 
+$$
+\int \int_Rfd\sigma \coloneqq \sum_{i=1}^{k}\int\int_{\alpha_{i}^{-1}(T_i)}f(u_1^i,u_2^i)\sqrt{det \; g^i}du_i^1du_i^2
+$$
+where $d\sigma = \sqrt{det \; g}du_i^1du_i^2.$ This is well-defined and independent of the choices of triangulation and coordinate charts.
+We then apply the local Gauss-Bonnet theorem to each triangulation of the region.
+
+\begin{theorem_exam}{Global Gauss-Bonnet Theorem}{} Let $R \subset \Sigma$ be a regular region of an oriented surface $\Sigma$ with positively oriented \textbf{boundary curves} $\{C_1,...,C_n\}$. Let $\{\theta_1,...\theta_m\}$ to be the external angles of the boundary curves $C_i$. Then 
+$$
+\sum_{i=1}^{n}\int_{C_{i}}k_g(s)ds + \int \int_{R}Kd\sigma + \sum_{j=1}^m\theta_j = 2\pi\chi(R).
+$$
+\end{theorem_exam}
+
+The following is a corollary of the Global Gauss-Bonnet theorem. If our surface is compact, then the geodesic curvature of each curve cancels out as each edge is traversed twice, unlike the case for the Global Gauss-Bonnet theorem as the boundary edges aren't cancelled out. We apply the local Gauss Bonnet theorem on each triangulation.
+\begin{theorem_exam}{Gauss-Bonnet without boundary}{} Let $\Sigma$ be an orientable, connected, and compact surface. Then 
+$$
+\int \int_{\Sigma}Kd\sigma = 2\pi\chi(\Sigma) = 2\pi(2 - 2g)
+$$
+where g is the genus of the surface.
+\end{theorem_exam}
+
+\begin{remark}The significance of this theorem introduces the idea that the total curvature depends \textbf{only} on the genus (a topological characteristic). Hence, all surfaces with the same genus g has the same total curvature, which is highly non-intuitive.
+\end{remark}
+
+\lecture{28}{Corollaries of the Gauss-Bonnet Theorem}
+\section{Gauss-Bonnet Theorem}
+\subsection{Gauss-Bonnet Theorem}
+We now look at corollaries from the Global Gauss-Bonnet theorem.
+
+\begin{proposition_exam}{Positive Curvature Surface Classification}{}Every compact connected orientable surface of positive Gauss curvature is homeomorphic to a sphere.
+\end{proposition_exam}
+
+\begin{corollary}Let $\Sigma$ be an orientable surface with non-positive curvature. Then there is no simple region R in $\Sigma$ whose boundary consists of two geodesics, or of a single closed geodesic.
+\end{corollary}
+
+\begin{lemma}The Euler characteristic of a simple region bounded by geodesics is 1.
+\end{lemma}
+
+\begin{corollary}Any two simple closed geodesics on a compact connected orientable surface $\Sigma$ of positive Gaussian curvature must intersect.
+\end{corollary}
+
+\begin{proof} If $K > 0$, then by the Gauss-Bonnet theorem, then the Euler-characteristic must be positive too. Hence, the surface must be a sphere. If the two geodesics do not intersect, the area between them is topologically equivalent to a cylinder but this has non-positive Euler characteristic.
+\end{proof}
+
+\subsection{Morse's Theorem}
+
+We now look at further corollaries of the global Gauss-Bonnet theorem.
+
+\begin{definition_exam}{Singular/Isolated Point}{} A point p is said to be a singular point of the smooth vector field v on $\Sigma$ if 
+$$
+v(p) = 0.
+$$
+It is said to be isolated if there is a neighbourhood of p in $\Sigma$ such that it is the only singular point in that neighbourhood.
+\end{definition_exam}
+
+\begin{definition}(Degree of a continuous mapping). The degree of a continuous mapping between two compact oriented manifolds of the same dimension is a number that represents the number of times that the domain manifold wraps around the range manifold under the mapping
+\end{definition}
+
+\begin{definition_exam}{Index}{} Let $\Sigma$ be a oriented surface. Let $\phi: U \rightarrow \Sigma$ be an \textbf{orthogonal} coordinate chart ($g_12 = 0$) compatible with the orientation and v a \textbf{smooth vector field} with isolated singular point $p \in \phi(U)$. Let $R \subset \phi(U)$ be a simple region containing p as its only singular point, with positively oriented curve $\alpha: [0,I] \rightarrow \Sigma$, where $\alpha$ is the \textbf{boundary of R}. Assume $\alpha = \phi \circ \tilde{\alpha}$ for $\tilde{\alpha}: [0,I] \rightarrow U$ be a simple closed curve and let $\theta_v$ be a smooth choice of angle from $E_1$ to v. Then 
+$$
+\theta_v(I) - \theta_v(0) = 2\pi I = \int_{0}^{I}\frac{d\theta}{dt}dt
+$$
+for some integer I. We call I the \textbf{index of v at p}.
+\end{definition_exam}
+
+Hence, the index can be thought of as follows. After going around the curve, we end up with the same vector $E_1$ to v. However, we now count how many times has it rotated.
+
+\begin{proposition_exam}{}{}The index I is independent of the choice of $\phi$ and of $\alpha.$ Furthermore, the index is independent of the choice of $\alpha.$
+\end{proposition_exam}
+
+For every isolated singular point of a vector field, the nearby points are nonzero. Therefore, for a small disk around the zero, we may assign a unit vector. Hence, we get a map from $S^n \rightarrow S^n.$ The index of this zero of the vector field is the degree of this map we have defined. The index of the entire vector field is the sum of the indices of all the zeros.
+
+\lecture{28}{Morse's Theorem}
+\section{Gauss-Bonnet Theorem}
+\subsection{Morse's Theorem}
+We now work towards proving the Poincaré-Hopt theorem which maps the relationship of the Euler characteristic of a surface to the index of the vector field on that surface.
+
+\begin{lemma}Let $\Sigma$ be a compact, oriented and connected surface. Let v be a smooth tangent vector field on $\Sigma$. Then, the set of isolated singular points is \textbf{finite}.
+\end{lemma}
+
+\begin{theorem_exam}{Poincaré-Hopf Theorem}{} Let $\Sigma$ be a \textbf{compact} oriented connected surface, and v a smooth tangent vector field on $\Sigma$ with a finite number of isolated singular points $p_1,...,p_n.$ Then 
+$$
+\sum_{i=1}^nI_i = \chi(\Sigma).
+$$
+\end{theorem_exam}
+\begin{remark}The set of isolated singular points depends on the choice of the smooth tangent vector field defined on the surface.
+\end{remark}
+\begin{corollary}The sum of indices of a vector field defined on a manifold is independent of the vector field.
+\end{corollary}
+
+This is quite surprising as there is a reference to a vector field on the left hand side whereas the right hand side has no reference at all to a vector field. We now look at a famous application of the Poincaré-Hopf theorem.
+
+\begin{theorem_exam}{Hairy-Ball Theorem}{} Let $\Sigma$ be an even-dimensional n-sphere $S^{2m}.$ Then, there does not exist a nonvanishing vector field on $S^{2m}.$
+\end{theorem_exam}
+\begin{proof} Suppose that there was a vanishing vector field v. Then, the sum of indices of singular points is 0. However, the Euler characteristic for any even dimensional n-sphere is 2. Hence, we have a contradiction with the Poincaré-Hopf theorem.
+\end{proof}
+
+The Hairy-Ball theorem gaurantees that a vector field on any surface homeomorphic to a sphere must have \textbf{at least two} isolated singular points, because the Euler characteristic of the 2-sphere is 2.
+
+Recall the two definitions. A function $f: \Sigma \rightarrow \mathbb{R}$ is said to be a critical point if $df_p = 0.$ Furthermore, a smooth vector field v is said to be a singular point of v if $v(p) = 0.$
+\begin{definition_exam}{Gradient}{} Given a smooth function $f: \Sigma \rightarrow \mathbb{R}$, define a smooth vector field grad f = $\nabla f$ by 
+$$
+\langle \nabla f_p, v \rangle = df_p(v).
+$$
+Equivalently, 
+$$
+\nabla f_p = df_p(w_1)(w_1)_p + df_p(w_2)(w_2)_p
+$$
+for $w_1,w_2$ orthonormal tangent vector fields on $\Sigma.$
+\end{definition_exam}
+
+\begin{corollary}A point p is a critical point of f if and only if it is a singular point of $\nabla f.$
+\end{corollary}
+
+\begin{definition_exam}{Nondegenerate critical point}{} A critical point p of $f: \Sigma \rightarrow \mathbb{R}$ is \textbf{nondegenerate} if for any local parameterisation $\phi$ near p, 
+$$
+detA(p) \neq 0,
+$$
+where A is the Hessian
+$$
+A = \begin{bmatrix}
+\frac{\partial^2 (f \circ \phi)}{\partial u_{1}^{2}} & \frac{\partial^2 (f \circ \phi)}{\partial u_{1}u_{2}} \\
+\frac{\partial^2 (f \circ \phi)}{\partial u_{2}u_{1}} & \frac{\partial^2 (f \circ \phi)}{\partial u_{2}^2}
+\end{bmatrix}.
+$$
+\end{definition_exam}
+
+\begin{theorem_exam}{Taylor's theorem}{} Assume that the critical point has coordinates (0,0). Let $(u_1,u_2)$ be in the neighbourhood of the nondegenerate critical point. We can choose the coordinates such that the Hessian at p is diagonal. Then, 
+$$
+f(u_1,u_2) - f(0,0) = \frac{1}{2}\bigg( \frac{\partial^2 f(0,0)}{\partial u_1^2}u_1^1 + \frac{\partial^2 f(0,0)}{\partial u_2^2}u_2^2 \bigg).
+$$
+\end{theorem_exam}
+
+\begin{lemma}(Morse). Suppose $p = (0,0)$ is a non-degenerate critical point of a smooth function f. Then in a neighbourhood of (0,0), we can find coordinates $u^1, u^2$ so that 
+$$
+f(u^1, u^2) - f(0, 0) = 
+\begin{cases}
+(u^1)^2 + (u^2)^2 \quad \text{if p is a local minimum}\\
+-(u^1)^2 - (u^2)^2 \quad \text{if p is a local maximum}\\
+(u^1)^2 - (u^2)^2 \quad \text{if p is a saddle.}
+\end{cases}
+$$
+\end{lemma}
+
+
+\begin{proposition_exam}{Second Derivative Test}{}If $det A > 0$, then either the Hessian has both eigenvalues positive (p is a local minimum) or both eigenvalues negative (p is a local maximum). If $det A < 0$, then the Hessian has one negative and one positive eigenvalue (p is a saddle point).
+\end{proposition_exam}
+
+\begin{theorem_exam}{Morse Theorem}{} Let $f: \Sigma \rightarrow \mathbb{R}$ be a smooth function on a compact oriented connected surface $\Sigma$ such that all the critical points of f are nondegenerate. Let M be the number of local maxima, m the number of local minima, and s the number of saddle points. Then 
+$$
+\chi(\Sigma) = M - s + m.
+$$
+In particular, this is independent of the function f, and depends only upon the topology of $\Sigma.$
+\end{theorem_exam}
+
+To show that Morse theorem is true, we need to show two things. First, that nondegenerate critical points are isolated and hence we can talk about the index of $\nabla f$ at them. Second, the index of $\nabla f$ is 1 at a local maximum/minimum and -1 at a saddle point.
+
+\begin{definition}(Simple singularity). Let v be a smooth vector field on $\Sigma$ with singular point p. Choose a local parameterisation $\phi: U \rightarrow \Sigma$ near p with $\phi(0,0) = p,$ and write 
+$$
+v = c^1E_1 + c^2E_2.
+$$
+We call 
+$$
+A_{\phi} = \begin{bmatrix}
+\frac{\partial c^1(0,0)}{\partial u_1} & \frac{\partial c^1(0,0)}{\partial u_2}\\
+\frac{\partial c^2(0,0)}{\partial u_1} & \frac{\partial c^2(0,0)}{\partial u_2}
+\end{bmatrix}
+$$
+the linear part of v, and say that p is a \textbf{simple singularity} of v if for a parameterisation $\phi$, we have 
+$$
+det A_{\phi} \neq 0.
+$$
+\end{definition}
+
+\begin{lemma}Let $f: \Sigma \rightarrow \mathbb{R}$ be a smooth function and $p \in \Sigma$ be a critical point of f. We can choose a local parameterisation $\phi$ near p so that, with respect to $\phi$, the linear part of $\nabla f$ is equal to the Hessian of f. In particular, p is a nondegenerate critical point of f if and only if it is a simple singularity of $\nabla f.$
+\end{lemma}
+
+\begin{lemma}Let p be a simple singularity of the smooth vector field v on $\Sigma.$ Then p is an isolated singular point.
+\end{lemma}
+
+Recall that 
+$$
+\nabla f = \frac{\partial f}{\partial u^1}\frac{1}{g_11}E_1 + \frac{\partial f}{\partial u^2}\frac{1}{g_22}E_2.
+$$
+\begin{corollary}Nondegenerate critical points of smooth functions $f: \Sigma \rightarrow \mathbb{R}$ are isolated.
+\end{corollary}
+
+\begin{corollary}The index of $\nabla f$ is 1 at a local maximum/minimum, and -1 at a saddle point.
+\end{corollary}
+
+\begin{proposition}Let $p \in \Sigma$ be a simple singular point of a smooth vector field v, and $A_{\phi}$ the linear part of v with respect to a local parameterisation $\phi$ near p. 
+\begin{enumerate}
+\item If $det A_{\phi} > 0$, then the index of v at p is 1.
+\item If $det A_{\phi} < 0$, then the index of v at p is -1.
+\end{enumerate}
+\end{proposition}
+
+\lecture{29}{Abstract Surfaces}
+\section{Abstract Surfaces}
+\section{Abstract Surfaces}
+\subsection{Abstract Surfaces}
+We now define what is a 2-dimensional manifold.
+\begin{definition}(Abstract Surface). An abstract surface is a set $\Sigma$ together with a family of injective maps 
+$$
+\phi_{\alpha}: U_{\alpha} \rightarrow \Sigma
+$$
+of open sets $U_{\alpha} \subset \mathbb{R}^2, \alpha \in \mathcal{U}$ into $\Sigma$ such that 
+\begin{enumerate}
+\item $\cup_{\alpha}\phi_{\alpha}(U_{\alpha}) = \Sigma$
+\item Whenever $\alpha,\beta \in \mathcal{U}$ are such that 
+$$
+W_{\alpha \beta} \coloneqq \phi_{\alpha}(U_{\alpha}) \cap \phi_{B}(U_{\beta}) \neq \emptyset
+$$
+then $\phi_{\alpha}^{-1}(W_{\alpha \beta}), \phi_{\beta}^{-1}(W_{\alpha \beta}) \subset \mathbb{R}^2$ are open and 
+$$
+\phi_{\beta}^{-1}\circ \phi_{\alpha}: \phi_{\alpha}^{-1}(W_{\alpha\beta}) \rightarrow \phi_{\beta}^{-1}(W_{\alpha \beta})
+$$
+is a diffeomorphism.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}Each set $U_{\alpha}$ only has 1 unique injective function $\phi_{\alpha}$ on it.
+\end{remark}
+
+\begin{definition_exam}{Atlas}{} The family $(U_{\alpha},\phi_{\alpha})_{\alpha \in \mathcal{U}}$ is called an \textbf{atlas} for $\Sigma$.
+\end{definition_exam}
+
+\begin{definition_exam}{Coordinate charts}{} Each $(U_{\alpha}, \phi_{\alpha})$ is called a coordinate chart. If $p \in \phi_{\alpha}(U_{\alpha})$, then we say that it is a coordinate chart around p.
+\end{definition_exam}
+
+\begin{definition}(Compatible). Given an abstract surface, another coordinate chart $\phi_{\beta}: U_{\beta} \rightarrow \Sigma$ is said to be compatible with the given atlas if for all $\alpha \in \mathcal{U}$, such that $W_{\alpha \beta} \coloneqq \phi_{\alpha}(U_{\alpha} \cap \phi_{\beta}(U_{\beta}) \neq \emptyset$, then $\phi_{\alpha}^{-1}(W_{\alpha \beta}), \phi_{\beta}^{-1}(W_{\alpha \beta}) \subset \mathbb{R}^2$ are open and 
+$$
+\phi_{\beta}^{-1}\circ \phi_{\alpha}: \phi_{\alpha}^{-1}(W_{\alpha \beta}) \rightarrow \phi_{\beta}^{-1}(W_{\alpha \beta})
+$$
+is a diffeomorphism.
+\end{definition}
+
+\begin{definition}(Maximal). An atlas that contains all coordinate charts that are compatible with it is called maximal. One can always expand a given atlas to a maximal one, and so often, assume that all atlases are maximal.
+\end{definition}
+
+We can now generalise from a 2-dimensional manifold to a n-dimensional manifold.
+\begin{definition_exam}{Abstract Surface}{} An abstract surface is a set M (or $M^n$) together with a family of injective maps 
+$$
+\phi_{\alpha}: U_{\alpha} \rightarrow M
+$$
+of open sets $U_{\alpha} \subset \mathbb{R}^n, \alpha \in \mathcal{U}$ into M such that 
+\begin{enumerate}
+\item $\cup_{\alpha}\phi_{\alpha}(U_{\alpha}) =$ M
+\item Whenever $\alpha,\beta \in \mathcal{U}$ are such that 
+$$
+W_{\alpha \beta} \coloneqq \phi_{\alpha}(U_{\alpha}) \cap \phi_{B}(U_{\beta}) \neq \emptyset
+$$
+then $\phi_{\alpha}^{-1}(W_{\alpha \beta}), \phi_{\beta}^{-1}(W_{\alpha \beta}) \subset \mathbb{R}^n$ are open and 
+$$
+\phi_{\beta}^{-1}\circ \phi_{\alpha}: \phi_{\alpha}^{-1}(W_{\alpha\beta}) \rightarrow \phi_{\beta}^{-1}(W_{\alpha \beta})
+$$
+is a diffeomorphism.
+\end{enumerate}
+\end{definition_exam}
+
+\begin{definition_exam}{Smooth functions on manifolds}{} A function $f: M \rightarrow \mathbb{R}$ is smooth at $p \in M$ if for all coordinate charts $\phi: U \rightarrow M$ about p,
+$$
+f \circ \phi: U \subset \mathbb{R}^n \rightarrow \mathbb{R}
+$$
+is smooth at $\phi^{-1}(p).$\\
+A map $f: M_1 \rightarrow M_2$ between smooth manifolds is smooth at $p \in M_1$ if for all coordinate charts $\phi: U \rightarrow M_1$ about p, and coordinate chart $\psi: V \rightarrow M_2$
+$$
+\psi^{-1}\circ f \circ \phi: U \subset \mathbb{R}^{n_{1}} \rightarrow \mathbb{R}^{n_{2}}
+$$
+is smooth at $\phi^{-1}(p).$\\
+The function is called smooth if it is smooth at every point.
+\end{definition_exam}
+
+\begin{definition}(Diffeomorphic). Two manifolds $M_1, M_2$ are diffeomorphic if there is a smooth map 
+$$
+f: M_1 \rightarrow M_2
+$$
+that has a smooth inverse.
+\end{definition}
+
+\begin{remark}A necessary condition for this is that the manifolds have the same dimension.
+\end{remark}
+
+
+\lecture{30}{Curves and Differentiation in Abstract Surfaces}
+\section{Abstract Surfaces}
+\subsection{Curves and Differentiation in Abstract Surfaces}
+For an abstract surface, we no longer have an ambient space $\mathbb{R}^3$ to compute a velocity vector. However, we still have our familiar notion of curves.
+\begin{definition}(Smooth curve). A smooth parameterised curve in a smooth manifold M is a smooth map $\alpha: (a,b) \rightarrow M$.
+\end{definition}
+
+From this, we can now extend our definition of directional derivatives in $\mathbb{R}^3$ to manifolds.
+\begin{definition_exam}{Directional Derivative}{}The directional derivative along a curve $\alpha$ at a point $p \in M$ is a map 
+$$
+\alpha'(0): C^{\infty}(M) \rightarrow \mathbb{R}.
+$$
+That is, 
+$$
+f \rightarrow \frac{d(f \circ \alpha)}{dt}|_{t = 0}.
+$$
+\end{definition_exam}
+
+We also note that the directional derivative is a derivation at p.
+
+\begin{definition_exam}{Derivations at p}{} Let M be a smooth manifold, $p \in M$ and denote $C^{\infty}(M)$ the real vector space of smooth functions on M. A derivation at p is a map 
+$$
+D: C^{\infty}(M) \rightarrow \mathbb{R}
+$$
+which 
+\begin{enumerate}
+\item is linear i.e. $D(f+g) = D(f) + D(g), D(cf) = cD(f),$ and $f, g \in C^{\infty}(M)$ for $c \in \mathbb{R}$.
+\item Satisfies the Leibniz product rule at p $$D(fg) = f(p)D(g) + g(p)D(f).$$
+\end{enumerate}
+\end{definition_exam}
+
+A derivation is a generalisation of the derivative operator on an algebra.
+
+\begin{definition_exam}{Tangent vector}{} Let M be a smooth manifold and take $p \in M.$ A tangent vector to M at p is a derivation at p.
+\end{definition_exam}
+
+\begin{remark}Hence, we can think of tangent vectors as directional derivatives along a curve.
+\end{remark}
+
+\begin{definition}(Tangent space). The tangent space $T_pM$ to M at p is the set of tangent vectors to M at p.
+\end{definition}
+
+\begin{lemma}The tangent space to M at p, denoted by $T_pM$ is a vector space of dimension n = dim M. Furthermore, any local coordinate chart 
+$$
+\phi: U \subset \mathbb{R}^n \rightarrow M
+$$
+induces a basis for this tangent space.
+\end{lemma}
+
+\subsection{Tangent vectors}
+
+For manifolds, we actually also require that it is Hausdorff and second countable. This allows us to embed manifolds into a Euclidean space and have partitions of unity.\\
+Now recall that for surfaces $\Sigma \subset \mathbb{R}^3$, a coordinate chart gave a basis for the tangent plane $T_p\Sigma$ by 
+$$
+E_i = \frac{\partial \phi}{\partial u^i} \quad i=1,2.
+$$
+As tangent vectors are derivations, we can write the shorthand notation 
+$$
+\frac{\partial}{\partial u^i}: f \rightarrow \frac{\partial f \circ \phi}{\partial u^i}(\phi^{-1}(p)).
+$$
+Hence, we can write 
+$$
+\frac{\partial f}{\partial u^i}(p) \coloneqq \frac{\partial f \circ \phi}{\partial u^i}(\phi^{-1}(p)).
+$$
+
+\begin{proposition_exam}{Basis with derivations}{}The set of all derivations at $p \in M^n$ forms a n-dimensional vector space, with basis 
+$$
+\frac{\partial}{\partial u^i}: f \rightarrow \frac{\partial f \circ \phi}{\partial u^i}(0),
+$$
+where 
+$$
+\phi: U \subset \mathbb{R}^n \rightarrow M
+$$
+is a local parameterisation of the smooth manifold M near p, with U a convex open neighbourhood of $0 \in \mathbb{R}^n$ and $\phi(0) = p.$
+\end{proposition_exam}
+
+Now armed with this basis, we need to show that any derivation at p can be written as a linear combination of the $\frac{\partial}{\partial u^i}$ with the coefficients as described.
+
+\begin{lemma}Let $f: \phi(U) \rightarrow \mathbb{R}$ be a smooth function with $f(p) = 0.$ Also, let U be a convex set. Then, there are smooth functions $a_i: \phi(U) \rightarrow \mathbb{R}$ such that 
+$$f(\phi(u^1,...,u^n)) = \sum_{i}a_iu^i $$
+where each coefficient is of the form
+$$a_i(p) = \int_{0}^{1}\frac{\partial (f \circ \phi)}{\partial u^i}(\phi^{-1}(p))dt.$$
+
+\end{lemma}
+
+\begin{remark}We arrive at simpler notation for $a_i$ by writting it as 
+$$
+a_i(p) = \int_{0}^{1}\frac{\partial f}{\partial u^i}(p)dt.
+$$
+\end{remark}
+
+\lecture{31}{Orientation}
+\section{Abstract Surfaces}
+\subsection{Orientation}
+We recall that for surfaces in $\mathbb{R}^3,$ we could define the notion of an orientable surface by checking to see if the Gauss map can assign a unit vector normal to the surface at every point p. In abstract manifolds, we do not have such a notion anymore.\\
+Recall that in vector spaces, we defined the equivalent relation where if $(X_1,...,X_n)$ and $(Y_1,...,Y_n)$ are ordered bases for the n-dimensional vector space V, we say that $(X_1,...,X_n) \sim (Y_1,...,Y_n)$ if the n x n change of basis matrix A, defined by 
+$$
+(X_1,...,X_n) \sim (Y_1,...,Y_n)A
+$$
+has positive determinant.\\
+
+\begin{lemma}For a given vector space V, there are only two equivalence classes using the change of basis matrix to have positive or negative determinant.
+\end{lemma}
+
+\begin{definition}(Orientation). An orientation of a n-dimensional vector space V is a choice of one of the two possible equivalence classes of ordered basis for V under the equivalence relation $\sim$ defined above.
+\end{definition}
+
+We now extend this notion to manifolds. If we had a local coordinate chart 
+$$
+\phi: U \subset \mathbb{R}^n \rightarrow M
+$$
+is a local parameterisation of the smooth manifold M near p, then the ordered basis $(\frac{\partial}{\partial u^1},...,\frac{\partial}{\partial u^n})$ determines an orientation on $T_pM.$ Likewise, we can define another local parameterisation 
+$$
+\psi: V \subset \mathbb{R}^n \rightarrow M
+$$
+of M near the point p which has its own orientation on $T_pM$, denoted by $(\frac{\partial}{\partial v^1},...,\frac{\partial}{\partial v^n}).$
+
+\begin{theorem_exam}{Change of basis and orientation}{}The local parameterisations $\phi, \psi$ defined above have the same orientation if and only if the change of basis matrix at p 
+$$
+\frac{\partial (v^1,...,v^n)}{\partial (u^1,...,u^n)} = 
+\begin{bmatrix}
+\frac{\partial v^1}{\partial u^1} && ... && \frac{\partial v^1}{\partial u^n} \\
+... && ... && ... \\
+\frac{\partial v^n}{\partial u^1} && ... && \frac{\partial v^n}{\partial u^n} 
+\end{bmatrix}
+$$
+has positive determinant.
+\end{theorem_exam}
+
+\begin{definition_exam}{Orientable manifold}{} A smooth manifold M is orientable if it has an atlas so that whenever $p \in M$ lies in the image of two local parameterisations $\phi, \psi$, the change of basis matrix at p has positive determinant.
+If this is possible, then the choice of such an atlas is called an orientation of M, and we say that M is oriented.
+\end{definition_exam}
+
+\begin{remark}We can think of the orientation of a smooth manifold M to be the orientation of every tangent plane that varies smoothly.
+\end{remark}
+
+\begin{definition}(Non-orientable). A manifold which cannot be oriented is called non-orientable.
+\end{definition}
+
+\lecture{32}{Tangent Bundle and Riemannian Metrics}
+\section{Abstract Surfaces}
+\subsection{Tangent Bundle and Riemannian Metrics}
+
+\begin{definition_exam}{Tangent bundle}{} Let M be an n-dimensional smooth manifold with atlas $(U_{\alpha},\psi_{\alpha})$ where 
+$$
+\psi_{\alpha}: U_{\alpha} \subset \mathbb{R}^n \rightarrow M.
+$$
+We define the tangent bundle to be 
+$$
+TM \coloneqq \bigg\{(p,v): p \in M, v \in T_pM\bigg\}.
+$$
+\end{definition_exam}
+
+\begin{theorem}The tangent bundle is a 2n-dimensional smooth manifold whereby we can define an atlas on TM by 
+$$
+\psi_{\alpha}: U_{\alpha} \times \mathbb{R}^n \rightarrow TM,
+$$
+that is $\psi_{\alpha}$ is a map from $(u_{\alpha}^{1},...,u_{\alpha}^{n},a_{\alpha}^{1},...,a_{\alpha}^{n}) \rightarrow (\psi_{\alpha}(u_{\alpha}^{1},...,u_{\alpha}^{n}), \sum_{i}a^{i}\frac{\partial}{\partial u_{\alpha}^{i}}).$
+\end{theorem}
+
+\begin{definition}(Smooth vector field). A smooth vector field on the smooth manifold M is a smooth map $v: M \rightarrow TM$ such that $v_p \in T_pM$ for each $p \in M.$
+\end{definition}
+
+\begin{definition_exam}{Riemannian metric}{} A Riemannian metric on a smooth manifold M is a smoothly varying choice of inner product $\langle .,. \rangle_p$ in each tangent space of M. By smoothly varying, we mean that for any smooth vector fields v,w, the map 
+$$
+M \rightarrow \mathbb{R}
+$$
+where $p \rightarrow \langle v_p, w_p\rangle_p$ is smooth.
+\end{definition_exam}
+
+\begin{definition_exam}{Riemannian manifold}{} A Riemannian manifold is a smooth manifold together with a Riemannian metric.
+\end{definition_exam}
+
+\begin{theorem}Every smooth manifold has a Riemannian metric.
+\end{theorem}
+
+We let $\chi(M)$ denote the space of smooth vector fields on M.
+
+\begin{definition_exam}{Covariant derivative}{} A covariant derivative on a smooth manifold M is a map 
+$$
+\nabla: \chi(M) \times \chi(M) \rightarrow \chi(M)
+$$
+satisfying 
+\begin{enumerate}
+\item $\nabla_v$ is linear in v;
+\item Each $\nabla_v$ is linear over $\mathbb{R}$;
+\item $\nabla_v$ satisfies Leibniz product rule over $C^{\infty}(M).$
+\end{enumerate}
+\end{definition_exam}
+
+
+
+\begin{definition_exam}{Levi-Civita connection}{} On a Riemannian manifold, there is a unique covariant derivative satisfying the following two conditions:
+\begin{enumerate}
+\item 
+$$
+\nabla_{\frac{\partial}{\partial u^i}}\frac{\partial}{\partial u^j} = \nabla_{\frac{\partial}{\partial u^j}}\frac{\partial}{\partial u^i}
+$$
+\item 
+$$
+\frac{\partial}{\partial u^i}\bigg( \bigg \langle \frac{\partial}{\partial u^j}, \frac{\partial}{\partial u^k} \bigg \rangle \bigg) = \bigg \langle \nabla_{\frac{\partial}{\partial u^i}}\frac{\partial}{\partial u^j}, \frac{\partial}{\partial u^k}\bigg \rangle + \bigg \langle \frac{\partial}{\partial u^j}, \nabla_{\frac{\partial}{\partial u^i}}\frac{\partial}{\partial u^k} \bigg \rangle.
+$$
+This is called the Levi-Civita connection.
+\end{enumerate}
+\end{definition_exam}
+
+
+\lecture{33}{The Hyperbolic Plane}
+\section{Abstract Surfaces}
+\subsection{The Hyperbolic Plane}
+\begin{definition}(Hyperbolic plane). The hyperbolic plane $H^2$ is defined to be the upper half plane 
+$$
+\{(x,y) \in \mathbb{R}^2: y > 0\}
+$$
+with the metric 
+$$
+g_{11} = \frac{1}{y^2}; g_{12} = 0; g_{22} = \frac{1}{y^2}
+$$
+where $u^1 = x$ and $u^2 = y.$
+\end{definition}
+
+\begin{definition_exam}{Parameterised geodesic}{} A non-constant parameterised smooth curve $\alpha: (a,b) \rightarrow M$ in a smooth manifold M is a paramterised geodesic if 
+$$
+\nabla_{\alpha'}\alpha' = 0.
+$$
+As before, this gives the equations 
+$$
+(u^k)^{''} + \sum_{i, j}\Gamma_{ij}^{k}(u^i)^{'}(u^j)^{'} = 0.
+$$
+\end{definition_exam}
+
+\begin{definition_exam}{Geodesic}{} A regular paramterised curve $\alpha: (a,b) \rightarrow M$ is a geodesic if the re-parameterisation of $\alpha$ by arc-length is a parameterised geodesic.
+\end{definition_exam}
+
+\end{document}
+}
+}
+

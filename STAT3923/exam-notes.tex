@@ -1,0 +1,4005 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref, graphicx}
+\usepackage[ruled,vlined]{algorithm2e}
+\graphicspath{ {./Images/} }
+\usepackage{tcolorbox}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf STAT3923: Advanced Statistical Inference
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+  []% init options
+  {theorem_exam}% name
+  {Theorem}% title
+  {%
+    colback=orange!5,
+    colframe=orange!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix
+
+
+\newtcbtheorem
+  []% init options
+  {definition_exam}% name
+  {Definition}% title
+  {%
+    colback=blue!5,
+    colframe=blue!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+
+\newtcbtheorem
+  []% init options
+  {proposition_exam}% name
+  {Proposition}% title
+  {%
+    colback=red!5,
+    colframe=red!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{example}[theorem]{Example}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\newcommand{\Inf}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \inf_{#1}\;$}}}
+\newcommand{\Sup}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \sup_{#1}\;$}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+
+\newcommand\E{\mathbb{E}}
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+\title{STAT3923: Advanced Statistical Inference}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2019}
+
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+%\lecture{**CHAPTER-NUMBER**}{**TITLE**}
+\lecture{1}{Probability Theory}
+\section{Probability Theory}
+\section{Probability Theory}
+\subsection{Probability Theory Introduction}
+\begin{definition}(Random Variable). Let $\Omega$ be a sample space. A random variable $X: \Omega \rightarrow \mathbb{R}$ is a real-valued function defined over elements of $\Omega$.
+\end{definition}
+
+\begin{definition}(Cumulative Distribution Function). For any random variable, its distribution is characterised by the cumulative distribution function
+$$
+F(x) = P(X \leq x)
+$$
+for $- \infty < x < \infty$.
+\end{definition}
+
+\begin{lemma}The following are properties of the CDF F(x)
+\begin{enumerate}
+    \item $F(a) \leq F(b)$ for $a < b$;
+    \item $\lim_{x \rightarrow \infty}F(x) = 1$ and $\lim_{x \rightarrow -\infty}F(x) = 0$;
+    \item F(x) is right continuous.
+\end{enumerate}
+\end{lemma}
+
+\begin{definition}(Probability Mass Function). Let X be a discrete random variable taking on values $x_1 < x_2 < ...$ The PMF for the random variable X is defined as 
+$$
+f(x_i) = P(X=x_i)
+$$
+where $\sum_{x_{i}}f(x_i) = 1.$
+\end{definition}
+
+\begin{theorem}Let X be a random variable. Then, $f(x_i) = F(x_{i}) - F(x_{i-1})$ and $F(x) = \sum_{x_{i} \leq x}f(x_i).$
+\end{theorem}
+
+\begin{definition}(Probability Density Function). Let X be a continuous random variable. The PDF is defined as 
+$$
+f(x) = \frac{dF(x)}{dx}
+$$
+where $\int_{-\infty}^{\infty}f(x)dx=1$. Furthermore, we have that 
+$$
+F(x) = \int_{-\infty}^{x}f(t)dt.
+$$
+\end{definition}
+
+\begin{definition}($L^1$-space). We denote the set of all first integrable random variables as
+$$
+L^1 = \{X: \Omega \rightarrow \mathbb{R}: ||X||_1 < \infty \}.
+$$
+\end{definition}
+
+\begin{definition}(Expectation). Let $X \in L^1$. Then we define the expectation of a random variable as 
+$$
+E(X) = \begin{cases}
+\sum_{X}xf(x) \quad \text{(Discrete)}\\
+\int_{-\infty}^{\infty}xf(x)dx \quad \text{(Continuous)}\\
+\end{cases}
+$$
+\end{definition}
+
+\begin{lemma}Let X be a random variable and $g: \mathbb{R} \rightarrow \mathbb{R}.$ Then the random variable $Y = g(X)$ is a random variable with PMF/PDF $f_Y$.
+\end{lemma}
+
+\begin{definition}(r-th moment) Let $X \in L^r$. Then we define the r-th moment as
+$$
+E(X^r) = \begin{cases}
+\sum_{X}x^rf(x) \quad \text{(Discrete)}\\
+\int_{-\infty}^{\infty}x^rf(x)dx \quad \text{(Continuous)}\\
+\end{cases}
+$$
+\end{definition}
+
+\begin{definition}(Variance). Let $X \in L^2$. Then we define the variance as
+$$
+Var(X) = E((X - E(X))^2) = E(X^2) - E(X)^2.
+$$
+\end{definition}
+
+\begin{definition}(General Expectation) Let $X \in L^r$. Then we define the r-th moment as
+$$
+E(g(X)) = \begin{cases}
+\sum_{X}g(x)f(x) \quad \text{(Discrete)}\\
+\int_{-\infty}^{\infty}g(x)f(x)dx \quad \text{(Continuous)}\\
+\end{cases}
+$$
+\end{definition}
+
+\begin{proposition}Let X and Y be a random variables and a,b be constants. We have the following properties 
+\begin{enumerate}
+    \item $E(aX + b) = aE(X) + b$;
+    \item $E(X + Y) = E(X) + E(Y)$;
+    \item $Var(aX + b) = a^2Var(X)$;
+    \item $E(XY) = E(X)E(Y)$ (if X and Y are independent);
+    \item $Var(X+Y) = Var(X) + Var(Y)$ (if X and Y are independent).
+\end{enumerate}
+\end{proposition}
+
+\lecture{2}{Random variables and distributions}
+\section{Probability Theory}
+\subsection{Discrete Random Variables}
+
+A discrete random variable is a random variable whose range is finite or countably infinite.
+
+\begin{definition}(Bernoulli Distribution). A random variable X has a Bernoulli distribution and it is referred to as a Bernoulli random variable if and only if its probability distribution is given by 
+$$
+f(x; \theta) = \theta^x(1 - \theta)^{1-x} \quad x \in \{0, 1\}.
+$$
+\end{definition}
+
+\begin{definition}(Binomial). A random variable X has a Binomial distribution and it is referred to as a Binomial random variable if and only if its probability distribution is given by
+$$
+f(x; n,\theta) = {n \choose x}\theta^x(1-\theta)^{n-x} \quad x = 0,1,...,n.
+$$
+\end{definition}
+
+\begin{theorem}Let X be a Binomial random variable. Then 
+$$
+f(x;n,\theta) = f(n-x;n,1-\theta).
+$$
+\end{theorem}
+\begin{theorem}The mean and variance of the Binomial distribution are 
+$$
+E(X) = n\theta
+$$
+$$
+Var(X) = n\theta(1-\theta).
+$$
+\end{theorem}
+
+\begin{definition}(Negative Binomial Distribution). A random variable X has a negative binomial distribution and it is referred to as a negative binomial random variable if and only if 
+$$
+f(x;k,\theta) = {x-1\choose k-1}\theta^k(1-\theta)^{x-k} \quad x=k,k+1,k+2,...
+$$
+\end{definition}
+
+\begin{theorem}The mean and the variance of the negative binomial distribution are 
+$$
+\mu = \frac{k}{\theta}
+$$
+$$
+\sigma^2 = \frac{k}{\theta}(\frac{1}{\theta} - 1).
+$$
+\end{theorem}
+
+
+
+\begin{definition}(Geometric Distribution). A random variable X has a Geometric distribution and it is referred to as a Geometric random variable if and only if its probability distribution is given by 
+$$
+f(x; \theta) = \theta(1-\theta)^{x-1} \quad x=1,2,3,...
+$$
+\end{definition}
+
+\begin{theorem}The mean and variance of the Geometric random variable are 
+$$
+\mu = \frac{1}{p}
+$$
+$$
+\sigma^2 = \frac{1-p}{p^2}.
+$$
+\end{theorem}
+
+
+\begin{definition}(Hypergeometric Distribution). A random variable X has a Hypergeometric distribution and it is referred to as a hypergeometric random variable if and only if its probability distribution is given by 
+$$
+f(x;n,N,M) = \frac{{M \choose x}{N - M \choose n - x}}{{N \choose n}} \quad x = 0,1,2,...
+$$
+and $x \leq M$ and $n - x \leq N - M$. Here, M are the number of successes and N - M as failures.
+\end{definition}
+
+\begin{definition}(Poisson). A random variable X has a Poisson distribution and it is referred to as a Poisson random variable if and only if its probability distribution is given by 
+$$
+f(x; \lambda) = \frac{\lambda^xe^{-\lambda}}{x!} \quad x=0,1,2,...
+$$
+for $k \in \mathbb{N}^+$.
+\end{definition}
+
+
+\begin{remark}The Poisson random variable expresses the probability of a given number of events occurring in a fixed interval of time if these events occur with a known constant rate $(\lambda)$ and are independent of the time of the last event.
+\end{remark}
+
+
+\begin{theorem}The mean and variance of the Poisson random variable are 
+$$
+\mu = \lambda
+$$
+$$
+\sigma^2 = \lambda.
+$$
+\end{theorem}
+
+\begin{theorem}(Poisson Limit Theorem). Let $p_n$ be a sequence of real numbers in [0,1] such that the sequence $np_n \rightarrow \lambda < \infty$. Then 
+$$
+\lim_{n \rightarrow \infty;p_n \rightarrow 0}{n \choose k}p_{n}^{k}(1-p_n)^{n-k} = e^{-\lambda}\frac{\lambda^k}{k!}.
+$$
+\end{theorem}
+
+\subsection{Continuous Random Variables}
+
+\begin{definition}(Uniform Distribution). A random variable X has a uniform distribution and it is referred to as a continuous uniform random variable if and only if its probability density is given by 
+$$
+f(x;\alpha, \beta) = \begin{cases}
+\frac{1}{\beta - \alpha} \quad \alpha < x < \beta \\
+0 \quad \text{otherwise}.
+
+\end{cases}
+$$
+\end{definition}
+
+\begin{theorem}The mean and variance of the uniform distribution are given by 
+$$
+\mu = \frac{\alpha + \beta}{2}
+$$
+$$
+\sigma^2 = \frac{1}{2}(\beta - \alpha)^2.
+$$
+\end{theorem}
+
+
+\begin{definition}(Gamma Function). The gamma function is defined for any complex number with a positive real part. It is defined as 
+$$
+\Gamma(\alpha) = \int_{0}^{\infty}x^{\alpha - 1}e^{-x}dy
+$$
+for $\alpha > 0$.
+\end{definition}
+
+\begin{theorem}The gamma function satisfies the recursion formula 
+$$
+\Gamma(\alpha + 1) = (\alpha)\Gamma(\alpha).
+$$
+\end{theorem}
+
+\begin{definition}(Gamma Distribution). A random variable X has a Gamma distribution and it is referred to as a Gamma random variable if and only if its density is given by 
+$$
+f(x; \alpha, \beta) = \begin{cases}
+\frac{1}{\beta^{\alpha}}x^{\alpha - 1}e^{-x/\beta} \quad x > 0\\
+0 \quad \text{otherwise}
+\end{cases}
+$$
+where $\alpha > 0$ and $\beta > 0.$
+\end{definition}
+
+\begin{theorem}The mean and variance of the gamma distribution are given by 
+$$
+\mu = \alpha \beta
+$$ 
+$$
+\sigma^2 = \alpha \beta^2
+$$
+\end{theorem}
+
+The exponential and chi-square distribution are special cases of the gamma distribution.
+
+\begin{definition}(Exponential Distribution). A random variable X has an exponential distribution and it is referred to as an exponential random variable if and only if its probability density is given by 
+$$
+f(x; \theta) = \begin{cases}
+\frac{1}{\theta}e^{-x/\theta} \quad x > 0\\
+0 \quad \text{elsewhere}
+\end{cases}
+$$
+for $\theta > 0.$
+\end{definition}
+
+\begin{remark}The exponential distribution is the Gamma distribution for $\alpha = 1.$
+\end{remark}
+
+\begin{theorem}
+The mean and variance of the exponential distribution are given by 
+$$
+\mu = \theta
+$$
+$$
+\sigma^2 = \theta^2.
+$$
+\end{theorem}
+
+\begin{definition}(Chi-Square Distribution). A random variable X has a chi-square distribution and it is referred to as a chi-square random variable if and only if its probability density is given by 
+$$
+f(x, \nu) = \begin{cases}
+\frac{1}{2^{\nu/2}\gamma(\nu/2)}x^{\frac{\nu - 2}{2}}e^{-\frac{x}{2}} \quad x > 0\\
+0 \quad \text{elsewhere}.
+\end{cases}
+$$
+\end{definition}
+\begin{remark}The chi-square distribution is the Gamma distribution for $\alpha = \nu/2$ and $\beta = 2.$
+\end{remark}
+\begin{theorem}The mean and variance of the chi-square distribution are given by 
+$$
+\mu = \nu
+$$
+$$
+\sigma^2 = 2\nu.
+$$
+\end{theorem}
+
+\begin{theorem}If $Z_i \sim N(0,1)$ are i.i.d, then $X = \sum_{i=1}^{\nu}Z_{i}^{2}$, then $X \sim \chi_{\nu}^{2}.$
+\end{theorem}
+
+\begin{definition}(Beta Distribution). A random variable X has a Beta distribution and it is referred to as a Beta random variable if and only if its probability density is given by 
+$$
+f_X(x; \alpha, \beta) = \begin{cases}
+\frac{\Gamma(\alpha + \beta)}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha - 1}(1 - x)^{\beta - 1} \quad x \in (0,1) \\
+0 \quad \text{elsewhere}
+\end{cases}
+$$
+where $\alpha > 0$ and $\beta > 0$.
+\end{definition}
+
+\begin{theorem}The mean and variance of the beta distribution are given by 
+$$
+\mu = \frac{\alpha}{\alpha + \beta}
+$$
+$$
+\sigma^2 = \frac{\alpha \beta}{(\alpha + \beta)^2(\alpha + \beta + 1)}.
+$$
+\end{theorem}
+
+\begin{definition}(Normal Distribution). A random variable X has a normal distribution and it is referred to as a normal random variable if and only if its probability density is given by 
+$$
+f(x; \mu, \sigma) = \frac{1}{\sigma \sqrt{2 \pi}}e^{-\frac{1}{2}(\frac{x - \mu}{\sigma})^2} \quad -\infty < x < \infty
+$$
+where $\sigma > 0.$
+\end{definition}
+
+\begin{theorem}(Linear Transformation of the Normal). Let $Z \sim N(0,1)$. Define $X = \mu + \sigma Z$. Then, $X \sim N(\mu, \sigma^2)$.
+\end{theorem}
+
+\begin{definition}(Standard Normal Distribution). The normal distribution with $\mu = 0$ and $\sigma = 1$ is referred to as the standard normal distribution.
+\end{definition}
+
+
+\begin{theorem}(Binomial Approximation To Normal). If X is a random variable having a binomial distribution with the parameters n and $\theta$, then the MGF of 
+$$
+Z = \frac{X - n\theta}{\sqrt{n\theta(1 - \theta)}}
+$$
+approaches to that of the standard normal distribution when $n \rightarrow \infty.$
+\end{theorem}
+
+\begin{lemma} Let X be a continuous nonnegative random variable. Then we have that 
+$$
+E(X) = \int_{0}^{\infty}P(X > x)dx.
+$$
+\end{lemma}
+
+
+\lecture{3}{Moment Generating Functions}
+\section{Moment Generating Functions}
+\section{Moment Generating Functions}
+\subsection{Moment Generating Functions Introduction}
+We are interested in MGFs for three reasons. A MGF as a real function that uniquely determines its associated probability distribution, and its derivatives at zero are equal to the moments of the random variable. Finally, a MGF is useful for finding the distribution of sums of functions.
+\begin{definition_exam}{Moment Generating Function}{} Let X be a random variable, then $Y = e^{tX} \geq 0$, so $E(Y)$ is well defined. The MGF of the random variable X is defined as 
+$$
+M(t) = E(e^{tX}) = \sum_xe^{tx}f_X(x)
+$$
+for all t for which the right hand side is finite. 
+\end{definition_exam}
+
+\begin{remark}We know that for t = 0, the MGF exists as $M(0) = 1 < \infty$. If X is a discrete RV, then the MGF is $M(t) = \sum_ie^{tX_i}P_X(x_i).$
+\end{remark}
+\begin{theorem_exam}{Computing moments with MGFs}{}If there exists a $\delta > 0$ such that $M(t) < \infty$ for all $t \in (-\delta,\delta)$ then for all $n \in \mathbb{N}$, we have $$M^n(0) = \mathbb{E}(X^n)$$ and exist. The MGF is infinitely differentiable at 0.
+\end{theorem_exam}
+\begin{proof}Assuming there is an interval in which we can interchange differentiation and expectation, we have 
+$$
+\frac{d}{dt}E[e^{tX}] = E\bigg[\frac{d}{dt}e^{tX} \bigg] = E\bigg[Xe^{tX} \bigg].
+$$
+Then, if we let t = 0 in the above, we get 
+$$
+E\bigg[X \bigg] = M'(0).
+$$
+\end{proof}
+
+\begin{theorem_exam}{Equality of distributions}{} Let F and G be CDFs and suppose that there exists $\delta > 0$ such that for all $t \in (-\delta, \delta)$, the MGFs $M_F(t) = M_G(t) < \infty$. Then $F = G$. It follows that all the moments of F and G exist and are equal.
+\end{theorem_exam}
+
+\begin{remark}The converse to the above theorem is false. All the moment of F and G can exist, and be equal, yet $F \neq G.$
+\end{remark}
+
+\begin{proposition_exam}{Linear transformation of MGFs}{}Let X be a random variable possessing a MGF $M_X(t)$. Define the linear transformation $$Y = a + bX$$ where $a, b \in \mathbb{R}$ are two constants and $b \neq 0.$ Then the random variable Y posseses a MGF $M_Y(t)$ and $$M_Y(t) = exp(at)M_X(bt).$$
+\end{proposition_exam}
+
+\begin{remark}Not every random variable posseses a moment generating function. However, every random variable posseses a characteristic function.
+\end{remark}
+
+\begin{definition}(Characteristic Function). Let X be a random variable. Let $i = \sqrt{-1}$ be the imaginary unit. The function $\phi: \mathbb{R} \rightarrow \mathbb{C}$ is defined by 
+$$
+\phi_X(t) = \mathbb{E}[exp(itX)]
+$$
+is called the characteristic function of X.
+\end{definition}
+
+\begin{proposition_exam}{Independence of MGFs}{} Let $X_1,...,X_n$ be n mutually independent random variables. Let Z be their sum: $$Z = \sum_{i=1}^nX_i.$$ Then, the MGF of Z is the product of the MGFs of $X_1,...,X_n$: $$M_Z(t) = \prod_{i=1}^nM_{X_{i}}(t).$$
+\end{proposition_exam}
+
+\begin{theorem}(Continuity Theorem). Let $F_n$ be CDFs with MGFs $M_n$, and let F be a CDF with MGF M, and suppose that there exists $\delta > 0$ such that $M_n(t) \rightarrow_n M(t)$ for all $t \in (-\delta, \delta)$. Then $F_n(x) \rightarrow F(x)$ for all x where F is continuous at x.
+\end{theorem}
+
+\lecture{4}{Convergence Concepts}
+\section{Moment Generating Functions}
+\subsection{Convergence Concepts}
+We are interested in defining what it means for random variables to converge.
+\begin{definition_exam}{Convergence in probability}{} Let $\{X_n\}$ and X be jointly distributed random variables. We say that $X_n \xrightarrow{p} X$ in probability if for all $\epsilon > 0$, we have that $$\lim_{n \rightarrow \infty}P(|X_n - X| > \epsilon) = 0$$. We say that $X_n \xrightarrow{p} X.$
+\end{definition_exam}
+
+\begin{definition_exam}{Convergence Almost Surely}{} Let $\{X_n\}$ and X be jointly distributed random variables. We say that $X_n \xrightarrow{a.s.} X$ strong or almost surely if we have that $$P(\lim_{n \rightarrow \infty}|X_n - X| < \epsilon) = 1.$$ 
+\end{definition_exam}
+
+\begin{remark}Recall that random variables are real-valued functions defined on the sample space $\Omega$. Let $s \in \Omega$ be sample points. A sequence of functions $X_n(s)$ converges to X(s) for all $s \in \Omega$ except for $s \in \mathcal{N}$ where $\mathcal{N} \subset \Omega$ and $P(\mathcal{N}) = 0.$ That is, we have pointwise convergence of a sequence of functions except convergence need not occur on a set with probability 0.
+\end{remark}
+
+\begin{theorem}Convergence almost surely $\xrightarrow{a.s.}$ implies convergence in probability $\xrightarrow{p}.$
+\end{theorem}
+
+\begin{definition_exam}{Convergence in distribution}{} Let $\{X_n\}$ and X be jointly distributed random variables. We say that $X_n \xrightarrow{d} X$ in distribution if 
+$$\lim_{n \rightarrow \infty} F_{X_{n}}(x) = F_X(x)$$
+ for all x where $F_X$ is continuous at x. We say that $X_n \xrightarrow{d} X.$
+\end{definition_exam}
+
+\begin{remark}Note that convergence in distribution is phrased in terms of the CDFs. Hence, it is the CDFs that converges, not the random variables when we speak of convergence in distributions.
+\end{remark}
+
+\begin{theorem}Convergence in probability $\xrightarrow{p}$ implies convergence in distribution $\xrightarrow{d}.$
+\end{theorem}
+
+The CLT states that the \textbf{sample mean} has a distribution which is approximately normal with mean $\mu$ and variance $\sigma^2.$ That is, probability statements about the sample mean can be approximated using a normal distribution. \textbf{Not the random variable itself.}
+\begin{theorem_exam}{Central Limit Theorem}{} Suppose $X_i$ are i.i.d random variables with $\sigma^2 = Var(X_i) < \infty$ and $\mu = E(X_i)$. Then with $S_n = \sum_{i=1}^{n}X_i$ for all $x \in \mathbb{R}$
+$$
+P(\frac{S_n - n\mu}{\sqrt{n}\sigma} \leq x)  \xrightarrow{d} \phi(x) = \int_{-\infty}^{\infty}\frac{1}{\sqrt{2\pi}}e^{\frac{-t^2}{2}}dt.
+$$ \\ Let $Y_n = \frac{S_n - n\mu}{\sqrt{n}\sigma}$, then the CLT states that 
+$$
+F_{Y_{n}}(x) \xrightarrow{d} F_Z(x)
+$$
+for all $x \in \mathbb{R}$ where $Z \sim N(0,1).$ In other words, $Y_n \xrightarrow{d} Z$ in distribution.
+\end{theorem_exam}
+
+\begin{theorem}(Markov's Inequality). Let X be a non-negative random variable and suppose $\mathbb{E}[X]$ exists. For any $t > 0$
+$$
+P(X > t) \leq \frac{\mathbb{E}(X)}{t}.
+$$
+\end{theorem}
+
+\begin{theorem_exam}{Chebychev's Inequality}{} Assume the random variable X has a finite second moment $\sigma$. Then, for any real number $k > 0$,
+$$
+P(|X - \mu| > k\sigma) \leq \frac{1}{k^2}.
+$$
+\end{theorem_exam}
+\begin{remark}This a useful theorem for proving convergence in probability to a constant.
+\end{remark}
+
+\begin{theorem_exam}{Weak Law of Large Numbers}{} Let $X_1,...,X_n$ be a sequence of i.i.d random variables. Let $E(X_i) = \mu$ and $Var(X_i) = \sigma^2.$ Define the random variable $S_n = \frac{X_1 + ... + X_n}{n}$, then $$S_n \xrightarrow{p} \mu$$. That is, for any $\epsilon > 0$
+$$
+\lim_{n \rightarrow \infty}P(|S_n - \mu| \geq \epsilon) = 0.
+$$
+That is, $S_n \xrightarrow{p} \mu.$
+\end{theorem_exam}
+
+That is, the mean of a large sample is close to the mean of the distribution. Hence, the distribution of the sample mean becomes more concentrated around $\mu$ as n gets large.
+
+
+\begin{theorem}(Strong Law of Large Numbers). Let $X_1,...,X_n$ be a sequence of i.i.d random variables. Let $E(X_i) = \mu$ and $Var(X_i) = \sigma^2.$ Define the random variable $S_n = \frac{X_1 + ... + X_n}{n}$, then $$S_n \xrightarrow{a.s.} \mu$$. That is, for any $\epsilon > 0$
+$$
+P(\lim_{n \rightarrow \infty}|S_n - \mu| \leq \epsilon) = 1.
+$$
+That is, $S_n \xrightarrow{a.s.} \mu.$
+\end{theorem}
+
+\lecture{5}{Further Limit Laws}
+\section{Moment Generating Functions}
+\subsection{Further Limit Laws}
+\begin{theorem}Let $\{X_n\}$, $\{Y_n\}$ be sequences of random variables. If $X_n \xrightarrow{p} c$ and $Y_n \xrightarrow{p} d$, then 
+$$
+X_n + Y_n \xrightarrow{p} c + d
+$$
+where c and d are constants.
+\end{theorem}
+
+\begin{theorem}Let $\{X_n\}$ be a sequence of random variables. Suppose for a function g(.), we have that $\lim_{x \rightarrow c}g(x) = \ell$ exists and is finite for a constant $\ell$. If $X_n \xrightarrow{p} c$, then 
+$$
+g(X_n) \xrightarrow{p} \ell.
+$$
+\end{theorem}
+
+\begin{corollary} If g(.) is \textbf{continuous} at c, then 
+$$
+g(X_n) \xrightarrow{p} g(c).
+$$
+If h(.) is \textbf{differentiable} at c, then 
+$$
+\frac{h(X_n) - h(c)}{X_n - c} \xrightarrow{p} h'(c).
+$$
+\end{corollary}
+
+
+\lecture{6}{Asymptotics}
+\section{Transformation of random variables}
+\subsection{Asymptotics}
+
+\begin{lemma}Let X have a CDF F(.) and let x be a continuity point of the CDF F(.). Suppose $X_n \xrightarrow{d} X$. Then 
+$$
+P(X_n = x) \rightarrow 0.
+$$
+\end{lemma}
+
+\begin{proposition}The sequence of random variables $X_1,X_2,...,$ converges in probability to a constant c if and only if the sequence converges in distribution to c. \\That is, the statement 
+$$
+P(|X_n - c| > \epsilon) \xrightarrow{p} 0 \quad \text{for every }\epsilon > 0
+$$
+is equivalent to 
+$$
+P(X_n \leq x) \xrightarrow{d} \begin{cases}
+0 \quad \text{if } x < c\\
+1 \quad \text{if } x > c.
+\end{cases}
+$$
+\end{proposition}
+
+\begin{theorem_exam}{Continuous Mapping Theorem}{} Let $X_n$ and X be a random variable. Let g(.) be a continuous function.
+\begin{enumerate}
+\item If $X_n \xrightarrow{p} X$, then $g(X_n) \xrightarrow{p} g(X)$.
+\item If $X_n \xrightarrow{d} X$, then $g(X_n) \xrightarrow{d} g(X).$
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{remark}g(.) can actually be continuous \textbf{almost surely}, i.e. $P(x \in D) = 0$ where D is the set of discontinuity points of g.
+\end{remark}
+
+\begin{theorem_exam}{Slutsky's Theorem}{} Suppose $X_n \xrightarrow{d} X$ and $Y_n \xrightarrow{p} c$ where c is a constant. Then 
+\begin{enumerate}
+    \item $X_n + Y_n \xrightarrow{d} X + c$;
+    \item $X_nY_n \xrightarrow{d} cX$;
+    \item If $c \neq 0$, then $\frac{X_n}{Y_n} \xrightarrow{d} \frac{X}{c}.$
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{remark}This theorem is equivalent for when $Y_n \xrightarrow{d} c$.
+\end{remark}
+
+We recall some concepts from calculus to derive the delta method, a tool that helps us approximate the mean and variance of estimators.
+
+\begin{definition}(Taylor Polynomial). If a function g(x) has derivatives of order r, that is, $g^{(r)}(x) = \frac{d^r}{dx^r}g(x)$ exists, then for any constant a, the Taylor polynomial of order r about a is 
+$$
+T_r(x) = \sum_{i=0}^{r}\frac{g^{(i)}(a)}{i!}(x - a)^{i}.
+$$
+\end{definition}
+
+\begin{theorem}If $g^{r}(a) = \frac{d^r}{dx^r}g(x)|_{x = a}$ exists, then 
+$$
+\lim_{x \rightarrow a}\frac{g(x) - T_r(x)}{(x - a)^r} = 0.
+$$
+That is, the remainder from the approximation, $g(x) - T_r(x)$, always tend to 0 faster than the highest-order explicit term.
+\end{theorem}
+
+For our purposes, we are interested in the first-order Taylor series expansion of an estimator T(.) with the differentiable function g(T) about the parameter point $\theta$:
+$$
+g(t) \approx g(\theta) + \sum_{i=1}^{k}g_i'(\theta)(t_i - \theta_i).
+$$
+
+We can now look at a theorem to help us determine the limiting variance of an estimator.
+
+\begin{theorem_exam}{Delta Method}{} Let $X_n$ be a sequence of random variables such that  $\sqrt{n}(X_n - \theta) \xrightarrow{d} \mathcal{N}(0, \sigma^2)$ and g(.) is differentiable and nonzero at $\theta$. Then 
+$$
+\sqrt{n}(g(X_n) - g(\theta)) \xrightarrow{d} \mathcal{N}(0, \sigma^2[g'(\theta)]^2).
+$$
+\end{theorem_exam}
+\begin{remark}Note that the Delta method requires that $X_n$ has a limiting normal distribution in order for us to apply the Delta method to find the limiting distribution of $g(X_n).$
+\end{remark}
+
+\begin{lemma}Suppose $\sqrt{n}(X_n - c) \xrightarrow{d} F(.)$ for a  proper CDF F(.). Then $X_n \xrightarrow{p} c.$ 
+\end{lemma}
+
+\begin{definition}(Variance stabilising transformation). Suppose that the limiting variance is a function of an unknown parameter. A function $g(.)$ is a variance stabilising transformation if the limiting variance is no longer a function of the unknown parameter.
+\end{definition}
+
+
+
+\lecture{7}{Joint, Marginal, and Conditional Distributions}
+\section{Multivariate Distributions}
+\section{Multivariate Distributions}
+\subsection{Joint, Marginal, and Conditional Distributions}
+\begin{definition}(Joint Probability Density Function). A bivariate function with values $f(x,y)$ defined over the xy-plane is called a joint probability density function of the continuous random variables X and Y if and only if 
+$$
+P(X,Y) \in A = \int\int_Af(x,y)dxdy
+$$
+for any region A in the xy-plane.
+\end{definition}
+
+\begin{theorem}A bivariate function can serve as the joint probability distribution function of a pair of random variabels X and Y if and only if f(x,y) satisfies that 
+\begin{enumerate}
+\item $f(x,y) \geq 0$ for each pair of values (x,y) within its domain;
+\item $\int_X\int_Yf(x,y) = 1$ for each pair of values (x,y) within its domain.
+\end{enumerate}
+\end{theorem}
+
+\begin{definition}(Joint CDF). The joint CDF of X and Y is given by 
+$$
+f_{X,Y}(x,y) = P(X \leq x, Y \leq y) = \int_{-\infty}^{x}\int_{-\infty}^{y}f(s,t)dtds
+$$
+for $-\infty < x < \infty$ and $-\infty < y < \infty$.
+\end{definition}
+
+\begin{theorem_exam}{Tonelli's Theorem}{} The iterated/repeated integral of a non-negative function is the same as the double integral 
+$$
+\int_{-\infty}^x\int_{-\infty}^yf(s,t)dtds = \int\int_{B_{xy}}f(s,t)dsdt = \int_{-\infty}^{y}\int_{-\infty}^{x}f(s,t)dsdt.
+$$
+Fubini's extension states that if for \textbf{any} integrable f, that if one of the above three integrals is finite, when f is replaced by $|f|$, then the equalities still hold.
+\end{theorem_exam}
+
+\begin{theorem}Assume the CDF function $F \in C^2$, then 
+$$
+f(x,y) = \frac{\partial^2}{\partial x \partial y}F(x,y).
+$$
+\end{theorem}
+
+\begin{definition}(Marginal Density) If X and Y are continuous random variables and f(x,y) is the value of their joint probability density at (x,y), the function given by 
+$$
+g(x) = \int_{-\infty}^{\infty}f(x,y)dy \quad -\infty < x < \infty
+$$
+is called the marginal density of X. Correspondingly, the function given by 
+$$
+h(y) = \int_{-\infty}^{\infty}f(x,y)dx \quad -\infty < y < \infty
+$$
+is called the marginal density of Y.
+\end{definition}
+
+\begin{remark}For a multivariate joint probability distribution, we can also speak of the $\textbf{joint marginal distribution}.$
+\end{remark}
+
+\begin{remark}We can derive the marginal distribution from the joint distribution but \textbf{not the converse}.
+\end{remark}
+
+\begin{definition}(Conditional Distribution). If f(x,y) is the value of the joint probability distribution of the random variables X and Y at (x,y) and h(y) is the value of the marginal distribution of Y at y, the function given by 
+$$
+f(x|y) = \frac{f(x,y)}{h(y)} \quad h(y) \neq 0
+$$
+for $-\infty < x < \infty$ is called the conditional density of X given Y = y. Correspondingly, if g(x) is the value of the marginal density of X at x, the function given by 
+$$
+w(y|x) = \frac{f(x,y)}{g(x)} \quad g(x) \neq 0
+$$
+for $- \infty < y < \infty$ is called the conditional density of Y given X = x.
+\end{definition}
+
+\begin{definition}(Independence of random variables). If $f(x_1,x_2,...,x_n)$ is the value of the joint probability distribution of the random variables $X_1,X_2,...,X_n$ at $(x_1,x_2,....,x_n)$ and $f_i(x_i)$ is the value of the marginal distribution of $X_i$ at $x_i$ for i = 1,2,...,n, then the n random variables are independent if and only if 
+$$
+f(x_1,...,x_n) = f_1(x_1)f_2(x_2)...f_n(x_n)
+$$
+for all $(x_1,x_2,...,x_n)$ within their range.
+\end{definition}
+
+\begin{definition}(Conditional Expectation). We define the conditional expectation 
+$$
+E(X|Y=y) = \begin{cases}
+\sum xf_{X|Y}(x|y) \quad \text{X is discrete}\\
+\int xf_{X|Y}(x|y)dx \quad \text{X is continuous}.
+\end{cases}
+$$
+\end{definition}
+
+\begin{definition}(Conditional Variance). We define the conditional variance as 
+$$
+V(Y|X=x) = \int (y - E(Y|X=x))^2f(y|x)dy.
+$$
+\end{definition}
+
+\begin{theorem}(Law of total expectation). We define the law of total expectation as
+$$
+E(Y) = E[E(Y|X)].
+$$
+\end{theorem}
+
+
+\begin{theorem}(Law of total variance). We define the law of total variance as 
+$$
+V(Y) = E[V(Y|X)] + V(E[Y|X]).
+$$
+\end{theorem}
+
+\subsection{Multivariate Distribution}
+
+\begin{definition_exam}{Bivariate Normal Distribution}{} A pair of random variables X and Y have a bivariate normal distribution and they are referred to as jointly normally distributed random variables if and only if their joint probability density is given by 
+$$
+f(x,y) = \frac{e^{-\frac{1}{2(1 - \rho)^2}} [(\frac{x - \mu_1}{\sigma_1})^2] -2\rho(\frac{x - \mu_1}{\sigma_1})(\frac{y - \mu_2}{\sigma_2}) + (\frac{y - \mu_2}{\sigma_2})^2 }{2\pi \sigma_1\sigma_2\sqrt{1 - \rho^2}}
+$$
+for $x \in (-\infty, \infty)$ and $y \in (-\infty, \infty)$, where $\sigma_1 > 0$, $\sigma_2 > 0$, and $-1 < \rho < 1.$
+\end{definition_exam}
+
+\begin{theorem}If X and Y have a bivariate normal distribution, the conditional density of Y given X = x is a normal distribution with the mean 
+$$
+\mu_{Y|x} = \mu_2 + \rho \frac{\sigma_2}{\sigma_1}(x - \mu_1)
+$$
+and the variance 
+$$
+\sigma_{Y|x}^2 = \sigma_{2}^{2}(1 - \rho^2)
+$$
+and the conditional density of X given Y = y is a normal distribution with the mean 
+$$
+\mu_{X|y} = \mu_1 + \rho\frac{\sigma_1}{\sigma_2}(y - \mu_2)
+$$
+and the variance 
+$$
+\sigma_{X|y}^{2} = \sigma_{1}^{2}(1 - \rho^2).
+$$
+\end{theorem}
+
+\begin{theorem}If two random variables have a bivariate normal distribution, they are independent if and only if $\rho = 0.$
+\end{theorem}
+
+\begin{theorem}If (X,Y) is a bivariate normal random variable, then $aX + bY$ is a normal random variable for constants a and b.
+\end{theorem}
+
+\lecture{8}{Sampling Distributions}
+\section{Multivariate Distributions}
+\subsection{Sampling Distributions}
+
+\begin{definition}(Random Sample). If $X_1,...,X_n$ are i.i.d random variables, we say that they constitute a random sample from the infinite population given by their common distribution. We can write their joint distribution as 
+$$
+f(x_1,...,x_n) = \prod_{i=1}^{n}f(x_i).
+$$
+\end{definition}
+
+\begin{definition}(Statistic). A statistic T(.) is a random variable that is a function of a set of random variables $X_1,...,X_n$ that constitute a random sample.
+\end{definition}
+
+\begin{proposition}A statistic is a random variable and hence has a sampling distribution.
+\end{proposition}
+
+\begin{definition}(Sample Mean and Sample Variance). If $X_1,...,X_n$ are a random sample, then the sample mean is given by 
+$$
+\bar{X} = \frac{1}{n}\sum_{i=1}^{n}X_i
+$$
+and the sample variance is given by 
+$$
+S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i - \bar{X})^2.
+$$
+\end{definition}
+
+The values of sampling statistics can be expected to vary from sample to sample, hence we find the distribution of such statistics.
+
+\begin{definition}(Sampling Distribution). The distribution of the sampling statistics is known as the \textbf{sampling distribution.}
+\end{definition}
+
+
+\begin{theorem}Let $X_1,...,X_n$ be a random sample with mean $\mu$ and variance $\sigma^2.$ Then,
+$$
+E(\bar{X}) = \mu
+$$
+ 
+$$
+Var(\bar{X}) = \frac{\sigma^2}{n}.
+$$
+\end{theorem}
+
+\begin{definition}(Standard Error of the mean). Let $\bar{X}$ be the sample mean. Then, let $\sigma_{\bar{X}}^{2} = Var(\bar{X})$. We define $\sigma_{\bar{X}}$ as the standard error of the mean.
+\end{definition}
+
+
+\begin{proposition}Let $X_1,...,X_n$ be a random sample from $N(\mu, \sigma^2)$. Then the sample mean $\bar{X}$ and sample variance $S^2$ are independent.
+\end{proposition}
+
+\begin{proposition_exam}{Sampling distribution of variance}{}The transformed sample variance has the distribution
+$$
+\frac{(n-1)}{\sigma^2}S^2 \sim \chi_{n-1}^2.
+$$
+Furthermore, 
+$$
+E(\frac{(n-1)}{\sigma^2}S^2) = n - 1
+$$
+$$
+E(S^2) = \sigma^2
+$$
+that is, $S^2$ is an unbiased estimator of $\sigma^2.$
+\end{proposition_exam}
+
+\begin{definition}(T-distribution). Let $Z \sim N(0,1)$ and $Y \sim \chi_{v}^{2}$. Let Z and Y be independent. Then, we say that a random variable T
+$$
+T = \frac{Z}{\sqrt{\frac{Y}{2}}}
+$$
+has a t distribution $T \sim t_v$.
+\end{definition}
+
+\begin{definition}(F distribution). Let $U \sim \chi_{v_{1}}^2$ and $V \sim \chi_{v_{2}}^2$ where U and V are independent. Then we can construct the F distribution by defining
+$$
+F = \frac{\frac{U}{v_1}}{\frac{V}{v_2}}
+$$
+giving us $F \sim F_{v_{1}, v_{2}}$.
+\end{definition}
+
+\lecture{9}{Order Statistics}
+\section{Multivariate Distributions}
+\subsection{Order Statistics}
+
+\begin{definition_exam}{Order Statistics}{} Let $X_1,...,X_n$ be an i.i.d sample from a population with the same CDF F. Define $Y_j$ to be the jth smallest value of $X_1,...,X_n$. The ordered values $Y_1 < Y_2 ... < Y_n$ are called the order statistics. 
+\end{definition_exam}
+
+\begin{remark}The order statistics are a permutation of the original dataset. Furthermore, the distribution of the order statistics depends on the sample size n.
+\end{remark}
+
+\begin{proposition}The CDF of the k-th order statistic is given by 
+$$
+F_{Y_{k}}(x) = \sum_{j=k}^n{n \choose j}[F(x)]^j[1 - F(x)]^{n-j}.
+$$
+The PDF of the k-th order statistic is given by 
+$$
+f_{Y_{k}}(x) = k{n \choose k}[F(x)]^{k-1}[1 - F(x)]^{n-k}f(x).
+$$
+\end{proposition}
+
+\begin{theorem}Let $Y_n$ be the maximum statistic. The CDF of the maximum $Y_n$ is given by 
+$$
+F_{Y_{n}}(x) = [F(x)]^n.
+$$
+The PDF is given by 
+$$
+f_{Y_{n}}(x) = n[F(x)]^{n-1}f(x).
+$$
+\end{theorem}
+
+\begin{theorem}Let $Y_1$ be the minimum statistic. The CDF of the maximum $Y_1$ is given by 
+$$
+F_{Y_{1}}(x) = 1 - [1 - F(x)]^n.
+$$
+The PDF is given by 
+$$
+f_{Y_{1}}(x) = n[1 - F(x)]^{n-1}f(x).
+$$
+\end{theorem}
+
+\begin{definition}(Joint PDF of 2 Order Statistics). Let $\{Y_i\}$ be the order statistics. Then, for any $i < j$, the joint PDF of 2 order statistics is
+$$
+f_{Y_{i},Y_{j}}(y_i,y_j) = \frac{n!}{(i-1)!(j-i-1)!(n-j)!}F(y_i)^{i-1}[F(y_j) - F(y_i)]^{j-i-1}(1 - F(y_j))^{n-j}f(y_i)f(y_j).
+$$
+\end{definition}
+
+\begin{definition}(Joint PDF of all Order Statistics). Let $\{Y_i\}$ be the order statistics. Then, the joint PDF of all the order statistics is given by 
+$$
+f_{Y_{(1)},Y_{(2)},...,Y_{(n)}}(y_1,y_2,...,y_n) = \begin{cases}
+n!f(y_1)...f(y_n) \quad -\infty < y_1 < .... < y_n < \infty \\
+0 \quad \text{otherwise.}
+\end{cases}
+$$
+\end{definition}
+
+\lecture{10}{Transformation of random variables}
+\section{Transformation of random variables}
+\section{Transformation of random variables}
+\subsection{Transformation of random variables}
+
+Suppose we are given a set of random variables $X_1,...,X_n$ and we are interested in the probability distribution or density of $Y = g(X_1,...,X_n)$. The 3 techniques we can use are 
+\begin{enumerate}
+\item Distribution Function Technique;
+\item Transformation Technique;
+\item Moment-Generating Function Technique.
+\end{enumerate}
+
+\begin{theorem}(Distribution Function Technique). We obtain the CDF of Y $F_Y(y) = P(Y \leq y)$ and then differentiate with respect to y to find the probability density $f_Y(y) = \frac{dF(y)}{dy}$.
+\end{theorem}
+
+\begin{remark}Typically this is used for scalar-valued function and for continuous distributions.
+\end{remark}
+
+\begin{definition}(Convolution). Let X and Y be independent random variables. Define the random variable $T = X + Y.$ Then the convolution is defined as 
+\begin{enumerate}
+    \item $P(T=t) = \sum_XP(X=x, Y=t-x) = \sum_XP_X(x)P_Y(t-x)$ (Discrete)
+    \item $f_T(t) = \int_{-\infty}^{\infty}f_X(x)f_Y(t-x)dx$ (Continuous). 
+\end{enumerate}
+\end{definition}
+
+
+\lecture{11}{Transformation of random variables}
+\section{Transformation of random variables}
+\subsection{Univariate Transformation of random variables}
+\begin{theorem}Suppose $f'(x) > 0$ in $(a,b).$ If f is strictly increasing in (a,b) and let g be its inverse function. Then g is differentiable and 
+$$
+g'(f(x)) = \frac{1}{f'(x)}.
+$$
+\end{theorem}
+
+\begin{theorem_exam}{Transformation techniques}{}Let X be a continuous random variable having PDF $f_X(.)$. Suppose that g(x) is differentiable and strictly monotonic for all x such that $f_X(x) \neq 0.$ Then the random variable $Y =  g(X)$ has the PDF 
+$$
+f_Y(y) = \begin{cases}
+f_X(g^{-1}(y))|\frac{d}{dy}g^{-1}(y)| \quad \text{if y = g(x)}\\
+0 \quad \text{otherwise}
+\end{cases}
+$$
+\end{theorem_exam}
+
+\begin{theorem}Suppose $(X_1,X_2)$ has the joint PDF $f(x_1,x_2)$ and define $Y = U(X_1,X_2).$ W.L.O.G, if we fix $X_2$, then $U(.,X_2)$ satisfies the conditions required by the one-variable transformation technique. Then we can write the joint PDF of $(Y,X_2)$ as 
+$$
+g(y,x_2) = f(x_1,x_2)|\frac{\partial x_1}{\partial y}|.
+$$
+Then we can marginalise out $X_2$ to arrive at
+$$
+f_Y(y) = \int_{-\infty}^{\infty}g(y,x_2)dx_2.
+$$
+\end{theorem}
+
+\lecture{12}{Multivariate Transformation of random variables}
+\section{Transformation of random variables}
+\subsection{Multivariate Transformation of random variables}
+
+
+\begin{definition}(Jacobian). Let $(X_1,X_2)$ have the joint PDF $f(x_1,x_2)$. Let $g(y_1,y_2) = f(u_1(x_1,x_2), u_2(x_1,x_2))$. The Jacobian is then 
+$$
+J = 
+\begin{bmatrix}\frac{\partial x_1}{\partial y_1} & \frac{\partial x_1}{\partial y_2}\\
+\frac{\partial x_2}{\partial y_1} & \frac{\partial x_2}{\partial y_2}.
+\end{bmatrix}
+$$
+\end{definition}
+
+\begin{theorem_exam}{Multivariate Transformation}{} Define $T: D \subset \mathbb{R}^2 \rightarrow R \subset \mathbb{R}^2$ where D and R are open sets. Suppose that T is bijective and differentiable on D with a non vanishing Jacobian $J_T \neq 0$. Suppose $(X,Y)$ is jointly continuous with density $f_{XY}$ which vanishes outside of D and let $(U,V) = T(X,Y)$. Then $(U,V)$ is jointly continuous and for all $(u,v) \in R$, we have the density 
+$$
+f_{UV}(u,v) = f_{XY}(T^{-1}(u,v))|J_{T^{-1}}(u,v)|.
+$$
+\end{theorem_exam}
+
+\begin{proof} Take $\psi = f_{XY}$, then for any open $B \subset R$, we have that 
+$$
+P((U,V) \in B) = P((X,Y) \in A = T^{-1}(B))
+$$
+$$
+= \int\int_Af_{XY}(x,y)dxdy
+$$
+$$
+= \int\int_{B = T(A)}f_{XY}(T^{-1}(u,v))|J_{T^{-1}}(u,v)|dudv.
+$$
+Since this holds for all $B \subset R$, (U,V) has a density which is given by 
+$$
+f_{UV}(u,v) = f_{XY}(T^{-1}(u,v))|J_{T^{-1}}(u,v)|.
+$$
+\end{proof}
+
+\begin{remark}The Jacobian takes into account that the density increases (decreases) after the linear transformation and hence scales the density down (up) to compensate.
+\end{remark}
+
+\begin{claim}Suppose $X_1,X_2,...,X_n \sim F_X$ and $\textbf{Y} = T(\textbf{X})$ where T is bijective from $D \subset \mathbb{R}^n \rightarrow R \subset \mathbb{R}^n$. Denote $\textbf{Y} \sim G_{\textbf{Y}}$, for any $\textbf{Z} \sim G_{\textbf{Y}}$, 
+$$
+T^{-1}\textbf{Z} \sim F_{\textbf{X}}.
+$$
+\end{claim}
+
+\lecture{13}{Multivariate Jacobian Technique}
+\section{Multivariate Jacobian}
+\subsection{Multivariate Jacobian}
+
+\begin{theorem}Let X and Y be 2 vectors of random variables, related by an invertible transformation 
+$$
+Y_1 = y_1(X), \quad Y_2 = y_2(X), \quad ... \quad Y_n = y_n(X).
+$$
+Then the joint PDF of X is related to the joint PDF of Y via 
+$$
+f_Y(y) = f_X(x)|det J|
+$$
+where the inverse transforms are 
+$$
+X_1 = x_1(Y), \quad X_2 = x_2(Y), \quad ... \quad X_n = x_n(Y)
+$$
+and the Jacobian matrix is 
+$$
+J = \begin{bmatrix}
+\frac{\partial x_1}{\partial y_1} & ... & \frac{\partial x_1}{\partial y_n}\\
+... & ... & ... \\
+\frac{\partial x_n}{\partial y_1} & ... & \frac{\partial x_n}{\partial y_n}
+\end{bmatrix}
+$$
+\end{theorem}
+
+
+
+\lecture{14}{Sufficient Statistics}
+\section{Exponential Families}
+\section{Exponential Families}
+\subsection{Information Theory (Background)}
+Information theory will make the notions of sufficiency alot more intuitive. We work with discrete random variables for ease.
+\begin{definition}(Entropy). The entropy H(X) of a discrete random variable X is defined by 
+$$
+H(X) = -\sum_{x \in \mathcal{X}}p_X(x)log_2p(x).
+$$
+The unit of measurements for entropy is called \textbf{bits}.
+\end{definition}
+
+\begin{remark}Entropy measures the uncertainty of a random variable. That is, what is the amount of information required on average to describe the random variable. Note that entropy only depends on the probabilities of the PMF rather than the actual values that the random variable takes on.
+\end{remark}
+
+\begin{lemma}We have that 
+$$
+H(X) \geq 0.
+$$
+\end{lemma}
+
+Recall that if g(X) is a function of a random variable, then 
+$$
+E(g(X)) = \sum_{x \in \mathcal{X}}g(x)p_X(x).
+$$
+Hence, we can let $g(X) = \frac{1}{p(X)}$ and then
+$$
+H(X) = E_plog(\frac{1}{p(X)}).
+$$
+
+\begin{definition}(Joint Entropy). The joint entropy H(X,Y) of a pair of discrete random variables (X,Y) with a joint distribution p(x,y) is defined as 
+$$
+H(X,Y) = -\sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,y)logp(x,y)
+$$
+\end{definition}
+
+\begin{definition}(Conditional Entropy). If $(X,Y) \sim P(x,y)$, the conditional entropy $H(Y|X)$ is defined as 
+$$
+H(Y|X) = \sum_{x \in \mathcal{X}}p(x)H(Y|X=x) = -Elogp(Y|X).
+$$
+\end{definition}
+
+\begin{theorem}(Chain rule). 
+$$
+H(X,Y) = H(X) + H(Y|X).
+$$
+\end{theorem}
+
+\begin{corollary}
+$$
+H(X,Y|Z) = H(X|Z) + H(Y|X,Z).
+$$
+\end{corollary}
+
+\begin{definition}(Relative Entropy/Kullback-Leibler Distance). The relative entropy between two probability mass functions p(x) and q(x) is defined as 
+$$
+D(p||q) = \sum_{x \in \mathcal{X}}p(x)log\frac{p(x)}{q(x)} = E_plog\frac{p(X)}{q(X)}.
+$$
+\end{definition}
+
+\begin{remark}Relative entropy measures the distance between two distributions.
+\end{remark}
+
+\begin{definition}(Mutual Information). Consider two random variables X and Y with a joint PMF $p(x,y)$ and marginal PMFs p(x) and p(y). The mutual information $I(X;Y)$ is the relative entropy between the joint distribution and the product distribution p(x)p(y);
+$$
+I(X;Y) = \sum_{x \in \mathcal{X}}\sum_{y \in \mathcal{Y}}p(x,y)log\frac{p(x,y)}{p(x)p(y)}.
+$$
+\end{definition}
+
+\begin{remark}Mutual information is a measure of the amount of information that one random variables contains about another random variable. It is the reduction in the uncertainty of one random variable due to knowledge of another.
+\end{remark}
+
+\begin{lemma}We can express mutual information as 
+$$
+I(X;Y) = H(X) - H(X|Y).
+$$
+\end{lemma}
+
+Mutual information is therefore the reduction in the uncertainty of X due to knowledge of Y.
+
+\begin{definition}The conditional mutual information of random variables X and Y given Z is defined by 
+$$
+I(X;Y|Z) = H(X|Z) - H(X|Y,Z).
+$$
+\end{definition}
+
+\begin{theorem}(Information Inequality). Let p(x), q(x), and $x \in \mathcal{X}$ be two PMFs. Then the relative entropy
+$$
+D(p||q) \geq 0
+$$
+with equality if and only if $p(x) = q(x)$ for all x.
+\end{theorem}
+
+\begin{corollary}For any two random variables X and Y 
+$$
+I(X;Y) \geq 0
+$$
+with equality if and only if X and Y are independent.
+\end{corollary}
+
+\begin{theorem}Conditioning reduces entropy 
+$$
+H(X|Y) \leq H(X)
+$$
+with equality if and only if X and Y are independent.
+\end{theorem}
+
+\begin{definition}(Markov Chain). Random variables X,Y,Z are said to form a Markov chain in that order $(X \rightarrow Y \rightarrow Z)$ if the conditional distribution of Z depends only on Y and is conditionally independent of X. Specially, the joint PMF can be written as 
+$$
+p(x,y,z) = p(x)p(y|x)p(z|y).
+$$
+\end{definition}
+
+\begin{theorem}(Data-processing inequality). If $X \rightarrow Y \rightarrow Z$, then 
+$$
+I(X;Z) \leq I(X;Y).
+$$
+\end{theorem}
+
+\begin{definition}Suppose we have a family of PMFs $\{f_{\theta}(x)\}$ indexed by $\theta$ and let X be any sample from a distribution in this family. Let T(X) be any statistic. Then $\theta \rightarrow X \rightarrow T(X)$ is a Markov Chain and by the data-processing inequality
+$$
+I(\theta;T(X)) \leq I(\theta; X)
+$$
+\end{definition}
+
+\subsection{Sufficient Statistics}
+In this section, we work with the intuitive idea that discarding irrelevant data can never hurt performance. In fact, irrelevant data may actually impair performance. The advantage of this is that it makes inference alot easier to do.\\
+
+\begin{definition}(Statistic). A statistic $T: X \rightarrow 
+\mathbb{R}^n$ is a function of the data.
+\end{definition}
+
+Suppose we had a random sample $\tilde{X} = (X_1,...,X_n)$ whose distribution depends on $\theta$. We want to estimate the parameter $\theta$ using $\tilde{X}$ using a function $T(\tilde{X})$ without losing information about $\theta$.
+
+\begin{definition_exam}{Likelihood Function}{} We have a random sample of size n from a distribution with PDF $f(x;\theta)$. Then the likelihood function is 
+$$
+\ell(x;\theta) = \prod_{i=1}^nf(x_i;\theta)
+$$
+where $\tilde{x} = (x_1,...,x_n)$ are observed values.
+\end{definition_exam}
+
+
+Hence, a function T(X) is a \textbf{sufficient statistic} if 
+$$
+I(\theta;T(X)) = I(\theta;X)
+$$
+as no information is lost. Hence sufficient statistics preserve mutual information.
+
+\begin{definition_exam}{Sufficient Statistic}{} A statistic $\tilde{T} = \tilde{T}(\tilde{X})$ is sufficient for a family of distributions if and only if the conditional distribution of $\tilde{X}$ given $\tilde{T}(\tilde{X})$ is independent of the parameters.\newline In general, if $X_1,...,X_n$ are random samples from the discrete distribution with PMF $f(x;\theta)$, the conditional probability of $\tilde{X} = \tilde{x}$ given $\tilde{T} = \tilde{t}$ is 
+$$
+f(\tilde{X}; \theta | \tilde{T} = \tilde{t}) = \frac{\prod_{i=1}^nf(x_i; \theta)}{f_T(\tilde{t}; \theta)}
+$$
+where we require the ratio of the likelihood and marginal distribution of T to be independent of the parameter $\theta$.
+\end{definition_exam}
+
+If we can express the likelihood with just the parameter $\theta$ and statistic T(x), then T(x) is a sufficient statistic. In other words, a statistic T is sufficient if for all t, the conditional distribution $X|T(x) = t$ does not depend on the parameter $\theta$.\\
+
+However, it may be difficult to compute the conditional distribution which leads us to the next theorem.
+
+\begin{theorem_exam}{Neyman Factorisation Theorem}{} Let $f(x; \theta)$ be the PDF of a random sample $\tilde{X} = X_1,...,X_n$. Let $\tilde{T} = \tilde{T}(\tilde{X})$ be a statistic. Then, $\tilde{T}(\tilde{X})$ is a sufficient statistic for $\theta$ if and only if the \textbf{likelihood} $\ell(\tilde{x}; \theta)$ can be written in the form 
+$$
+\ell(\tilde{x}; \theta) = g(\tilde{T}(\tilde{x}); \theta)h(\tilde{x})
+$$
+where $h(\tilde{x})$ is independent of $\theta$.
+\end{theorem_exam}
+
+\begin{remark}Note that the first factor $g(\tilde{T}(\tilde{x})$ means that it may depend on $\theta$ and possibly depend on x, but only through T(x).
+\end{remark}
+
+So why do we care about sufficient statistics? If we had a sufficient statistic, when computing the likelihood function, instead of evaluating n PDFs, we can evaluate a single PDF with the sufficient statistic placed inside.
+
+
+\begin{theorem_exam}{Sufficiency Principle}{} If T(\textbf{X}) is a sufficient statistic for $\theta$, then any inference about $\theta$ should depend on the sample \textbf{X} only through the value T(\textbf{X}). That is, if \textbf{x} and \textbf{y} are two sample points such that $T(\textbf{x}) = T(\textbf{y})$, then the inference about $\theta$ should be the same whether $\textbf{X} = \textbf{x}$ or $\textbf{X} = \textbf{y}$ is observed.
+\end{theorem_exam}
+
+We now present two notable examples of sufficient statistics.
+\begin{lemma}(Max of uniform). Let $X_1,...,X_n$ be i.i.d according to the uniform distribution $U(0,\theta).$ Then, $T(x) = \max(X_1,...,X_n)$ is a sufficient statistic.
+\end{lemma}
+
+\begin{lemma}(Order Statistics). Let $X_1,...,X_n$ be i.i.d with any model. Then, the order statistics $T = X_{(1)} \leq X_{(2)} \leq ... \leq X_{(n)}$ are sufficient statistics.
+\end{lemma}
+
+Finally, note however that reduction via sufficiency can also increase the computational complexity of inference, in some instances even turning a computationally tractable inference problem into
+an intractable one. 
+
+\lecture{15}{Exponential Families}
+\section{Exponential Families}
+\subsection{Exponential Families}
+
+Exponential families are of particular interest to us because many common distributions are exponential families. Examples include the normal, binomial, and poisson. Furthermore, the exponential families are closely linked to the notion of sufficiency.
+
+\begin{definition_exam}{Exponential family}{} A one parameter exponential family is a set of probability distributions that can be written in the form 
+$$
+f(x; \theta) = e^{\eta(\theta)T(x) - \phi(\theta)}h(x)I_A(x)
+$$
+for $x \in \mathbb{R}^n$ and $\theta \in \Theta \subseteq \mathbb{R}$. We have that $\eta(.), T(.), \phi(.), h(.)$ are real-valued functions. $I_A(.)$ indicates the support of the distribution and does not depend on $\theta$.
+\end{definition_exam}
+
+\begin{remark}$\eta, T, \phi, h$ are not unique. $h(x) \geq 0$ is known as a base (carrier) measure. $\phi(\theta)$ is a normalising constant.
+\end{remark}
+
+\begin{lemma}The parameterisation of exponential families is \textbf{not} unique.
+\end{lemma}
+
+\begin{proposition_exam}{Sufficiency of Exponential family}{}The exponential family always has a sufficient statistic.
+\end{proposition_exam}
+
+\begin{lemma}The uniform distribution is not part of the exponential family as its support depends on the parameters $(a,b).$
+\end{lemma}
+
+\begin{proposition}(Exponential Distribution). The density of the exponential distribution has the density 
+$$
+f(x;\theta) = \theta e^{-\theta x}I_{x \geq 0} = e^{-\theta x + log(\theta)}I_{x \geq 0}
+$$
+which yields a 1-dimensional exponential family with 
+\begin{enumerate}
+\item $\eta(\theta) = -\theta$
+\item $T_i(x) = x$
+\item $\phi(\theta) = -log(\theta)$
+\item $h(x) = I_{x \geq 0}.$
+\end{enumerate}
+\end{proposition}
+
+
+\lecture{16}{Canonical Paramter Exponential Families}
+\section{Canonical Paramter Exponential Families}
+\subsection{Canonical Paramter Exponential Families}
+
+\begin{definition_exam}{Canonical Form of exponential family}{} The canonical form of one-parameter exponential family is 
+$$
+f(x; \eta) = e^{\eta T(x) - \psi_0(\eta)}h(x)I_{A}(x) \quad x \in \mathbb{R}^n
+$$
+where 
+$$
+\eta \in \mathcal{F} = \{\eta: e^{\psi_0(\eta)} = \int_{A}e^{\eta T(x)}h(x)dx < \infty\}.
+$$
+Here, $\eta$ is called the \textbf{natural parameter}; T(x) is a \textbf{natural sufficient statistic} for $\eta$.\newline $\mathcal{F}$ is the \textbf{natural parameter space} which describes the set of values of $\eta$ for which the PDF can be defined.
+\end{definition_exam}
+
+This parameterises the density in terms of the \textbf{natural parameter} $\eta$ rather than $\theta.$
+
+\begin{definition}(Regular). The canonical exponential family is called \textbf{regular} of $\mathcal{F}$ is an open set in $\mathbb{R}$.
+\end{definition}
+
+\begin{theorem_exam}{Moments of sufficient statistics}{}For any $\eta$ in the interior of $\mathcal{F}$, we have that
+\begin{enumerate}
+\item $E(T(X)) = \psi_{0}^{'}(\eta)$;
+\item $Var(T(x)) = \psi_{0}^{''}(\eta).$
+\end{enumerate}
+\end{theorem_exam}
+
+
+\begin{theorem}(Moments of sufficient statistics). Suppose $T(\tilde{X})$ is a natural sufficient statistic for $\eta$ based on a random sample $\tilde{X} = (X_1,X_2,...,X_n)$ from $f(x; \eta)$, then 
+\begin{enumerate}
+\item $E(T(\tilde{X})) = n\psi_{0}^{'}(\eta);$
+\item $Var(T(\tilde{x})) = n\psi_{0}^{''}(\eta).$
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}(Independent exponentials). If $X_1,...,X_n$ are i.i.d with pdf $e^{\eta T(x) - \psi_0(\eta)}h(x)I_{A}(x)h(x)$, then, their joint pdf is 
+$$
+f(x_1,...,x_n;\theta) = e^{\eta \sum_{j=1}^{n}T(x_j) - n\psi_0(\eta)}(x)\prod_{j=1}^nh(x_j)I_{A}
+$$
+\end{proposition}
+
+\begin{proposition}The exponential family is infinitely differentiable with respect to $\eta$ and the derivatives can be obtained by differentiating under the integral sign.
+\end{proposition}
+
+\subsection{Two Parameter Exponential Families}
+
+\begin{definition_exam}{Two Parameter exponential families}{} Let $\tilde{\theta} = (\theta_1, \theta_2)$. A family of distributions is said to be 2-parameter exponential family if there exists real-valued functions $\eta_1(.), \eta_2(.), T_1(.), T_2(.), \psi(.), h(.)$ such that the PDF 
+$$
+f(x; \theta) = e^{\sum_{i=1}^2\eta_i(\tilde{\theta})T_i(x) - \psi(\tilde{\theta})}h(x)I_A(x)
+$$
+for $x \in \mathbb{R}^n.$
+\end{definition_exam}
+
+The beta distribution is an example of a two parameter exponential family. 
+\subsection{Uniform and Exponential Spacing}
+\begin{definition}(Uniform Spacing). Let $U_1,...,U_n$ be i.i.d uniform [0,1] with order statistics $U_{(1)} \leq U_{(2)} \leq ... \leq U_{(n)}$. The statistics $S_i$ defined by 
+$$
+S_i = U_{(i)} - U_{(i-1)} \quad (1 \leq i \leq n+1)
+$$
+where $U_{(0)} = 0, U_{(0)} = 1$ are called the uniform spacings for this sample.
+\end{definition}
+
+\begin{theorem}The uniform spacing $(S_1,...,S_n)$ are uniformly distributed over the simplex
+$$
+A_n = \{(x_1,...,x_n): x_i \geq 0, \sum_{i=1}^{n}x_i \leq 1\}.
+$$
+\end{theorem}
+
+\begin{definition}(Exponential Spacing). Let $E_1,...,E_n$ be i.i.d exponential random variables with order statistics $E_{(1)} \leq E_{(2)} \leq ... \leq E_{(n)}$. The statistics defined by 
+$$
+(n-i+1)(E_{(i)} - E_{(i-1)}) \quad 1 \leq i \leq n
+$$
+are known as normalized exponential spacings.
+\end{definition}
+
+\begin{theorem} Let $(n-i+1)(E_{(i)} - E_{(i-1)}) \quad 1 \leq i \leq n$ be normalized exponential spacings. These are i.i.d. exponential random variables. Furthermore, 
+$$
+\frac{E_1}{n},\frac{E_1}{n}+\frac{E_2}{n-1},...,\frac{E_1}{n} + ... + \frac{E_1}{1}
+$$
+are distributed as $E_{(1)},...E_{(n)}$.
+\end{theorem}
+
+
+\lecture{17}{Maximum Likelihood Estimators}
+\section{Minimum Variance Unbiased Estimation}
+\section{Minimum Variance Unbiased Estimation}
+\subsection{The Likelihood Principle}
+We are interested in finding the parameters $\theta$ as knowledge of $\theta$ will allow us to generate data through the pdf. We look at techniques at estimating the parameter $\theta$ and techniques for evaluating our estimations.
+
+\begin{definition}(Likelihood Function). Let $f(\textbf{x}|\theta)$ denote the joint pdf of the sample $\textbf{X} = (X_1,...,X_n).$ Then, given that $\textbf{X} = \textbf{x}$ is observed, the function of $\theta$ defined by 
+$$
+\ell(\theta|\textbf{x}) = f(\textbf{x}|\theta)
+$$
+is called the likelihood function.
+\end{definition}
+
+\begin{remark}Recall that if $\textbf{X}$ is a discrete random vector, the likelihood function will be $\ell(\theta|\textbf{x}) = P_{\theta}(\textbf{X} = \textbf{x})$ and hence for two different parameter points $\theta_1, \theta_2,$ then we can interpret the likelihood function as the probability of a parameter $\theta_i$ given the sample we have $\textbf{x}$
+$$
+P_{\theta_{1}}(\textbf{X} = \textbf{x}) = \ell(\theta_1|\textbf{x}_1) > \ell(\theta_2|\textbf{x}_2) = P_{\theta_{2}}(\textbf{X} = \textbf{x}).
+$$
+\end{remark}
+
+\begin{theorem}Let $X_i$ be i.i.d random variables with common pdf$f_{\theta}(.).$ Then, 
+$$
+log\bigg(\prod_{i=1}^{n}X_i \bigg) = \sum_{i=1}^{n}log\bigg(X_i \bigg).
+$$
+\end{theorem}
+
+Here, the pdf fixes $\theta$ and varies $\textbf{x}$ whereas the likelihood function fixes $\textbf{x}$ and varies $\theta.$
+
+\begin{theorem}(Likelihood Principle). If $\textbf{x}$ and $\textbf{y}$ are two sample points such that $\ell(\theta|\textbf{x})$ is proportional to $\ell(\theta|\textbf{y})$, that is, there exists a constant $C(\textbf{x}, \textbf{y})$ such that 
+$$
+\ell(\theta|\textbf{x}) = C(\textbf{x}, \textbf{y})\ell(\theta|\textbf{y})
+$$
+for all $\theta$, then the conclusions drawn from $\textbf{x}$ and $\textbf{y}$ should be identical.
+\end{theorem}
+
+\subsection{Maximum Likelihood Estimators}
+\begin{definition}(Likelihood Function).
+If $X_1,...,X_n$ are i.i.d. sample from a population with pdf $f(x|\theta_1,...,\theta_k)$, the likelihood function is defined by
+$$
+\ell(\theta|\textbf{x}) = \ell(\theta_1,...,\theta_k|x_1,...,x_n) = \prod_{i=1}^{n}f(x_i|\theta_1,...,\theta_k).
+$$
+\end{definition}
+
+\begin{definition_exam}{Maximum Likelihood Estimator}{} For each sample point $\textbf{x}$, let $\hat{\theta}(\textbf{x})$ be a parameter value at which $\ell(\theta|\textbf{x})$ attains its maximum as a function of $\theta$, with $\textbf{x}$ held fixed. A maximum likelihood estimator (MLE) of the parameter $\theta$ based on a sample $\textbf{X}$ is $\hat{\theta}(\textbf{X}).$
+\end{definition_exam}
+
+\begin{remark}The range of the MLE coincides with the range of the parameter.
+\end{remark}
+
+The MLE is the parameter point of the MLE for which the observed sample is most likely.
+
+\begin{remark}Two inherent drawbacks of MLE is that finding the global maximum can be difficult and that the estimate may be sensitive to small changes in the data. This second scenario occurs in the case of flat likelihoods.
+\end{remark}
+
+\begin{proposition_exam}{Necessary condition for MLE}{}The first derivative of a function being 0 is a \textbf{necessary} condition for a maximum
+$$
+\frac{\partial}{\partial \theta_i}L(\theta | \textbf{x}) = 0, \quad i=1,...,k.
+$$
+\end{proposition_exam}
+
+\begin{remark}The zeros of the first derivative are only located in the extrema in the interior of the domain of the function. Henec, we need to check the boundaries separately for extrema.
+\end{remark}
+
+\begin{remark}When maximising a likelihood with restrictions on the parameter, we need to check for different cases of the optimal values.
+\end{remark}
+
+\begin{theorem}(Invariance Property of MLE). Suppose that $\hat{\theta}$ is the MLE of a parameter $\theta$. Let $\tau(\theta)$ be a one to one mapping. Then, $\tau(\hat{\theta})$ is the MLE of $\tau(\theta).$
+\end{theorem}
+
+\begin{theorem}(MLE of multivariate likelihood). Suppose our likelihood function is $H(\theta_1, \theta_2)$. To check that $H(\theta_1,\theta_2)$ has a local maximum at $(\hat{\theta}_1,\hat{\theta}_2)$, we check the 3 conditions that 
+\begin{enumerate}
+\item First order partial derivatives are 0 
+$$
+\frac{\partial}{\partial \theta_1}H(\theta_1, \theta_2) = \frac{\partial}{\partial \theta_2}H(\theta_1, \theta_2) = 0
+$$
+\item At least one second-order partial derivative is negative;
+\item The Jacobian J of the second-order partial derivatives is positive 
+$$
+|J| > 0.
+$$
+\end{enumerate}
+\end{theorem}
+
+\subsection{Mean Squared Error}
+We look at \textbf{finite-sample} measures of the quality of an estimator.
+\begin{definition_exam}{Mean Squared Error}{} The mean squared error (MSE) of an estimator W of a parameter $\theta$ is the function of $\theta$ defined by 
+$$
+\mathbb{E}[(W - \theta)^2].
+$$
+\end{definition_exam}
+
+\begin{definition_exam}{Bias}{} The bias of a point estimator W of a parameter $\theta$ is the difference between the expected value of W and $\theta$, that is, 
+$$
+\text{Bias}_{\theta} = \mathbb{E}[W - \theta].
+$$
+An estimator whose bias is equal to 0 is called \textbf{unbiased} and satisfies $\mathbb{E}_{\theta}[W] = \theta$ for all $\theta$.
+\end{definition_exam}
+
+\begin{theorem_exam}{MSE Decomposition}{}The MSE can be decomposed as the sum of the variance of the estimator plus the square of the bias: 
+$$
+E_{\theta}[(W - \theta)^2] = Var_{\theta}(W) + (E_{\theta}[W - \theta])^2 = Var_{\theta}(W) + (\text{Bias}_{\theta}W)^2.
+$$
+\end{theorem_exam}
+
+\begin{corollary}The MSE of an \textbf{unbiased} estimator is equal to its variance.
+\end{corollary}
+
+
+
+
+\lecture{18}{Differentiation and Integration}
+\section{Minimum Variance Unbiased Estimation}
+\subsection{Differentiation and Integration}
+We now look into when can we interchange differentiation, integration, and summation.
+
+\begin{theorem}(Leibnitz's Rule). If $f(x,\theta), a(\theta), b(\theta)$ are differentiable with respect to $\theta$, then 
+$$
+\frac{d}{d\theta}\int_{a(\theta)}^{b(\theta)}f(x,\theta)dx = f(b(\theta),\theta)\frac{d}{d\theta}b(\theta) - f(a(\theta),\theta)\frac{d}{d\theta}a(\theta) + \int_{a(\theta)}^{b(\theta)}\frac{\partial}{\partial \theta}f(x,\theta)dx.
+$$
+\end{theorem}
+
+\begin{corollary}If $a(\theta), b(\theta)$ are constants, then 
+$$
+\frac{d}{d\theta}\int_a^bf(x,\theta)dx = \int_a^b\frac{\partial}{\partial \theta}f(x,\theta)dx.
+$$
+\end{corollary}
+
+\begin{remark}Note the LHS of the corollary depends on one parameter whereas the RHS depends on two parameters.
+\end{remark}
+
+\begin{theorem}(Dominated Convergence Theorem). Suppose the function $h(x,y)$ is continuous at $y_0$ for each x, and there exists a function g(x) satisfying 
+\begin{enumerate}
+\item $|h(x,y)| \leq g(x)$ for all x and y,
+\item $\int_{-\infty}^{\infty}g(x)dx < \infty$.
+\end{enumerate}
+Then, 
+$$
+\lim_{y \rightarrow y_0}\int_{-\infty}^{\infty}h(x,y)dx = \int_{-\infty}^{\infty}\lim_{y \rightarrow y_0}h(x,y)dx.
+$$
+\end{theorem}
+
+\begin{theorem}(Interchange integration and limits). Suppose $f(x,\theta)$ is differentiable for every $\theta = \theta_0$. That is 
+$$
+\lim_{\delta \rightarrow 0}\frac{f(x,\theta + \delta) - f(x,\theta)}{\delta} = \frac{\partial}{\partial \theta}f(x,\theta)
+$$
+such that 
+\begin{enumerate}
+\item $|\frac{f(x,\theta + \delta) - f(x,\theta)}{\delta}| \leq g(x,\theta_0)$ for all x and $|\delta| \leq \delta_0$;
+\item $\int_{-\infty}^{\infty}g(x,\theta)dx < \infty$.
+\end{enumerate}
+Then, 
+$$
+\frac{d}{d\theta}\int_{-\infty}^{\infty}f(x,\theta)dx = \int_{-\infty}^{\infty}\frac{\partial}{\partial \theta}f(x,\theta)dx.
+$$
+
+\end{theorem}
+
+\begin{theorem}We can interchange integration and differentiation for the exponential family.
+\end{theorem}
+
+\begin{lemma}A derivative can always be taken inside a \textbf{finite} sum.
+\end{lemma}
+
+\begin{theorem}(Interchange differentiation and summation). Suppose that the series $\sum_{x=0}^{\infty}h(\theta,x)$ converges for all $\theta \in (a,b)$ and 
+\begin{enumerate}
+\item $\frac{\partial}{\partial \theta}h(\theta,x)$ is continuous in $\theta$ for each x, 
+\item $\sum_{x=0}^{\infty}\frac{\partial}{\partial \theta}h(\theta,x)$ converges uniformly on every closed bounded subinterval of $(a,b)$.
+\end{enumerate}
+Then,
+$$
+\frac{d}{d\theta}\sum_{x=0}^{\infty}h(\theta,x) = \sum_{x=0}^{\infty}\frac{\partial}{\partial \theta}h(\theta,x).
+$$
+\end{theorem}
+
+\begin{theorem}(Interchange summation and integration). Suppose the series $\sum_{x=0}^{\infty}h(\theta,x)$ converges uniformly on [a,b] and that, for each x, $h(\theta,x)$ is a continuous function of $\theta$. Then 
+$$
+\int_a^b\sum_{x=0}^{\infty}h(\theta,x)d\theta = \sum_{x=0}^{\infty}\int_a^bh(\theta,x)d\theta.
+$$
+\end{theorem}
+
+\lecture{19}{Cramer Rao Lower Bound}
+\section{Minimum Variance Unbiased Estimation}
+\subsection{Cramer Rao Lower Bound}
+
+When looking at the best performance of estimators, we require 3 restrictive conditions
+\begin{enumerate}
+\item We only look at unbiased estimators $E_{\theta}[\hat{\theta}] = \theta$.
+\item We measure performance by the variance of the estimator.
+\item We restrict attention to a class of \textbf{regular} problems.
+\end{enumerate}
+
+\begin{definition_exam}{Regularity Conditions}{} For the next section, we state that the regularity conditions are 
+\begin{enumerate}
+\item We can interchange the order of differentiation and integration/summation;
+\item The PMF $f_{\theta}(\tilde{x}) \neq 0$ for all $\tilde{x}$ in the support.
+\end{enumerate}
+\end{definition_exam}
+
+\begin{remark}Recall interchanging the order of differentiation and integration requires the dominated convergence theorem. 
+\end{remark}
+
+\begin{definition_exam}{Uniform Minimum Variance Unbiased Estimators UMVUE}{} An estimator $\hat{\theta}$ is called the uniform minimum variance unbiased estimator of $\theta$ if $E_{\theta}[\hat{\theta}] = \theta$ and for any other unbiased estimator W, we have that 
+$$
+Var_{\theta}\hat{\theta} \leq Var_{\theta}W
+$$
+for all $\theta.$
+\end{definition_exam}
+
+\begin{remark}UMVUE does not need to actually only apply to unbiased estimators. Suppose the estimator $W^*$ had the bias $E_{\theta}[W^*] = \tau(\theta)$. Then, we say that $W^*$ is UMVUE for $\tau(\theta)$ if $Var(W^*) \leq Var(W)$ for all estimators W such that $E_{\theta}[W] = \tau(\theta).$
+\end{remark}
+
+
+\begin{definition_exam}{Score Function}{} Let $\tilde{X}$ be a random vector with PMF $f_{\theta}(\tilde{X})$. Assuming the regularity conditions hold, the score function is defined by 
+$$
+s(\theta) = \frac{\partial}{\partial \theta} log f_{\theta}(\tilde{X}).
+$$
+\end{definition_exam}
+
+
+\begin{remark} The score indicates the steepness of the log-likelihood function and thereby the sensitivity to infinitesimal changes to the parameter values.
+\end{remark}
+
+We recall the following definition in order to help define the Cramer-Rao lower bound.
+\begin{definition}(Covariance/Correlation).  The covariance of two random variables Y and Z is
+$$
+Cov(Y,Z) = E[Y,Z] - E[Y]E[Z].
+$$
+\end{definition}
+
+\begin{theorem}(Correlation Inequality). The correlation inequality is 
+$$
+Corr(Y,Z)^2 = \frac{Cov(Y,Z)^2}{Var(Y)Var(Z)} \leq 1.
+$$
+
+\end{theorem}
+
+
+
+\begin{definition_exam}{Cramer-Rao Lower Bound}{} Let $\hat{\theta}(.)$ be an $\textbf{unbiased estimator}$ with finite variance. Furthermore, assume that regularity conditions holds. Then, the lower bound of the variance of any unbiased estimator is given by 
+$$
+Var_{\theta}[\hat{\theta}(\tilde{X})] \geq \frac{1}{Var_{\theta}[\frac{\partial}{\partial \theta}log f_{\theta}(\tilde{X})]}
+$$
+\end{definition_exam}
+
+\begin{proof} Let $\hat{\theta}(.)$ be an unbiased estimator of $\theta.$ Hence, we have that 
+$$
+E_{\theta}[\hat{\theta}(X)] = \theta = \sum_{x \in X}...\sum \hat{\theta}(x)f_{\theta}(x) = \theta \quad \forall \theta \in \Theta.
+$$
+We then take derivative with respect to $\theta$ on both sides, interchange the derivative and summation and multiply and divide by $f_{\theta}(x)$. We then get 
+$$
+\sum_{x \in X}...\sum \bigg[\frac{\partial}{\partial \theta}log(f_{\theta}(x)) \bigg]\hat{\theta}(x)f_{\theta}(x) = 1.
+$$
+We note that this is the definition of the expectation with respect to the pdf $f_{\theta}(.)$.
+$$
+E_{\theta}\bigg[\hat{\theta}(X),\frac{\partial}{\partial \theta}log(f_{\theta}(X)) \bigg].
+$$
+Now, recall that $Cov(X,Y) = E[X,Y]$ if either E[X] = 0 or E[Y] = 0. As $E_{\theta}[\frac{\partial}{\partial \theta}log(f_{\theta}(X))] = 0$, we have 
+$$
+E_{\theta}\bigg[\hat{\theta}(X),\frac{\partial}{\partial \theta}log(f_{\theta}(X)) \bigg] = Cov \bigg(\hat{\theta}(X), \frac{\partial}{\partial \theta}log(f_{\theta}(X))\bigg).
+$$
+Now, we apply the correlation inequality to get 
+$$
+Cov \bigg(\hat{\theta}(X), \frac{\partial}{\partial \theta}log(f_{\theta}(X))\bigg) \leq Var \bigg(\hat{\theta}(X)\bigg) Var\bigg(\frac{\partial}{\partial \theta}log(f_{\theta}(X))\bigg).
+$$
+As the covariance of an unbiased estimator with the score function is less than or equal to 1, we therefore have 
+$$
+1 \leq Var \bigg(\hat{\theta}(X)\bigg) Var\bigg(\frac{\partial}{\partial \theta}log(f_{\theta}(X))\bigg)
+$$
+and hence the CRLB follows.
+\end{proof}
+
+\begin{remark}An issue with the CRLB is that there may be no estimators that attain the CRLB.
+\end{remark}
+
+
+\begin{definition_exam}{Fisher Information}{} The term in the denominator of the Cramer-Rao lower bound $$Var_{\theta}[\frac{\partial}{\partial \theta}logf_{\theta}(\tilde{X})]$$ is known as the \textbf{Fisher information} of the sample. The more information we have of the sample, then the smaller the variance of our estimator.
+\end{definition_exam}
+
+\begin{remark}If we have an unbiased estimator $\hat{\theta}(.)$ and we show that its variance is equivalent to the Cramer-Rao lower bound, then we know that $\hat{\theta}(.)$ is an optimal estimator.
+\end{remark}
+
+\begin{remark}Alternatively, we can formulate the Fisher information as 
+$$
+I_n(\theta) \coloneqq E_{\theta}[-\frac{d^2}{d\theta^2}\ell(\theta; X_1,...,X_n)].
+$$
+Here, the second derivative measures the curvature of the likelihood function. Taking the expectation of this tells us how curved the likelihood function is on average. The more curved the likelihood function is, the more \textbf{information} it contains and hence the more precise the MLE will be.
+\end{remark}
+
+\begin{theorem}Let $X_1,...,X_n$ be iid and define the Fisher information as $I_n \coloneqq E_{\theta}[-\frac{d^2}{d\theta^2}\ell(\theta; X_1,...,X_n)].$ Then, 
+$$
+I_n(\theta) = nI_{\theta}
+$$
+where $I(\theta)$ is the Fisher information for a \textbf{single observation}. That is, $I(\theta) = I_{1}(\theta).$
+\end{theorem}
+
+We are interested in the case of when is the CR-lower bound an equality. In particular, when is the correlation inequality an equality. This occurs when 2 random variables are linearly related.
+
+\begin{lemma}Let Y and X be random variables. If Y = a + bX, then 
+$$
+Cov(X,Y)^2 = Var(X)Var(Y).
+$$
+\end{lemma}
+
+We now can specify a way to find an estimator that attains the CRLB. That is, if an unbiased estimator is linearly dependent to the score function, then the estimator attains the Cramer-Rao lower bound!
+
+\begin{theorem_exam}{Attainment of CRLB}{}  Let $X_1,...,X_n$ be iid from $f_{\theta}(x|\theta)$ and $f_{\theta}(x|\theta)$ satisfies the conditions of the Cramer-Rao theorem. If the unbiased estimator $\hat{\theta}(\tilde{x})$ and $\frac{\partial}{\partial \theta}logf_{\theta}(\tilde{x})$ are linearly related, then the estimator $\hat{\theta}(\tilde{x})$ attains the CRLB. \\ Furthermore, as the expectation of the score function of the unbiased estimator must be zero, we have that
+$$
+\frac{\partial}{\partial \theta}logf_{\theta}(\tilde{x}) = C_{\theta}[\hat{\theta}(\tilde{x}) - \theta].
+$$
+\end{theorem_exam}
+
+\begin{remark}If the score function has the relationship above, then the estimator $\hat{\theta}$ is a MVUE. Furthermore, the constaint $C_{\theta}$ is the inverse of the Fisher information.
+\end{remark}
+
+\begin{theorem}If the theorem of attainment holds, we must have an exponential family and $\hat{\theta}(\tilde{x})$ must be a multiple of the sufficient statistic for $\theta.$
+\end{theorem}
+
+\begin{theorem_exam}{Rao-Blackwell}{} Let W be an unbiased estimator of $\tau(\theta)$ and let T be a sufficient statistic for $\tau(\theta)$. Define $\phi(T) = E(W|T).$ Then 
+$$
+\begin{cases}
+E_{\theta}\phi(T) = \tau(\theta)\\
+Var_{\theta}\phi(T) \leq Var_{\theta}W \quad \forall \theta
+\end{cases}
+$$
+that is, $\phi(T)$ is a uniformly better unbiased estimator of $\tau(\theta).$
+\end{theorem_exam}
+
+\begin{remark}Conditioning any unbiased estimator on a sufficient statistic will result in a uniform imporvement.
+\end{remark}
+
+\lecture{20}{Asymptotically Minimum Variance Unbiased Estimators}
+\section{Minimum Variance Unbiased Estimation}
+\subsection{Asymptotically Minimum Variance Unbiased Estimators}
+
+At the end of the last section, we identified that if the score function has the following relationship
+$$
+\frac{\partial}{\partial \theta}logf_{\theta}(\tilde{x}) = C_{\theta}[\hat{\theta}(\tilde{x}) - \theta].
+$$
+then $\hat{\theta}$ is a minimum variance unbiased estimator. However, this does not always hold. In this section, we look at cases where this almost holds when looking at asymptotics.
+
+\begin{example}Let $X_1,...,X_n$ be iid geometric(p). We have that 
+$$
+\frac{\partial}{\partial \theta}logf_{\theta}(\tilde{X}) = \frac{-n}{1 - \theta}\bigg(\overline{X} - \frac{1}{\theta} \bigg).
+$$
+Here, we don't quite have the correct form as we have $\frac{1}{\theta}$ rather than $\theta.$ Hence, we can't identify an optimal estimator.
+\end{example}
+
+We use the notions of asymptotic normality and that the asymptotic variance of the estimator is the CRLB to now identify these estimators.
+
+\begin{definition}(Central Limit Theorem). Suppose a sequence of random variables $\{X_n\}$ is such that 
+$$
+\sqrt{n}(X_n - \mu) \xrightarrow{d} \mathcal{N}(0, \sigma^2)
+$$
+or equivalently 
+$$
+Z_n = \frac{X_n - \mu}{\sigma/\sqrt{n}} \xrightarrow{d} \mathcal{N}(0, 1).
+$$
+i.e. $P(Z_n \leq z) \rightarrow \phi (z).$
+Then we say that $X_n$ is asymptotically normal $\mathcal{N}(\mu, \frac{\sigma^2}{n})$ and we write this as $X_n \sim A\mathcal{N}(\mu, \frac{\sigma^2}{n}).$
+\end{definition}
+
+\begin{remark}We can have n when writing $A\mathcal{N}(\mu, \frac{\sigma^2}{n})$ but not when writing convergence in distributions $\xrightarrow{d}.$
+\end{remark}
+
+
+\begin{remark}We refer to $\sigma^2/n$ as the asymptotic variance of $X_n.$
+\end{remark}
+
+\begin{theorem_exam}{Delta Method}{} Suppose $X_n \sim A\mathcal{N}(\mu, \frac{\sigma^2}{n}$ and g(.) is differentiable at $\mu$. Then 
+$$
+g(X_n) \sim A\mathcal{N}(g(\mu), \frac{g'(\mu)^2\sigma^2}{n}).
+$$
+\end{theorem_exam}
+
+\begin{proof}(Sketch). First, it can be shown that if $X_n$ is asymptotically normal (AN), then $X_n$ converges to the asymptotic mean, that is, $X_n \xrightarrow{p} \mu.$ Now, we look at 
+$$
+\sqrt{n}[g(X_n) - g(\mu)] = [\frac{g(X_n) - g(\mu)}{X_n - \mu}]\sqrt{n}(X_n - \mu).
+$$
+Now, we have that 
+$$
+\begin{cases}
+[\frac{g(X_n) - g(\mu)}{X_n - \mu}] \xrightarrow{p} g'(\mu) \quad \text{(definition of derivative)}\\
+\\
+\sqrt{n}(X_n - \mu) \xrightarrow{d} \mathcal{N}(0, \sigma^2) \quad \text{(WLLN)}.
+\end{cases}
+$$
+
+
+Hence, we have that 
+$$
+[\frac{g(X_n) - g(\mu)}{X_n - \mu}]\sqrt{n}(X_n - \mu) \xrightarrow{d} \mathcal{N}(0, g'(\mu)^2\sigma^2).
+$$
+\end{proof}
+
+\begin{remark}If X is normal, then $g(X)$ is not necessarily normal. This theorem is a local theorem requiring linearity. This is because we are using the fact that the derivative is a linear transformation about the point $\mu.$
+\end{remark}
+
+We may not be able to find an unbiased estimator that meets the Cramer-Rao lower bound. However, we may have that it is asymptotically normal, where the mean is the true parameter $\theta_0$ and the variance is the Cramer-Rao lower bound. This is the next best thing. 
+
+\begin{definition_exam}{Asymptotically Minimum Variance Unbiased}{} We say that an estimator $\hat{\theta}(\tilde{x})$ is \textbf{asymptotically minimum variance unbiased} if it is $A\mathcal{N}(\theta, \frac{v}{n})$ where $\frac{v}{n}$ is the Cramer-Rao lower bound.
+\end{definition_exam}
+
+\begin{remark}Our estimator is an AMVU estimator if the asymptotic variance is the CRLB.
+\end{remark}
+Unbiased estimators which are AMVU are sometimes said to be asymptotically efficient.\\
+
+We now describe the procedure on how to show that an estimator $\hat{\theta}$ is AMVU. Suppose you had $X_1,...,X_n$ iid with common pdf $f_{\theta}().$ After doing some work, you attempt to arrive at 
+$$
+C_{\theta}\bigg[\hat{\theta}(X) - \theta \bigg].
+$$
+If you can arrive at this form, then $\theta$ is in fact a MVU estimator. However, if not, we can then try to show that it is an AMVU estimator. First, define $\eta = \eta(\theta)$ such that 
+$$
+C_{\eta}\bigg[ \hat{\eta}(X) - \eta \bigg]
+$$
+is of the correct form. This shows that $\eta(X)$ is an MVU estimator of $\eta.$ Now, we also have that $\eta \sim AN(\eta, C_{\eta})$. We then define $g(\hat{\eta})$ where we solve for $\theta$. Compute $g(\hat{\eta})'$ then using the delta method, we get 
+$$
+\hat{\theta} \sim AN(g(\hat{\eta}) = \theta, g'(\hat{\eta})C_{\eta} = C_{\theta}).
+$$
+Hence, this shows that $\hat{\theta}$ is an AMVU estimator as it now achieves the CRLB ($C_{\theta}$).
+
+\subsection{MLE is AMVU}
+All the techniques we have looked at apply well to exponential families when looking at their maximum likelihood estimators where they were the solutions to the score equations
+
+$$
+\frac{\partial}{\partial \theta}logf_{\theta}(\tilde{X}) = 0.
+$$
+
+Furthermore, these methods were also method of moment estimators based on the sufficient statistic $t(\tilde{X})$, i.e. solutions to the moment equation
+$$
+E_{\theta}[t(\tilde{X})] = t(\tilde(X)).
+$$
+
+\begin{lemma}For exponential families, maximum likelihood estimation is equivalent to method of moments estimation.
+\end{lemma}
+
+
+We now explore further properties of maximum likelihood estimates beyond exponential families.
+
+We now have the following set up. Suppose $X_1,...,X_n$ are iid continuous random variables with common pdf $f_{\theta}(x)$ for a family of pdfs $\mathcal{F} = \{f_{\theta}: \theta \in \Theta\}$ for some $\Theta \subset \mathbb{R}.$ Suppose $\mathcal{F}$ is suitably regular and we can differentiate twice under the integral sign 
+$$
+\int_{-\infty}^{\infty}f_{\theta}(x)dx = 1
+$$
+to get 
+$$
+\int_{-\infty}^{\infty} \frac{\partial^2}{\partial \theta^2} f_{\theta}(x)dx = 0.
+$$
+Suppose we can also multiply and divide by $f_{\theta}(x).$ We then get the following theorem.
+
+\begin{theorem}Assuming the set up above holds, we have the following information regarding the score function 
+$$
+\begin{cases}
+ E_{\theta}[\frac{\partial}{\partial \theta}log f_{\theta}(x)] = 0\\
+\\
+Var_{\theta}[\frac{\partial}{\partial \theta}log f_{\theta}(x)] = -E_{\theta}[\frac{\partial^2}{\partial \theta^2}log f_{\theta}(x)]
+\end{cases}
+$$
+which describes the mean and variance of the score function.
+\end{theorem}
+
+Now, recall that the maximum likelihood estimate (MLE) $\hat{\theta} = \hat{\theta}(X)$ is the solution to the score equation 
+$$
+\ell'(\theta; \tilde{X}) = \sum_{i=1}^n\frac{\partial}{\partial \theta}log f_{\theta}(x_i) = 0.
+$$
+Then, assuming $\hat{\theta}$ is close to the true parameter value $\theta_0$, we note that 
+$$
+-\frac{\ell'(\theta_0;\tilde{x})}{\hat{\theta} - \theta_0} = \frac{\ell'(\hat{\theta};\tilde{x}) - \ell'(\theta_0;\tilde{x})}{\hat{\theta} - \theta_0} \approx \ell^{''}(\theta_0;\tilde{x}).
+$$
+
+\begin{theorem}We can approximate the MLE $\hat{\theta}$ by the following relationship 
+$$
+\hat{\theta} \approx \theta_0 - \frac{\ell'(\theta_0; \tilde{x})}{\ell^{''}(\theta_0; \tilde{x})}.
+$$
+\end{theorem}
+
+Resultantly, we have that 
+$$
+\sqrt{n}(\hat{\theta} - \theta_0) \approx -\sqrt{n}\frac{\ell'(\theta_0;\tilde{x})}{\ell^{''}(\theta_0;\tilde{x})} 
+$$
+where $\ell'(\theta_0;\tilde{x}) \xrightarrow {d} \mathcal{N}(0, I_{\theta})$ and $\ell^{''}(\theta_0;\tilde{x}) \xrightarrow{p} -I_{\theta}$ where $I_{\theta} = Var_{\theta}(\frac{\partial}{\partial \theta}log f_{\theta}(x_1)).$
+
+
+\begin{theorem_exam}{MLE attains CRLB asymptotically}{}The MLE $\hat{\theta}$ is asymptotically normal with mean equal to the true value $\theta_0$ and variance equal to the Cramer-Rao Lower bound
+$$
+\hat{\theta} \sim A\mathcal{N}(\theta, \frac{1}{nI_{\theta}}). 
+$$
+In a more rigorous manner,
+$$
+I_n(\theta_0)^{-0.5}(\hat{\theta} - \theta) \xrightarrow{d} \mathcal{N}(0, 1)
+$$
+as $n \rightarrow \infty.$
+\end{theorem_exam}
+
+To interpret this, we consider the \textbf{sampling distribution} of the MLE. That is, suppose we have had sampled several datasets $X_1,...,X_j$ where the jth dataset gives the jth MLE $\hat{\theta}_{j}.$ The distribution of the MLE is then the distribution of these realised $\hat{\theta}_j$ values, that is, the histogram of this is the \textbf{sampling distribution}. This sampling distribution is what has a normal distribution.
+
+\begin{remark}This holds because the variance of the score function is the negative of the expected value of the second derivative of the score function
+$$
+Var_{\theta}[\frac{\partial}{\partial \theta}log f_{\theta}(x)] = -E_{\theta}[\frac{\partial^2}{\partial \theta^2}log f_{\theta}(x)]
+$$
+\end{remark}
+
+Hence, maximum likelihood estimates are optimal under regularity conditions and hence their widespread use.
+
+\lecture{21}{Further properties of score function}
+\section{Minimum Variance Unbiased Estimation}
+\subsection{Further properties of score function}
+
+\begin{definition_exam}{Efficient}{} Unbiased estimators which attain the CRLB are said to be \textbf{efficient}.
+\end{definition_exam}
+
+\begin{definition}(Asymptotically Efficient). Asymptotically normal estimators which are AMVU are said to be \textbf{asymptotically efficient}.
+\end{definition}
+ 
+
+\begin{definition_exam}{Asymptotic Relative Efficiency}{} Let $\hat{\theta}$ be our candidate estimator. Then, the ratio 
+$$
+\frac{CRLB}{\text{Asymp }Var_{\theta}(\hat{\theta}(X)} \leq 1
+$$
+is said to to be the asymptotic relative efficiency (ARE) of $\hat{\theta}(\tilde{x}).$
+\end{definition_exam}
+
+
+\begin{remark}To interpret ARE, if ARE = 85$\%$ for our candidate estimator $\hat{\theta}$, then the optimal AMVU estimator needs only 85$\%$ of the sample size to get the same precision as $\hat{\theta}(\tilde{X}).$ The CRLB is the smallest value of variance and hence the higher the ARE is for $\hat{\theta}$, the closer it is in performance compared to the AMVU estimator.
+\end{remark}
+
+\begin{definition}(Fisher's Information per observation). Let $X_1,...,X_n$ be iid with common pdf $f_{\theta}(.)$ that satisfies the regularity conditions. Then, the CRLB is $\frac{1}{nI_{\theta}}$ where 
+$$
+I_{\theta} = Var_{\theta}[\frac{\partial}{\partial \theta}log f_{\theta}(X_1)]
+$$
+is called the Fisher's information per observation. That is, it is the variance of the score function for \textbf{one observation}. 
+\end{definition}
+
+\begin{remark}The bigger Fisher's information per obervation, the more information is in the data and the smaller the variance of the estimator.
+\end{remark}
+
+\begin{theorem}Suppose X = $(X_1,...,X_n)$ are iid RVs with common density $f_{\theta}(.)$ given by 
+$$
+f_{\theta}(x) = g(x - \theta)
+$$
+for a known PDF g(.) with a continuous derivative. Thus, $\theta$ is a location parameter.\\
+Then, the score function is 
+$$
+\sum_{i=1}^{n}\psi(X_i - \theta) = \sum_{i=1}^{n}\frac{-g'(X_i - \theta)}{g(X_i - \theta)}.
+$$
+Furthermore, for any unbiased estimator $\hat{\theta}(X)$ of $\theta$, we have 
+$$
+Var\bigg[\hat{\theta}(X) \bigg] \geq \frac{1}{nI}
+$$
+where $I = \int \frac{[g'(x)]^2}{g(x)}dx.$
+\end{theorem}
+
+\subsection{Completeness}
+
+We learn about some other things for fun.
+\begin{definition}(Completeness). A statistic $T = T(X)$ is complete if for every measurable function g
+$$
+E_{\theta}g(T) = 0
+$$
+for all $\theta$, then 
+$$
+P_{\theta}(g(T) = 0) = 1
+$$
+for all $\theta.$
+\end{definition}
+That is, for every $\theta$, the expectation of $g(T)$. \\
+
+We now state why completeness is useful.
+\begin{theorem}(Lehmann-Scheffé Theorem). If a statistic T is unbiased, complete, and sufficient for some parameter $\theta$, then T is MVUE.
+\end{theorem}
+
+\begin{definition}(Pivot). Let $X=(X_1,...,X_n)$ from a distribution that depends on parameter $\theta$. Let $g(X,\theta)$ be a random variable whose distribution is \textbf{the same} for all $\theta$. Then g is called a pivotal quantity.
+\end{definition}
+
+Pivotal quantities do not depend on $\theta$ in their distribution. However, the actual quantities themselves may depend on $\theta.$
+\\
+Recall that a statistic is independent of the parameters $\theta$.
+\begin{definition}(Ancillary statistic). A statistic that is pivotal. That is, a statistic whose distribution does not depend on the parameters $\theta.$
+\end{definition}
+
+\begin{theorem}(Basu's Theorem). A statistic that is both boundedly complete and sufficient is independent of any ancillary statistic.
+\end{theorem}
+This theorem is useful to prove independence of two statistics by showing that one statistic is complete sufficient and the other is ancillary. For example, we can use Basu's theorem to show that the sample mean and sample variance are independent.
+\begin{definition}(Minimal sufficient). A statistic T(X) is minimal sufficient if and only if T(X) is sufficient and for any other sufficient statistic T(X), then there exists a function f such that T(X) = f(S(X)).
+\end{definition}
+\lecture{22}{Hypothesis Testing}
+\section{Hypothesis Testing}
+\section{Hypothesis Testing}
+\subsection{Hypothesis Testing}
+In statistical inference, we observe the realisation of random observations. However, due to the randomness, there are a range of possibilities in which the data could have arisen from. However, there are some possibilities which are too "different" with our realised data and hence we can disregard them. Therefore, we can only ever disprove something with data.
+
+In hypothesis testing, we are interested in seeing for what realised values of $\textbf{X}$, should we reject the null hypothesis. We reduce the data to a single statistic, known as a test statistic and use it to measure the strength of evidence against the hypothesis $H_0$. The p-value is a measure that is used. We are interested in identifying optimal level-$\alpha$ tests where we maximise the power of a test. The smaller the p-value, the stronger the evidence against the hypothesis we have.
+
+\begin{definition}(Hypothesis). The hypothesis $H_0 \subset \mathcal{M}$ where $\mathcal{M}$ is a larger statistical model. We call the complement of $H_0$ the alternative hypothesis $H_1$ whilst $H_0$ is called the null hypothesis $\mathcal{M} = H_0 \cup H_1$ and $H_0 \cap H_1 = \emptyset.$
+\end{definition}
+
+\begin{definition}(Simple and Composite Hypothesis). A hypothesis containing only 1 distribution is called simple. Otherwise, it is called composite.
+\end{definition}
+
+\begin{remark}We look at 3 cases in this course. Simple vs simple, simple vs composite, and composite vs composite. The first one is easy to find optimal tests whereas the second and third only has optimal tests in certain circumstances.
+\end{remark}
+
+
+\begin{definition_exam}{Power}{} The power of a test is 
+$$
+P(\text{reject }H_0|H_1 \text{ is true}).
+$$
+In other words, the power function of a hypothesis test with rejection region R is the function of $\theta$ defined by $\beta(\theta) = P_{\theta}(\mathbb{X} \in R).$
+\end{definition_exam}
+
+\begin{remark}Let the null hypothesis be $H_0: \theta \in \Theta_0$. The ideal power function is 0 for all $\theta \in \Theta_0$ and 1 for all $\theta \in \Theta_{0}^{c}.$
+\end{remark}
+
+\begin{definition}(Type I/II Error). A type 1 error is when we incorrectly reject a true null hypothesis whereas a type 2 error is when we fail to reject a false null hypothesis.
+\end{definition}
+
+\begin{definition_exam}{Size}{} For $0 \leq \alpha \leq 1$, a test with power function $\beta(\theta)$ is a size $\alpha$ test if $\sup_{\theta \in \Theta_0}\beta(\theta) = \alpha.$
+\end{definition_exam}
+
+\begin{definition_exam}{Level$-\alpha$ test}{} For $0 \leq \alpha \leq 1$, a test with power function $\beta(\theta)$ is a level $\alpha$ test if $size = \sup_{\theta \in \Theta_0}\beta(\theta) \leq \alpha.$
+\end{definition_exam}
+
+\begin{remark}For a simple null hypothesis, the size and level of a test coincide.
+\end{remark}
+
+
+
+
+
+\lecture{23}{Simple vs Simple Hypothesis}
+\section{Hypothesis Testing}
+\subsection{Simple vs Simple Hypothesis}
+
+Here, we only have two specific distributions that we are looking at $x \sim f_0(.)$ and $x \sim f_1(.)$. Suppose that when $H_0$ is true, the random variable 
+$$
+y = \frac{f_1(x)}{f_0(x)}
+$$
+the likelihood ratio has a continuous distribution. We then fix the level (probability of making a type 1 error) to $0 < \alpha < 1.$ Suppose there is a unique value $y_{\alpha}$ such that 
+$$
+P_{f_{0}}(Y \geq y_{\alpha}) = \alpha
+$$
+that is, the probabliity when the true distribution if $f_0$ that $Y \geq y_0$ is $\alpha$. $y_{\alpha}$ is the upper $\alpha$ quantile of the random variable Y when the null hypothesis is true. We define the critical region to be 
+$$
+C = \{x: \frac{f_1(x)}{f_0(x)} \geq y_{\alpha}\}
+$$
+then $P_{f_{0}}(c) = P_{f_{0}}(x \in C) = \alpha.$ C is the set of observed values of X for which we reject the null hypothesis $H_0.$
+
+\begin{definition}(Critical Region). The set 
+$$
+C = \{x: \frac{f_1(x)}{f_0(x)} \geq y_{\alpha}\}
+$$
+is defined as the critical region.
+
+\end{definition}
+
+\begin{theorem_exam}{Continuous Neyman-Pearson Lemma}{} Let $H_0: X \sim f_0(.)$ and $H_1: X \sim f_1(.)$ where $H_0, H_1$ are both simple. Then the \textbf{likelihood ratio} 
+$$
+\frac{f_1(X)}{f_0(X)}
+$$
+is the \textbf{most powerful} test. That is, the power of the test based on the likelihood ratio is higher than the power of any other test.
+\end{theorem_exam}
+
+If we let the critical region $C = \{x: \frac{f_1(x)}{f_0(x)} \geq y_{\alpha}\}$ be based on the likelihood ratio and D be any other critical region. What the continuous Neyman-Pearson lemma says is that the power for C is greater than the power for D, that is $P_{f_{1}}(C) = P_{f_{1}}(\tilde{X} \in C) \geq P_{f_{1}}(\tilde{X} \in D) = P_{f_{1}}(D).$\\
+
+If the likelihood ratio $Y = \frac{f_1(X)}{f_0(X)}$ has a discrete distribution, then there may be no exact value $y_{\alpha}$ such that $P_0(Y \geq y_{\alpha}) = \alpha$ for any given $\alpha.$ We introduce the concept of a randomised test to help us.
+
+\begin{definition}(Test Function). Let $\delta(.)$ be a function taking values in [0,1]. That is, let $U \sim U[0,1]$ be independent of X. Then, we reject if $U \leq \delta(X).$
+\end{definition}
+
+\begin{remark}The above construction of the test function means that we reject with probability $\delta(X).$
+\end{remark}
+
+\begin{theorem_exam}{Discrete Neyman-Pearson Lemma}{} Let X be a \textbf{disrete random variable}. Hence, the likelihood ratio of the alternative over the null is a discrete random variable. The most powerful test at level $\alpha$ of $H_0: P_0(.)$ vs $H_1: P_1(.)$ is given by the test function 
+$$
+\delta(x) = 
+\begin{cases}
+1 \quad \frac{f_1(x)}{f_0(x)} > y \\
+\gamma \quad \frac{f_1(x)}{f_0(x)} = y \\
+0 \quad \frac{f_1(x)}{f_0(x)} < y \\
+\end{cases}
+$$
+where y and $\alpha$ are chosen so that $\mathbb{E}_{\theta}[\delta(X)] = \alpha.$ 
+\end{theorem_exam}\begin{remark}We will need to determine the critical value y and randomisation probability $\gamma$ such that $\mathbb{E}_{\theta}[\delta(X)] = \alpha.$ 
+\end{remark}
+
+Hence, if $Y = \frac{f_{1}(.)}{f_{0}(.)}$ has a discrete distribution, then the value y satisfies $P_{0}(Y \geq y) \geq \alpha \geq P_{0}(Y > y)$ and $\gamma$ is such that we usually have that 
+$$
+ P_0(Y = y).\gamma + P_0(Y > y) = \alpha
+$$
+therefore
+$$
+\gamma = \frac{\alpha - P(Y > y)}{P(Y = y)}.
+$$
+
+\lecture{24}{Simple vs Composite Hypothesis: UMP Tests}
+\section{Hypothesis Testing}
+\subsection{Simple vs Composite Hypothesis: One-sided UMP Tests}
+
+We now have the following set up. We have a family, depending only on 1 parameter $\{f_{\theta}(.): \theta \in \Theta\}$ for some $\Theta \subset \mathbb{R}$ and we model the data x as observed values of $X \sim f_{\theta}(.)$ where $\theta \in \Theta$ is unknown. We want to test $H_0: \theta = \theta_0$ against $H_1: \theta \in \Theta$\textbackslash $\theta_0.$ We want to find a uniformly most powerful test.\\
+
+\begin{definition_exam}{Uniformly Most Powerful Test}{} Let $\mathcal{C}$ be a class of tests for testing $H_0: \theta_0 \in \Theta$ versus $H_1: \theta \in \Theta$\textbackslash$\theta_0.$ A test $
+\delta_0(.)$ in class $\mathcal{C}$, is a uniformly most powerful (UMP) test at level $\alpha$ if
+\begin{enumerate}
+\item $E_{\theta_{0}}[\delta(X)] \leq \alpha$ (so the test is of level $\alpha$)
+\item $E_{\theta}[\delta_0(X)] \geq E_{\theta}[\delta_1(X)]$ (the test has the biggest power)
+\end{enumerate}
+for any other test $\delta_1(.)$, which also has a level $E_{\theta_{0}}[\delta_1(X)] \leq \alpha$, for all $\theta \in \Theta$\textbackslash $\theta_0$ (i.e. where $H_1$ is true).
+\end{definition_exam}
+
+\begin{remark}With regards to notation, $E_{\theta_{0}}$ denotes the expectation under the null hypothesis being true whilst $E_{\theta}$ denotes the expectation under the alternative hypothesis.
+\end{remark}
+
+Hence, we want to find the test that has the most power out of all tests that have level $\alpha.$\\
+
+We can also frame this as an optimisation problem. Our goal is to find a UMP level-$\alpha$ test $\delta$ which 
+$$
+\text{Maximise power function } E_{\theta}[\delta(X)]
+$$
+$$
+\text{subject to } E_{\theta_{0}} \leq \alpha.
+$$
+\newline
+For composite alternative hypotheses, the Neyman-Pearson lemma, and the likelihood ratio test, generalises if the data model $f_{\theta}(.)$ satisfies the monotone-likelihood ratio property. First, we define what is meant by the monotone likelihood ratio property.
+
+\begin{definition_exam}{Monotone Likelihood Ratio}{} A family of pdfs/pmfs $\{f_{\theta}(.): \theta \in \Theta\}$ for $\Theta \subseteq \mathbb{R}$ is said to have monotone likelihood ratio (MLR) in a test statistic T if for any arbitrary parameter values $\theta_0 < \theta_1$ in $\Theta$, we had that 
+\begin{enumerate}
+\item $f_{\theta_{0}}(.)$ and $f_{\theta_{1}}(.)$ are different distinct distributions;
+\item The ratio $\frac{f_{\theta_{1}}(X)}{f_{\theta_{0}}(X)}$ is a non-decreasing function of the test statistic T(X).
+\end{enumerate}
+\end{definition_exam}
+
+\begin{corollary}If the functions are first-differentiable, we can also say that the family has the monotone likelihood ratio if 
+$$
+\frac{\partial}{\partial X}\bigg[\frac{f_{\theta_{1}}(X)}{f_{\theta_{0}}(X)} \bigg] \geq 0.
+$$
+\end{corollary}
+
+\begin{remark}Note that the ratio is a function of X and not the parameter $\theta.$
+\end{remark}
+
+We can now state that when the density $\{f_{\theta}(.): \theta \in \Theta\}$ has the MLR property, then a uniformly most powerful test exists.
+
+\begin{theorem_exam}{One-Sided Composite Tests with MLR}{} Suppose a family $\{f_{\theta}(.): \theta \in \Theta\}$ for $\Theta \subseteq \mathbb{R}$ has monotone likelihood ratio in the statistic $T(X).$ Then, for any $\theta_0 \in \Theta$, a uniformly most powerful level-$\alpha$ test exists for testing $H_0: \theta = \theta_0$ against $H_1: \theta > \theta_0$ given by the test function 
+$$
+\delta(X) = 
+\begin{cases}
+1 \quad T(\tilde{X}) > c\\
+\gamma \quad T(\tilde{X}) = c\\
+0 \quad T(\tilde{X}) < c
+\end{cases}
+$$
+where $C, \gamma$ are chosen to satisfy $E_{\theta_{0}}[\delta(\tilde{X})] = \alpha.$
+\end{theorem_exam}
+
+
+\begin{remark}The UMP level-$\alpha$ test for $H_0: \theta = \theta_0$ against $H_1: \theta < \theta_0$ is obtained by swapping inequalities given in the theorem above.
+\end{remark}
+
+\begin{remark}Note that we need MLR to be an INCREASING function of T(X) to invoke the above theorem. So be careful.
+\end{remark}
+
+\begin{theorem}If the family $\{f_{\theta}(.): \theta \in \Theta\}$ has a monotone likelihood ratio, the power functions of the UMP 1-sided tests are strictly monotone. That is, it increases up until 1 and then becomes constant.
+\end{theorem}
+
+
+We now can revisit something we have seen from first year. 
+\begin{definition}(P-value). Given our test $\delta$ defined for densities with the MLR property, we reject the null hypothesis $H_0$ if $T(x) > c$. Suppose that the test statistic $T(x) = t$. We call the probability 
+$$
+P(T > t)
+$$
+the \textbf{p-value}.
+\end{definition}
+
+\begin{remark}The smaller the p-value, the stronger the evidence against the null hypothesis.
+\end{remark}
+
+The reason for the introduction of p-values is that simply stating rejecting $H_0$ is not very informative. With a p-value, we can then know that if we reject a test at the smallest level $\alpha$, we know that we will reject for $\alpha' > \alpha.$\\
+\begin{remark}A high p-value is \textbf{not} in favor of $H_0.$ It suggests that either $H_0$ is true or $H_0$ is false but our test has low power. Furthermore, the p-value is \textbf{not} the probability that $H_0$ is true conditioned on the data.
+\end{remark}
+We now state an important theorem to help us with testing.
+
+\begin{theorem_exam}{Monotone likelihood ratio for exponential families}{}All 1-parameter exponential families have monotone likelihood ratio, which are functions of their \textbf{sufficient statistics} T(X).
+\end{theorem_exam}
+
+Hence, we have an important corollary to the fact that MLR exists for exponential families.
+
+\begin{proposition_exam}{Existence of 1-sided UMP tests for exponential families}{}All 1-parameter exponential families have a 1-sided UMP test.
+\end{proposition_exam}
+\subsection{Simple vs Composite Hypothesis: Two-sided UMPU Tests}
+We now look at two-sided tests. Suppose we are now testing a two-sided composite hypothesis $H_0: \theta = \theta_0$ against $H_1: \theta \neq \theta_0$ for $\theta_0$ in the interior of $\Theta.$\\
+
+Recall that we stated that the power function for UMP 1-sided tests are strictly monotone. The significance of this is that for a two-sided test, performing the one-sided test will be extremely biased towards one side. That is, the power function will be terrible for one side of the test. In particular, the power of the test will be below the level of the test
+$$
+E_{\theta}\big[\delta(X) \big] < E_{\theta_{0}}\big[\delta(X) \big]
+$$
+for some $\theta$ in the alternative. 
+\begin{proposition}(Power function is monotone for UMP 1-sided). The power function for a UMP 1-sided test is strictly monotone.
+\end{proposition}
+Hence, this is terrible for our 2 sided test as the 1-sided UMP test will do well for one side of $\theta$ but have terrible power for the other side. In fact, it will have a power even less than the level $\alpha$, which we do not want. This is known as a \textbf{biased test}. Hence, we need to restrict our analysis to tests that do not have this property.
+
+
+\begin{definition_exam}{Unbiased test}{} A test $\delta(.)$ is unbiased if its power function 
+$$
+E_{\theta}[\delta(X)] \geq E_{\theta_{0}}[\delta(X)] = \alpha
+$$
+for all $\theta$ under $H_1$.
+That is, the power for rejecting a false hypothesis is higher than the level of the test.
+\end{definition_exam}
+
+\begin{definition_exam}{UMPU Test}{} An unbiased uniformly most powerful test is a test that is uniformly most powerful and unbiased.
+\end{definition_exam}
+
+\begin{theorem_exam}{Existence of 2-sided UMPU tests for exponential families}{}
+For a 1-parameter exponential family, an UMPU test always exist as it has a monotone likelihood function.
+\end{theorem_exam}
+We can now state the theorem that guarantees us a UMPU level-$\alpha$ test for 1-parameter exponential families.
+\begin{theorem_exam}{Karlin-Rubin Theorem}{} For a 1-parameter exponential family with sufficient statistic T(X), a UMPU level-$\alpha$ test of $H_0: \theta = \theta_0$ against $H_1: \theta \neq \theta_0$ exists and is given by 
+$$
+\delta(X) = 
+\begin{cases}
+1 \quad T(x) > C_2 \\
+\gamma_2 \quad T(x) = C_2 \\
+0 \quad C_1 < T(x) < C_2 \\
+\gamma_1 \quad T(x) = C_1 \\
+1 \quad T(x) < C_2 \\
+\end{cases}
+$$
+where $\gamma_1, \gamma_2, C_1, C_2$ are chosen such that 
+$$
+\begin{cases}
+E_{\theta_{0}}[\delta(X)] = \alpha \\
+\\
+E_{\theta_{0}}[T(x)\delta(x)] = \alpha E_{\theta_{0}}[T(x)]
+\end{cases}
+$$
+i.e. the level is $\alpha$ and the test function $\delta(.)$ is uncorrelated with the sufficient statistic $T(x).$
+\end{theorem_exam}
+
+\begin{remark}Notice that we now have UMPU rather than UMP tests. This is because we now \textbf{restrict} our attention to tests that are unbiased. Then, this allows us to now find uniformly most powerful tests, that is, a test that is a test with a uniformly higher power function compared to other tests.
+\end{remark}
+
+\begin{theorem}Suppose we have a 1-parameter family indexed by $\theta$ in some interval and suppose $\theta_0$ is an interior point of that interval. If a UMP test of level $\leq \alpha$ exists for $H_0: \theta = \theta_0$ against the two-sided alternative $H_1: \theta \neq \theta_0$, then the test is automatically of exact level $\alpha$ and unbiased.
+\end{theorem}
+
+
+
+\lecture{25}{Simple vs Composite: General Methods}
+\section{Hypothesis Testing}
+\subsection{Simple vs Composite: General Methods}
+
+We are now interested in generalising to simple vs composite testing for \textbf{when we don't have a monotone likelihood ratio}. Suppose we have an i.i.d sample x with a common pdf $f_{\theta}(.)$ for a 1-parameter family $\{f_{\theta}(.): \theta \in \Theta\}$ for some $\Theta \subseteq \mathbb{R}.$ Recall the Neyman Pearson likelihood ratio (NPLR) test statistic.
+
+\begin{definition}(Neyman Pearson likelihood ratio test statistic). Let $f_{\theta_{1}}$ and $f_{\theta_{0}}$ be the pdf under $\theta_1$ and $\theta_0$ respectively. Then, the Neyman Pearson likelihood ratio test statistic is
+$$
+\frac{\prod_{i=1}^nf_{\theta_{1}}(x_i) }{\prod_{i=1}^nf_{\theta_{0}}(x_i)}.
+$$
+\end{definition}
+
+Now if we have a composite null $H_1: \theta \in \Theta$\textbackslash $\theta_0$, we can try estimate a $\theta_1$-value and plug it in to get an approximation to the NLPR statistic.
+
+
+\begin{definition_exam}{Generalised Likelihood Ratio Test}{} The Generalised Likelihood Ratio Test (GLRT) for testing $H_0: \theta = \theta_0$ vs $H_1: \theta \in \Theta $\textbackslash $\theta_0$ uses the statistic 
+$$
+\frac{\prod_{i=1}^nf_{\hat{\theta}}(x_i)}{\prod_{i=1}^nf_{0}(x_i)}
+$$
+where $\hat{\theta} = \max_{\theta \in \Theta}\prod_{i=1}^{n}f_{\theta}(x_i)$ is the MLE for $\theta$ over $\Theta.$
+\end{definition_exam}
+
+We can also use the results we derived of the asymptotic properties of the MLE. Recall that we linearly approximated the score function and took a 2-term Taylor series about the true value $\theta_0.$ This gives us the next theorem.
+
+\begin{theorem_exam}{Limiting distribution of GLRT}{}Let $\hat{\theta}$ be the MLE. Then, the limiting distribution of the $\ell(\hat{\theta};\tilde{X}) - \ell(\theta_0 ; \tilde{X})$ is $\frac{1}{2}\chi_{1}^{2}$ when $H_0$ is true.
+\end{theorem_exam}
+
+Alternative formulation of the likelihood ratio statistic is 
+$$
+\lambda = 2log\bigg(\frac{\sup_{\theta \in \Theta}\ell(\theta)}{\ell(\theta_0)} \bigg)
+$$
+where $\ell(\theta)$ is the likelihood.
+
+\lecture{26}{Composite vs Composite: 1-Parameter Families}
+\section{Hypothesis Testing}
+
+\subsection{Composite vs Composite: 1-Parameter Families}
+
+We are now interested in the set up $x \sim f_{\theta}(x)$ for a 1-parameter family $\mathcal{F} = \{f_{\theta}(.): \theta \in \Theta\}$ for $\Theta \subseteq \mathbb{R}.$ We wish to test $H_0: \theta \in \Theta_0$ against $H_1: \theta \in \Theta$\textbackslash$\Theta_0$ for some $\Theta_0 \subseteq \Theta.$ For certain kinds of composite $H_0$'s, optimal tests exists.
+
+\begin{proposition_exam}{Composite null with MLR property}{} If the family $\mathcal{F}$ has a monotone likelihood ratio in a statistic T(x), the \textbf{UMP} test of $H_0: \theta \leq \theta_0$ against $H_1: \theta > \theta_0$ is of the same form as for a simple null hypothesis $H_0: \theta = \theta_0$ against $H_1: \theta > \theta_0$. That is, the test function is given by 
+$$
+\delta(X) = 
+\begin{cases}
+1 \quad T(X) > C\\
+\gamma \quad T(X) = C\\
+0 \quad T(X) < C
+\end{cases}
+$$
+where $C, \gamma$ are chosen to satisfy $E_{\theta_{0}}[\delta(X)] = \alpha.$
+\end{proposition_exam}
+
+Hence, our composite null hypothesis test now becomes a simple null hypothesis test against a composite null. Recall that UMP test exists for simple vs 1-sided composite hypothesis if our family of interest has a monotone likelihood ratio in the statistic T(X).\\
+We see again that the exponential family has nice properties.
+\begin{proposition_exam}{Composite null for exponential family}{} If the family $\mathcal{F}$ is a 1-parameter exponential family, a \textbf{UMP} test for $H_0: \{ \theta \leq \theta_1 \} \cup  \{ \theta > \theta_2\}$ against $H_1: \theta_1 < \theta < \theta_2$ exists and is of the form 
+$$
+\delta(X) = 
+\begin{cases}
+1 \quad C_1 < T(x) < C_2 \\
+\gamma_i \quad T(x) = C_i, i=1,2 \\
+0 \quad T(x) < C_1 \text{ or } T(x) > C_2\\
+\end{cases}
+$$
+where $C_i, \gamma_i$ are chosen to satisfy 
+$$
+E_{\theta_{1}}[\delta(x)] = E_{\theta_{2}}[\delta(x)] = \alpha
+$$
+i.e. on the endpoints of the interval, the level is exactly $\alpha.$
+\end{proposition_exam}
+\newpage
+We can state a stronger proposition for 1-parameter exponential families for when our null hypothesis is inside an interval with our compsite being outside of that interval.
+
+\begin{proposition}(Interval composite null for exponential family). If $\mathcal{F}$ is a 1-parameter exponential family with a sufficient statistic T(x), then the \textbf{UMPU} test of $H_0: \theta_1 \leq \theta \leq \theta_2$ against $H_1: \{ \theta < \theta_1 \} \cup \{\theta > \theta_2\}$ is of the form 
+$$
+\delta(X) = 
+\begin{cases}
+1 \quad  \{T(x) < C_1 \} \cup \{T(x) > C_2 \}\\
+\gamma_i \quad T(x) = C_i, i=1,2 \\
+0 \quad C_1 < T(x) < C_2\\
+\end{cases}
+$$
+where the $C_i, \gamma_i$ are chosen so that 
+$$
+E_{\theta_{1}}[\delta(x)] = E_{\theta_{2}}[\delta(x)] = \alpha
+$$
+i.e. on the endpoints of the interval, the level is exactly $\alpha.$
+\end{proposition}
+
+\begin{remark}The limiting version of this test as $\theta_1 \rightarrow \theta_0 \leftarrow \theta_2$ is the \textbf{UMPU} test for $H_0: \theta = \theta_0$ against $H_1: \theta \neq \theta_0.$
+\end{remark}
+
+
+\subsection{Composite vs Composite: Multi-Parameter Families}
+We are now interested in testing composite nulls against composite alternatives for multi-parameter families. Previously, what we have established worked for one parameter exponential families. We now wish to generalise this and give an approximation to the NPLR statistic. That is $H_0: \theta \in \Theta_0 \subset \Theta$ against $H_1: \theta \in \Theta$\textbackslash $\Theta_0$. 
+
+\begin{definition_exam}{Generalised Likelihood Ratio Test for composite null}{} The Generalised Likelihood Ratio Test (GLRT) for testing $H_0: \theta \in \Theta_0 \subset \Theta$ against $H_1: \theta \in \Theta$\textbackslash $\Theta_0$ uses the statistic 
+
+$$
+\ell(\hat{\theta}; x) - \ell(\hat{\theta}_0; x)
+$$
+where $\hat{\theta}$ is the unrestricted maximum likelihood estimator whilst $\hat{\theta}_{0} = \max_{\theta \in \Theta_0}\ell(\theta;x)$ is the null-restricted m.l.e. 
+\end{definition_exam}
+
+We now describe the limiting distribution of the GLRT statistic.
+
+\begin{theorem_exam}{Wilk's Theorem}{} Suppose we had a vector of parameters $H_0: \theta \in \Theta_0$ against $H_1: \theta \in \Theta$\textbackslash $\Theta_0.$ Under the conditions of 
+\begin{enumerate}
+\item Smoothness/differentiability
+\item Support being independent of $\theta$
+\item $\Theta_0$ consists of only interior points of $\Theta$
+\item Identifiability: $\theta_1 \neq \theta_2$ means that $f_{\theta_{1}}(.) \neq f_{\theta_{2}}(.)$.
+\end{enumerate}
+Suppose that $H_0$ imposes k constraints on the parameter vectors. Then 
+$$
+2\{\ell({\hat{\theta}); x) - \ell(\hat{\theta}_0}; x)\} \xrightarrow{d} \chi_{k}^{2}
+$$
+where $\hat{\theta}_0$ is the m.l.e under $\Theta_0$, $\ell$ is the log likelihood and k is the difference in dimension between $\Theta$ and $\Theta_0.$
+\end{theorem_exam}
+
+\begin{remark}This allows us to convert observations into p-values.
+\end{remark}
+
+\lecture{27}{GLRT Examples}
+\section{Hypothesis Testing}
+\subsection{GLRT Examples}
+
+\begin{theorem}The 1-way ANOVA F-test is an example of the GLRT.
+\end{theorem}
+
+\begin{theorem}The maximisation of the one sided likelihood GLRT is equivalent to a 1-sided t-test.
+\end{theorem}
+
+
+\subsection{Simulation based p-values}
+What should we do if we can't utilise large sample theory to run inference tests. We can use simulation techniques.
+\begin{definition_exam}{Monte-Carlo p-value}{} Suppose we are testing a simple null hypothesis $H_0: \theta = \theta_0.$ We can then simulate data x from the null hypothesis distribution $f_{\theta_{0}}(.)$ and generate an arbitrary number of realisations. We then construct a statistic T(x) from our realised sample. We repeat this process an arbitrary number of times to generate a sampling distribution of the statistic T(x). This gives us a Monte-Carlo p-value.
+\end{definition_exam}
+
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{Data Generating Process such that $H_0$ is true}
+\KwOut{Size level}
+$x^{(i)} \gets$ 10000 draws from DGP with true $H_0$\;
+$t^{(i)} \gets$ test statistic\;
+$size \gets$ count fraction  of rejections of $H_0$ over $\{t^{(i)}\}$\;
+\Return{size}\;
+\caption{{\sc Size Study}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\begin{definition_exam}{Parametric Bootstrap}{} Suppose we are testing a composite null hypothesis $H_0: \theta \in \Theta_0.$ We estimate the null $\theta_0$ using $\hat{\theta}_0$ under $H_0$. We then sample from the distribution $f_{\hat{\theta}_0}(.)$ to generate arbitrary sample sizes and construct statistics from this. Hence, we can generate a sampling distribution for our statistic T(x).
+\end{definition_exam}
+
+\newpage
+\begin{algorithm}
+\DontPrintSemicolon
+\KwIn{Data Generating Process $F_{\theta}$ with unknown $\theta$}
+\KwOut{P-value}
+
+$\hat{\theta} \gets$ from data x which estimates $\theta$\;
+$\gamma(x) \gets$ test statistic with $\hat{\theta}$ and x\;
+
+\For{$s\gets0$ \KwTo $S$}{
+    $x^{(s)} \gets$ sample from DGP $F_{\hat{\theta}}$ with $\hat{\theta}$ as parameter\;
+    $\gamma(x^{(s)}) \gets$ test statistic on $x^{(s)}$\;
+    }
+p-value $\gets$ $\frac{\text{number of draws with }\gamma(x^{(s)})\leq\gamma(x)}{S}$\;
+
+\uIf{p-value $< \alpha$}{
+    \Return{Reject $H_0$}\;    
+}
+\Else{
+    \Return{Don't reject $H_0$}\;
+}
+
+\caption{{\sc Parametric Bootstrap for one sided test}}
+\label{algo:duplicate}
+\end{algorithm}
+
+\lecture{28}{Simple Prediction Problems}
+\section{Statistical Decision Theory}
+\section{Statistical Decision Theory}
+\subsection{Simple Prediction Problems}
+
+We are interested in the set up where Y is a random variable with a \textbf{known distribution}. We define D to be an arbitrary set called the \textbf{decision space}.
+
+\begin{definition}(Loss). For each possible value y of Y and decision $d \in D$, we suffer a loss $L(d|y).$
+\end{definition}
+
+\begin{definition}(Risk). The expectation of the loss is the risk 
+$$
+R(d) = E[L(d|y)]
+$$
+where we aim to minimise the risk.
+\end{definition}
+
+\begin{definition}(Admissible). Let $\tilde{d}(.)$ be a procedure. We say that $\tilde{d}(.)$ is admissible if 
+$$
+R(\theta, \tilde{d}) \leq R(\theta, d) \quad \forall \theta \in \Theta
+$$
+and 
+$$
+R(\theta, \tilde{d}) < R(\theta, d) \quad \forall \theta \in [a,b] \subset \Theta
+$$
+for all other procedures d(.).
+\end{definition}
+
+\begin{theorem}In the simple prediction problem, if we define the loss to be the \textbf{squared error loss} $L(d|y) = c(d - y)^2$ for $c > 0$, the optimal decision d to minimise this is the mean $d = E(y).$
+\end{theorem}
+
+\begin{proof}(Sketch). Look at $R(d|y) = E[L(d|y)]$ and then find first order conditions to find optimal value for d.
+\end{proof}
+
+\begin{theorem}In the simple prediction problem, if we define the loss to be the \textbf{absolute error loss} $L(d|y) = c|d - y|$ for $c > 0$, the optimal decision d to minimise this is the median $d = F^{-1}(\frac{1}{2}) = median(Y).$
+\end{theorem}
+
+\begin{theorem}In the simple prediction problem, if we define the loss to be the \textbf{0-1 error loss} 
+$$
+L(d|y) = 1\{|d - y| > c\} = 
+\begin{cases}
+1 \quad \text{if } |d-y| > c \\
+0 \quad \text{if } |d-y| \leq c
+\end{cases}
+$$ 
+where the non-coverage of y be the interval $d \pm c.$ Furthermore, we also assume that $f(.)$ is unimodal. The optimal decision d is chosen so that the interval $d \pm c$ is a level set of f(.). If the pdf f(.) is symmetric about m, the optimal d is m.
+\end{theorem}
+
+
+\begin{theorem}For the simple prediction problem where Y has a strictly increasing, continuous CDF F(.) and $\mu = E(Y)$ exists and is finite and the decision space $D = \mathbb{R}$. We assume the loss is the asymmetric piecewise-linear loss function given by 
+$$
+L(d|y) = 
+\begin{cases}
+p(y - d) \quad d < y \\
+\\
+(1 - p)(d - y) \quad d > y
+\end{cases}
+$$
+for some $p \in (0,1).$ Then, the decision d that minimises the risk is 
+$$
+d = F^{-1}(p)
+$$
+that is, the p-th quantile of $F(.)$.
+\end{theorem}
+
+\lecture{29}{Discrete Selection Problem}
+\section{Statistical Decision Theory}
+\subsection{Discrete Selection Problem}
+
+Suppose $\mathbb{R}$ is partitioned into sets $S_1,...,S_k$. The decision space is $D = \{1,2,...,k\}$. Our goal is to guess which set does y belong to. Hence, the loss function is 
+$$
+L(d|y) = \sum_{j=1}^{k}L_{d_{j}}1\{y \in S_j\}
+$$
+where we can construct the the \textbf{loss matrix} $\mathbb{L} = \{L_{d_{j}}; j=1,...,k\}$ where $L_{dd} = 0$ and $L_{dy} \geq 0.$ 
+
+
+We can define a column vector $\tilde{p}$ where $p_j = P(Y \in S_j)$ for $j=1,...,k.$ Then, the risk of a decision d is 
+$$
+R(d) = \sum_{j=1}^{k}L_{d_{j}}P(Y \in S_j) = \mathbb{L}_{\tilde{p}_{j}}.
+$$
+In other words, the risk of decision d is the loss associated with the probability of y being in d.
+
+\subsection{Special case of Discrete Selection}
+
+Suppose that the loss matrix defined earlier $\mathbb{L}$ only depends on 
+\begin{enumerate}
+\item The observed value y of Y
+\item Whether the decision d is right or wrong.
+\end{enumerate} 
+Recall that for our loss matrix $\mathbb{L}$, the columns are the possible values of Y and the rows are the different decisions we label Y to be.
+So, $\mathbb{L}_{dd} = 0$ and $\mathbb{L}_{d_{j}} = L_j$ where $d \neq j.$ That is, the diagonals of our loss matrix is 0 and the off-diagonals are the same in each column.
+
+Then, the risk of decision d reduces to 
+$$
+R(d) = E[L(d|y)] = \sum_{j=1}^{k}L_{d_{j}}P(Y \in S_j) = \sum_{j=1 \land j \neq d}^{k}L_{j}P(Y \in S_j)
+$$
+$$
+= \sum_{j=1}^{k}L_{j}P(Y \in S_j) - L_dP(Y \in S_d).
+$$
+Hence, minimising $R(d)$ is equivalent to maximising the product $L_dP(Y \in S_d).$ Hence, we label Y to be in set $S_d$ if it is highly likely or we pay a big price of $Y \in S_d$ if we don't pick it as $L_{d}$ is the loss we pay if Y lands in $S_d$ but we did not pick $S_d.$
+
+
+\lecture{30}{Statistical Decision Theory}
+\section{Statistical Decision Theory}
+\subsection{Statistical Decision Theory}
+
+\begin{definition}(Statistical Decision Framework). We specify the setup for the framework. \begin{enumerate}
+\item A family $\mathcal{F} = \{f_{\theta}(.): \theta \in \Theta\}$ of distributions for a random vector $\tilde{x}$ taking values in a space X.
+\item A decision space $\mathcal{D} = \{d\}$.
+\item Non-negative valued loss function such that when a decision $d \in D$ is made, the true distribution $f_{\theta}(.)$ is made and the true distribution is $f_{\theta}(.)$ a loss of $L(d|\theta)$ is suffered.
+\end{enumerate}
+The problem is then to choose a D-valued decision function d(.) defined on the sample space $d: X \rightarrow D.$
+\end{definition}
+
+\begin{definition_exam}{Risk Function}{} Each decision function $d: X \rightarrow D$ has an associated risk function 
+$$
+R(\theta|d(.)) = E_{\theta}[L(d(x)|\theta)]
+$$
+which measures the long-run average loss suffered using the decision function $d(.)$ and when $x \sim f_{\theta}(.).$
+\end{definition_exam}
+
+\begin{remark}Comparing decision functions reduces down to comparing their respective risk functions.
+\end{remark}
+
+The issue is that we cannot compare risk functions pointwise between decisions functions as we can simply define biased decision functions which work extremely well for certain values of $\theta.$ Hence, pointwise comparison of risk functions does not work. We instead use two alternative measures of risk. That is, Bayes Risk and maximum risk.
+
+\begin{definition_exam}{Bayes Risk}{} Let w(.) be a non-negative weight function. We define the Bayes risk as 
+$$
+B_{w}(d) = \int_{\Theta}w(\theta)R(\theta|d)d\theta = \int_{\Theta}w(\theta)E_{\theta}[L(d(x)|\theta)]d\theta \leq +\infty.
+$$
+\end{definition_exam}
+
+\begin{definition_exam}{Bayes Decision Rule}{} If the decision $\tilde{d}$ is such that 
+$$
+B_{w}(\tilde{d}) \leq B_w(d)
+$$
+for any other decision function $d(.)$, then $\tilde{d}$ is said to be a \textbf{Bayes decision rule} with respect to the weight function w(.).
+\end{definition_exam}
+
+\begin{definition_exam}{Maximum over a subset risk}{} For a given subset $\Theta_0 \subseteq \Theta$, a decision rule $\hat{d}$ is said to be minimax (over $\Theta_0$) if 
+$$
+\max_{\theta \in \Theta_0}R(\theta|\hat{d}) \leq \max_{\theta \in \Theta_0}R(\theta|d)
+$$
+for any other decision function $d(.)$. Hence, we minimise the maximum risk.
+\end{definition_exam}
+
+\subsection{Finding Bayes Decision Rules}
+It is quite easy to find Bayes decision rules. We can find Bayes decision rules by reducing our problem into a simple prediction problem. Recall that the Bayes risk of a decision rule $d(.)$ is 
+$$
+B_w(d) = \int_{\Theta}w(\theta)R(\theta|d)d\theta
+$$
+$$
+= \int_{\Theta}w(\theta)\bigg[E_{\theta}[L(d(\tilde{x})|\theta)] \bigg]d\theta
+$$
+$$
+= \int_{\Theta}w(\theta) \Bigg[ \int ... \int_X L[d(\tilde{x}|\theta)]f_{\theta}(\tilde{x})d\tilde{x} \Bigg] d\theta
+$$
+$$
+= \int ...\int_{X} \Bigg[ \int_{\Theta} L[d(\tilde{x}|\theta)]w(\theta)f_{\theta}(\tilde{x})d\theta\Bigg]d\tilde{x} 
+$$
+where the last equality arises from Tonelli's theorem.
+
+\begin{theorem}(Tonelli's theorem). Assume that f is a non-negative measurable function. Then 
+$$
+\int_X\bigg(\int_Yf(x,y)dy \bigg)dx = \int_Y\bigg(\int_Xf(x,y)dx \bigg)dy = \int_{X \times Y}f(x,y)d(x,y).
+$$
+\end{theorem}
+
+Assuming $w(\theta)f_{\theta}(\tilde{x})$ is ingerable, we define 
+$$
+m(\tilde{x}) = \int w(\theta)f_{\theta}(\tilde{x})d\theta.
+$$
+Hence, we have the Bayes risk as 
+$$
+B_{w}(d)= \int ... \int_{X} m(\tilde{x}) \Bigg[ \int_{\Theta} L[d(\tilde{x}|\theta)]\frac{w(\theta)f_{\theta}(\tilde{x})}{m(\tilde{x})}d\theta\Bigg]d\tilde{x} 
+$$
+
+\begin{definition}Using the definition of conditional probabliity, we define 
+$$
+p(\theta|\tilde{x}) = \frac{w(\theta)f_{\theta}(\tilde{x})}{m(\tilde{x})}
+$$
+as the probabliity density of $\theta.$
+\end{definition}
+
+\begin{definition}(Bayes Risk). We define the Bayes risk as 
+$$
+B_w(d) = \int ... \int_{X}m(\tilde{x}) \Bigg[ \int_{\Theta}L\Big[d(\tilde{x})|\theta \Big]p(\theta|\tilde{x})d\theta \Bigg]d\tilde{x}.
+$$
+\end{definition}
+
+Our aim is to choose the decision $d(\tilde{x})$ that minimises the innter integral $\int_{\Theta}L\Big[d(\tilde{x})|\theta \Big]p(\theta|\tilde{x})d\theta$ as that will minimise the Bayes risk. Note that this is \textbf{exactly} the same form of the simple prediction problem based on a single draw from $p(\theta|\tilde{x})$ with loss $L[d|\theta].$ 
+
+\begin{theorem}If $\tilde{d}(\tilde{x})$ was a decision rule such that 
+$$
+\int_{\Theta}L\Big[\tilde{d}(\tilde{x})|\theta \Big]p(\theta|\tilde{x})d\theta \leq \int_{\Theta}L\Big[d(\tilde{x})|\theta \Big]p(\theta|\tilde{x})d\theta
+$$
+for any other decision rule d(.), then we have that 
+$$
+B_w(\tilde{d}) \leq B_w(d).
+$$
+\end{theorem}
+
+\begin{definition}(Posterior Density). The density $p(\theta|\tilde{x})$ is known as the \textbf{posterior density.}
+\end{definition}
+
+\begin{definition}(Prior Density). If the weight function w(.) is a density, then it is known as a \textbf{prior density}.
+\end{definition}
+
+Hence, finding a Bayes rule is solving a simple prediction problem from a single draw of the posterior density.
+
+\lecture{31}{Bayesian Interpretation}
+\section{Statistical Decision Theory}
+\subsection{Bayesian Interpretation}
+We now consider setting our weight function w(.) to be a distribution. That is, $\int_{\Theta}w(\theta)d\theta = 1.$
+
+\begin{definition}(Prior Distribution). Let w(.) be a probability density function. Then, we say that w(.) is a prior distribution.
+\end{definition}
+
+\begin{definition}(Bayes Theorem). Let $\theta$ have a continuous PDF f(.). Then Bayes theorem states that 
+$$
+f(\theta|x) = \frac{f(x|\theta)w(\theta)}{\int f(x|\theta)f(\theta)d\theta}
+$$
+where the denominator does not depend on $\theta.$\\ If we had n i.i.d samples x, then we have that 
+$$
+f(\theta|\tilde{x}) = \frac{\prod_{i=1}^{n}f(x_i|\theta)w(\theta)}{\int f(x|\theta)f(\theta)d\theta} = \frac{L_n(\theta)w(\theta)}{c} \approx L_n(\theta)w(\theta)
+$$
+where c is a normalising constant and $L_n(\theta)$ is the likelihood with sample size n. 
+\end{definition}
+
+\begin{theorem}The posterior is approximately the prior times the likelihood 
+$$
+f(\theta|\tilde{x}) \approx L_n(\theta)w(\theta).
+$$
+\end{theorem}
+
+
+
+\begin{theorem_exam}{Bayes Decision Rules}{} Let the decision space $D = \mathbb{R}$ and suppose $\tilde{x} = (x_1,...,x_n)$ are iid random variables $f_{\theta}(.)$ for $\theta \in \mathbb{R} = \Theta$ with a loss function $L(d|\theta).$ Unless otherwise, let $d = \mathbb{R}.$
+\begin{enumerate}
+\item If $L(d|\theta) = (d-\theta)^2$, the Bayes decision rule is the \textbf{mean of the posterior distribution}.
+\item If $L(d|\theta) = |d-\theta|$, the Bayes decision rule is the \textbf{median of the posterior distribution}.
+\item If $L(d|\theta) = 1\{|d-\theta| > c\}$, the Bayes decision rule is the \textbf{midpoint of the level set of width 2c}.
+\item Let $d = \{0,1\}$. Then, define the loss function to be 
+$$
+L(d|\theta) = 
+\begin{cases}
+L_0 \quad d=1,\theta \leq 0\\
+L_1 \quad d=0,\theta > 0\\
+0 \quad \text{otherwise.}
+\end{cases}
+$$
+Let $p_1$ be the probability placed on $(0,\infty) = \Theta_1$ by the posterior distribution and $p_0 = 1 - p_1.$ Then, the Bayes decision rule is to choose 0 if $p_0L_0 > p_1L_1$ and 1 if $p_1L_1 > L_0p_0.$
+\end{enumerate}
+\end{theorem_exam}
+
+The following is useful for helping us determine the risk with absolute error loss.
+\begin{lemma}Suppose $Z \sim \mathcal{N}(0,1)$. Then, for any constant c, 
+$$
+E_{\theta}\{|c + Z|\} = c\bigg[1 - 2\Phi(-c) \bigg] + \frac{2e^{-\frac{1}{2}c^2}}{\sqrt{2\pi}}.
+$$
+\end{lemma}
+
+\begin{lemma}Suppose $Z \sim \mathcal{N}(0,1)$. Suppose $c_n \rightarrow 0$ as $n \rightarrow \infty$. Then 
+$$
+\lim_{n \rightarrow \infty}E_{\theta}\{|c_n + Z\} = \sqrt{\frac{2}{\pi}}.
+$$
+\end{lemma}
+
+
+\begin{lemma}Let $f(\theta|\tilde{x})$ be the posterior of $\theta.$ We can compute the point estimate by computing the mean of the posterior 
+$$
+\frac{1}{c}\int L_n(\theta)w(\theta)\theta.
+$$
+\end{lemma}
+
+\begin{definition}(Posterior interval). Suppose we want to find a, b such that 
+$$
+\int_{-\infty}^{a}f(\theta|\tilde{x})d\theta = \int_{b}^{\infty}f(\theta|\tilde{x})d\theta = \frac{\alpha}{2}.
+$$
+Let $C = (a,b)$. Then
+$$
+P(\theta \in C|\tilde{x}) = \int_{a}^{b}f(\theta|\tilde{x})d\theta = 1 - \alpha.
+$$
+C is called the $1 - \alpha$ posterior interval.
+\end{definition}
+
+\begin{definition}(Flat prior). Let the weight function $w(.) \approx \gamma$ where $\gamma$ is a constant. Then $w(.)$ is known as a flat or uninformative prior.
+\end{definition}
+
+\begin{definition}(Improper prior). Let $w(.)$ be a weight function such that $\int w(\theta)d\theta = \infty.$ w(.) is not a probability density function and hence is referred to as an improper prior.
+\end{definition}
+
+\begin{lemma}Flat prior are not transformation invariant. That is, a flat prior on a parameter $\theta$ does not imply a flat prior on the transformed version of the parameter $\tau(\theta).$
+\end{lemma}
+
+\begin{definition}(Jeffrey's prior). A prior that is transformation invariant is known as Jeffrey's prior and is defined by 
+$$
+w(\theta) \approx I(\theta)^{\frac{1}{2}}
+$$
+where $I(\theta)$ is the Fisher information function. The Jeffrey's prior is transformation invariant.
+\end{definition}
+
+
+\lecture{32}{Bayesian vs Frequentist}
+\section{Statistical Decision Theory}
+\subsection{Bayesian vs Frequentist}
+We now describe the differences between Bayesian and frequentist approach to statistical modelling.\\
+
+The frequentist approach to statistical model supposes that the data was generated from a fixed distribution from a known family. That is, the family $\{f_{\theta}(.): \theta \in \Theta\}$ is given and the distribution of the data in $f_{\theta}(.)$ for some unknown but fixed $\theta.$ Inference then consists of hypothesis tests, point and interval estimates.\\
+
+The Bayesian approach is to specify a known prior distribution $w(.)$ on $\Theta$ and assume the data was obtained by first drawing a value $\theta$ from $\Theta$ according to $w(.)$ and then conditional on $\theta$, the data has distribution $f_{\theta}(.).$ Inference is done on the posterior distribution $p(\theta|\tilde{x})$ of $\theta$ given $\tilde{x}$.\\
+
+\textbf{We assume the frequentist point of view in this course.} We assume there is a fixed non-random but unknown true parameter value.\\
+
+Bayesian procedures have very desirable frequentist properties. We do not require that our weight functions are integrable (proper priors). Even if w(.) is not integrable, the resulting posterior may still be integrable.\\
+
+We now look at a family of weight functions with nice properties. We can select the weight function w(.) in such a way that the corresponding posterior is of the same distribution.
+
+\begin{definition_exam}{Conjugate Family}{} Let $\mathcal{F}$ denote the class of PDFs $f(x|\theta)$. A class $\Pi$ of prior distributions is a conjugate family for $\mathcal{F}$ if the posterior distribution is in the class $\Pi$ for all $f \in \mathcal{F}$, all priors in $\Pi$, and all $x \in X.$
+\end{definition_exam}
+
+\begin{center}
+\begin{tabular}{ |c|c| } 
+\hline
+Parameter $\theta$ & Conjugate Prior $w(\theta)$ \\
+ \hline
+ Normal Mean & Normal \\ 
+ Binomial Success probability & Beta \\ 
+ Poisson & Gamma \\ 
+ Gamma Rate & Gamma \\
+ Gamma Scale & Inverse Gamma \\
+ Normal variance & Inverse Gamma \\
+ $U(0,\theta)$ & Pareto \\
+ Pareto Shape & Gamma\\
+ \hline
+\end{tabular}
+\end{center}
+
+
+We can use Bayes procedures as theoretical tools for finding minimax procedures. The main takeaway is that Bayes estimators with a constant risk function are minimax. 
+
+\begin{theorem_exam}{Minimax}{}Suppose that for k = 1,2,..., $d_k(.)$ is the Bayes procedure with respect to a proper prior $w_k(.)$ on $\Theta$ and the loss function $L(.|\theta).$ If the procedure $\tilde{d}(.)$ is such that 
+$$
+\max_{\theta \in \Theta}\mathbb{E}_{\theta}[L(\tilde{d}(\tilde{x})|\theta)] \leq 
+\lim_{k \rightarrow \infty}B_{w_{k}}(d_k(.))
+$$
+then $\tilde{d}(.)$ is minimax over $\Theta$ for $L(.|\theta).$ Furthermore, $w_k$ is called a least favorable prior.
+\end{theorem_exam}
+
+\subsection{Minimax Procedures}
+Recall that a decision function $\tilde{d}(.)$ such that for $\Theta_0 \subseteq \Theta$
+$$
+\sup_{\theta \in \Theta_0}E_{\theta}[L(\tilde{d}(\tilde{x})|\theta)] \leq \sup_{\theta \in \Theta_0}E_{\theta}[L(d(\tilde{x})|\theta)]
+$$
+for any other decision function $d(.)$, then $\tilde{d}(.)$ is said to be minimax over $\Theta_0$ for the loss function $L(.|\theta).$ However, these procedures are harder to find compared to Bayes procedures. However, they have the advantage of not requiring the choice of a weight function.\\
+
+\begin{proposition_exam}{Average less than max}{} For any estimator d(.) and proper prior w(.), 
+$$
+B_w(d(.)) \leq \sup_{\theta \in \Theta}E_{\theta}[L(d(\tilde{x})|\theta)].
+$$
+That is, the Bayes risk is always less than the maximum risk.
+\end{proposition_exam}
+
+From the above lemma, if we can show that the \textbf{maximum risk is less than the Bayes risk, we then can conclude that the Bayes risk is equal to the maximum risk for an estimator and hence it is a minimax estimator}. We have 2 theorems that use Bayes procedures as theoretical tools for finding minimax procedures.
+
+\begin{theorem_exam}{Minimax Estimator}{}Suppose that for $k=1,2,...$, $d_k(.)$ is the Bayes procedures with respect to a \textbf{proper prior} $w_k(.)$ on $\Theta$ and the loss function $L(.|\theta).$ If the procedure $\tilde{d}(.)$ is such that 
+$$
+\max_{\theta \in \Theta}E_{\theta}[L(\tilde{d}(\tilde{x})|\theta)] \leq \lim_{k \rightarrow \infty}\int E_{\theta}[L(d_k(\tilde{x})|\theta)]w_k(\theta)d\theta 
+$$
+$$
+= \lim_{k \rightarrow \infty}B_{w_{k}}(d_k(.))
+$$
+then $\tilde{d}(.)$ is a minimax estimator over $\Theta$ for $L(.|\theta).$
+\end{theorem_exam}
+
+
+\begin{theorem_exam}{Hodges and Lehman}{} Suppose d(.) is a Bayes procedure with respect to $L(.|\theta)$ and a \textbf{proper prior} $w(.)$ on $\Theta.$ Let $\Theta_0$ denote the support of $w(.).$ Suppose the following conditions hold 
+\begin{enumerate}
+\item $\mathbb{E}_{\theta}[L(d(\tilde{x})|\theta)] = c$ for $\theta \in \Theta_0$
+\item $\mathbb{E}_{\theta}[L(d(\tilde{x})|\theta)] \leq c$ for $\theta \in \Theta$
+\end{enumerate}
+then $d(.)$ is minimax over $\Theta$ for $L(.|\theta).$
+\end{theorem_exam}
+
+
+\begin{remark}The reason we have $w_k$ now is that we may have our prior $w(.)$ to be an improper prior or a flat prior, hence $w_k(.)$ are a sequence of proper priors that converges to this prior. This allows us to make sure of the 2 theorems above.
+\end{remark}
+
+\begin{remark}An estimator with constant risk is a minimax estimator.
+\end{remark}
+
+\begin{proposition_exam}{Showing a Bayes procedure is minimax}{}Given a Bayes procedure with a proper prior, if we can show that it has a constant risk, then it is minimax.
+\end{proposition_exam}
+
+\lecture{33}{Decision Theory Recap}
+\section{Statistical Decision Theory}
+\subsection{Decision Theory Recap}
+
+In regression analysis, we have the covariates $X_1,...,X_p$ and the best least squares prediction is given by the conditional mean $d(x_1,...,x_p) = E[Y|X_1 = x_1,...,X_p=x_p].$
+
+The Bayesian approach is to include a prior distribution $w(\theta)$ and make inferences from the posterior distribution 
+$$
+f(\theta|\tilde{x}) = \frac{w(\theta)f(\tilde{x}|\theta)}{m(\tilde{x})} \approx w(\theta)f(\tilde{x}|\theta)
+$$
+where $f(\tilde{x}|\theta)$ is the likelihood function and $m(\tilde{x}) = \int_{\Theta}w(\theta)f(\tilde{x}|\theta)d\theta$ is the marginal likelihood.
+
+$w(\theta)$ represents the beliefs about $\theta$ before observing $\tilde{X}$. $f(\theta|\tilde{x})$ represents beliefs about $\theta$ after observing $\tilde{X}.$
+
+\begin{definition_exam}{Posterior Expected Loss}{} We define the posterior expected loss as 
+$$
+\int_{\Theta}L(d(\tilde{x})|\theta)f(\theta|\tilde{x})d\theta.
+$$
+\end{definition_exam}
+
+\begin{remark}Here, we take a single draw from the posterior and predict what it is.
+\end{remark}
+
+\begin{lemma}The Bayes decision rule minimises the posterior expected loss.
+\end{lemma}
+
+The Bayes decision rule to minimise the posterior expected loss is the same form as a simple prediction problem of a single draw from the posterior distribution $\theta|X.$
+
+\begin{definition_exam}{Limiting Risk}{} We define the limiting risk as the "long term risk" of an estimator 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|d).
+$$
+\end{definition_exam}
+
+\begin{theorem_exam}{MLE under regularity}{}For models that satisfy regularity conditions, MLE and Bayes estimators with reasonable priors $w(.)$ have the same large sample performance.
+\end{theorem_exam}
+
+
+\lecture{34}{Non-regular Bayes estimation}
+\section{Statistical Decision Theory}
+\subsection{Non-regular Bayes estimation}
+As stated in the last section, if a model is regular, then the MLE and Bayes estimators with reasonable priors will have similar limiting rescaled risk. We will now look at what happens when a model is \textbf{not regular}.
+
+\begin{definition}(Pareto Distribution). The CDF of the Pareto $(\gamma, m)$ distribution with shape parameter $\gamma > 0$ and scale $m > 0$ is 
+$$
+F(y;\gamma, m) = 
+\begin{cases}
+0 \quad y < m\\
+1 - (\frac{m}{y})^{\gamma} \quad y \geq m.
+\end{cases}
+$$
+The corresponding PDF is 
+$$
+f(y;\gamma, m) = 
+\begin{cases}
+0 \quad y < m\\
+\frac{\gamma m^{\gamma}}{y^{\gamma + 1}} \quad y \geq m.
+\end{cases}
+$$
+\end{definition}
+
+\begin{theorem}The Pareto distribution is heavy-tailed, and the k-th moment exists only if $\gamma$ is sufficiently large 
+$$
+\mathbb{E}[Y^k] = 
+\begin{cases}
+m^k\frac{\gamma}{\gamma - k} \quad k < \gamma \\
+\infty \quad k \geq \gamma.
+\end{cases}
+$$
+\end{theorem}
+
+\begin{theorem}The mean of the Pareto distribution is 
+$$
+\mathbb{E}[Y] = \frac{m\gamma}{\gamma - 1} \quad \gamma > 1.
+$$
+\end{theorem}
+
+We can now look at our irregular model. Suppose $X_1,...,X_n$ are iid $U(0,\theta)$ random variables where $\theta \in (0,\infty)$ is unknown. For the squared error loss, we wish to determine the limiting risk $\lim_{n \rightarrow \infty}n^2R(\theta|d)$ for the MLE $d(\tilde{X}) = \hat{\theta}_{MLE}$ and for the Bayes estimator with respect to the flat prior $w(\theta) = 1$, which we denote by $\hat{\theta}_{flat}.$\\
+\begin{lemma}The MLE is the sample maximum 
+$$
+\hat{\theta}_{MLE} = X_{(n)}.
+$$
+\end{lemma}
+
+\begin{lemma}The Bayes estimator with a flat prior and uniform likelihood function, has a posterior distribution proportional to the Pareto distribution 
+$$
+f(\theta|\tilde{X}) = \frac{(n-1)X_{(n)}^{n-1}}{\theta^n}1\{\theta \geq X_{(n)}\}.
+$$
+\end{lemma}
+
+\begin{lemma}Under squared error loss, the Bayes estimator $d_{flat}$ is the posterior mean, which in this case is 
+$$
+\hat{\theta}_{flat} = \frac{(n - 1)X_{(n)}}{n - 2} \quad n > 2.
+$$
+\end{lemma}
+
+\begin{lemma}The risk is the MSE under squared error loss. 
+\end{lemma}
+
+\begin{lemma}The limiting rescaled risk of the MLE $\hat{\theta}_{MLE}$ is 
+$$
+\lim_{n \rightarrow \infty}n^2R(\hat{\theta}_{MLE}|\theta) = \theta^2 + \theta^2.
+$$
+\end{lemma}
+
+\begin{lemma}The limiting rescaled risk of the Bayes estimator with a flat prior is 
+$$
+\lim_{n \rightarrow \infty}n^2R(\hat{\theta}_{flat}|\theta) = 0 + \theta^2 = \theta^2.
+$$
+\end{lemma}
+
+\begin{remark}Hence, we see that $\hat{\theta}_{flat}$ dominates $\hat{\theta}_{MLE}$ for large n.
+\end{remark}
+
+As $U(0,\theta)$ is not a regular model as the support depends on $\theta$ and $\theta$ is on the boundary of $\Theta.$ For such models, the MLE does not do well.
+
+\lecture{35}{Asymptotically Minimax Estimator}
+\section{Asymptotically Minimax Procedures}
+\section{Asymptotically Minimax Procedures}
+\subsection{Asymptotically Minimax Estimator}
+
+Minimax estimators that are global (over the entire parameter space) are quite rare. 
+
+\begin{theorem}For a large sample size, the MLE will have a risk smaller than the risk of the minimax estimator, except for a small subset $\theta \in \Theta.$
+\end{theorem}
+
+It is often impossible to find exact minimax estimators. Hence, we relax conditions and now focus on deciding whether to maximimise \textbf{max subset risk} or \textbf{limiting maximum risk}.
+
+\begin{definition}(Max subset risk). The maximum subset risk for a decision d over an interval $[a,b] \subset \Theta$ is 
+$$
+\max_{a \leq \theta \leq b}R(\theta|d).
+$$
+\end{definition}
+
+\begin{definition_exam}{Limiting (rescaled) maximum risk}{} The limiting (rescaled) maximum risk for a sequence of decisions $\{d_n\}_{n \geq 1}$ over an interval $[a,b] \subset \Theta$ is
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_n).
+$$
+\end{definition_exam}
+
+\begin{definition_exam}{Asymptotically Minimax Estimators}{} An estimator $d(\tilde{x})$ which minimises the limiting (rescaled) maximum risk $\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R_n(\theta|d)$ over all choices $d(.)$ is called an \textbf{asymptotically minimax estimator}.
+\end{definition_exam}
+
+For a sequence of decisions $d_n$, to show that it is asymptotically minimax, we have two steps.\\
+
+1) First, we determine a lower bound to 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R_n(\theta|d)
+$$
+for \textbf{any} procedure $R_n(\theta|d).$ Note that this is remarkable as we do not require the estimator to be unbiased or regular. The drawback though is that this gives us only a limiting result.\\
+
+2) We then show that the procedure attains this lower bound.\\
+
+\lecture{36}{Hodges' estimator and Superefficiency}
+\section{Asymptotically Minimax Procedures}
+\subsection{Hodges' estimator and Superefficiency}
+This section, we look at showing that asymptotic mean-variance unbiased estimators (AMVU), which are asymptotically normal with asymptotic mean and asymptotic variance $\frac{1}{n}$, are not actually asymptotically efficient. That is, it is possible to construct estimators that do better than an AMVU estimator in terms of the pointwise limiting (rescaled) risk. In particular, these estimators only outperform AMVU estimators at isolated points.
+
+\begin{definition_exam}{Superefficient}{} A superefficient estimator is an estimator that attains a asymptotic variance that is smaller than regular efficient estimators (AMVU estimators).
+\end{definition_exam}
+
+Suppose we have $X_1,...,X_n$ iid $N(\theta,1)$ for some unknown $\theta.$ 
+
+\begin{definition_exam}{Hodges’ Estimator}{} Suppose $\hat{\theta}_n$ is a consistent estimator for a parameter $\theta$ that converges to an asymptotic distribution $L_{\theta}$, where $L_{\theta}$ is a normal distribution with mean zero and variance depending on $\theta$ at the $\sqrt{n}$ rate 
+$$
+\sqrt{n}(\hat{\theta}_n - \theta) \xrightarrow{d}L_{\theta}.
+$$
+Then, the Hodges’ estimator $\hat{\theta}_n^{H}$ is defined as 
+$$
+\hat{\theta}_n^{H} =
+\begin{cases}
+\hat{\theta}_n \quad \text{if } |\hat{\theta}_n| \geq n^{-1/4}\\
+\\
+0 \quad \text{if } |\hat{\theta}_n| < n^{-1/4}.\\
+\end{cases}
+$$
+\end{definition_exam}
+
+\begin{theorem}The Hodges’ estimator $\hat{\theta}_n^{H}$ is equal to $\hat{\theta}_n$ everywhere except on the interval $[-n^{1/4}, n^{1/4}]$, where it is equal to 0. The Hodges' estimator is superefficient as it surpasses the asymptotic behavior of the efficient estimator $\hat{\theta}_n$ on at one point $\theta = 0.$
+\end{theorem}
+
+\begin{lemma}The Hodges’ estimator $\hat{\theta}_n^{H}$ is consistent for $\theta$ and its asymptotic distribution is 
+$$
+\begin{cases}
+\sqrt{n}(\hat{\theta}_n^{H} - \theta) \xrightarrow{d} L_{\theta} \quad \theta \neq 0\\\\
+n^{\alpha}(\hat{\theta}_n^{H} - \theta) \xrightarrow{d} 0 \quad \theta = 0, \forall \alpha \in \mathbb{R}.
+\end{cases}
+$$
+That is, the estimator has the same asymptotic distribution as $\hat{\theta}_n$ for all $\theta \neq 0$ whereas for $\theta = 0$, the rate of convergence becomes arbitrarily fast.
+\end{lemma}
+
+\begin{theorem}Hodges’ estimator improves upon a regular estimator at a single point. In general, any superefficient estimator may surpass a regular estimator at most on a set of Lebesgue measure zero.
+\end{theorem}
+
+We now analyse the performance of Hodges’ estimator against the AMVU estimator $\overline{X}$ using the criteria of limiting rescaled risk.
+\begin{theorem} Let $d_1(\tilde{X}) = \overline{X}.$ The risk function is $R(\theta|d_1) = Var_{\theta}(\overline{X}) = \frac{1}{n}.$ Then, the rescaled risk is constant, not depending on n or $\theta.$ The limiting rescaled risk of $d_1$ is 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|d_1) = 1.
+$$
+\end{theorem}
+
+\begin{theorem}Let $d_2(\tilde{X})$ be Hodges’ estimator $\hat{\theta}_n^{H}.$ The limiting rescaled risk is 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|d_2) = 
+\begin{cases}
+1 \quad \theta \neq 0\\ 
+\\
+0 \quad \theta = 0.
+\end{cases}
+$$
+\end{theorem}
+
+Here, Hodges' estimator seems to perform uniformly better compared to our AMVU estimator, it does just as well at every point of $\theta$ but does better at the point $\theta = 0$. However, if we now look at the limiting maximum rescaled risk over an interval, we get a different story.
+
+\begin{theorem}Let $d_1(\tilde{X}) = \overline{X}.$ The limiting maximum rescaled risk is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|d_1) = 1
+$$
+as $\max_{a \leq \theta \leq b}nR(\theta|d_1)$ does not depend on n.
+\end{theorem}
+
+\begin{theorem}Let $d_2(\tilde{X})$ be Hodges’ estimator $\hat{\theta}_n^{H}.$ The limiting maximum rescaled risk is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|d_2) = 
+\begin{cases}
+\infty \quad a \leq 0 \leq b \\
+\\
+1 \quad \text{otherwise.}
+\end{cases}
+$$
+\end{theorem}
+Hence, for points very near to but not exactly zero, Hodges’ estimator performs poorly.
+\lecture{37}{Interchanging limit and maximum}
+\section{Asymptotically Minimax Procedures}
+\subsection{Interchanging limit and maximum}
+The takeaway from this section is that limiting rescaled risks may not always be the best criteria to use to evaluate estimators. The \textbf{limiting maximum scaled risk} may be better in some circumstances. Furthemore, it is not always possible to swap the order of operation of taking limits and taking maximum.\\
+
+We recall some facts from analysis.
+\begin{definition}(Supremum norm). Let $f: D \rightarrow \mathbb{K}^N$ be a function. We define its supremum norm by 
+$$
+||f||_{\infty,D} = \sup_{x \in D}||f(x)||.
+$$
+\end{definition}
+\begin{corollary}f is a bounded function if and only if $||f||_{\infty,D} < \infty.$
+\end{corollary}
+
+\begin{lemma}Let $f: D \rightarrow \mathbb{K}^N$ be a continuous function. If D is a compact subset of $\mathbb{K}^d$, then f is bounded. That is, $||f||_{\infty,D} < \infty.$
+\end{lemma}
+
+\begin{definition}(Uniform convergence). We say that $f_n \rightarrow f$ uniformly on D if for every $\epsilon > 0$, there exists a $n_{\epsilon} \in \mathbb{N}$ such that 
+$$
+||f_n(x) - f(x)|| < \epsilon
+$$
+for all $n > n_{\epsilon}$ and all $x \in D.$ We say that $f_n(x) \rightarrow f(x)$ uniformly with respect to $x \in D.$
+\end{definition}
+
+\begin{proposition_exam}{Uniform Convergence of Functions}{}Let $f_n: D \rightarrow \mathbb{K}^N$ be a sequence of functions. Then, we have that $f_n \rightarrow f$ uniformly on the domain D if and only if 
+$$
+||f_n - f||_{\infty,D} \rightarrow 0
+$$
+as $n \rightarrow \infty.$
+\end{proposition_exam}
+
+\subsection{Poisson Interval Estimation}
+We describe the setup for the poisson interval. Suppose $\tilde{x} = (x_1,...,x_n)$ consists of iid Poisson$(\theta)$ r.v's with 
+$$
+P_{\theta}(X_1=x) = \frac{e^{-\theta}\theta^x}{x!}
+$$
+for $x = 0,1,...$ and some unknown parameter $\theta \in \Theta = (0,\infty).$\\
+Consider the decision problem of predicting interval estimate of $\theta$ of width $\frac{2C}{\sqrt{n}}$ where the decision space $D = \Theta = (0,\infty)$ and the loss function is $1\{|d-\theta| > \frac{C}{\sqrt{n}}\}$ for some known $C > 0.$\\
+We define the decision $d(\tilde{x}) = \overline{X}.$ 
+
+\begin{proposition}The risk for the Poisson interval estimate is 
+$$
+R(\theta|\overline{X}) = P_{\theta}(\theta < \overline{X} - \frac{C}{\sqrt{n}}) + P_{\theta}(\theta > \overline{X} - \frac{C}{\sqrt{n}}).
+$$
+\end{proposition}
+
+If we let $T = n\overline{X}$ and recall that T is asymptotically normal, that is 
+$$
+Z_n = \frac{T - n\theta}{\sqrt{n\theta}} \xrightarrow{d} \mathcal{N}(0,1).
+$$
+
+\begin{lemma}For any $z_n \rightarrow z$, we have that 
+$$
+P_{\theta}(Z_n \leq z_n) \rightarrow \Phi(z)
+$$
+where $\Phi(.)$ is the $\mathcal{N}(0,1)$ CDF.
+\end{lemma}
+
+\begin{theorem}For a fixed $\theta$, we have that the limiting risk for the Poisson interval estimation is 
+$$
+\lim_{n \rightarrow \infty}R(\theta|\overline{X}) = 2[1 - \Phi(\frac{C}{\sqrt{\theta}})].
+$$
+\end{theorem}
+
+We are interested in computing $\lim_{n\rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\overline{X})$. We nominate that we could possibly compute this by interchanging the operations and analysing $\max_{a \leq \theta \leq b}\lim_{n\rightarrow \infty}R(\theta|\overline{X}).$
+
+\begin{lemma}We have that 
+$$
+\max_{a \leq \theta \leq b}\lim_{n\rightarrow \infty}R(\theta|\overline{X}) = 2[1 - \Phi(\frac{C}{\sqrt{b}})]
+$$
+where b is the maximum of the interval we are maximising $\theta$ over.
+\end{lemma}
+
+\begin{lemma}We can upper bound the limiting maximum risk by the following
+$$
+\lim_{n\rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\overline{X}) \leq 2[1 - \Phi(\frac{C}{\sqrt{b}})]
+$$
+where $b$ is the end point of the interval to maximise $\theta.$
+\end{lemma}
+
+\begin{corollary}If we can show that $2[1 - \Phi(\frac{C}{\sqrt{b}})]$ is also a lower bound, then we have that 
+$$
+\lim_{n\rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\overline{X}) = 2[1 - \Phi(\frac{C}{\sqrt{b}})] = \max_{a \leq \theta \leq b}\lim_{n\rightarrow \infty}R(\theta|\overline{X}).
+$$
+That is, we can interchange the operation of taking limits and taking maximum.
+\end{corollary}
+
+
+
+\lecture{38}{Asymptotic Minimax Lower Bound}
+\section{Asymptotically Minimax Procedures}
+\subsection{Asymptotic Minimax Lower Bound}
+We now use the pointwise limiting rescaled risk of certain Bayes procedures to provide a lower bound to the limiting maximum rescaled risk of \textbf{any estimator}. That is, the bound applies to any estimator whereas previously, the Cramer Rao Lower bound only applied to unbiased and regular models. 
+\begin{theorem_exam}{Asymptotic Minimax Lower Bound theorem}{} Suppose that for a sequence $\{L_n(.|\theta)\}$ of loss functions and any $\theta_0 < \theta_1$, the corresponding sequence of Bayes procedures $\{d_n(.)\}$ based on the uniform prior $U[\theta_0, \theta_1]$ over the interval $[\theta_0, \theta_1]$ is such that for each $\theta_0 < \theta < \theta_1$, we have that the limiting risk
+$$
+\lim_{n \rightarrow \infty}R_n(\theta|d_n) = \lim_{n \rightarrow \infty}E_{\theta}\bigg[ L_n(d_n(x)|\theta)\bigg] = S(\theta)
+$$
+for some continuous function $S(.).$ \\Then for \textbf{any other sequence of procedures} $\{\tilde{d}(.)\}$ and any $a < b$, 
+$$
+\max_{a \leq \theta \leq b}S(\theta) = \max_{a \leq \theta \leq b}\lim_{n \rightarrow \infty}R_n(\theta|d_n) \leq \lim_{n \rightarrow \infty}max_{a \leq \theta \leq b}E_{\theta}\bigg[L_n(\tilde{d}_n(x)|\theta)\bigg].
+$$
+\end{theorem_exam}
+
+\begin{remark}$L_n(.)$ and hence $R_n$ absorbs the rescaling n term. Furthermore, by analysing the pointwise limiting risk of certain Bayes procedures, this gives us a lower bound to the limiting maximum risk of any procedure which is quite remarkable.
+\end{remark}
+
+\begin{remark}For any fixed a and b, it is needed that $[\theta_0, \theta_1] \subseteq [a,b].$ However, the asymptotically minimax property is to hold for any $a < b$ in the parameter space, therefore we also require that the Bayes procedure based on the $U[\theta_0,\theta_1]$ prior to have the desired property for any $\theta_0 < \theta_1$ in the parameter space.
+\end{remark}
+
+\begin{remark}There is nothing special to a uniform prior being used. Any other prior with bounded support would also work. However, it is easier to work with a uniform prior.
+\end{remark}
+
+The important takeaway from the above theorem is that if we have a Bayes procedures based on a uniform prior, then the maximum limiting risk is the lower bound for the limiting maximum risk of any other procedure.
+
+
+\lecture{39}{Proof of Asymptotic Minimax Lower Bound theorem}
+\section{Asymptotically Minimax Procedures}
+\subsection{Proof of Asymptotic Minimax Lower Bound theorem}
+We are interested in proving the asymptotic minimax lower bound theorem. Let us recall is first.
+\begin{theorem}Suppose that for a statistical decision problem based on a sequence $\{L_n(d|\theta)\}$ of loss functions, for any $\theta_0 < \theta_1$, the sequence $\{\tilde{d}(.)\}$ of Bayes procedures based on the uniform $U[\theta_0, \theta_1]$ weight function $w(\theta) = \frac{1\{\theta_0 \leq \theta \leq \theta_1\}}{\theta_1 - \theta_0}$ satisfies, for all $\theta_0 < \theta < \theta_1$,
+$$
+\lim_{n \rightarrow \infty}E_{\theta}\bigg[L_n(\tilde{d}_n(X)|\theta) \bigg] = S(\theta)
+$$
+for a continuous function S(.). Then, for any other sequence of procedures $\{d_n(.)\}$ and any $a < b$, we have that 
+$$
+\max_{a \leq \theta \leq b}S(\theta) \leq \lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}E_{\theta}\bigg[ L_n(d_n(X)|\theta) \bigg].
+$$
+\end{theorem}
+\begin{lemma}For a monotone function $m(.)$, the limit 
+$$
+\lim_{x \rightarrow \infty}m(x)
+$$
+always exists.
+\end{lemma}
+
+\begin{lemma}For an arbitrary function $f(.)$, the new functions 
+$$
+\overline{f(x)} = \sup_{y \geq x}f(y)
+$$
+and 
+$$
+\underline{f(x)} = \inf_{y \geq x}f(y)
+$$
+are monotone.
+\end{lemma}
+
+\begin{corollary}As a result, we have that 
+$$
+\lim_{x \rightarrow \infty}\overline{f(x)} = \lim_{x \rightarrow \infty}\sup_{y \geq x}f(y) = \lim_{x \rightarrow \infty}\sup f(x)
+$$
+and
+$$
+\lim_{x \rightarrow \infty}\underline{f(x)} = \lim_{x \rightarrow \infty}\inf_{y \geq x}f(y) = \lim_{x \rightarrow \infty}\inf f(x)
+$$
+always exists.
+\end{corollary}
+
+\begin{lemma}We have that $\lim_{x \rightarrow \infty}\inf f(x) = \lim_{x \rightarrow \infty}\sup f(x)$ if and only if $\lim_{x \rightarrow \infty}f(x)$ exists.
+\end{lemma}
+
+\begin{theorem}(Fatou's Lemma). For a sequence of non-negative functions $\{f_n(.)\}$, we have that 
+$$
+\lim_{n \rightarrow \infty}inf \int f_n(x)dx \geq \int \lim \inf f_n(x)dx.
+$$
+\end{theorem}
+
+\begin{lemma}For any sequence of procedure $\{d_n(.)\}$ and any $a < \theta_0 < \theta_1 < b$, we have that 
+$$
+\lim_{n \rightarrow \infty}\inf \max_{a \leq \theta \leq b}E_{\theta}\bigg[L_n(d_n(X)|\theta) \bigg] \geq \frac{1}{\theta_1 - \theta_0}\int_{\theta_{0}}^{\theta_{1}}S(\theta)d\theta
+$$
+where the weight function is the uniform density over the interval $[\theta_0, \theta_1].$
+\end{lemma}
+
+\begin{lemma}Under the conditions, we have that for any $a < b$
+$$
+\lim_{n \rightarrow \infty}\inf \max_{a \leq \theta \leq b}E_{\theta}\bigg[L_n(d_n(X)|\theta) \bigg] \geq \max_{a \leq \theta \leq b}S(\theta).
+$$
+\end{lemma}
+
+\lecture{40}{Interval Estimation of a normal mean parameter}
+\section{Examples of Asymptotically Minimax Procedures}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Introduction to interval estimation}
+Suppose our loss function is the interval non-coverage loss. The interval is the level set of the posterior of the desired width $2C_n$, that is, the set of $\theta$ values where the posterior density $p(\theta|X)$ is above a certain level $\ell$
+$$
+\{\theta: p(\theta|X) \geq \ell\}.
+$$
+Choosing different levels of $\ell$ gives intervals of different widths. The trick is then to choose the level which gives an interval of width $2C_n.$ We have two scenarios.
+\begin{enumerate} 
+\item If the posterior density is \textbf{unimodal}, first increasing then decreasing, then it is $d \pm C_n$ where we solve for d in the equation
+$$
+p(d - C_n|X) = p(d + C_n|X)
+$$
+\item If the posterior density is \textbf{strictly decreasing} over some range [a, b), then so long as $a + 2C_n < b$, the level set is then simply 
+$$
+[a, a + 2C_n].
+$$
+\end{enumerate}
+
+Hence, we are looking the interval of width $2C_n$ with the highest probability under the posterior distribution.
+\subsection{Examples with non-coverage loss: Poisson Interval Estimation Revisited}
+Recalled we have shown that for the procedure $\overline{X}$,
+$$
+\lim_{n\rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\overline{X}) \leq \max_{a \leq \theta \leq b}\lim_{n\rightarrow \infty}R(\theta|\overline{X}) = 2[1 - \Phi(\frac{C}{\sqrt{b}})]
+$$
+and that we now wanted to show that the maximum of the limiting risk is also a lower bound. We can use the theorem of the asymptotic minimax lower bound theorem to help us show this.\\
+
+First, recall that 
+$$
+\lim_{n \rightarrow \infty}R(\theta|\tilde{d}_n) = 2 [1 - \Phi(\frac{C}{\sqrt{\theta}})] = S(\theta).
+$$
+We use the uniform prior $w(\theta) = \frac{1\{\theta_0 \leq \theta \leq \theta_1\}}{\theta_1 - \theta_0}.$ We have that the product of the prior and likelihood gives us 
+$$
+w(\theta)f_{\theta}(\tilde{x}) = Const \frac{\theta^{(T+1)}e^{-\eta \theta}1\{\theta_0 \leq \theta \leq \theta_1\}}{\int_{\theta_0}^{\theta_1}\theta^{(T+1)-1}e^{-n\theta}d\theta}
+$$
+where $T = \sum_{i=1}^{n}X_i.$ The posterior density is a \textbf{truncated gamma density}. That is, it is the Gamma distribution with shape T+1 and rate n where we restrict it to the interval $[\theta_0,\theta_1].$ As the loss function is the coverage loss, the Bayes procedure is the level set of the posterior of width $\frac{2C}{\sqrt{n}}.$ Hence, $\tilde{d}_n(\tilde{x}) = \overline{X}.$\\
+
+We can now use the asymptotic minimax lower bound theorem.
+\begin{theorem}For any other procedure $\{d_n\}$ and any $a < b$
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_n(.)) \geq \max_{a \leq \theta \leq b}S(\theta)
+$$
+$$
+= \max_{a \leq \theta \leq b}2[1 - \Phi(\frac{C}{\sqrt{\theta}})]
+$$
+$$
+= 2[1 - \Phi(\frac{C}{\sqrt{b}})].
+$$
+\end{theorem}
+
+Hence, using the above, let $\{d_n\} = \overline{X}$ and we get that 
+$$
+2[1 - \Phi(\frac{C}{\sqrt{b}})] \leq \lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\overline{X}).
+$$
+
+As a result, we finally get the result that 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\overline{X}) = 2[1 - \Phi(\frac{C}{\sqrt{b}})] = \max_{a \leq \theta \leq b}\lim_{n \rightarrow \infty}R(\theta|\overline{X})
+$$
+that is, we can interchange the operation of taking limits and maximum. Therefore, the procedure $\overline{X} \pm \frac{C}{\sqrt{n}}$ is asymptotically minimax over any interval for Poisson interval estimation.
+
+\lecture{41}{Interval Estimation of a normal mean parameter}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Examples with non-coverage loss: Interval Estimation of a normal mean parameter}
+The limiting risk of Bayes procedures $\tilde{d}(X)$ using a uniform prior can be derived by first deriving the limiting risk of $d_{flat}(X)$, the Bayes procedure using the flat prior $w(\theta) = 1$ and then showing that with probability tending to 1, $\tilde{d}(X) = d_{flat}(X).$
+
+Suppose $\tilde{X}$ consists of iid $N(\theta,1)$ r.v's for some unknown $\theta \in \Theta = \mathbb{R}.$ Consider the decision problem with $D = \Theta = \mathbb{R}$ and non-coverage loss function $L(d|\theta) = 1\{|d - \theta| > \frac{C}{\sqrt{n}}\}$ for some given $C > 0.$\\
+
+We first derive the limiting risk of the Bayes estimator $\tilde{d}(\tilde{X})$ based on a uniform prior $U[\theta_0,\theta_1].$
+
+\begin{lemma}The posterior density of the Bayes estimator $\tilde{d}$ using a uniform prior $U[\theta_0, \theta_1]$ is 
+$$
+w(\theta)f_{\theta}(\tilde{X}) = Const.\frac{1\{\theta_0 \leq \theta \leq \theta_1\}e^{-\frac{n}{2}(\theta - \overline{X})^2}}{\int_{\theta_{0}}^{\theta_{1}}e^{-\frac{n}{2}(\theta - \overline{X})^2}}.
+$$
+In particular, the posterior density is a truncated normal density where we restrict the normal $N(\overline{X}, \frac{1}{n})$ density to the interval $[\theta_0, \theta_1].$
+\end{lemma}
+
+\begin{lemma}The Bayes estimator $\tilde{d}(\tilde{X})$ is the midpoint of the level set of the truncated normal density of width $\frac{2C}{\sqrt{n}}.$ That is, $\tilde{d}(\tilde{X}) = \overline{X}$ for when 
+$$
+\theta_0 + \frac{C}{\sqrt{n}} < \overline{X} < \frac{C}{\sqrt{n}} - \theta_1.
+$$
+\end{lemma}
+
+\begin{definition}(Event of non-coverage). Let us denote $B_n$ to be the event of non-coverage of the interval 
+$$
+B_n = \{\theta < \overline{X} - \frac{C}{\sqrt{n}}\} \cup \{\theta > \overline{X} + \frac{C}{\sqrt{n}}\}.
+$$
+\end{definition}
+\begin{theorem}We have that the limiting risk of the Bayes estimator $\tilde{d}$ using a uniform prior $U[\theta_0, \theta_1]$ is 
+$$
+\lim_{n \rightarrow \infty}R(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}P_{\theta}(B_n) = 2\bigg[1 - \Phi(C) \bigg] = S(\theta).
+$$
+\end{theorem}
+
+\begin{corollary}For any procedure $\{d_n(.)\}$, and any $a < b$, we have that 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_n) \geq \max_{a \leq \theta \leq b}S(\theta) = 2\bigg[1 - \Phi(c) \bigg].
+$$
+\end{corollary}
+
+Now, to show that $\overline{X} = \hat{\theta}_n$ is asymptotically minimax, we need to show that 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\hat{\theta}_n) \leq \max_{a \leq \theta \leq b}S(\theta) = 2\bigg[1 - \Phi(c) \bigg].
+$$
+
+However, we have just shown that $\overline{X}$ has a limiting maximum rescaled risk that is exactly equal to the lower bound. Hence, $\overline{X}$ is asymptotically minimax.\\
+
+We now want to show that a Bayes estimator with a conjugate normal prior $w(\theta) = \frac{1}{\sigma_0\sqrt{2\pi}}e^{-\frac{1}{2\sigma^2}(\theta - \mu_0)^2}$ ($\mathcal{N}(\mu_0, \sigma_{0}^{2})$ density) is asymptotically minimax.
+
+\begin{lemma}The posterior distribution of the Bayes estimator with conjugate normal prior $\mathcal{N}(\mu_0, \sigma_{0}^{2})$ is also a normal distribution 
+$$
+\mathcal{N}\bigg( \big(\frac{1}{1+n\sigma_{0}^{2}}\big)\mu_0 + \big(\frac{n\sigma_{0}^{2}}{1 + n\sigma_{0}^{2}}\big)\overline{X}, \frac{\sigma_{0}^{2}}{1 + n\sigma_{0}^{2}}  \bigg).
+$$
+\end{lemma}
+
+\begin{lemma}Under the interval coverage loss, the Bayes estimator is the center of symmetry of the posterior distribution, hence 
+$$
+\hat{\theta}_{conj} \pm \frac{C}{\sqrt{n}}
+$$
+where $\hat{\theta}_{conj} = \big(\frac{1}{1+n\sigma_{0}^{2}}\big)\mu_0 + \big(\frac{n\sigma_{0}^{2}}{1 + n\sigma_{0}^{2}}\big)\overline{X}.$
+\end{lemma}
+
+\begin{lemma}The exact risk for the Bayes estimator $\hat{\theta}_{conj}$ is
+$$
+R(\theta|\hat{\theta}_{conj}) = P_{\theta}\bigg(\theta < \hat{\theta}_{conj} - \frac{C}{\sqrt{n}} \bigg) + P_{\theta}\bigg(\theta > \hat{\theta}_{conj} - \frac{C}{\sqrt{n}} \bigg)
+$$
+\end{lemma}
+
+We analyse the probabilities of our interval being too high or too low in separate cases.
+\begin{lemma}We have that the probability of our interval overestimating to be 
+$$
+P_{\theta}\bigg(\theta < \hat{\theta}_{conj} - \frac{C}{\sqrt{n}} \bigg) = 1 - \Phi\bigg(C(1 + \frac{1}{n\sigma_0^2}) + \frac{\theta - \mu_0}{\sigma_0^2\sqrt{n}} \bigg).
+$$
+\end{lemma}
+
+\begin{lemma}We have that the probability of our interval underestimating to be 
+$$
+P_{\theta}\bigg(\theta < \hat{\theta}_{conj} - \frac{C}{\sqrt{n}} \bigg) = \Phi\bigg(-C(1 + \frac{1}{n\sigma_0^2}) + \frac{\theta - \mu_0}{\sigma_0^2\sqrt{n}} \bigg).
+$$
+\end{lemma}
+
+\begin{lemma}Hence, for any $a < b$, we have that 
+$$
+\max_{a \leq \theta \leq b}R(\theta|\hat{\theta}_{conj}) \leq 1 - \Phi\bigg(C(1 + \frac{1}{n\sigma_0^2}) + \frac{\theta - \mu_0}{\sigma_0^2\sqrt{n}} \bigg) + \Phi\bigg(-C(1 + \frac{1}{n\sigma_0^2}) + \frac{\theta - \mu_0}{\sigma_0^2\sqrt{n}} \bigg).
+$$
+\end{lemma}
+
+\begin{corollary}We have that the limiting maximum risk for $\hat{\theta}_{conj}$ is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|\hat{\theta}_{conj}) \leq 2\bigg[1 - \Phi(C) \bigg].
+$$
+\end{corollary}
+
+Hence, $\hat{\theta}_{conj}$ is asymptotically minimax.
+
+
+\lecture{42}{Interval Estimation of a uniform scale parameter}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Examples with non-coverage loss: Interval Estimation of a uniform scale parameter}
+
+Suppose $\tilde{X} = (X_1,...,X_n)$ consists of iid $U[0,\theta]$ random variables for some unknown $\theta \in \Theta = (0,\infty).$ The maximum likelihood estimator is $X_{(n)}$, the sample maximum. 
+
+\begin{remark}
+In models that do not satisfy regularity conditions, the bias matters now when analysing the limiting MSE.
+\end{remark}
+
+\begin{lemma}The posterior distribution of the Bayes procedure $d_{flat}$ using the flat prior $w(\theta) = 1$ is the Pareto distribution with shape n-1 and scale $X_{(n)}$
+$$
+p(\theta|\tilde{X}) = \frac{(n - 1)X_{(n)}^{n - 1}}{\theta^n}1\{\theta \geq X_{(n)}\}.
+$$
+\end{lemma}
+
+\begin{lemma}Under non-coverage loss, the interval estimate with $d_{flat}$ is the level set of width $\frac{2C}{n}$, which in this case is 
+$$
+\bigg[X_{(n)},X_{(n)} + \frac{2C}{n}  \bigg].
+$$
+\end{lemma}
+
+\begin{lemma}The risk function for $d_{flat}$ is 
+$$
+R(\theta|d_{flat}) = P_{\theta}(\theta < X_{(n)}) + P_{\theta}(\theta > X_{(n)} + \frac{2C}{n})
+$$
+$$
+= \bigg(1 - \frac{2C}{\theta n} \bigg)^n.
+$$
+\end{lemma}
+
+\begin{corollary}Hence, the maximum of $d_{flat}$ over [a,b] is 
+$$
+\max_{a \leq \theta \leq b}R(\theta|d_{flat}) = \bigg(1 - \frac{2C}{bn} \bigg)^n.
+$$
+\end{corollary}
+
+\begin{lemma}The limiting risk of $d_{flat}$ is 
+$$
+\lim_{n \rightarrow \infty}R(\theta|d_{flat}) = \lim_{n \rightarrow \infty} \bigg(1 - \frac{2C}{bn} \bigg)^n = e^{-\frac{2C}{\theta}}.
+$$
+\end{lemma}
+
+\begin{lemma}The limiting maximum risk of $d_{flat}$ is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_{flat}) = e^{-\frac{2C}{b}}.
+$$
+\end{lemma}
+
+We now show that $d_{flat}$ is asymptotically minimax. We derive the limiting risk of $\tilde{d}$ using the $U[\theta_0,\theta_1]$ prior.
+
+\begin{lemma}The posterior distribution of $\tilde{d}$ using the $U[\theta_0,\theta_1]$ prior is 
+$$
+const.\frac{1}{\theta^n}\frac{1\{max(X_{(n)}, \theta_0) \leq \theta \leq \theta_1\}}{\int_{max(X_{(n)},\theta_0)}^{\theta_1}\frac{1}{\theta^n}d\theta}
+$$
+which is the truncated version of the Pareto distribution we get using the flat prior.
+\end{lemma}
+
+\begin{lemma}As long as $\theta_0 \leq X_{(n)}$ and $X_{(n)} + \frac{2C}{n} \leq \theta$, the level is 
+$$
+\bigg[X_{(n)}, X_{(n)} + \frac{2C}{n} \bigg].
+$$
+\end{lemma}
+
+
+\begin{lemma}We can show that 
+$$
+P_{\theta}\bigg[\theta_0 \leq X_{(n)} \leq \theta_1 - \frac{2C}{n} \bigg] \rightarrow 1
+$$
+for all $\theta_0 < \theta < \theta_1.$
+\end{lemma}
+
+\begin{lemma}Let us denote $\tilde{d}_n(.)$ to be the Bayes procedure which uses the uniform prior $U[\theta_0, \theta_1]$. Then, we have that 
+$$
+P_{\theta}\bigg[d_{flat}(\tilde{X}) = \tilde{d}_n(\tilde{X}) \bigg] \rightarrow 1
+$$
+for all $\theta_0 < \theta < \theta_1.$
+\end{lemma}
+
+\begin{lemma}The limiting risk of the Bayes procedure with uniform prior, via the flat prior, is 
+$$
+\lim_{n \rightarrow \infty}R(\theta|\tilde{d}_n) = \lim_{n \rightarrow \infty}R(\theta|d_{flat}) = e^{-\frac{2C}{\theta}} = S(\theta).
+$$
+\end{lemma}
+
+Hence, for any sequence of procedures $\{d_n(.)\}$,
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_n) \geq \max_{a \leq \theta \leq b}S(\theta) = e^{-\frac{2C}{b}}.
+$$
+Therefore, $d_{flat}$ is asymptotically minimax.
+
+
+
+
+\lecture{43}{Estimating binomial proportion with known sample size}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Examples with squared error loss: Estimating binomial proportion with known sample size}
+In the case of squared error loss, it turns out that in many cases, the Bayes procedure (i.e. the posterior mean) using a uniform prior has the same limiting rescaled risk as the Bayes procedure using a flat prior.\\
+
+ Suppose $\tilde{X} = (X_1,...,X_n)$ consists of iid binomial $(1,\theta)$ random variables for $\theta \in \Theta = (0,1).$ Consider the decision problem with decision space $D = \Theta = (0,1)$ and the loss $L(d|\theta) = (d - \theta)^2.$ We want to show that the Bayes procedure with the conjugate prior $w(\theta) = \frac{\theta^{\alpha_{0}-1}(1 - \theta)^{\beta_{0}-1}}{beta(\alpha_{0},\beta_{0})}$ (beta$(\alpha_0, \beta_0)$ density) is asymptotically minimax. We assume that for any $\theta \leq \theta_0 < \theta_1 \leq 1,$ the Bayes procedure using the $U[\theta_0, \theta_1]$ prior, $\tilde{d}(\tilde{X})$ is such that 
+ $$
+\lim_{n \rightarrow \infty}nR(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}nR(\theta|d_{flat})
+ $$
+ where $d_{flat}$ is the Bayes procedure using the flat prior $w(\theta)= 1.$\\
+
+First, we find the lower bound to the limiting maximum risk. We look at the limiting rescaled risk of $\tilde{d}$ but this may be difficult, hence, we use the assumption given to us and look at the limiting rescaled risk of $d_{flat}$ which uses a flat prior.\\
+
+\begin{lemma}The posterior distribution for $d_{flat}$ using a flat prior $w(\theta) = 1$ is 
+$$
+p(\theta|\tilde{X}) = \frac{\theta^{(T+1)-1}(1 - \theta)^{(n - T + 1) - 1}}{beta(T+1, n-T+1)}
+$$
+which is the $beta(T+1,n-T+1)$ density.
+\end{lemma}
+
+\begin{corollary}Under a squared-error loss, the Bayes procedure for $d_{flat}$ is the posterior mean of the $beta(T+1,n-T+1)$ density, which is 
+$$
+d_{flat}(\tilde{X}) = \frac{T+1}{n+2}
+$$
+which may be interpreted as the sample proportion we would obtain if we added 1 success and 1 failure to the data.
+\end{corollary}
+
+\begin{lemma}The risk under a squared error loss is the mean squared error, which can be decomposed into the variance and bias squared. Hence, the risk of $d_{flat}$ is 
+$$
+R(\theta|d_{flat}) = Var_{\theta}\bigg[d_{flat}\bigg] + Bias_{\theta}\bigg[d_{flat}\bigg]^2 = \frac{n\theta(1 - \theta)}{(n+2)^2} + \bigg(\frac{1 - 2\theta}{n + 2}\bigg)^2
+$$
+$$
+= \frac{n\theta(1 - \theta) + (1 - 2\theta)^2}{(n+2)^2}.
+$$
+\end{lemma}
+
+\begin{lemma}We have that the limiting rescaled risk for $d_{flat}$ is 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|d_{flat}) = \lim_{n \rightarrow \infty} ]bigg[\frac{n\theta(1 - \theta) + (1 - 2\theta)^2}{(n+2)^2} \bigg]
+$$
+$$
+\rightarrow \theta(1-\theta) = S(\theta).
+$$
+\end{lemma}
+
+Hence, using our assumption, we have that 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}nR(\theta|d_{flat}) = \theta(1 - \theta).
+$$
+
+\begin{corollary}For any other procedure $\{d_n(.)\}$, we have that 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_n) \geq \max_{a \leq \theta \leq b}S(\theta) = \max_{a \leq \theta \leq b}\theta(1 - \theta).
+$$
+\end{corollary}
+
+We now look for an upper bound. 
+\begin{lemma}Using the $beta(\alpha_0, \beta_0)$ density as a weight function, we have that the posterior density is 
+$$
+f_{\theta}(\tilde{X})w(\theta) = Const. \frac{\theta^{T+\alpha_0 - 1}(1 - \theta)^{n - T + \beta_0 - 1}}{beta(T + \alpha_0, n - T + \beta_0)}
+$$
+where the posterior density is the $beta(T + \alpha_0, n - T + \beta_0)$ density.
+\end{lemma}
+
+\begin{lemma}The Bayes procedure under the squared error loss is the posterior mean, which is,
+$$
+d_{conj}(\tilde{X}) = \frac{T + \alpha_0}{n + \alpha_0 + \beta_0}.
+$$
+\end{lemma}
+
+\begin{lemma}The risk under the squared error loss is the MSE, hence, the risk of $d_{conj}$ is 
+$$
+R(\theta|d_{conj}) = Var_{\theta}\bigg[d_{conj}(X) \bigg] + Bias_{\theta}\bigg[d_{conj}\bigg]^2
+$$
+$$
+= \frac{n\theta(1 - \theta) + [(1 - \theta)\alpha_0 - \theta \beta_0]^2}{(n + \alpha_0 + \beta_0)^2}.
+$$
+\end{lemma}
+
+\begin{lemma}The limiting maximum rescaled risk of $d_{conj}$ can be bounded by 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}R(\theta|d_{conj}) \leq \max_{a \leq \theta \leq b}\theta(1 - \theta) = \max_{a \leq \theta \leq b}S(\theta).
+$$
+\end{lemma}
+
+\begin{corollary}The bias is asymptotically negligible compared to the variance in the limit.
+\end{corollary}
+
+\begin{theorem_exam}{Exponential family variance vs risk}{}Exponential families have the property that the variance dominates the risk in the limit.
+\end{theorem_exam}
+
+Hence, we have that $d_{conj}(\tilde{X})$ is asymptotically minimax.
+
+\subsection{Showing convergence of interval coverage}
+
+\begin{theorem}
+Suppose that $X_1,...,X_n$ are iid $N(\theta,1)$ are random variables and $\overline{X} = \frac{1}{n}\sum_{i=1}^{n}X_i$. If $\theta_0 < \theta < \theta_1$ and $0 < C <\infty$, then 
+$$
+P_{\theta}\bigg\{\theta_0 + \frac{C}{\sqrt{n}} < \overline{X} < \theta_1 - \frac{C}{\sqrt{n}} \bigg\} \rightarrow \infty
+$$
+as $n \rightarrow \infty.$
+\end{theorem}
+
+\begin{remark}Hence, the probability that the estimator $\overline{X}$ lies in the interval is 1 as the sample size gets large.
+\end{remark}
+
+\lecture{44}{Estimating normal variance with known mean}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Examples with squared error loss: Estimating normal variance with known mean}
+ 
+Suppose $X = (X_1,...,X_n)$ consists of iid $N(0,\theta)$ R.Vs for some unknown $\theta \in \Theta = (0,\infty).$ We let the decision space $D = \Theta = (0,\infty)$ and loss $L(d|\theta) = (d - \theta)^2.$ We want to show that \textbf{both} the maximum-likelihood estimator and the Bayes procedure with the inverse Gamma conjugate prior $w(\theta) = \frac{\lambda_{0}^{\alpha_{0}}e^{-\lambda/\theta}}{\theta^{\alpha_{0}+1}\Gamma(\alpha_{0})}$ for known $\alpha_0, \lambda_0 > 0$ are asymptotically minimax.\\
+
+We are allowed to assume that for any $0 < \theta_0 < \theta_1 < \infty$, the Bayes procedure $\tilde{d}(.)$ using the $U[\theta_0, \theta_1]$ prior, has, for all $\theta_0 < \theta < \theta_1$,
+$$
+\lim_{n \rightarrow \infty}nR(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}nR(\theta|d_{flat})
+$$
+where $d_{flat}$ is the Bayes procedure using the flat prior $w(\theta) = 1.$\\
+
+We show two steps. First, we find the lower bound to any limiting maximum rescaled risk for \textbf{any} estimator. Then, we find the upper bounds to the limiting maximum risks for our candidate estimators. If these bounds coincide, then we have shown that our candidate estimators are asymptotically minimax.\\
+
+Instead of trying to derive the limiting maximum rescaled risk with our Bayes procedure with inverse Gamma conjugate prior $\tilde{d}$, we can use the assumption given to us that it is equivalent to the limiting maximum rescaled risk of $d_{flat}$ which uses a flat prior.
+
+\begin{lemma}The posterior density of $d_{flat}$ is 
+$$
+w(\theta)f_{\theta}(\tilde{X}) = \frac{1}{(2\pi \theta)^{n/2}}e^{-\frac{1}{2\theta}T}
+$$
+where $T = \sum_{i=1}^{n}X_i^2$ is the sufficient statistic.
+\end{lemma}
+
+\begin{corollary}The posterior density of $d_{flat}$ is the Inverse Gamma($\frac{n}{2}-1, \frac{T}{2}$) as we had that the conjugate prior of $\tilde{d}$ was an Inverse gamma.
+\end{corollary}
+
+\begin{lemma}The Bayes procedure under squared error loss is the posterior mean, hence 
+$$
+d_{flat}(\tilde{X}) = \frac{T/2}{(n/2 - 1) - 1} = \frac{T}{n - 4}.
+$$
+\end{lemma}
+
+\begin{lemma}Under the squared error loss, the risk of $d_{flat}$ is the MSE of $d_{flat}.$ Therefore,
+$$
+R(\theta|d_{flat}) = Var(d_{flat}) + Bias(d_{flat})^2 = \frac{2n\theta^2}{(n-4)^2} + \frac{16\theta^2}{(n-4)^2}.
+$$
+\end{lemma}
+
+\begin{lemma}The limiting maximum rescaled risk is of $d_{flat}$ is 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|d_{flat}) = \lim_{n \rightarrow \infty}\{nVar_{\theta}(d_{flat})\} + \lim_{n \rightarrow \infty}\{nBias_{\theta}(d_{flat})^2\}
+$$
+which is equal to 
+$$
+= 2\theta^2 \bigg[ \lim_{n \rightarrow \infty}\bigg(\frac{n}{n-4}\bigg)^2 + \lim_{n \rightarrow \infty}\frac{8n}{(n-4)^2} \bigg]
+$$
+$$
+\xrightarrow{n \rightarrow \infty}2\theta^2.
+$$
+\end{lemma}
+
+\begin{corollary}Under the squared error loss, the contribution of the bias to the limiting rescaled MSE/risk is negligible compared to the variance.
+\end{corollary}
+
+Hence, using our assumption, we have that 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}nR(\theta|d_{flat}) = 2\theta^2  = S(\theta).
+$$
+So, for any other sequence of estimators $\{d_n(.)\}$, we have, for any $0 < a < b < \infty$
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|d_n) \geq max_{a \leq \theta \leq b}S(\theta) = 2b^2.
+$$
+
+\begin{lemma}The MLE is 
+$$
+\hat{\theta}_{ML} = \frac{T}{n}
+$$
+\end{lemma}
+
+\begin{lemma}The limiting maximum rescaled risk of the MLE is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|\hat{\theta}_{ML}) = 2b^2.
+$$
+\end{lemma}
+
+This coincides with the lower bound and hence $\hat{\theta}_{ML}$ is asymptotically minimax.
+
+\begin{lemma}For the Bayes procedure using the inverse gamma conjugate prior, the Bayes procedure is the posterior mean of the posterior inverse gamma distribution 
+$$
+d_{conj}(\tilde{X}) = \frac{T + 2\lambda_0}{n + 2\alpha_0 - 2}.
+$$
+\end{lemma}
+
+\begin{lemma}The rescaled risk of $d_{conj}$ is the rescaled MSE 
+$$
+nR(\theta|d_{conj}) = 2\theta^2\bigg(\frac{n}{n+2\alpha_0 - 2} \bigg)^2 + \frac{n\bigg(2\lambda_0 -2\theta\alpha_0 + 2\theta \bigg)}{(n + 2\alpha_0 - 2)^2}.
+$$
+Hence, the limiting maximum rescaled risk is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|d_{conj}) = \max_{a \leq \theta \leq b}2\theta^2 = 2b^2.
+$$
+\end{lemma}
+Hence, $d_{conj}$ is also asymptotically minimax.
+
+
+\lecture{45}{Estimating normal variance with known mean}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Examples with absolute error loss: Estimating normal mean with known variance}
+Suppose $\tilde{X} = (X_1,...,X_n)$ consists of iid $N(\theta,1)$ random variables for some unknown $\theta \in \Theta = \mathbb{R}.$ Consider the decision problem with the decision space $D = \Theta$ and loss function $L(d|\theta) = |d - \theta|.$\\
+
+\begin{lemma}The sample mean $\overline{X} = \frac{1}{n}\sum_{i=1}^{n}X_i$ is \textbf{both} the MLE and the Bayes procedure using the flat prior $w(\theta) = 1$, where in the latter case, the posterior is the $\mathcal{N}(\overline{X}, \frac{1}{n})$ density.
+\end{lemma}
+\begin{corollary}Under the absolute error loss, the Bayes procedure is the posterior median which is $\overline{X}.$
+\end{corollary}
+
+\begin{lemma}The limiting maximum rescaled risk for $\overline{X}$ is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}\sqrt{n}R(\theta|\overline{X}) = \sqrt{\frac{2}{\pi}}.
+$$
+\end{lemma}
+
+
+\begin{lemma}The Bayes procedure $\tilde{d}(\tilde{x})$ is the Bayes procedure based on a $U[\theta_0, \theta_1]$ prior. This estimator has the form 
+$$
+\tilde{d}(\tilde{x}) = \overline{X} + \frac{1}{\sqrt{n}}\Phi^{-1}\bigg(\frac{1}{2}\bigg[\Phi(\sqrt{n}(\theta_1 - \overline{X})) + \Phi(\sqrt{n}(\theta_0 - \overline{X})) \bigg] \bigg).
+$$
+\end{lemma}
+
+\begin{lemma}The rescaled risk for the Bayes procedure $\tilde{d}$ is 
+$$
+\sqrt{n}R(\theta|\tilde{d}) \rightarrow \sqrt{\frac{2}{\pi}}.
+$$
+\end{lemma}
+
+\begin{corollary}Hence, for any other estimator $d_n(\tilde{X})$, we have that 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}\sqrt{n}R(\theta|d_n) \geq \sqrt{\frac{2}{\pi}}.
+$$
+\end{corollary}
+
+\lecture{46}{Estimating uniform scale}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Examples with absolute error loss: Estimating uniform scale}
+Suppose $\tilde{X} = (X_1,...,X_n)$ which consists of iid $U[0,\theta]$ random variables for some unknown $\theta \in \Theta = (0,\infty).$ Consider the decision space $D = \Theta$ and loss $L(d|\theta) = |d - \theta|.$
+
+\begin{lemma}The risk of the MLE $\hat{\theta}_{ML} = X_{(n)}$ is 
+$$
+R(\theta|\hat{\theta}_{ML}) = \frac{\theta}{n + 1}.
+$$
+\end{lemma}
+
+\begin{corollary}The limiting maximum rescaled risk of the MLE is therefore 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|\hat{\theta}_{ML}) = b.
+$$
+\end{corollary}
+
+We now consider the \textbf{median-unbiased} version of the MLE.
+
+\begin{lemma}The MLE $X_{(n)}$ has the CDF
+$$
+F_n(x; \theta) = P_{\theta}(X_{(n)} \leq x) = 
+\begin{cases}
+0 \quad x < 0\\
+\bigg(\frac{x}{\theta} \bigg)^n \quad 0 \leq x \leq \theta \\
+1 \quad x > \theta.
+\end{cases}
+$$
+\end{lemma}
+
+\begin{corollary}The median of this distribution is the solution m to 
+$$
+\frac{1}{2} = \bigg(\frac{m}{\theta} \bigg)^n
+$$
+$$
+m = \bigg(\frac{1}{2}\bigg)^{\frac{1}{n}}\theta.
+$$
+\end{corollary}
+
+\begin{definition}(Median-unbiasd MLE). The median unbiased MLE is 
+$$
+d_{med}(\tilde{X}) = 2^{\frac{1}{n}}X_{(n)}.
+$$
+\end{definition}
+
+\begin{lemma}The risk of the median unbiasd MLE is 
+$$
+R(\theta|d_{med}) = \frac{\theta n}{n+1}\bigg(2^{\frac{1}{n}} - 1 \bigg).
+$$
+\end{lemma}
+
+\begin{corollary}The limiting maximum risk of the median unbiased MLE is 
+$$
+\lim_{n \rightarrow \infty}\max_{a \leq \theta \leq b}nR(\theta|d_{med}) = b log_{e}2.
+$$
+\end{corollary}
+
+\begin{lemma}The Bayes procedure using a flat weight function is the median of the posterior distribution of the Pareto(n-1,$X_{(n)}$) density. Hence, the Bayes procedure is 
+$$
+d_{flat}(\tilde{X}) = 2^{\frac{1}{n - 1}}X_{(n)}.
+$$
+\end{lemma}
+
+\begin{remark}The Bayes procedure under the flat prior is very similar to the median-unbiased MLE!
+\end{remark}
+
+\begin{theorem}The Bayes procedure $\tilde{d}(\tilde{X})$ using the $U[\theta_0,\theta_1]$ prior has the same limiting risk as the Bayes procedure with the flat prior and the median-unbiased MLE.
+$$
+\lim_{n \rightarrow \infty}nR(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}nR(\theta|d_{flat}) = \lim_{n \rightarrow \infty}nR(\theta|d_{med}) = \theta log 2
+$$
+for all $\theta_0 < \theta < \theta_1.$
+\end{theorem}
+
+\begin{corollary}Hence, $d_{med}(\tilde{X})$ and $d_{flat}(\tilde{X})$ are asymptotically minimax but $\hat{\theta}_{ML}(\tilde{X}$ is not.
+\end{corollary}
+
+\lecture{47}{L2 convergence of estimators}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{L2 convergence of estimators}
+
+We have used numerous times that when computing the limiting risk, under squared error loss, of the Bayes procedure with a uniform prior, we can instead compute the limiting risk of the Bayes procedure with a flat prior and this gives us the same result. The advantage to this is that computing the limiting risk of the Bayes procedure with a flat prior is easier. We now seek to prove why we can do this. Intuitively, we can do this because the two procedures are "close" enough and hence have similar limiting risk. \\
+
+First, we seek to define what it means for two estimators to be close.
+\begin{definition}(L2 metric). We define the L2 or mean-squared metric as 
+$$
+d(X,Y) = E[(X-Y)]^2
+$$
+where we assume that $X \in L^2$ and $Y \in L^2.$
+\end{definition}
+
+\begin{definition}(Mean-square convergent). Let $\{X_n\}_{n \geq 1}$ be a sequence in $L^2$ defined on a sample space $\Omega.$ We say that $\{X_n\}_{n \geq 1}$ is mean-square convergent (or convergent in mean square) if and only if there exists a random variable $X \in L^2$ such that 
+$$
+\lim_{n \rightarrow \infty}E[(X_n - X)^2] = 0.
+$$
+X is called the mean-square limit of the sequence and denote this by 
+$$
+X_n \xrightarrow{m.s}X
+$$
+\end{definition}
+
+\begin{theorem}Mean-square convergence implies convergence in probability.
+\end{theorem}
+
+\begin{theorem}Suppose $X_n \xrightarrow{P} 0$ and $|X_n| \leq M < \infty$ for all $n \geq n_0$ for some positive integer $n_0$ and constant M. Then, 
+$$
+E(X_{n}^{2}) \rightarrow 0.
+$$
+\end{theorem}
+
+We can now define what it means for two Bayes procedures to be close by using the L2 metric.
+\begin{theorem_exam}{L2 Convergence of Estimators}{}Suppose that for 2 estimators $\hat{\theta}_1$ and $\hat{\theta}_2$ and some rate (sequence) $\{r_n\}$, we have 
+\begin{enumerate}
+\item $r_nE_{\theta}\bigg[(\hat{\theta}_1 - \theta)^2 \bigg] \rightarrow S(\theta) < \infty$
+\item  $r_nE_{\theta}\bigg[(\hat{\theta}_1 - \hat{\theta}_2)^2 \bigg] \rightarrow 0$.
+\end{enumerate}
+Then, we have that 
+$$
+r_nE_{\theta}\bigg[(\hat{\theta}_2 - \theta)^2 \bigg] \rightarrow S(\theta) < \infty
+$$
+\end{theorem_exam}
+
+\begin{remark}That is, if we have one estimator that has the same finite limiting risk, which is $S(\theta)$, and we have that the two estimators are close in mean-squared, then we can say that the other estimator has the same limiting risk as our original estimator.
+\end{remark}
+
+\begin{lemma}The MLE is not asymptotically minimax for non-regular model as the bias has the same order as the variance.
+\end{lemma}
+
+The significance of this is that for non-regular models, the Bayes estimators automatically adjust the order of their bias in the presence of irregularity and hence perform better than the MLE for such cases.
+
+\lecture{48}{Convergence of Bayes procedure and sample mean}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Convergence of Bayes procedure and sample mean for normal}
+
+Suppose $X = (X_1,...,X_n)$ consists of iid $N(\theta,1)$ random variables for some unknown $\theta \in \Theta = \mathbb{R}.$ We consider the decision space $D = \Theta$ and loss $L(d|\theta) = (d - \theta)^2.$ We are interested in showing that the limiting rescaled risk of the sample mean $\overline{X}$ is identical to the limiting rescaled risk of the Bayes procedure with a uniform $U[\theta_0,\theta_1]$ prior.
+
+\begin{lemma}(Mills Ratio). Let $\Phi$ be the CDF of a standard normal random variable. Then, we have 
+$$
+\frac{1}{\sqrt{2\pi}}[1 - \Phi(\sqrt{2})] < 6.
+$$
+\end{lemma}
+
+\begin{theorem}If $\tilde{d}$ is the Bayes procedure with uniform $[\theta_0,\theta_1]$ prior, then 
+$$
+\lim_{n \rightarrow \infty}nR(\theta|\tilde{d}) = \lim_{n \rightarrow \infty}nR(\theta|\overline{X}).
+$$
+\end{theorem}
+
+\lecture{49}{Overview of Asymptotically Minimax Procedures}
+\section{Examples of Asymptotically Minimax Procedures}
+\subsection{Overview of Asymptotically Minimax Procedures}
+We summarise what we have done with regards to asymptotically minimax procedures. First, under squared-error loss, asymptotically minimax procedures generalises the notion of AMVU estimators in the case of non-regular models.\\
+
+\begin{lemma}Under regularity conditions, maximum likelihood estimators are different to Bayes estimators. However, they tend to differ in their bias under squared error loss. However, as the bias is asymptotically negligible, they are both asymptotically minimax.
+\end{lemma}
+
+\begin{lemma}We state 4 reasons for why we would use the limiting maximum risk over intervals as our criteria for statistical optimality.
+\begin{enumerate}
+\item It is difficult to establish non-asymptotic results and only available under certain conditions.
+\item The limiting maximum risk gets around the issues of superefficiency.
+\item The asymptotic minimax lower bound applies to \textbf{any procedure}. 
+\item The theory behind asymptotic minimax lower bound highlights intersting properties of Bayes estimators. That is, by just analysing the risk of Bayes procedures, this determines the best possible performance of any procedure in terms of their limiting maximum risk.
+\end{enumerate}
+\end{lemma}
+
+\lecture{50}{Notes on Bayesian Statistics}
+\section{Bayesian Statistics}
+\section{Bayesian Statistics}
+\subsection{Notes}
+First, we motivate the use of priors. Before that, we motivate the very use of parameters.
+\begin{definition}(Infinite Exchangeability). We say that $(x_1,...,x_n)$ is an infinitely exchangeable sequence of random variables if, for any n, the joint probability $p(x_1,...,x_n)$ is invariant to permutation of the indices. That is, for any permutation $\pi$,
+$$
+p(x_1,...,x_n) = p(x_{\pi_{1}},...,x_{\pi_{n}}).
+$$
+\end{definition}
+
+Note that independent and identically distributed is a subset of infinite exchangeability. The following theorem indicates why infinite exchangeability is important.
+
+\begin{theorem}(De Finetti Theorem). A sequence of random variables $(x_1,x_2,...)$ is infinitely exchangeable if and only if for all n,
+$$
+p(x_1,x_2,...,x_n) = \int \prod_{i=1}^{n}p(x_i|\theta)p(\theta)d\theta
+$$
+for some distribution of $\theta$ given by $p(\theta)d\theta.$
+\end{theorem}
+
+The forward direction of the above theorem is what is so powerful. It says that 
+\begin{enumerate}
+\item We have exchangeable data;
+\item There must exist a parameter $\theta$;
+\item There must exist a likelihood $p(x|\theta);$
+\item There must exist a distribution P on $\theta;$
+\item The above quantities \textbf{must} exist so as to render the data $(x_1,...,x_n)$ conditionally independent.
+\end{enumerate}
+
+Hence, this is why we should use parameters and why we should priors on parameters.
+
+\begin{proposition}(3 principles of Bayesian approach). We state the 3 principles behind Bayesian modelling.
+\begin{enumerate}
+\item Conditionality principle. If an experiment concerning inference about $\theta$ is chosen from a collection of possible experiments independently, then any experiment not chosen is irrelevant to the inference.
+\item Likelihood principle. The relevant information in any inference about $\theta$ after x is observed is contained \textbf{entirely} in the likelihood function. That is, the likelihood function is $p(x|\theta)$ for a fixed x is a function of $\theta.$
+\item Sufficiency principle. If two different observations x,y are such that $T(x) = T(y)$ for sufficient statistic T, then inference based on x and y should be the same.
+\end{enumerate}
+\end{proposition}
+
+The issue with taking expectations over all datasets X is that it does not adhere to the conditionality principle and hence the reason for Bayesians not liking the notion of fixing $\theta$ and taking expectation over X.\newline
+In Bayesian approach to decision theory, we construct a loss function $L(\theta,\delta(X))$ for a decision $\delta(X).$ From this, we can define the posterior risk, which conditions on x and integrates over $\Theta$ with a prior $\pi$.
+
+\begin{definition}(Posterior risk). The posterior risk is defined as 
+$$
+p(\pi, \delta(x)) = \int L(\theta,\delta(x))p(\theta|x)d\theta.
+$$
+The Bayes action $\delta^*(x)$ for any fixed x is the decision $\delta(x)$ that minimises the posterior risk.
+\end{definition}
+
+\begin{lemma}Under squared error loss, the posterior mean is the Bayes action.
+\end{lemma}
+
+However, note that in frequentists, we can define the frequentist risk 
+$$
+R(\theta,\delta) = E_{\theta}L(\theta, \delta(X))
+$$
+where we take expectation over X with parameter $\theta$ fixed. However, we can combine the two ideas.
+
+\begin{definition_exam}{Bayes rule}{} A Bayes rule is a function $\delta_{\pi}$ that minimises 
+$$
+r(\pi, \delta) = \int R(\theta, \delta)\pi(\theta)d\theta
+$$
+where $R(\theta,\delta)$ is the frequentist risk. This averages the frequentist risk over a prior distribution of $\theta.$\newline 
+The \textbf{Bayes risk} is $r(\pi) = r(\pi,\delta_{\pi})$ is the Bayes rule with the Bayes rule plugged in.
+\end{definition_exam}
+
+\begin{definition}(Conjugate prior). A family of priors such that, upon being multiplied by the likelihood, yields a posterior in the same family.
+\end{definition}
+
+Note that we distinguish between objective priors (priors chosen based on the likelihood) and subjective priors (based on domain knowledge).\\
+
+\subsection{Exponential families and conjugate priors}
+Nearly everything we have seen are exponential families. Notable exceptions to this are the Cauchy distribution and t-distribution.\\
+Recall that a conjugate prior is the case when the posterior is of the same distribution as the prior.
+
+\begin{enumerate}
+\item Beta is conjugate prior for the Bernoulli.
+\item Gamma is the conjugate prior to the exponential.
+\end{enumerate}
+
+\begin{remark}
+Note that there isn't ONE conjugate prior for a distribution. There is \textbf{a} conjugate prior for a distribution.
+\end{remark}
+
+\begin{theorem}Any exponential family has a conjugate prior.
+\end{theorem}
+\end{document}
+}
+}
+

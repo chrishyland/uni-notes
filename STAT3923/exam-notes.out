@@ -1,0 +1,80 @@
+\BOOKMARK [1][-]{section.1}{Probability Theory}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Probability Theory Introduction}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Discrete Random Variables}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Continuous Random Variables}{section.1}% 4
+\BOOKMARK [1][-]{section.2}{Moment Generating Functions}{}% 5
+\BOOKMARK [2][-]{subsection.2.1}{Moment Generating Functions Introduction}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.2}{Convergence Concepts}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.3}{Further Limit Laws}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Asymptotics}{section.2}% 9
+\BOOKMARK [1][-]{section.3}{Multivariate Distributions}{}% 10
+\BOOKMARK [2][-]{subsection.3.1}{Joint, Marginal, and Conditional Distributions}{section.3}% 11
+\BOOKMARK [2][-]{subsection.3.2}{Multivariate Distribution}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.3}{Sampling Distributions}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.4}{Order Statistics}{section.3}% 14
+\BOOKMARK [1][-]{section.4}{Transformation of random variables}{}% 15
+\BOOKMARK [2][-]{subsection.4.1}{Transformation of random variables}{section.4}% 16
+\BOOKMARK [2][-]{subsection.4.2}{Univariate Transformation of random variables}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.3}{Multivariate Transformation of random variables}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.4}{Multivariate Jacobian}{section.4}% 19
+\BOOKMARK [1][-]{section.5}{Exponential Families}{}% 20
+\BOOKMARK [2][-]{subsection.5.1}{Information Theory \(Background\)}{section.5}% 21
+\BOOKMARK [2][-]{subsection.5.2}{Sufficient Statistics}{section.5}% 22
+\BOOKMARK [2][-]{subsection.5.3}{Exponential Families}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.4}{Canonical Paramter Exponential Families}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.5}{Two Parameter Exponential Families}{section.5}% 25
+\BOOKMARK [2][-]{subsection.5.6}{Uniform and Exponential Spacing}{section.5}% 26
+\BOOKMARK [1][-]{section.6}{Minimum Variance Unbiased Estimation}{}% 27
+\BOOKMARK [2][-]{subsection.6.1}{The Likelihood Principle}{section.6}% 28
+\BOOKMARK [2][-]{subsection.6.2}{Maximum Likelihood Estimators}{section.6}% 29
+\BOOKMARK [2][-]{subsection.6.3}{Mean Squared Error}{section.6}% 30
+\BOOKMARK [2][-]{subsection.6.4}{Differentiation and Integration}{section.6}% 31
+\BOOKMARK [2][-]{subsection.6.5}{Cramer Rao Lower Bound}{section.6}% 32
+\BOOKMARK [2][-]{subsection.6.6}{Asymptotically Minimum Variance Unbiased Estimators}{section.6}% 33
+\BOOKMARK [2][-]{subsection.6.7}{MLE is AMVU}{section.6}% 34
+\BOOKMARK [2][-]{subsection.6.8}{Further properties of score function}{section.6}% 35
+\BOOKMARK [2][-]{subsection.6.9}{Completeness}{section.6}% 36
+\BOOKMARK [1][-]{section.7}{Hypothesis Testing}{}% 37
+\BOOKMARK [2][-]{subsection.7.1}{Hypothesis Testing}{section.7}% 38
+\BOOKMARK [2][-]{subsection.7.2}{Simple vs Simple Hypothesis}{section.7}% 39
+\BOOKMARK [2][-]{subsection.7.3}{Simple vs Composite Hypothesis: One-sided UMP Tests}{section.7}% 40
+\BOOKMARK [2][-]{subsection.7.4}{Simple vs Composite Hypothesis: Two-sided UMPU Tests}{section.7}% 41
+\BOOKMARK [2][-]{subsection.7.5}{Simple vs Composite: General Methods}{section.7}% 42
+\BOOKMARK [2][-]{subsection.7.6}{Composite vs Composite: 1-Parameter Families}{section.7}% 43
+\BOOKMARK [2][-]{subsection.7.7}{Composite vs Composite: Multi-Parameter Families}{section.7}% 44
+\BOOKMARK [2][-]{subsection.7.8}{GLRT Examples}{section.7}% 45
+\BOOKMARK [2][-]{subsection.7.9}{Simulation based p-values}{section.7}% 46
+\BOOKMARK [1][-]{section.8}{Statistical Decision Theory}{}% 47
+\BOOKMARK [2][-]{subsection.8.1}{Simple Prediction Problems}{section.8}% 48
+\BOOKMARK [2][-]{subsection.8.2}{Discrete Selection Problem}{section.8}% 49
+\BOOKMARK [2][-]{subsection.8.3}{Special case of Discrete Selection}{section.8}% 50
+\BOOKMARK [2][-]{subsection.8.4}{Statistical Decision Theory}{section.8}% 51
+\BOOKMARK [2][-]{subsection.8.5}{Finding Bayes Decision Rules}{section.8}% 52
+\BOOKMARK [2][-]{subsection.8.6}{Bayesian Interpretation}{section.8}% 53
+\BOOKMARK [2][-]{subsection.8.7}{Bayesian vs Frequentist}{section.8}% 54
+\BOOKMARK [2][-]{subsection.8.8}{Minimax Procedures}{section.8}% 55
+\BOOKMARK [2][-]{subsection.8.9}{Decision Theory Recap}{section.8}% 56
+\BOOKMARK [2][-]{subsection.8.10}{Non-regular Bayes estimation}{section.8}% 57
+\BOOKMARK [1][-]{section.9}{Asymptotically Minimax Procedures}{}% 58
+\BOOKMARK [2][-]{subsection.9.1}{Asymptotically Minimax Estimator}{section.9}% 59
+\BOOKMARK [2][-]{subsection.9.2}{Hodges' estimator and Superefficiency}{section.9}% 60
+\BOOKMARK [2][-]{subsection.9.3}{Interchanging limit and maximum}{section.9}% 61
+\BOOKMARK [2][-]{subsection.9.4}{Poisson Interval Estimation}{section.9}% 62
+\BOOKMARK [2][-]{subsection.9.5}{Asymptotic Minimax Lower Bound}{section.9}% 63
+\BOOKMARK [2][-]{subsection.9.6}{Proof of Asymptotic Minimax Lower Bound theorem}{section.9}% 64
+\BOOKMARK [1][-]{section.10}{Examples of Asymptotically Minimax Procedures}{}% 65
+\BOOKMARK [2][-]{subsection.10.1}{Introduction to interval estimation}{section.10}% 66
+\BOOKMARK [2][-]{subsection.10.2}{Examples with non-coverage loss: Poisson Interval Estimation Revisited}{section.10}% 67
+\BOOKMARK [2][-]{subsection.10.3}{Examples with non-coverage loss: Interval Estimation of a normal mean parameter}{section.10}% 68
+\BOOKMARK [2][-]{subsection.10.4}{Examples with non-coverage loss: Interval Estimation of a uniform scale parameter}{section.10}% 69
+\BOOKMARK [2][-]{subsection.10.5}{Examples with squared error loss: Estimating binomial proportion with known sample size}{section.10}% 70
+\BOOKMARK [2][-]{subsection.10.6}{Showing convergence of interval coverage}{section.10}% 71
+\BOOKMARK [2][-]{subsection.10.7}{Examples with squared error loss: Estimating normal variance with known mean}{section.10}% 72
+\BOOKMARK [2][-]{subsection.10.8}{Examples with absolute error loss: Estimating normal mean with known variance}{section.10}% 73
+\BOOKMARK [2][-]{subsection.10.9}{Examples with absolute error loss: Estimating uniform scale}{section.10}% 74
+\BOOKMARK [2][-]{subsection.10.10}{L2 convergence of estimators}{section.10}% 75
+\BOOKMARK [2][-]{subsection.10.11}{Convergence of Bayes procedure and sample mean for normal}{section.10}% 76
+\BOOKMARK [2][-]{subsection.10.12}{Overview of Asymptotically Minimax Procedures}{section.10}% 77
+\BOOKMARK [1][-]{section.11}{Bayesian Statistics}{}% 78
+\BOOKMARK [2][-]{subsection.11.1}{Notes}{section.11}% 79
+\BOOKMARK [2][-]{subsection.11.2}{Exponential families and conjugate priors}{section.11}% 80

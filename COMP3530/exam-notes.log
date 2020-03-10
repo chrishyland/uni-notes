@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.31)  2 OCT 2019 18:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.31)  22 NOV 2019 07:38
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -457,10 +457,6 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip56
 )
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
-\@enLab=\toks20
-)
 (/usr/local/texlive/2019/texmf-dist/tex/latex/algorithm2e/algorithm2e.sty
 Package: algorithm2e 2017/07/18 v5.2 algorithms environments
 \c@AlgoLine=\count267
@@ -516,11 +512,292 @@ Package: relsize 2013/03/29 ver 4.1
 \algocf@algoframe=\box54
 \algocf@algobox=\box55
 )
-\c@lecnum=\count272
-\c@theorem=\count273
-Package hyperref Info: Option `colorlinks' set `true' on input line 100.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2019/03/02 version 4.20 text color boxes
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/tocloft/tocloft.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks20
+\pgfutil@tempdima=\dimen165
+\pgfutil@tempdimb=\dimen166
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box56
+(/usr/local/texlive/2019/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/04/04 v3.1.2 (3.1.2)
+))
+Package: pgf 2019/04/04 v3.1.2 (3.1.2)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/04/04 v3.1.2 (3.1.2)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks21
+\pgfkeys@temptoks=\toks22
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks23
+))
+\pgf@x=\dimen167
+\pgf@y=\dimen168
+\pgf@xa=\dimen169
+\pgf@ya=\dimen170
+\pgf@xb=\dimen171
+\pgf@yb=\dimen172
+\pgf@xc=\dimen173
+\pgf@yc=\dimen174
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count272
+\c@pgf@countb=\count273
+\c@pgf@countc=\count274
+\c@pgf@countd=\count275
+\t@pgf@toka=\toks24
+\t@pgf@tokb=\toks25
+\t@pgf@tokc=\toks26
+\pgf@sys@id@count=\count276
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/04/04 v3.1.2 (3.1.2)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+File: pgfsys-pdftex.def 2019/04/04 v3.1.2 (3.1.2)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2019/04/04 v3.1.2 (3.1.2)
+)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
+File: pgfsyssoftpath.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfsyssoftpath@smallbuffer@items=\count277
+\pgfsyssoftpath@bigbuffer@items=\count278
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/04/04 v3.1.2 (3.1.2)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen175
+\pgfmath@count=\count279
+\pgfmath@box=\box57
+\pgfmath@toks=\toks27
+\pgfmath@stack@operand=\toks28
+\pgfmath@stack@operation=\toks29
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count280
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@picminx=\dimen176
+\pgf@picmaxx=\dimen177
+\pgf@picminy=\dimen178
+\pgf@picmaxy=\dimen179
+\pgf@pathminx=\dimen180
+\pgf@pathmaxx=\dimen181
+\pgf@pathminy=\dimen182
+\pgf@pathmaxy=\dimen183
+\pgf@xx=\dimen184
+\pgf@xy=\dimen185
+\pgf@yx=\dimen186
+\pgf@yy=\dimen187
+\pgf@zx=\dimen188
+\pgf@zy=\dimen189
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@path@lastx=\dimen190
+\pgf@path@lasty=\dimen191
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@shorten@end@additional=\dimen192
+\pgf@shorten@start@additional=\dimen193
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfpic=\box58
+\pgf@hbox=\box59
+\pgf@layerbox@main=\box60
+\pgf@picture@serial@count=\count281
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgflinewidth=\dimen194
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@pt@x=\dimen195
+\pgf@pt@y=\dimen196
+\pgf@pt@temp=\dimen197
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfarrowsep=\dimen198
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@max=\dimen199
+\pgf@sys@shading@range@num=\count282
+\pgf@shadingcount=\count283
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2019/04/04 v3.1.2 (3.1.2)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfexternal@startupbox=\box61
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex
+File: pgfcorerdf.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfnodeparttextbox=\box62
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2019/04/04 v3.1.2 (3.1.2)
+\pgf@nodesepstart=\dimen256
+\pgf@nodesepend=\dimen257
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2019/04/04 v3.1.2 (3.1.2)
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks30
+\verbatim@line=\toks31
+\verbatim@in@stream=\read3
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count284
+)
+\tcb@titlebox=\box63
+\tcb@upperbox=\box64
+\tcb@lowerbox=\box65
+\tcb@phantombox=\box66
+\c@tcbbreakpart=\count285
+\c@tcblayer=\count286
+\tcolorbox@number=\count287
+\tcb@temp=\box67
+\tcb@temp=\box68
+\tcb@temp=\box69
+\tcb@temp=\box70
+\tcb@out=\write4
+\tcb@record@out=\write5
+)
+\c@lecnum=\count288
+\c@theorem=\count289
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '4.20'
+)
+\c@tcb@cnt@theorem_exam=\count290
+\c@tcb@cnt@definition_exam=\count291
+\c@tcb@cnt@proposition_exam=\count292
+Package hyperref Info: Option `colorlinks' set `true' on input line 137.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 51.
 \cftparskip=\skip76
@@ -549,8 +826,8 @@ Package tocloft Info: The document has section divisions on input line 51.
 \cftbeforefigskip=\skip99
 \cftfigindent=\skip100
 \cftfignumwidth=\skip101
-\c@lofdepth=\count274
-\c@lotdepth=\count275
+\c@lofdepth=\count293
+\c@lotdepth=\count294
 \cftbeforelottitleskip=\skip102
 \cftafterlottitleskip=\skip103
 \cftbeforetabskip=\skip104
@@ -582,42 +859,36 @@ LaTeX Warning: Label `algo:duplicate' multiply defined.
 
 LaTeX Warning: Label `algo:duplicate' multiply defined.
 
-
-LaTeX Warning: Label `algo:duplicate' multiply defined.
-
-
-LaTeX Warning: Label `algo:duplicate' multiply defined.
-
 )
 \openout1 = `exam-notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
-LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 151.
+LaTeX Font Info:    ... okay on input line 151.
  (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count276
-\scratchdimen=\dimen165
-\scratchbox=\box56
-\nofMPsegments=\count277
-\nofMParguments=\count278
-\everyMPshowfont=\toks21
-\MPscratchCnt=\count279
-\MPscratchDim=\dimen166
-\MPnumerator=\count280
-\makeMPintoPDFobject=\count281
-\everyMPtoPDFconversion=\toks22
+\scratchcounter=\count295
+\scratchdimen=\dimen258
+\scratchbox=\box71
+\nofMPsegments=\count296
+\nofMParguments=\count297
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count298
+\MPscratchDim=\dimen259
+\MPnumerator=\count299
+\makeMPintoPDFobject=\count300
+\everyMPtoPDFconversion=\toks33
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
@@ -635,17 +906,8 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\AtBeginShipoutBox=\box57
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
-File: color.cfg 2016/01/02 v1.6 sample color configuration
-)
-Package color Info: Driver file: pdftex.def on input line 147.
-)
-Package hyperref Info: Link coloring ON on input line 117.
+\AtBeginShipoutBox=\box72
+Package hyperref Info: Link coloring ON on input line 151.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
@@ -653,307 +915,359 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count282
+\c@section@level=\count301
 )
-LaTeX Info: Redefining \ref on input line 117.
-LaTeX Info: Redefining \pageref on input line 117.
-LaTeX Info: Redefining \nameref on input line 117.
+LaTeX Info: Redefining \ref on input line 151.
+LaTeX Info: Redefining \pageref on input line 151.
+LaTeX Info: Redefining \nameref on input line 151.
 
 (./exam-notes.out) (./exam-notes.out)
-\@outlinefile=\write3
-\openout3 = `exam-notes.out'.
+\@outlinefile=\write6
+\openout6 = `exam-notes.out'.
 
-LaTeX Font Info:    Try loading font information for U+msa on input line 121.
+ ABD: EveryShipout initializing macros
+LaTeX Font Info:    Try loading font information for U+msa on input line 155.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 121.
+LaTeX Font Info:    Try loading font information for U+msb on input line 155.
 
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./exam
--notes.tocpdfTeX warning (ext4): destination with the same identifier (name{pag
-e.}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.44 ...7.9.3}Kernel Densities}{2}{subsection.9.3}
-                                                  % [2])
-\tf@toc=\write4
-\openout4 = `exam-notes.toc'.
+-notes.toc
+Overfull \hbox (1.19429pt too wide) detected at line 38
+\OT1/cmr/bx/n/10 10.11 
+ []
+
+
+Overfull \hbox (1.19429pt too wide) detected at line 41
+\OT1/cmr/bx/n/10 11.12 
+ []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.126 \newpage
-               [3]
-<assets/trapezoid.png, id=298, 421.575pt x 316.18124pt>
-File: assets/trapezoid.png Graphic file (type png)
-<use assets/trapezoid.png>
-Package pdftex.def Info: assets/trapezoid.png  used on input line 152.
-(pdftex.def)             Requested size: 85.35559pt x 113.81068pt.
- [1 <./assets/trapezoid.png>]
-<assets/midpoint.png, id=314, 401.5pt x 313.17pt>
-File: assets/midpoint.png Graphic file (type png)
-<use assets/midpoint.png>
-Package pdftex.def Info: assets/midpoint.png  used on input line 157.
-(pdftex.def)             Requested size: 85.35896pt x 113.81151pt.
- [2 <./assets/midpoint.png>]
-[3] [4] [5] [6] [7] [8] [9]pdfTeX warning (ext4): destination with the same ide
-ntifier (name{page.1}) has been already used, duplicate ignored
+l.42 ...2.1}Minimum Set Cover}{1}{subsection.12.1}
+                                                  % [2]
+Overfull \hbox (1.19429pt too wide) detected at line 46
+\OT1/cmr/bx/n/10 12.13 
+ []
+
+)
+\tf@toc=\write7
+\openout7 = `exam-notes.toc'.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.529 $$
+l.160 \newpage
+               [3] [1]pdfTeX warning (ext4): destination with the same identifi
+er (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.238 $$
+         [1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+[3]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 350.
+
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 350.
+ [4] [5]
+[6]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 460.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.467 \end{definition}
+                       [1]pdfTeX warning (ext4): destination with the same iden
+tifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.508 \end{theorem}
+                    [2]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.511 \section{Linear Programming Applications}
+                                                [3]pdfTeX warning (ext4): desti
+nation with the same identifier (name{page.1}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.572 $$
          [1]pdfTeX warning (ext4): destination with the same identifier (name{p
 age.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.588 T
-       he power is the probability that we reject a $\textbf{false}$ null hy...
+l.582 \section{Duality Theory}
+                               [2]pdfTeX warning (ext4): destination with the s
+ame identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.644 $$
+         [1]pdfTeX warning (ext4): destination with the same identifier (name{p
+age.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.707 F
+       rom weak duality, we get a strong test for whether does a region have...
 [2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.645 
-       [3]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.4}) has been already used, duplicate ignored
+l.740 \end{enumerate}
+                      [3]pdfTeX warning (ext4): destination with the same ident
+ifier (name{page.4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.690 \newpage
-               [4]
-Overfull \hbox (22.03323pt too wide) in paragraph at lines 728--729
-\OT1/cmr/m/n/10 want to look at sim-u-la-tion tech-niques on non-pivotal quan-t
-i-ties, $[]$.
+l.753 \section{Linear Programming Applications II}
+                                                   [4]pdfTeX warning (ext4): de
+stination with the same identifier (name{page.1}) has been already used, duplic
+ate ignored
+<to be read again> 
+                   \relax 
+l.802 $$
+         [1]pdfTeX warning (ext4): destination with the same identifier (name{p
+age.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.859 $$
+         [2]pdfTeX warning (ext4): destination with the same identifier (name{p
+age.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.893 \section{Integral Polyhedra}
+                                   [3]pdfTeX warning (ext4): destination with t
+he same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.945 T
+       he above theorem only holds for linear programs in standard form. How...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.993 \end{definition_exam}
+                            [2]pdfTeX warning (ext4): destination with the same
+ identifier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1029 \begin{definition}(
+                          Subset Selection Problem). Given a cost function $...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1074 \end{remark}
+                    [4]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1085 \section{Integer Programming}
+                                     [5]
+Underfull \hbox (badness 10000) in paragraph at lines 1122--1123
+
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.731 
-       [1]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.777 $$
-         [2]pdfTeX warning (ext4): destination with the same identifier (name{p
-age.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.830 $$
-         [3]pdfTeX warning (ext4): destination with the same identifier (name{p
-age.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.909 
-       [4]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.5}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.909 
-       [5]
-Underfull \vbox (badness 5022) has occurred while \output is active []
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.950 
-       [6]pdfTeX warning (ext4): destination with the same identifier (name{pag
-e.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.953 \section{Subsampling}
-                            [7]
-
-Package amsmath Warning: Foreign command \atopwithdelims;
-(amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 986.
-
-pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
-been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1009 \textbf{So how does this work?}
-                                       [1]
-Underfull \vbox (badness 1509) has occurred while \output is active []
+l.1126 \subsection
+                  {Branch and Bound Framework} [1]
+Underfull \vbox (badness 2205) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1034 
-        [2]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 1055
-.
- (/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1055.
+l.1168 \subsection
+                  {Branch and Bound with Linear Programming} [2]pdfTeX warning 
+(ext4): destination with the same identifier (name{page.3}) has been already us
+ed, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1189 \section{Large Scale Optimisation}
+                                          [3]pdfTeX warning (ext4): destination
+ with the same identifier (name{page.1}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.1230 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1281 \end{definition_exam}
+                             [2]pdfTeX warning (ext4): destination with the sam
+e identifier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1332 \section{Lagrangian Relaxation}
+                                       [3]pdfTeX warning (ext4): destination wi
+th the same identifier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1332 \section{Lagrangian Relaxation}
+                                       [4]
+Underfull \hbox (badness 10000) in paragraph at lines 1335--1336
 
-pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1337--1338
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1082 
-        [3]pdfTeX warning (ext4): destination with the same identifier (name{pa
-ge.4}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1116 \section{Simulated Maximum Likelihood}
-                                              [4]pdfTeX warning (ext4): destina
-tion with the same identifier (name{page.1}) has been already used, duplicate i
-gnored
-<to be read again> 
-                   \relax 
-l.1180 H
-        owever, we have cases where we cannot analytically solve $g(\hat{\th...
+l.1382 \begin{theorem}T
+                       he value $t = \max_{\lambda \in \mathbb{R}_{+}^{n}}t(...
 [1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
 as been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1206 $$
-          [2]pdfTeX warning (ext4): destination with the same identifier (name{
-page.3}) has been already used, duplicate ignored
+l.1434 \end{lemma}
+                   [2]pdfTeX warning (ext4): destination with the same identifi
+er (name{page.3}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1222 \section{Simulated Method of Moments}
+l.1437 \section{Maximum Submodular Coverage}
                                              [3]pdfTeX warning (ext4): destinat
 ion with the same identifier (name{page.1}) has been already used, duplicate ig
 nored
 <to be read again> 
                    \relax 
-l.1257 $$
+l.1495 \end{definition_exam}
+                             [1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1542 \section{Minimum Weight Submodular Cover}
+                                                 [2]pdfTeX warning (ext4): dest
+ination with the same identifier (name{page.3}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.1542 \section{Minimum Weight Submodular Cover}
+                                                 [3]pdfTeX warning (ext4): dest
+ination with the same identifier (name{page.1}) has been already used, duplicat
+e ignored
+<to be read again> 
+                   \relax 
+l.1593 $$
           [1]pdfTeX warning (ext4): destination with the same identifier (name{
 page.2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1300 $$
-          [2]pdfTeX warning (ext4): destination with the same identifier (name{
-page.3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1317 \section{Nonparametric Regressions}
-                                           [3]pdfTeX warning (ext4): destinatio
-n with the same identifier (name{page.1}) has been already used, duplicate igno
-red
-<to be read again> 
-                   \relax 
-l.1346 $$
-          [1]pdfTeX warning (ext4): destination with the same identifier (name{
-page.2}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1400 $$
-          [2]
-Overfull \hbox (22.09483pt too wide) in paragraph at lines 1412--1413
-[]\OT1/cmr/m/n/10 It turns out that, at any point $\OML/cmm/m/it/10 x$\OT1/cmr/
-m/n/10 , the bias of $[] []$ as an es-ti-ma-tor of $\OML/cmm/m/it/10 f []$ \OT1
-/cmr/m/n/10 is ap-prox-i-mately $[]\OML/cmm/m/it/10 f[] [] [][] z[]K [] dz$\OT1
-/cmr/m/n/10 ,
- []
+l.1658 \end{theorem_exam}
+                          [2]
+Underfull \hbox (badness 10000) in paragraph at lines 1666--1667
 
-
-LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 1426
-.
-
-
-Overfull \hbox (22.09483pt too wide) in paragraph at lines 1435--1436
-[]\OT1/cmr/m/n/10 It turns out that, at any point $\OML/cmm/m/it/10 x$\OT1/cmr/
-m/n/10 , the bias of $[] []$ as an es-ti-ma-tor of $\OML/cmm/m/it/10 f []$ \OT1
-/cmr/m/n/10 is ap-prox-i-mately $[]\OML/cmm/m/it/10 f[] [] [][] z[]K [] dz$\OT1
-/cmr/m/n/10 ,
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1437 W
-        e care mostly about the MSE, so we are balancing a bias$^2$ term (or...
-[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1461 ...},\ldots,\frac{X_{iq}-x_q}{h_q}\right)\]
-                                                  . [4]pdfTeX warning (ext4): d
-estination with the same identifier (name{page.5}) has been already used, dupli
-cate ignored
-<to be read again> 
-                   \relax 
-l.1489 ...}^nY_i\,K\left(\frac{X_i-x}{h}\right),\]
-                                                   where $h$ is the bandwidt...
-[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
-as been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1516 
-        [6]pdfTeX warning (ext4): destination with the same identifier (name{pa
-ge.7}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.1542 \section{Bayesian Econometrics}
-                                       [7]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1557.
+l.1678 \section{Linear Programming Rounding}
+                                             [3]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1682.
+
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1557  \end{document}
-                      } [1]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1557.
+l.1732 T
+        his new linear program formulation embeds the vertices into a metric...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1784 W
+        e now define the randomised algorithm for the multiway cut. [2]pdfTeX w
+arning (ext4): destination with the same identifier (name{page.3}) has been alr
+eady used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1843 
+        [3]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1853 \end{document}
+                      [4]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1853.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1853.
  (./exam-notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1557.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1557.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1853.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1853.
 
 Package rerunfilecheck Info: File `exam-notes.out' has not changed.
-(rerunfilecheck)             Checksum: 0FF048D3FDD637A49D601CAEFDA743A8;3806.
+(rerunfilecheck)             Checksum: F39C3E0F2A433213AD7CE546855A22EB;3641.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1557.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1853.
  ) 
 Here is how much of TeX's memory you used:
- 17445 strings out of 492616
- 300181 string characters out of 6129481
- 369902 words of memory out of 5000000
- 21082 multiletter control sequences out of 15000+600000
- 544145 words of font info for 67 fonts, out of 8000000 for 9000
+ 27501 strings out of 492616
+ 516320 string characters out of 6129481
+ 564734 words of memory out of 5000000
+ 30795 multiletter control sequences out of 15000+600000
+ 542477 words of font info for 62 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 40i,14n,63p,1091b,485s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 54i,14n,75p,948b,512s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 ></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
-</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb><
-/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><
-/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
-usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></u
-sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
-/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
-ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/loc
-al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local
-/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/t
-exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/20
-19/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/texlive/201
-9/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local/texlive/201
-9/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texm
-f-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
-Output written on exam-notes.pdf (41 pages, 442804 bytes).
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/t
+exmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on exam-notes.pdf (47 pages, 401035 bytes).
 PDF statistics:
- 650 PDF objects out of 1000 (max. 8388607)
- 574 compressed objects within 6 object streams
- 156 named destinations out of 1000 (max. 500000)
- 451 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 840 PDF objects out of 1000 (max. 8388607)
+ 761 compressed objects within 8 object streams
+ 314 named destinations out of 1000 (max. 500000)
+ 421 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,0 +1,51 @@
+\contentsline {section}{\numberline {0.1}Graph Theory}{1}{section.1}% 
+\contentsline {subsection}{\numberline {0.1.1}Graph Theory}{1}{subsection.1.1}% 
+\contentsline {section}{\numberline {1.2}Polyhedra Theory}{1}{section.2}% 
+\contentsline {subsection}{\numberline {1.2.1}Introduction to Linear Programming}{1}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {1.2.2}Polyhedra Theory}{3}{subsection.2.2}% 
+\contentsline {section}{\numberline {2.3}Simplex}{1}{section.3}% 
+\contentsline {subsection}{\numberline {2.3.1}Optimality Conditions}{1}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {2.3.2}Simplex}{3}{subsection.3.2}% 
+\contentsline {section}{\numberline {3.4}Linear Programming Applications}{1}{section.4}% 
+\contentsline {subsection}{\numberline {3.4.1}Linear Programming Applications}{1}{subsection.4.1}% 
+\contentsline {section}{\numberline {4.5}Duality Theory}{1}{section.5}% 
+\contentsline {subsection}{\numberline {4.5.1}Motivation}{1}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {4.5.2}Duality Theory}{2}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {4.5.3}Farkas Lemma}{3}{subsection.5.3}% 
+\contentsline {section}{\numberline {5.6}Linear Programming Applications II}{1}{section.6}% 
+\contentsline {subsection}{\numberline {5.6.1}Playing Zero-Sum Games}{1}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {5.6.2}Bipartite Matching}{2}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {5.6.3}K\IeC {\"o}nig's Theorem}{2}{subsection.6.3}% 
+\contentsline {section}{\numberline {6.7}Integral Polyhedra}{1}{section.7}% 
+\contentsline {subsection}{\numberline {6.7.1}Totally Unimodular Matrices}{1}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {6.7.2}Properties of Totally Unimodular Matrices}{2}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {6.7.3}Alternative Characterisation of Totally Unimodular Matrices}{3}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {6.7.4}Subset Selection Problems}{3}{subsection.7.4}% 
+\contentsline {section}{\numberline {7.8}Integer Programming}{1}{section.8}% 
+\contentsline {subsection}{\numberline {7.8.1}Introduction to Integer Programs}{1}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {7.8.2}Branch and Bound Framework}{2}{subsection.8.2}% 
+\contentsline {subsection}{\numberline {7.8.3}Branch and Bound with Linear Programming}{3}{subsection.8.3}% 
+\contentsline {subsection}{\numberline {7.8.4}Strengthening Linear Relaxations}{3}{subsection.8.4}% 
+\contentsline {section}{\numberline {8.9}Large Scale Optimisation}{1}{section.9}% 
+\contentsline {subsection}{\numberline {8.9.1}TSP}{1}{subsection.9.1}% 
+\contentsline {subsection}{\numberline {8.9.2}Large Number of Constraints}{1}{subsection.9.2}% 
+\contentsline {subsection}{\numberline {8.9.3}Large Number of Variables}{2}{subsection.9.3}% 
+\contentsline {subsection}{\numberline {8.9.4}Ellipsoid Algorithm}{2}{subsection.9.4}% 
+\contentsline {subsection}{\numberline {8.9.5}Edge Colouring}{4}{subsection.9.5}% 
+\contentsline {section}{\numberline {9.10}Lagrangian Relaxation}{1}{section.10}% 
+\contentsline {subsection}{\numberline {9.10.1}An introduction to Lagrangian Relaxation}{1}{subsection.10.1}% 
+\contentsline {subsection}{\numberline {9.10.2}Unconstrainted Optimisation}{2}{subsection.10.2}% 
+\contentsline {section}{\numberline {10.11}Maximum Submodular Coverage}{1}{section.11}% 
+\contentsline {subsection}{\numberline {10.11.1}Maximum Coverage}{1}{subsection.11.1}% 
+\contentsline {subsection}{\numberline {10.11.2}Maximum Submodular Coverage}{2}{subsection.11.2}% 
+\contentsline {section}{\numberline {11.12}Minimum Weight Submodular Cover}{1}{section.12}% 
+\contentsline {subsection}{\numberline {11.12.1}Minimum Set Cover}{1}{subsection.12.1}% 
+\contentsline {subsection}{\numberline {11.12.2}Minimum Weight Set Cover}{2}{subsection.12.2}% 
+\contentsline {subsection}{\numberline {11.12.3}Minimum Weight Submodular Cover}{2}{subsection.12.3}% 
+\contentsline {subsection}{\numberline {11.12.4}Minimum Spanning Tree}{3}{subsection.12.4}% 
+\contentsline {section}{\numberline {12.13}Linear Programming Rounding}{1}{section.13}% 
+\contentsline {subsection}{\numberline {12.13.1}Graph Partitioning Problems}{1}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {12.13.2}LP relaxation for ST-cut}{1}{subsection.13.2}% 
+\contentsline {subsection}{\numberline {12.13.3}Randomised Rounding for Metric Linear Programming}{2}{subsection.13.3}% 
+\contentsline {subsection}{\numberline {12.13.4}Linear Programming for minimum multiway cut}{2}{subsection.13.4}% 
+\contentsline {subsection}{\numberline {12.13.5}Linear Programming for minimum multi-cut}{3}{subsection.13.5}% 
