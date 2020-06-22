@@ -1,0 +1,122 @@
+\contentsline {section}{\numberline {1.1}Sigma Algebras and Measures}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1.1}Motivation}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.1.2}Vitali Sets}{1}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.1.3}Sigma Algebras}{2}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.1.4}Measures}{4}{subsection.1.4}% 
+\contentsline {subsection}{\numberline {2.1.5}Algebras}{1}{subsection.1.5}% 
+\contentsline {subsection}{\numberline {2.1.6}Caratheodory Extension Theorem}{1}{subsection.1.6}% 
+\contentsline {subsection}{\numberline {2.1.7}Construction of Measures}{3}{subsection.1.7}% 
+\contentsline {subsection}{\numberline {3.1.8}Uniqueness of measures}{1}{subsection.1.8}% 
+\contentsline {subsection}{\numberline {3.1.9}Lebesgue-Stieltjes Integral}{2}{subsection.1.9}% 
+\contentsline {subsection}{\numberline {3.1.10}Completion of Measure Spaces}{4}{subsection.1.10}% 
+\contentsline {subsection}{\numberline {3.1.11}First Borel-Cantelli Lemma}{5}{subsection.1.11}% 
+\contentsline {section}{\numberline {4.2}Random Variables}{1}{section.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Random Variables}{1}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Distributions of random variables}{7}{subsection.2.2}% 
+\contentsline {section}{\numberline {5.3}Independence}{1}{section.3}% 
+\contentsline {subsection}{\numberline {5.3.1}Independence of sets of events}{1}{subsection.3.1}% 
+\contentsline {subsection}{\numberline {5.3.2}Second Borel-Cantelli Lemma and Kolmogorov's 0-1 Law}{5}{subsection.3.2}% 
+\contentsline {subsection}{\numberline {5.3.3}Kolmogorov\IeC {\textquoteright }s 0-1 law}{6}{subsection.3.3}% 
+\contentsline {section}{\numberline {6.4}Integration}{1}{section.4}% 
+\contentsline {subsection}{\numberline {6.4.1}Integration of Simple Functions}{1}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {6.4.2}Integration of non-negative measurable functions}{4}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {7.4.3}Convergence Theorems}{1}{subsection.4.3}% 
+\contentsline {subsection}{\numberline {7.4.4}Relationship between Riemann and Lebesgue Integrals}{2}{subsection.4.4}% 
+\contentsline {subsection}{\numberline {7.4.5}Abstract Lebesgue Integral and Integrable Functions}{6}{subsection.4.5}% 
+\contentsline {section}{\numberline {8.5}Lebesgue Spaces}{1}{section.5}% 
+\contentsline {subsection}{\numberline {8.5.1}$\mathcal {L}^p$-spaces}{1}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {8.5.2}Modes of convergence}{2}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {8.5.3}Inequalities in the $\mathcal {L}^p$-space}{8}{subsection.5.3}% 
+\contentsline {subsection}{\numberline {8.5.4}Completeness of the $\mathcal {L}^p$-space}{10}{subsection.5.4}% 
+\contentsline {subsection}{\numberline {8.5.5}$L^p$-spaces}{11}{subsection.5.5}% 
+\contentsline {section}{\numberline {9.6}Expectation}{1}{section.6}% 
+\contentsline {subsection}{\numberline {9.6.1}Expectation}{1}{subsection.6.1}% 
+\contentsline {subsection}{\numberline {9.6.2}The Radon-Nikodym Theorem}{3}{subsection.6.2}% 
+\contentsline {subsection}{\numberline {9.6.3}Substitution theorem for random variables}{5}{subsection.6.3}% 
+\contentsline {subsection}{\numberline {9.6.4}Expectation of Functions of Random Variables}{6}{subsection.6.4}% 
+\contentsline {subsection}{\numberline {9.6.5}Convex Functions}{11}{subsection.6.5}% 
+\contentsline {subsection}{\numberline {9.6.6}Variance and Covariance}{12}{subsection.6.6}% 
+\contentsline {section}{\numberline {10.7}Product Measures}{1}{section.7}% 
+\contentsline {subsection}{\numberline {10.7.1}Caratheodory Extension Theorem for Product Measures}{1}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {10.7.2}Product Measure}{2}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {10.7.3}Fubini's Theorem}{5}{subsection.7.3}% 
+\contentsline {subsection}{\numberline {10.7.4}Product Measure on n-dimensional space}{9}{subsection.7.4}% 
+\contentsline {subsection}{\numberline {10.7.5}Random Vectors}{9}{subsection.7.5}% 
+\contentsline {subsection}{\numberline {10.7.6}Change of variables for Random Vectors}{10}{subsection.7.6}% 
+\contentsline {section}{\numberline {11.8}Conditional Expectation}{1}{section.8}% 
+\contentsline {subsection}{\numberline {11.8.1}Introduction}{1}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {12.8.2}Properties of conditional expectation}{1}{subsection.8.2}% 
+\contentsline {section}{\numberline {13.9}Exponential Families}{1}{section.9}% 
+\contentsline {subsection}{\numberline {13.9.1}Moment Generating Functions}{1}{subsection.9.1}% 
+\contentsline {subsection}{\numberline {13.9.2}Sufficient Statistics}{2}{subsection.9.2}% 
+\contentsline {subsection}{\numberline {13.9.3}Introduction}{3}{subsection.9.3}% 
+\contentsline {subsection}{\numberline {14.9.4}Exponential Family}{1}{subsection.9.4}% 
+\contentsline {subsection}{\numberline {14.9.5}The Mean-Value Parameter}{3}{subsection.9.5}% 
+\contentsline {section}{\numberline {15.10}Local Asymptotic Normality}{1}{section.10}% 
+\contentsline {subsection}{\numberline {15.10.1}Taylor's Theorem}{1}{subsection.10.1}% 
+\contentsline {subsection}{\numberline {15.10.2}Weak Convergence}{1}{subsection.10.2}% 
+\contentsline {subsection}{\numberline {15.10.3}Asymptotic Statistics}{2}{subsection.10.3}% 
+\contentsline {subsection}{\numberline {15.10.4}Local Asymptotic Normality}{3}{subsection.10.4}% 
+\contentsline {subsection}{\numberline {15.10.5}Le Cam's First Lemma}{5}{subsection.10.5}% 
+\contentsline {subsection}{\numberline {15.10.6}LAN Property in Exponential Families}{7}{subsection.10.6}% 
+\contentsline {subsection}{\numberline {16.10.7}Le Cam's Third Lemma}{1}{subsection.10.7}% 
+\contentsline {subsection}{\numberline {16.10.8}Conditions implying LAN property}{2}{subsection.10.8}% 
+\contentsline {subsection}{\numberline {16.10.9}Strict Conditions for the LAN property to hold}{5}{subsection.10.9}% 
+\contentsline {subsection}{\numberline {16.10.10}LAN property for Location and Scale Families}{7}{subsection.10.10}% 
+\contentsline {subsection}{\numberline {17.10.11}$L^2$ differentiability implies LAN}{1}{subsection.10.11}% 
+\contentsline {section}{\numberline {18.11}Optimality of estimators}{1}{section.11}% 
+\contentsline {subsection}{\numberline {18.11.1}Regular Estimators}{1}{subsection.11.1}% 
+\contentsline {subsection}{\numberline {18.11.2}Scores version of Le Cam's 3rd Lemma}{2}{subsection.11.2}% 
+\contentsline {subsection}{\numberline {18.11.3}RAJN Estimators}{6}{subsection.11.3}% 
+\contentsline {subsection}{\numberline {19.11.4}Asymptotically Efficient Estimators}{1}{subsection.11.4}% 
+\contentsline {subsection}{\numberline {19.11.5}Construction of AE Estimators}{2}{subsection.11.5}% 
+\contentsline {subsection}{\numberline {20.11.6}Newton-Raphson Algorithm}{1}{subsection.11.6}% 
+\contentsline {subsection}{\numberline {20.11.7}Identifying RAJN Estimators}{2}{subsection.11.7}% 
+\contentsline {subsection}{\numberline {20.11.8}Estimators based on moments and quantiles}{4}{subsection.11.8}% 
+\contentsline {subsection}{\numberline {21.11.9}Efficient Influence Function}{1}{subsection.11.9}% 
+\contentsline {subsection}{\numberline {21.11.10}Scalar Nuisance Parameter Model}{2}{subsection.11.10}% 
+\contentsline {subsection}{\numberline {21.11.11}General Setting Nuisance Parameter}{3}{subsection.11.11}% 
+\contentsline {subsection}{\numberline {21.11.12}Regularity in the presence of nuisance parameters}{4}{subsection.11.12}% 
+\contentsline {subsection}{\numberline {22.11.13}Estimating Smooth functions of parameters}{1}{subsection.11.13}% 
+\contentsline {section}{\numberline {23.12}Hypothesis Testing}{1}{section.12}% 
+\contentsline {subsection}{\numberline {23.12.1}Asymptotically Optimal Parametric Testing}{1}{subsection.12.1}% 
+\contentsline {subsection}{\numberline {23.12.2}Local Alternatives}{2}{subsection.12.2}% 
+\contentsline {subsection}{\numberline {23.12.3}Classical Tests}{3}{subsection.12.3}% 
+\contentsline {subsection}{\numberline {24.12.4}Classical Tests are asymptotically equivalent}{1}{subsection.12.4}% 
+\contentsline {subsection}{\numberline {25.12.5}Properties of test statistics}{1}{subsection.12.5}% 
+\contentsline {subsubsection}{\numberline {25.12.5.1}Limiting Distribution Under Null Hypothesis}{1}{subsubsection.12.5.1}% 
+\contentsline {subsubsection}{\numberline {25.12.5.2}Limiting Distribution Under Nearby Alternatives}{3}{subsubsection.12.5.2}% 
+\contentsline {subsection}{\numberline {26.12.6}Regular Quadratic Form Test Statistics}{1}{subsection.12.6}% 
+\contentsline {subsection}{\numberline {27.12.7}Positive Definite Matrices}{1}{subsection.12.7}% 
+\contentsline {subsection}{\numberline {27.12.8}Orthogonal Decomposition Of Tests}{1}{subsection.12.8}% 
+\contentsline {section}{\numberline {28.13}Optimality of Bayesian Methods}{1}{section.13}% 
+\contentsline {subsection}{\numberline {28.13.1}Introduction to Bayesian Methods}{1}{subsection.13.1}% 
+\contentsline {subsection}{\numberline {29.13.2}Hellinger Distance}{1}{subsection.13.2}% 
+\contentsline {subsection}{\numberline {30.13.3}Bayes Posterior Mean}{1}{subsection.13.3}% 
+\contentsline {subsection}{\numberline {31.13.4}Expectation-Maximization Algorithm}{1}{subsection.13.4}% 
+\contentsline {subsection}{\numberline {32.13.5}Normal Location Contamination Mixture Model}{1}{subsection.13.5}% 
+\contentsline {section}{\numberline {0.14}Measure Theory Recap}{1}{section.14}% 
+\contentsline {subsection}{\numberline {0.14.1}Classes of subsets}{1}{subsection.14.1}% 
+\contentsline {subsection}{\numberline {0.14.2}Functions on Sets}{3}{subsection.14.2}% 
+\contentsline {subsection}{\numberline {0.14.3}Extension Theorems}{5}{subsection.14.3}% 
+\contentsline {subsection}{\numberline {0.14.4}Caratheodory Theorem}{5}{subsection.14.4}% 
+\contentsline {subsection}{\numberline {0.14.5}Monotone Classes}{8}{subsection.14.5}% 
+\contentsline {subsection}{\numberline {0.14.6}Lebesgue Measure}{8}{subsection.14.6}% 
+\contentsline {subsection}{\numberline {0.14.7}Complete Measures}{9}{subsection.14.7}% 
+\contentsline {subsection}{\numberline {0.14.8}Approximation and Regularity}{9}{subsection.14.8}% 
+\contentsline {subsection}{\numberline {0.14.9}Measurability}{10}{subsection.14.9}% 
+\contentsline {subsection}{\numberline {0.14.10}Simple Functions}{11}{subsection.14.10}% 
+\contentsline {subsection}{\numberline {0.14.11}Integrating Simple Functions}{11}{subsection.14.11}% 
+\contentsline {subsection}{\numberline {0.14.12}Integrating non-negative Functions}{12}{subsection.14.12}% 
+\contentsline {subsection}{\numberline {0.14.13}Integrating measurable functions}{12}{subsection.14.13}% 
+\contentsline {subsection}{\numberline {0.14.14}Measurability of functions}{12}{subsection.14.14}% 
+\contentsline {subsection}{\numberline {0.14.15}Properties of Integrals}{13}{subsection.14.15}% 
+\contentsline {subsection}{\numberline {0.14.16}Convergence Theorems for non-negative functions}{13}{subsection.14.16}% 
+\contentsline {subsection}{\numberline {0.14.17}Lebesgue-Stieltjes Integral}{14}{subsection.14.17}% 
+\contentsline {subsection}{\numberline {0.14.18}Measure on finite product of spaces}{15}{subsection.14.18}% 
+\contentsline {subsection}{\numberline {0.14.19}Countable Product Space}{16}{subsection.14.19}% 
+\contentsline {subsection}{\numberline {0.14.20}Fubini's Theorem}{16}{subsection.14.20}% 
+\contentsline {subsection}{\numberline {0.14.21}Radon-Nikodym Theorem}{17}{subsection.14.21}% 
+\contentsline {subsection}{\numberline {0.14.22}Convergence of functions}{17}{subsection.14.22}% 
+\contentsline {subsection}{\numberline {0.14.23}H\IeC {\"o}lder and Minkowski Inequalities}{19}{subsection.14.23}% 
+\contentsline {subsection}{\numberline {0.14.24}$L^p$-Spaces}{19}{subsection.14.24}% 

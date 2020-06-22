@@ -1,0 +1,2262 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.31)  11 JUN 2020 07:24
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**exam-notes.tex
+(./exam-notes.tex
+LaTeX2e <2018-12-01>
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2018/12/01 v2.17b AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen104
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count88
+LaTeX Info: Redefining \frac on input line 223.
+\uproot@=\count89
+\leftroot@=\count90
+LaTeX Info: Redefining \overline on input line 385.
+\classnum@=\count91
+\DOTSCASE@=\count92
+LaTeX Info: Redefining \ldots on input line 482.
+LaTeX Info: Redefining \dots on input line 485.
+LaTeX Info: Redefining \cdots on input line 606.
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
+\dotsspace@=\muskip10
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks15
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2844.
+LaTeX Info: Redefining \] on input line 2845.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks19
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen112
+\Gin@req@width=\dimen113
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/mathtools/mathtools.sty
+Package: mathtools 2018/01/08 v1.21 mathematical typesetting tools
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tools/calc.sty
+Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
+\calc@Acount=\count100
+\calc@Bcount=\count101
+\calc@Adimen=\dimen114
+\calc@Bdimen=\dimen115
+\calc@Askip=\skip46
+\calc@Bskip=\skip47
+LaTeX Info: Redefining \setlength on input line 80.
+LaTeX Info: Redefining \addtolength on input line 81.
+\calc@Ccount=\count102
+\calc@Cskip=\skip48
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/mathtools/mhsetup.sty
+Package: mhsetup 2017/03/31 v1.3 programming setup (MH)
+)
+LaTeX Info: Thecontrolsequence`\('isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\)'isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\['isalreadyrobust on input line 129.
+LaTeX Info: Thecontrolsequence`\]'isalreadyrobust on input line 129.
+\g_MT_multlinerow_int=\count103
+\l_MT_multwidth_dim=\dimen116
+\origjot=\skip49
+\l_MT_shortvdotswithinadjustabove_dim=\dimen117
+\l_MT_shortvdotswithinadjustbelow_dim=\dimen118
+\l_MT_above_intertext_sep=\dimen119
+\l_MT_below_intertext_sep=\dimen120
+\l_MT_above_shortintertext_sep=\dimen121
+\l_MT_below_shortintertext_sep=\dimen122
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/breqn/flexisym.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2019-05-07 L3 programming layer (loader) 
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/expl3-code.tex
+Package: expl3 2019-05-07 L3 programming layer (code)
+\c_max_int=\count104
+\l_tmpa_int=\count105
+\l_tmpb_int=\count106
+\g_tmpa_int=\count107
+\g_tmpb_int=\count108
+\g__kernel_prg_map_int=\count109
+\c__ior_term_ior=\count110
+\c_log_iow=\count111
+\l_iow_line_count_int=\count112
+\l__iow_line_target_int=\count113
+\l__iow_one_indent_int=\count114
+\l__iow_indent_int=\count115
+\c_zero_dim=\dimen123
+\c_max_dim=\dimen124
+\l_tmpa_dim=\dimen125
+\l_tmpb_dim=\dimen126
+\g_tmpa_dim=\dimen127
+\g_tmpb_dim=\dimen128
+\c_zero_skip=\skip50
+\c_max_skip=\skip51
+\l_tmpa_skip=\skip52
+\l_tmpb_skip=\skip53
+\g_tmpa_skip=\skip54
+\g_tmpb_skip=\skip55
+\c_zero_muskip=\muskip11
+\c_max_muskip=\muskip12
+\l_tmpa_muskip=\muskip13
+\l_tmpb_muskip=\muskip14
+\g_tmpa_muskip=\muskip15
+\g_tmpb_muskip=\muskip16
+\l_keys_choice_int=\count116
+\l__intarray_loop_int=\count117
+\c__intarray_sp_dim=\dimen129
+\g__intarray_font_int=\count118
+\c__fp_leading_shift_int=\count119
+\c__fp_middle_shift_int=\count120
+\c__fp_trailing_shift_int=\count121
+\c__fp_big_leading_shift_int=\count122
+\c__fp_big_middle_shift_int=\count123
+\c__fp_big_trailing_shift_int=\count124
+\c__fp_Bigg_leading_shift_int=\count125
+\c__fp_Bigg_middle_shift_int=\count126
+\c__fp_Bigg_trailing_shift_int=\count127
+\c__kernel_randint_max_int=\count128
+\g__fp_array_int=\count129
+\l__fp_array_loop_int=\count130
+\l__sort_length_int=\count131
+\l__sort_min_int=\count132
+\l__sort_top_int=\count133
+\l__sort_max_int=\count134
+\l__sort_true_max_int=\count135
+\l__sort_block_int=\count136
+\l__sort_begin_int=\count137
+\l__sort_end_int=\count138
+\l__sort_A_int=\count139
+\l__sort_B_int=\count140
+\l__sort_C_int=\count141
+\l__tl_analysis_normal_int=\count142
+\l__tl_analysis_index_int=\count143
+\l__tl_analysis_nesting_int=\count144
+\l__tl_analysis_type_int=\count145
+\l__regex_internal_a_int=\count146
+\l__regex_internal_b_int=\count147
+\l__regex_internal_c_int=\count148
+\l__regex_balance_int=\count149
+\l__regex_group_level_int=\count150
+\l__regex_mode_int=\count151
+\c__regex_cs_in_class_mode_int=\count152
+\c__regex_cs_mode_int=\count153
+\l__regex_catcodes_int=\count154
+\l__regex_default_catcodes_int=\count155
+\c__regex_catcode_D_int=\count156
+\c__regex_catcode_S_int=\count157
+\c__regex_catcode_L_int=\count158
+\c__regex_catcode_O_int=\count159
+\c__regex_catcode_A_int=\count160
+\c__regex_all_catcodes_int=\count161
+\l__regex_show_lines_int=\count162
+\l__regex_min_state_int=\count163
+\l__regex_max_state_int=\count164
+\l__regex_left_state_int=\count165
+\l__regex_right_state_int=\count166
+\l__regex_capturing_group_int=\count167
+\l__regex_min_pos_int=\count168
+\l__regex_max_pos_int=\count169
+\l__regex_curr_pos_int=\count170
+\l__regex_start_pos_int=\count171
+\l__regex_success_pos_int=\count172
+\l__regex_curr_char_int=\count173
+\l__regex_curr_catcode_int=\count174
+\l__regex_last_char_int=\count175
+\l__regex_case_changed_char_int=\count176
+\l__regex_curr_state_int=\count177
+\l__regex_step_int=\count178
+\l__regex_min_active_int=\count179
+\l__regex_max_active_int=\count180
+\l__regex_replacement_csnames_int=\count181
+\l__regex_match_count_int=\count182
+\l__regex_min_submatch_int=\count183
+\l__regex_submatch_int=\count184
+\l__regex_zeroth_submatch_int=\count185
+\g__regex_trace_regex_int=\count186
+\c_empty_box=\box29
+\l_tmpa_box=\box30
+\l_tmpb_box=\box31
+\g_tmpa_box=\box32
+\g_tmpb_box=\box33
+\l__box_top_dim=\dimen130
+\l__box_bottom_dim=\dimen131
+\l__box_left_dim=\dimen132
+\l__box_right_dim=\dimen133
+\l__box_top_new_dim=\dimen134
+\l__box_bottom_new_dim=\dimen135
+\l__box_left_new_dim=\dimen136
+\l__box_right_new_dim=\dimen137
+\l__box_internal_box=\box34
+\l__coffin_internal_box=\box35
+\l__coffin_internal_dim=\dimen138
+\l__coffin_offset_x_dim=\dimen139
+\l__coffin_offset_y_dim=\dimen140
+\l__coffin_x_dim=\dimen141
+\l__coffin_y_dim=\dimen142
+\l__coffin_x_prime_dim=\dimen143
+\l__coffin_y_prime_dim=\dimen144
+\c_empty_coffin=\box36
+\l__coffin_aligned_coffin=\box37
+\l__coffin_aligned_internal_coffin=\box38
+\l_tmpa_coffin=\box39
+\l_tmpb_coffin=\box40
+\g_tmpa_coffin=\box41
+\g_tmpb_coffin=\box42
+\l__coffin_bounding_shift_dim=\dimen145
+\l__coffin_left_corner_dim=\dimen146
+\l__coffin_right_corner_dim=\dimen147
+\l__coffin_bottom_corner_dim=\dimen148
+\l__coffin_top_corner_dim=\dimen149
+\l__coffin_scaled_total_height_dim=\dimen150
+\l__coffin_scaled_width_dim=\dimen151
+\c__coffin_empty_coffin=\box43
+\l__coffin_display_coffin=\box44
+\l__coffin_display_coord_coffin=\box45
+\l__coffin_display_pole_coffin=\box46
+\l__coffin_display_offset_dim=\dimen152
+\l__coffin_display_x_dim=\dimen153
+\l__coffin_display_y_dim=\dimen154
+\g__file_internal_ior=\read1
+\l__seq_internal_a_int=\count187
+\l__seq_internal_b_int=\count188
+\c__deprecation_minus_one=\count189
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/l3kernel/l3pdfmode.def
+File: l3pdfmode.def 2019-04-06 v L3 Experimental driver: PDF mode
+\l__driver_color_stack_int=\count190
+\l__driver_pdf_tmp_box=\box47
+))
+Package: flexisym 2017/01/27 v0.98e Make math characters macros
+LaTeX Info: Redefining \textprime on input line 300.
+LaTeX Info: Redefining \not on input line 358.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/breqn/cmbase.sym
+File: cmbase.sym 2007/12/19 v0.92
+LaTeX Info: Redefining \hbar on input line 325.
+LaTeX Info: Redefining \surd on input line 327.
+LaTeX Info: Redefining \angle on input line 335.
+LaTeX Info: Redefining \neq on input line 336.
+LaTeX Info: Redefining \mapsto on input line 337.
+LaTeX Info: Redefining \cong on input line 338.
+LaTeX Info: Redefining \notin on input line 341.
+LaTeX Info: Redefining \rightleftharpoons on input line 342.
+LaTeX Info: Redefining \doteq on input line 343.
+LaTeX Info: Redefining \hookrightarrow on input line 344.
+LaTeX Info: Redefining \hookleftarrow on input line 345.
+LaTeX Info: Redefining \bowtie on input line 346.
+LaTeX Info: Redefining \models on input line 347.
+LaTeX Info: Redefining \Longrightarrow on input line 348.
+LaTeX Info: Redefining \longrightarrow on input line 349.
+LaTeX Info: Redefining \Longleftarrow on input line 350.
+LaTeX Info: Redefining \longleftarrow on input line 351.
+LaTeX Info: Redefining \longmapsto on input line 352.
+LaTeX Info: Redefining \longleftrightarrow on input line 353.
+LaTeX Info: Redefining \Longleftrightarrow on input line 354.
+LaTeX Info: Redefining \cdots on input line 358.
+LaTeX Info: Redefining \vdots on input line 361.
+LaTeX Info: Redefining \ddots on input line 366.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/breqn/mathstyle.sty
+Package: mathstyle 2017/01/27 0.98e Tracking mathstyle implicitly
+LaTeX Info: Redefining \displaystyle on input line 93.
+LaTeX Info: Redefining \textstyle on input line 95.
+LaTeX Info: Redefining \scriptstyle on input line 97.
+LaTeX Info: Redefining \scriptscriptstyle on input line 99.
+LaTeX Info: Redefining \genfrac on input line 145.
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2018/11/30 v6.88e Hypertext links for LaTeX
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2016/05/16 v1.14 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2016/05/16 v1.14 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2016/05/16 v1.14 Construct package bundles (HO)
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2016/05/16 v1.6 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2016/05/16 v1.2 Expandable calculations with integers (HO)
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2016/05/16 v1.14 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2016/05/16 v1.4 Expandable calculations on big integers (HO
+)
+Package: bitset 2016/05/16 v1.2 Handle bit-vector datatype (HO)
+Package: uniquecounter 2016/05/16 v1.3 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2016/05/16 v1.5 Let assignment for LaTeX macros (HO)
+Package: hopatch 2016/05/16 v1.3 Wrapper for package hooks (HO)
+Package: xcolor-patch 2016/05/16 xcolor patch
+Package: atveryend 2016/05/16 v1.9 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2016/06/09 v1.18 At begin shipout hook (HO)
+Package: refcount 2016/05/16 v3.5 Data extraction from label references (HO)
+Package: hycolor 2016/05/16 v1.8 Color options for hyperref/bookmark (HO)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+)
+\@linkdim=\dimen155
+\Hy@linkcounter=\count191
+\Hy@pagecounter=\count192
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2018/11/30 v6.88e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count193
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Hyper figures OFF on input line 4519.
+Package hyperref Info: Link nesting OFF on input line 4524.
+Package hyperref Info: Hyper index ON on input line 4527.
+Package hyperref Info: Plain pages OFF on input line 4534.
+Package hyperref Info: Backreferencing OFF on input line 4539.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4772.
+\c@Hy@tempcnt=\count194
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip17
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5125.
+\XeTeXLinkMargin=\dimen156
+\Fld@menulength=\count195
+\Field@Width=\dimen157
+\Fld@charsize=\dimen158
+Package hyperref Info: Hyper figures OFF on input line 6380.
+Package hyperref Info: Link nesting OFF on input line 6385.
+Package hyperref Info: Hyper index ON on input line 6388.
+Package hyperref Info: backreferencing OFF on input line 6395.
+Package hyperref Info: Link coloring OFF on input line 6400.
+Package hyperref Info: Link coloring with OCG OFF on input line 6405.
+Package hyperref Info: PDF/A mode OFF on input line 6410.
+LaTeX Info: Redefining \ref on input line 6450.
+LaTeX Info: Redefining \pageref on input line 6454.
+\Hy@abspage=\count196
+\c@Item=\count197
+\c@Hfootnote=\count198
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2018/11/30 v6.88e Hyperref driver for pdfTeX
+\Fld@listcount=\count199
+\c@bookmark@seq@number=\count266
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2016/05/16 v1.8 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip56
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
+Package: tcolorbox 2019/03/02 version 4.20 text color boxes
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.te
+x
+\pgfutil@everybye=\toks20
+\pgfutil@tempdima=\dimen159
+\pgfutil@tempdimb=\dimen160
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-li
+sts.tex))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box48
+(/usr/local/texlive/2019/texmf-dist/tex/latex/ms/everyshi.sty
+Package: everyshi 2001/05/15 v3.00 EveryShipout Package (MS)
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2019/04/04 v3.1.2 (3.1.2)
+))
+Package: pgf 2019/04/04 v3.1.2 (3.1.2)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2019/04/04 v3.1.2 (3.1.2)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks21
+\pgfkeys@temptoks=\toks22
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.c
+ode.tex
+\pgfkeys@tmptoks=\toks23
+))
+\pgf@x=\dimen161
+\pgf@y=\dimen162
+\pgf@xa=\dimen163
+\pgf@ya=\dimen164
+\pgf@xb=\dimen165
+\pgf@yb=\dimen166
+\pgf@xc=\dimen167
+\pgf@yc=\dimen168
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count267
+\c@pgf@countb=\count268
+\c@pgf@countc=\count269
+\c@pgf@countd=\count270
+\t@pgf@toka=\toks24
+\t@pgf@tokb=\toks25
+\t@pgf@tokc=\toks26
+\pgf@sys@id@count=\count271
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2019/04/04 v3.1.2 (3.1.2)
+)
+Driver file for pgf: pgfsys-pdftex.def
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.d
+ef
+File: pgfsys-pdftex.def 2019/04/04 v3.1.2 (3.1.2)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-p
+df.def
+File: pgfsys-common-pdf.def 2019/04/04 v3.1.2 (3.1.2)
+)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.
+code.tex
+File: pgfsyssoftpath.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfsyssoftpath@smallbuffer@items=\count272
+\pgfsyssoftpath@bigbuffer@items=\count273
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.
+code.tex
+File: pgfsysprotocol.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1364.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2019/04/04 v3.1.2 (3.1.2)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen169
+\pgfmath@count=\count274
+\pgfmath@box=\box49
+\pgfmath@toks=\toks27
+\pgfmath@stack@operand=\toks28
+\pgfmath@stack@operation=\toks29
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.
+tex
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic
+.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigo
+nometric.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.rando
+m.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.compa
+rison.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.
+code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round
+.code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.
+code.tex)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integ
+erarithmetics.code.tex)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count275
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.co
+de.tex
+File: pgfcorepoints.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@picminx=\dimen170
+\pgf@picmaxx=\dimen171
+\pgf@picminy=\dimen172
+\pgf@picmaxy=\dimen173
+\pgf@pathminx=\dimen174
+\pgf@pathmaxx=\dimen175
+\pgf@pathminy=\dimen176
+\pgf@pathmaxy=\dimen177
+\pgf@xx=\dimen178
+\pgf@xy=\dimen179
+\pgf@yx=\dimen180
+\pgf@yy=\dimen181
+\pgf@zx=\dimen182
+\pgf@zy=\dimen183
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconst
+ruct.code.tex
+File: pgfcorepathconstruct.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@path@lastx=\dimen184
+\pgf@path@lasty=\dimen185
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage
+.code.tex
+File: pgfcorepathusage.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@shorten@end@additional=\dimen186
+\pgf@shorten@start@additional=\dimen187
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.co
+de.tex
+File: pgfcorescopes.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfpic=\box50
+\pgf@hbox=\box51
+\pgf@layerbox@main=\box52
+\pgf@picture@serial@count=\count276
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicst
+ate.code.tex
+File: pgfcoregraphicstate.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgflinewidth=\dimen188
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransform
+ations.code.tex
+File: pgfcoretransformations.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@pt@x=\dimen189
+\pgf@pt@y=\dimen190
+\pgf@pt@temp=\dimen191
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.cod
+e.tex
+File: pgfcorequick.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.c
+ode.tex
+File: pgfcoreobjects.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathproce
+ssing.code.tex
+File: pgfcorepathprocessing.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.co
+de.tex
+File: pgfcorearrows.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfarrowsep=\dimen192
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.cod
+e.tex
+File: pgfcoreshade.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgf@max=\dimen193
+\pgf@sys@shading@range@num=\count277
+\pgf@shadingcount=\count278
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.cod
+e.tex
+File: pgfcoreimage.code.tex 2019/04/04 v3.1.2 (3.1.2)
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.
+code.tex
+File: pgfcoreexternal.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfexternal@startupbox=\box53
+))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.co
+de.tex
+File: pgfcorelayers.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretranspare
+ncy.code.tex
+File: pgfcoretransparency.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.
+code.tex
+File: pgfcorepatterns.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.
+tex
+File: pgfcorerdf.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)))
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.cod
+e.tex
+File: pgfmoduleshapes.code.tex 2019/04/04 v3.1.2 (3.1.2)
+\pgfnodeparttextbox=\box54
+)
+(/usr/local/texlive/2019/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.
+tex
+File: pgfmoduleplot.code.tex 2019/04/04 v3.1.2 (3.1.2)
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-0-65.sty
+Package: pgfcomp-version-0-65 2019/04/04 v3.1.2 (3.1.2)
+\pgf@nodesepstart=\dimen194
+\pgf@nodesepend=\dimen195
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version
+-1-18.sty
+Package: pgfcomp-version-1-18 2019/04/04 v3.1.2 (3.1.2)
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2014/10/28 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks30
+\verbatim@line=\toks31
+\verbatim@in@stream=\read3
+)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/environ/environ.sty
+Package: environ 2014/05/04 v0.3 A new way to define environments
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/trimspaces/trimspaces.sty
+Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
+))
+(/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count279
+)
+\tcb@titlebox=\box55
+\tcb@upperbox=\box56
+\tcb@lowerbox=\box57
+\tcb@phantombox=\box58
+\c@tcbbreakpart=\count280
+\c@tcblayer=\count281
+\tcolorbox@number=\count282
+\tcb@temp=\box59
+\tcb@temp=\box60
+\tcb@temp=\box61
+\tcb@temp=\box62
+\tcb@out=\write4
+\tcb@record@out=\write5
+)
+\c@lecnum=\count283
+\c@theorem=\count284
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '4.20'
+)
+\c@tcb@cnt@theorem_exam=\count285
+\c@tcb@cnt@definition_exam=\count286
+\c@tcb@cnt@proposition_exam=\count287
+Package hyperref Info: Option `colorlinks' set `true' on input line 140.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/tocloft/tocloft.sty
+Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
+Package tocloft Info: The document has section divisions on input line 51.
+\cftparskip=\skip57
+\cftbeforetoctitleskip=\skip58
+\cftaftertoctitleskip=\skip59
+\cftbeforepartskip=\skip60
+\cftpartnumwidth=\skip61
+\cftpartindent=\skip62
+\cftbeforesecskip=\skip63
+\cftsecindent=\skip64
+\cftsecnumwidth=\skip65
+\cftbeforesubsecskip=\skip66
+\cftsubsecindent=\skip67
+\cftsubsecnumwidth=\skip68
+\cftbeforesubsubsecskip=\skip69
+\cftsubsubsecindent=\skip70
+\cftsubsubsecnumwidth=\skip71
+\cftbeforeparaskip=\skip72
+\cftparaindent=\skip73
+\cftparanumwidth=\skip74
+\cftbeforesubparaskip=\skip75
+\cftsubparaindent=\skip76
+\cftsubparanumwidth=\skip77
+\cftbeforeloftitleskip=\skip78
+\cftafterloftitleskip=\skip79
+\cftbeforefigskip=\skip80
+\cftfigindent=\skip81
+\cftfignumwidth=\skip82
+\c@lofdepth=\count288
+\c@lotdepth=\count289
+\cftbeforelottitleskip=\skip83
+\cftafterlottitleskip=\skip84
+\cftbeforetabskip=\skip85
+\cfttabindent=\skip86
+\cfttabnumwidth=\skip87
+)
+(./exam-notes.aux)
+\openout1 = `exam-notes.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 190.
+LaTeX Font Info:    ... okay on input line 190.
+
+(/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count290
+\scratchdimen=\dimen196
+\scratchbox=\box63
+\nofMPsegments=\count291
+\nofMParguments=\count292
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count293
+\MPscratchDim=\dimen197
+\MPnumerator=\count294
+\makeMPintoPDFobject=\count295
+\everyMPtoPDFconversion=\toks33
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
+38.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box64
+Package hyperref Info: Link coloring ON on input line 190.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
+
+(/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
+)
+\c@section@level=\count296
+)
+LaTeX Info: Redefining \ref on input line 190.
+LaTeX Info: Redefining \pageref on input line 190.
+LaTeX Info: Redefining \nameref on input line 190.
+
+(./exam-notes.out) (./exam-notes.out)
+\@outlinefile=\write6
+\openout6 = `exam-notes.out'.
+
+ ABD: EveryShipout initializing macros
+LaTeX Font Info:    Try loading font information for U+msa on input line 194.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 194.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [1
+
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./exam
+-notes.tocpdfTeX warning (ext4): destination with the same identifier (name{pag
+e.}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.46 ...1.8}Conditional Expectation}{1}{section.8}
+                                                  % [2]
+Overfull \hbox (1.19429pt too wide) detected at line 55
+\OT1/cmr/bx/n/10 15.10 
+ []
+
+
+Overfull \hbox (0.55562pt too wide) detected at line 65
+\OT1/cmr/m/n/10 16.10.10 
+ []
+
+
+Overfull \hbox (0.55562pt too wide) detected at line 66
+\OT1/cmr/m/n/10 17.10.11 
+ []
+
+
+Overfull \hbox (1.19429pt too wide) detected at line 67
+\OT1/cmr/bx/n/10 18.11 
+ []
+
+
+Overfull \hbox (0.55562pt too wide) detected at line 77
+\OT1/cmr/m/n/10 21.11.10 
+ []
+
+
+Overfull \hbox (0.55562pt too wide) detected at line 78
+\OT1/cmr/m/n/10 21.11.11 
+ []
+
+
+Overfull \hbox (0.55562pt too wide) detected at line 79
+\OT1/cmr/m/n/10 21.11.12 
+ []
+
+
+Overfull \hbox (0.55562pt too wide) detected at line 80
+\OT1/cmr/m/n/10 22.11.13 
+ []
+
+
+Overfull \hbox (1.19429pt too wide) detected at line 81
+\OT1/cmr/bx/n/10 23.12 
+ []
+
+
+Overfull \hbox (6.33344pt too wide) detected at line 87
+\OT1/cmr/m/n/10 25.12.5.1 
+ []
+
+
+Overfull \hbox (6.33344pt too wide) detected at line 88
+\OT1/cmr/m/n/10 25.12.5.2 
+ []
+
+
+Overfull \hbox (1.19429pt too wide) detected at line 92
+\OT1/cmr/bx/n/10 28.13 
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.93 ...n to Bayesian Methods}{1}{subsection.13.1}
+                                                  % [3])
+\tf@toc=\write7
+\openout7 = `exam-notes.toc'.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.}) has b
+een already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.199 \newpage
+               [4] [1] [2] [3] [4]
+Underfull \vbox (badness 1067) has occurred while \output is active []
+
+ [5]
+[6]pdfTeX warning (ext4): destination with the same identifier (name{page.1}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.489 $$
+         [1]pdfTeX warning (ext4): destination with the same identifier (name{p
+age.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.537 $$
+         [2]
+Underfull \vbox (badness 3250) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.582 \begin{corollary}L
+                        et $\borelsigmaalgebra_0$ be the Borel algebra defin...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.586 \section{Sigma Algebras and Measures}
+                                            [4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 606.
+
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 606.
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.625 W
+       e can now finally show the uniqueness property for Caratheodory's the...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.676 \begin{remark}I
+                     f $F(-\infty) = 0$ and $F(\infty) = 1$, then F is the c...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.721 \end{proposition_exam}
+                             [3]
+Overfull \hbox (0.59518pt too wide) in paragraph at lines 733--734
+[]\OT1/cmr/m/it/10 (Lebesgue-Stieltjes In-te-gral). Let $\OML/cmm/m/it/10 f$ \O
+T1/cmr/m/it/10 be $\OML/cmm/m/it/10 ^^V[]$\OT1/cmr/m/it/10 -measurable func-tio
+n. Then, the Lebesgue-Stieltjes
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.769 \end{proposition_exam}
+                             [4]pdfTeX warning (ext4): destination with the sam
+e identifier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.806 \begin{remark} I
+                      n this course, we will generally be working with measu...
+[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.852 $$
+         [6] [7] [8] [9] [10]pdfTeX warning (ext4): destination with the same i
+dentifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1096 
+        [1]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1146 \begin{proof}
+                     First, define the collection of sets $\algebra = \{[(\a...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1173 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1231 \begin{proof}
+                     Suppose that f is a continuous function. Then, construc...
+[4pdfTeX warning (ext4): destination with the same identifier (name{equation.2.
+1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1231 \begin{proof}
+                     Suppose that f is a continuous function. Then, construc...
+]
+Underfull \hbox (badness 10000) in paragraph at lines 1234--1237
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1282 \end{proposition}
+                         [5]pdfTeX warning (ext4): destination with the same id
+entifier (name{page.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1322 $$
+          [6]pdfTeX warning (ext4): destination with the same identifier (name{
+page.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1375 \end{theorem_exam}
+                          [7]pdfTeX warning (ext4): destination with the same i
+dentifier (name{page.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1428 \section{Independence}
+                              [8]pdfTeX warning (ext4): destination with the sa
+me identifier (name{page.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1428 \section{Independence}
+                              [9]
+
+Package amsmath Warning: Foreign command \atopwithdelims;
+(amsmath)                \frac or \genfrac should be used instead
+(amsmath)                 on input line 1443.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1480 W
+        e can extend the notion of independence of events to independence fo...
+[1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1521 \begin{proof}
+                     (1 $\rightarrow 2$). First, recall that [2]
+Underfull \hbox (badness 10000) in paragraph at lines 1541--1544
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1553--1556
+
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1567 \begin{proof}
+                    (Sketch). As $X_1,...,X_n$ are independent, then for any...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1613 $$
+          [4]pdfTeX warning (ext4): destination with the same identifier (name{
+page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1659 \begin{proof}
+                     Define $p_n = \prob(A_n).$ Then, we have that [5]
+Underfull \vbox (badness 1859) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1707 R
+        ecall that the intersection of $\sigma-$algebras is a $\sigma-$algeb...
+[6]pdfTeX warning (ext4): destination with the same identifier (name{page.7}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1753 W
+        e now look at some of the implications of Kolmogorov’s 0-1 Law.
+[7]pdfTeX warning (ext4): destination with the same identifier (name{page.8}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1775 \section{Integration}
+                             [8]pdfTeX warning (ext4): destination with the sam
+e identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1818 \begin{proof}
+                    (Sketch). [1]pdfTeX warning (ext4): destination with the sa
+me identifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1842 \newpage
+                [2]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1893 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1942 \end{claim}
+                   [4]
+LaTeX Font Info:    Font shape `OMS/cmr/m/it' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 1982.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.1992 $$
+          [5]pdfTeX warning (ext4): destination with the same identifier (name{
+page.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2043 \section{Integration}
+                             [6]pdfTeX warning (ext4): destination with the sam
+e identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2086 \begin{remark}N
+                      ote that we require a dominating function in the rever...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2140 \begin{proof}
+                    (Sketch). We take [2]pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2191 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2240 $$
+          [4]pdfTeX warning (ext4): destination with the same identifier (name{
+page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2284 
+        [5]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2334 \end{definition_exam}
+                             [6]pdfTeX warning (ext4): destination with the sam
+e identifier (name{page.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2373 \begin{proof}
+                     [7]pdfTeX warning (ext4): destination with the same identi
+fier (name{page.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2412 \section{Lebesgue Spaces}
+                                 [8]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2414.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2414.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2454 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2507 \begin{remark}T
+                      his is also known as convergence in the p-th mean as w...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2550 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2601 \end{proposition_exam}
+                              [4]
+Underfull \vbox (badness 1303) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2633 \begin{proof}
+                     We will make sure of the dominating convergence theorem...
+[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2677 \begin{proof}
+                     Fix $\epsilon > 0.$ Then, by Markov's inequality, [6]pdfTe
+X warning (ext4): destination with the same identifier (name{page.7}) has been 
+already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2725 \end{definition_exam}
+                             [7]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2751.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2751.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2773 \end{proposition_exam}
+                              [8]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2807.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2807.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2811 $$
+          [9]pdfTeX warning (ext4): destination with the same identifier (name{
+page.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2844 \newpage
+                [10]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2845.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 2845.
+
+[11] [12]pdfTeX warning (ext4): destination with the same identifier (name{page
+.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2946 W
+        e now have a new definition for the expectation of a random variable.
+[1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.2976 \begin{definition}(
+                          Integrals over subsets). Let $A \in \mathcal{F}.$ ...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3033 \begin{remark}W
+                      e can write [3]pdfTeX warning (ext4): destination with th
+e same identifier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3071 \end{remark}
+                    [4]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3112 \begin{proof}
+                     As h is a simple function, let $h = \sum_{k=1}^{n}a_k1_...
+[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3155 $$
+          [6]pdfTeX warning (ext4): destination with the same identifier (name{
+page.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3197 $$
+          [7]pdfTeX warning (ext4): destination with the same identifier (name{
+page.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3244 \begin{corollary}D
+                         efine the probability space $(\Omega, \sigmalgebra,...
+[8]pdfTeX warning (ext4): destination with the same identifier (name{page.9}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3290 
+        [9]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.10}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3335 $$
+          [10]pdfTeX warning (ext4): destination with the same identifier (name
+{page.11}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3383 \end{lemma}
+                   [11]
+Underfull \vbox (badness 1127) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3430 W
+        e now extend the notion of variance of a sum of random variables.
+[12] [13]pdfTeX warning (ext4): destination with the same identifier (name{page
+.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3514 \subsection
+                  {Product Measure} [1]pdfTeX warning (ext4): destination with 
+the same identifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3561 
+        [2]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3611 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3663 $$
+          [4]pdfTeX warning (ext4): destination with the same identifier (name{
+page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3704 \begin{proof}
+                     First, we define the class of all bounded functions
+[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3755 \begin{proof}
+                     For (1), recall that [6]pdfTeX warning (ext4): destination
+ with the same identifier (name{page.7}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.3793 $$
+          [7]pdfTeX warning (ext4): destination with the same identifier (name{
+page.8}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3846 \end{proposition_exam}
+                              [8]
+Underfull \vbox (badness 7047) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.9}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3883 \begin{claim}I
+                     f $\textbf{X} = (X_1,...,X_n)$ has a density, then so d...
+[9]pdfTeX warning (ext4): destination with the same identifier (name{page.10}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3920 $$
+          [10]pdfTeX warning (ext4): destination with the same identifier (name
+{page.11}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.3929 \section{Conditional Expectation}
+                                         [11]pdfTeX warning (ext4): destination
+ with the same identifier (name{page.1}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.3956 \section{Conditional Expectation}
+                                         [1]pdfTeX warning (ext4): destination 
+with the same identifier (name{page.1}) has been already used, duplicate ignore
+d
+<to be read again> 
+                   \relax 
+l.3984 \section{Exponential Families}
+                                      [1]pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4026 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4073 \begin{lemma}G
+                     iven a density $p_{\theta}$ and measure $\nu$, we can d...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4116 \end{equation}
+                      [3pdfTeX warning (ext4): destination with the same identi
+fier (name{equation.9.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4116 \end{equation}
+                     ]pdfTeX warning (ext4): destination with the same identifi
+er (name{equation.9.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4122 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4168 \end{proposition_exam}
+                              [4pdfTeX warning (ext4): destination with the sam
+e identifier (name{equation.9.1}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4168 \end{proposition_exam}
+                             ]pdfTeX warning (ext4): destination with the same 
+identifier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4217 A
+        n estimator is minimum variance if the score function is a linear fu...
+[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4227 \section{Exponential Families}
+                                      [6]pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4265 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4312 
+        [2]
+Underfull \vbox (badness 6268) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4352 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4397 \section{Local Asymptotic Normality}
+                                            [4]
+Overfull \hbox (3.93196pt too wide) in paragraph at lines 4430--4431
+\OT1/cmr/m/n/10 So far, we have seen 3 modes of con-ver-gence (a.s con-ver-genc
+e, con-ver-gence in prob-a-bil-ity and $\OMS/cmsy/m/n/10 L[]^^@$\OT1/cmr/m/n/10
+ convergence).
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4440 F
+        rom this, convergence in distribution is simply random variables wea...
+[1]
+Overfull \hbox (6.52826pt too wide) in paragraph at lines 4460--4461
+[]\OT1/cmr/m/it/10 (Asymptotic dis-tri-bu-tion). Let us de-fine the se-quence o
+f non-random con-stants $\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 a[]\OMS/cmsy/m/n/10
+ g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 b[]\OMS/cmsy/m/n/10 g$\
+OT1/cmr/m/it/10 .
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4470 \begin{enumerate}
+                         [2]
+Underfull \vbox (badness 6300) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4514 W
+        e can give a different interpretation of the log likelihood ratio. S...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4537 \end{remark}
+                    [4]
+Underfull \vbox (badness 4634) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.5}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4575 \begin{remark}W
+                      e can say that two sequences of probability measures a...
+[5]pdfTeX warning (ext4): destination with the same identifier (name{page.6}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4613 $$
+          [6]pdfTeX warning (ext4): destination with the same identifier (name{
+page.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4666 \begin{remark}R
+                      ecall that $K^{'}(\utilde{\theta_0})$ is the mean-valu...
+[7]
+Underfull \vbox (badness 5681) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.8}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4689 \begin{corollary} T
+                          he LAN property still holds after exponential fami...
+[8]pdfTeX warning (ext4): destination with the same identifier (name{page.9}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4698 \section{Local Asymptotic Normality}
+                                            [9]pdfTeX warning (ext4): destinati
+on with the same identifier (name{equation.10.2}) has been already used, duplic
+ate ignored
+<to be read again> 
+                   \relax 
+l.4705 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.10.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4725 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4763 $$
+          [1]
+Underfull \vbox (badness 6348) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4805 \begin{corollary}U
+                         nder the same conditions, the square root of the de...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4838 T
+        he product $\utilde{\ell}_{\utilde{\theta}}^{\circ}\sqrt{p_{\utilde{...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4843 \newpage
+                [4]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4883 \end{corollary}
+                       [5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.6}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4919 \subsection
+                  {LAN property for Location and Scale Families} [6]pdfTeX warn
+ing (ext4): destination with the same identifier (name{page.7}) has been alread
+y used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4954 \begin{remark}T
+                      his means that to show LAN property holds for a locati...
+[7]pdfTeX warning (ext4): destination with the same identifier (name{page.8}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.4969 \section{Local Asymptotic Normality}
+                                            [8]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4970.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 4970.
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5046 \begin{remark}N
+                      ote that the information matrix is not necessarily the...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5052 \section{Optimality of estimators}
+                                          [2]pdfTeX warning (ext4): destination
+ with the same identifier (name{page.1}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.5081 \end{remark}
+                    [1]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5147 
+        [2]pdfTeX warning (ext4): destination with the same identifier (name{eq
+uation.11.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5166 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5212 W
+        e can use Lévy's continuity theorem to show another important result.
+[3]pdfTeX warning (ext4): destination with the same identifier (name{equation.1
+1.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5226 \begin{equation}
+                       
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.4}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5275 \begin{proof}
+                     We have shown that the under $\utilde{\theta_0},$ the l...
+[4]pdfTeX warning (ext4): destination with the same identifier (name{page.5}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5372 \end{proposition_exam}
+                              [5]pdfTeX warning (ext4): destination with the sa
+me identifier (name{equation.11.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5375 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{page.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5437 \end{theorem_exam}
+                          [6]
+Underfull \vbox (badness 4403) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.7}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5489 \begin{proof}
+                     This follows from the Scores version of Le Cam's 3rd le...
+[7]pdfTeX warning (ext4): destination with the same identifier (name{page.8}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5513 \section{Optimality}
+                            [8]pdfTeX warning (ext4): destination with the same
+ identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5553 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5585 \end{remark}
+                    [2]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5628 \begin{remark}R
+                      ecall the regular scores assumption [3]pdfTeX warning (ex
+t4): destination with the same identifier (name{page.4}) has been already used,
+ duplicate ignored
+<to be read again> 
+                   \relax 
+l.5669 \begin{remark}M
+                      aximum likelihood estimators are not always optimal. H...
+[4]pdfTeX warning (ext4): destination with the same identifier (name{page.5}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5701 $$
+          [5]pdfTeX warning (ext4): destination with the same identifier (name{
+page.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5722 \section{Optimality}
+                            [6]pdfTeX warning (ext4): destination with the same
+ identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5756 
+        [1]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5800 I
+        n condition 3, we can interpret the asymptotic behaviour of the esti...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5836 
+        [3]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5886 \begin{remark}T
+                      he intuition behind the modulus of continuity is that ...
+[4]pdfTeX warning (ext4): destination with the same identifier (name{page.5}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5936 
+        [5]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5950 \section{Optimality}
+                            [6]pdfTeX warning (ext4): destination with the same
+ identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.5985 O
+        nce we know the efficient influence function, we can figure out whet...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6035 $$
+          [2]pdfTeX warning (ext4): destination with the same identifier (name{
+page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6078 H
+        ence, everything follows from the last section by using the block-ma...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6145 N
+        ow, after this definition of regularity, we can then apply Scores ve...
+[4]pdfTeX warning (ext4): destination with the same identifier (name{page.5}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6218 $$
+          [5]pdfTeX warning (ext4): destination with the same identifier (name{
+page.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6260 $$
+          [6]pdfTeX warning (ext4): destination with the same identifier (name{
+page.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6268 \section{Optimality}
+                            [7]pdfTeX warning (ext4): destination with the same
+ identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6336 $$
+          [1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6398 \begin{remark}H
+                      ere, $\utilde{Z_n}$ is AJN with the scores as the esti...
+[2]pdfTeX warning (ext4): destination with the same identifier (name{page.3}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6413 \newpage
+                [3]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6444 \newpage
+                [4]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6477 \section{Hypothesis Testing}
+                                    [5]pdfTeX warning (ext4): destination with 
+the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6555 N
+        ow, as our mapping is just the first $d_{\theta}$ components of the ...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6583 W
+        e shall study cases the true value $\utilde{\theta} = \utilde{\theta...
+[2]
+Underfull \vbox (badness 4156) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6641 \begin{remark}T
+                      o interpret this, $\utilde{\hat{\gamma}_n}^{\circ}$ ca...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6684 \end{definition_exam}
+                             [4]pdfTeX warning (ext4): destination with the sam
+e identifier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6696 \section{Hypothesis Testing}
+                                    [5]pdfTeX warning (ext4): destination with 
+the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6723 \newpage
+                [1]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6755 \newpage
+                [2]pdfTeX warning (ext4): destination with the same identifier 
+(name{equation.12.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6773 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.12.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6789 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{equation.12.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6804 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6807 \end{equation}
+                      [3]pdfTeX warning (ext4): destination with the same ident
+ifier (name{page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6842 
+        [4]pdfTeX warning (ext4): destination with the same identifier (name{pa
+ge.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6869 \section{Hypothesis Testing}
+                                    [5]pdfTeX warning (ext4): destination with 
+the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6915 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.6962 $$
+          [2]pdfTeX warning (ext4): destination with the same identifier (name{
+page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7009 I
+        n hypothesis testing, we specify a value of $\utilde{\theta}$ for ou...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7047 $$
+          [4]pdfTeX warning (ext4): destination with the same identifier (name{
+page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7067 \section{Hypothesis Testing}
+                                    [5]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7101 \begin{remark} R
+                       ecall that under LAN\#, we have that $\utilde{Y_n}$ i...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7136 \end{lemma}
+                   [2]pdfTeX warning (ext4): destination with the same identifi
+er (name{page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7186 \section{Hypothesis Testing}
+                                    [3]pdfTeX warning (ext4): destination with 
+the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7236 \begin{lemma}W
+                     e can always express a regular quadratic test statistic...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{equation.1
+2.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7265 \begin{equation}
+                       pdfTeX warning (ext4): destination with the same identif
+ier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7308 \begin{proposition}D
+                           efine the random variable $ [2]pdfTeX warning (ext4)
+: destination with the same identifier (name{page.3}) has been already used, du
+plicate ignored
+<to be read again> 
+                   \relax 
+l.7363 \begin{remark} T
+                       he power of our test associated with $\utilde{Z_n}$ i...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7390 $$
+          [4]pdfTeX warning (ext4): destination with the same identifier (name{
+page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7401 \section{Optimality of Bayesian Methods}
+                                                [5]pdfTeX warning (ext4): desti
+nation with the same identifier (name{page.1}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.7422 \newpage
+                [1]pdfTeX warning (ext4): destination with the same identifier 
+(name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7442 \section{Optimality of Bayesian Methods}
+                                                [2]
+Underfull \vbox (badness 2635) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7480 \begin{remark}N
+                      ote that this is the same as our previous proposition ...
+[1]pdfTeX warning (ext4): destination with the same identifier (name{page.2}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7513 $$
+          [2]pdfTeX warning (ext4): destination with the same identifier (name{
+page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7544 \section{Optimality of Bayesian Methods}
+                                                [3]pdfTeX warning (ext4): desti
+nation with the same identifier (name{page.1}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.7556 \section{Optimality of Bayesian Methods}
+                                                [1]pdfTeX warning (ext4): desti
+nation with the same identifier (name{page.1}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.7610 \end{definition_exam}
+                             [1]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7643 T
+        he goal of the EM algorithm is that there parameters $\utilde{\theta...
+[2]
+Underfull \vbox (badness 4391) has occurred while \output is active []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.3}) has 
+been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7682 \begin{proof}
+                     First, note that we can express the log complete data d...
+[3]pdfTeX warning (ext4): destination with the same identifier (name{page.4}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7726 \end{remark}
+                    [4]pdfTeX warning (ext4): destination with the same identif
+ier (name{page.5}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7729 \section{Optimality of Bayesian Methods}
+                                                [5]pdfTeX warning (ext4): desti
+nation with the same identifier (name{page.1}) has been already used, duplicate
+ ignored
+<to be read again> 
+                   \relax 
+l.7786 $$
+          [1]pdfTeX warning (ext4): destination with the same identifier (name{
+page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7831 $$
+          [2]pdfTeX warning (ext4): destination with the same identifier (name{
+page.3}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7863 \section{Measure Theory Recap}
+                                      [3]pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7914 \item $
+              \Omega \in \mathcal{F}$ [1]pdfTeX warning (ext4): destination wit
+h the same identifier (name{page.2}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.7966 \item $
+              \beta \supset \semialgebra$. [2]pdfTeX warning (ext4): destinatio
+n with the same identifier (name{page.3}) has been already used, duplicate igno
+red
+<to be read again> 
+                   \relax 
+l.8016 $$
+          [3]pdfTeX warning (ext4): destination with the same identifier (name{
+page.4}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8076 \begin{theorem}(
+                       Simple extension theorem). Let $\semialgebra \subsete...
+[4]pdfTeX warning (ext4): destination with the same identifier (name{page.5}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8115 \item $
+              \mu_0(\emptyset) = 0$ [5]pdfTeX warning (ext4): destination with 
+the same identifier (name{page.6}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8170 \begin{enumerate}
+                         [6]pdfTeX warning (ext4): destination with the same id
+entifier (name{page.7}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8211 \item I
+              f $B_j \in g$ for all $j \geq 1$, then $B_j \downarrow B$ impl...
+[7]pdfTeX warning (ext4): destination with the same identifier (name{page.8}) h
+as been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8263 \end{claim}
+                   [8]pdfTeX warning (ext4): destination with the same identifi
+er (name{page.9}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8316 \begin{theorem}L
+                       et $\algebra \subseteq \powerset$ be an algebra and $...
+[9]pdfTeX warning (ext4): destination with the same identifier (name{page.10}) 
+has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8366 
+        [10]pdfTeX warning (ext4): destination with the same identifier (name{p
+age.11}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8413 \end{lemma}
+                   [11]
+Overfull \hbox (11.77344pt too wide) in paragraph at lines 8431--8432
+\OT1/cmr/m/it/10 de-fine $\OML/cmm/m/it/10 f[]; f[]$ \OT1/cmr/m/it/10 as be-for
+e. We de-fine the re-spec-tive in-te-grals $\OML/cmm/m/it/10 I\OT1/cmr/m/n/10 (
+\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 )$ \OT1/cmr/m/it/10 and $\OML/cmm/m/it/10 I
+\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 f[]\OT1/cmr/m/n/10 )\OML/cmm/m/it/10 :$ \OT1/
+cmr/m/it/10 Now, if we have that $[]\OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f[]; f[]
+\OMS/cmsy/m/n/10 g \OML/cmm/m/it/10 <
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{page.12}) has
+ been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8457 \item $
+              \lim_{n \rightarrow \infty}\sup f_n \in \sigmalgebra$ [12]pdfTeX 
+warning (ext4): destination with the same identifier (name{page.13}) has been a
+lready used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.8516 $$
+          [13] [14] [15] [16]
+Overfull \hbox (0.58884pt too wide) in paragraph at lines 8686--8687
+\OT1/cmr/m/it/10 re-spect to $\OML/cmm/m/it/10 ^^V[]:$ \OT1/cmr/m/it/10 Take a 
+func-tion that is mea-sur-able with re-spect to $\OMS/cmsy/m/n/10 F$\OT1/cmr/m/
+it/10 . Fur-ther-more, as-sume that $[]$.
+ []
+
+[17] [18]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 8814.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `math shift' on input line 8814.
+
+[19] [20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 8857.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 8857.
+ (./exam-notes.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 8857.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 8857.
+
+Package rerunfilecheck Info: File `exam-notes.out' has not changed.
+(rerunfilecheck)             Checksum: 1212F08409AD28DE69BC0F6ED7F51BFE;9266.
+
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 8857.
+ ) 
+Here is how much of TeX's memory you used:
+ 27838 strings out of 492616
+ 520961 string characters out of 6129481
+ 546298 words of memory out of 5000000
+ 30170 multiletter control sequences out of 15000+600000
+ 543423 words of font info for 66 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 54i,14n,75p,929b,507s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></us
+r/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb><
+/usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></
+usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></u
+sr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr
+/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/l
+ocal/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local
+/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/t
+exlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/tex
+live/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texliv
+e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texlive/2019/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-di
+st/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texm
+f-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb>
+Output written on exam-notes.pdf (211 pages, 1015061 bytes).
+PDF statistics:
+ 2851 PDF objects out of 2984 (max. 8388607)
+ 2587 compressed objects within 26 object streams
+ 1293 named destinations out of 1440 (max. 500000)
+ 989 words of extra memory for PDF output out of 10000 (max. 10000000)
+
