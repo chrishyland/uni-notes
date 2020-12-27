@@ -1,0 +1,3486 @@
+\documentclass[twoside]{article}
+\setlength{\oddsidemargin}{0.25 in}
+\setlength{\evensidemargin}{-0.25 in}
+\setlength{\topmargin}{-0.6 in}
+\setlength{\textwidth}{6.5 in}
+\setlength{\textheight}{8.5 in}
+\setlength{\headsep}{0.75 in}
+\setlength{\parindent}{0 in}
+\setlength{\parskip}{0.1 in}
+
+%
+% ADD PACKAGES here:
+%
+
+\usepackage{amsmath,amsfonts,amssymb,graphicx,mathtools,flexisym, hyperref, graphicx,bm}
+\graphicspath{ {./Images/} }
+
+\usepackage{tcolorbox}
+
+%
+% The following commands set up the lecnum (lecture number)
+% counter and make various numbering schemes work relative
+% to the lecture number.
+%
+\newcounter{lecnum}
+\renewcommand{\thepage}{\thelecnum-\arabic{page}}
+\renewcommand{\thesection}{\thelecnum.\arabic{section}}
+\renewcommand{\theequation}{\thelecnum.\arabic{equation}}
+\renewcommand{\thefigure}{\thelecnum.\arabic{figure}}
+\renewcommand{\thetable}{\thelecnum.\arabic{table}}
+
+%
+% The following macro is used to generate the header.
+%
+\newcommand{\lecture}[4]{
+   \pagestyle{myheadings}
+   \thispagestyle{plain}
+   \newpage
+   \setcounter{lecnum}{#1}
+   \setcounter{page}{1}
+   \noindent
+   \begin{center}
+   \framebox{
+      \vbox{\vspace{2mm}
+    \hbox to 6.28in { {\bf STAT5610: Advanced Inference
+    \hfill } }
+       \vspace{4mm}
+       \hbox to 6.28in { {\Large \hfill #1. #2 \hfill} }
+       \vspace{4mm}
+       }
+   }
+   \end{center}
+
+
+}
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+%Use this command for a figure; it puts a figure in wherever you want it.
+%usage: \fig{NUMBER}{SPACE-IN-INCHES}{CAPTION}
+\newcommand{\fig}[3]{
+            \vspace{#2}
+            \begin{center}
+            Figure \thelecnum.#1:~#3
+            \end{center}
+    }
+% Use these for theorems, lemmas, proofs, etc.
+\newtheorem{theorem}{Theorem}[lecnum]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{example}[theorem]{Example}
+\newenvironment{proof}{{\bf Proof:}}{\hfill\rule{2mm}{2mm}}
+
+
+\tcbuselibrary{theorems}
+\newtcbtheorem
+  []% init options
+  {theorem_exam}% name
+  {Theorem}% title
+  {%
+    colback=orange!5,
+    colframe=orange!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix
+
+
+\newtcbtheorem
+  []% init options
+  {definition_exam}% name
+  {Definition}% title
+  {%
+    colback=blue!5,
+    colframe=blue!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+
+\newtcbtheorem
+  []% init options
+  {proposition_exam}% name
+  {Proposition}% title
+  {%
+    colback=red!5,
+    colframe=red!35!black,
+    fonttitle=\bfseries,
+  }% options
+  {def}% prefix  
+
+\newcommand{\Lim}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \lim_{#1}\;$}}}
+\newcommand{\Inf}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \inf_{#1}\;$}}}
+\newcommand{\Sup}[1]{\raisebox{0.5ex}{\scalebox{0.8}{$\displaystyle \sup_{#1}\;$}}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+%
+% To generate a clickable table of content.
+%
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=blue,
+    urlcolor=black
+}
+
+
+% For disjoint unions
+% -------------------------------------------------------------------------
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+% -------------------------------------------------------------------------
+
+
+% Shorthand to make notes easier
+\newcommand\E{\mathbb{E}}
+\newcommand{\algebra}{\mathcal{A}}
+\newcommand{\semialgebra}{\mathcal{S}}
+\newcommand{\sigmalgebra}{\mathcal{F}}
+\newcommand{\borelsigmaalgebra}{\mathcal{B}}
+\newcommand{\sa}{\sigma-algebra}
+\newcommand{\powerset}{\mathcal{P}}
+\newcommand{\real}{\mathbb{R}}
+\newcommand{\extendedreal}{\overline{\mathbb{R}}}
+\newcommand{\negativereal}{\mathbb{R}^-}
+\newcommand{\positivereal}{\mathbb{R}^+}
+\newcommand{\positiveextendedreal}{\overline{\mathbb{R}}^+}
+\newcommand{\positivenegativereal}{\overline{\mathbb{R}}^-}
+\newcommand{\prob}{\mathbb{P}}
+\newcommand{\utilde}{\underset{\sim}}
+
+
+\usepackage{tocloft}
+
+\addtolength{\cftsecnumwidth}{10pt}
+\setlength{\cftsubsecnumwidth}{3.5em}
+
+\title{STAT5610: Advanced Inference}
+\author{Charles Christopher Hyland}
+\date{Semester 2 2020}
+
+
+\begin{document}
+
+\pagenumbering{gobble}
+\maketitle
+\begin{abstract}
+Thank you for stopping by to read this. These are notes collated from lectures and tutorials as I took this course.
+\end{abstract}
+\newpage
+\tableofcontents
+\newpage
+\pagenumbering{arabic}
+
+
+\lecture{1}{Parametric Estimation}
+\section{Parametric Estimation}
+\section{Parametric Estimation}
+\subsection{Motivation for Semiparametric Estimation}
+
+A semiparametric statistical model is a family of distributions indexed by two parameters
+\begin{equation}
+\{\prob_{\theta, f}: \utilde{\theta} \in \utilde{\Theta}; f \in \sigmalgebra\}
+\end{equation}
+where $\utilde{\theta}$ is an Euclidean parameter, i.e. $\utilde{\theta} \in \utilde{\Theta} \in \mathbb{R}^d$, and the parameter f is a function in the function space $\sigmalgebra$, so it can be \textit{infinite dimensinoal}.
+
+Our canonical example is given by the \textbf{canonical location model}.
+\begin{definition_exam}{Canonical Location Model}{}
+ Suppose that $X_1, ..., X_n$ are i.i.d with common density 
+$$
+p(x: \theta, f) = f(x - \theta)
+$$
+whereby $\theta \in \real$ and f is a density centered at 0.
+\end{definition_exam}
+
+The Euclidean (finite) parameter is what we will be primarly interested in. The issue is how to estimate this finite-dimensional parameter in the presence of the unknown infinite-dimensional \textbf{nuisance parameter} (nuisance function).
+
+The central idea in semiparametric methods is to identify a least favourable parametric submodel, which lives inside the full model, whereby estimating the parameters in the submodel also estimates the parameters in the full model. Therefore, we first review some aspects of parametric theory.
+
+\subsection{Regular Parametric Models}
+
+We are interested in sequences of parametric models for the data $\utilde{x}.$ From this, we will then define the LAN property which captures a particular aspect of regularity in parametric models. We will now review results from parametric estimation of parameters.
+
+\begin{definition}(Convergence in distribution). Let $X_n$ be a sequence of random variables. We say that $X_n$ converges in distribution to X if 
+$$
+\prob(X_n \leq x) \rightarrow \prob(X \leq x)
+$$
+\end{definition}
+
+We will be taking alot of Taylor series expansion in this course.
+
+\begin{definition}(Taylor Series). The Taylor series representation of a function $f(x)$ around a point c is given by 
+$$
+f(x) = \sum_{n=0}^{\infty}\frac{f^{(n)(c)}}{n!}(x - c)^{n}
+$$
+where the remaining terms converges to zero.
+\end{definition}
+
+\begin{definition_exam}{3-Term Taylor Series Expansion}{} A 3-term Taylor series expansion with mean-value remainder of a three-times differentiable function $f(x)$ about 0 takes the form 
+\begin{equation}
+  f(x) = f(0) + xf^{'}(0) + \frac{x^2}{2!}f^{''}(0) + \frac{x^3}{3!}g^{'''}(\alpha x)
+\end{equation}
+for some intermediate value $\alpha = \alpha(x) \in [0,1].$
+\end{definition_exam}
+
+
+Suppose we have data $\utilde{x_n}$ modelled as the value taken by a $\mathcal{X}_{n}$-valued random vector $\utilde{X_n}$ whereby n indicates the sample size.
+
+Suppose that for each n, we have a family of distributions 
+$$
+\{\prob_{n, \utilde{\gamma}}: \utilde{\gamma} \in \utilde{\Gamma}\}
+$$
+of probability distributions and each $\prob_{n, \utilde{\gamma}}$ has a density $p_{n, \utilde{\gamma}}(.)$ with respect to some dominating measure $\nu_n(\cdot)$ on $\mathcal{X}_n$. Generally, the dominating measure is the Lebesgue measure. We can now define the log-likelihood ratio.
+
+
+\begin{definition_exam}{Log Likelihood Ratio}{}Suppose that for each $n = 1,2,...$ and each $\utilde{\gamma} \in \Gamma \subseteq \mathbb{R}^d$, we have a probability distribution $\prob_{n \utilde{\gamma}}$ on a sample space $\mathcal{X}_n$ whose density function with respect to the measure $\nu_n(.)$ is $p_{n \utilde{\gamma_{0}}}(.).$ Fix an interior point $\utilde{\gamma_0} \in \Gamma.$
+
+Define the sequence of supports $A_n = A_n(\utilde{\gamma_0}) = \{\utilde{x}: \mathcal{X}_n: p_{n \utilde{\gamma}}(\utilde{x}) > 0 \}$. Then, for any other $\utilde{\gamma_1} \in \Gamma$, we define the \textbf{log likelihood ratio} as 
+$$
+L_n(\utilde{x}; \utilde{\gamma_1}|\utilde{\gamma_0}) = 
+\begin{cases}
+\frac{log\;p_{n \utilde{\gamma_{1}}}(\utilde{x}) }{log\;p_{n \utilde{\gamma_{0}}}(\utilde{x})} \quad \text{for } \utilde{x} \in A_n(\utilde{\gamma_{0}})\\\\
+0 \quad \text{for } \utilde{x} \in A_n^c(\utilde{\gamma_{0}})
+\end{cases}
+$$
+where we define $L_n$ to be zero outside of the support $A_n.$
+\end{definition_exam}
+
+\begin{remark}
+We can give a different interpretation of the log likelihood ratio. Suppose that $\prob_{n\utilde{\gamma_1}}$ is absolutely continuous with respect to $\prob_{n\utilde{\gamma_0}}$. Then, the log likelihood ratio is the logarithm of the Radon-Nikodym derivative of these two probability measures.
+\end{remark}
+
+We now want to do a "local Pitman analysis" of the log likelihood ratio $L_n.$ We want to restrict our analysis to a local area where $\utilde{\gamma_n} = \utilde{\gamma_0} + n^{-\frac{1}{2}}\utilde{h}.$ We can think of this as we are taking a step $\utilde{h}$ away from the original point $\utilde{\gamma_0}$. Then, we can define the LAN property as a local property around $\utilde{\gamma_0}.$
+
+\newpage
+\begin{definition_exam}{Local Asymptotic Normality}{}Let $L_n(\utilde{x}; \utilde{\gamma_1}|\utilde{\gamma_0})$ be the log likelihood of $\utilde{\gamma_1}$ against the true value $\utilde{\gamma_0}.$ We say that the \textbf{local asymptotic normality} property holds at $\utilde{\gamma_0}$ if 
+
+\begin{enumerate}
+\item There exists a symmetric positive definite matrix $\utilde{J} = \utilde{J}(\utilde{\gamma_0})$ 
+\item There exists a random vector $\utilde{S_n} = \utilde{S_n}(\utilde{X_n}; \utilde{\gamma_0})$ such that 
+\begin{equation}
+\utilde{S_n}(\utilde{X_n}; \utilde{\gamma_0}) \xrightarrow{d} \mathcal{N}(\utilde{0}, \utilde{J})
+\end{equation}
+where $\utilde{0}$ is the zero mean vector and covariance matrix $\utilde{J}$ 
+\item Finally, when $\utilde{X_n} \sim \prob_{n \utilde{\gamma_0}}$, for any d-dimensional vector $\utilde{h} \in \mathbb{R}^d$, the log likelihood ratio satisfies 
+\begin{equation}
+L_n(\utilde{x}; \utilde{\gamma_0} + n^{-\frac{1}{2}}\utilde{h}|\utilde{\gamma_0}) = \utilde{h}^T\utilde{S_n} - \frac{1}{2}\utilde{h}^T\utilde{J}\utilde{h} + R_n
+\end{equation}
+where the remainder $R_n = R_n(\utilde{\gamma_0}; \utilde{h}) \xrightarrow{p} 0.$
+\end{enumerate}
+\end{definition_exam}
+
+\begin{definition}(Vector of scores and information matrix). The random d-dimensional vector $\utilde{S_n}$ is the \textbf{Scores vector} and $\utilde{J}$ is the information matrix associated with $\utilde{\gamma_{0}}.$
+\end{definition}
+
+\begin{remark}The information matrix $\utilde{J}$ is usually the covariance matrix of the first derivatives of the log likelihood. Therefore, the information matrix can be interpreted to be the asymptotic variance of the scores.
+\end{remark}
+
+\begin{remark} We will later see conditions which imply the LAN property but it is worth noting that if the conditions which imply LAN holds, then we can show that $
+\utilde{S_n}(\utilde{X_n}; \utilde{\gamma_0}) \xrightarrow{d} \mathcal{N}(\utilde{0}, \utilde{J})
+$ using the central limit theorem.
+\end{remark}
+
+The score function converges to the multivariate normal distribution through the central limit theorem. This leads to the following result.
+
+\begin{proposition_exam}{Log likelihood Ratio is asymptotically normal under LAN}{}The log likelihood ratio is asymptotically normal at $\utilde{\gamma_0}$ if the LAN property holds at $\utilde{\gamma_0}.$ That is, if $\utilde{X_n} \sim \prob_{n \utilde{\gamma_0}}$, then
+$$
+L_n \xrightarrow{d} \mathcal{N}\bigg(-\frac{\utilde{h}^T\utilde{J}\utilde{h}}{2},\utilde{h}^T\utilde{J}\utilde{h} \bigg)
+$$
+\end{proposition_exam}
+
+\subsection{Consequences of LAN}
+
+We are now interested in describing what are the consequences if the LAN property holds.
+
+We first describe Le Cam's third lemma, which tells us the joint distribution of a statistic and the log-likelihood ratio under nearby alternatives. 
+
+
+\begin{theorem_exam}{Le Cam's Third Lemma}{}Suppose that the LAN property holds at $\utilde{\gamma_0}$. Furthermore, assume that $Y_n$ is a statistic such that under the value at which LAN holds, $\prob_{n\utilde{\gamma_0}}$, we have the following limiting behaviour 
+\begin{equation}
+\begin{pmatrix}
+Y_n\\
+L_n
+\end{pmatrix}
+ \xrightarrow{d} \mathcal{N}
+\bigg( 
+\begin{pmatrix}
+0 \\
+-\frac{\delta^2}{2}
+\end{pmatrix}
+,
+\begin{pmatrix}
+\sigma^2 & \utilde{\Sigma_{YL}} \\
+\utilde{\Sigma_{LY}} & \delta^2
+\end{pmatrix}
+\bigg)
+\end{equation}
+where $Y_n$ has limiting mean $0$ and variance $\sigma^2$, $\delta^2 = \utilde{h}^T\utilde{J}\utilde{h},$ and $\utilde{\Sigma_{YL}}$ is the covariance between $Y_n$ and $L_n.$ Then, under a nearby alternative sequence $\prob_{n(\utilde{\gamma_0} + n^{-1/2}\utilde{h})}$
+\begin{equation}
+\begin{pmatrix}
+Y_n\\
+L_n
+\end{pmatrix}
+ \xrightarrow{d} \mathcal{N}
+\bigg( 
+\begin{pmatrix}
+\utilde{\Sigma_{YL}} \\
++\frac{\delta^2}{2}
+\end{pmatrix}
+,
+\begin{pmatrix}
+\sigma^2 & \utilde{\Sigma_{YL}} \\
+\utilde{\Sigma_{LY}} & \delta^2
+\end{pmatrix}
+\bigg)
+\end{equation}
+\end{theorem_exam}
+
+
+\begin{remark} More succinctly, if a statistic $Y_n$ is asymptotically jointly normal with the log likelihood ratio $L_n$, then for a nearby alternative, $Y_n$ is still asymptotically jointly normal with the log likelihood ratio with the limiting mean of $Y_n$ being the covariance under $\utilde{\gamma_0}$. The nearby limiting sequence only has an effect on altering the limiting means.
+\end{remark}
+
+
+
+However, we are actually interested in \textbf{Scores version of Le Cam's third lemma}, whereby it changes the result from the log-likelihood ratio to the scores vector.
+
+
+\begin{proposition_exam}{Scores Version of Le Cam's Third Lemma}{}Suppose that LAN holds at $\utilde{\gamma_{0}}$. This implies that we have a scores vector $\utilde{S_n}$ and information matrix $\utilde{J}.$ Furthermore, suppose that there exists a statistic $\utilde{Y_n}$ that is AJN (asymptotically jointly normal) with the scores $\utilde{S_{n}}$ for some positive semi-definite matrix $\utilde{\Sigma_{Y}},$ such that for $\utilde{X_{n}} \sim \prob_{n, \utilde{\gamma_{0}}}$
+\begin{equation}
+\begin{pmatrix}
+\utilde{S_n}\\
+\utilde{Y_n}
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}\bigg(
+\utilde{0}
+,
+\begin{pmatrix}
+\utilde{J} & \utilde{\Sigma_{SY}} \\
+\utilde{\Sigma_{YS}} & \utilde{\Sigma_Y}
+\end{pmatrix}
+ \bigg)
+ \tag{*}
+\end{equation}
+
+
+Then, for any $\utilde{h} \in \real^d$, under a nearby alternative $\utilde{\gamma_{n}} = \utilde{\gamma_0} + n^{1/2}\utilde{h}$, we have that for $\utilde{X_{n}} \sim \prob_{n, \utilde{\gamma_{0} + n^{-1/2}h}}$ 
+\begin{equation}
+\begin{pmatrix}
+\utilde{S_n}\\
+\utilde{Y_n}
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}\bigg(
+\begin{pmatrix}
+\utilde{J}\utilde{h}\\
+\utilde{\Sigma_{YS}}\utilde{h}
+\end{pmatrix}
+  ,
+\begin{pmatrix}
+\utilde{J} & \utilde{\Sigma_{SY}} \\
+\utilde{\Sigma_{YS}} & \utilde{\Sigma_Y} 
+\end{pmatrix}
+ \bigg)
+\end{equation}
+\end{proposition_exam}
+
+\begin{remark}Only knowing the joint limiting behaviour under $\utilde{\gamma_{0}}$ and that LAN holds, we can deduce the joint limiting behaviour of both the score vector $\utilde{S_{n}}$ and statistic $\utilde{Y_{n}}$ under a nearby alternative $\utilde{\gamma_{n}} = \utilde{\gamma_0} + n^{1/2}\utilde{h}$.
+\end{remark}
+
+We see that in Score's version of Le Cam's third lemma, the asymptotic mean of the statistic $\utilde{Y_n}$ is now a linear combination of $\utilde{h}$ and $\utilde{\Sigma_{YS}}\utilde{h}$.
+
+The Score's version of Le Cam's third lemma is important to us as many times, we will be analysing the joint distribution of a statistic and scores vector rather than the log-likelihood and statistic, especially when we introduce estimators that are asymptotically jointly normal with the scores vector.
+
+
+
+\subsection{Regular Estimators}
+
+We now restrict our attention to certain classes of estimators. We can derive under certain conditions what are the best estimators. In particular, we will see a limiting local version of the Cramér-Rao lower bound.
+
+\begin{definition_exam}{Regular Estimator}{}An estimator $\tilde{\utilde{\gamma_n}}$ is regular at $\utilde{\gamma_0}$ if for any $\utilde{h} \in \mathbb{R}^d$, if $\utilde{X_{n}} \sim \prob_{n, \utilde{\gamma_{n}}}$ where $\utilde{\gamma_n}(\utilde{h}) = \utilde{\gamma_0} + n^{-1/2}\utilde{h}$, then the rescaled estimation error
+\begin{equation}
+\sqrt{n}(\tilde{\utilde{\gamma_n}} - \utilde{\gamma_n}) \xrightarrow{d} \mathcal{N}(\utilde{0}, \utilde{\Sigma}(\utilde{\gamma_{0}}))
+\end{equation}
+That is, the asymptotic distribution of the estimation error possibly depends on $\utilde{\gamma_0}$ but does not depend on the local deviation $\utilde{h}$. 
+\end{definition_exam}
+
+\begin{remark}
+As we move the nearby alternative $\utilde{\gamma_n}$ around near the true parameter $\utilde{\gamma_0}$, the distribution of the estimator error moves with $\utilde{\gamma_n}$ but only in its location. The shape and spread does not change. This is akin to asymptotic unbiasedness.
+\end{remark}
+
+
+\begin{proposition_exam}{RAJN Estimators are analogous to unbiased estimators}{}Suppose that an estimator $\tilde{\utilde{\gamma_{n}}}$ is such that under $\utilde{\gamma_{0}}$, the rescaled estimation error 
+$$
+\utilde{Y_{n}} = \sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big)
+$$
+is AJN with the scores. Then, the estimator $\tilde{\utilde{\gamma_{n}}}$ is also regular at $\utilde{\gamma_{0}}$ if and only if under $\utilde{X_{n}} \sim \prob_{n, \utilde{\gamma_{0}}}$,
+
+$$
+\begin{pmatrix}
+\utilde{S_n}\\
+\utilde{Y_n}
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}\bigg(
+\utilde{0}
+,
+\begin{pmatrix}
+\utilde{J} & \utilde{\Sigma_{SY}} \\
+\utilde{\Sigma_{YS}} & \utilde{\Sigma_Y}
+\end{pmatrix}
+ \bigg)
+$$
+the cross-covariance $\utilde{\Sigma_{S,Y}}$ is a $d \times d$ identity matrix $\mathbb{I}$. 
+\end{proposition_exam}
+
+\begin{proof} Follows easily from Le Cam's third lemma.
+\end{proof}
+
+\begin{remark} First, recall that in the CRLB, any unbiased estimator has a covariance of 1 with the scores. This proposition is analogous to this.
+\end{remark}
+ If the cross-covariance matrix is \textbf{not} the identity matrix, we will not get the correct shift under the alternative hypothesis $\prob_{n, \utilde{\gamma_{0}}}$ whereby we will now have
+$$
+\utilde{Y_{n}} \xrightarrow{d} \mathcal{N}(\utilde{\Sigma_{Y,S}}\utilde{h}, \utilde{\Sigma_{Y}})
+$$
+and therefore the rescaled estimation error now \textbf{depends} on $\utilde{h}$ and is no longer regular.
+
+
+\lecture{2}{Optimality of Estimators}
+\section{Parametric Estimation}
+\subsection{Optimality of Estimators}
+
+We can now define estimators that combine both the property of regularity and being AJN with the scores. We will now restrict our attention to RAJN estimators.
+
+\begin{definition_exam}{RAJN Estimator}{} If an estimator $\tilde{\utilde{\gamma_{n}}}$ is AJN (i.e. its rescaled estimation error is AJN) and regular at $\utilde{\gamma_{0}},$ we call it RAJN.
+\end{definition_exam}
+
+We now show why RAJN estimators are desirable.
+
+\begin{theorem_exam}{Desirable properties of RAJN estimators}{}A RAJN estimator $\tilde{\utilde{\gamma_{n}}}$ satisfies
+\begin{equation}
+\begin{pmatrix}
+\utilde{S_n}\\
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big)
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}\bigg(\utilde{0}, \begin{pmatrix}
+\utilde{J} & \utilde{I}\\
+\utilde{I} & \utilde{\Sigma_{Y}}
+\end{pmatrix}
+ \bigg)
+\end{equation}
+for some positive semi-definite matrix $\utilde{\Sigma_{Y}}$.
+\end{theorem_exam}
+
+Recall an important inequality relating the covariance and variance.
+\begin{definition}(Correlation Inequality). The correlation inequality between an unbiased estimator $\hat{\theta}$ and score function $\ell_{\theta}^{\circ}$ is given by 
+$$
+Cov_{\theta}\bigg[ \hat{\theta},\ell_{\theta}^{\circ}\bigg]^2 \leq Var_{\theta}(\hat{\theta}(\utilde{x}))Var_{\theta}(\ell_{\theta}^{\circ}(\utilde{x}))
+$$
+\end{definition}
+
+Going back and looking at the 1-dimensional case for RAJN estimator, this immediately gives a local asymptotic version of the Cramér-Rao lower bound
+$$
+\begin{pmatrix}
+\utilde{S_n}\\
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big)
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}\bigg(
+\begin{pmatrix}
+0\\
+0
+\end{pmatrix}
+, \begin{pmatrix}
+J & 1\\
+1 & \sigma_{Y}^{2}
+\end{pmatrix}
+ \bigg)
+$$
+
+From this, we now have the correlation inequality as
+$$
+\sigma_{Y}^{2} \geq \frac{1}{J}
+$$
+
+We now look at it for a general dimension d case. Again, by the correlation inequality, we have that 
+$$
+Cov_{\theta}\bigg[ \hat{\theta},\ell_{\theta}^{\circ}\bigg]^2 = \utilde{I} \leq \utilde{\Sigma_{Y}}\utilde{J} = Var_{\theta}(\hat{\theta}(\utilde{x}))Var_{\theta}(\ell_{\theta}^{\circ}(\utilde{x})
+$$
+
+Therefore, we have that 
+$$
+\utilde{\Sigma_{Y}} \geq \utilde{J}^{-1}
+$$
+and hence we can conclude that 
+$$
+\utilde{\Sigma_{Y}} - \utilde{J}^{-1}
+$$
+is positive semi-definite. 
+
+However, this can be hard to interpret and therefore, we can try a different way to express it. First, we define a remainder as a linear combination of the Scores as follows:
+$$
+\utilde{R_{n}} = \sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) - \utilde{J}^{-1}\utilde{S_{n}}
+$$
+We can therefore rewrite the above and say that the scaled estimation error can be decomposed into two terms. From this, we can now derive a result as a multivariate generalisation of the correlation inequality for the rescaled estimation error $\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big).$
+
+
+\begin{theorem_exam}{Orthogonal Decomposition Theorem}{} Let $\tilde{\utilde{\gamma_{n}}}$ be a RAJN estimator. Then, write the rescaled estimation error as 
+\begin{equation}
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) = \utilde{J}^{-1}\utilde{S_{n}} + \utilde{R_{n}}
+\end{equation}
+Then, these two terms are asymptotically independent whereby the covariance of the two terms are zero
+\begin{equation}
+\begin{pmatrix}
+\utilde{J}^{-1}\utilde{S_{n}} \\ \utilde{R_{n}}
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}\bigg(\utilde{0},
+\begin{pmatrix}
+\utilde{J}^{-1} & \utilde{0}\\
+\utilde{0} & \utilde{\Sigma_{Y}} - \utilde{J}^{-1}
+\end{pmatrix}
+ \bigg)
+\end{equation}
+\end{theorem_exam}
+
+\begin{proof}(Sketch). Recall that by definition $\utilde{\Sigma_{Y}} = Var(\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big)$ and therefore 
+$$
+Var(\utilde{R_{n}}) = Var(  \sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}}\big) - \utilde{J}^{-1}\utilde{S_{n}}) = \utilde{\Sigma_{Y}} - \utilde{J}^{-1}
+$$
+\end{proof}
+
+As $\utilde{\Sigma_{Y}} - \utilde{J}^{-1}$ has to be positive semi-definite, the smallest that this extra added error term $\utilde{R_{n}}$ can be is the zero vector. Hence, all RAJN estimators are of the form 
+$$
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) = \utilde{J}^{-1}\utilde{S_{n}} + \utilde{R_{n}}
+$$
+
+and to find the one with the least variance, we need to find the one without the extra error term $\utilde{R_{n}}.$
+
+\begin{proposition_exam}{Sufficient Condition for RAJN Estimator}{} Suppose that the estimator $\tilde{\utilde{\theta_{n}}}$ can be written in the form
+$$
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) = \utilde{J}^{-1}\utilde{S_{n}} + \utilde{R_{n}}
+$$
+Then, the estimator $\tilde{\utilde{\theta_{n}}}$ is a RAJN estimator.
+\end{proposition_exam}
+
+\begin{proof} (Sketch). To show that the estimator $\tilde{\utilde{\theta_{n}}}$ is \textbf{AJN} with the scores, first, note that the rescaled estimation error is a linear combination of the Score vector $\utilde{S_{n}}$
+$$
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) = \utilde{J}^{-1}\utilde{S_{n}}
+$$
+therefore, this is clearly asymptotically jointly normal with the scores vector. 
+
+To show that the estimator $\tilde{\utilde{\theta_{n}}}$ is \textbf{regular}, we can apply the Scores version of Le Cam's third lemma whereby under the alternative $\utilde{\theta_{0}} + n^{-1/2}\utilde{h}$
+$$
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) \xrightarrow{d} \mathcal{N}(\utilde{0}, \utilde{J}^{-1})
+$$
+\end{proof}
+
+
+
+This is analogous to restricting to a class of unbiased estimators. Since $\utilde{\Sigma_{Y}} - \utilde{J}^{-1}$ must be positive semi-definite, the \textit{smallest} this \textit{extra added error term} $\utilde{R_{n}}$ can be is asymptotically a zero vector. Then, to find the estimator with the minimum variance, we need to find the one without the $\utilde{R_{n}}$ remainder.
+
+\begin{definition_exam}{Asymptotically Efficient Estimator}{} Let $\hat{\utilde{\theta_{n}}}$ be a RAJN estimator. Then $\hat{\utilde{\theta_{n}}}$ is asymptotically efficient at $\utilde{\theta_{0}}$ if we can write the rescaled estimation error as 
+$$
+\sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) = \utilde{J}^{-1}\utilde{S_{n}} + o_p(1) \xrightarrow{d} \mathcal{N}(\utilde{0}, \utilde{J}^{-1})
+$$
+\end{definition_exam}
+
+\begin{remark} This definition follows from the orthogonal decomposition theorem whereby the remainder $\utilde{R_{n}}$ now gets put into the $o_p(1)$ term.
+\end{remark}
+
+\begin{remark} We can therefore say that RAJN estimators are equivalent to unbiased estimators and that if it is asymptotically efficient, then it is similar to being the minimum variance estimator.
+\end{remark}
+
+\subsection{Estimating in the presence of Nuisance Parameters}
+
+In general, we may not be interested in estimating the whole parameter vector $\utilde{\gamma},$ rather only a smooth lower-dimensional function 
+
+$$
+\utilde{\theta}: \real^{d} \rightarrow \real^{d_{\theta}}
+$$
+
+We can write it as a function of the parameter 
+$$
+\utilde{\theta} = \utilde{\theta}(\utilde{\gamma})
+$$
+
+In that case, it turns out that the form of A.E estimators of $\utilde{\theta}$ follows from an application of the delta method in probability.
+
+Suppose $\hat{\utilde{\gamma_{n}}}$ is asymptotically efficient for $\utilde{\gamma}$ at $\utilde{\gamma_{0}}$. Then, by definition of asymptotically efficient estimators, we have that
+$$
+\sqrt{n}\bigg(\hat{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \bigg) \xrightarrow{d} \mathcal{N}(\utilde{0}, \utilde{J}^{-1}(\utilde{\gamma_{0}}))
+$$
+
+Then, the estimator $\hat{\utilde{\theta_{n}}} = \utilde{\theta}(\hat{\utilde{\gamma_{n}}})$ turns out to be A.E if $\utilde{\theta}(\cdot)$ has a smooth gradient/Jacobian matrix $\dot{\utilde{\theta}}(\cdot)$.
+
+\begin{proposition_exam}{Smooth Function of efficient estimators are efficient}{}
+Suppose that $\utilde{\theta}$ is an asymptotically efficient estimator. Then, by the delta method in probability, the new estimator defined by taking a smooth function $\utilde{\theta}$ of the estimator, denoted by $\utilde{\utilde{\hat{\gamma_{n}}}}$ is an asymptotically efficient estimator of $\utilde{\theta}(\utilde{\gamma})$.
+\end{proposition_exam}
+\begin{proof} We use the definition of asymptotically efficient estimator and apply the delta method in probability
+\begin{align}
+\sqrt{n}\big[\hat{\utilde{\theta_{n}}} - \utilde{\theta}(\utilde{\gamma_{0}}) \big] = \sqrt{n}\big[\utilde{\theta}(\hat{\utilde{\gamma_{n}}}) - \utilde{\theta}(\utilde{\gamma_{0}}) \big] \\= \dot{\utilde{\theta}}(\utilde{\gamma_{0}})\bigg\{\sqrt{n}(\hat{\utilde{\gamma_{n}}}) - \utilde{\gamma_{0}} \bigg\} + o_p(1) \\ \xrightarrow{d} \mathcal{N}(\utilde{0}, \dot{\utilde{\theta}}(\utilde{\gamma_{0}})\utilde{J}^{-1}\dot{\utilde{\theta}}(\utilde{\gamma_{0}})^T)
+\end{align}
+\end{proof}
+
+Now, we have seen that from the previous proposition, we have that for a function of an asymptotically efficient estimator
+$$
+\sqrt{n}\big[\hat{\utilde{\theta_{n}}} - \utilde{\theta}(\utilde{\gamma_{0}}) \big] \xrightarrow{d} \mathcal{N}(\utilde{0}, \dot{\utilde{\theta}}(\utilde{\gamma_{0}})\utilde{J}^{-1}\dot{\utilde{\theta}}(\utilde{\gamma_{0}})^T)
+$$
+
+\begin{definition_exam}{Effective Information Matrix}{} The inverse of the limiting covariance matrix is called the \textbf{effective information}
+\begin{equation}
+    J_{\theta}^{*} = \bigg[\dot{\utilde{\theta}}(\utilde{\gamma_{0}})\utilde{J}^{-1}\dot{\utilde{\theta}}(\utilde{\gamma_{0}})^T \bigg]^{-1}
+\end{equation}
+\end{definition_exam}
+
+\subsection{Special Case of Estimating in presence of nuisance parameters}
+The canonical special case is where $\utilde{\theta}(\cdot)$ returns a sub-vector of $\utilde{\gamma}.$ This is a smooth function. In that case, suppose we may partition $\utilde{\gamma}$ according to 
+$$
+\utilde{\gamma} = 
+\begin{pmatrix}
+    \utilde{\theta}\\
+    \utilde{\eta}\\
+\end{pmatrix}
+$$
+whereby $\utilde{\theta}$ is $d_{\theta}-$dimensional, $\utilde{\eta}$ is $d_{\eta}$ dimensional and $d = d_{\theta} + d_{\eta}.$
+
+
+If the LAN property holds at $\utilde{\gamma_{0}} = \begin{pmatrix}\utilde{\theta_{0}} \\ \utilde{\eta_{0}}\end{pmatrix}$, we may partition the score and information as 
+$$
+\utilde{S_{n}} = 
+\begin{pmatrix}
+\utilde{S_{\theta}}\\
+\utilde{S_{\eta}}
+\end{pmatrix}
+$$
+and 
+$$
+\utilde{J} = 
+\begin{bmatrix}
+\utilde{J_{\theta \theta}} & \utilde{J_{\theta \eta}}\\
+\utilde{J_{\eta \theta}} & \utilde{J_{\eta \eta}}
+\end{bmatrix}
+$$
+
+We can now state a very important result which we will use in semiparametric estimation.
+
+\begin{proposition_exam}{RAJN Estimators are independent of nuisance parameters}{}
+
+Assume that the LAN property holds at $\utilde{\gamma_{0}} = \begin{pmatrix}\utilde{\theta_{0}} \\ \utilde{\eta_{0}}\end{pmatrix}$. Now, suppose that we have an AJN estimator of $\hat{\utilde{\theta_{n}}}$ of $\utilde{\theta}$ at 
+$
+\begin{pmatrix}
+\utilde{\theta_{0}}\\
+\utilde{\eta_{0}}
+\end{pmatrix}
+$
+so that under 
+$
+\utilde{\gamma_{0}} = 
+\begin{pmatrix}
+\utilde{\theta_{0}}\\
+\utilde{\eta_{0}}
+\end{pmatrix}
+$
+the scaled estimation error $\utilde{Y_{n}} = \sqrt{n}(\tilde{\utilde{\theta_{n}}} - \utilde{\theta_{0}})$ satisfies 
+$$
+\begin{bmatrix}
+\utilde{S_{\theta}}\\
+\utilde{S_{\eta}}\\
+\utilde{Y_{n}}
+\end{bmatrix}
+\xrightarrow{d}
+ \mathcal{N} 
+ \bigg( \utilde{0},
+ \begin{bmatrix}
+ \utilde{J_{\theta, \theta}} & \utilde{J_{\theta, \eta}} & \Sigma_{Y, \theta}\\
+ \utilde{J_{\eta, \theta}} & \utilde{J_{\eta, \eta}} & \Sigma_{Y, \eta}\\
+ \Sigma_{Y, \theta} & \Sigma_{Y, \eta} & \Sigma_{Y, Y}
+ \end{bmatrix}
+ \bigg)
+$$
+for some positive semi-definite matrix $\Sigma_{Y,Y}.$
+
+If in addition, $\tilde{\utilde{\theta_{n}}}$ is regular at $\utilde{\theta_{0}}$, this forces both 
+$$
+\utilde{\Sigma_{Y, \theta}} = \utilde{I}
+$$
+and 
+$$
+\utilde{\Sigma_{Y, \eta}} = \utilde{0}
+$$
+Such a $\utilde{Y_{n}}$ is called \textbf{asymptotically uncorrelated} with the nuisance scores. We also call it \textbf{orthogonal}. 
+\end{proposition_exam}
+
+\begin{remark}
+Intuitively, a small change in the nuisance parameter $\utilde{\eta}$ has no effect on the estimator of $\utilde{\theta}$ as  $\utilde{\Sigma_{Y, \eta}} = \utilde{0}$.
+\end{remark}
+
+We are now interested in defining an asymptotically efficient estimator under this setting. First, we require a few definitions.
+
+\begin{definition_exam}{Effective Scores}{} The effective scores $\utilde{S_{\theta}}^{*}$ is given by by a linear combination of the scores of the parameters of interest $\utilde{S_{\theta}}$ and scores of the nuisance parameters $\utilde{S_{\eta}}$
+\begin{equation}
+\utilde{S_{\theta}}^{*} = \utilde{S_{\theta}} - \utilde{J_{\theta, \eta}}J_{\eta, \eta}^{-1}\utilde{S_{\eta}}
+\end{equation}
+\end{definition_exam}
+\begin{remark} We can interpret the effective scores as the residual from regression the scores of the parameters of interest on the nuisance parameters scores. This linear combination of $\utilde{S_{\theta}}$ and $\utilde{S_{\eta}}$ is asymptotically uncorrelated with the nuisance scores.
+\end{remark}
+\begin{remark} When the co-information $J_{\theta, \eta} = 0,$ then the effective scores is identical to the regular scores. That is, the nuisance parameters $\eta$ do not matter.
+\end{remark}
+
+\begin{definition_exam}{Effective Information}{} The effective information is given by 
+\begin{equation}
+\utilde{J_{\theta}}^{*} = \bigg(\utilde{J_{\theta, \theta}} - \utilde{J_{\theta, \eta}}\utilde{J_{\eta, \eta}}^{-1}\utilde{J_{\eta, \theta}}\bigg)
+\end{equation}
+\end{definition_exam}
+
+\begin{remark} The limiting covariance matrix of $\utilde{S_{\theta}}^{*}$ is the effective information.
+\end{remark}
+
+We can now define what an asymptotically efficient estimator under this setting is.
+
+\begin{definition_exam}{Asymptotically Efficient Estimator in presence of nuisance parameters}{}
+An A.E estimator $\hat{\utilde{\theta_{n}}}$ in the presence of nuisance parameters is of the form 
+\begin{equation}
+\sqrt{n}\big(\hat{\utilde{\theta_{n}}} - \utilde{\theta_{0}} \big) = (J_{\theta}^{*})^{-1}S_{\theta}^{*} + o_p(1)
+\end{equation}
+Furthermore, the limiting distribution is given by 
+$$
+(J_{\theta}^{*})^{-1}S_{\theta}^{*} + o_p(1) \xrightarrow{d} \mathcal{N}(\utilde{0}, (J_{\theta}^{*})^{-1})
+$$
+\end{definition_exam}
+
+Recall the definition of the effective information 
+$$
+\utilde{J_{\theta}}^{*} = \bigg(\utilde{J_{\theta, \theta}} - \utilde{J_{\theta, \eta}}\utilde{J_{\eta, \eta}}^{-1}\utilde{J_{\eta, \theta}}\bigg)
+$$
+
+The larger the information matrix (where we use the partial ordering that $\utilde{M} \geq \utilde{N}$ iff $\utilde{M} - \utilde{N}$ is positive semi-definite), the better the estimator as we get a smaller limiting covariance matrix. That is, if $\utilde{M} - \utilde{N}$ is large, then $(\utilde{M} - \utilde{N})^{-1}$ will be small.
+
+It is useful to compare the 2 cases where the nuisance parameter is known and unknown. 
+
+\begin{enumerate}
+    \item If $\utilde{\eta_{0}}$ is known, the information for $\utilde{\theta}$ is $\utilde{J_{\theta, \theta}}$
+    \item If $\utilde{\eta_{0}}$ is unknown, the effective information for $\utilde{\theta}$ is $\utilde{J_{\theta}}^{*} \leq \utilde{J_{\theta, \theta}}.$
+\end{enumerate}
+
+Therefore, $\utilde{J_{\theta}}^{*}$ will be bigger if $\utilde{\eta_{0}}$ is known. However, if $\utilde{\eta_{0}}$ is unknown, then $\utilde{\eta_{0}}$ will be smaller.
+
+
+We can conclude that not knowing $\utilde{\eta_{0}}$ in general leads to a loss of information unless $\utilde{S_{\theta}}$ and $\utilde{S_{\eta}}$ are asymptotically uncorrelated.
+
+\subsection{i.i.d case of parametric estimation}
+
+We are now interested in the special case where the data $\utilde{X_{n}}$ consists of i.i.d random vectors 
+\begin{equation}
+\utilde{X_{n}} = \big(\utilde{Y_{1}}, \cdot \cdot \cdot , \utilde{Y_{n}} \big)^{T}
+\end{equation}
+where $\utilde{Y_{i}}$ is a vector for an observation.
+
+The \textbf{log-likelihood ratio} can now be written as a sum 
+\begin{equation}
+\utilde{L_{n}}(\utilde{X_{n}}| \utilde{\gamma_{1}}; \utilde{\gamma_{0}}) = \sum_{i=1}^{n}log\;\bigg\{\frac{p(\utilde{Y_{i}}; \utilde{\gamma_{1}})}{p(\utilde{Y_{i}}; \utilde{\gamma_{0}})} \bigg\}
+\end{equation}
+whereby $p(\cdot; \utilde{\gamma})$ is the common density for each observation $\utilde{Y_{i}}.$
+
+
+\begin{definition_exam}{Score Function}{} We define the \textbf{score function} to be the gradient of the log density
+\begin{equation}
+\dot{\utilde{\ell}}(\utilde{Y}; \utilde{\gamma}) = 
+\begin{pmatrix}
+\frac{\partial}{\partial \gamma_{1}}log\;p(\utilde{Y}; \utilde{\gamma})\\
+\cdot \cdot \cdot \\
+\frac{\partial}{\partial \gamma_{d}}log\;p(\utilde{Y}; \utilde{\gamma})\\
+\end{pmatrix}^{T}
+\end{equation}
+\end{definition_exam}
+
+
+The \textbf{score vector} can also be written as a sum of the \textbf{score function}
+\begin{equation}
+\utilde{S_{n}} = \utilde{S_{n}}(\utilde{\gamma_{0}}) = n^{-1/2}\sum_{i=1}^{n}\utilde{\ell}^{\circ}(\utilde{Y_{i}}; \utilde{\gamma_{0}})
+\end{equation}
+
+The \textbf{information matrix} can also be expressed in terms of the score function 
+\begin{equation}
+\utilde{J} = \int \utilde{\ell}^{\circ} \utilde{\ell}^{\circ \; T} d\prob_{\utilde{\gamma_{0}}} = \mathbb{E}_{\utilde{\gamma_{0}}}\big(\utilde{\ell}^{\circ} \utilde{\ell}^{\circ \; T} \big)
+\end{equation}
+where $\prob_{\utilde{\gamma_{0}}}$ is the probability measure defined on the sample space $\mathcal{Y}_i$, defined for each $\utilde{Y_{i}}.$
+
+An asymptotically efficient (AE) estimator $\hat{\utilde{\gamma_{n}}}$ now satisfies 
+\begin{align}
+\sqrt{n}\bigg(\hat{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \bigg) = \utilde{J}^{-1}\utilde{S_{n}} + o_p(1) = n^{-1/2}\sum_{i=1}^{n}\utilde{J}^{-1}\utilde{\ell^{\circ}}\bigg(\utilde{Y_{i}}; \utilde{\gamma_{0}} \bigg) + o_p(1) \\= n^{-1/2}\sum_{i=1}^{n}\tilde{\utilde{\ell}}(\utilde{Y_{i}}; \utilde{\gamma_{0}}) + o_p(1)
+\end{align}
+
+The expression 
+\begin{equation}
+\tilde{\utilde{\ell}}(\cdot; \utilde{\gamma_{0}}) = \utilde{J}^{-1}\tilde{\utilde{\ell}}(\cdot ; \utilde{\gamma_{0}})
+\end{equation}
+is known as the \textbf{efficient influence function}.
+
+
+Any estimator $\tilde{\utilde{\gamma_{n}}}$ which can be written in the form 
+\begin{equation}
+\sqrt{n}\bigg[\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \bigg] = n^{-1/2}\sum_{i=1}^{n}g(\utilde{Y_{i}}; \utilde{\gamma_{0}}) + o_p(1)
+\end{equation}
+is said to be \textbf{asymptotically linear}. 
+
+\begin{proposition} Any asymptotically linear estimator is an AJN estimator.
+\end{proposition}
+
+The function $g(\cdot ; \utilde{\gamma_{0}})$ is called the \textbf{influence function} of the estimator $\hat{\utilde{\gamma_{n}}}$.
+
+Estimators which are smooth functions of sample moments or quantiles are asymptotically linear.
+
+
+If we have a nuisance parameter $\utilde{\gamma} = \begin{bmatrix}\utilde{\theta}\\ \utilde{\gamma} \end{bmatrix}$, we can write the score function 
+\begin{equation}
+\utilde{\ell^{\circ}} = 
+\begin{pmatrix}
+\utilde{\ell_{\theta}^{\circ}}\\
+\utilde{\ell_{\eta}^{\circ}}
+\end{pmatrix}
+\end{equation}
+
+The \textbf{efficient score function} for $\utilde{\theta}$ is 
+\begin{equation}
+\utilde{\ell_{\theta}}^{\circ \; *} = \utilde{\ell_{\theta}}^{\circ} - \utilde{J}_{\theta \eta}\utilde{J}_{\eta \eta}^{-1}\utilde{J}_{\eta \theta}\utilde{\ell_{\eta}}^{\circ}
+\end{equation}
+and the \textbf{efficient influence function} for estimating $\utilde{\theta}$ is 
+\begin{equation}
+\utilde{\ell_{\theta}}^{\circ \; *} = \bigg(\utilde{J}_{\theta}^{*} \bigg)^{-1}\utilde{\ell_{\theta}}^{\circ \; *}
+\end{equation}
+
+
+\lecture{3}{Construction of A.E estimators}
+\section{Parametric Estimation}
+\subsection{Construction of A.E estimators}
+We have seen a characterisation of optimal estimators. We are now interested in being able to construct optimal estimates. First, recall that an A.E estimator $\hat{\utilde{\theta_{n}}}$ of $\utilde{\theta}$ at $\utilde{\gamma_{0}} = \begin{pmatrix}\utilde{\theta_{0}}\\\utilde{\eta_{0}} \end{pmatrix}$ if it satisfies 
+\begin{equation}
+    \sqrt{n}\big(\hat{\utilde{\theta_{n}}} - \utilde{\theta_{0}} \big) = \big(\utilde{J_{\theta}}^{*} \big)^{-1}\utilde{S_{\theta}}^{*} + o_p(1)
+\end{equation}
+
+or alternatively 
+\begin{align}
+    \hat{\utilde{\theta_{n}}} = \utilde{\theta_{0}} + n^{-1/2}\big(\utilde{J_{\theta}}^{*} \big)^{-1}\utilde{S_{\theta}}^{*} + o_p(n^{-1/2})
+    \\ = \utilde{\theta_{0}} + n^{-1/2}\big(\utilde{J_{\theta}}^{*}(\utilde{\theta_{0}}, \utilde{\eta_{0}}) \big)^{-1}\utilde{S_{\theta}}^{*}(\utilde{\theta_{0}}, \utilde{\eta_{0}}) + o_p(n^{-1/2})
+    \label{eq:ae_form}
+\end{align}
+
+remembering that the effective information and score vector are functions of both the data and the parameters.
+
+
+It turns out that under extra regularity conditions, that is, the LAN condition now holds in a neighbourhood of the true estimate, alongside other conditions, we can plug in a reasonable $\sqrt{n}-$consistent initial guess estimator into \ref{eq:ae_form} and obtain an A.E estimator.
+
+We now state a condition needed whereby we assume the behaviour of the scores vector in a nearby neighbourhood around the point of interest.
+\begin{proposition_exam}{Regular Scores Condition}{} The full score vector 
+$$
+\utilde{S_{n}}(\utilde{\gamma} = 
+\begin{pmatrix}
+  S_{\theta}(\utilde{\theta}, \utilde{\eta})\\
+  S_{\eta}(\utilde{\theta}, \utilde{\eta})
+\end{pmatrix}
+$$
+satisfies the following condition that for any $0 < M < \infty$
+\begin{equation}
+  \sup_{|h| \leq M}|\utilde{S_{n}}(\utilde{\gamma_{0}} + n^{-1/2}\utilde{h}) - \utilde{S_{n}}(\utilde{\gamma_{0}}) + \utilde{J}(\utilde{\gamma_{0}})\utilde{h}) \xrightarrow{P}| 0
+\end{equation}
+\end{proposition_exam}
+
+\begin{remark} We can interpret this as taking the biggest remainder such that h is bounded and seeing it tends to 0.
+\end{remark}
+
+\begin{proposition_exam}{Continuous Information}{}The information matrix 
+$$
+\utilde{J}(\utilde{\gamma})
+$$
+is continuous at $\utilde{\gamma_{0}}.$
+\end{proposition_exam}
+
+We can now define the reasonable estimator we shall plug in.
+\begin{definition_exam}{$\sqrt{n}-$consistent estimator}{}
+An estimator $\tilde{\utilde{\gamma_{n}}} = \begin{pmatrix} \tilde{\utilde{\theta_{0}}} \\\tilde{\utilde{\eta_{0}}} \end{pmatrix}$ is said to be $\sqrt{n}-$consistent if 
+\begin{equation}
+  \sqrt{n}\big(\tilde{\utilde{\gamma_{n}}} - \utilde{\gamma_{0}} \big) = O_p(1)
+\end{equation}
+whereby $O_p(1)$ is bounded in probability such that for all $\epsilon > 0,$ there exists $0 < M_{\epsilon} < \infty$ such that $lim\;\sup \prob(|X_n| > M) < \epsilon.$
+\end{definition_exam}
+
+\begin{remark}
+Finding a $\sqrt{n}-$consistent estimator is a mild condition. They are easy to find and compute.
+\end{remark}
+
+\begin{theorem_exam}{A.E. Estimator Construction Theorem}{} Under the regular scores condition and continuous information, an asymptotically efficient estimator $\hat{\utilde{\gamma_{n}}}$ can be constructed from a $\sqrt{n}-$consistent estimator by the formula 
+\begin{equation}
+  \hat{\utilde{\gamma_{n}}} = \tilde{\utilde{\gamma_{n}}} + n^{-1/2}\utilde{J}(\tilde{\utilde{\gamma_{n}}})^{-1}\utilde{S_{n}}(\tilde{\utilde{\gamma_{n}}})
+\end{equation}
+\end{theorem_exam}
+
+\subsection{Hypothesis Testing}
+
+A parallel theory of hypothesis testing exists. We have the notion of \textbf{regular tests} whereby the limiting distribution of test statistics under local alternatives do not depend on a change in the nuisance parameters, only in changes of the parameters of interest. We also have quadratic form test statistics which are essentially quadratic form of AJN random variables.
+
+
+\begin{theorem_exam}{Optimal Test Statistic}{} Optimal tests have test statistics of the form
+  \begin{equation}
+    T_n = (\utilde{S_{\theta}}^{*})^T(\utilde{J_{\theta}}^{*})^{-1}(\utilde{S_{\theta}}^{*}) + o_p(1)
+  \label{eq:opt_test}
+  \end{equation}  
+\end{theorem_exam}
+
+Under appropriate regularity conditions, we can construct optimal test statistics by plugging in $\sqrt{n}-$consistent estimates of nuisance parameters into equation \ref{eq:opt_test}.
+
+
+Many common test statistics such as the log-likelihood ratio, Rao-Score test, and Wald test can be shown to satisfy equation \ref{eq:opt_test}.
+
+\lecture{4}{Introduction to Semiparametric Models}
+\section{Semiparametric Estimation}
+\section{Semiparametric Estimation}
+\subsection{Introduction to Semiparametric Models}
+The canonical example of a semiparametric model is the i.i.d location model.
+
+\begin{definition_exam}{i.i.d Location Model}{} Let $\utilde{X_{n}} = (X_1, \cdot \cdot \cdot, X_n)^T$ consists of i.i.d random variables whose common density is given by 
+\begin{equation}
+    p(x; \theta, f) = f(x - \theta)
+\end{equation}
+whereby $\theta \in \real$ and $f(\cdot)$ is a probability density on $\real$ with respect to the Lebesgue measure that is \textit{centered}.
+\end{definition_exam}
+
+Here, we now have \textbf{two} parameters $\theta$ and $f(\cdot)$ which to estimate.
+
+Different interpretations of \textit{centered} lead to different models.
+\subsection{Constraint-Defined Location Model}
+The first interpretation of centered will involve the parameter $f(\cdot)$ satisfying an integral constraint. 
+
+\begin{definition_exam}{Constraint Function}{} Suppose that there exists a function $w(\cdot)$ such that 
+\begin{enumerate}
+    \item $$\int_{-\infty}^{\infty}w(x)f(x)dx = 0$$
+    \item $$\int_{-\infty}^{\infty}w^2(x)f(x)dx < \infty$$
+\end{enumerate}
+This is known as the constraint function.
+\end{definition_exam}
+
+We now give some examples of such constraint functions $w(\cdot).$
+
+\begin{example} We can define the function $w(\cdot)$ to be 
+\begin{equation}
+    w(x) = x
+\end{equation}
+This implies that the function parameter $f(\cdot)$ has mean 0 and the $\theta$ parameter is the mean.
+\end{example}
+
+\begin{example} We can define the function $w(\cdot)$ to be 
+\begin{equation}
+    w(x) = sign(x) = 1\{x > 0\} - 1\{x < 0\}
+\end{equation}
+This implies that the function parameter $f(\cdot)$ has median 0.
+\end{example}
+
+\begin{example} We can define the function $w(\cdot)$ to be 
+\begin{equation}
+    w(x) = 
+    \begin{cases}
+        c \quad x > c\\
+        x \quad |x| \leq c\\
+        -c \quad x < -c\\
+    \end{cases}
+\end{equation}
+for some constant $0 < c < \infty.$ This implies that the function parameter $f(\cdot)$ has a \textit{Winsorised} mean at $c = 0$.
+\end{example}
+
+\begin{remark}
+This function $w(\cdot)$ is used in robust statistics whereby we set a threshold c and pull outliers in the data to the threshold c.
+\end{remark}
+
+\subsection{Nuisance Scores}
+We wish to determine how well we can estimate the location parameter $\theta$ in the presence of the unknown density $f(\cdot)$, where the true value $f(\cdot)$ is $f_{0}(\cdot).$
+
+As foreshadowed, we shall consider \textit{regular parametric submodels}. What we do here is to now take the arbitrary nuisance function $f \in \sigmalgebra$ and index it by an Euclidean parameter $\utilde{\eta} \in \real^{d_{\utilde{\eta}}}.$ 
+
+\begin{definition_exam}{Regular parametric submodels}{} A regular parametric submodel is given by 
+\begin{equation}
+    p(x; \theta, \utilde{\eta}) = f_{\utilde{\eta}}(x - \theta)
+\end{equation}
+for $\theta \in \real$ and a nuisance parameter $\utilde{\eta} \in \mathcal{H} \subseteq \real^{d_{\utilde{\eta}}}$ whereby $\{f_{\utilde{\eta}}: \utilde{\eta} \in \mathcal{H}\}$. Furthermore, this parametric family of densities satisfies 3 conditions.
+
+
+First, the $\{f_{\utilde{\eta}}: \utilde{\eta} \in \mathcal{H}\}$ is a parametric family of densities such that 
+\begin{enumerate}
+    \item $$\int_{-\infty}^{\infty}w(x)f_{\utilde{\eta}}(x)dx = 0$$
+    \item $$\int_{-\infty}^{\infty}w^2(x)f_{\utilde{\eta}}(x)dx = \sigma_w^2(\utilde{\eta}) < \infty$$ for all values of $\utilde{\eta} \in \mathcal{H}.$
+\end{enumerate}
+
+Secondly, for some parameter value that corresponds to the true density $\utilde{\eta_{0}} \in \mathcal{H},$ the true density is $f_0(\cdot) = f_{\utilde{\eta_{0}}}(\cdot)$.
+
+Finally, the LAN condition holds at $\utilde{\eta_{0}}$
+ for the family 
+ $$
+ \{p_{n}^{H}(\utilde{\eta}): \utilde{\eta} \in \mathcal{H}\}
+ $$
+ whereby $p_{n}^{H}(\utilde{\eta})$ is the joint distribution of $\utilde{Y_{n}} = (Y_1, \cdot \cdot \cdot, Y_n)^T$ is i.i.d $f_{\utilde{\eta}}(\cdot).$
+\end{definition_exam}
+
+\begin{remark}  If we ignore the location $\theta,$ we have regular parametric density whereby LAN holds at $\utilde{\eta_{0}}.$ 
+\end{remark}
+
+Due to the LAN condition holding in point 3, there exists a vector of \textbf{nuisance score functions}
+\begin{equation}
+    \utilde{\ell_{\eta}^{\circ}}(\cdot ; \utilde{\eta_{0}}) = \big(\ell_{1}^{\circ}(\cdot; \utilde{\eta_{0}}), \cdot \cdot \cdot, \ell_{d_{\eta}}^{\circ}(\cdot; \utilde{\eta_{0}}) \big)^T
+\end{equation}
+
+and a corresponding \textbf{nuisance score vector}
+
+\begin{equation}
+    \utilde{S_{\utilde{\eta}}} = n^{-1/2}\sum_{i=1}^{n}\utilde{\ell_{\eta}}^{\circ}(X_i; \utilde{\eta_{0}}) = n^{-1/2}\sum_{i=1}^{n}\begin{pmatrix} \ell_{1}^{\circ}(X_i; \utilde{\eta_0}) \\ \cdot \cdot \cdot \\ \ell_{d_{\eta}}^{\circ}(X_i; \utilde{\eta_0}) \end{pmatrix}
+\end{equation}
+
+Here, it is important to note that this is a parametric submodel as $d_{\utilde{\eta}} < \infty$!
+
+\subsection{Properties of Nuisance Scores}
+
+We will now focus on the properties of the nuisance scores. We will see that all nuisances scores will be orthogonal to the constraint function $w(\cdot).$ From this, this tells us how to estimate $\theta$ since in the parametric model, the effective scores is orthogonal to the nuisance scores. This will show us that the optimal score function is a multiple of the constraint function $w(\cdot)$ as $w(\cdot)$ is the only function orthogonal to all possible nuisance scores. Therefore, we wish to show, under mild conditions, the nuisance scores are orthogonal to $w(\cdot).$ 
+
+First, we require a theorem that gives us necessary and sufficient conditions for the sum of independent random variables and in a triangular array to be asymptotically normal.
+
+\begin{theorem} Suppose that $X_{1,n}, ... , X_{n,n}$ are i.i.d with distribution $F_n$, whereby the distribution depends on the sample size n. Then, we have that 
+\begin{equation}
+    \frac{1}{\sqrt{n}}\sum_{i=1}^{n}X_{i,n} \xrightarrow{d} \mathcal{N}(\mu, \sigma^2)
+\end{equation}
+if and only if for each $\epsilon > 0$ 
+\begin{enumerate}
+    \item $n\prob(|X_{1,n} \geq \epsilon \sqrt{n}) \rightarrow 0$
+    \item $Var[X_{1,n}1\{|X_{1,n}| < \epsilon \sqrt{n}\}] \rightarrow 0$
+    \item $\sqrt{n}\mathbb{E}[X_{1,n}1\{|X_{1,n}| < \epsilon \sqrt{n}\}] \rightarrow \mu$
+\end{enumerate}    
+\end{theorem}
+
+\begin{corollary}
+Suppose that $X_{1,n}, ..., X_{n,n}$ are i.i.d $F_n$ and it is known that 
+\begin{enumerate}
+    \item $\frac{1}{\sqrt{n}}\sum_{i=1}^{n}X_i \xrightarrow{d} \mathcal{N}(\mu, \sigma^2)$ for some $\mu \in \real$
+    \item The $\mathbb{E}[X_{i,n}] = 0$
+    \item The limiting variance $\lim_{n \rightarrow \infty}Var(X_{1,n}) = \lim_{n \rightarrow \infty}\big(\mathbb{E}[X_{1,n}^2] \big) = \sigma^2$
+\end{enumerate}
+This forces the mean $\mu = 0.$
+\end{corollary}
+
+
+We now come to the most important result which we shall use through the course. That is, the covariance of the nuisance scores and the constraint function $w(\cdot)$ are uncorrelated.
+
+\begin{theorem_exam}{Covariance of nuisance scores and constaint function is 0}{} In the constraint-defined location model, for any regular parametric submodel $\{f_{\utilde{\eta}}: \utilde{\eta} \in \mathcal{H}\}$ of centered densities for shape, if $\sigma_{w}^{2}(\utilde{\eta}) = \int_{-\infty}^{\infty}w^2(x)f_{\utilde{\eta}}(x)dx$ is continuous in $\utilde{\eta}$ then 
+\begin{equation} 
+    \mathbb{E}_{f_{\utilde{\eta_{0}}}}[w(X)\ell_{n}^{\circ}[X]] = \int_{-\infty}^{\infty}w(x)\utilde{{\ell}_{n}^{\circ}}(x; \utilde{\eta_{0}})f_{\utilde{\eta_{0}}}(x)dx = \utilde{0}
+\end{equation}
+\end{theorem_exam}
+
+\begin{proof}(Sketch). Apply the previous corollary as due to the ordinary CLT 
+\begin{equation}
+    \frac{1}{\sqrt{n}}\sum_{i=1}^{n}w(X_i) \xrightarrow{d} \mathcal{N}(0, \sigma_{w}^2(\utilde{\eta_{0}}))
+\end{equation}
+\end{proof}
+
+\lecture{5}{Semiparametric Information Bound}
+\section{Semiparametric Estimation}
+\subsection{Constrained Location Model: Semiparametric Information Bound}
+
+Recall that the constrained location model is a location family that is centered by an integral constrained. We are now interested in investigating the information bound for such a model.
+
+First, we receap the idea of information in estimation when no nuisance parameters are present. When estimating a parameter vector $\utilde{\theta}$ in a regular parametric model (i.e LAN holds)
+$$
+\mathcal{P}_n = \{\prob_{n, \utilde{\theta}}\}
+$$
+whereby the distributions are indexed by the parameter $\utilde{\theta}$ and depends on the sample size n, if there are no nuisance parameters, the limiting variance of an asymptotically normal $\textit{regular}$ estimator is greater than or equal to 
+$$
+\big(n \utilde{J_{\theta \theta}} \big)^{-1}
+$$
+where $\utilde{J_{\theta \theta}}$ is the limiting covariance matrix of the Scores.
+
+Now, if nuisance parameters $\utilde{\eta}$ are present, then in general, there is a loss of information whereby $\utilde{J_{\theta \theta}}$ is replaced by the effective information 
+\begin{equation}
+  \utilde{J_{\theta}}^{*} = \utilde{J_{\theta \theta}} - \utilde{J_{\theta \eta}}\utilde{J_{\eta \eta}}^{-1}\utilde{J_{\eta \theta}} \leq \utilde{J_{\theta \theta}}
+\end{equation}
+
+Here, the matrix 
+$$
+\begin{pmatrix}
+\utilde{J_{\theta \theta}} & \utilde{J_{\theta \eta}}\\
+\utilde{J_{\eta \theta}} & \utilde{J_{\eta \eta}}
+\end{pmatrix}
+$$
+is the limiting covariance matrix of the Scores vector 
+$$
+\begin{pmatrix}
+\utilde{S_{\theta}}\\
+\utilde{S_{\eta}}
+\end{pmatrix}
+$$
+
+The reverse is also true: if some or all nuisance parameters are held fixed or regarded as known, the information in general increases. That is, our model has nuisance parameters and the more of the nuisance parameters that we know or fix, the higher the effective information. Equivalently, this is akin to that as we fix more parameters in our model, the smaller the model will be and hence the higher the information. 
+
+From this, we introduce the notation for the effective information for $\utilde{\theta}$ in the presence of nuisance parameters as
+\begin{equation}
+  \utilde{J_{\theta}}^{*}(\mathcal{P}_{n}| \prob_{n \utilde{\theta_{0}}, \utilde{\eta_{0}}})
+\end{equation}
+the effective information for $\utilde{\theta}$ at $\prob_{n \utilde{\theta_{0}}\utilde{\eta_{0}}}$ within $\mathcal{P}_{n}.$ This matches the intuition that the effective information matrix depends on 2 things 
+\begin{enumerate}
+  \item The actual model we are playing with $\mathcal{P}_n$
+  \item The specific value of the model we are looking at $\prob_{n \utilde{\theta_{0}}\utilde{\eta_{0}}}$
+\end{enumerate}
+
+We now take what we discussed thus far and look at the \textbf{semiparametric case}, whereby the nuisance parameter $\eta$ is now the density function $f(\cdot)$ that satisfies the integral constraint with $w(\cdot).$
+
+First, we write $\prob_{n \theta f}$ for the joint distribution of $X_1, ..., X_n$ which are i.i.d with the density given by
+\begin{equation}
+  p(x;\theta,f) = f(x - \theta)
+\end{equation}
+
+On top of this, we now denote 
+\begin{equation}
+\mathcal{P}_n = \{\prob_{n\theta f}\}
+\end{equation}
+to be the semiparametric model which we are interested in exploring.
+
+\begin{definition_exam}{Lower Information Bound for semiparametric model}{} We define the effective information for estimating $\theta$ within the semiparametric model $\mathcal{P}_{n} = \{\prob_{n\theta f}\}$ by 
+\begin{equation}
+  J_{\theta}^{*}(\mathcal{P}_{n}| \prob_{n \theta_{0} f_{0}}) = \inf \{J_{\theta}^{*}(\mathcal{Q}_n|Q_{n \theta_{0} \utilde{\eta_{0}}}): \mathcal{Q}_n \subseteq \mathcal{P}_n\} 
+\end{equation}
+whereby $\mathcal{Q}_n$ is a regular parametric submodel of the semiparametric model $\mathcal{P}_n$, and $Q_{n \theta_{0} \utilde{\eta_{0}}} = \prob_{n \theta_{0} f_{0}}$.
+\end{definition_exam}
+
+
+
+\begin{remark}
+Here, the effective information for estimating $\theta$ in the semiparametric model $\mathcal{P}_n$ is the greatest lower bound of the effective information for all parametric submodels $\mathcal{Q}_n$ that are subsets of the semiparametric model $\mathcal{P}_n$. This is due to the fact that as the semiparametric model always have more unknown parameters compared to the parametric submodels, it will always have a lower effective information compared to the parametric submodels.
+\end{remark}
+
+From this definition, we can see that any regular parametric submodel can be embedded into semiparametric models such that we can identify a density function as a member of both. Furthermore, each parametric submodel has an information for estimating $\theta$ at that point. The information for the semiparametric model can be no more than the information for any of the parametric submodels. This follows the intuition that larger models with more parameters will have less information. That is, the semiparametric model $\mathcal{P}_n$ is much larger than all the parametric submodels $\mathcal{Q}_n$ and therefore the semiparametric model will have a smaller effective information compared to all the parametric submodels $\mathcal{Q}_n$. From this, we can conclude that the effective information for the semiparametric model is the infimum of the effective information of all the parametric submodels $Q_{n \theta_0 \utilde{\eta_{0}}}$ which coincide with the semiparametric model $\prob_{n \theta_0 f_0}$
+
+
+Our strategy for determining the effective information of the semiparametric model is as follows.
+\begin{proposition_exam}{Strategy to determine effective information for semiparametric model $\mathcal{P}_n$}{} There is a two step process to determining the effective information for the semiparametric model $\mathcal{P}_n.$
+\begin{enumerate}
+  \item Obtain an upper bound to the infimum of the effective information of parametric submodels $J_{\theta}^{*}(\mathcal{Q}_n|Q_{n \theta_{0} \utilde{\eta_{0}}})$ by constructing a suitable sequence of regular parametric submodels $\mathcal{Q}_n$ which is equivalent to finding a lower bound to the limiting variance of asymptotically normal regular estimators. 
+  \item Identify a suitable estimator and/or influence function which obtains the bound.
+\end{enumerate}
+\end{proposition_exam}
+
+\begin{remark}
+First, recall that when we construct a sequence of regular parametric submodels, computing the effective information in the submodel is equivalent to finding the lower bound to the limiting variance of an asymptotically normal regular estimator.
+
+In the second point, a suitable estimator here is one that is RAJN estimator whereby its covariance with the Scores of the parameter of interest is 1 and orthogonal to all nuisance scores. From this, we want to find a lower bound to the limiting variance of all such regular estimators. Therefore, if we can find a regular estimator that obtains this lower bound, we have found an optimal estimator.
+\end{remark}
+
+
+\subsection{The structure of the space of Score functions}
+
+We now look at some results from functional analysis as we wish to be able to describe the function space that the Score functions live in.
+
+Regular parametric i.i.d (sub)-models may be identified with their Score functions $\utilde{\ell}^{\circ}(\cdot).$ This is because due to the i.i.d condition, we are able to write their Score vectors as 
+\begin{equation}
+  S_{\theta} = n^{-1/2}\sum_{i=1}^{n}\utilde{\ell}^{\circ}(X_i)
+\end{equation}
+
+\begin{proposition_exam}{Properties of Score Functions}{}
+For i.i.d models under the LAN property, the Score functions satisfy two properties
+\begin{enumerate}
+\item The Score function has mean zero
+  \begin{equation}
+    \mathbb{E}_{0}\bigg[\utilde{\ell}^{\circ}(X) \bigg] = \int_{-\infty}^{\infty}\utilde{\ell}^{\circ}(x)f_0(x)dx = 0
+  \end{equation}
+\item The Score function has finite variance due to having a finite second moment
+  \begin{equation}
+    \mathbb{E}_{0}\bigg[\utilde{\ell}^{\circ}(X)^2 \bigg] = \int_{-\infty}^{\infty}\ell^{\circ}(x)^2f_0(x - \theta_0)dx < \infty.
+  \end{equation}
+\end{enumerate}
+\end{proposition_exam}
+
+\begin{proof} Recall that under LAN, the Score vector has property 
+$$
+\utilde{S_{n}} \xrightarrow{d} \mathcal{N}(0, \utilde{J})
+$$
+whereby the covariance matrix $\utilde{J}$ is finite.
+\end{proof}
+
+For convenience, we shall denote 
+$$
+p_0(x) = f_0(x - \theta_0).
+$$
+
+We can now define an important class of functions. 
+
+\begin{definition_exam}{Space of square-integrable functions}{} We define the space of square-integrable function under $p_0(\cdot)$ as 
+\begin{equation}
+  L_2 = L_2(p_0) = \{a(\cdot): \int a^2(x)p_0(x)dx < \infty\}
+\end{equation}
+\end{definition_exam}
+
+\begin{remark} This is in fact the space of equivalence classes of functions that are square-integrable with respect to the density $p_0(\cdot).$ That is, all the function $a(\cdot)$ that has finite second moment with respect to the density $p_0(\cdot).$
+\end{remark}
+
+The space $L_2$ has certain structures we can exploit. 
+
+\begin{proposition_exam}{Norm and inner product in $L_2$-space of functions}{} Let $L_2 = L_2(p_0)$ be the space of square-integrable functions with respect to $p_0$. We define the $L_2$ inner product to be 
+\begin{equation}
+  \langle a, b \rangle_0 = \int_{-\infty}^{\infty}a(x)b(x)p_0(x)dx
+\end{equation}
+We then define the $L_2$-norm to be 
+\begin{align}
+||a||_0 = \sqrt{\langle a, a \rangle_0}
+\\ = \sqrt{ \int_{-\infty}^{\infty}a^2(x)p_0(x)dx}
+\end{align}
+\end{proposition_exam}
+
+
+The norm $||a||_0$ behaves much like the length of a vector whereby the inner $\langle a, b \rangle_0$ behaves like a dot product.
+
+\begin{definition_exam}{Orthogonal Functions}{} Let $L_2$ be the space of square integrable functions. Let $a(\cdot), b(\cdot) \in L_2.$ Then, we say that the functions a and b are \textbf{orthogonal} if 
+\begin{equation}
+  \langle a, b \rangle_0 = 0.
+\end{equation}
+\end{definition_exam}
+
+
+We have seen earlier that the expectation of the Score function is 0
+$$
+  \mathbb{E}_{0}\bigg[\utilde{\ell}^{\circ}(X) \bigg] = \int_{-\infty}^{\infty}\ell^{\circ}(x)p_0(x)dx = 0
+$$
+In fact, this is equivalent to the Score function being orthogonal to the constant function 1
+$$
+  \mathbb{E}_{0}\bigg[\utilde{\ell}^{\circ}(X) \bigg] = \int_{-\infty}^{\infty}\ell^{\circ}(x)p_0(x)dx = \int_{-\infty}^{\infty}\ell^{\circ}(x)(1)p_0(x)dx = \langle \utilde{\ell}^{\circ}, 1 \rangle_0 = 0
+$$
+
+We can therefore define a subspace of the space of square-integrable functions $L_2$ that satisfies such a property.
+
+\begin{definition_exam}{Space of square-integrable functions orthogonal to constants}{} We define the space  
+\begin{equation}
+  L_{2}^{0} = \{a \in L_2: \int a(x)p_0(x)dx = \langle 1, a \rangle_{0} = 0\} 
+\end{equation}
+to be space of square integrable functions $a(\cdot)$ such that they are orthogonal to constant functions $1.$ Alternatively, we can interpret this as the space of all square integrable functions $a(\cdot)$ such that $a(\cdot)$ has mean zero 
+\begin{equation}
+  \mathbb{E}_{0}\big[a(X) \big] = 0
+\end{equation}
+if $X \sim p_0.$
+\end{definition_exam}
+
+Therefore, we can interpret that a square integrable function having mean zero is equivalent to being orthogonal to the constant function.
+
+\begin{proposition_exam}{Score function is orthogonal to constants}{} Let $L_{2}^{0}$ be the space of square integrable functions orthogonal to constants. Then, the Score function 
+\begin{equation}
+  \utilde{\ell}^{\circ} \in L_{2}^{0}
+\end{equation}
+\end{proposition_exam}
+
+If we now restrict our attention to the space $L_{2}^{0},$ the norm and inner product has statistical interpretation. 
+
+\begin{proposition_exam}{Statisitcal interpretation of norm and inner product in $L_{2}^{0}$}{} Define the function $L_{2}^{0}$ to be the space of square integrable functions that are orthogonal to constants. Let $a(\cdot), b(\cdot) \in L_2^{0}.$ The inner product has the interpretation of being the covariance 
+\begin{equation}
+  \langle a, b \rangle_{0} = Cov\big[a(X), b(X) \big]
+\end{equation}
+if $X \sim p_0.$ Furthermore, the norm of a function has the interpretation of being the standard deviation 
+\begin{equation}
+  ||a||_{0} = SD\big[a(X) \big]
+\end{equation}
+\end{proposition_exam}
+
+Therefore, we can interpret functions $a(X), b(X)$ being orthogonal in $L_{2}^{0}$ as the functions $a(X), b(X)$ being \textbf{uncorrelated}.
+
+We now show why this interpretation is important to us.
+\begin{corollary}(Covariance and variance of Score functions) Consider the i.i.d 2-parameter model $\{\prob_{n \theta \eta}\}$ and let $\ell_{\theta}^{\circ}$ and $\ell_{\eta}^{\circ}$ be the Score function for the parameter of interest and nuisance parameter respectively. 
+
+The covariance between these two Score functions can be expressed as the inner product 
+\begin{equation}
+  J_{\theta \eta} = \mathbb{E}[\ell_{\theta}^{\circ}\ell_{\eta}^{\circ}] = \langle \ell_{\theta}^{\circ}, \ell_{\eta}^{\circ}\rangle
+\end{equation}
+
+The variance of a Score function be expressed as the squared norm 
+\begin{equation}
+  J_{\theta \theta} = ||\ell_{\theta}^{\circ}||_{0}^{2}; \quad \quad J_{\eta \eta} = ||\ell_{\eta}^{\circ}||_{0}^{2}
+\end{equation}
+
+\end{corollary}
+
+We now want to construct a special type of basis for the function space $L_2.$
+
+\begin{definition_exam}{Complete Orthonormal Basis}{} Define the function space $L_2.$ A complete orthonormal basis to $L_2$ is a countable collection of functions $\{b_j(\cdot)\}$ such that 
+\begin{enumerate}
+  \item It is \textbf{orthonormal}
+  $$
+\langle b_j, b_k \rangle_0 = 
+\begin{cases}
+0 \quad j \neq k\\
+1 \quad j = k\\
+\end{cases}
+  $$
+  \item It is \textbf{complete} whereby the only function $a(\cdot)$ such that $\langle a, b_j \rangle = 0$ for all j is the zero almost everywhere function.
+\end{enumerate}
+\end{definition_exam}
+
+Using this basis, we are able to represent every function in $L_2$ as a linear combination of this basis.
+
+\begin{proposition_exam}{Basis representation of functions}{} Let $L_2$ be the function space of square integrable functions. Then, any function $a(\cdot) \in L_2$ may be represented as a linear combination of the basis functions 
+\begin{equation}
+  a(x) = \sum_ja_jb_j(x)
+\end{equation}
+whereby $a_j = \langle a, b_j \rangle$. 
+\end{proposition_exam}
+
+This basis representation of a function induces a co-ordinate system whereby \textbf{we can now represent each function by a sequence of coefficients}. That is, each function $a(\cdot) \in L_2$ may be identified with its (square-summable) sequence of coefficients $a_1, a_2, ...$ whereby $\sum_ka_k < \infty.$
+
+We can also represent the norm of a function by its coefficients.
+
+\begin{proposition_exam}{Coefficient representation of the norm of a function}{} A function $a \in L_2$ has a norm $||a||_{0}$ such that
+\begin{equation}
+  ||a||_{0}^2 = \sum_{j}a_{j}^{2}
+\end{equation}
+whereby $a_j = \langle a, b_j \rangle_{0}$ with $\{b_j\}$ being a complete orthonormal basis function of $L_2.$
+\end{proposition_exam}
+
+\begin{proof}(Sketch). First recall that 
+$$
+||a||_{0}^{2} = \int a^{2}(x)p_0(x)dx = \int \big(\sum_j\langle \sum_j a_jb_j(x) \big)^{2}p_0(x)dx 
+$$
+where $a_j = \langle a, b_j \rangle$ and then use the fact that $b_jb_k = b_j^{2} = 1$ by being orthonormal.
+\end{proof}
+
+\lecture{6}{Properties of Score Functions}
+\section{Semiparametric Estimation}
+We will now discuss projecting the Score functions in the $L_2(\cdot)$ space and from this, a geometric interpretation of the effective Scores and effective information.
+\subsection{Projection of Score Functions}
+Consider an i.i.d 2-parameter model $\{\prob_{n \theta \eta}\}$ with Score functions $\ell_{\theta}^{\circ}(\cdot)$ and $\ell_{\eta}^{\circ}(\cdot)$ at the true density $p(\cdot; \theta_0, \eta_0).$ Furthermore, recall that the effective score function was defined to be 
+\begin{equation}
+\ell_{\theta}^{\circ *} = \ell_{\theta}^{\circ} - J_{\theta \eta}J_{\eta \eta}^{-1}\ell_{\eta}^{\circ}
+\label{eq:effective_score_function}
+\end{equation}
+ 
+ Futhermore, recall that from the previous lecture, the covariance between the Score functions $J_{\theta \eta}$ can be written as the inner product of the respective Score functions $\langle \ell_{\theta}^{\circ}, \ell_{\eta}^{\circ}\rangle_0$. Finally, the variance of the Score function can be written as the squared norm $||\ell_{\eta}^{\circ}||_{0}^{2}$. Putting all this together, we now have a new interpretation of equation \ref{eq:effective_score_function} in the $L_2$ space. 
+
+ \begin{proposition_exam}{Effective Score Function in $L_2$}{} The effective Score function $\ell_{\theta}^{\circ *}$ in $L_2$ is given by 
+ \begin{equation}
+  \ell_{\theta}^{\circ *} = \ell_{\theta}^{\circ} - \langle \ell_{\theta}^{\circ}, \ell_{\eta}^{\circ}\rangle_0 \frac{1}{||\ell_{\eta}^{\circ}||_{0}^{2}}\ell_{\eta}^{\circ}
+ \end{equation}
+ in the i.i.d 2-parameter model $\{\prob_{n \theta \eta}\}$ .
+ \end{proposition_exam}
+
+\begin{remark} Written this way, we can interpret the term 
+$$
+\frac{\langle \ell_{\theta}^{\circ}, \ell_{\eta}^{\circ}\rangle_0 }{||\ell_{\eta}^{\circ}||_{0}^{2}}\ell_{\eta}^{\circ}
+$$
+to be the projection of the Score function of interest $\ell_{\theta}^{\circ}$ onto the 1-dimensional linear subspace spanned by $\ell_{\eta}^{\circ}.$
+\end{remark}
+
+This means that we can interpret the effective score function $\ell_{\theta}^{\circ *}$ to be the \textbf{residual after the projection} of the Score function of the parameter of interest  $\ell_{\theta}^{\circ}$ onto $\ell_{\eta}^{\circ}.$
+
+Geometrically, we can think about the Score function for $\theta$, $\ell_{\theta}^{\circ}$ being decomposed into 2 orthogonal components 
+\begin{enumerate}
+  \item The projection onto the nuisance Score, which is parallel to the nuisance Score
+  \item The other component orthogonal to the nuisance Score.
+\end{enumerate}
+Therefore, we can interpret the effective score to be the orthogonal component of $\ell_{\theta}^{\circ}$ to $\ell_{\eta}^{\circ}$.
+
+In the general case of a \textit{vector-valued} nuisance parameter $\utilde{\eta},$ this interpretation carries through unchanged. 
+
+\begin{corollary}(Effective Score in the presence of vector-valued nuisance parameter). The effective score is the component of $\ell_{\theta}^{\circ}$ which is orthogonal to the nuisance Scores space. that is, the linear span of the nuisance Score functions 
+$$
+\utilde{\ell_{\eta}}^{\circ} = \big(\ell_{\eta_{1}}^{\circ} \cdot \cdot \cdot \ell_{\eta_{d_{\eta}}}^{\circ} \big)^T
+$$
+\end{corollary}
+
+We shall soon see, that when we have regular estimators, their influence function, which is a multiple of the Score function, will have to be orthogonal to all nuisance scores.
+
+We are more interested in the \textbf{effective information}. First, recall the definition of the effective information 
+$$
+J_{\theta}^{*} = J_{\theta \theta} - J_{\theta \utilde{\eta}}J_{\utilde{\eta} \utilde{\eta}}^{-1}J_{\utilde{\eta} \theta}
+$$
+We can now define the effective information in terms of inner products and norms.
+\begin{proposition_exam}{Effective Information in $L_2(\cdot)$ space}{} The effective information in the 1-dimensional $\theta$ and $d_{\eta}-$dimensional nuisance parameter $\utilde{\eta}$ is given by 
+\begin{equation}
+  J_{\theta}^{*} = ||\ell_{\theta}^{\circ}||_{0}^2 - \langle \ell_{\theta}^{\circ}, \utilde{\ell_{\eta}}^{\circ}\rangle_{0}^{T} \langle \utilde{\ell_{\eta}}^{\circ}, \big(\utilde{\ell_{\eta}}^{\circ}\big)^{T}\rangle_{0}^{-1} \langle \ell_{\theta}^{\circ}, \utilde{\ell_{\eta}}^{\circ}\rangle_{0}
+\end{equation}
+\end{proposition_exam}
+
+The effective information quantity $J_{\theta}^{*}$ is what we are trying to compute. The idea for the future is that we will construct a family of parametric submodels and find a upper bound to the infimum of the effective information of the parametric submodel.
+
+\subsection{Construction of regular parametric submodels in the constrained location model}
+We now have the necessary components to describe our first step to finding the information bound for our semiparametric model. That is, recall that our first step is to be able to construct a sequence of \textbf{regular parametric submodels} $\mathcal{Q}_n$ of the semiparametric model $\mathcal{P}_n.$ We will construct such a sequence of regular parametric submodel and in turn, the effective information for each submodel will be an upper bound to the effective information for the semiparametric model.
+
+We now describe the basis functions we will use to construct parametric submodels.
+
+First, recall that in the constrained location model, we have that $\prob_{n \theta f}$ is the joint distribution which are i.i.d with the density given by 
+$$
+p(x, \theta, f) = f(x - \theta)
+$$
+whereby the first moment of the constraint function $w(\cdot)$ with respect to $p(x, \theta, f)$ is zero and the second moment is finite.
+
+\textbf{Suppose} we can find a complete orthonormal basis for $L_2(p_0)$ of the form 
+\begin{equation}
+\{1, \frac{w(\cdot)}{||w||_0}, b_1(\cdot), b_2(\cdot), \cdot \cdot \cdot \}
+\end{equation}
+whereby $1$ is the constant function and $\frac{w(\cdot)}{||w||_0}$ is the normalization of the constraint function $w(\cdot)$ of our location model. Finally, $b_j(\cdot)$ are other basis functions that are bounded. 
+
+For each fixed integer $k \geq 1,$ consider the parametric submodel
+\begin{equation}
+\mathcal{Q}_{nk} = \{Q_{n \theta \utilde{\eta}}^{(k)}\}
+\end{equation}
+whereby $Q_{n \theta \utilde{\eta}}^{(k)}$ is the joint distribution of n i.i.d random variables $X_1, ..., X_n$ with the joint density 
+$$
+q(x; t, \utilde{\eta}) = p_0(x - t)\big[1 + \sum_{j=1}^{k}\eta_jb_j(x - t) \big]
+$$
+whereby $\utilde{\eta} = \big(\eta_1, \cdot \cdot \cdot, \eta_k \big)^T$ are the k nuisance parameters we fixed.
+
+For all t and bounded nuisance parameters $|\eta_j| \leq \frac{1}{k}\sup_y|b_j(y)|$, then the density function is always non-negative and since 
+$$
+\mathbb{E}_{0}\big[b_{j}(X) \big] = \int p_0(x)b_j(x)dx = 0
+$$
+for all j, this defines a proper probability density function as 
+$$
+\int q(x; t, \utilde{\eta})dx = 1
+$$
+for all t and sufficiently small $\utilde{\eta}.$
+
+
+Under minimal extra conditions, the LAN condition holds at $t = 0, \utilde{\eta} = \utilde{0}$ with the Score functions 
+\begin{equation}
+  \begin{pmatrix}
+  S_{\theta}\\
+  S_{\utilde{\eta}}
+  \end{pmatrix}
+  =
+  n^{-1/2}
+  \sum_{i=1}^{n}
+  \begin{pmatrix}
+  \psi(X_i)\\
+  \utilde{b}(X_i)
+  \end{pmatrix}
+\end{equation}
+whereby $\psi(\cdot)$ is the Score function for the location model and $\utilde{b}(\cdot)$ is the vector of basis functions 
+$$
+\utilde{b}(\cdot) = 
+\begin{pmatrix}
+b_1(\cdot)\\
+\cdot \\
+\cdot \\
+\cdot \\
+b_k(\cdot)
+\end{pmatrix}
+$$
+and the information matrix is given by 
+$$
+\begin{bmatrix}
+J_{\theta \theta} & \utilde{J_{\theta \eta}} \\
+\utilde{J_{\eta \theta}} & \utilde{I_{k}}
+\end{bmatrix}
+$$
+whereby 
+$$
+J_{\theta \theta} = \int \psi^2(x)p_0(x)dx = ||\psi||_{0}^{2}
+$$
+is the squared length of $\psi$ and
+$$
+\utilde{J_{\eta \theta}}^T = \utilde{J_{\theta \eta}} = \int \psi(x)\utilde{b}(x)p_0(x)dx = \langle \psi, \utilde{b} \rangle_0
+$$
+has the covariance of the Score functions being the inner product and 
+$$
+\utilde{I_{k}} = \langle \utilde{b}, \utilde{b}^T \rangle_0
+$$
+is the k by k identity matrix, which holds due to the basis functions being orthonormal.
+
+\begin{proposition_exam}{Effective Score Function in semiparametric submodel}{} The effective Score function in the semiparametric submodel is 
+$$
+\utilde{\ell_{\theta}}^{\circ *} = \psi - \langle \psi, \utilde{b} \rangle_{0}^T \utilde{b}
+$$
+\end{proposition_exam}
+\begin{proof} Recall that the effective score is given by 
+$$
+\utilde{\ell_{\theta}}^{\circ *}  = \ell_{\theta}^{\circ} - J_{\theta \eta}J_{\eta \eta}^{-1}\ell_{\eta}^{\circ}
+$$
+Therefore, we have that 
+$$
+\utilde{\ell_{\theta}}^{\circ *}  = \psi - \langle \psi, \utilde{b} \rangle_{0}^T \langle \utilde{b}, \utilde{b}^T \rangle_{0}^{-1} \utilde{b}
+$$
+However, as $\utilde{b}$ is a orthonormal basis, we have that $\langle \utilde{b}, \utilde{b}^T \rangle_{0}^{-1}  = \utilde{I_{k}}.$ Therefore, we have that 
+$$
+\psi - \langle \psi, \utilde{b} \rangle_{0}^T \utilde{b}
+$$
+\end{proof}
+
+\begin{proposition_exam}{Effective Information in parametric submodel}{} The effective information matrix in the parametric submodel
+$$
+J_{\theta}^{*} = ||\psi||_{0}^{2} - \langle \psi, \utilde{b_{0}} \rangle_{0}^T \langle \psi, \utilde{b} \rangle_0
+$$
+\end{proposition_exam}
+
+\begin{proof} Recall that the effective information matrix is given by 
+$$
+J_{\theta}^{*} = J_{\theta \theta} - J_{\theta \utilde{\eta}}J_{\utilde{\eta} \utilde{\eta}}^{-1}J_{\utilde{\eta} \theta}
+$$
+Therefore, we have that 
+$$
+J_{\theta}^{*} = ||\psi||_{0}^{2} - \langle \psi, \utilde{b} \rangle_{0}^{T}\langle \utilde{b}, \utilde{b}^T \rangle_{0}^{-1} \langle \psi, \utilde{b} \rangle_{0} 
+$$
+whereby $\utilde{b}$ is a orthonormal basis and therefore $\langle \utilde{b}, \utilde{b}^T \rangle_{0}^{-1}  = \utilde{I_{k}}.$ Hence, we have 
+$$
+= ||\psi||_{0}^{2} - \langle \psi, \utilde{b_{0}} \rangle_{0}^T \langle \psi, \utilde{b} \rangle_0
+$$
+\end{proof}
+
+Now, it is important to note that the inner product of the Score function $\psi$ with the complete orthonormal basis $\utilde{b}$ is
+\begin{equation}
+\langle \psi, \utilde{b} \rangle_{0}^{T} \langle \psi, \utilde{b} \rangle_0 = \langle \psi, b_1 \rangle_{0}^{2} + \langle \psi, b_2 \rangle_{0}^{2} + \cdot \cdot \cdot + \langle \psi, b_k \rangle_{0}^{2}
+\end{equation}
+
+Now, recall that we can write the norm squared of any function $\psi \in L_2$ space as the sum of its squared coefficients in the basis expansion
+\begin{align}
+||\psi||_{0}^{2} = \sum_{j}\psi_{j}^{2}
+\\ = \langle \psi, 1 \rangle_{0}^{2} + \frac{\langle \psi, w \rangle_{0}^{2}}{||w||_{0}^{2}} + \langle \psi, b_{1} \rangle_{0}^{2} + \langle \psi, b_{2} \rangle_{0}^{2} + \cdot \cdot \cdot 
+\end{align}
+
+
+Now. recall that all score functions have mean zero, which is equivalent to being orthogonal to constants 
+$$
+\langle \psi, 1 \rangle_{0}^{2} = 0
+$$
+Furthermore, $\langle \psi, \utilde{b} \rangle_{0}^{T}$ is k terms of the inner product $\langle \psi, b_j \rangle_{0}^{T}$, whereby we subtract these k terms of $||\psi||_{0}^{2}$.
+
+\begin{proposition_exam}{Effective Information in parametric submodel}{} For a fixed integer $k \geq 1$, the effective information in the parametric submodel of the integral-constrained location model is 
+\begin{equation}
+J_{\theta}^{*} = \frac{\langle \psi, w \rangle_{0}^{2}}{||w||_{0}^{2}} + \langle \psi, b_{k + 1} \rangle_{0}^{2} + \langle \psi, b_{k + 2} \rangle_{0}^{2} + \cdot \cdot \cdot
+\end{equation}
+\end{proposition_exam}
+
+\begin{remark} It is important to note that the bigger we set the integer $k \geq 1,$ the smaller the remaining terms $$\langle \psi, b_{k + 1} \rangle_{0}^{2} + \langle \psi, b_{k + 2} \rangle_{0}^{2} + \cdot \cdot \cdot$$ becomes as the coefficients are square-summable, that is, as $k \rightarrow \infty$, $$\langle \psi, b_{k + 1} \rangle_{0}^{2} \rightarrow 0.$$
+\end{remark}
+
+Using notation from previous lectures, we can write the \textbf{effective information of the parametric submodel} as 
+$$
+J_{\theta}^{*}\big(\mathcal{Q}_{nk}|\{Q_{n 0 \utilde{0}}^{(k)}\} \big) = J_{\theta}^{*}
+$$
+
+\begin{proposition_exam}{Upper bound to effective information of semiparametric full model}{} The upper bound to the effective information of the full semiparametric model is given by 
+\begin{equation}
+inf \bigg\{J_{\theta}^{*}\big(\mathcal{Q}_{nk}|\{Q_{n 0 \utilde{0}}^{(k)}\} \big); k = 1,2,... \bigg\} = \frac{\langle \psi, w \rangle_{0}^{2}}{||w||_{0}^{2}}
+\end{equation}
+\end{proposition_exam}
+
+\begin{remark}
+By choosing k big enough and consequently including more nuisance parameters, we make all the remaining terms $\langle \psi, b_{k + 1} \rangle_{0}^{2}$ small.
+\end{remark}
+
+As we increase k, the number of nuisance parameters in our parametric submodel increases, and as a result, the effective information $J_{\theta}^{*}$ gets smaller. We eventually reach the lower bound as we let $k \rightarrow \infty.$ Therefore our model gets worse as we increase k and eventaully, the parametric submodel will have an effective information that is the same as the effective information of the full semiparametric model. This is because the effective information of the full semiparametric model will be smaller (which is worse)
+ than the effective information for each parametric submodel.
+
+The upper bound to the effective information in the full semi-parametric submodel is given by 
+\begin{equation}
+J_{\theta}^{*}\big(\mathcal{P}_{n}| \prob_{n, \theta_{0} p_0} \big) \leq \frac{\langle \psi, w \rangle_{0}^{2}}{||w||_{0}^{2}}
+\end{equation}
+
+We have satisfied the first step of the strategy whereby we obtain an upper bound to the infimum of the constructed sequence of regular parametric submodels. With this, we now have a bound on the limiting variance of a regular estimator by taking the inverse of our effective information.
+
+\begin{proposition_exam}{Limiting variance of regular estimators in full semiparametric model}{} Suppose that $\tilde{\theta_{n}}$ is a regular estimator, that is 
+$$
+\sqrt{n}\big(\tilde{\theta_{n}} - \theta_0 \big) \xrightarrow{d} \mathcal{N}(0, \sigma^2)
+$$
+Then, the lower bound on the limiting variance of the rescaled estimation error of $\tilde{\theta_{n}}$ is given by 
+$$
+\sigma^2 \geq J_{\theta}^{*}\big(\mathcal{P}_{n}| \prob_{n, \theta_{0} p_0} \big)^{-1} \geq \frac{||w||_{0}^{2}}{\langle \psi, w \rangle_{0}^{2}}
+$$
+\end{proposition_exam}
+
+\begin{proof} We have that the upper bound to the effective information of the full semiparametric model is the smallest effective information from all our parametric submodels 
+$$
+J_{\theta}^{*}\big(\mathcal{P}_{n}| \prob_{n, \theta_{0} p_0} \big) \leq \frac{\langle \psi, w \rangle_{0}^{2}}{||w||_{0}^{2}}
+$$
+Now, recall that the limiting variance of a regular estimator is $(J_{\theta}^{*})^{-1}$. Therefore, taking inverses reverse the inequality above.
+\end{proof}
+
+\begin{remark} Recall that the limiting variance of the regular estimator is the inverse of the effective information. As the effective information for the full semiparametric model will be small (compared to the effective information in the regular parametric submodels), the limiting variance of the regular estimator will be high.
+\end{remark}
+
+\subsection{Regular Estimators in the parametric case}
+First, we recall the definition and properties of regular estimators in the parametric setting. 
+
+A \textbf{regular} estimator $\tilde{\theta_{n}}$ in a parametric model is one where under a nearby sequence 
+$$
+\utilde{\gamma_{n}} = 
+\begin{pmatrix}
+\utilde{\theta_{n}}\\
+\utilde{\eta_{n}}
+\end{pmatrix}
+ = 
+\begin{pmatrix}
+\utilde{\theta_{0}}\\
+\utilde{\eta_{0}}
+\end{pmatrix} + n^{-1/2}
+\begin{pmatrix}
+\utilde{h_{\theta}}\\
+\utilde{h_{\eta}}
+\end{pmatrix}
+$$
+the limiting distribution of the rescaled estimation error 
+\begin{align}
+\utilde{\gamma_{n}} = \sqrt{n}\big(\tilde{\utilde{\theta_{n}}} - \utilde{\theta_{n}} \big)
+\\ = \sqrt{n}\big(\tilde{\utilde{\theta_{n}}} - \utilde{\theta_{0}} - n^{-1/2}\utilde{h_{\theta}} \big)
+\end{align}
+does not depend on the nuisance local deviation $\utilde{h_{\eta}}.$ 
+
+By Le Cam's third lemma, this means that under the true values $$\begin{pmatrix}\theta_0 \\ \utilde{\eta_{0}} \end{pmatrix}$$, the limiting distribution is 
+$$
+\begin{pmatrix}
+\utilde{Y_{n}}\\
+\utilde{S_{\theta}}\\
+\utilde{S_{\eta}}
+\end{pmatrix}
+\xrightarrow{d}
+\mathcal{N}
+\bigg( 
+\begin{pmatrix}  
+\utilde{0}\\
+\utilde{0}\\
+\utilde{0}
+\end{pmatrix} , 
+\begin{pmatrix}
+\Sigma_Y & I & \utilde{0}\\
+I & \utilde{J_{\theta \theta}} & \utilde{J_{\theta \eta}}\\
+\utilde{0} & \utilde{J_{\eta \theta}} & \utilde{J_{\eta \eta}}
+\end{pmatrix}
+\bigg)
+$$
+First, recall that the covariance of $\utilde{Y_{n}}$ with the scores of the parameter of interest $\utilde{S_{\theta}}$ is the identity matrix I and the covariance with the nuisance scores is $\utilde{0}$ due to $\tilde{\utilde{\theta_{n}}}$ being a regular estimator.
+
+
+\subsection{Regular Estimators in the semiparametric case}
+In the semi-parametric setting, we now simply extend the conditions described in the parametric setting to any nearby sequence within any \textit{regular parametric submodel}.
+
+\begin{proposition_exam}{Limiting distribution of estimation error under true values}{} Let $\tilde{\theta_{n}}$ be a \textbf{regular} estimator . In the constrained location model, given any complete orthonormal basis $\{1, \frac{w(\cdot)}{||w||_0}, b_1(\cdot), b_2(\cdot), \cdot \cdot \cdot \}$, we must have for any $j \geq 1$, under the true density $p_0(\cdot)$
+\begin{equation}
+\begin{pmatrix}
+Y_{n}\\
+\utilde{S_{\theta}}\\
+\utilde{S_{\eta}}
+\end{pmatrix} = 
+\begin{pmatrix}
+Y_n \\ 
+n^{-1/2}\sum_{i=1}^{n}\psi(X_i)\\
+n^{-1/2}\sum_{i=1}^{n}b_j(X_i)
+\end{pmatrix} 
+\xrightarrow{d}
+\mathcal{N}
+\bigg( 
+\begin{pmatrix}  
+\utilde{0}\\
+\utilde{0}\\
+\utilde{0}
+\end{pmatrix} , 
+\begin{pmatrix}
+\Sigma_{Y}^{2} & 1 & 0\\
+1 & ||\psi||_{0}^{2} & \langle \psi, b_j \rangle_{0}\\
+0 & \langle \psi, b_j \rangle_{0} & 1
+\end{pmatrix}
+\bigg)
+\end{equation}
+\end{proposition_exam}
+
+\begin{proof}
+First, recall that any nuisance score can be expressed as any linear combination of the complete orthonormal basis functions $\{b_j(\cdot)\}_{j \geq 1}$, which have mean zero and is orthogonal to the constraint function $w(\cdot).$ Furthermore, as established before, the covariance of the estimation error of a regular estimator with the scores of interest will be 1 and the covariance with the nuisance scores will be 0.
+\end{proof}
+
+
+Now, we recall the definition of an asymptotically linear estimator.
+
+\begin{definition_exam}{Asymptotically linear Estimator}{} An estimator $\hat{\utilde{\theta_{n}}}$ is asymptotically linear if it can be written in the form 
+\begin{equation}
+  \sqrt{n} \big( \hat{\utilde{\theta_{n}}} - \theta_0 \big) = n^{-1/2}\sum_{i=1}^{n}\tilde{\ell}(X_i) + o_p(1)
+\end{equation}
+where $\tilde{\ell}(\cdot)$ is the \textbf{influence function}.
+\end{definition_exam}
+
+We can see that if a complete orthonormal basis exists, we can find an asymptotically linear estimator in our parametric submodel.
+
+\begin{proposition_exam}{Influence function of parametric submodel}{} Suppose that a complete orthonormal basis $\{1, \frac{w(\cdot)}{||w||_0}, b_1(\cdot), b_2(\cdot), \cdot \cdot \cdot \}$ exists for bounded $\{b_j(\cdot)\}_{j \geq 1}.$ Then, the 
+\textit{optimal} influence function of an asymptotically linear estimator $\hat{\utilde{\theta_{n}}}$ is 
+\begin{equation}
+  \tilde{\ell}(X) = \frac{w(X)}{\langle w, \psi \rangle_{0}}
+\end{equation}
+\end{proposition_exam}
+\begin{remark}
+Recall that if an estimator has an optimal influence function, the estimator is optimal.
+\end{remark}
+
+
+If an estimator has the optimal influence function
+$$
+\tilde{\ell}(X) = \frac{w(X)}{\langle w, \psi \rangle_{0}}
+$$
+then, it is a \textbf{regular} estimator since 
+\begin{enumerate}
+\item $$
+\langle \tilde{\ell}, \psi \rangle_0 = \langle \frac{w}{\langle w, \psi \rangle_0}, \psi \rangle_0 = 1
+$$
+\item 
+$$
+\langle \tilde{\ell}, b_j \rangle_0 = \frac{\langle w, b_j \rangle_{0}}{\langle w, \psi \rangle_0} = 0
+$$
+for j = 1, 2, ...
+\end{enumerate}
+
+Furthermore, the estimator attains the lower bound to the variance of a regular estimator 
+\begin{equation}
+  \sqrt{n}\big(\hat{\theta_{n}} - \theta_0 \big) \xrightarrow{d} \mathcal{N}(0, \frac{||w||^2}{\langle w, \psi \rangle_{0}^{2}})
+\end{equation}
+whereby $\langle w, \psi \rangle_{0}^{2}$ is the lower bound from the constructed sequence of parametric submodels.
+
+
+We are now interested in figuring out whether \textbf{can} we actually find an estimator with the influence function 
+$$
+\hat{\psi}(X) = \frac{w(X)}{\langle w, \psi \rangle_0}
+$$
+
+\begin{proposition_exam}{Finding an estimator with optimal influence function}{} If the constraint function $w(\cdot)$ is suitable regular, then the solution to the estimating equation 
+$$
+\sum_{i=1}^{n}w(X_i - \theta) = 0
+$$
+provides an estimator with the optimal influence function 
+$$
+\tilde{\ell}(x) = \frac{w(x)}{\langle w, \psi \rangle_0}
+$$
+\end{proposition_exam}
+
+
+
+\lecture{7}{Basis expansion}
+\section{Semiparametric Estimation}
+Previously, we talked about constructing parametric submodels with orthonormal bases, and from that, we obtain the information bound. The goal of today is to describe how can we find such an orthonormal basis.
+
+\subsection{The Haar Wavelet Basis}
+
+A convenient choice of a complete orthonormal basis is provided by the Haar Wavelet basis with respect to the density $p_0(\cdot).$
+
+
+\begin{definition_exam}{Haar Wavelet Basis}{} First, define the family of functions 
+\begin{equation}
+  u_{k,j}(x) = 2^{k/2}\bigg[1\{j 2^{-(k+1)} \leq x < (j + 1)2^{-(k+1)}\} - 1\{(j+1) < 2^{-(k+1)} \leq x < (j + 2)2^{-(k+1)}\} \bigg]
+\end{equation}
+for k = 0,1,2,... and $0 \leq j < 2^{k}$. Here, j is the shift parameter and k determines the scale. That is, for each fixed value of k, there is a range for the integer j.
+
+ The Haar wavelet basis with respect to $p_0(\cdot)$ is given by the collection
+$$
+\{1\} \cup \{u_{k,j}: k=0,1,2,\cdot \cdot \cdot; 0 \leq j < 2^{k}\}
+$$
+\end{definition_exam}
+
+It is important to note that the \textit{standard} Haar wavelet function
+$$
+u_{0,0}(x) = 1\{0 \leq x < \frac{1}{2}\} - 1\{\frac{1}{2} \leq x < 1\} = -sign(x)
+$$
+
+
+\begin{theorem}(Complete Orthonormal Basis for $L_2(U(0,1))$). The Haar wavelet basis 
+$$
+\{1\} \cup \{u_{k,j}: k=0,1,2,\cdot \cdot \cdot; 0 \leq j < 2^{k}-1\}
+$$
+form a complete orthonormal basis of $L_2(U[0,1])$ where $U[0,1]$ is the uniform distribution.
+\end{theorem}
+
+\begin{theorem_exam}{Complete Orthonormal Basis for $L_2(F)$.}{} For any strictly positive density $f(\cdot)$, with a continuous, strictly increasing CDF $F(\cdot)$, if we define 
+\begin{equation}
+  b_{k,j}(x) = u_{k,j}(F(x))
+\end{equation}
+the collection 
+$$
+\{1\} \cup \{b_{k,j}\}
+$$
+forms a complete orthonormal basis for $L_2(f).$
+\end{theorem_exam}
+
+\begin{proof} Recall that the definition for a complete ON basis in $L_2(U(0,1))$ is that we require that the only function $g(\cdot)$ such that it is orthogonal to all the Haar wavelets and the constant function
+$$
+\int_{0}^{1}g(y)u_{k,j}(y)dy = 0
+$$
+and 
+$$
+\int_{0}^{1}g(y)dy = 0
+$$
+is the zero function $g(\cdot) = 0$ almost everywhere.
+
+We want to show that the only function $h(\cdot)$ such that 
+$$
+\int_{-\infty}^{\infty}h(y)b_{k,j}(y)f(y)dy = 0
+$$
+$$
+\int_{-\infty}^{\infty}h(y)dy = 0
+$$
+is the zero function $h(\cdot) = 0$ almost everywhere in order to show that 
+$$
+\{1\} \cup \{b_{k,j}: k=0,1,2,...; 0 \leq j < 2^{k}-1\}
+$$
+is a complete orthonormal basis for $L_2(F).$
+
+This can be done by assuming such a function exists and then applying the change of variables
+$$
+y = F(x) \Rightarrow dy = f(x)dx
+$$
+onto the assumption that there exists a function $h(\cdot)$
+$$
+\int_{-\infty}^{\infty}h(x)b_{k,j}(x)f(x)dx = 0
+$$
+whereby we can appeal to the fact that $\{u_{k,j}\}$ form a complete ON basis 
+$$
+\int_{0}^{1}h(F^{-1}(y))u_{k,j}(y)dy = 0
+$$
+to conclude that $h(\cdot) = 0$ almost everywhere.
+\end{proof}
+
+\begin{remark} Here, the function $u_{k,j}(F(x))$ maps from the unit interval to $\real.$
+\end{remark}
+
+As indicated before, we have that if our constraint function is
+$$
+w(x) = sign(x) = -b_{0,0}(x)
+$$
+whereby the constraint condition is $\int w(x)f(x)dx = 0$, then this implies that the constraint function $w(x)$ is orthogonal to all of $\{b_{k,j}(\cdot): k \geq \bm{1}, 0 \leq j < 2^k\}$.
+
+\begin{proposition_exam}{Complete ON basis includes the constaint function}{} Let $w(x) = sign(x)$ be the constraint function. Then, the set 
+\begin{equation}
+  \{1\} \cup \{w(\cdot)\} \cup \{b_{k,j}\}
+\end{equation}
+forms a complete orthonormal basis for $L_2(F).$
+\end{proposition_exam}
+
+\begin{lemma} Each basis function $b_{k,j}(\cdot)$ is a bounded function.
+\end{lemma}
+
+Then, the conditions of the construction of lecture 5 are satisfied for this given constraint function $w(\cdot).$ That is, for any integral constrained location model with constraint function $w(x) = sign(x)$, if the true density has a strictly increasing CDF over its domain, we can conclude that 
+\begin{enumerate}
+  \item The effective information is $4f_0(\cdot)^2$
+  \item Any regular estimator (in the semiparametric sense) $\tilde{\theta_n}$ is such that the limiting variance of the rescaled estimation error
+  $$
+  \sqrt{n}(\tilde{\theta_{n}} - \theta_0) \geq \frac{1}{4f_0(0)^2}
+  $$
+  \item The sample median is asymptotically efficient.
+\end{enumerate}
+
+\subsection{Orthogonal Polynomials}
+
+We now wish to look at cases where the constraint function is \textbf{not} $w(x) = x.$ In order to do so, we need to define a different set of bases.
+
+Consider the monomials $\{1, x, x^2, \cdot \cdot \cdot, x^k\}$ for some positive integer k. Then, if all of these are linearly independent with respect to a density $f(\cdot)$, then we can construct a set of orthonormal functions with respect to $f(\cdot)$ using the Gram-Schmidt orthogonalisation procedure. 
+
+We shall denote the following
+$$
+\langle g, h \rangle = \int g(x)h(x)f(x)dx \quad \quad ||g|| = \langle g, g \rangle^{1/2}
+$$
+
+Furthermore, we shall denote each monomial as 
+$$
+p_i(x) = x^{i}
+$$
+whereby $p_0(x) = 1.$
+
+We now describe the procedure of constructing a set of orthonormal functions. 
+
+\begin{proposition_exam}{Construction of orthonormal functions}{} Let $\{1, x, x^2, \cdot \cdot \cdot, x^k\}$ be a set of monomials for some positive integer k. Furthermore, define the density $f(\cdot).$ Let $p_i(x) = x^i.$ Then, we can construct a sequence of orthonormal functions whereby we first orthogonalise the function
+\begin{equation}
+  \tilde{p}_{k} = p_k - \sum_{i=0}^{k-1}\langle p_k, p_{i}^{*}\rangle p_{i}^{*}
+\end{equation}
+and then we normalise 
+\begin{equation}
+  p_{k}^{*} = \frac{\tilde{p}_{k}}{||\tilde{p}_{k}||}
+\end{equation}
+Then, by construction, $\{p_{0}^{*}, \cdot \cdot \cdot, p_{k}^{*}\}$ are orthonormal with respect to $f(\cdot).$
+\end{proposition_exam}
+
+We will now look at a special case in order to construct a complete orthonormal basis for $L_2.$
+
+\begin{definition_exam}{Hermite Polynomial}{} Define the set of monomials $\{1, x, x^2, \cdot \cdot \cdot, x^k\}$ for some positive integer k. Define the density 
+$$
+f(x) = \phi(x) = \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+$$
+to be the $\mathcal{N}(0,1)$ density. Then, following the construction of orthonormal functions using $f(\cdot)$ gives us the \textbf{Hermite Polynomials}.
+\end{definition_exam}
+
+
+The un-normalised Hermite polynomials $\{He_j(\cdot)\}$ satisfy the relationship
+$$
+\frac{d^j}{dx^j}(e^{-\frac{x^2}{2}}) = (-1)^jHe_j(x)e^{-\frac{x^2}{2}}
+$$
+and they are orthogonal with respect to the normal density
+$$
+\int He_j(x)He_k(x)\phi(x)dx = 
+\begin{cases}
+j! \quad j = k\\
+0 \quad j \neq k
+\end{cases}
+$$
+
+Finally, we can construct the normalised Hermite polynomials $\{p_j(\cdot)\}$ by 
+$$
+p_j(x) = \frac{He_j(x)}{\sqrt{j!}}
+$$
+
+
+\begin{proposition_exam}{Hermite Polynomials in $L_2(f)$}{} The normalised Hermite polynomials $\{p_j(x)\}$ where 
+  $$
+    p_j(x) = \frac{He_j(x)}{\sqrt{j!}}
+  $$
+ forms a complete orthonormal basis of $L_2(\phi).$
+\end{proposition_exam}
+
+
+With this construction of orthonormal polynomials as a complete orthonormal basis, we now come to an important theorem on the integral-constrained location model.
+\begin{proposition_exam}{Estimating the Mean in integral-constrained location model}{} Suppose that the constraint function is $w(x) = x$. Furthermore, assume that the density $f(\cdot)$ is such that the 1-parameter location model with common density $f(x - \theta)$ satisfies the LAN property at $\theta = 0$ with Score function $\psi(\cdot)$ and information J. Then, there exists orthogonal polynomials $\{p_{j}^{*}(\cdot)\}$ forming a complete orthonormal basis for $L_2(F)$ and 
+$$
+p_0^{*}(x) = 1 \quad p_{1}^{*}(x) = \frac{w(x)}{||w||_{f}}
+$$
+Then, the effective information for estimating $\theta$ in the corresponding integral constrained location model is $\frac{1}{\sigma^2}$ whereby 
+\begin{equation}
+  \sigma^2 = \int_{-\infty}^{\infty}x^2f(x)dx = \int_{-\infty}^{\infty}w(x)^2f(x)dx
+\end{equation}
+Furthermore, the sample mean is an asymptotically efficient estimator.
+\end{proposition_exam}
+
+\begin{proof}(Sketch). Use the construction from question 1 tutorial 3 for the parametric submodel of zero-mean densities for the shape parameter of the form 
+$$
+q(x; \utilde{\eta})^{(k)} = \frac{f(x)L\{\sum_{j=2}^{k}\eta_jp_j^*(x)\}}{\int f(x)L\{\sum_{j=2}^{k}\eta_jp_j^*(x)dx}
+$$
+We have that the vector of Score functions is given by 
+$$
+\utilde{p}^{*} = 
+\begin{pmatrix}
+p_2^*\\
+\cdot \cdot \cdot \\
+p_k^*\\
+\end{pmatrix}
+$$
+Now, looking at the combined model by including the location parameter, we then have the parametric submodel is given by 
+\begin{equation}
+q(x;\theta, \utilde{\eta})^{(k)} = \frac{f(x - \theta)L\{\sum_{j=2}^{k}\eta_jp_j^*(x - \theta)\}}{\int f(x)L\{\sum_{j=2}^{k}\eta_jp_j^*(x - \theta)dx}
+\end{equation}
+
+This can be shown to satisfy the LAN conditions at $\theta = \theta_0$ and $\utilde{\eta} = \utilde{0}$ with the vector of Score functions 
+$$
+\begin{pmatrix}
+\psi\\
+\utilde{p}^{*}
+\end{pmatrix}
+= 
+\begin{pmatrix}
+\psi \\
+p_2^*\\
+\cdot \cdot \cdot \\
+p_k^*\\
+\end{pmatrix}
+$$
+and information matrix 
+$$
+\begin{bmatrix}
+J & \utilde{J_{\theta \eta}} \\
+\utilde{J_{\eta \theta}} & \utilde{I}
+\end{bmatrix}
+$$
+The effective Score function is given by 
+$$
+\ell_{\theta}^{*} = \ell_{\theta}^{\circ} - \utilde{J_{\theta \eta}}^T\utilde{J_{\eta \eta}}^{-1}\utilde{\ell_{\eta}}^{\circ} = \psi - \langle \psi, \utilde{p}^{*} \rangle^T \utilde{p}^{*}
+$$
+and the effective information is given by 
+\begin{align}
+J^* = J_{\theta \theta} - \utilde{J_{\theta \eta}}^T\utilde{J_{\eta \eta}}^{-1}\utilde{J_{\eta \theta}} = J - \langle \psi, \utilde{p}^{*} \rangle^T\langle \psi, \utilde{p}^{*} \rangle
+\\ = \sum_j\langle \psi, p_j^*\rangle^2 - \langle \psi, p_1^*\rangle^2 - \cdot \cdot \cdot - \langle \psi, p_k^*\rangle^2
+\\ = \langle \psi, \frac{w}{||w||_f}\rangle^2 + \langle \psi, p_{k+1}^{*}\rangle^2 + \langle \psi, p_{k+2}^{*}\rangle^2 + ...
+\end{align}
+and hence we can see that as $k \rightarrow \infty,$ we get the infimum of the effective information for our regular parametric submodels or the effective information of the semiparametric full model 
+$$
+\langle \psi, \frac{w}{||w||_f}\rangle^2 = \frac{\langle \psi, w\rangle^2}{||w||_{f}^{2}}
+$$
+but recall that 
+$$
+||w||_{f}^{2} = \int w^2(x)f(x)dx = \int x^2f(x)dx = \sigma^2
+$$
+which is the variance. Furthermore, we can show that $\langle \psi, w \rangle^2 = 1.$ From this, we can see that the sample mean is clearly a regular estimator that obtains such a bound.
+\end{proof}
+
+\lecture{8}{Symmetric Location Model}
+\section{Semiparametric Estimation}
+\subsection{Symmetric Location Model}
+
+We now move onto a new model setup. 
+
+Consider the semiparametric model where $X_1, \cdot \cdot \cdot, X_n$ are i.i.d with common density 
+$$
+p(n; \theta, f) = f(x - \theta)
+$$
+whereby 
+\begin{enumerate}
+  \item $\theta \in \real$
+  \item f is symmetric about 0
+\end{enumerate}
+
+We are interested in estimating $\theta$ in the presence of the unknown nuisance parameter function $f(\cdot).$ 
+
+As usual, we consier parametric submodels whereby the common density is of the form 
+$$
+q(x; \theta, \utilde{\eta}) = f_{\utilde{\eta}}(x - \theta)
+$$
+whereby the base density without the location parameter $\theta$, $\{f_{\utilde{\eta}}(\cdot): \utilde{\eta} \in \mathcal{H} \subseteq \real^d\}$ is a \textbf{regular} parametric family of densities where 
+\begin{enumerate}
+  \item All density elements $f_{\utilde{\eta}}(\cdot)$ is symmetric about 0 
+  \item When $\utilde{\eta} = \utilde{0},$ $f_{\utilde{0}}(\cdot)$ is the true density $f_0(\cdot).$
+\end{enumerate}
+
+By a regular parametric family, we mean that the LAN holds at the true value $\utilde{\eta} = \utilde{0}$ for the sub-family of models where $Y_1, \cdot \cdot \cdot, Y_n$ is i.i.d $f_{\utilde{\eta}}(\cdot)$ for some vector of Score functions 
+$$
+\utilde{\ell_{\eta}}^{\circ} = 
+\begin{pmatrix}
+  \ell_{\eta_{1}}^{\circ}(\cdot)\\
+  \cdot \\
+  \cdot \\
+  \cdot \\
+  \ell_{\eta_{d_{\eta}}}^{\circ}(\cdot)
+\end{pmatrix}
+$$
+and information matrix $\utilde{J_{\eta \eta}}.$
+
+\begin{remark} Recall from tutorial that we are able to construct any parametric submodel using $\utilde{\eta}$ to get any arbitrary Score function we want.
+\end{remark}
+
+
+We now come to two very imporant fundamental facts for our symmetric parametric submodel  
+$$
+q(x; \theta, \utilde{\eta}) = f_{\utilde{\eta}}(x - \theta)
+$$
+
+\begin{proposition_exam}{Symmetry of nuisance Score functions}{} For any regular parametric submodel, each nuisance Score function 
+$$
+\ell_{\eta_{j}}^{\circ} = \ell_{\eta_{j}}^{\circ}(\cdot)
+$$
+is \textbf{symmetric} about zero for $1 \leq \eta_j \leq d_{\eta}.$
+\end{proposition_exam}
+
+
+\begin{proposition_exam}{Antisymmetry of Score function of parameter of interest}{} For any regular parametric submodel, the Score function 
+$$
+\ell_{\theta}^{\circ} = \psi(\cdot)
+$$ for the parameter of interest $\theta$ is antisymmetric.
+\end{proposition_exam}
+
+\begin{proof}(Sketch). First, recall that the Score function for a symmetric differentiable $f_0(\cdot)$ is given by 
+$$
+\psi(x) = -\frac{f^{'}(x)}{f(x)}
+$$
+Then, the slope of a unimodal symmetric density is positive on the left of the mode and negative on the right of the mode. Hence, the derivative is antisymmetric.
+\end{proof}
+\begin{remark}
+For the Laplace density, the Score function is the sign function. In the normal density, the Score function is x. 
+\end{remark}
+
+Hence, we have that for the regular parametric submodel of the semiparametric symmetric location model, 
+\begin{enumerate}
+  \item $\utilde{\ell_{\eta}}^{\circ}$ is symmetric;
+  \item $\ell_{\theta}^{\circ}$ is antisymmetric.
+\end{enumerate}
+
+Now, recall that any asymptotically linear estimator $\hat{\theta_n}$ can be written as 
+$$
+\sqrt{n}(\hat{\theta}_n - \theta_0) = \tilde{\ell} = J_{\theta \theta}^{-1}S_{\theta}.
+$$
+
+That means, for any estimator $\hat{\theta_{n}}$ satisfying 
+$$
+\sqrt{n}(\hat{\theta_{n}} - \theta_0) = n^{-1/2}J_{\theta \theta}^{-1}\sum_{i=1}^{n}\psi(x_i - \theta) + o_p(1)
+$$
+that is, the estimator $\hat{\theta_{n}}$ is asymptotically linear with influence function 
+$$
+\tilde{\ell}(x) = J_{\theta \theta}^{-1}\psi(x - \theta_0)
+$$
+which is the optimal influence function when f is known, is also a regular estimator in the semiparametric sense.
+
+\begin{remark} Note that as $\psi(\cdot)$ is antisymmetric, the influence function $\tilde{\ell}$ is also antisymmetric.
+\end{remark}
+
+Now, we note two things regarding this influence function $\tilde{\ell}(x) = J_{\theta \theta}^{-1}\psi(x - \theta_0)$.
+
+\begin{theorem}(Estimator with influence function is asymptotically efficient).
+
+The influence function $\tilde{\ell}(\cdot) = J_{\theta \theta}^{-1}\psi(x - \theta_0)$ is orthogonal to any possible symmetric nuisance Score function $\utilde{\ell_{\eta}}^{\circ}$ since the product 
+$$
+\tilde{\ell}(x)\ell_{\eta_{j}}^{\circ}(x)
+$$
+is also antisymmetric and integrates to zero.
+
+Furthermore, the influence function $\tilde{\ell}(\cdot)$ has a covariance of 1 with the Score function for the parameter of interest 
+$$
+\langle \tilde{\ell}, \psi \rangle_f = \langle J_{\theta \theta}^{-1}\psi, \psi \rangle = J_{\theta \theta}^{-1}||\psi ||_{f}^{2} = J_{\theta \theta}^{-1}J_{\theta \theta} = 1
+$$
+\end{theorem}
+
+\subsection{Construction of estimator}
+We are now interested in constructing an estimator.
+
+First, we suppose that we have a complete orthonormal basis with the following structure 
+$$
+\{1\} \cup \{s_j(\cdot)\} \cup \{a_j(\cdot)\}
+$$
+where each $s_j(\cdot)$ is symmetric and $a_j(\cdot)$ is antisymmetric. 
+
+Such a basis can be constructed using the Haar wavelet basis since any basis function $u_{k,j}(\cdot)$ for $k \geq 1$ can form a matching pair with another function on the same resolution level (i.e the same k). 
+
+\begin{proposition} Let $\{u_{k,j}\}$ for $k \geq 1$ be functions of the Haar wavelet basis. Then, the function
+\begin{equation}
+\frac{u_{k,j} - u_{k,2^{k}-1-j}}{\sqrt{2}}
+\end{equation}
+is symmetric and 
+\begin{equation}
+\frac{u_{k,j} + u_{k,2^{k}-1-j}}{\sqrt{2}}
+\end{equation}
+is antisymmetric.
+\end{proposition}
+
+\begin{proposition_exam}{Basis expansion of symmetric and antisymmetric functions}{}Any symmetric function in $L_2(f_0)$ has a basis expansion only involving symmetric functions $s_j(\cdot)'s$ whilst any antisymmetric function has a basis expansion involving the $a_j(\cdot)'s.$
+\end{proposition_exam}
+
+We can now put all our results together for figuring out the effective score and effective information for the symmetric location model with the basis $\{1\} \cup \{s_j(\cdot)\} \cup \{a_j(\cdot)\}$.
+
+\begin{theorem_exam}{Estimating parameter in symmetric location model}{}
+Consider the semiparametric model $X_1, ... , X_n$ that are i.i.d with common density 
+$$
+p(n;\theta,f) = f(x - \theta)
+$$
+where $\theta \in \real$ and $f(\cdot)$ is unknown and symmetric about 0.
+
+Suppose we can construct a parametric submodel with common density 
+$$
+q(x; \theta, \utilde{\eta}) = f_{\utilde{\eta}}(x - \theta)
+$$
+where $f_{\utilde{\eta}}(\cdot)$ is symmetric for all $\utilde{\eta}$ and is a regular parametric family. Also, let us use the complete orthonormal basis for $L_2(f_{0})$ as 
+$$
+\{1\} \cup \{s_j(\cdot)\} \cup \{a_j(\cdot)\}
+$$ 
+
+Then, LAN holds at true values $\theta = \theta_0, \utilde{\eta} = \utilde{0}$ with vector of Score functions 
+$$
+\begin{pmatrix}
+\psi \\
+s_1(\cdot)\\
+\cdot \cdot \cdot \\
+s_k(\cdot)
+\end{pmatrix}
+$$
+where $\{s_1, \cdot \cdot \cdot , s_k\}$ are the first k of symmetric basis functions of the nuisance score $\utilde{S_{\eta}}.$
+
+The effective Score is the parameter score function
+$$
+\ell_{\theta}^{*} = \psi = \ell_{\theta}^{\circ}
+$$
+and the corresponding effective information is the ordinary information 
+$$
+J^{*} = J_{\theta \theta} = \langle \psi, \psi \rangle_{0}^{2}
+$$
+\end{theorem_exam}
+
+\begin{proof}(Sketch). The effective Score is given by 
+\begin{align}
+\ell_{\theta}^{*} = \ell_{\theta}^{\circ} - \utilde{J_{\theta \eta}}^T\utilde{J_{\eta \eta}}^{-1}\utilde{\ell_{\eta}}^{\circ}
+\\ = \psi - \langle \psi, \utilde{s} \rangle^T \utilde{I} \utilde{s}
+\\ = \psi
+\end{align}
+as $\psi$ is antisymmetric and $\utilde{s}$ is symmetric.
+
+The effective information is given by 
+\begin{align}
+J^{*} = J_{\theta \theta} - \utilde{J_{\theta \eta}}^T\utilde{J_{\eta \eta}}^{-1}\utilde{J_{\eta \theta}}
+\\ = J_{\theta \theta} - \langle \psi, \utilde{s} \rangle^T \utilde{I}\langle \psi, \utilde{s} \rangle
+\\ = J_{\theta \theta} = \sum_j \langle \psi, a_j\rangle a_j
+\end{align}
+\end{proof}
+
+This is an extremely important results as under the assumption of symmetric for the density function, when $f_0$ is unknown, we can estimate $\theta$ just as well as if $f(\cdot)$ was known. The term \textbf{adaptive} is used to describe such cases.
+
+\subsection{Practical Implementation}
+
+We now describe the process of constructing optimal adaptive estimator.
+
+When $f_0(\cdot)$ is known, in general, we can try to solve the Score equation for $\theta$
+\begin{equation}
+  \sum_{i=1}^{n}\psi(x_i - \theta) = 0
+\end{equation}
+
+Under a regular Scores assumption, if the root $\hat{\theta_{n}}$ is $\sqrt{n}-$consistent, then it is also an asymptotically efficient estimator.
+
+However, as we do not know $f_0(\cdot),$ we can construct an estimate $\hat{\psi_{n}}(\cdot)$ of the Score function and try to solve the Score equation
+\begin{equation}
+  \sum_{i=1}^{n}\hat{\psi}(x_i - \theta) = 0
+\end{equation}
+
+\lecture{9}{Integral Constrained Semiparametric Location-Scale Model}
+\section{Semiparametric Estimation}
+\subsection{Integral Constrained Semiparametric Location-Scale Model}
+
+We are now interested in our final model for semiparametric estimation. We now consider the density characterised by both a scale and location parameter.
+
+\begin{definition_exam}{Location-Scale Model}{}
+Suppose $X_1, ..., X_n$ are i.i.d with common density 
+$$
+p(x; \utilde{\theta}, f) = p(x; (\mu, \sigma)^T, f) = \frac{1}{\sigma}f(\frac{x - \mu}{\sigma})
+$$
+where 
+\begin{enumerate}
+  \item $\utilde{\theta} = (\mu, \sigma)^T$ where $\mu \in \real$ and $\sigma > 0$
+  \item f is a probability density function on $\real$ which is centered and of unit scale in that it satisfies two constraints 
+  $$
+  \int_{-\infty}^{\infty}u(x)f(x)dx = \int_{-\infty}^{\infty}v(x)f(x)dx = 0
+  $$
+  for suitable constraint functions $u(\cdot)$ and $v(\cdot).$
+\end{enumerate}
+Here, the density function $f(\cdot)$ is orthogonal to the constraint functions $u(\cdot)$ and $v(\cdot).$
+\end{definition_exam}
+
+We give some examples of such constraint functions.
+\begin{example}
+Let $u(x) = x$ and $v(x) = x^2 - 1.$ Then the density $f(\cdot)$ has mean zero and variance 1 as 
+$$
+\int v(x)f(x) = \int (x^2 - 1)f(x) = 0 \Rightarrow \mathbb{E}[X^2] = 1.
+$$
+Therefore, the parameters $\mu, \sigma$ are respectively the mean and standard deviation of $X_1.$
+\end{example}
+
+
+\begin{example} We define the constraint functions 
+$$
+u(x) = sign(x)
+$$
+$$
+v(x) = sign(|x| - 1)
+$$
+Then the density $f(\cdot)$ has median zero and median absolute value 1.
+\end{example}
+
+\begin{example} We have that $f(\cdot)$ has -1 as the lower quartile and 1 as the upper quartile
+$$
+u(x) = 1\{x \leq - 1\} - \frac{1}{4}
+$$
+$$
+v(x) = 1\{x \geq 1\} - \frac{1}{4}
+$$
+The parameters $\mu, \sigma$ become respectively the average of the quartiles and half the IQR of $X_1.$
+\end{example}
+
+Now, we shall impose \textbf{two assumptions} on the integral-constrained semiparametric location-scale model.
+
+1) We assume that the 2-parameter location-scale model where $f(\cdot)$ is known based on $Y_1, ..., Y_n$ is i.i.d with common density $\frac{1}{\sigma}f(\frac{y - \mu}{\sigma})$ satisfies the LAN property at the true values $\mu_0, \sigma_0$ with Score functions given by 
+\begin{equation}
+\utilde{\ell_{\theta}}^{\circ}(y) = 
+\begin{pmatrix}
+\frac{1}{\sigma_0}\psi(\frac{y - \mu_0}{\sigma_0})\\\\
+\frac{1}{\sigma_0}\chi(\frac{y - \mu_0}{\sigma_0})
+\end{pmatrix}
+\end{equation}
+where under differentiability conditions, the Score functions are
+$$
+\begin{cases}
+\psi(x) = \frac{-f^{'}(x)}{f(x)}\\\\
+\chi(x) = x\psi(x) - 1
+\end{cases}
+$$
+and the information matrix is
+\begin{equation}
+J_{\utilde{\theta}, \utilde{\theta}} = \mathbb{E}\big[\utilde{\ell_{\theta}}^{\circ}(X_1)\utilde{\ell_{\theta}}^{\circ}(X_1)^T \big]
+\end{equation}
+
+2) We assume that there exists a complete orthonormal basis for $L_2(f)$ of the form 
+$$
+\{1, u^{*}, v^{*}\} \cup \{b_j\}
+$$
+where we have the orthonormalised constraint functions as part of the basis
+\begin{equation}
+u^* = \frac{u}{||u||_{f}} \quad \quad v^* = \frac{v - \frac{\langle v, u \rangle_f u}{||u||_{f}^{2}}}{\sqrt{||v||_{f}^{2} - \frac{\langle v, u \rangle_{f}^{2}}{||u||_{f}^{2}}}}
+\end{equation}
+
+We now shall only focus on the nuisance parameter $f(\cdot).$ We shall consider the parametric submodels for the shape (no location or scale parameter)
+$$
+\{f_{\utilde{\eta}}(\cdot): \utilde{\eta} \in \mathcal{H} \subseteq \real^{d_{\utilde{\eta}}} \}
+$$
+for the shape f, which includes the true density $f$ as $f_{\utilde{0}}$ where $\utilde{\eta}$ are the Nuisance parameters.
+
+We \textbf{assume} that the LAN condition holds at $\utilde{\eta} = \utilde{0}$ with the (nuisance) Score Functions 
+$$
+\utilde{\ell_{\eta}^{\circ}}
+$$
+and information 
+$$
+\utilde{J_{\eta \eta}}
+$$
+
+As in the integral-constrained location-scale model, we must have that the nuisance Scores for this shape model is orthogonal to the constraint functions 
+$$
+\langle \utilde{\ell_{\eta}^{\circ}}, u \rangle \int \utilde{\ell_{\eta}^{\circ}}(x)u(x)f(x)dx = 0
+$$
+$$
+\langle \utilde{\ell_{\eta}^{\circ}}, v \rangle \int \utilde{\ell_{\eta}^{\circ}}(x)v(x)f(x)dx = 0
+$$
+This is the conditions needed for the nuisance shape model.
+
+\begin{definition_exam}{Parametric submodel for the integral-constrained location-scale semiparametric model}
+For each $k \geq 1$, for the integral-constrained location-scale semiparametric model, we can construct a parametric submodel with common density of the form 
+\begin{equation}
+  q(x; \mu, \sigma, \utilde{\eta}) = f_{\utilde{\eta}}(\frac{x - \mu}{\sigma})
+\end{equation}
+whereby $f_{\utilde{\eta}}$ is the parametric model for the nuisance shape model.
+\end{definition_exam}
+
+\begin{theorem_exam}{LAN condition for location-scale parametric submodel}{} The LAN conditions hold for the location-scale parametric submodel with Score functions 
+\begin{equation}
+\begin{pmatrix}
+\utilde{\ell_{\theta}}^{\circ}(x)\\
+\frac{1}{\sigma}b_1(\frac{x - \mu}{\sigma})\\
+\cdot \cdot \cdot \\
+\frac{1}{\sigma}b_k(\frac{x - \mu}{\sigma})
+\end{pmatrix}
+\end{equation}
+whereby $\utilde{\ell_{\theta}}^{\circ}(\cdot)$ is a bivariate vector containing the Score functions $\psi$ and $\chi$ for $\mu$ and $\sigma$ respectively. Furthermore, $b_j(\cdot)$ are the basis functions being the Nuisance scores.
+
+The information matrix is given by 
+\begin{equation}
+\begin{bmatrix}
+\utilde{J_{\theta \theta}} & \utilde{J_{\theta \eta}}\\
+\utilde{J_{\eta \theta}} & \sigma^{-2}\utilde{I}
+\end{bmatrix}
+\end{equation}
+as the basis functions $b_j(\cdot)$ are orthonormal with scaling parameter $1/\sigma$ and $\utilde{J_{\eta \theta}}$ is the $2 \times k$-matrix 
+$$
+\mathbb{E}\big[\utilde{\ell_{\theta}}^{\circ}(X_1) \frac{1}{\sigma}\utilde{b}(\frac{X_1 - \mu}{\sigma}) \big]
+$$
+for $\utilde{b} = (b_1, \cdot \cdot \cdot, b_k)^T.$
+\end{theorem_exam}
+
+Let $\mu_0 = 1$ and $\sigma_0 = 1$ to simplify notation. Then, the \textbf{effective score} is given by 
+\begin{align}
+\utilde{\ell_{\theta}}^{*} = \utilde{\ell_{\theta}}^{\circ} - \utilde{J_{\theta \eta}}\utilde{J_{\eta \eta}}^{-1}\utilde{\ell_{\eta}}^{\circ}
+\\ = \utilde{\ell_{\theta}}^{\circ} - \langle \utilde{\ell_{\theta}}^{\circ}, \utilde{b}^{T} \rangle \utilde{b}
+\end{align}
+and the \textbf{effective information} is 
+$$
+\utilde{J_{\theta}}^{*} = \utilde{J_{\theta \theta}} - \langle \utilde{\ell_{\theta}}^{\circ}, \utilde{b}^{T} \rangle^T \langle \utilde{\ell_{\theta}}^{\circ}, \utilde{b}^{T} \rangle
+$$
+as $\utilde{J_{\eta \eta}} = \utilde{I}.$
+
+Now, recall that the Score function $\utilde{\ell_{\theta}}^{\circ}$ can be written in terms of the basis $\{1, u^{*}, v^{*}\} \cup \{b_j\}$, which is 
+$$
+\utilde{\ell_{\theta}}^{\circ} = \langle \utilde{\ell_{\theta}}^{\circ}, u^*\rangle u^* + \langle \utilde{\ell_{\theta}}^{\circ}, v^*\rangle v^* + \sum_{j=1}^{\infty}\langle \utilde{\ell_{\theta}}^{\circ}, b_j \rangle b_j
+$$
+
+We can therefore deduce the effective information.
+
+\begin{theorem_exam}{Effective information for semiparametric integral-constrained location-scale model}{} The effective information for the semiparametric integral-constrained location-scale model is 
+\begin{equation}
+  \utilde{J_{\theta}}^{*} = \langle u^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, u^*\rangle + \langle v^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, v^* \rangle = \utilde{M}
+\end{equation}
+\end{theorem_exam}
+
+\begin{proof}
+First, recall that the effective information is 
+$$
+\utilde{J_{\theta}}^{*} = \utilde{J_{\theta \theta}} - \langle \utilde{\ell_{\theta}}^{\circ}, \utilde{b}^{T} \rangle^T \langle \utilde{\ell_{\theta}}^{\circ}, \utilde{b}^{T} \rangle
+$$
+
+Then, we have that the ordinary information is 
+$$
+\utilde{J_{\theta \theta}} = \langle \utilde{\ell_{\theta}}^{\circ}, \utilde{\ell_{\theta}}^{\circ T} \rangle = \langle u^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, u^*\rangle + \langle v^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, v^* \rangle + \sum_{j=1}^{\infty}\langle b_j, \utilde{\ell_{\theta}}^{\circ} \rangle \langle \utilde{\ell_{\theta}}^{\circ T}, b_j \rangle 
+$$
+
+Additionally, the coinformation is given by 
+$$
+\langle \utilde{\ell_{\theta}}^{\circ}, \utilde{b}^{T} \rangle = \sum_{j=1}^{k}\langle b_j, \utilde{\ell_{\theta}}^{\circ T} \rangle \langle \utilde{\ell_{\theta}}^{\circ}, b_j \rangle
+$$
+Therefore, as we let $k \rightarrow \infty$, we have that the terms from the coinformation will cancel out with terms from the ordinary information and hence we have that 
+$$
+\utilde{J_{\theta}}^{*} = \langle u^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, u^*\rangle + \langle v^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, v^* \rangle + \sum_{j=k+1}^{\infty}\langle b_j, \utilde{\ell_{\theta}}^{\circ} \rangle \langle \utilde{\ell_{\theta}}^{\circ T}, b_j \rangle 
+$$
+which is bounded from below by the first two terms 
+$$
+\geq \langle u^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, u^*\rangle + \langle v^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, v^* \rangle = \utilde{M}.
+$$
+\end{proof}
+
+Therefore, as we have seen, the effective information for the semiparametric location-scale model is 
+$$
+\langle u^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, u^*\rangle + \langle v^*, \utilde{\ell_{\theta}}^{\circ}\rangle \langle \utilde{\ell_{\theta}}^{\circ T}, v^* \rangle 
+$$
+which is the parameter Score function $\utilde{\ell_{\theta}}^{\circ}$ projected onto the constraint functions $u^*, v^*.$
+
+
+The lower bound to the limiting covariance matrix of the scaled estimation error of regular estimators is the inverse of $\utilde{M}$ 
+
+We note that $\utilde{M}$ is the covariance matrix of the linear combination of the orthonormalised constraint functions $u^*, v^*$ 
+$$
+\langle \utilde{\ell_{\theta}}^{\circ}, u^* \rangle u^* + \langle \utilde{\ell_{\theta}}^{\circ}, v^* \rangle v^*
+$$
+whereby the effective Score function was 
+$$
+\utilde{\ell_{\theta}}^{\circ} = \langle \utilde{\ell_{\theta}}^{\circ}, u^* \rangle u^* + \langle \utilde{\ell_{\theta}}^{\circ}, v^* \rangle v^* + \sum_{j=1}^{\infty}\langle \utilde{\ell_{\theta}}^{\circ}, b_j \rangle b_j
+$$
+where the effective information is the first two terms of the effective score function.
+
+We can write 
+$$
+\langle \utilde{\ell_{\theta}}^{\circ}, u^* \rangle u^* + \langle \utilde{\ell_{\theta}}^{\circ}, v^* \rangle v^* = 
+\begin{pmatrix}
+\langle \psi, u^* \rangle & \langle \chi, u^* \rangle \\
+\langle \chi, u^* \rangle & \langle \psi, u^* \rangle \\
+\end{pmatrix}
+\begin{pmatrix}
+u^*\\
+v^*
+\end{pmatrix}
+ = \utilde{C}^T \begin{pmatrix}
+u^*\\
+v^*
+\end{pmatrix}
+$$
+as $\langle \utilde{\ell_{\theta}}^{\circ}, u^* \rangle$ is 
+$$
+\begin{pmatrix}
+\langle \psi, u^* \rangle \\ \langle \chi, u^* \rangle 
+\end{pmatrix}
+$$
+where $u^*, v^*$ has the identity matrix as their covariance matrix.
+
+Therefore, we have that 
+$$
+\utilde{M} = \utilde{C}^T \utilde{C}
+$$
+
+We can then describe the influence function needed for an asymptotically efficient estimator.
+
+\begin{proposition_exam}{Efficient Influence Function for location-scale model}{} The efficient influence function for the location-scale semiparametric model is a multiple of the constraint functions
+$$
+\utilde{\tilde{\ell}} = \big(\utilde{C}^T \utilde{C} \big)^{-1}\utilde{C}^T\begin{pmatrix}
+u^*\\ v^*
+\end{pmatrix}
+$$
+\end{proposition_exam}
+\begin{proof}
+We see that any estimator that has $\utilde{\tilde{\ell}}$ as its influence function will obtain the asymptotic lower bound as 
+$$
+\frac{1}{\sqrt{n}}\sum_{i=1}^{n}\utilde{\tilde{\ell}}(X_i) \xrightarrow{d} \mathcal{N}(0, \utilde{M}^{-1})
+$$
+\end{proof}
+
+
+We now want to know how to find estimators with such influence functions.
+
+\begin{proposition_exam}{Finding optimal estimators}{} Solving the estimating equation 
+$$
+\sum_{i=1}^{n}
+\begin{pmatrix}
+u(\frac{x_i - \mu}{\sigma})\\
+v(\frac{x_i - \mu}{\sigma})
+\end{pmatrix} = 
+\begin{pmatrix}
+0\\0
+\end{pmatrix}
+$$
+will yield estimators $\tilde{\mu}, \tilde{\sigma}$ which will have 
+$$
+\utilde{\tilde{\ell}}
+ = \big(\utilde{C}^T \utilde{C} \big)^{-1}\utilde{C}^T\begin{pmatrix}
+u^*\\ v^*
+\end{pmatrix}
+$$
+as their influence function.
+\end{proposition_exam}
+
+
+We can now generalise what we have described so far where now we have the true values $\mu_0$ and $\sigma_0$.
+
+\begin{proposition_exam}{Complete Orthonormal basis for general location-scale model}{} The complete orthonormal basis for the general location-scale model is given by 
+\begin{equation}
+\bigg\{1, \frac{1}{\sigma_0}u^{*}(\frac{x - \mu_0}{\sigma_0}), \frac{1}{\sigma_0}v^{*}(\frac{x - \mu_0}{\sigma_0})\bigg\} \cup \bigg\{\frac{1}{\sigma_0}b_j(\frac{x - \mu_0}{\sigma_0})\bigg\}
+\end{equation}
+\end{proposition_exam}
+
+\begin{proposition_exam}{Effective information for general location-scale model}{}  The effective information for the general location-scale model is given by 
+\begin{equation}
+\frac{1}{\sigma^2}\utilde{M}
+\end{equation}
+\end{proposition_exam}
+
+\begin{corollary}
+Optimal estimators that obtains the limiting variance $\sigma^2\utilde{M}^{-1}$ can be obtained by solving the estimating equations 
+\begin{equation}
+\sum_{i=1}^{n}
+\begin{pmatrix}
+u(\frac{x_i - \mu}{\sigma})\\
+v(\frac{x_i - \mu}{\sigma})
+\end{pmatrix} = 
+\begin{pmatrix}
+0\\0
+\end{pmatrix}
+\end{equation}
+\end{corollary}
+
+
+\lecture{10}{Optimal Semiparametric Testing}
+\section{Semiparametric Testing}
+\section{Semiparametric Testing}
+
+Suppose we have a semiparametric model $\{\prob_{n \utilde{\theta} f}: \utilde{\theta} \in \Theta; f \in \mathcal{F}\}$
+where $\prob_{n \utilde{\theta} f}$ is the joint distribution of $X_1, ..., X_n$ that is i.i.d with common density $p(x; \utilde{\theta}, f)$ and we wish to test $\utilde{\theta} = \utilde{\theta_{0}}.$
+
+As before, we can construct a sequence of regular parametric submodels and run tests on each of them.
+
+\begin{proposition_exam}{Power of test for semiparametric model}{}
+The power of a test for the semiparametric model is bounded above by the highest power for any parametric submodel, which in this case is $\utilde{h_{\theta}}^{T}\utilde{J_{\theta}}^{*}\utilde{h_{\theta}}.$
+\end{proposition_exam}
+
+\begin{remark} Hence, in regular parametric models, the best power of the test is bounded by the effective information matrix.
+\end{remark}
+
+Generally, we tend to use an asymptotically efficient estimator.
+\begin{proposition_exam}{Optimal Test Statistic}{} The regular quadratic test statistic with the highest power in the regular parametric submodel is given by 
+\begin{equation}
+T_n = \big(\utilde{S_{\theta}}^{*} \big)^T\big(\utilde{J_{\theta}}^{*} \big)^{-1}\utilde{S_{\theta}}^{*} + o_p(1)
+\end{equation}
+\end{proposition_exam}
+
+From this, we can define a quadratic form test statistic for each regular parametric submodel of the semiparametric model and the limit of such a sequence will gives us information about the semiparametric test.
+
+\begin{proposition_exam}{Optimal Test Statistic in Integral Constrained Location Model}{} An optimal test statistic of $H: \theta = \theta_0$ is of the form 
+\begin{equation}
+T_n = \frac{\big(n^{-1/2}\sum_{i=1}^{n}w(X_i - \theta_0)\big)^2}{Var_{\theta_{0}, f_{0}}[w(X_1, \theta_0)]} + o_p(1)
+\end{equation}
+\end{proposition_exam}
+
+\begin{proposition_exam}{Optimal Test Statistic in Integral Constrained Symmetric Model}{} An optimal test statistic of $H: \theta = \theta_0$ is of the form 
+\begin{equation}
+T_n = \frac{\big(n^{-1/2}\sum_{i=1}^{n}\psi_0(X_i - \theta_0)\big)^2}{\int \psi_0^2(x)f(x)dx]} + o_p(1)
+\end{equation}
+\end{proposition_exam}
+
+
+\lecture{11}{Probability Theory}
+\section{Probability Theory}
+\section{Probability Theory}
+\subsection{Modes of convergence}
+
+\begin{definition}(Convergence in distribution). $X_n \xrightarrow{D} X$ if for each continuous point x of F(x), 
+$$
+F_n(x) \rightarrow F(x)
+$$
+where $F_x(x) = P(X_n \leq x)$ and $F(x) = P(X \leq x).$
+\end{definition}
+
+\begin{definition}(Convergence almost surely). $X_n \xrightarrow{a.s.} X$ if  
+$$
+P(\omega: \lim_{n \rightarrow \infty}X_n = X) = 1
+$$
+\end{definition}
+
+\begin{definition}(Convergence in probability). $X_n \xrightarrow{p} X$ if for every $\epsilon > 0,$
+$$
+\lim_{n \rightarrow \infty}P(|X_n - X| > \epsilon) = 0
+$$
+\end{definition}
+
+\begin{definition}(Convergence in pth moment). For a real number $p > 0$ and $X_n \in \mathcal{L}^{p}.$ Then, $X_n \xrightarrow{L_{p}} X$ if 
+$$
+\lim_{n \rightarrow \infty}\mathbb{E}\big[|X_n - X|^p\big] = 0
+$$
+\end{definition}
+
+The relationships between them are as follows.
+\begin{proposition}(Relationships between modes of convergence). 
+\begin{enumerate}
+\item $X_n \xrightarrow{a.s.} X \Rightarrow X_n \xrightarrow{p} X$ 
+\item If for some $p > 0$, $X_n \xrightarrow{L_{p}} X \Rightarrow X_n \xrightarrow{p} X$
+\item $X_n \xrightarrow{p} X \Rightarrow X_n \xrightarrow{D} X$
+\end{enumerate}
+\end{proposition}
+
+\begin{theorem} Suppose that $X_n \xrightarrow{p} X$ and $|X_n| \leq Y$ where $Y \in \mathcal{L}^p$ for $p > 0.$ Then 
+$$
+X_n \xrightarrow{L_{p}} X.
+$$
+\end{theorem}
+
+
+\begin{theorem}(Borel-Cantelli Lemma). If for every $\epsilon > 0,$
+$$
+\sum_{n=1}^{\infty}P(|X_n - X| \geq \epsilon ) < \infty
+$$
+then 
+$$
+X_n \xrightarrow{a.s.} X.
+$$
+\end{theorem}
+
+
+\begin{proposition}
+Assume $X_n \xrightarrow{p} X$ and $Y_n \xrightarrow{p} Y.$ Then 
+$$
+X_n + Y_n \xrightarrow{p} X + Y
+$$
+and 
+$$
+X_nY_n \xrightarrow{p} XY
+$$
+\end{proposition}
+
+
+\begin{theorem}(Chebychev Inequality). Suppose $\psi(x)$ is a function such that:
+\begin{enumerate}
+\item $\psi(x) > 0$ 
+\item $\psi(x) \uparrow \infty$
+\item $\mathbb{E}[\psi(|X|)] < \infty$
+\end{enumerate}
+Then, for any $x > 0$
+$$
+P(|X| \geq x) \leq \frac{1}{\psi(x)}\mathbb{E}[\psi(x)]
+$$
+\end{theorem}
+
+
+
+
+
+
+\begin{proposition}(Helly-Bray Theorem). The sequence $X_n \xrightarrow{D} X$ if and only if $\mathbb{E}[g(X_n)] \rightarrow \mathbb{E}[g(X)]$ for all continuous bounded functions g.
+\end{proposition}
+
+\begin{definition}(Characteristic Function). The characteristic function of random variable X is defined by 
+$$
+\psi_X(t) = \mathbb{E}[exp(itX)]
+$$
+for all $t \in \mathbb{R}$ and $i = \sqrt{-1}.$
+\end{definition}
+
+\begin{theorem}(Continuity Theorem). 
+By the Helly-Bray theorem, we have that 
+$$
+X_n \xrightarrow{D} X \leftrightarrow \psi_{X_{n}}(t) \rightarrow \psi_{X(t)}
+$$
+\end{theorem}
+
+\begin{lemma} For a constant C, $X_n \xrightarrow{D} C$ if and only if $X_n \xrightarrow{p} C.$
+\end{lemma}
+
+\begin{proposition}(Slutsky's Theorem). Suppose that $X_n \xrightarrow{D} X, Y_n \xrightarrow{p} Y, Z_n \xrightarrow{p} b$ where a and b are constants. Then 
+$$
+(X_n + Y_n)Z_n \xrightarrow{D} (X_n + a)b
+$$
+\end{proposition}
+
+\begin{remark} This does \textbf{not} hold that $X_n + Y_n \xrightarrow{D} X + Y$ if $X_n \xrightarrow{D} X$ and $Y_n \xrightarrow{D} Y.$
+\end{remark}
+
+\begin{corollary} Suppose that $X_n \xrightarrow{D} X$ and $Y_n \xrightarrow Y$. Furthermore, suppose that $X_n$ and $Y_n$ are \textbf{independent sequences}. Then 
+$$
+(X_n, Y_n) \xrightarrow{D} (X, Y).
+$$
+\end{corollary}
+
+\begin{proposition}(Continuous Mapping Theorem). Let $f(x)$ be a continuous function. Suppose that $X_n \xrightarrow{D} X$, then 
+$$
+f(X_n) \xrightarrow{D} f(X).
+$$
+\end{proposition}
+
+\begin{proposition}(Delta Method). Suppose there exists a sequence of random variables $X_n$ such that 
+$$
+d_n(X_n - \theta) \xrightarrow{D} \mathcal{N}(0, \sigma^2)
+$$
+where $0 < d_n \rightarrow \infty$ and $\theta, \sigma^2$ are constants. Then, for any function $g(.)$ such that $g^{'}(\theta)$ exists and $g^{'}(\theta) \neq 0$ then 
+$$
+d_n(g(X_n) - g(\theta)) \xrightarrow{D} \mathcal{N}(0, \sigma^2 [g^{'}(\theta)]^2)
+$$
+\end{proposition}
+
+\subsection{Sequences of independent random variables}
+
+\begin{theorem}(Weak law of large numbers). Let $(X_n: n \geq 1)$ be i.i.d random variables. Let $S_n = \sum_{j=1}^{n}X_j.$ Then, if $\mathbb{E}[|X|] < \infty$, then 
+$$
+S_n \xrightarrow{p} \mathbb{E}[X_j].
+$$
+\end{theorem}
+
+\begin{theorem}(Strong law of large numbers). Let $(X_n: n \geq 1)$ be i.i.d random variables. Let $S_n = \sum_{j=1}^{n}X_j.$ Then, if $\mathbb{E}[|X|] < \infty$, then 
+$$
+S_n \xrightarrow{a.s.} \mathbb{E}[X_j].
+$$
+\end{theorem}
+
+This is a useful inequality.
+\begin{theorem}(Kolmogorov Inequality). Let $(X_n: n \geq 1)$ be independent with $\mathbb{E}[X_j] = 0$ and $\sigma_{j}^{2} = \mathbb{E}[X_j^2] < \infty.$ Let $S_n = \sum_{j=1}^{n}X_j.$ For all $A > 0$ and $N \geq 1$
+$$
+P[\max_{1 \leq j \leq N}|S_j| \geq A] \leq \frac{1}{A^2}\sum_{j=1}^{N}\sigma_{j}^{2}.
+$$
+\end{theorem}
+
+\begin{theorem}(Central Limit Theorem). Let $(X_j: j \geq 1)$ be i.i.d random variables with mean $\mu$ and finite variance $\sigma^2.$ Then 
+$$
+\sqrt{n}(\overline{X}_n - \mu) \xrightarrow{D} \mathcal{N}(0, \sigma^2).
+$$
+\end{theorem}
+
+
+We can now relax the identically distributed assumption for the central limit theorem. That is, the only condition we need is independent random variables. 
+
+\begin{definition}(Triangular array). A triangular array $(X_{nj})$ is when $(X_{nj})$ is independent for a fixed n.
+\end{definition}
+
+We now introduce an important condition.
+\begin{definition_exam}{Lindeberg Condition}{} For each n = 1,2,..., let $X_{nj}$ for each $1 \leq j \leq n$ be independent random variables with $\mathbb{E}[X_{nj}] = 0$ and $Var[X_{nj}] = \sigma_{nj}^{2}.$ Denote $B_{n}^{2} = Var[\sum_{j=1}^{n}X_{nj}] = \sum_{j=1}^{n}\sigma_{nj}^{2}.$ The Lindeberg condition states that for every $\epsilon > 0$
+$$
+\lim_{n \rightarrow \infty} \frac{1}{B_{n}^{2}}\sum_{j=1}^{n}\mathbb{E}\big[X_{nj}^{2}I\{|X_{nj}| \geq \epsilon B_n\} \big] = 0
+$$
+\end{definition_exam}
+
+We now state two important results from Lindeberg condition.
+
+\begin{claim} Suppose that Lindeberg condition holds. Then 
+$$
+\frac{1}{B_{n}^{2}}\max_{1 \leq j \leq n}\sigma_{nj}^{2} \rightarrow 0.
+$$
+\end{claim}
+
+\begin{claim} Suppose that Lindeberg condition holds. Then 
+$$
+\sum_{j=1}^{n}P[|X_{nj}| > \epsilon] \rightarrow 0
+$$
+for all $\epsilon > 0.$
+\end{claim}
+
+However, this is hard to check for. We can instead check Lyapunov theorem.
+\begin{definition_exam}{Lyapunov Theorem}{} For each n = 1,2,..., let $X_{nj}$ for each $1 \leq j \leq n$ be independent random variables with $\mathbb{E}[X_{nj}] = 0$ and $Var[X_{nj}] = \sigma_{nj}^{2}.$ Denote $B_{n}^{2} = Var[\sum_{j=1}^{n}X_{nj}] = \sum_{j=1}^{n}\sigma_{nj}^{2}.$  Suppose there exists a $\delta > 0$ such that 
+$$
+\lim_{n \rightarrow \infty} \frac{1}{B_{n}^{2 + \delta}} \sum_{j=1}^{n}\mathbb{E}[|X_{nj}|^{2}] = 0
+$$
+\end{definition_exam}
+
+\begin{theorem_exam}{Sufficient Conditions for Lindeberg Condition}{} If Lyapunov's theorem holds, this implies that Lindeberg's conditions hold.
+\end{theorem_exam}
+\begin{proof}
+Fix $\epsilon > 0$ and we want to show Lindeberg condition holds
+$$
+\frac{1}{B_{n}^{2}}\sum_{j=1}^{n}\mathbb{E}\big[X_{nj}^{2}I\{|X_{nj}| \geq \epsilon B_n\} \big] = \frac{1}{B_{n}^{2}}\sum_{j=1}^{n}\int_{|X_{nj}| \geq \epsilon B_n}X_{nj}^{2}d\mu_j
+$$
+
+Clearly, $1 \leq \big(\frac{|X_{nj}|}{\epsilon B_n} \big)^{\delta}$
+and therefore 
+$$
+\leq \frac{1}{\epsilon^{\delta}}\frac{1}{B_{n}^{2 + \delta}}\sum_{j=1}^{n}\int_{|X_{nj}| \geq \epsilon B_n}|X_{nj}|^{2 + \delta}d\mu_j \rightarrow 0
+$$
+by Lyapunov theorem.
+\end{proof}
+
+
+\begin{theorem_exam}{Lindeberg-Feller Theorem}{}For each n = 1,2,..., let $X_{nj}$ for each $1 \leq j \leq n$ be independent random variables with $\mathbb{E}[X_{nj}] = 0$ and $Var[X_{nj}] = \sigma_{nj}^{2}.$ Denote $B_{n}^{2} = Var[\sum_{j=1}^{n}X_{nj}] = \sum_{j=1}^{n}\sigma_{nj}^{2}.$ Suppose that Lindeberg condition holds, then 
+$$
+\frac{\sum_{j=1}^{n}X_{nj}}{B_{n}} \xrightarrow{D} \mathcal{N}(0,1).
+$$
+\end{theorem_exam}
+
+\begin{definition}(Uniform asymptotic negligibility). The u.a.n condition is 
+$$
+\lim_{n \rightarrow \infty}\max_{1 \leq j \leq n}P(|X_{nj}| \geq \epsilon) = 0
+$$
+for all $\epsilon > 0.$
+\end{definition}
+
+This leads us for another way to check if Lindeberg condition holds.
+
+\begin{proposition}(Lindeberg condition is necessary and sufficient). Suppose that the u.a.n condition holds and $\frac{\sum_{j=1}^{n}X_{nj}}{B_{n}} \xrightarrow{D} \mathcal{N}(0,1).$ Then, the Lindeberg condition holds.
+\end{proposition}
+
+
+\subsection{Big-oh notation}
+
+
+\begin{definition_exam}{Big-oh}{} For $n \geq 0$, we say that $a_n = \mathcal{O}(1)$ if 
+\[
+|a_n| \leq C
+\]
+for some constant C. We say that $a_n = \mathcal{O}(b_n)$ if 
+\[
+  \frac{a_n}{b_n} \rightarrow 0
+\]
+as $n \rightarrow \infty.$
+\end{definition_exam}
+
+
+
+
+\begin{definition_exam}{Bounded in probability}{} A sequence of random variables $\{X_k\}_{k \geq 1}$ is said to be bounded in probability if for every $\epsilon > 0,$ there exists a constant $M = M(\epsilon)$ and rank $N = N(\epsilon)$ such that 
+\begin{equation}
+  \prob(|X_k| \geq M) < \epsilon
+\end{equation}
+for all $k \geq N.$
+\end{definition_exam}
+
+\begin{definition}(Big-oh in probability). The sequence of random variables $\{X_n\}$ is $\mathcal{O}_p(1)$ if it is bounded in probability. Additionally, if $\{X_n\}$ is $\mathcal{O}_p(Y_n)$ if $\frac{X_n}{Y_n}$ is $\mathcal{O}_p(1).$
+\end{definition}
+
+\begin{definition}(Small-oh in probability). The sequence of random variables $\{X_n\}$ is $o_p(1)$ if $X_n \xrightarrow{P} 0$. Additionally, $\{X_n\}$ is $o_p(Y_n)$ if $\frac{X_n}{Y_n} \xrightarrow{P} 0.$
+\end{definition}
+
+\lecture{12}{Kernel Density Estimation}
+\section{Kernel Density Estimation}
+\section{Kernel Density Estimation}
+\subsection{Introduction to Kernel Density Estimation}
+
+The goal is to estimate the density function $f(x)$ of a random variable X. We do not want to specify a parameteric distribution as if it is mispecified, then this will lead to many issues.
+\begin{definition_exam}{Kernel Density Estimator}{}
+The general Kernel estimator has the form
+$$
+\hat{f}(x) = \frac{1}{nh}\sum_{k=1}^{n}K\big(\frac{X_k - x}{h} \big)
+$$
+whereby $0 < h = h_n \rightarrow 0$ is called the bandwidth and $K(u)$ is a Kernel function satisfying 
+\begin{enumerate}
+\item $K(u) \geq 0$
+\item $\int K(u)du = 1$
+\end{enumerate}
+\end{definition_exam}
+
+We impose some assumptions that we shall assume throughout the lecture. First, assume that $X_1, ..., X_n$ are iid with density function $f(x).$ Second, we assume that $f^{''}(x)$ is continuous and bounded in the neighbourhood of x. Third, we assume that the Kernel function $K(x)$ satisfies that 
+\begin{enumerate}
+\item $K(u) \geq 0$
+\item $\int K(u)du = 1$
+\item $K(u)$ is a symmetric function whereby $\int uK(u)du = 0 \Rightarrow K(-u) = K(u)$ 
+\item $K(x) = 0$ for $|x| \geq A$ where A is a compact support
+\item $h \rightarrow 0$ and $nh \rightarrow \infty$
+\end{enumerate}
+{proposition_exam}
+
+\subsection{Properties of Kernel Density Estimator}
+We now describe some useful properties of the kernel density estimator (KDE).
+\begin{proposition} The Kernel density estimator is a valid probability density function.
+\end{proposition}
+
+\begin{proposition_exam}{Bias of KDE}{} The bias of the KDE is given by 
+\begin{equation}
+Bias(\hat{f}(x)) = \mathbb{E}[\hat{f}(x)] - f(x) = \frac{1}{2}h^{2}f^{''}(x)\int u^2K(u)du + o(h^2)
+\end{equation}
+\end{proposition_exam}
+
+\begin{proof} (Sketch). By the i.i.d assumption, we can arrive at 
+$$
+\mathbb{E}[\hat{f}(x)] - f(x) = \frac{1}{h}\int K(\frac{x - x_0}{h})f(x)dx - f(x_0)
+$$
+and then use a change of variables $y = (x - x_0)h^{-1}$ and $hdy = dx$ to get 
+$$
+= \int K(y)f(x_0 + hy)dy - f(x_0)
+$$
+We can then apply a second order Taylor expansion to $f(x_0 + hy)$ to get 
+$$
+= \int K(y)\big[f(x_0) - hyf^{'}(x_0) + \frac{1}{2}h^2y^2f^{''}(x_0) + o(h^2) \big]dy - f(x_0)
+$$
+and using the fact that $\int K(y)dy = 1$ and $\int K(y)ydy = 0$, we arrive at the desired result.
+\end{proof}
+
+\begin{remark} This has the interesting interpretation that as $h \rightarrow 0,$ the bias of the KDE shrinks at rate $O(h^2).$ Therefore, the bias is affected by the curvature of the density function $f^{''}.$
+\end{remark}
+
+\begin{proposition_exam}{Variance of KDE}{} The variance of the KDE is given by 
+\begin{equation}
+Var[\hat{f}(x)] = \frac{1}{nh}f(x) \int K^2(u)du + o(1/nh)
+\end{equation}
+\end{proposition_exam}
+
+\begin{proof}(Sketch). We bound the variance by the second moment 
+$$
+Var[\hat{f}(x)] = Var[\frac{1}{nh}\sum_{i=1}^{n}K(\frac{X_i - x_0}{h})] \leq \frac{1}{nh}\int K^2(\frac{x - x_0}{h})f(x)dx
+$$
+Let $y = (x - x_0)h^{-1}$ and $hdy = dx$ to arrive at 
+$$
+= \frac{1}{nh}\int K^2(y)f(x_0 + hy)dy
+$$
+and apply a \textbf{first order} Taylor expansion 
+$$
+= \frac{1}{nh} \int K^2(y)\big[f(x_0) + hyf^{'}(x_0) + o(h) \big]dy
+$$
+and expand out to arrive at the desired result.
+\end{proof}
+
+\begin{remark} The variance shrinks at rate $O((nh)^{-1})$ when $n \rightarrow \infty$ and $h \rightarrow 0.$ Additionally, the variance is large when the density value is large.
+\end{remark}
+
+We now describe a pointwise measure known as the mean squared error (MSE) of the estimator.
+
+\begin{proposition_exam}{MSE of KDE}{} The MSE of the KDE is given by 
+\begin{equation}
+MSE(\hat{f}(x)) = \frac{1}{nh}f(x)\int K^2(u)du + \frac{1}{4}h^4\big[f^{''}(x)\tau_2 \big]^2 + o(\frac{1}{nh} + h^4)
+\end{equation}
+whereby $\tau_j = \int u^jK(u)du.$
+\end{proposition_exam}
+
+\begin{proof}(Sketch). We use the fact that the MSE can be decomposed as 
+$$
+MSE(\hat{f}(x)) = bias(\hat{f}(x))^2 + Var[\hat{f}(x)]
+$$
+and use the previous results we derived.
+\end{proof}
+
+However, such a measure is only a pointwise measure. We can define the mean integrated squared error (MISE) to get an idea of the global accuracy of the KDE $\hat{f}(x).$ 
+
+\begin{proposition_exam}{MISE of KDE}{} The MISE of the KDE is given by 
+\begin{equation}
+MISE(\hat{f}(x)) = \frac{1}{nh}\int K^2(u)du + \frac{1}{4}h^4\tau_{2}^{2}\int \big[f^{''}(x) \big]^2dx + o(\frac{1}{nh} + h^4)
+\end{equation}
+whereby $\tau_j = \int u^jK(u)du.$
+\end{proposition_exam}
+\begin{proof}(Sketch). Use the fact that MISE is 
+$$
+MISE(\hat{f}(x)) = \int MSE(\hat{f}(x)) dx= \int \big[\frac{1}{nh}f(x)\int K^2(u)du + \frac{1}{4}h^4\big[f^{''}(x)\tau_2 \big]^2 + o(\frac{1}{nh} + h^4) ]dx
+$$
+and that $\int f(x)dx = 1$ to get the desired result.
+\end{proof}
+
+We can see that the $MISE(\hat{f}(x)) = \mathcal{O}(h^4) + \mathcal{O}(\frac{1}{nh}).$
+
+
+The MISE can be made small if we balance out between the bias and variance term. From MISE of the KDE, these are balanced out if $(nh)^{-1} \sim h^4$ which implies that the optimal bandwidth $h \sim n^{-1/5}$. If this is the case, then the MISE will be $n^{-4/5}.$
+
+\begin{theorem}(Optimal bandwidth). Minimising the MISE, the optimal bandwidth $h_{opt}$ is given by 
+$$
+h_{opt}=\bigg(\frac{1}{n} \frac{\int K^2(u)dy}{\tau_{2}^{2} \int \big[f^{''}(x) \big]^2dx} \bigg)^{1/5} = C n^{-1/5}
+$$
+where C is a constant.
+\end{theorem}
+
+A big issue is that we do not know the true density $f(x)$ and therefore, it is impossible for us to know what $f^{''}(x)$ is. If we did, we wouldn't need to use nonparametric methods!
+
+
+A \textbf{plug-in} method involves first setting an initial value of h to estimate $\int \big[f^{''}(x)]^2dx$ and then use this estimate to estimate $h_{opt}.$ For example, if we assume $f(x)$ belongs to a Gaussian distribution with variance $\sigma^2,$ then it can be shown that our initial estimate will be 
+$$
+h_{initial} \approx 1.06 \sigma n^{-1/5}
+$$
+which we then plug into $\int \big[f^{''}(x)]^2dx$ and estimate $h_{opt}.$ However, sometimes the initial estimate is used as the bandwidth and is known as the \textbf{rule of thumb bandwidth}.
+
+\subsection{Asymptotic Results}
+
+We now give the first result describing the limiting distribution of the KDE.
+
+\begin{proposition}(Asymptotic normality). Suppose that $nh \rightarrow \infty$ and $nh^5 \rightarrow 0$, then 
+$$
+\sqrt{nh}\big[\hat{f}(x) - f(x) \big] \xrightarrow{D} \mathcal{N}(0, f(x)\int K^2(u)dy)
+$$
+\end{proposition}
+
+\begin{remark} An issue is that the optimal bandwidth $h = cn^{-1/5}$ which means we are unable to use our optimal estimate for this result. 
+\end{remark}
+
+We can relax the bandwidth condition.
+\begin{proposition_exam}{Relaxed asymptotic normality}{} Suppose that $nh \rightarrow \infty$ and $nh^5 = O(1).$ Then 
+$$
+\sqrt{nh}\big[\hat{f}(x) - f(x) - \frac{1}{2}h^2f^{''}(x)\int u^2K(u)dy \big] \xrightarrow{D} \mathcal{N}(0, f(x)\int K^2(u)dy)
+$$
+\end{proposition_exam}
+
+In fact, we can show that the KDE at different points are asymptotically independent. 
+
+That is, for $x_1 \neq x_2$, if we let $Y_{n1} = \sqrt{nh}(\hat{f}(x_1) - f(x_1))$ and $Y_{n2} = \sqrt{nh}(\hat{f}(x_2) - f(x_2))$, then 
+$$
+\big(Y_{n1}, Y_{n2} \big) \xrightarrow{D} (Y_{1}, Y_{2})
+$$
+whereby $(Y_1, Y_2) \sim \mathcal{N}(0, \Sigma)$ whereby $$\Sigma = \begin{bmatrix} \sigma_{1}^{2} & 0 \\ 0 & \sigma_{2}^{2} \end{bmatrix}$$.
+
+
+We can also show that the KDE is consistent. 
+\begin{proposition_exam}{Consistency of KDE}{} For a fixed x, it can be shown that 
+$$
+\hat{f}(x) \xrightarrow{p} f(x)
+$$
+or equivalently
+$$
+\hat{f}(x) - f(x) = \mathcal{O}_p(h^2 + (nh)^{-1/2}).
+$$
+\end{proposition_exam}
+
+
+We can in fact show an even stronger form of convergence under additional assumptions.
+\begin{theorem} Define the Fourier transform of the KDE as 
+$$
+\hat{K}(x) = \int e^{itx}K(t)dt
+$$
+and assume that $\hat{K}(x)$ is uniformly integrable. Furthermore, assume that $f(x)$ is uniformly continuous on $\mathbb{R}$ and $nh^2 \rightarrow \infty.$ Then 
+$$
+\sup_x|\hat{f}(x) - f(x)| \xrightarrow{p} 0
+$$
+\end{theorem}
+
+
+We can also estimate the cumulative distribution function $F(x)$ from the KDE.
+\begin{definition_exam}{CDF Estimation}{} Let $\hat{f}(x)$ be the KDE. Then, assuming the Kernel is symmetric $(K(-u) = K(u))$, the CDF estimate is 
+$$
+\hat{F}(x) = \int_{-\infty}^{x}\hat{f}(t)dt = \frac{1}{n}\sum_{k=1}^{n}G\big(\frac{x - X_k}{h}\big)
+$$
+whereby $G(x) = \int_{-\infty}^{x}K(u)du.$
+\end{definition_exam}
+
+\lecture{13}{Nonparametric Regression}
+\section{Nonparametric Regression}
+\section{Nonparametric Regression}
+\subsection{Nadaraya-Watson Estimator}
+
+Let (X,Y) be a random vector. Our goal is to estimate the regression function $m(x) = \mathbb{E}[Y|X=x]$ from a random sample $(x_1,y_1),....(x_n,y_n)$. The reason we want to estimate the conditional expectation since $m(x) = \mathbb{E}[Y|X]$ minmises the MSE $\mathbb{E}[(Y - m(X))^2].$
+
+
+The regression model is defined by 
+\begin{equation}
+y_i = m(x_i) + \epsilon_i \quad \text{for } i=1,2,...,n.
+\end{equation}
+
+\begin{definition_exam}{Nadaraya-Watson Estimator}{} The Nadaraya-Watson estimator is defined to be an estimate of the conditional expectation 
+\begin{equation}
+\hat{m}(x) = \frac{\sum_{i=1}^{n}K\big(\frac{x_i - x}{h}\big)y_i}{\sum_{i=1}^{n}K\big(\frac{x_i - x}{h}\big)}
+\end{equation}
+whereby $h = h(n)$ is the bandwidth and $K(\cdot)$ is a kernel function satisfying $K(u) \geq 0$ and $\int K(u)du = 1.$
+\end{definition_exam}
+
+
+We shall assume that $x_1, ..., x_n$ are iid with density f(x) and $\epsilon_1, ..., \epsilon_n$ are iid with $\mathbb{E}[\epsilon_1] = 0$ and $\sigma^2 = \mathbb{E}[\epsilon_i^2] < \infty$. Furthermore, $x_i$ and $\epsilon_i$ are independent. We also assume that $m^{''}$ and $f^{''}(x)$ are continuous and bounded in the neighbourhood of x. Finally, we assume that $K(-u) = K(u)$ and $K(x) = 0$ for $|x| \geq A$ where A is a compact set.
+
+\begin{proposition_exam}{Asymptotic Normality}{} Suppose that $nh \rightarrow \infty$ and $nh^3 \rightarrow 0$. Assume that $\mathbb{E}[|\epsilon_{1}|^{2 + \delta}] < \infty$ for some $\delta > 0.$ Then 
+\begin{equation}
+  \sqrt{nh}\big(\hat{m}(x) - m(x) \big) \xrightarrow{D} \mathcal{N}(0, f^{-1}(x)\sigma^2\int K^2(u)du)
+\end{equation}
+\end{proposition_exam}
+
+We can impose further restrictions to remove the bias.
+\begin{proposition_exam}{Asymptotic Normality without bias}{} Suppose that $nh \rightarrow \infty$ and $nh^5 = o(1)$ and $\mathbb{E}[|\epsilon_1|^{2 + \delta}] < \infty$ for some $\delta > 0.$ Then 
+\begin{equation}
+  \sqrt{nh}\big(\hat{m}(x) - m(x) - h^2B_x\int u^2K(u)du \big) \xrightarrow{D} \mathcal{N}(0, f^{-1}(x)\sigma^2\int K^2(u)du)
+\end{equation}
+whereby $B_x = \frac{1}{2}m^{''}(x) + \frac{f^{'}(x)m^{'}(x)}{f(x)}$.
+\end{proposition_exam}
+
+
+\begin{proposition}(MSE). The MSE of the NW-estimator is given by 
+$$
+MSE(\hat{m}(x)) \sim \frac{1}{nh}\frac{\sigma^2 \int K^2du}{f(x)} + h^4B_{x}^2\big(\int u^2K(u)du \big)^2
+$$
+\end{proposition}
+
+
+\lecture{14}{Martingale Central Limit Theorems}
+\section{Martingale Central Limit Theorems}
+\section{Martingale Central Limit Theorems}
+\subsection{Tightness and Weak Convergence}
+\begin{definition}(Relatively Compact). A family of distribution functions $\{F_{n}: n \geq 1\}$ is relatively compact if for every sequence of distribution functions $\{F_{n}: n \geq 1\}$m there exists a subsequence $(M_k)_{k \geq 1}$ that weakly converges to a generalised distribution function G
+$$
+F_{m_{k}} \xrightarrow{d} G.
+$$
+\end{definition}
+
+\begin{definition_exam}{Tightness}{} A family of measures $\{\mu_{\alpha}: \alpha \in I\}$ is tight if for every $\epsilon > 0,$ there exists a compact set $K \subseteq \mathbb{R}$ such that 
+$$
+\mu_{\alpha}\big( K \big) \geq 1 - \epsilon
+$$
+for all $\alpha \in I.$
+\end{definition_exam}
+
+\begin{remark}
+Alternatively, we can think of tightness as that the measure is uniformly small outside the compact set 
+$$
+\mu_{\alpha}\big( \mathbb{R} \setminus K \big) \leq \epsilon
+$$
+\end{remark}
+
+
+\begin{theorem}(Prokhorov's Theorem). A family of probability measures $\{\mu_{\alpha}: \alpha \in I\}$ is relatively compact if and only if it is tight.
+\end{theorem}
+
+\begin{lemma} Let $\{\mu_{\alpha}: \alpha \in I\}$ be a tight sequence. If every weakly convergent subsequence has the same limit $\mu,$ then 
+$$
+\mu_n \xrightarrow{w} \mu.
+$$
+\end{lemma}
+
+\begin{lemma}
+Let $\{\mu_{\alpha}: \alpha \in I\}$ be a tight sequence. Define the characteristic function associated to each $\mu_{n}$
+$$
+\psi_n(t) = \int_{-\infty}^{\infty}e^{itx}d\mu_n(x).
+$$
+Then, $\mu_n \xrightarrow \mu$ if and only if for all t, $\psi_n(t)$ has the same limit as $n \rightarrow \infty.$
+\end{lemma}
+
+\subsection{Uniform Integrability}
+
+We first give a motivation for uniform integrability. Assume that $X \in L^p.$ For a fixed $C \in \mathbb{R},$ define the event
+$$
+\{|X| \geq C\}
+$$
+
+It is clear that this is a decreasing sequence of events, that is, for $C_1 < C_2$
+$$
+\{|X| \geq C_2\} \subseteq \{|X| \geq C_1\}
+$$
+
+Furthermore, if we define the random variable 
+$$
+1\{|X| \geq C\}
+$$
+this is an \textbf{nonincreasing} random variable in C. 
+
+\begin{lemma} Let $X \in L^p$. The random variable 
+$$
+1\{|X| \geq C\} \xrightarrow{a.s.} 0
+$$
+as $C \rightarrow \infty.$
+\end{lemma}
+\begin{proof}
+As $X \in L^p,$ we have that $\{|X| \geq C\} \downarrow \emptyset.$ Therefore, as $C \rightarrow \infty,$ the random variable X cannot be larger than C.
+\end{proof}
+
+From this, we can also define the random variable 
+$$
+|X|1\{|X| \geq C\}
+$$
+whereby it is clear that 
+$$
+|X|1\{|X| \geq C\} \leq |X| 
+$$
+with $\mathbb{E}[|X|^p] < \infty.$ Using a similar line of reasoning, we have that 
+$$
+|X|1\{|X| \geq C\} \xrightarrow{a.s.} 0
+$$
+as $C \rightarrow 0.$ This leads us to an important result.
+\begin{lemma} Let $X \in L^p$. Then,
+$$
+\lim_{C \rightarrow \infty}\mathbb{E}[|X|1\{|X| \geq C\}] = 0
+$$
+\end{lemma}
+\begin{proof}
+Since $|X|1\{|X| \geq C\} \xrightarrow{a.s.} 0$, we can apply the dominating convergence theorem as $X \in L^p$
+$$
+\lim_{C \rightarrow \infty}\mathbb{E}[|X|1\{|X| \geq C\}] = \mathbb{E}[\lim_{C \rightarrow \infty}|X|1\{|X| \geq C\}] = 0
+$$
+\end{proof}
+
+
+This leads us to an important definition.
+
+\begin{definition_exam}{Uniformly integrable}{} Define the family of random variables $\{X_t: t \in I\}$ such that $X_t \in L^p$ for $t \in I.$ Then, the family of random variables $\{X_t: t \in I\}$ is \textbf{uniformly integrable} if 
+$$
+\lim_{C \rightarrow \infty}\sup_{t \in I}\int_{|X_{t}| \geq C}|X_t|dP = 0
+$$
+or equivalently
+$$
+\lim_{C \rightarrow \infty}\sup_{t \in I}\mathbb{E}[|X_t|I\{|X_t| \geq C\}] = 0
+$$
+\end{definition_exam}
+
+\begin{lemma} If $\{X_t: t \in I\}$ is uniformly integrable, then 
+$$
+\sup_{t \in I}\mathbb{E}[|X_t|] < \infty
+$$
+\end{lemma}
+
+\begin{proposition} Suppose that $X_n \xrightarrow{D} X$ and $\{|X_n|: n \geq 1\}$ is uniformly integrable. Then 
+$$
+\mathbb{E}[X_n] \rightarrow \mathbb{E}[X].
+$$
+\end{proposition}
+
+
+We now state an important result showing how to arrive at convergence in mean from convergence in probability.
+\begin{proposition_exam}{Modes of convergence}{} Suppose that $X_n \in L^p$ and $X_n \xrightarrow{p} X.$ Then, the following are equivalent:
+\begin{enumerate}
+\item $X_n \xrightarrow{L^{p}} X$
+\item $X_n$ is uniformly integrable 
+\item $||X||_p \rightarrow ||X||_p$
+\end{enumerate}
+\end{proposition_exam}
+
+\begin{remark} This is an useful result because if we have convergence in probability and we have shown that the sequence $(X_n)_{n \geq 1}$ is uniformly integrable, then we are guaranteed convergence in p-th mean.
+\end{remark}
+
+\subsection{Martingale Review}
+
+\begin{definition}(Filtration). Let $(\Omega, \mathcal{F}, \mathbb{P})$ be a probability space. A filtration  $\{\mathcal{F}_{n}\}_{n \geq 1}$ is a sequence of $\sigma-$fields such that 
+\begin{enumerate}
+  \item $\mathcal{F}_n$ is a $\sigma-$field for all n 
+  \item $\mathcal{F}_{n} \subseteq \mathcal{F}_{n+1}$ for all n.
+\end{enumerate}
+\end{definition}
+
+\begin{definition_exam}{Martingale}{} A discrete-time martingale is a stochastic process $(X_n)_{n \geq 1}$ such that
+\begin{enumerate}
+  \item $X_n$ is adapted to $\mathcal{F}_n$
+  \item $\mathbb{E}[|X_n|] < \infty$ for all n 
+  \item $\mathbb{E}[X_n|\mathcal{F}_{n - 1}] = X_{n - 1}.$
+\end{enumerate}
+\end{definition_exam}
+
+We can extend this idea further in the following definition.
+\begin{definition_exam}{Martingale Difference Sequence}{} An adapted sequence $\{X_t, \sigmalgebra_t\}$ is a Martingale Difference Sequence if 
+$$
+\mathbb{E}[|X_n|] < \infty
+$$
+and 
+$$
+\mathbb{E}[X_{n + 1}|\sigmalgebra_{t-1}] = 0 \quad a.s.
+$$
+for all t.
+\end{definition_exam}
+
+Therefore, if $Y_t$ is a Martingale, then $X_t = Y_t - Y_{t-1}$ is a Martingale Difference Sequence. This is useful because it imposes much milder conditions on the memory of sequence rather than independence. 
+
+\section{Martingale Central Limit Theorem}
+
+Let $\{X_{ni}\}_{n \geq 1, i \geq 1}$ be an array of random variables. For each $n \geq 1,$ let $\{\mathcal{F}_{ni}\}_{i \geq 1}$ be a sequence of $\sigma-$fields such that 
+$$
+\mathcal{F}_{ni} \subseteq \mathcal{F}_{n,i+1} \quad i \geq 1
+$$
+and $\{X_{ni}\}_{i \geq 1}$ is adapted to $\{\mathcal{F}_{ni}\}_{i \geq 1}.$ We are interested in the convergence of 
+$$
+S_n = \sum_{i=1}^{n}X_{ni}.
+$$
+
+\begin{theorem} (Original martingale central limit theorem). Suppose that 
+\begin{enumerate}
+\item
+\begin{equation}
+\max_{1 \leq i \leq n}|X_{ni}| \xrightarrow{p} 0
+\end{equation}
+\item 
+\begin{equation}
+\sum_{i=1}^{n}\bigg|\mathbb{E}[X_{ni}1\{|X_{ni}| \leq 1\}] \big| \mathcal{F}_{n, i-1} \bigg| \xrightarrow{p} 0
+\end{equation}
+\item 
+\begin{equation}
+\sum_{i=1}^{n}X_{ni}^{2} \xrightarrow{p} 1
+\end{equation}
+\end{enumerate}
+Then, we conclude that 
+$$
+S_n \xrightarrow{D} \mathcal{N}(0, 1)
+$$
+\end{theorem}
+
+
+Define 
+$$
+T_n(t) = \prod_{k=1}^{n}\big(1 + itX_{n,k} \big)
+$$
+where $i^2 = 1.$
+
+\begin{theorem} (Modified martingale central limit theorem). Suppose that 
+\begin{enumerate}
+\item
+\begin{equation}
+\max_{1 \leq i \leq n}|X_{ni}| \xrightarrow{p} 0
+\end{equation}
+\item 
+\begin{equation}
+\mathbb{E}[T_n(t)] \rightarrow 1
+\end{equation}
+\item $T_n(t)$ is uniformly integrable for any t
+\item 
+\begin{equation}
+\sum_{i=1}^{n}X_{ni}^{2} \xrightarrow{p} 1
+\end{equation}
+\end{enumerate}
+\end{theorem}
+
+\begin{lemma}
+If $X_n \xrightarrow{p} X$ and $|X_n|$ is uniformly integrable, then 
+$$
+\mathbb{E}[X_n] \rightarrow \mathbb{E}[X]
+$$
+\end{lemma}
+
+
+
+Assume that $\{X_{n,i}, \mathcal{F}_{ni}\}_{i \geq 1}$ forms a martingale difference and 
+$$
+S_n = \sum_{i=1}^{n}X_{ni}
+$$
+
+
+\begin{theorem_exam}{Sufficient conditions for Martingale Limit Theorem}{} Suppose one of the following conditions set holds. Then $S_n \xrightarrow{D} \mathcal{N}(0, 1).$
+
+\begin{enumerate}
+  \item $\mathbb{E}[max_{1 \leq i \leq n}|X_{ni}|] \rightarrow 0$ and $\sum_{i=1}^{n}X_{ni}^{2} \rightarrow 1$
+  \item The \textbf{conditional Lindeberg condition holds} $\sum_{i=1}^{n}\mathbb{E}[|X_{ni}|^21\{|X_{ni}| \geq \epsilon\}| \mathcal{F}_{n, i-1}] \xrightarrow{p} 0$ for all $\epsilon > 0$ amd 
+  $$
+  \sum_{i=1}^{n}X_{ni}^{2} \xrightarrow{p} 1
+  $$
+  or 
+  $$
+  \sum_{i=1}^{n}\mathbb{E}[X_{ni}^{2}|\mathcal{F}_{n,i-1}] \xrightarrow{p} 1
+  $$
+  \item $\max_{1 \leq i \leq n}|X_{ni}| \xrightarrow{p} 0, \sum_{i=1}^{n}X_{ni}^{2} \xrightarrow{p} 1$ and 
+  $$
+  \sum_{i=1}^{n}\mathbb{E}[|X_{ni}|^21\{|X_{ni}| \geq 1\}|\mathcal{F}_{n,i-1}] \xrightarrow{p} 0
+  $$
+  \item $\max_{1 \leq i \leq n}|X_{ni}| \xrightarrow{p} 0, \sum_{i=1}^{n}X_{ni}^{2} \xrightarrow{p} 1$ and $\sum_{i=1}^{n}\mathbb{E}[X_{ni}^{2}] = 1$
+\end{enumerate}
+\end{theorem_exam}
+
+\begin{proposition_exam}{Additional conditions for Martingale Limit Theorems}{}
+\begin{enumerate}
+\item $\max_{1 \leq i \leq n}|X_{ni}| \xrightarrow{p} 0$ if and only if 
+$$
+\sum_{i=1}^{n}|X_{ni}|^m1\{|X_{ni}| \geq \epsilon\} \xrightarrow{p} 0
+$$
+for all $\epsilon > 0$ where $m \geq 1$ is an integer, and if and only if 
+$$
+\sum_{i=1}^{n}P(|X_{ni}| \geq \epsilon | \mathcal{F}_{n,i-1}) \xrightarrow{p} 0
+$$
+for all $\epsilon > 0$
+\item If $\mathbb{E}[ \max_{1 \leq i \leq n}|X_{ni}|^m| \rightarrow 0$ where $m \geq 1$ is an integer, then 
+\begin{equation}
+\sum_{i=1}^{n}\mathbb{E}[|X_{ni}|^{m}1\{|X_{ni}| \geq \epsilon| \mathcal{F}_{n,i-1}\}] \xrightarrow{p} 0
+\label{eq:two}
+\end{equation}
+for all $\epsilon > 0.$
+\item If \ref{eq:two} holds with $m = 2,$ then $\max_{1 \leq i \leq n}|X_{ni}| \xrightarrow{p} 0$ and 
+$$
+\sum_{i=1}^{n}\mathbb{E}[X_{ni}^{2} | \mathcal{F}_{n, i-1}] \xrightarrow{p} 1
+$$
+is equivalent to 
+$$
+\sum_{i=1}^{n}X_{ni}^{2} \xrightarrow{p} 1
+$$
+\end{enumerate}
+\end{proposition_exam}
+
+
+
+\lecture{15}{Martingale Central Limit Theorems: Applications}
+\section{Martingale Central Limit Theorems}
+\subsection{Applications of MLT}
+
+We show how the martingale central limit theorem can be applied to many examples in time series. The trick is to take a time series, represent it in terms of a martingale difference sequence, and then apply the martingale central limit theorem to it.
+
+Generally, a sequence of stationary variables $(w_t)_{t \geq 1}$ may not be a martingale difference. However, under certain conditions, we can write it as 
+$$
+w_t = v_t + z_{t - 1} - z_t \quad t = 1,2,...
+$$
+where $v_t$ is a martingale difference and $z_t$ is another sequence of stationary variables. Then, we can see that 
+$$
+\sum_{k=1}^{n}w_k = \sum_{k=1}^{n}v_k + (z_0 - z_n)
+$$
+and hence, we see that the martingale $\sum_{k=1}^{n}v_k$ provides an approximation to $\sum_{k=1}^{n}w_k$ with their limiting behaviour coinciding.
+
+\begin{definition}(Strictly Stationary). A process $\{X_t: t \in T\}$ is called \textbf{strictly stationary} if the joint distribution is invariant under shifts of t 
+$$
+(X_{t_{1}}, ..., X_{t_{n}}) \stackrel{d}{=} (X_{t_{1} + h}, ..., X_{t_{n} + h})
+$$
+for all possible choices of times $t_1, ..., t_n \in T$ for $n \geq 1$ and h such that $t_1 + h, ..., t_n + h \in T.$ 
+\end{definition}
+
+\begin{definition}(Weakly Stationary). A process $\{X_t: t \in T\}$ is called \textbf{weakly stationary} if its mean and covariance functions are invariant under shifts of index t 
+$$
+\mathbb{E}[X_{t + h}] = \mathbb{E}[X_t]
+$$
+and 
+$$
+Cov(X_{s + h}, X_{t + h}) = Cov(X_s, X_t)
+$$
+for all possible choices of times $s, t \in T$ and h such that $s + h, t+ h \in T.$
+\end{definition}
+
+\begin{definition_exam}{$\alpha$-mixing process}{} A process $\{X_t: t \geq 1\}$ is called $\alpha-$mixing if 
+$$
+\alpha_k = \sup_{A \in \mathcal{F}_{-\infty}^{t}, B \in \mathcal{F}_{t+k}^{\infty}}\big|P(AB) - P(A)P(B) \big| \rightarrow 0
+$$
+as $k \rightarrow \infty$ where $\mathcal{F}_{-\infty}^{t} = \sigma(X_t, X_{t-1}, ...)$ and $\mathcal{F}_{t+k}^{\infty} = \sigma(X_{t+k}, X_{t+k+1}, ... ).$
+\end{definition_exam}
+
+\begin{definition_exam}{$\phi$-mixing process}{} A process $\{X_t: t \geq 1\}$ is called $\phi-$mixing if 
+$$
+\alpha_k = \sup_{A \in \mathcal{F}_{-\infty}^{t}, B \in \mathcal{F}_{t+k}^{\infty}}\big|P(A|B) - P(A) \big| \rightarrow 0
+$$
+as $k \rightarrow \infty$ where $\mathcal{F}_{-\infty}^{t} = \sigma(X_t, X_{t-1}, ...)$ and $\mathcal{F}_{t+k}^{\infty} = \sigma(X_{t+k}, X_{t+k+1}, ... ).$
+\end{definition_exam}
+
+We now give a powerful result whereby if a time series is strictly stationary and is $\alpha-$mixing, then we may approximate it by a martingale difference sequence. From this, we can then apply the martingale central limit theorem to conclude that the sum of the time series converges in distribution to the normal distribution.
+
+\begin{theorem_exam}{MLT for $\alpha-$mixing processes}{} Suppose that $\{X_t: t \geq 1\}$ is 
+\begin{enumerate}
+\item Strictly stationary
+\item $\alpha-$mixing 
+\item Mean zero $\mathbb{E}[X_1] = 0$
+\item $\mathbb{E}[|X_1|^{2 + \delta}] < \infty$ for some $\delta > 0$
+\item $\sum_{k=1}^{\infty}\alpha_{k}^{\delta/(2 + \delta)} < \infty$
+\end{enumerate}
+
+Then, we may write that 
+$$
+X_t = v_t + z_{t-1} - z_t
+$$
+for $t = 1,2,...$ where $v_t$ is a stationary martingale difference with $\mathbb{E}[|v_t|^{2 + \delta}] < \infty$, $z_t$ is a stationary sequence with $\mathbb{E}[z_{t}^{2}] < \infty$ and 
+$$
+\frac{1}{n}\sum_{k=1}^{n}\mathbb{E}[v_{t}^{2}|\mathcal{F}_t] \xrightarrow{p} \sigma^2 \coloneqq Var[X_1] + 2\sum_{k=1}^{\infty}Cov(X_1, X_{1 + k})
+$$
+where $\mathcal{F}_t = \sigma(x_t, x_{t-1}, ...)$ for $t \geq 2$ and $\mathcal{F}_t = \sigma(\phi, \Omega)$ for $t \leq 0.$
+
+As a consequence, we have that 
+$$
+\frac{1}{\sqrt{n}}\sum X_t \xrightarrow{D} \mathcal{N}(0, \sigma^2)
+$$
+\end{theorem_exam}
+
+
+\begin{lemma}(Maximum inequality).
+$$
+\max_{1 \leq i \leq n}|X_{ni}| \leq \big(\sum |X_{ni}|^2 \big)^{1/2}
+$$
+\end{lemma}
+
+\subsection{Casual Processes}
+
+We now show that casual processes can also be approximated by a martingale difference sequence. 
+
+\begin{definition_exam}{Casual Process}{} Suppose that $\{\eta_i\}_{i \in \mathbb{Z}}$ are i.i.d random variable with $\mathbb{E}[\eta_i] = 0$ and $\mathbb{E}[\eta_{i}^{2}] = 1.$ Then, let $F$ be a measurable function and define the random variable 
+$$
+w_k = F(..., \eta_{k-1}, \eta_{k}), \quad k \in \mathbb{Z}
+$$
+such that $w_k$ are well-defined stationary random variables with $\mathbb{E}[w_k] = 0$ and $\mathbb{E}[w_{k}^{2}] < \infty.$ Then, $\{w_k\}_{k \in \mathbb{Z}}$ is known as a \textbf{stationary casual process}.
+\end{definition_exam}
+
+
+We can approximate stationary casual processes by martingale difference sequences.
+\begin{theorem} Define $\mathcal{P}_kZ = \mathbb{E}[Z|\mathcal{F}_k] - \mathbb{E}[Z|\mathcal{F}_{k - 1}]$. Suppose that $\sum_{i=1}^{\infty}i\mathbb{E}[|\mathcal{P}_kw_{i+k}|^2] < \infty.$ Then, we can decompose the stationary casual process by 
+$$
+w_k = v_k + z_{k-1} + z_k
+$$
+whereby $z_k, v_k$ are stationary processes such that $\mathbb{E}[|v_0|^2 + |z_0|^2] < \infty$. From this, 
+$$
+\frac{1}{\sqrt{n \sigma}}\sum_{k=1}^{n}w_k \xrightarrow{D} \mathcal{N}(0,1)
+$$
+where $\sigma^2 = \mathbb{E}[v_0^2].$
+\end{theorem}
+
+\end{document}
+
+}
+}
+

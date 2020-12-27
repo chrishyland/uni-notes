@@ -1,0 +1,46 @@
+\BOOKMARK [1][-]{section.1}{Parametric Estimation}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Motivation for Semiparametric Estimation}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Regular Parametric Models}{section.1}% 3
+\BOOKMARK [2][-]{subsection.1.3}{Consequences of LAN}{section.1}% 4
+\BOOKMARK [2][-]{subsection.1.4}{Regular Estimators}{section.1}% 5
+\BOOKMARK [2][-]{subsection.1.5}{Optimality of Estimators}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.6}{Estimating in the presence of Nuisance Parameters}{section.1}% 7
+\BOOKMARK [2][-]{subsection.1.7}{Special Case of Estimating in presence of nuisance parameters}{section.1}% 8
+\BOOKMARK [2][-]{subsection.1.8}{i.i.d case of parametric estimation}{section.1}% 9
+\BOOKMARK [2][-]{subsection.1.9}{Construction of A.E estimators}{section.1}% 10
+\BOOKMARK [2][-]{subsection.1.10}{Hypothesis Testing}{section.1}% 11
+\BOOKMARK [1][-]{section.2}{Semiparametric Estimation}{}% 12
+\BOOKMARK [2][-]{subsection.2.1}{Introduction to Semiparametric Models}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.2}{Constraint-Defined Location Model}{section.2}% 14
+\BOOKMARK [2][-]{subsection.2.3}{Nuisance Scores}{section.2}% 15
+\BOOKMARK [2][-]{subsection.2.4}{Properties of Nuisance Scores}{section.2}% 16
+\BOOKMARK [2][-]{subsection.2.5}{Constrained Location Model: Semiparametric Information Bound}{section.2}% 17
+\BOOKMARK [2][-]{subsection.2.6}{The structure of the space of Score functions}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.7}{Projection of Score Functions}{section.2}% 19
+\BOOKMARK [2][-]{subsection.2.8}{Construction of regular parametric submodels in the constrained location model}{section.2}% 20
+\BOOKMARK [2][-]{subsection.2.9}{Regular Estimators in the parametric case}{section.2}% 21
+\BOOKMARK [2][-]{subsection.2.10}{Regular Estimators in the semiparametric case}{section.2}% 22
+\BOOKMARK [2][-]{subsection.2.11}{The Haar Wavelet Basis}{section.2}% 23
+\BOOKMARK [2][-]{subsection.2.12}{Orthogonal Polynomials}{section.2}% 24
+\BOOKMARK [2][-]{subsection.2.13}{Symmetric Location Model}{section.2}% 25
+\BOOKMARK [2][-]{subsection.2.14}{Construction of estimator}{section.2}% 26
+\BOOKMARK [2][-]{subsection.2.15}{Practical Implementation}{section.2}% 27
+\BOOKMARK [2][-]{subsection.2.16}{Integral Constrained Semiparametric Location-Scale Model}{section.2}% 28
+\BOOKMARK [1][-]{section.3}{Semiparametric Testing}{}% 29
+\BOOKMARK [1][-]{section.4}{Probability Theory}{}% 30
+\BOOKMARK [2][-]{subsection.4.1}{Modes of convergence}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.2}{Sequences of independent random variables}{section.4}% 32
+\BOOKMARK [2][-]{subsection.4.3}{Big-oh notation}{section.4}% 33
+\BOOKMARK [1][-]{section.5}{Kernel Density Estimation}{}% 34
+\BOOKMARK [2][-]{subsection.5.1}{Introduction to Kernel Density Estimation}{section.5}% 35
+\BOOKMARK [2][-]{subsection.5.2}{Properties of Kernel Density Estimator}{section.5}% 36
+\BOOKMARK [2][-]{subsection.5.3}{Asymptotic Results}{section.5}% 37
+\BOOKMARK [1][-]{section.6}{Nonparametric Regression}{}% 38
+\BOOKMARK [2][-]{subsection.6.1}{Nadaraya-Watson Estimator}{section.6}% 39
+\BOOKMARK [1][-]{section.7}{Martingale Central Limit Theorems}{}% 40
+\BOOKMARK [2][-]{subsection.7.1}{Tightness and Weak Convergence}{section.7}% 41
+\BOOKMARK [2][-]{subsection.7.2}{Uniform Integrability}{section.7}% 42
+\BOOKMARK [2][-]{subsection.7.3}{Martingale Review}{section.7}% 43
+\BOOKMARK [1][-]{section.8}{Martingale Central Limit Theorem}{}% 44
+\BOOKMARK [2][-]{subsection.8.1}{Applications of MLT}{section.8}% 45
+\BOOKMARK [2][-]{subsection.8.2}{Casual Processes}{section.8}% 46

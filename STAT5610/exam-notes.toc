@@ -1,0 +1,46 @@
+\contentsline {section}{\numberline {1.1}Parametric Estimation}{1}{section.1}% 
+\contentsline {subsection}{\numberline {1.1.1}Motivation for Semiparametric Estimation}{1}{subsection.1.1}% 
+\contentsline {subsection}{\numberline {1.1.2}Regular Parametric Models}{1}{subsection.1.2}% 
+\contentsline {subsection}{\numberline {1.1.3}Consequences of LAN}{4}{subsection.1.3}% 
+\contentsline {subsection}{\numberline {1.1.4}Regular Estimators}{6}{subsection.1.4}% 
+\contentsline {subsection}{\numberline {2.1.5}Optimality of Estimators}{1}{subsection.1.5}% 
+\contentsline {subsection}{\numberline {2.1.6}Estimating in the presence of Nuisance Parameters}{3}{subsection.1.6}% 
+\contentsline {subsection}{\numberline {2.1.7}Special Case of Estimating in presence of nuisance parameters}{4}{subsection.1.7}% 
+\contentsline {subsection}{\numberline {2.1.8}i.i.d case of parametric estimation}{7}{subsection.1.8}% 
+\contentsline {subsection}{\numberline {3.1.9}Construction of A.E estimators}{1}{subsection.1.9}% 
+\contentsline {subsection}{\numberline {3.1.10}Hypothesis Testing}{2}{subsection.1.10}% 
+\contentsline {section}{\numberline {4.2}Semiparametric Estimation}{1}{section.2}% 
+\contentsline {subsection}{\numberline {4.2.1}Introduction to Semiparametric Models}{1}{subsection.2.1}% 
+\contentsline {subsection}{\numberline {4.2.2}Constraint-Defined Location Model}{1}{subsection.2.2}% 
+\contentsline {subsection}{\numberline {4.2.3}Nuisance Scores}{2}{subsection.2.3}% 
+\contentsline {subsection}{\numberline {4.2.4}Properties of Nuisance Scores}{4}{subsection.2.4}% 
+\contentsline {subsection}{\numberline {5.2.5}Constrained Location Model: Semiparametric Information Bound}{1}{subsection.2.5}% 
+\contentsline {subsection}{\numberline {5.2.6}The structure of the space of Score functions}{3}{subsection.2.6}% 
+\contentsline {subsection}{\numberline {6.2.7}Projection of Score Functions}{1}{subsection.2.7}% 
+\contentsline {subsection}{\numberline {6.2.8}Construction of regular parametric submodels in the constrained location model}{2}{subsection.2.8}% 
+\contentsline {subsection}{\numberline {6.2.9}Regular Estimators in the parametric case}{6}{subsection.2.9}% 
+\contentsline {subsection}{\numberline {6.2.10}Regular Estimators in the semiparametric case}{7}{subsection.2.10}% 
+\contentsline {subsection}{\numberline {7.2.11}The Haar Wavelet Basis}{1}{subsection.2.11}% 
+\contentsline {subsection}{\numberline {7.2.12}Orthogonal Polynomials}{3}{subsection.2.12}% 
+\contentsline {subsection}{\numberline {8.2.13}Symmetric Location Model}{1}{subsection.2.13}% 
+\contentsline {subsection}{\numberline {8.2.14}Construction of estimator}{3}{subsection.2.14}% 
+\contentsline {subsection}{\numberline {8.2.15}Practical Implementation}{5}{subsection.2.15}% 
+\contentsline {subsection}{\numberline {9.2.16}Integral Constrained Semiparametric Location-Scale Model}{1}{subsection.2.16}% 
+\contentsline {section}{\numberline {10.3}Semiparametric Testing}{1}{section.3}% 
+\contentsline {section}{\numberline {11.4}Probability Theory}{1}{section.4}% 
+\contentsline {subsection}{\numberline {11.4.1}Modes of convergence}{1}{subsection.4.1}% 
+\contentsline {subsection}{\numberline {11.4.2}Sequences of independent random variables}{3}{subsection.4.2}% 
+\contentsline {subsection}{\numberline {11.4.3}Big-oh notation}{5}{subsection.4.3}% 
+\contentsline {section}{\numberline {12.5}Kernel Density Estimation}{1}{section.5}% 
+\contentsline {subsection}{\numberline {12.5.1}Introduction to Kernel Density Estimation}{1}{subsection.5.1}% 
+\contentsline {subsection}{\numberline {12.5.2}Properties of Kernel Density Estimator}{1}{subsection.5.2}% 
+\contentsline {subsection}{\numberline {12.5.3}Asymptotic Results}{4}{subsection.5.3}% 
+\contentsline {section}{\numberline {13.6}Nonparametric Regression}{1}{section.6}% 
+\contentsline {subsection}{\numberline {13.6.1}Nadaraya-Watson Estimator}{1}{subsection.6.1}% 
+\contentsline {section}{\numberline {14.7}Martingale Central Limit Theorems}{1}{section.7}% 
+\contentsline {subsection}{\numberline {14.7.1}Tightness and Weak Convergence}{1}{subsection.7.1}% 
+\contentsline {subsection}{\numberline {14.7.2}Uniform Integrability}{1}{subsection.7.2}% 
+\contentsline {subsection}{\numberline {14.7.3}Martingale Review}{3}{subsection.7.3}% 
+\contentsline {section}{\numberline {14.8}Martingale Central Limit Theorem}{4}{section.8}% 
+\contentsline {subsection}{\numberline {15.8.1}Applications of MLT}{1}{subsection.8.1}% 
+\contentsline {subsection}{\numberline {15.8.2}Casual Processes}{2}{subsection.8.2}% 
